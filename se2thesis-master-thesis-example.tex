@@ -300,7 +300,7 @@ cleveref=true,%
 \usepackage{hyperref}
 
 \author{Lukas Krodinger}
-\title{Expose - Advancing Code Readability: Mined \& Modified Code for Dataset Generation}
+\title{Exposé - Advancing Code Readability: Mined \& Modified Code for Dataset Generation}
 \degreeprogramme{M.Sc. Informatik}
 \matrnumber{89801}
 \supervisor{Prof. Dr. Gordon Fraser}
@@ -350,7 +350,6 @@ cleveref=true,%
 %\usepackage{titlesec}
 %\titleformat{\subsubsection}{\normalfont\fontfamily{phv}\fontsize{14}{17}\selectfont}{\thesubsubsection}{1em}{}
 
-
 \begin{document}
 	
 	\frontmatter
@@ -386,9 +385,64 @@ cleveref=true,%
 	There is another closely related term, namely understandability. Readability is the syntactic aspect of processing code, while understandability is the semantic aspect \cite{posnett2011simpler}.
 	For example, a developer can find a piece of code readable but still difficult to understand. Recent research gives evidence that there is no correlation between understandability and readability \cite{scalabrino2017automatically}.	
 	
-	\lstinputlisting[language=Java, firstline=8, lastline=26, caption={An example for highly readable code of the highly rated cassandra github repository},label={lst:cassandra-src-java-org-apache-cassandra-utils}]{cassandra-src-java-org-apache-cassandra-utils.java}
+	\begin{listing}[htb]
+		\begin{minted}[linenos, frame=lines, framesep=2mm]{java}
+			/**
+			* Logs the output of the specified process.
+			*
+			* @param p the process
+			* @throws IOException if an I/O problem occurs
+			*/
+			private static void logProcessOutput(Process p) throws IOException
+			{
+				try (BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream())))
+				{
+					StrBuilder builder = new StrBuilder();
+					String line;
+					while ((line = input.readLine()) != null)
+					{
+						builder.appendln(line);
+					}
+					logger.info(builder.toString());
+				}
+			}
+		\end{minted}
+		\caption{An example for well readable code of the highly rated Cassandra GitHub repository}
+		\label{lst:cassandra-src-java-org-apache-cassandra-utils}
+	\end{listing}
 	
-	\lstinputlisting[language=Java, firstline=8, lastline=29, caption={The same example modified to be badly readable},label={lst:cassandra-src-java-org-apache-cassandra-utils-modified}]{cassandra-src-java-org-apache-cassandra-utils-modified.java}
+	\begin{listing}[htb]
+		\begin{minted}[linenos, frame=lines, framesep=2mm]{java}
+			private 
+				static 
+			void 
+			debug( Process 
+			v1 
+			)       throws IOException
+			{
+				// Doo debug
+				try (BufferedReader   b 
+				= new 
+				BufferedReader(
+				new InputStreamReader(
+				v1.getInputStream()
+				)
+				)
+				)
+				{
+					StrBuilder b2=new StrBuilder();String v2;while (null!=(v2=input.readLine())){b2.appendln(v2);} // Doo stuff
+					m.info(  builder.toString()
+					);
+				}
+			}
+		\end{minted}
+		\caption{The same example as in listing \ref{lst:cassandra-src-java-org-apache-cassandra-utils} but modified to be badly readable}
+		\label{lst:cassandra-src-java-org-apache-cassandra-utils-modified}
+	\end{listing}
+	
+%	\lstinputlisting[language=Java, firstline=8, lastline=26, caption={An example for highly readable code of the highly rated cassandra github repository},label={lst:cassandra-src-java-org-apache-cassandra-utils}]{cassandra-src-java-org-apache-cassandra-utils.java}
+%	
+%	\lstinputlisting[language=Java, firstline=8, lastline=29, caption={The same example modified to be badly readable},label={lst:cassandra-src-java-org-apache-cassandra-utils-modified}]{cassandra-src-java-org-apache-cassandra-utils-modified.java}
 	
 	\subsection{Classical calculation approaches} \label{Classical calculation approaches}
 	A first estimation for source code readability was defined as the percentage of comment lines over total code lines \cite{aggarwal2002integrated}. In the last years, researchers have proposed several more complex metrics and models for assessing code readability \cite{buse2009learning, posnett2011simpler, dorn2012general, scalabrino2016improving}.
@@ -423,30 +477,30 @@ cleveref=true,%
 	This requires, as it was done previously, a lot of effort and persons willing to rate code based on their readability. We present another approach for gathering training data.
 	
 	In a first step, GitHub repositories with known high code quality are downloaded and labeled as highly readable. We therefore select repositories using a similar approach as Allamanis et al. \cite{allamanis2016convolutional} and then assume that they contain only well readable code.
-	In a second step, the code is manipulated so that it is less readable afterwards. This approach is similar to the approach of Loriot \cite{loriot2022styler}. 
+	In a second step, the code is manipulated so that it is less readable afterwards. This approach is similar to the approach of Loriot \cite{loriot2022styler}.
 	
-	\subsection*{RQ1: What is the quality of our new data generation approach?} \label{RQ1}
+	\begin{resq}What is the quality of our new data generation approach?\end{resq} \label{RQ1}
 	So far, the data for readability classification was generated manually. Therefore, human annotators ranked code snippets by their readability level based on a five-point Likert scale \cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable) \cite{buse2009learning, dorn2012general, scalabrino2016improving}. Our new data will be generated in an automatic approach, where no manual labeling of code is necessary. We want to compare the quality of this data to the data used for previous models.
 	
-	\subsubsection*{RQ1.1: Can certain code be assumed to be well readable?} \label{RQ1.1}
+	\begin{resq}Can certain code be assumed to be well readable?\end{resq} \label{RQ1.1}
 	To collect the necessary training data, we assume that the code from the repositories is readable under certain conditions. We want to check whether that assumption holds.
 	
-	\subsubsection*{RQ1.2: Can poorly readable code be generated from well readable code?} \label{RQ1.2}
+	\begin{resq}Can poorly readable code be generated from well readable code?\end{resq} \label{RQ1.2}
 	It is not sufficient to have only well readable code for training a classifier. We also need poorly readable code. Therefore, we will try to generate such code from the well readable code. We will investigate whether this is possible in principle, and we will propose an automated approach for archiving this: Readability Decreasing Heuristics.
 	
-	\subsubsection*{RQ1.3: Which heuristics are best to generate poorly readable code from well readable code?} \label{RQ1.3}
+	\begin{resq}Which heuristics are best to generate poorly readable code from well readable code?\end{resq}
 	We want to compare the modifications of the proposed heuristics for generating badly readable code to each other. We will investigate whether their results are sufficient for training a readability classifier.
 	
-	\subsection*{RQ2: Can the new data improve existing readability models?} \label{RQ2}
+	\begin{resq}Can the new data improve existing readability models?\end{resq} \label{RQ2}
 	It was shown that Deep Learning models get better the more training data is available \cite{hestness2017deep}. This holds under the assumption that the quality of the data is the same or at least similar. We want to check if the quality of our new data is sufficient for improving the Deep Learning based readability classifier of Mi et al. \cite{mi2022towards}.    
 	
-	\subsection*{Optional RQ3: How can existing Deep Learning approaches be further improved?} \label{RQ3}
+	\begin{resq}Optional: How can existing Deep Learning approaches be further improved?\end{resq} \label{RQ3}
 	In recent years it was shown that Deep Learning models can be further improved by modifying the structure of the architecture or by introducing new components, parts or layers to existing architectures. We suggest two improvements for the model of Mi et al. \cite{mi2022towards} namely embedding spaces and tabs as semantic tokens and adding a method name fitting component. We want to investigate if those changes can improve the model.
 	
-	\subsubsection*{Optional RQ3.1: Does the embedding of spaces and tabs in semantic code representations improve readability classification?} \label{RQ3.1}
+	\begin{resq}Optional: Does the embedding of spaces and tabs in semantic code representations improve readability classification?\end{resq} \label{RQ3.1}
 	The state-of-the-art model of Mi et al. \cite{mi2022towards} does consider spaces and tabs only in its visual component. We want to investigate if it can improve the quality of a Deep Learning based model if spaces and tabs are encoded as semantic tokens. We also want to investigate if this makes the visual component superfluous.
 	
-	\subsubsection*{Optional RQ3.2: Does the usage of a method name fitting classifier improve readability classification?} \label{RQ3.2}
+	\begin{resq}Optional: Does the usage of a method name fitting classifier improve readability classification?\end{resq} \label{RQ3.2}
 	Correct naming of identifiers is crucial for ensuring readability of software programs. It is of outstanding importance for readability of code that the name of methods fit the method bodies \cite{liu2019learning}. We want to introduce a new component to the model of Mi et al. \cite{mi2022towards} that is built similar to Code2Vec \cite{alon2019code2vec}. We want to investigate if the newly introduced component increases the quality of the resulting model.
 	
 	\backmatter
