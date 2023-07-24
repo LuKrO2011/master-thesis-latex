@@ -4,3 +4,4 @@
 - Set bibleography program to Biber
 - Press F5 to compile and show PDF
 - Press F8 after change of bibleography to remake it
+- See "se2thesis.pdf" for manual
