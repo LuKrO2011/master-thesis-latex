@@ -339,6 +339,13 @@ cleveref=true,%
 	tabsize=3
 }
 
+% Start counting of chapters with 1
+\usepackage{chngcntr}
+\counterwithout{chapter}{section}
+\counterwithin{chapter}{part}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thechapter}{\arabic{chapter}.0}
+
 % Unbold subsubsection
 %\usepackage{titlesec}
 %\titleformat{\subsubsection}{\normalfont\fontfamily{phv}\fontsize{14}{17}\selectfont}{\thesubsubsection}{1em}{}
