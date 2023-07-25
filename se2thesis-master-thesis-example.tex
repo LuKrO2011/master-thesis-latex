@@ -346,9 +346,21 @@ cleveref=true,%
 \renewcommand{\thesection}{\arabic{section}}
 \renewcommand{\thechapter}{\arabic{chapter}.0}
 
-% Unbold subsubsection
-%\usepackage{titlesec}
-%\titleformat{\subsubsection}{\normalfont\fontfamily{phv}\fontsize{14}{17}\selectfont}{\thesubsubsection}{1em}{}
+% Footnotes
+\newcounter{urlfootnote}
+\newcommand{\onecurl}[2]{%
+	\stepcounter{urlfootnote}%
+	\expandafter\def\csname urlfootnote:#1\endcsname{\theurlfootnote}%
+	\footnote{\label{url:#1}\url{#1}, accessed: #2}%
+}
+\usepackage{etoolbox}
+\newcommand{\curl}[2]{%
+	\ifcsdef{urlfootnote:#1}{%
+		\textsuperscript{\ref{url:#1}}%
+	}{%
+		\onecurl{#1}{#2}%
+	}%
+}
 
 \begin{document}
 	
@@ -367,7 +379,7 @@ cleveref=true,%
 	
 	In the realm of software development, the significance of code readability cannot be overstated. Together with understandability, it 	serves as the foundation for efficient collaboration, comprehension, and maintenance of software systems \cite{posnett2011simpler, aggarwal2002integrated}. 
 	Maintenance alone will consume over 70\% of the total lifecycle cost of a software product and for maintenance, the most time-consuming act is reading code \cite{buse2009learning, deimel1985uses, rugaber2000use, boehm2001defect}.
-	Therefore, it is important to make sure that a high readability of code is ensured. In order to archive this, we need to measure readability and classify code regarding readability.
+	Therefore, it is important to ensure a high readability of code. In order to archive this, we need to measure readability.
 	
 	In the last years, researchers have proposed several metrics and models for assessing code readability with an accuracy of up to 81.8\% \cite{buse2009learning, posnett2011simpler, dorn2012general, daka2015modeling}. In recent years, the newer deep learning based models are able to achieve an accuracy of up to 85.3\% \cite{mi2018improving, mi2022towards}.
 	However, these models do not capture what developers think of readability improvements \cite{fakhoury2019improving}. This suggests that there is room for improvement in readability classification of source code.
@@ -376,7 +388,7 @@ cleveref=true,%
 	
 	\subsection{Readability} \label{Readability}
 	In order to be able to improve readability, we first need to capture what readability is. We define readability as a subjective impression of the difficulty of code while trying to understand it \cite{posnett2011simpler, buse2009learning}. In other words, readability of code is a perceived barrier that needs to be overcome before it is possible to work with the code. The more readable code is, the lower the barrier \cite{posnett2011simpler}.
-	To give an example for high vs low readability, consider the code of Listing \ref{lst:cassandra-src-java-org-apache-cassandra-utils} and compare it to the code with the same functionality of Listing \ref{lst:cassandra-src-java-org-apache-cassandra-utils-modified}. You will notice that the first piece of code is much more readable than the second one.
+	To give an example for high vs low readability, consider the code of Listing \ref{lst:cassandra-src-java-org-apache-cassandra-utils} from GitHub \curl{https://github.com/apache/cassandra/blob/trunk/src/java/org/apache/cassandra/utils/HeapUtils.java}{2023-25-07} and compare it to the code with the same functionality of Listing \ref{lst:cassandra-src-java-org-apache-cassandra-utils-modified}. You will notice that the first piece of code is much more readable than the second one.
 	
 	Readability is not the same as complexity. Complexity is an “essential” property of software that arises
 	from system requirements, while readability is an “accidental” property that is not determined by the problem statement \cite{buse2009learning, brooks1987no}.
@@ -384,7 +396,34 @@ cleveref=true,%
 	There is another closely related term, namely understandability. Readability is the syntactic aspect of processing code, while understandability is the semantic aspect \cite{posnett2011simpler}.
 	For example, a developer can find a piece of code readable but still difficult to understand. Recent research gives evidence that there is no correlation between understandability and readability \cite{scalabrino2017automatically}.	
 	
-	\begin{listing}[htb]
+%	\begin{listing}[!ht]
+%		\begin{minted}[linenos, frame=lines, framesep=2mm]{java}
+%			/**
+%			* Logs the output of the specified process.
+%			*
+%			* @param p the process
+%			* @throws IOException if an I/O problem occurs
+%			*/
+%			private static void logProcessOutput(Process p) throws IOException
+%			{
+%				try (BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream())))
+%				{
+%					StrBuilder builder = new StrBuilder();
+%					String line;
+%					while ((line = input.readLine()) != null)
+%					{
+%						builder.appendln(line);
+%					}
+%					logger.info(builder.toString());
+%				}
+%			}
+%		\end{minted}
+%		\caption[An example for well readable code of the highly rated Cassandra GitHub repository]{An example for well readable code of the highly rated Cassandra GitHub repository \protect\footnotemark}
+%		\label{lst:cassandra-src-java-org-apache-cassandra-utils}
+%	\end{listing}
+%	\footnotetext{\url{https://github.com/apache/cassandra/blob/trunk/src/java/org/apache/cassandra/utils/HeapUtils.java}, accessed: 2023-07-25}
+	
+	\begin{listing}[!ht]
 		\begin{minted}[linenos, frame=lines, framesep=2mm]{java}
 			/**
 			* Logs the output of the specified process.
@@ -406,11 +445,11 @@ cleveref=true,%
 				}
 			}
 		\end{minted}
-		\caption{An example for well readable code of the highly rated Cassandra GitHub repository}
+		\caption[An example for well readable code of the highly rated Cassandra GitHub repository]{An example for well readable code of the highly rated Cassandra GitHub repository}
 		\label{lst:cassandra-src-java-org-apache-cassandra-utils}
 	\end{listing}
 	
-	\begin{listing}[htb]
+	\begin{listing}[!ht]
 		\begin{minted}[linenos, frame=lines, framesep=2mm]{java}
 			private 
 				static 
@@ -456,9 +495,9 @@ cleveref=true,%
 	
 	\subsection{Other related work}
 	% TODO: Remove names if not relevant
-	\citeauthor{loriot2022styler} created a model that is able to fix Checkstyle\footnote{\url{https://checkstyle.org/}} violations using Deep Learning. He therefore inserted formatting violations based on a project specific format checker ruleset into code in a first step. In a second step, he then learned how to undo those injections using a LSTM neural network. His approach is working on abstract token sequences. Note that all the training data is generated in a self-supervised manner \cite{loriot2022styler}. A similar idea has been explored by \citeauthor{yasunaga2020graph} \cite{yasunaga2020graph}. We will use the idea of intentional degradation of code for data generation.
+	\citeauthor{loriot2022styler} created a model that is able to fix Checkstyle \curl{https://checkstyle.org/}{2023-07-25} violations using Deep Learning. He therefore inserted formatting violations based on a project specific format checker ruleset into code in a first step. In a second step, he then learned how to undo those injections using a LSTM neural network. His approach is working on abstract token sequences. Note that all the training data is generated in a self-supervised manner \cite{loriot2022styler}. A similar idea has been explored by \citeauthor{yasunaga2020graph} \cite{yasunaga2020graph}. We will use the idea of intentional degradation of code for data generation.
 	
-	Another concept we will employ is from \citeauthor{allamanis2016convolutional}. He cloned the top open source Java projects on GitHub\footnote{\url{https://github.com/}} for training a Deep Learning model. Those top projects were selected by taking the sum of the z-scores of the number of watchers and forks of each project. As the projects have thousands of forks and stars and are widely used among software developers, they can be assumed to be of high quality \cite{allamanis2016convolutional}.
+	Another concept we will employ is from \citeauthor{allamanis2016convolutional}. He cloned the top open source Java projects on GitHub \curl{https://github.com/}{2023-07-25} for training a Deep Learning model. Those top projects were selected by taking the sum of the z-scores of the number of watchers and forks of each project. As the projects have thousands of forks and stars and are widely used among software developers, they can be assumed to be of high quality \cite{allamanis2016convolutional}.
 	
 	\section{Planned Work and Contribution} \label{Planned Work and Contribution}
 	We will investigate whether it is possible to score a higher accuracy as current models in classifying code readability for java using Deep Learning. Therefore, we will train the model from \citeauthor{mi2022towards} \cite{mi2022towards} with more data. We will consider augmenting the model with a method name classifier and incorporating semantic encoding for tabs and spaces. The training data will be generated in a novel way for classification of readability, inspired by \citeauthor{loriot2022styler} \cite{loriot2022styler}. The method name classifier would be similar to Code2Vec \cite{alon2019code2vec}. The combination of all components would be novel to the best of our knowledge. You can find a visualization of the planned modifications of \citeauthor{mi2022towards}'s model in figure \ref{fig:model_pipeline}. We will focus on generating training data, as the approach will be usable for further research in the field of source code readability.\\
