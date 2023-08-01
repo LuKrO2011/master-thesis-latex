@@ -387,7 +387,7 @@ cleveref=true,%
 	\section{Background and related work} \label{Background and related work}
 	
 	\subsection{Readability} \label{Readability}
-	To improve readability, we need to capture what readability is. We define readability as a subjective impression of the difficulty of code while trying to understand it \cite{posnett2011simpler, buse2009learning}. Readability of code is a perceived barrier that needs to be overcome before it is possible to work with the code. The more readable code is, the lower the barrier \cite{posnett2011simpler}.
+	To improve readability classification, we need to capture what readability is. We define readability as a subjective impression of the difficulty of code while trying to understand it \cite{posnett2011simpler, buse2009learning}. Readability of code is a perceived barrier that needs to be overcome before it is possible to work with the code. The more readable code is, the lower the barrier \cite{posnett2011simpler}.
 	To give an example for high vs low readability, consider the code of Listing \ref{lst:cassandra-src-java-org-apache-cassandra-utils} from GitHub\curl{https://github.com/apache/cassandra/blob/trunk/src/java/org/apache/cassandra/utils/HeapUtils.java}{2023-25-07} and compare it to the code with the same functionality of Listing \ref{lst:cassandra-src-java-org-apache-cassandra-utils-modified}. You will notice that the first piece of code is more readable than the second one.
 	
 	Readability is not the same as complexity. Complexity is an “essential” property of software that arises
@@ -474,13 +474,13 @@ cleveref=true,%
 				}
 			}
 		\end{minted}
-		\caption{The same example as in Listing \ref{lst:cassandra-src-java-org-apache-cassandra-utils} but modified to be badly readable}
+		\caption{The same example as in Listing \ref{lst:cassandra-src-java-org-apache-cassandra-utils} but modified to be poorly readable}
 		\label{lst:cassandra-src-java-org-apache-cassandra-utils-modified}
 	\end{listing}
 	
 %	\lstinputlisting[language=Java, firstline=8, lastline=26, caption={An example for highly readable code of the highly rated cassandra github repository},label={lst:cassandra-src-java-org-apache-cassandra-utils}]{cassandra-src-java-org-apache-cassandra-utils.java}
 %	
-%	\lstinputlisting[language=Java, firstline=8, lastline=29, caption={The same example modified to be badly readable},label={lst:cassandra-src-java-org-apache-cassandra-utils-modified}]{cassandra-src-java-org-apache-cassandra-utils-modified.java}
+%	\lstinputlisting[language=Java, firstline=8, lastline=29, caption={The same example modified to be poorly readable},label={lst:cassandra-src-java-org-apache-cassandra-utils-modified}]{cassandra-src-java-org-apache-cassandra-utils-modified.java}
 	
 	\subsection{Classical calculation approaches} \label{Classical calculation approaches}
 	A first estimation for source code readability was the percentage of comment lines over total code lines \cite{aggarwal2002integrated}. In the last years, researchers have proposed several more complex metrics and models for assessing code readability \cite{buse2009learning, posnett2011simpler, dorn2012general, scalabrino2016improving}.
@@ -527,7 +527,7 @@ cleveref=true,%
 	It is not sufficient to have only well readable code for training a classifier. We also need poorly readable code. Therefore, we will try to generate such code from the well readable code. We will investigate whether this is possible in principle, and we will try to propose an automated approach for archiving this: Readability Decreasing Heuristics.
 	
 	\begin{resq}Which heuristics are best to generate poorly readable code from well readable code?\end{resq}
-	We want to compare the modifications of the proposed heuristics for generating badly readable code to each other. We will investigate whether their results are sufficient for training readability classifiers.
+	We want to compare the modifications of the proposed heuristics for generating poorly readable code to each other. We will investigate whether their results are sufficient for training readability classifiers.
 	
 	\begin{resq}Can the new data improve existing readability models?\end{resq} \label{RQ2}
 	It was shown that Deep Learning models get better the more training data is available \cite{hestness2017deep}. This holds under the assumption that the quality of the data is the same or at least similar. We want to check if the quality of our new data is sufficient for improving the Deep Learning based readability classifier of \citeauthor{mi2022towards} \cite{mi2022towards}.    
