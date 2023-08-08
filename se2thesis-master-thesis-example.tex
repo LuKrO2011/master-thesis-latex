@@ -23,9 +23,14 @@ minted=true,%
 selnolig=true,%
 widowcontrol=false,%
 microtype=true,%
-biblatex=true,%
+% biblatex=true,%
 cleveref=true,%
 ]{se2packages}
+
+% Own change (from Lisa)
+% Changing citeauthor to use et el.
+\usepackage[maxcitenames=2,backend=biber]{biblatex}
+% End own change
 
 \begin{filecontents}{\jobname.bib}
 	@article{boehm2001defect,

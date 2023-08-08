@@ -1,18 +1,15 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'se2thesis-master-thesis-example.blg'
-[119] biber-MSWIN64:340> INFO - === 
-[167] Biber.pm:419> INFO - Reading 'se2thesis-master-thesis-example.bcf'
-[328] Biber.pm:979> INFO - Found 22 citekeys in bib section 0
-[348] Biber.pm:4419> INFO - Processing section 0
-[362] Biber.pm:4610> INFO - Looking for bibtex file 'se2thesis-master-thesis-example.bib' for section 0
-[425] bibtex.pm:1713> INFO - LaTeX decoding ...
-[470] bibtex.pm:1519> INFO - Found BibTeX data source 'se2thesis-master-thesis-example.bib'
-[636] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[636] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'variable = shifted' with 'variable = non-ignorable'
-[636] Biber.pm:4239> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-UK'
-[636] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-UK'
-[660] bbl.pm:660> INFO - Writing 'se2thesis-master-thesis-example.bbl' with encoding 'UTF-8'
-[673] bbl.pm:763> INFO - Output to se2thesis-master-thesis-example.bbl
-[673] Biber.pm:131> WARN - Possible typo (case mismatch) between citation and datasource keys: 'BUSE2009LEARNING' and 'buse2009learning' in file 'se2thesis-master-thesis-example.bib'
-[673] Biber.pm:131> WARN - I didn't find a database entry for 'BUSE2009LEARNING' (section 0)
-[673] Biber.pm:133> INFO - WARNINGS: 2
+[138] biber-MSWIN64:340> INFO - === 
+[174] Biber.pm:419> INFO - Reading 'se2thesis-master-thesis-example.bcf'
+[300] Biber.pm:979> INFO - Found 21 citekeys in bib section 0
+[349] Biber.pm:4419> INFO - Processing section 0
+[361] Biber.pm:4610> INFO - Looking for bibtex file 'se2thesis-master-thesis-example.bib' for section 0
+[410] bibtex.pm:1713> INFO - LaTeX decoding ...
+[446] bibtex.pm:1519> INFO - Found BibTeX data source 'se2thesis-master-thesis-example.bib'
+[596] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[597] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'variable = shifted' with 'variable = non-ignorable'
+[597] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-UK'
+[597] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-UK'
+[617] bbl.pm:660> INFO - Writing 'se2thesis-master-thesis-example.bbl' with encoding 'UTF-8'
+[629] bbl.pm:763> INFO - Output to se2thesis-master-thesis-example.bbl
