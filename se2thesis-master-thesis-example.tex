@@ -504,7 +504,7 @@ cleveref=true,%
 	
 	Another concept we will employ is from \citeauthor{allamanis2016convolutional}. They cloned the top open source Java projects on GitHub\curl{https://github.com/}{2023-07-25} for training a Deep Learning model. Those top projects were selected by taking the sum of the z-scores of the number of watchers and forks of each project. As the projects have thousands of forks and stars and are widely used among software developers, they can be assumed to be of high quality \cite{allamanis2016convolutional}.
 	
-	\section{Planned Work and Contribution} \label{Planned Work and Contribution}
+	\section{Planned Work and Contributions} \label{Planned Work and Contributions}
 	We will investigate whether it is possible to score a higher accuracy as current models in classifying code readability for java using Deep Learning. Therefore, we will train the model from \citeauthor{mi2022towards} \cite{mi2022towards} with more data. We will consider augmenting the model with a method name classifier and incorporating semantic encoding for tabs and spaces. The training data will be generated in a novel way for classification of readability, inspired by \citeauthor{loriot2022styler} \cite{loriot2022styler}. The method name classifier is similar to Code2Vec \cite{alon2019code2vec}. The combination of all components is novel to the best of our knowledge. You can find a visualization of the planned modifications of \citeauthor{mi2022towards}'s model in figure \ref{fig:model_pipeline}. We will focus on generating training data, as the approach will be usable for further research in the field of source code readability.\\
 	
 	\begin{figure}[t]
