@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.8.1)  11 SEP 2023 11:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.8.1)  11 SEP 2023 12:34
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1718,19 +1718,19 @@ Package pdftex.def Info: Model_pipeline.png  used on input line 512.
 (pdftex.def)             Requested size: 350.0pt x 170.74025pt.
 [4 <./Model_pipeline.png>]
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/b/n' will be
-(Font)              scaled to size 10.95pt on input line 528.
+(Font)              scaled to size 10.95pt on input line 526.
 Package hyperref Info: bookmark level for unknown resq defaults to 0 on input l
-ine 528.
+ine 551.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/b/it' will be
-(Font)              scaled to size 10.95pt on input line 528.
+(Font)              scaled to size 10.95pt on input line 551.
  [5{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts
 _sfissr.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-t
 ype1/lbts_opzo24.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/lib
 ertinus-type1/lbts_nufysp.enc}] [6]
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/b/n' will be
-(Font)              scaled to size 20.74pt on input line 551.
+(Font)              scaled to size 20.74pt on input line 574.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
-(Font)              scaled to size 20.74pt on input line 551.
+(Font)              scaled to size 20.74pt on input line 574.
  [7
 
 
@@ -1929,18 +1929,10 @@ A0AD8CF98B18AC9F1D37E4985.pygtex
 Model_pipeline.png    Graphic file (type png)
  ***********
 
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `se2thesis-master-thesis-example.out' has not
  changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 runsystem(del se2thesis-master-thesis-example.pyg)...executed.
-
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                se2thesis-master-thesis-example
-(biblatex)                and rerun LaTeX afterwards.
 
 Package logreq Info: Writing requests to 'se2thesis-master-thesis-example.run.x
 ml'.
@@ -1948,13 +1940,13 @@ ml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46769 strings out of 475550
- 1006722 string characters out of 5772349
- 2009265 words of memory out of 5000000
- 67030 multiletter control sequences out of 15000+600000
- 684488 words of font info for 245 fonts, out of 8000000 for 9000
+ 46789 strings out of 475550
+ 1007178 string characters out of 5772349
+ 2009629 words of memory out of 5000000
+ 67041 multiletter control sequences out of 15000+600000
+ 684984 words of font info for 249 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
- 122i,20n,121p,10988b,2479s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 122i,21n,121p,10988b,2479s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\lukas\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecit
 0900.pk> <C:\Users\lukas\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ectt0900.pk><C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/type1/public/liberti
@@ -1966,9 +1958,9 @@ c.pfb><C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/type1/public/libertinus-type
 /public/libertinus-type1/LibertinusSerif-Regular.pfb><C:/Program Files/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmsy6.pfb>
-Output written on se2thesis-master-thesis-example.pdf (9 pages, 857742 bytes).
+Output written on se2thesis-master-thesis-example.pdf (9 pages, 862172 bytes).
 PDF statistics:
- 312 PDF objects out of 1000 (max. 8388607)
- 52 named destinations out of 1000 (max. 500000)
+ 321 PDF objects out of 1000 (max. 8388607)
+ 56 named destinations out of 1000 (max. 500000)
  70223 words of extra memory for PDF output out of 74296 (max. 10000000)
 

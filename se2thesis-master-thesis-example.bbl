@@ -231,6 +231,40 @@
       \field{pages}{546\bibrangedash 558}
       \range{pages}{13}
     \endentry
+    \entry{chicco2020advantages}{article}{}
+      \name{author}{2}{}{%
+        {{hash=f3d4d09e12e591928a3b270c54528087}{%
+           family={Chicco},
+           familyi={C\bibinitperiod},
+           given={Davide},
+           giveni={D\bibinitperiod}}}%
+        {{hash=e758b61322d8aaddcad00acf28472ea6}{%
+           family={Jurman},
+           familyi={J\bibinitperiod},
+           given={Giuseppe},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {BioMed Central}%
+      }
+      \strng{namehash}{1d72498a87816dcaddae9c042d1c2f7a}
+      \strng{fullhash}{1d72498a87816dcaddae9c042d1c2f7a}
+      \strng{bibnamehash}{1d72498a87816dcaddae9c042d1c2f7a}
+      \strng{authorbibnamehash}{1d72498a87816dcaddae9c042d1c2f7a}
+      \strng{authornamehash}{1d72498a87816dcaddae9c042d1c2f7a}
+      \strng{authorfullhash}{1d72498a87816dcaddae9c042d1c2f7a}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{BMC genomics}
+      \field{number}{1}
+      \field{title}{The advantages of the Matthews correlation coefficient (MCC) over F1 score and accuracy in binary classification evaluation}
+      \field{volume}{21}
+      \field{year}{2020}
+      \field{pages}{1\bibrangedash 13}
+      \range{pages}{13}
+    \endentry
     \entry{daka2015modeling}{inproceedings}{}
       \name{author}{5}{}{%
         {{hash=9da4ab0be4dac5cb6ecf1b1aae48e8db}{%
@@ -432,28 +466,6 @@
       \field{journaltitle}{arXiv preprint arXiv:1712.00409}
       \field{title}{Deep learning scaling is predictable, empirically}
       \field{year}{2017}
-    \endentry
-    \entry{likert1932technique}{article}{}
-      \name{author}{1}{}{%
-        {{hash=85b07393f98f1590e08d998667417f9b}{%
-           family={Likert},
-           familyi={L\bibinitperiod},
-           given={Rensis},
-           giveni={R\bibinitperiod}}}%
-      }
-      \strng{namehash}{85b07393f98f1590e08d998667417f9b}
-      \strng{fullhash}{85b07393f98f1590e08d998667417f9b}
-      \strng{bibnamehash}{85b07393f98f1590e08d998667417f9b}
-      \strng{authorbibnamehash}{85b07393f98f1590e08d998667417f9b}
-      \strng{authornamehash}{85b07393f98f1590e08d998667417f9b}
-      \strng{authorfullhash}{85b07393f98f1590e08d998667417f9b}
-      \field{sortinit}{L}
-      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Archives of psychology}
-      \field{title}{A technique for the measurement of attitudes.}
-      \field{year}{1932}
     \endentry
     \entry{liu2019learning}{inproceedings}{}
       \name{author}{8}{}{%

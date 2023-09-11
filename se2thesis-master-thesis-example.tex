@@ -520,13 +520,36 @@ cleveref=true,%
 	This requires, as it was done previously, a lot of effort and persons willing to rate code based on their readability. We present another approach for gathering training data.
 	
 	In a first step, GitHub repositories with known high code quality are downloaded and labeled as highly readable. We select repositories using a similar approach as \citeauthor{allamanis2016convolutional} \cite{allamanis2016convolutional} and then assume that they contain only well readable code.
-	In a second step, the code is manipulated so that it is less readable afterwards. This approach is similar to the approach of \citeauthor{loriot2022styler} \cite{loriot2022styler}.
+	In a second step, the code is manipulated so that it is less readable afterwards. This approach is similar to the approach of \citeauthor{loriot2022styler} \cite{loriot2022styler}. After both steps we have a new, automatically generated training dataset for source code readability classification.
+	Note that we assume two things here:
+	\begin{enumerate}
+		\item \label{well-readable-assumption} \textbf{(well-readable-assumption)} The selected repositories contain only well readable code.
+		\item \label{poorly-readable-assumption} \textbf{(poorly-readable-assumption)} After the manipulations, the code is poorly readable.
+	\end{enumerate}
+	
+	
+	% Evaluation
+	\label{compare-models} We evaluate the new training data with two methods. Firstly, we compare machine learning readability models trained with the old and new datasets, separately and combined. Therefore we use common metrics such as accuracy, F1-score and MCC \cite{chicco2020advantages}. 
+	\label{user-study} Secondly, we conclude a user study. The goal of the user study is to answer the following key questions:
+	
+	%\begin{enumerate}
+	%	\item To what extent is code we assume to be well readable actually is readable?
+	%	\item To what extend is code we assume to be less readable actually is readable?
+	%\end{enumerate}
+	
+	\begin{enumerate}
+		\item Does the well-readable-assumption \ref{well-readable-assumption} hold?
+		\item Does the poorly-readable-assumption \ref{poorly-readable-assumption} hold?
+	\end{enumerate}
+	
+	Therefore, we come up with the following research questions:
+	
 	
 %	\begin{resq}What is the quality of our new approach for data generation?\end{resq} \label{RQ1}
 %	Until now, the data for readability classification was generated manually. Therefore, human annotators ranked code snippets by their readability level based on a five-point Likert scale \cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable) \cite{buse2009learning, dorn2012general, scalabrino2016improving}. Our new data will be generated in an automatic approach, where no manual labeling of code is necessary. We want to compare the quality of this data to the data used for previous models.
 	
 	\begin{resq} \textbf{(select-well)} Can automatically selected code be assumed to be well readable?\end{resq} \label{select-well}
-	To collect the necessary training data, we assume that the code from the repositories is readable under certain conditions. We want to check whether that assumption holds.
+	To collect the necessary training data, we assume that the code from repositories is readable under certain conditions. We want to check whether that assumption holds. To answer this question we will use the results of the user study conducted on the data \ref{user-study}.
 	
 	\begin{resq} \textbf{(generate-poor)} Can poorly readable code be generated from well readable code?\end{resq} \label{generate-poor}
 	It is not sufficient to have only well readable code for training a classifier. We also need poorly readable code. Therefore, we will try to generate such code from the well readable code. We will investigate whether this is possible in principle, and we will try to propose an automated approach for archiving this: Readability Decreasing Heuristics.
