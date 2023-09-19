@@ -505,7 +505,7 @@ cleveref=true,%
 	Another concept we will employ is from \citeauthor{allamanis2016convolutional}. They cloned the top open source Java projects on GitHub\curl{https://github.com/}{2023-07-25} for training a Deep Learning model. Those top projects were selected by taking the sum of the z-scores of the number of watchers and forks of each project. As the projects have thousands of forks and stars and are widely used among software developers, they can be assumed to be of high quality \cite{allamanis2016convolutional}.
 	
 	\section{Planned Work and Contributions} \label{Planned Work and Contributions}
-	We will investigate whether it is possible to score a higher accuracy as current models in classifying code readability for java using Deep Learning. Therefore, we will train the model from \citeauthor{mi2022towards} \cite{mi2022towards} with more data. We will consider augmenting the model with a method name classifier and incorporating semantic encoding for tabs and spaces. The training data will be generated in a novel way for classification of readability, inspired by \citeauthor{loriot2022styler} \cite{loriot2022styler}. The method name classifier is similar to Code2Vec \cite{alon2019code2vec}. The combination of all components is novel to the best of our knowledge. You can find a visualization of the planned modifications of \citeauthor{mi2022towards}'s model in figure \ref{fig:model_pipeline}. We will focus on generating training data, as the approach will be usable for further research in the field of source code readability.\\
+	We will investigate whether it is possible to score a higher accuracy as current models in classifying code readability for Java using Deep Learning. Therefore, we will train the model from \citeauthor{mi2022towards} \cite{mi2022towards} with more data. We will consider augmenting the model with a method name classifier and incorporating semantic encoding for tabs and spaces. The training data will be generated in a novel way for classification of readability, inspired by \citeauthor{loriot2022styler} \cite{loriot2022styler}. The method name classifier is similar to Code2Vec \cite{alon2019code2vec}. The combination of all components is novel to the best of our knowledge. You can find a visualization of the planned modifications of \citeauthor{mi2022towards}'s model in figure \ref{fig:model_pipeline}. We will focus on generating training data, as the approach will be usable for further research in the field of source code readability.\\
 	
 	\begin{figure}[t]
 		\centering
@@ -532,8 +532,8 @@ cleveref=true,%
 	In recent years it was shown that Deep Learning models can be further improved by modifying the structure of the architecture or by introducing new components, parts or layers to existing architectures. 
 	We suggest two improvements for the model of \citeauthor{mi2022towards} \cite{mi2022towards}:
 	\begin{enumerate}
-		\item \label{embedding-spaces-component} \textbf{(embedding-spaces-component)} We want to embed spaces and tabs as semantic tokens.
-		\item \label{name-classifier-component} \textbf{(name-classifier-component)} We want to add a method name fitting classifier as a component of the overall model.
+		\item \label{embedding-spaces-component} \textbf{(embedding-spaces-component)} Embedding spaces and tabs as semantic tokens.
+		\item \label{name-classifier-component} \textbf{(name-classifier-component)} Adding a method name fitting classifier as a component of the overall model.
 	\end{enumerate}
 	
 	
@@ -549,8 +549,8 @@ cleveref=true,%
 	%\end{enumerate}
 	
 	\begin{enumerate}
-		\item Does the well-readable-assumption \ref{well-readable-assumption} hold?
-		\item Does the poorly-readable-assumption \ref{poorly-readable-assumption} hold?
+		\item Does the well-readable-assumption (\ref{well-readable-assumption}) hold?
+		\item Does the poorly-readable-assumption (\ref{poorly-readable-assumption}) hold?
 	\end{enumerate}
 	
 	\label{suggestions} If there is time left, we will try to surpass the performance of recent source code readability classifiers, such as the model proposed by \citeauthor{mi2022towards} \cite{mi2022towards}. Therefore, we will evaluate our new models by comparing them against the model of \citeauthor{mi2022towards} using common metrics \ref{metrics}.
