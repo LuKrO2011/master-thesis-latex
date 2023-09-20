@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  19 SEP 2023 19:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  20 SEP 2023 09:28
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1941,11 +1941,11 @@ ml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46796 strings out of 475551
- 1007518 string characters out of 5772369
+ 46793 strings out of 475551
+ 1007413 string characters out of 5772369
  2009953 words of memory out of 5000000
  67045 multiletter control sequences out of 15000+600000
- 684982 words of font info for 249 fonts, out of 8000000 for 9000
+ 684712 words of font info for 247 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  122i,20n,121p,10988b,2479s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\lukas\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecit
@@ -1959,7 +1959,7 @@ c.pfb><C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/type1/public/libertinus-type
 /public/libertinus-type1/LibertinusSerif-Regular.pfb><C:/Program Files/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmsy6.pfb>
-Output written on se2thesis-master-thesis-example.pdf (10 pages, 865930 bytes).
+Output written on se2thesis-master-thesis-example.pdf (10 pages, 865939 bytes).
 
 PDF statistics:
  335 PDF objects out of 1000 (max. 8388607)
