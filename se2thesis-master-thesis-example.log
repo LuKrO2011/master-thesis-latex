@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  20 SEP 2023 09:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  20 SEP 2023 14:32
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1720,18 +1720,33 @@ Package pdftex.def Info: Model_pipeline.png  used on input line 512.
 [4 <./Model_pipeline.png>]
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/b/n' will be
 (Font)              scaled to size 10.95pt on input line 526.
+
+Underfull \hbox (badness 10000) in paragraph at lines 540--542
+
+ []
+
+[5{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts_
+sfissr.enc}]
+Underfull \hbox (badness 10000) in paragraph at lines 557--560
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 561--562
+
+ []
+
 Package hyperref Info: bookmark level for unknown resq defaults to 0 on input l
-ine 564.
+ine 572.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/b/it' will be
-(Font)              scaled to size 10.95pt on input line 564.
- [5{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts
-_sfissr.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-t
-ype1/lbts_opzo24.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/lib
-ertinus-type1/lbts_nufysp.enc}] [6] [7]
+(Font)              scaled to size 10.95pt on input line 572.
+[6{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts_
+opzo24.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-ty
+pe1/lbts_nufysp.enc}] [7]
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/b/n' will be
-(Font)              scaled to size 20.74pt on input line 589.
+(Font)              scaled to size 20.74pt on input line 597.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
-(Font)              scaled to size 20.74pt on input line 589.
+(Font)              scaled to size 20.74pt on input line 597.
  [8
 
 
@@ -1740,8 +1755,7 @@ LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
 \tf@thm=\write8
 \openout8 = `se2thesis-master-thesis-example.thm'.
 
- [9]
-(se2thesis-master-thesis-example.aux)
+ [9] (se2thesis-master-thesis-example.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-06-30>
@@ -1941,13 +1955,13 @@ ml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46793 strings out of 475551
- 1007413 string characters out of 5772369
- 2009953 words of memory out of 5000000
- 67045 multiletter control sequences out of 15000+600000
- 684712 words of font info for 247 fonts, out of 8000000 for 9000
+ 46811 strings out of 475551
+ 1007918 string characters out of 5772369
+ 2010109 words of memory out of 5000000
+ 67053 multiletter control sequences out of 15000+600000
+ 685252 words of font info for 251 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
- 122i,20n,121p,10988b,2479s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 122i,21n,121p,10988b,2479s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\lukas\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecit
 0900.pk> <C:\Users\lukas\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ectt0900.pk><C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/type1/public/liberti
@@ -1959,10 +1973,10 @@ c.pfb><C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/type1/public/libertinus-type
 /public/libertinus-type1/LibertinusSerif-Regular.pfb><C:/Program Files/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmsy6.pfb>
-Output written on se2thesis-master-thesis-example.pdf (10 pages, 865939 bytes).
+Output written on se2thesis-master-thesis-example.pdf (10 pages, 869884 bytes).
 
 PDF statistics:
- 335 PDF objects out of 1000 (max. 8388607)
- 58 named destinations out of 1000 (max. 500000)
- 70223 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 352 PDF objects out of 1000 (max. 8388607)
+ 62 named destinations out of 1000 (max. 500000)
+ 70247 words of extra memory for PDF output out of 74296 (max. 10000000)
 

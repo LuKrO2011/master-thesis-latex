@@ -467,6 +467,28 @@
       \field{title}{Deep learning scaling is predictable, empirically}
       \field{year}{2017}
     \endentry
+    \entry{likert1932technique}{article}{}
+      \name{author}{1}{}{%
+        {{hash=85b07393f98f1590e08d998667417f9b}{%
+           family={Likert},
+           familyi={L\bibinitperiod},
+           given={Rensis},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{85b07393f98f1590e08d998667417f9b}
+      \strng{fullhash}{85b07393f98f1590e08d998667417f9b}
+      \strng{bibnamehash}{85b07393f98f1590e08d998667417f9b}
+      \strng{authorbibnamehash}{85b07393f98f1590e08d998667417f9b}
+      \strng{authornamehash}{85b07393f98f1590e08d998667417f9b}
+      \strng{authorfullhash}{85b07393f98f1590e08d998667417f9b}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Archives of psychology}
+      \field{title}{A technique for the measurement of attitudes.}
+      \field{year}{1932}
+    \endentry
     \entry{liu2019learning}{inproceedings}{}
       \name{author}{8}{}{%
         {{hash=ab3ead9cd451b65f4a7344409c8d068d}{%

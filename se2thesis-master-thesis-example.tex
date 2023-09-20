@@ -536,27 +536,35 @@ cleveref=true,%
 		\item \label{name-classifier-component} \textbf{(name-classifier-component)} Adding a method name fitting classifier as a component of the overall model.
 	\end{enumerate}
 	
+	% Surpassing
+	\label{suggestions} If there is time left, we will try to surpass the performance of recent source code readability classifiers with those improvements to data generation and the model.\\
+	%, such as the model proposed by \citeauthor{mi2022towards}~\cite{mi2022towards}.
 	
-	% Evaluation
-	\label{compare-models} We evaluate the new training data with two methods. Firstly, we compare machine learning readability models trained with (partly) the old and new datasets, separately and combined.
-	\label{metrics} Therefore we use common metrics such as accuracy, F1-score and MCC~\cite{chicco2020advantages}. 
+	We will evaluate our suggestions with two methods. Firstly, we conclude a user study. Secondly, we compare code readability models with each other.
 	
-	\label{user-study} Secondly, we conclude a user study. The goal of the user study is to answer the following key questions:
-	
-	%\begin{enumerate}
-	%	\item To what extent is code we assume to be well readable actually is readable?
-	%	\item To what extend is code we assume to be less readable actually is readable?
-	%\end{enumerate}
+	\subsection{User study}\label{user-study}
+	% We will conclude a user study to evaluate the newly generated data for readability classifier models.
+	The goal of the user study is to answer the following key questions:
 	
 	\begin{enumerate}
 		\item Does the well-readable-assumption (\ref{well-readable-assumption}) hold?
 		\item Does the poorly-readable-assumption (\ref{poorly-readable-assumption}) hold?
 	\end{enumerate}
 	
-	\label{suggestions} If there is time left, we will try to surpass the performance of recent source code readability classifiers, such as the model proposed by \citeauthor{mi2022towards}~\cite{mi2022towards}. Therefore, we will evaluate our new models by comparing them against the model of \citeauthor{mi2022towards} using common metrics~\ref{metrics}.
+	We will achieve this by showing programmers code snippets that were generated with the presented approach. Therefore, human annotators will give each code snippet a rating of their readability level based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable). We apply the same rating as done previously~\cite{buse2009learning, dorn2012general, scalabrino2016improving}, but, other than before, we will not use the rating for labeling the training data. Instead we will only use the ratings to validate some randomly selected of many automated labeled code snippets.
+		
+	\subsection{Comparing models}\label{compare-models}\label{metrics}
+	Besides the user study we will evaluate our suggestions by comparing machine learning models against each other.
+	The comparisons are based on common metrics such as accuracy, F1-score and MCC~\cite{chicco2020advantages}. One can distinguish further between the following variants of comparing models:
+	In one variant we compare models that have the same architecture (same layers, same weight initialization, same components, etc.) while they differ in the data they are trained on. For example, we can train a model with the old and new datasets, separately and combined. If done for multiple model architectures we can evaluate how the differences in training data influence the model performance.\\ 
 	
+	Another variant would be to compare models with different architecture but the same training data against each other. By doing so we can evaluate newly introduced components by measuring and comparing the performance of such models.\\
+	
+	Both variants lead to many options in what to compare, especially if only small changes to training data or model architecture are done. To find out, if our suggestions lead to a better model overall, we will also compare our newly created model with all changes at once to the state-of-the-art model of \citeauthor{mi2022towards}~\ref{metrics}. This is our third comparison variant.
+
+	
+	\subsection{Research questions}\label{research-questions}
 	Overall, we come up with the following research questions:
-	
 	
 %	\begin{resq}What is the quality of our new approach for data generation?\end{resq} \label{RQ1}
 %	Until now, the data for readability classification was generated manually. Therefore, human annotators ranked code snippets by their readability level based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable)~\cite{buse2009learning, dorn2012general, scalabrino2016improving}. Our new data will be generated in an automatic approach, where no manual labeling of code is necessary. We want to compare the quality of this data to the data used for previous models.
@@ -579,10 +587,10 @@ cleveref=true,%
 %	In recent years it was shown that Deep Learning models can be further improved by modifying the structure of the architecture or by introducing new components, parts or layers to existing architectures. We suggest two improvements for the model of \citeauthor{mi2022towards}~\cite{mi2022towards}: Embedding spaces and tabs as semantic tokens and adding a method name fitting component. We will evaluate the proposed improvements as described earlier~\ref{suggestions}.
 	
 	\begin{resq} \textbf{(embedding-spaces)} Optional: To what extend does the embedding of spaces and tabs in semantic code representations improve readability classification?\end{resq} \label{embedding-spaces}
-	The state-of-the-art model of \citeauthor{mi2022towards}~\cite{mi2022towards} does consider spaces and tabs only in its visual component. We want to investigate if it can improve the quality of a Deep Learning based model if spaces and tabs are encoded as semantic tokens. We also want to investigate if this makes the visual component superfluous. We will evaluate the proposed improvement as described earlier (\ref{suggestions}).
+	The state-of-the-art model of \citeauthor{mi2022towards}~\cite{mi2022towards} does consider spaces and tabs only in its visual component. We want to investigate if it can improve the quality of a Deep Learning based model if spaces and tabs are encoded as semantic tokens. We also want to investigate if this makes the visual component superfluous. We will evaluate the proposed improvement as described earlier (\ref{compare-models}).
 	
 	\begin{resq} \textbf{(name-classifier)} Optional: To what extend does the usage of a method name classifier improve readability classification?\end{resq} \label{name-classifier}
-	Correct naming of identifiers is crucial for ensuring readability of software programs. It is of outstanding importance for readability of code that the name of methods fit the method bodies~\cite{liu2019learning}. We want to introduce a new component to the model of \citeauthor{mi2022towards}~\cite{mi2022towards} that is built similar to Code2Vec~\cite{alon2019code2vec}. We want to investigate if the newly introduced component increases the quality of the resulting model. We will evaluate the proposed improvement as described earlier (\ref{suggestions}).
+	Correct naming of identifiers is crucial for ensuring readability of software programs. It is of outstanding importance for readability of code that the name of methods fit the method bodies~\cite{liu2019learning}. We want to introduce a new component to the model of \citeauthor{mi2022towards}~\cite{mi2022towards} that is built similar to Code2Vec~\cite{alon2019code2vec}. We want to investigate if the newly introduced component increases the quality of the resulting model. We will evaluate the proposed improvement as described earlier (\ref{compare-models}).
 	
 	\backmatter
 	

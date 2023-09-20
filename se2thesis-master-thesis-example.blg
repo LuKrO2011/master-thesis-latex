@@ -1,15 +1,15 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'se2thesis-master-thesis-example.blg'
-[287] biber-MSWIN64:340> INFO - === 
-[356] Biber.pm:419> INFO - Reading 'se2thesis-master-thesis-example.bcf'
-[590] Biber.pm:979> INFO - Found 21 citekeys in bib section 0
-[618] Biber.pm:4419> INFO - Processing section 0
-[640] Biber.pm:4610> INFO - Looking for bibtex file 'se2thesis-master-thesis-example.bib' for section 0
-[751] bibtex.pm:1713> INFO - LaTeX decoding ...
-[873] bibtex.pm:1519> INFO - Found BibTeX data source 'se2thesis-master-thesis-example.bib'
-[1272] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1272] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1272] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-UK'
-[1272] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-UK'
-[1310] bbl.pm:660> INFO - Writing 'se2thesis-master-thesis-example.bbl' with encoding 'UTF-8'
-[1334] bbl.pm:763> INFO - Output to se2thesis-master-thesis-example.bbl
+[150] biber-MSWIN64:340> INFO - === 
+[193] Biber.pm:419> INFO - Reading 'se2thesis-master-thesis-example.bcf'
+[322] Biber.pm:979> INFO - Found 22 citekeys in bib section 0
+[338] Biber.pm:4419> INFO - Processing section 0
+[350] Biber.pm:4610> INFO - Looking for bibtex file 'se2thesis-master-thesis-example.bib' for section 0
+[416] bibtex.pm:1713> INFO - LaTeX decoding ...
+[454] bibtex.pm:1519> INFO - Found BibTeX data source 'se2thesis-master-thesis-example.bib'
+[609] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'variable = shifted' with 'variable = non-ignorable'
+[609] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[609] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-UK'
+[609] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-UK'
+[630] bbl.pm:660> INFO - Writing 'se2thesis-master-thesis-example.bbl' with encoding 'UTF-8'
+[643] bbl.pm:763> INFO - Output to se2thesis-master-thesis-example.bbl
