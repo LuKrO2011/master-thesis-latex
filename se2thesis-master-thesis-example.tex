@@ -524,7 +524,9 @@ cleveref=true,%
 		
 	% Readabililty Decreasing Heuristics
 	\label{rdh}
-	This brings up the question, how to manipulate code so that it is less readable afterwards. We therefore introduce a tool called Readability Decreasing Heuristics. As the name suggests this is a collection of heuristics that, when applied to source code, lower the readability of it. For example such a heuristic is to replace spaces with newlines. In Java both variants, before and after the change, are syntactically the same. Even the complexity of the code did not change. However, if applied multiple times and combined with other heuristics, those modifications are capable of lowering the readability of source code, as the comparison of example~\ref{lst:cassandra-src-java-org-apache-cassandra-utils}~and~\ref{lst:cassandra-src-java-org-apache-cassandra-utils-modified} suggests.\\
+	This brings up the question, how to manipulate code so that it is less readable afterwards. We therefore introduce a tool called Readability Decreasing Heuristics. As the name suggests this is a collection of heuristics that, when applied to source code, lower the readability of it. For example such a heuristic is to replace spaces with newlines. Another example is to increase the indentation of a code block by a tab or multiple spaces. Additionally, for most modifications, it is also possible to do the exact opposite (replacing newlines with spaces, decreasing indentation) and most of the time readability of source code decreases never the less. 
+	
+	Code snippets in Java are syntactically the same, before and after applying Readability Decreasing Heuristics. Complexity did not change either. However, if various modifications are applied many times, those changes are capable of lowering the readability of source code, as the comparison of example~\ref{lst:cassandra-src-java-org-apache-cassandra-utils}~and~\ref{lst:cassandra-src-java-org-apache-cassandra-utils-modified} suggests.\\
 	
 	Note that we assume two things for the data generation approach:
 	\begin{enumerate}
