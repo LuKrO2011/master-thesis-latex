@@ -520,11 +520,16 @@ cleveref=true,%
 	This requires, as it was done previously, a lot of effort and persons willing to rate code based on their readability. We present another approach for gathering training data.
 	
 	In a first step, GitHub repositories with known high code quality are downloaded and labeled as highly readable. We select repositories using a similar approach as \citeauthor{allamanis2016convolutional}~\cite{allamanis2016convolutional} and then assume that they contain only well readable code.
-	In a second step, the code is manipulated so that it is less readable afterwards. This approach is similar to the approach of \citeauthor{loriot2022styler}~\cite{loriot2022styler}. After both steps we have a new, automatically generated training dataset for source code readability classification.
-	Note that we assume two things here:
+	In a second step, the code is manipulated so that it is less readable afterwards. This approach is similar to the approach of \citeauthor{loriot2022styler}~\cite{loriot2022styler}. After both steps we have a new, automatically generated training dataset for source code readability classification.\\
+		
+	% Readabililty Decreasing Heuristics
+	\label{rdh}
+	This brings up the question, how to manipulate code so that it is less readable afterwards. We therefore introduce a tool called Readability Decreasing Heuristics. As the name suggests this is a collection of heuristics that, when applied to source code, lower the readability of it. For example such a heuristic is to replace spaces with newlines. In Java both variants, before and after the change, are syntactically the same. Even the complexity of the code did not change. However, if applied multiple times and combined with other heuristics, those modifications are capable of lowering the readability of source code, as the comparison of example~\ref{lst:cassandra-src-java-org-apache-cassandra-utils}~and~\ref{lst:cassandra-src-java-org-apache-cassandra-utils-modified} suggests.\\
+	
+	Note that we assume two things for the data generation approach:
 	\begin{enumerate}
 		\item \label{well-readable-assumption} \textbf{(well-readable-assumption)} The selected repositories contain only well readable code.
-		\item \label{poorly-readable-assumption} \textbf{(poorly-readable-assumption)} After the manipulations, the code is poorly readable.
+		\item \label{poorly-readable-assumption} \textbf{(poorly-readable-assumption)} After applying Readability Decreasing Heuristics, the code is poorly readable.
 	\end{enumerate}
 	
 	% Model modifications/Further improvements
@@ -573,7 +578,7 @@ cleveref=true,%
 	In our new approach for generating training data, we assume that the code from repositories is readable under certain conditions (assumption~\ref{well-readable-assumption}). We want to check whether that holds. To answer this question we will use the results of the user study (\ref{user-study}).
 	
 	\begin{resq} \textbf{(generate-poor)} Can poorly readable code be generated from well readable code?\end{resq} \label{generate-poor}
-	It is not sufficient to have only well readable code for training a classifier. We also need poorly readable code. Therefore, we will try to generate such code from the well readable code. We will investigate whether this is possible in principle, and we will propose an automated approach for archiving this: Readability Decreasing Heuristics.
+	It is not sufficient to have only well readable code for training a classifier. We also need poorly readable code. Therefore, we will try to generate such code from the well readable code. We will investigate whether this is possible in principle, and we will propose an automated approach for archiving this: Readability Decreasing Heuristics~(\ref{rdh}).
 	
 	As the name already suggests, the applied transformations on the source code are only heuristics. To answer, whether the generated code is badly readable (assumption~\ref{poorly-readable-assumption}) we will utilize the results of the user study (\ref{user-study}).
 	
