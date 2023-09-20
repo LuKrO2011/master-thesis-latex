@@ -523,7 +523,6 @@ cleveref=true,%
 	In a second step, the code is manipulated so that it is less readable afterwards. This approach is similar to the approach of \citeauthor{loriot2022styler}~\cite{loriot2022styler}. After both steps we have a new, automatically generated training dataset for source code readability classification.\\
 		
 	% Readabililty Decreasing Heuristics
-	\label{rdh}
 	This brings up the question, how to manipulate code so that it is less readable afterwards. We therefore introduce a tool called Readability Decreasing Heuristics. As the name suggests this is a collection of heuristics that, when applied to source code, lower the readability of it. For example such a heuristic is to replace spaces with newlines. Another example is to increase the indentation of a code block by a tab or multiple spaces. Additionally, for most modifications, it is also possible to do the exact opposite (replacing newlines with spaces, decreasing indentation) and most of the time readability of source code decreases never the less. 
 	
 	Code snippets in Java are syntactically the same, before and after applying Readability Decreasing Heuristics. Complexity did not change either. However, if various modifications are applied many times, those changes are capable of lowering the readability of source code, as the comparison of example~\ref{lst:cassandra-src-java-org-apache-cassandra-utils}~and~\ref{lst:cassandra-src-java-org-apache-cassandra-utils-modified} suggests.\\
@@ -560,14 +559,14 @@ cleveref=true,%
 	
 	We will achieve this by showing programmers code snippets that were generated with the presented approach. Therefore, human annotators will give each code snippet a rating of their readability level based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable). We apply the same rating as done previously~\cite{buse2009learning, dorn2012general, scalabrino2016improving}, but, other than before, we will not use the rating for labeling the training data. Instead we will only use the ratings to validate some randomly selected of many automated labeled code snippets.
 		
-	\subsection{Comparing models}\label{compare-models}\label{metrics}
+	\subsection{Comparing models}\label{compare-models}
 	Besides the user study we will evaluate our suggestions by comparing machine learning models against each other.
 	The comparisons are based on common metrics such as accuracy, F1-score and MCC~\cite{chicco2020advantages}. One can distinguish further between the following variants of comparing models:
 	In one variant we compare models that have the same architecture (same layers, same weight initialization, same components, etc.) while they differ in the data they are trained on. For example, we can train a model with the old and new datasets, separately and combined. If done for multiple model architectures we can evaluate how the differences in training data influence the model performance.\\ 
 	
 	Another variant would be to compare models with different architecture but the same training data against each other. By doing so we can evaluate newly introduced components by measuring and comparing the performance of such models.\\
 	
-	Both variants lead to many options in what to compare, especially if only small changes to training data or model architecture are done. To find out, if our suggestions lead to a better model overall, we will also compare our newly created model with all changes at once to the state-of-the-art model of \citeauthor{mi2022towards}~\ref{metrics}. This is our third comparison variant.
+	Both variants lead to many options in what to compare, especially if only small changes to training data or model architecture are done. To find out, if our suggestions lead to a better model overall, we will also compare our newly created model with all changes at once to the state-of-the-art model of \citeauthor{mi2022towards}\cite{mi2022towards}. This is our third comparison variant.
 
 	
 	\subsection{Research questions}\label{research-questions}
@@ -580,7 +579,7 @@ cleveref=true,%
 	In our new approach for generating training data, we assume that the code from repositories is readable under certain conditions (assumption~\ref{well-readable-assumption}). We want to check whether that holds. To answer this question we will use the results of the user study (\ref{user-study}).
 	
 	\begin{resq} \textbf{(generate-poor)} Can poorly readable code be generated from well readable code?\end{resq} \label{generate-poor}
-	It is not sufficient to have only well readable code for training a classifier. We also need poorly readable code. Therefore, we will try to generate such code from the well readable code. We will investigate whether this is possible in principle, and we will propose an automated approach for archiving this: Readability Decreasing Heuristics~(\ref{rdh}).
+	It is not sufficient to have only well readable code for training a classifier. We also need poorly readable code. Therefore, we will try to generate such code from the well readable code. We will investigate whether this is possible in principle, and we will propose an automated approach for archiving this: Readability Decreasing Heuristics.
 	
 	As the name already suggests, the applied transformations on the source code are only heuristics. To answer, whether the generated code is badly readable (assumption~\ref{poorly-readable-assumption}) we will utilize the results of the user study (\ref{user-study}).
 	
