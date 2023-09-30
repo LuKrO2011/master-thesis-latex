@@ -539,15 +539,16 @@ cleveref=true,%
 	% Model modifications/Further improvements
 	\label{model-modifications}
 	In recent years it was shown that Deep Learning models can be further improved by modifying the structure of the architecture or by introducing new components, parts or layers to existing architectures. 
-	We suggest two improvements for the model of \citeauthor{mi2022towards}~\cite{mi2022towards}:
-	\begin{enumerate}
-		\item \label{embedding-spaces-component} \textbf{(embedding-spaces-component)} Embedding spaces and tabs as semantic tokens.
-		\item \label{name-classifier-component} \textbf{(name-classifier-component)} Adding a method name fitting classifier as a component of the overall model.
-	\end{enumerate}
-	
+	We suggest two improvements for the model of {mi2022towards}~\cite{mi2022towards}. Firstly, we want to embed spaces and tabs as semantic tokens. Secondly, adding a method name fitting classifier as a component of the overall model could be an improvement.
 	% Surpassing
-	\label{suggestions} If there is time left, we will try to surpass the performance of recent source code readability classifiers with those improvements to data generation and the model.\\
+	\label{suggestions}If there is time left, we will try to surpass the performance of recent source code readability classifiers with those improvements to data generation and the model.\\
 	%, such as the model proposed by \citeauthor{mi2022towards}~\cite{mi2022towards}.
+	
+	% We suggest two improvements for the model of \citeauthor{mi2022towards}~\cite{mi2022towards}:
+	%\begin{enumerate}
+	%	\item \label{embedding-spaces-component} \textbf{(embedding-spaces-component)} Embedding spaces and tabs as semantic tokens.
+	%	\item \label{name-classifier-component} \textbf{(name-classifier-component)} Adding a method name fitting classifier as a component of % the overall model.
+	%\end{enumerate}
 	
 	We will evaluate our suggestions with two methods. Firstly, we conclude a user study. Secondly, we compare code readability models with each other.
 	
@@ -556,21 +557,21 @@ cleveref=true,%
 	The goal of the user study is to answer the following key questions:
 	
 	\begin{enumerate}
-		\item Does the well-readable-assumption (\ref{well-readable-assumption}) hold?
-		\item Does the poorly-readable-assumption (\ref{poorly-readable-assumption}) hold?
+		\item Does the well-readable-assumption (assumption \ref{well-readable-assumption}) hold?
+		\item Does the poorly-readable-assumption (assumption \ref{poorly-readable-assumption}) hold?
 	\end{enumerate}
 	
-	We will achieve this by showing programmers code snippets that were generated with the presented approach. Therefore, human annotators will give each code snippet a rating of their readability level based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable). We apply the same rating as done previously~\cite{buse2009learning, dorn2012general, scalabrino2016improving}, but, other than before, we will not use the rating for labeling the training data. Instead we will only use the ratings to validate some randomly selected of many automated labeled code snippets.
+	We will achieve this by showing programmers code snippets that were generated with the presented approach. Therefore, human annotators give each code snippet a rating of its readability. The annotators are selected by prolific\curl{https://www.prolific.com/}{2023-09-30}. Particular attention is paid to a high proportion of people from industry. The readability rating is based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable). We apply the same rating as done previously~\cite{buse2009learning, dorn2012general, scalabrino2016improving}, but, other than before, we will not use the rating for labeling the training data. Instead, we will only use the ratings to validate a few randomly selected code snippets out of many that are automatically labeled.
 		
 	\subsection{Comparing models}\label{compare-models}
 	Besides the user study we will evaluate our suggestions by comparing machine learning models against each other.
-	The comparisons are based on common metrics such as accuracy, F1-score and MCC~\cite{chicco2020advantages}. One can distinguish further between the following variants of comparing models:
+	The comparisons are based on common metrics such as accuracy, F1-score and MCC~\cite{chicco2020advantages}. One can distinguish further between the following variants of comparing models:\\
+	
 	In one variant we compare models that have the same architecture (same layers, same weight initialization, same components, etc.) while they differ in the data they are trained on. For example, we can train a model with the old and new datasets, separately and combined. If done for multiple model architectures we can evaluate how the differences in training data influence the model performance.\\ 
 	
 	Another variant would be to compare models with different architecture but the same training data against each other. By doing so we can evaluate newly introduced components by measuring and comparing the performance of such models.\\
 	
-	Both variants lead to many options in what to compare, especially if only small changes to training data or model architecture are done. To find out, if our suggestions lead to a better model overall, we will also compare our newly created model with all changes at once to the state-of-the-art model of \citeauthor{mi2022towards}\cite{mi2022towards}. This is our third comparison variant.
-
+	A third comparison variant is created by combining the first two. Both of them lead to many options in what to compare, especially if only small changes to training data or model architecture are done. To find out, if our suggestions lead to a better model overall, we will compare our newly created model with all changes at once to the state-of-the-art model of \citeauthor{mi2022towards}~\cite{mi2022towards}.
 	
 	\subsection{Research questions}\label{research-questions}
 	Overall, we come up with the following research questions:
