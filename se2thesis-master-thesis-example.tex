@@ -404,7 +404,7 @@ cleveref=true,%
 	Readability is not the same as complexity. Complexity is an “essential” property of software that arises
 	from system requirements, while readability is an “accidental” property that is not determined by the problem statement~\cite{buse2009learning, brooks1987no}.
 	
-	There is another related term, understandability. Readability is the syntactic aspect of processing code, while understandability is the semantic aspect~\cite{posnett2011simpler}.
+	There is another related term: understandability. Readability is the syntactic aspect of processing code, while understandability is the semantic aspect~\cite{posnett2011simpler}.
 	For example, a developer can find a piece of code readable but still difficult to understand. Recent research gives evidence that there is no correlation between understandability and readability~\cite{scalabrino2017automatically}.	
 	
 %	\begin{listing}[!ht]
@@ -495,7 +495,7 @@ cleveref=true,%
 	
 	\subsection{Classical calculation approaches} \label{Classical calculation approaches}
 	A first estimation for source code readability was the percentage of comment lines over total code lines~\cite{aggarwal2002integrated}. In the last years, researchers have proposed several more complex metrics and models for assessing code readability~\cite{buse2009learning, posnett2011simpler, dorn2012general, scalabrino2016improving}.
-	Those approaches used handcrafted features to calculate whether a piece of code is readable or not. They were able to achieve up to 81.8\% accuracy in classification~\cite{scalabrino2016improving}.
+	Those approaches used handcrafted features to calculate how readable a piece of code is. They were able to achieve up to 81.8\% accuracy in classification~\cite{scalabrino2016improving}.
 	
 	\subsection{Deep Learning based approaches} \label{(Deep) Learning based approaches}
 	More recent models use Deep Learning approaches in order to generate the features automatically. Those models have proven to be more accurate, achieving an accuracy of up to 85.3\%~\cite{mi2018improving, mi2022towards}.
@@ -542,7 +542,7 @@ cleveref=true,%
 	% Model modifications/Further improvements
 	\label{model-modifications}
 	In recent years it was shown that Deep Learning models can be further improved by modifying the structure of the architecture or by introducing new components, parts or layers to existing architectures. 
-	We suggest two improvements for the model of {mi2022towards}~\cite{mi2022towards}. Firstly, we want to embed spaces and tabs as semantic tokens. Secondly, adding a method name fitting classifier as a component of the overall model could be an improvement.
+	We suggest two improvements for the model of \citeauthor{mi2022towards}~\cite{mi2022towards}. Firstly, we want to embed spaces and tabs as semantic tokens. Secondly, adding a method name fitting classifier as a component of the overall model could be an improvement.
 	% Surpassing
 	\label{suggestions}If there is time left, we will try to surpass the performance of recent source code readability classifiers with those improvements to data generation and the model.
 	%, such as the model proposed by \citeauthor{mi2022towards}~\cite{mi2022towards}.
@@ -554,6 +554,8 @@ cleveref=true,%
 	%\end{enumerate}
 	
 	We will evaluate our suggestions with two methods. Firstly, we conclude a user study. Secondly, we compare code readability models with each other.
+	
+	\pagebreak
 	
 	\subsection{User study}\label{user-study}
 	% We will conclude a user study to evaluate the newly generated data for readability classifier models.
@@ -577,7 +579,7 @@ cleveref=true,%
 	A third comparison variant is created by combining the first two. Both of them lead to many options in what to compare, especially if only small changes to training data or model architecture are done. To find out, if our suggestions lead to a better model overall, we will compare our newly created model with all changes at once to the state-of-the-art model of \citeauthor{mi2022towards}~\cite{mi2022towards}.
 	
 	\subsection{Research questions}\label{research-questions}
-	Overall, we come up with the following research questions:
+	We come up with the following research questions:
 	
 %	\begin{resq}What is the quality of our new approach for data generation?\end{resq} \label{RQ1}
 %	Until now, the data for readability classification was generated manually. Therefore, human annotators ranked code snippets by their readability level based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable)~\cite{buse2009learning, dorn2012general, scalabrino2016improving}. Our new data will be generated in an automatic approach, where no manual labeling of code is necessary. We want to compare the quality of this data to the data used for previous models.
