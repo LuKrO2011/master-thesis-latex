@@ -53,6 +53,28 @@
       \field{pages}{546\bibrangedash 558}
       \range{pages}{13}
     \endentry
+    \entry{likert1932technique}{article}{}
+      \name{author}{1}{}{%
+        {{hash=85b07393f98f1590e08d998667417f9b}{%
+           family={Likert},
+           familyi={L\bibinitperiod},
+           given={Rensis},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{85b07393f98f1590e08d998667417f9b}
+      \strng{fullhash}{85b07393f98f1590e08d998667417f9b}
+      \strng{bibnamehash}{85b07393f98f1590e08d998667417f9b}
+      \strng{authorbibnamehash}{85b07393f98f1590e08d998667417f9b}
+      \strng{authornamehash}{85b07393f98f1590e08d998667417f9b}
+      \strng{authorfullhash}{85b07393f98f1590e08d998667417f9b}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Archives of psychology}
+      \field{title}{A technique for the measurement of attitudes.}
+      \field{year}{1932}
+    \endentry
     \entry{posnett2011simpler}{inproceedings}{}
       \name{author}{3}{}{%
         {{hash=bfc2f15f3ea252edf4bb6ead52ac9d76}{%
@@ -87,7 +109,50 @@
       \field{pages}{73\bibrangedash 82}
       \range{pages}{10}
     \endentry
+    \entry{scalabrino2016improving}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=e8319e956848e35a7b05e7dbbbca9a61}{%
+           family={Scalabrino},
+           familyi={S\bibinitperiod},
+           given={Simone},
+           giveni={S\bibinitperiod}}}%
+        {{hash=e3b451e51dc15e77e2c9ecbe58999ae9}{%
+           family={Linares-Vasquez},
+           familyi={L\bibinithyphendelim V\bibinitperiod},
+           given={Mario},
+           giveni={M\bibinitperiod}}}%
+        {{hash=e49aa631edbf4e6bb1f966390ca96328}{%
+           family={Poshyvanyk},
+           familyi={P\bibinitperiod},
+           given={Denys},
+           giveni={D\bibinitperiod}}}%
+        {{hash=ebbd5f36c9d746916bb6b816286162d1}{%
+           family={Oliveto},
+           familyi={O\bibinitperiod},
+           given={Rocco},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{be8d0d317dd1a4edfa64cef46e67def6}
+      \strng{fullhash}{576edf27dfc3bf623ac8b067b20330f0}
+      \strng{bibnamehash}{be8d0d317dd1a4edfa64cef46e67def6}
+      \strng{authorbibnamehash}{be8d0d317dd1a4edfa64cef46e67def6}
+      \strng{authornamehash}{be8d0d317dd1a4edfa64cef46e67def6}
+      \strng{authorfullhash}{576edf27dfc3bf623ac8b067b20330f0}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2016 IEEE 24th International Conference on Program Comprehension (ICPC)}
+      \field{title}{Improving code readability models with textual features}
+      \field{year}{2016}
+      \field{pages}{1\bibrangedash 10}
+      \range{pages}{10}
+    \endentry
   \enddatalist
+  \missing{linaker2015guidelines}
 \endrefsection
 \endinput
 

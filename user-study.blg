@@ -1,15 +1,17 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'user-study.blg'
-[116] biber-MSWIN64:340> INFO - === 
-[152] Biber.pm:419> INFO - Reading 'user-study.bcf'
-[265] Biber.pm:979> INFO - Found 2 citekeys in bib section 0
-[282] Biber.pm:4419> INFO - Processing section 0
-[294] Biber.pm:4610> INFO - Looking for bibtex file 'user-study.bib' for section 0
-[342] bibtex.pm:1713> INFO - LaTeX decoding ...
-[378] bibtex.pm:1519> INFO - Found BibTeX data source 'user-study.bib'
-[426] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[426] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'variable = shifted' with 'variable = non-ignorable'
-[426] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-UK'
-[426] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-UK'
-[430] bbl.pm:660> INFO - Writing 'user-study.bbl' with encoding 'UTF-8'
-[431] bbl.pm:763> INFO - Output to user-study.bbl
+[113] biber-MSWIN64:340> INFO - === 
+[146] Biber.pm:419> INFO - Reading 'user-study.bcf'
+[263] Biber.pm:979> INFO - Found 5 citekeys in bib section 0
+[280] Biber.pm:4419> INFO - Processing section 0
+[291] Biber.pm:4610> INFO - Looking for bibtex file 'user-study.bib' for section 0
+[346] bibtex.pm:1713> INFO - LaTeX decoding ...
+[385] bibtex.pm:1519> INFO - Found BibTeX data source 'user-study.bib'
+[441] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'variable = shifted' with 'variable = non-ignorable'
+[441] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[441] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-UK'
+[441] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-UK'
+[445] bbl.pm:660> INFO - Writing 'user-study.bbl' with encoding 'UTF-8'
+[448] bbl.pm:763> INFO - Output to user-study.bbl
+[448] Biber.pm:131> WARN - I didn't find a database entry for 'linaker2015guidelines' (section 0)
+[448] Biber.pm:133> INFO - WARNINGS: 1

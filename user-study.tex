@@ -33,6 +33,13 @@ cleveref=true,%
 % End own change
 
 \begin{filecontents}{\jobname.bib}
+	@article{linaker2015guidelines,
+		title={Guidelines for conducting surveys in software engineering v. 1.1},
+		author={Linaker, Johan and Sulaman, Sardar Muhammad and H{\"o}st, Martin and de Mello, Rafael Maiani},
+		journal={Lund University},
+		volume={50},
+		year={2015}
+	}
 	@article{boehm2001defect,
 		title={Defect reduction top 10 list},
 		author={Boehm, Barry and Basili, Victor R},
@@ -402,7 +409,8 @@ The survey goal is to verify the following two assumptions:
 The survey is conducted by the Chair of Software Engineering II\footnote{https://www.fim.uni-passau.de/en/chair-for-software-engineering-ii/} of the University of Passau under the supervision of Lukas Krodinger.
 %\subsection{Methods for Distribution}
 % Prolific 
-The survey will be conducted using Google Forms\footnote{https://www.google.com/forms/about/} and Prolific\footnote{https://www.prolific.co/}.
+%Each code snippet is rated by a five point Likert scale~\cite{likert1932technique}. 
+The survey will be conducted using Prolific\footnote{https://www.prolific.co/}. This survey summary is created according to the guideline of \citeauthor{linaker2015guidelines}~\cite{linaker2015guidelines}.
 
 \section{Target Population} \label{target-population}
 The target population is split into two groups:
@@ -432,11 +440,11 @@ To be more precise, the target population of the survey is as follows:
 %Source of Sampling   & University Passau / Prolific \\
 
 \section{Survey}
-The survey will consist of three pages. The first page will contain Prolific specific questions and the questionnaire attributes (see section \ref{questionnaire-attributes}). The other pages will have ten code snippets each to be rated by the participant (20 in total).
-We will create multiple survey sheets with different snippets to evaluate more than 20 in total.
+The survey consists of three pages. The first page is devoted to Prolific-specific questions and questionnaire attributes, as described in the \ref{questionnaire-attributes} section. The following pages each contain ten code snippets to be evaluated by the participants.
+In total, we will create 20 unique questionnaires, with each questionnaire being rated by 10 individual participants. Consequently, we will generate a dataset of 400 code snippets. The expected expenditure for this survey, involving 200 participants via the Prolific platform, is estimated to be around €500.
 
 \subsection{Sample Size}
-To get accurate study results, multiple participants have to rate the same code snippets. We specify a size of ten participants per code snippet, similar to citeauthor, cite scalabrio. According to an online calculator\footnote{https://www.calculator.net/sample-size-calculator.html} we end up with a margin of error of 33.99\% at a confidence of 95\%. This means that we are 95\% confident that the actual readability of a code snippet is within 33.99\% of the survey result score. With a probability of 5\%, the readability of a code snippet differs by more than 33.99\% from the score of the survey result. On a Likert scale ranging from 1 to 5, the mean of the survey results is between 1.0 and 5.0. In this context, an offset of 33.99\% is an offset of 1.3596 from the real value, which is more than one rating point. We need to consider this when evaluating the accuracy of our assumptions (assumption \ref{well-readable-assumption} and \ref{poorly-readable-assumption}).
+To get accurate study results, multiple participants have to rate the same code snippets. We specify a size of ten participants per code snippet, similar to \citeauthor{scalabrino2016improving}~\cite{scalabrino2016improving}. According to an online calculator\footnote{https://www.calculator.net/sample-size-calculator.html} we end up with a margin of error of 33.99\% at a confidence of 95\%. This means that we are 95\% confident that the actual readability of a code snippet is within 33.99\% of the survey result score. With a probability of 5\%, the readability of a code snippet differs by more than 33.99\% from the score of the survey result. On a Likert scale ranging from 1 to 5, the mean of the survey results is between 1.0 and 5.0. In this context, an offset of 33.99\% is an offset of more than one rating point~\cite{likert1932technique}. We need to consider this when evaluating our the gathered data.
 
 % In order to calculate the required sample size for a single code snippet, we need to specify a confidence level and a margin of error.
 % We have relatively small requirements to both, and therewith set the confidence level to 95\% and the margin of error to 25\%. Using an online calculator\footnote{https://www.calculator.net/sample-size-calculator.html} we find out, that we need 16 participants per code snippet in order to achieve this.
@@ -462,14 +470,15 @@ To get accurate study results, multiple participants have to rate the same code 
 	% \end{itemize}
 
 \subsection{Time Requirement}
-The first page will take the participant about one minute. As one does not need to fully understand the code snippet in order to rate its readability, the average time for doing so is estimated with 30 seconds per snippet. Rating two pages with ten snippets each will take about 10 minutes. The total time for the survey is estimated with 11 minutes.
+The first page will take the participant about one minute. The average time for doing so is estimated with 30 seconds per snippet. Rating two pages with ten snippets each will take about 10 minutes. The total time for the survey is estimated with 11 minutes.
 
 \subsection{Sampling Design}
 % Manually selected computer science students from the University of Passau will participate in the survey.
 The survey participants will be selected using Prolific. The only restriction for the participants will be that they must be familiar with Java.
 % TODO: Quelle
 A big part of our code snippets might be getters and setters. However, we do not want to mostly evaluate getters and setters in our study. Therefore, we will use stratified sampling. Thus, code snippets are split into groups with high similarity, so-called strata. When we then randomly sample within the strata, we make sure to not only sample getters and setters.
-To create the required stratas we need to measure the similarity of code snippets. Scalabrio cite autor cite developed a tool to generate various metrics for Java source code. We will use this tool on each code snippet and create a code vector for each snippet. The Euclidean distance between these vectors provides an estimation of source code similarity, which will be used to create the strata.
+
+To create the required stratas we need to measure the similarity of code snippets. \citeauthor{scalabrino2016improving} developed a tool to generate various metrics for Java source code~\cite{scalabrino2016improving}. We will use this tool on each code snippet and create a code vector for each snippet. The Euclidean distance between these vectors provides an estimation of source code similarity, which will be used to create the strata.
 
 \subsection{Internal Questions} % Research Questions
 The internal research questions are as follows:
@@ -565,11 +574,11 @@ You can find the survey schedule in table \ref{tab:survey-timeline}.
 		\hline
 		Survey concept proposal & November 2023 \\
 		\hline
-		Presentation to survey evaluation groups & January 2024 \\
+		Presentation to survey evaluation groups & December 2024 \\
 		\hline
-		Survey conduction & February 2024 \\
+		Survey conduction & January 2024 \\
 		\hline
-		Results evaluation & March 2024 \\
+		Results evaluation & February 2024 \\
 		\hline
 	\end{tabular}
 	\caption{Survey Timeline}
@@ -579,14 +588,9 @@ You can find the survey schedule in table \ref{tab:survey-timeline}.
 % TODO: Move? Maybe to first section?
 \section{Expected Results}
 We expect that the averaged ratings of the selected code snippets matches the predicted code readability to a certain extent. We do not expect an exact match.
-We measure this extent by applying the mean as a measure of central tendency and standard deviation as a measure of variability, as proposed by X. We make those measurements with respect to stratified sampling.
-Our null hypothesis is, that both assumptions (\ref{well-readable-assumption} and \ref{poorly-readable-assumption}) hold, as the expected readability does not differ too much from the survey participant's mean.
+We measure this extent by applying the mean as a measure of central tendency and standard deviation as a measure of variability, as proposed by \citeauthor{linaker2015guidelines}~\cite{linaker2015guidelines}. We make those measurements with respect to stratified sampling.
+Our null hypothesis is, that both assumptions (assumption~\ref{well-readable-assumption}~and~\ref{poorly-readable-assumption}) hold, as the expected readability does not differ too much from the survey participant's mean.
 We will visualize our results by generating a bar chart for each evaluated snippet. We will also provide a visualization that summarizes the mean deviations of the participant's rating from the expected readability valued, summarized for all snippets.
-
-% TODO: Citeautor
-% "On the other hand, Likert scales should instead use the mean as a measure of central tendency, standard deviation as a measure of variability, and
-% Pearson’s r, ANOVA, t-test or regression for other statistical measures"
-% More: R. Johns, “Likert items and scales. Accessed on 13th March 2015 at: www.surveynet.ac.uk/sqb/datacollection/likertfactsheet.pdf.”
 	
 	\backmatter
 	
