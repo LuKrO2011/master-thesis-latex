@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  2 OCT 2023 16:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  2 OCT 2023 17:06
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1665,6 +1665,8 @@ LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
 (Font)              scaled to size 12.0pt on input line 384.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 384.
+LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/b/n' will be
+(Font)              scaled to size 10.95pt on input line 397.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
 (Font)              scaled to size 8.0pt on input line 402.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
@@ -1675,80 +1677,49 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 402.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
 (Font)              scaled to size 6.0pt on input line 402.
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
-02.
- (C:\Program Files\MiKTeX\tex/latex/base\t1cmtt.fd
-File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+LaTeX Font Info:    Trying to load font information for TS1+LibertinusSerif-TLF
+ on input line 410.
+
+(C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/libertinus-type1\ts1libertinus
+serif-tlf.fd
+File: TS1LibertinusSerif-TLF.fd 2022/11/07 (autoinst) Font definitions for TS1/
+LibertinusSerif-TLF.
 )
+LaTeX Font Info:    Font shape `TS1/LibertinusSerif-TLF/m/n' will be
+(Font)              scaled to size 10.95pt on input line 410.
 Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `cmtt' (encoding: T1).
+(microtype)             `LibertinusSerif-TLF' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-
-Underfull \hbox (badness 10000) in paragraph at lines 402--402
-  [][][][][][]$\T1/cmtt/m/n/9 https : / / github . com / apache / cassandra / b
-lob / trunk / src / java / org / apache /
- []
-
-\openout4 = `user-study.pyg'.
-
-(_minted-user-study/default.pygstyle)
-(_minted-user-study/649CA68B6F15A2B63DE3CA5F88B15A5420906C08E2178FE9B90BFB61CE2
-D582B.pygtex
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <9> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 8.
-)
-Package hyperref Info: bookmark level for unknown listing defaults to 0 on inpu
-t line 459.
-\openout4 = `user-study.pyg'.
-
-
-(_minted-user-study/326C3B61642F32218CA15406E0F4B0EF20906C08E2178FE9B90BFB61CE2
-D582B.pygtex)
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/sl' in size <10.95> no
 t available
 (Font)              Font shape `T1/LibertinusSerif-TLF/m/it' tried instead on i
-nput line 499.
+nput line 438.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/it' will be
-(Font)              scaled to size 10.95pt on input line 499.
+(Font)              scaled to size 10.95pt on input line 438.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 499.
+(Font)              scaled to size 9.0pt on input line 438.
  [1
 
 
 {C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts_mf
-adfl.enc}] [2] [3]
-<Model_pipeline.png, id=110, 4460.665pt x 2176.13pt>
-File: Model_pipeline.png Graphic file (type png)
-<use Model_pipeline.png>
-Package pdftex.def Info: Model_pipeline.png  used on input line 518.
-(pdftex.def)             Requested size: 350.0pt x 170.74025pt.
- [4 <./Model_pipeline.png>]
-LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/b/n' will be
-(Font)              scaled to size 10.95pt on input line 538.
- [5{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts
-_sfissr.enc}]
-[6]
-Package hyperref Info: bookmark level for unknown resq defaults to 0 on input l
-ine 587.
-LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/b/it' will be
-(Font)              scaled to size 10.95pt on input line 587.
- [7{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts
-_opzo24.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-t
-ype1/lbts_nufysp.enc}] [8]
+adfl.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type
+1/lbts_sfissr.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libert
+inus-type1/lbts_rlktsf.enc}] [2] [3] [4] [5]
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/b/n' will be
-(Font)              scaled to size 20.74pt on input line 615.
+(Font)              scaled to size 20.74pt on input line 593.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
-(Font)              scaled to size 20.74pt on input line 615.
- [9
-
-
-
-]
+(Font)              scaled to size 20.74pt on input line 593.
 \tf@thm=\write8
 \openout8 = `user-study.thm'.
 
- [10] (user-study.aux)
+ [6
+
+
+
+{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts_nu
+fysp.enc}]
+(user-study.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-06-30>
@@ -1930,45 +1901,32 @@ bkm-pdftex.def    2020-11-06 v1.29 bookmark driver for pdfTeX (HO)
   mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
 t1libertinussans-tlf.fd
-  t1cmtt.fd    2023/04/13 v2.5m Standard LaTeX font definitions
-"_minted-user-study/default.pygstyle"
-_minted-user-study/649CA68B6F15A2B63DE3CA5F88B15A5420906C08E2178FE9B90BFB61CE2D
-582B.pygtex
-_minted-user-study/326C3B61642F32218CA15406E0F4B0EF20906C08E2178FE9B90BFB61CE2D
-582B.pygtex
-Model_pipeline.png    Graphic file (type png)
+ts1libertinusserif-tlf.fd
  ***********
 
 Package rerunfilecheck Info: File `user-study.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-runsystem(del user-study.pyg)...executed.
-
 Package logreq Info: Writing requests to 'user-study.run.xml'.
 \openout1 = `user-study.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47181 strings out of 475551
- 1013327 string characters out of 5772369
- 2017626 words of memory out of 5000000
- 67412 multiletter control sequences out of 15000+600000
- 685564 words of font info for 253 fonts, out of 8000000 for 9000
+ 46826 strings out of 475551
+ 1002454 string characters out of 5772369
+ 2006544 words of memory out of 5000000
+ 67175 multiletter control sequences out of 15000+600000
+ 671032 words of font info for 200 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  122i,20n,121p,10967b,2479s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\lukas\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecit
-0900.pk> <C:\Users\lukas\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
-0\ectt0900.pk><C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/type1/public/liberti
-nus-type1/LibertinusSans-Regular.pfb><C:/Users/lukas/AppData/Roaming/MiKTeX/fon
-ts/type1/public/libertinus-type1/LibertinusSerif-Bold.pfb><C:/Users/lukas/AppDa
-ta/Roaming/MiKTeX/fonts/type1/public/libertinus-type1/LibertinusSerif-BoldItali
-c.pfb><C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/type1/public/libertinus-type
-1/LibertinusSerif-Italic.pfb><C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/type1
-/public/libertinus-type1/LibertinusSerif-Regular.pfb><C:/Program Files/MiKTeX/f
-onts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX/fonts/type1/pu
-blic/amsfonts/cm/cmsy6.pfb>
-Output written on user-study.pdf (11 pages, 870614 bytes).
+<C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/type1/public/libertinus-type1/Li
+bertinusSans-Regular.pfb><C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/type1/pub
+lic/libertinus-type1/LibertinusSerif-Bold.pfb><C:/Users/lukas/AppData/Roaming/M
+iKTeX/fonts/type1/public/libertinus-type1/LibertinusSerif-Italic.pfb><C:/Users/
+lukas/AppData/Roaming/MiKTeX/fonts/type1/public/libertinus-type1/LibertinusSeri
+f-Regular.pfb>
+Output written on user-study.pdf (7 pages, 424208 bytes).
 PDF statistics:
- 359 PDF objects out of 1000 (max. 8388607)
- 62 named destinations out of 1000 (max. 500000)
- 70247 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 167 PDF objects out of 1000 (max. 8388607)
+ 36 named destinations out of 1000 (max. 500000)
+ 66698 words of extra memory for PDF output out of 74296 (max. 10000000)
 

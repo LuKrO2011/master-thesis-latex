@@ -305,7 +305,7 @@ cleveref=true,%
 \usepackage{hyperref}
 
 \author{Lukas Krodinger}
-\title{User Study}
+\title{Java Code Readability Study}
 \degreeprogramme{M.Sc. Computer Science}
 \matrnumber{89801}
 \supervisor{Prof. Dr. Gordon Fraser}
@@ -381,234 +381,212 @@ cleveref=true,%
 	
 	\mainmatter
 	
-	\section{Motivation} \label{Motivation}
-	
-	% TODO: Improve text using chat gpt
-	% TODO: Include graphic of functionality?
-	% TODO: Include data augmentation
-	% TODO: Transformer model for generating bad code?
-	
-	In the realm of software development, the significance of code readability cannot be overstated. Together with understandability, it 	serves as the foundation for efficient collaboration, comprehension, and maintenance of software systems~\cite{posnett2011simpler, aggarwal2002integrated}. 
-	Maintenance alone will consume over 70\% of the total lifecycle cost of a software product and for maintenance, the most time-consuming act is reading code~\cite{buse2009learning, deimel1985uses, rugaber2000use, boehm2001defect}.
-	Therefore, it is important to ensure a high readability of code. In order to archive this, we need to measure readability.
-	
-	In the last years, researchers have proposed several metrics and models for assessing code readability with an accuracy of up to 81.8\%~\cite{buse2009learning, posnett2011simpler, dorn2012general, daka2015modeling}. In recent years, deep learning based models are able to achieve an accuracy of up to 85.3\%~\cite{mi2018improving, mi2022towards}.
-	However, these models do not capture what developers think of readability improvements~\cite{fakhoury2019improving}. This suggests that there is room for improvement in readability classification of source code.
-	
-	\section{Background and related work} \label{Background and related work}
-	
-	\subsection{Readability} \label{Readability}
-	To improve readability classification, we need to capture what readability is. We define readability as a subjective impression of the difficulty of code while trying to understand it~\cite{posnett2011simpler, buse2009learning}. Readability of code is a perceived barrier that needs to be overcome before it is possible to work with the code. The more readable code is, the lower the barrier~\cite{posnett2011simpler}.
-	To give an example for high vs low readability, consider the code of Listing~\ref{lst:cassandra-src-java-org-apache-cassandra-utils} from GitHub\curl{https://github.com/apache/cassandra/blob/trunk/src/java/org/apache/cassandra/utils/HeapUtils.java}{2023-25-07} and compare it to the code with the same functionality of Listing~\ref{lst:cassandra-src-java-org-apache-cassandra-utils-modified}. You will notice that the first piece of code is more readable than the second one.
-	
-	Readability is not the same as complexity. Complexity is an “essential” property of software that arises
-	from system requirements, while readability is an “accidental” property that is not determined by the problem statement~\cite{buse2009learning, brooks1987no}.
-	
-	There is another related term: understandability. Readability is the syntactic aspect of processing code, while understandability is the semantic aspect~\cite{posnett2011simpler}.
-	For example, a developer can find a piece of code readable but still difficult to understand. Recent research gives evidence that there is no correlation between understandability and readability~\cite{scalabrino2017automatically}.	
-	
-%	\begin{listing}[!ht]
-%		\begin{minted}[linenos, frame=lines, framesep=2mm]{java}
-%			/**
-%			* Logs the output of the specified process.
-%			*
-%			* @param p the process
-%			* @throws IOException if an I/O problem occurs
-%			*/
-%			private static void logProcessOutput(Process p) throws IOException
-%			{
-%				try (BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream())))
-%				{
-%					StrBuilder builder = new StrBuilder();
-%					String line;
-%					while ((line = input.readLine()) != null)
-%					{
-%						builder.appendln(line);
-%					}
-%					logger.info(builder.toString());
-%				}
-%			}
-%		\end{minted}
-%		\caption[An example for well readable code of the highly rated Cassandra GitHub repository]{An example for well readable code of the highly rated Cassandra GitHub repository \protect\footnotemark}
-%		\label{lst:cassandra-src-java-org-apache-cassandra-utils}
-%	\end{listing}
-%	\footnotetext{\url{https://github.com/apache/cassandra/blob/trunk/src/java/org/apache/cassandra/utils/HeapUtils.java}, accessed: 2023-07-25}
-	
-	\begin{listing}[!ht]
-		\begin{minted}[linenos, frame=lines, framesep=2mm]{java}
-			/**
-			* Logs the output of the specified process.
-			*
-			* @param p the process
-			* @throws IOException if an I/O problem occurs
-			*/
-			private static void logProcessOutput(Process p) throws IOException
-			{
-				try (BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream())))
-				{
-					StrBuilder builder = new StrBuilder();
-					String line;
-					while ((line = input.readLine()) != null)
-					{
-						builder.appendln(line);
-					}
-					logger.info(builder.toString());
-				}
-			}
-		\end{minted}
-		\caption[An example for well readable code of the highly rated Cassandra GitHub repository]{An example for well readable code of the highly rated Cassandra GitHub repository}
-		\label{lst:cassandra-src-java-org-apache-cassandra-utils}
-	\end{listing}
-	
-	\begin{listing}[!ht]
-		\begin{minted}[linenos, frame=lines, framesep=2mm]{java}
-			private 
-				static 
-			void 
-			debug( Process 
-			v1 
-			)       throws IOException
-			{
-				// Doo debug
-				try (BufferedReader   b 
-				= new 
-				BufferedReader(
-				new InputStreamReader(
-				v1.getInputStream()
-				)
-				)
-				)
-				{
-					StrBuilder b2=new StrBuilder();String v2;while (null!=(v2=input.readLine())){b2.appendln(v2);} // Doo stuff
-					m.info(  builder.toString()
-					);
-				}
-			}
-		\end{minted}
-		\caption{The same example as in listing~\ref{lst:cassandra-src-java-org-apache-cassandra-utils} but modified to be poorly readable}
-		\label{lst:cassandra-src-java-org-apache-cassandra-utils-modified}
-	\end{listing}
-	
-%	\lstinputlisting[language=Java, firstline=8, lastline=26, caption={An example for highly readable code of the highly rated cassandra github repository},label={lst:cassandra-src-java-org-apache-cassandra-utils}]{cassandra-src-java-org-apache-cassandra-utils.java}
-%	
-%	\lstinputlisting[language=Java, firstline=8, lastline=29, caption={The same example modified to be poorly readable},label={lst:cassandra-src-java-org-apache-cassandra-utils-modified}]{cassandra-src-java-org-apache-cassandra-utils-modified.java}
-	
-	\subsection{Classical calculation approaches} \label{Classical calculation approaches}
-	A first estimation for source code readability was the percentage of comment lines over total code lines~\cite{aggarwal2002integrated}. In the last years, researchers have proposed several more complex metrics and models for assessing code readability~\cite{buse2009learning, posnett2011simpler, dorn2012general, scalabrino2016improving}.
-	Those approaches used handcrafted features to calculate how readable a piece of code is. They were able to achieve up to 81.8\% accuracy in classification~\cite{scalabrino2016improving}.
-	
-	\subsection{Deep Learning based approaches} \label{(Deep) Learning based approaches}
-	More recent models use Deep Learning approaches in order to generate the features automatically. Those models have proven to be more accurate, achieving an accuracy of up to 85.3\%~\cite{mi2018improving, mi2022towards}.
-	
-	All the mentioned models were trained on the data of Buse, Dorn and Scalabrio consisting of in total 660 code snippets. The data was generated with surveys. They therefore asked developers several questions, including the question, how well readable the proposed source code is~\cite{buse2009learning, dorn2012general, scalabrino2016improving}.
-	
-	\citeauthor{fakhoury2019improving} showed based on readability improving commit analysis that these models do not capture what developers think of readability improvements. They therefore analyzed 548 GitHub\curl{https://github.com/}{2023-07-25} commits manually. They suggest considering other metrics such as incoming method calls or method name fitting~\cite{fakhoury2019improving}.
-	
-	\subsection{Related work}
-	% TODO: Remove names if not relevant
-	\citeauthor{loriot2022styler} created a model that is able to fix Checkstyle\curl{https://checkstyle.org/}{2023-07-25} violations using Deep Learning. They inserted formatting violations based on a project specific format checker ruleset into code in a first step. They then used a LSTM neural network that learned how to undo those injections. Their approach is working on abstract token sequences. Their data is generated in a self-supervised manner~\cite{loriot2022styler}. A similar idea has been explored by \citeauthor{yasunaga2020graph}~\cite{yasunaga2020graph}. We will use the idea of intentional degradation of code for data generation.
-	
-	Another concept we will employ is from \citeauthor{allamanis2016convolutional}. They cloned the top open source Java projects on GitHub\curl{https://github.com/}{2023-07-25} for training a Deep Learning model. Those top projects were selected by taking the sum of the z-scores of the number of watchers and forks of each project. As the projects have thousands of forks and stars and are widely used among software developers, they can be assumed to be of high quality~\cite{allamanis2016convolutional}.
-	
-	\section{Planned Work and Contributions} \label{Planned Work and Contributions}
-	We will investigate whether it is possible to score a higher accuracy as current models in classifying code readability for Java using Deep Learning. Therefore, we will train the model from \citeauthor{mi2022towards}~\cite{mi2022towards} with more data. We will consider augmenting the model with a method name classifier and incorporating semantic encoding for tabs and spaces. The training data will be generated in a novel way for classification of readability, inspired by \citeauthor{loriot2022styler}~\cite{loriot2022styler}. The method name classifier is similar to Code2Vec~\cite{alon2019code2vec}. The combination of all components is novel to the best of our knowledge. You can find a visualization of the planned modifications of \citeauthor{mi2022towards}'s model in figure~\ref{fig:model_pipeline}. We will focus on generating training data, as the approach will be usable for further research in the field of source code readability.
-	
-	\begin{figure}[t]
-		\centering
-		\includegraphics[width=\textwidth]{Model_pipeline.png}
-		\caption{Overview of the planned approach.}
-		\label{fig:model_pipeline}
-	\end{figure}
-	
-	% TODO: Inline this in research questions?
-	% \subsection{Data generation} \label{Data generation}
-	Deep Learning based models perform better the more training data they get~\cite{hestness2017deep}. Therefore, one approach in order to further improve existing models is to gather more training data.
-	This requires, as it was done previously, a lot of effort and persons willing to rate code based on their readability. We present another approach for gathering training data.
-	
-	In a first step, GitHub repositories with known high code quality are downloaded and labeled as highly readable. We select repositories using a similar approach as \citeauthor{allamanis2016convolutional}~\cite{allamanis2016convolutional} and then assume that they contain only well readable code.
-	In a second step, the code is manipulated so that it is subsequently less readable. This approach is similar to the approach of \citeauthor{loriot2022styler}~\cite{loriot2022styler}. After both steps, we have a new, automatically generated training dataset for source code readability classification.
-		
-	% Readabililty Decreasing Heuristics
-	This brings up the question, how to manipulate code so that it is less readable afterwards. We therefore introduce a tool called Readability Decreasing Heuristics. As the name suggests this is a collection of heuristics that, when applied to source code, lower the readability of it. For example such a heuristic is to replace spaces with newlines. Another example is to increase the indentation of a code block by a tab or multiple spaces. Moreover, with most changes it is also possible to do exactly the opposite (replacing newlines with spaces, decreasing indentation), which in most cases also decreases the readability of source code.
-	
-	Code snippets in Java are syntactically the same, before and after applying Readability Decreasing Heuristics. Complexity did not change either. However, if various modifications are applied many times, those changes are capable of lowering the readability of source code, as the comparison of listing~\ref{lst:cassandra-src-java-org-apache-cassandra-utils} and listing~\ref{lst:cassandra-src-java-org-apache-cassandra-utils-modified} suggests.
-	
-	Note that we assume two things for the data generation approach:
-	\begin{enumerate}[label={Assumption \arabic*},ref={\arabic*},leftmargin=*]
-		\item \label{well-readable-assumption} \textbf{(well-readable-assumption)} The selected repositories contain only well-readable code.
-		\item \label{poorly-readable-assumption} \textbf{(poorly-readable-assumption)} After applying Readability Decreasing Heuristics, the code is poorly readable.
-	\end{enumerate}
-	
-	% Model modifications/Further improvements
-	\label{model-modifications}
-	In recent years it was shown that Deep Learning models can be further improved by modifying the structure of the architecture or by introducing new components, parts or layers to existing architectures. 
-	We suggest two improvements for the model of \citeauthor{mi2022towards}~\cite{mi2022towards}. Firstly, we want to embed spaces and tabs as semantic tokens. Secondly, adding a method name fitting classifier as a component of the overall model could be an improvement.
-	% Surpassing
-	\label{suggestions}If there is time left, we will try to surpass the performance of recent source code readability classifiers with those improvements to data generation and the model.
-	%, such as the model proposed by \citeauthor{mi2022towards}~\cite{mi2022towards}.
-	
-	% We suggest two improvements for the model of \citeauthor{mi2022towards}~\cite{mi2022towards}:
-	%\begin{enumerate}
-	%	\item \label{embedding-spaces-component} \textbf{(embedding-spaces-component)} Embedding spaces and tabs as semantic tokens.
-	%	\item \label{name-classifier-component} \textbf{(name-classifier-component)} Adding a method name fitting classifier as a component of % the overall model.
-	%\end{enumerate}
-	
-	We will evaluate our suggestions with two methods. Firstly, we conclude a user study. Secondly, we compare code readability models with each other.
-	
-	\pagebreak
-	
-	\subsection{User study}\label{user-study}
-	% We will conclude a user study to evaluate the newly generated data for readability classifier models.
-	The goal of the user study is to answer the following key questions:
-	
-	\begin{enumerate}
-		\item Does the well-readable-assumption (assumption \ref{well-readable-assumption}) hold?
-		\item Does the poorly-readable-assumption (assumption \ref{poorly-readable-assumption}) hold?
-	\end{enumerate}
-	
-	We will achieve this by showing programmers code snippets that were generated with the presented approach. Therefore, human annotators give each code snippet a rating of its readability. The annotators are selected by prolific\curl{https://www.prolific.com/}{2023-09-30}. Particular attention is paid to a high proportion of people from industry. The readability rating is based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable). We apply the same rating as done previously~\cite{buse2009learning, dorn2012general, scalabrino2016improving}, but, other than before, we will not use the rating for labeling the training data. Instead, we will only use the ratings to validate a few randomly selected code snippets out of many that are automatically labeled.
-		
-	\subsection{Comparing models}\label{compare-models}
-	Besides the user study we will evaluate our suggestions by comparing machine learning models against each other.
-	The comparisons are based on common metrics such as accuracy, F1-score and MCC~\cite{chicco2020advantages}. One can distinguish further between the following variants of comparing models:
-	
-	In one variant we compare models that have the same architecture (same layers, same weight initialization, same components, etc.) while they differ in the data they are trained on. For example, we can train a model with the old and new datasets, separately and combined. If done for multiple model architectures we can evaluate how the differences in training data influence the model performance. 
-	
-	Another variant would be to compare models with different architecture but the same training data. In this way, we can evaluate newly introduced components by measuring and comparing the performance of such models.
+\section{Research Objective}
+% Overall goal
+The survey aims to evaluate the accuracy of with heuristics predicted readability of Java code snippets. 
+% Alternative goal:
+% The objective of the survey is Verifying the assumed readability for Java source code snippet.
+% For each of the snippets, a certain readability was assumed previously in an automated manner.
+% Readability
+We define readability as a subjective impression of the difficulty of code while trying to understand it \cite{posnett2011simpler, buse2009learning}.
+% Code snippets
+The first part of the code snippets are selected from GitHub repositories with known high code quality.
+The second part is generated by Readability Decreasing Heuristics. Therefore, code snippets of the first part are manipulated to become less readable using heuristics.
+The survey goal is to verify the following two assumptions:
+\begin{enumerate}
+	\item \label{well-readable-assumption} \textbf{(well-readable-assumption)} The selected repositories contain only well readable code.
+	\item \label{poorly-readable-assumption} \textbf{(poorly-readable-assumption)} After the manipulations, the code is poorly readable.
+\end{enumerate}
 
-	A third comparison variant is created by combining the first two. Both of them lead to many options in what to compare, especially if only small changes to training data or model architecture are done. To find out, if our suggestions lead to a better model overall, we will compare our newly created model with all changes at once to the state-of-the-art model of \citeauthor{mi2022towards}~\cite{mi2022towards}.
+% \subsection{Organization of those conducting the survey}
+The survey is conducted by the Chair of Software Engineering II\footnote{https://www.fim.uni-passau.de/en/chair-for-software-engineering-ii/} of the University of Passau under the supervision of Lukas Krodinger.
+%\subsection{Methods for Distribution}
+% Prolific 
+The survey will be conducted using Google Forms\footnote{https://www.google.com/forms/about/} and Prolific\footnote{https://www.prolific.co/}.
+
+\section{Target Population} \label{target-population}
+The target population is split into two groups:
+\begin{itemize}
+	\item \label{students} \textbf{(students)}
+	Computer science students with Java experience
+	% TODO: If only those, no inference to all programmers, no conclusions to general readability possible!
+	\item \label{programmers} \textbf{(programmers)} Java programmers in industry
+\end{itemize}
+
+To be more precise, the target population of the survey is as follows:
+\begin{center}
+	\begin{tabular}{|l|l|}
+		\hline
+		Target Audience      & Java programmers \\
+		Unit of Observation  & Java programmers \\
+		Unit of Analysis     & Java programmers \\
+		Search Unit %         & Manually selected computer science students /\\
+		& Selected by Prolific (Programming Languages: Java)\\
+		Source of Sampling   & %University Passau / 
+		Prolific \\
+		\hline
+	\end{tabular}
+\end{center}
+
+%Search Unit          & \makecell{Manually selected computer science students /\\ participants selected by Prolific} \\
+%Source of Sampling   & University Passau / Prolific \\
+
+\section{Survey}
+The survey will consist of three pages. The first page will contain Prolific specific questions and the questionnaire attributes (see section \ref{questionnaire-attributes}). The other pages will have ten code snippets each to be rated by the participant (20 in total).
+We will create multiple survey sheets with different snippets to evaluate more than 20 in total.
+
+\subsection{Sample Size}
+To get accurate study results, multiple participants have to rate the same code snippets. We specify a size of ten participants per code snippet, similar to citeauthor, cite scalabrio. According to an online calculator\footnote{https://www.calculator.net/sample-size-calculator.html} we end up with a margin of error of 33.99\% at a confidence of 95\%. This means that we are 95\% confident that the actual readability of a code snippet is within 33.99\% of the survey result score. With a probability of 5\%, the readability of a code snippet differs by more than 33.99\% from the score of the survey result. On a Likert scale ranging from 1 to 5, the mean of the survey results is between 1.0 and 5.0. In this context, an offset of 33.99\% is an offset of 1.3596 from the real value, which is more than one rating point. We need to consider this when evaluating the accuracy of our assumptions (assumption \ref{well-readable-assumption} and \ref{poorly-readable-assumption}).
+
+% In order to calculate the required sample size for a single code snippet, we need to specify a confidence level and a margin of error.
+% We have relatively small requirements to both, and therewith set the confidence level to 95\% and the margin of error to 25\%. Using an online calculator\footnote{https://www.calculator.net/sample-size-calculator.html} we find out, that we need 16 participants per code snippet in order to achieve this.
+
+% In order to ensure reliable results, we calculate the number of participants needed per code snippet as follows:
+
+% \begin{equation}
+	%     n = \frac{Z^2*P*(1 - P)}{E^2}
+	% \end{equation}
+% \begin{itemize}
+	%     \item n = Required sample size
+	%     \item Z = Z-score for the desired confidence level
+	%     \item P = Estimated proportion of respondents choosing any specific option
+	%     \item E = Margin of error
+	% \end{itemize}
+
+% For choosing Z, P and E we consider that we have 5 options per question (variability of options). A confidence level of 95\% is sufficient. 
+% Given this, we define the required values as follows:
+% \begin{itemize}
+	%     \item Margin of Error: E = 5\%
+	%     \item Z-Score: Z = 1.96
+	%     \item P = 50\%
+	% \end{itemize}
+
+\subsection{Time Requirement}
+The first page will take the participant about one minute. As one does not need to fully understand the code snippet in order to rate its readability, the average time for doing so is estimated with 30 seconds per snippet. Rating two pages with ten snippets each will take about 10 minutes. The total time for the survey is estimated with 11 minutes.
+
+\subsection{Sampling Design}
+% Manually selected computer science students from the University of Passau will participate in the survey.
+The survey participants will be selected using Prolific. The only restriction for the participants will be that they must be familiar with Java.
+% TODO: Quelle
+A big part of our code snippets might be getters and setters. However, we do not want to mostly evaluate getters and setters in our study. Therefore, we will use stratified sampling. Thus, code snippets are split into groups with high similarity, so-called strata. When we then randomly sample within the strata, we make sure to not only sample getters and setters.
+To create the required stratas we need to measure the similarity of code snippets. Scalabrio cite autor cite developed a tool to generate various metrics for Java source code. We will use this tool on each code snippet and create a code vector for each snippet. The Euclidean distance between these vectors provides an estimation of source code similarity, which will be used to create the strata.
+
+\subsection{Internal Questions} % Research Questions
+The internal research questions are as follows:
+\begin{itemize}
+	\item Does the well-readable-assumption (\ref{well-readable-assumption}) hold?
+	\item Does the poorly-readable-assumption (\ref{poorly-readable-assumption}) hold?
+\end{itemize}
+The results of the questions are equally important, and thus none of them is prioritized over the other.
+
+\subsection{Questionnaire Attributes} \label{questionnaire-attributes}
+The survey neither contains demographic questions nor filter questions. Besides the readability questions, each user is asked the following dependent question: "How would you describe your familiarity with Java?". The user can answer within a five point Likert scale: expert (5), advanced (4), intermediate (3), beginner (2), novice (1).
+
+%     % Alternativ:
+% D = Dependent. I = Independent.
+% \begin{itemize}
 	
-	\subsection{Research questions}\label{research-questions}
-	We come up with the following research questions:
+	%     % \item (I) Participant Name - Open Ended
 	
-%	\begin{resq}What is the quality of our new approach for data generation?\end{resq} \label{RQ1}
-%	Until now, the data for readability classification was generated manually. Therefore, human annotators ranked code snippets by their readability level based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable)~\cite{buse2009learning, dorn2012general, scalabrino2016improving}. Our new data will be generated in an automatic approach, where no manual labeling of code is necessary. We want to compare the quality of this data to the data used for previous models.
+	%     % \item (D) What is your profession? - TODO: Answer options?
+	%     \item (D) How familiar are you with Java? - Answer (4 point Likert scale): very familiar, familiar, not very familiar, not familiar at all
+	%     % Alternativ:
+	%     % \item (D) How would you rate your own expertise in Java?
 	
-	\begin{resq} \textbf{(select-well)} Can automatically selected code be assumed to be well readable?\end{resq} \label{select-well}
-	In our new approach for generating training data, we assume that the code from repositories is readable under certain conditions (assumption~\ref{well-readable-assumption}). We want to check whether that holds. To answer this question we will use the results of the user study (section~\ref{user-study}).
+	%     % More background related questions?
+	%     % \item (D) Do you have an academical degree in computer science or similar? - No, Yes - B.Sc., Yes - M.Sc, Yes - Dr., Yes Prof.
+	%     % \item (D) How long (if any) did you computer science? - Interval response
+	%     % \item (D) How long (if any) did you work at a computer science related job with java?
+	%     % \item (D) If you did work, how many hours per week?
 	
-	\begin{resq} \textbf{(generate-poor)} Can poorly readable code be generated from well readable code?\end{resq} \label{generate-poor}
-	It is not sufficient to have only well readable code for training a classifier. We also need poorly readable code. Therefore, we will try to generate such code from the well readable code. We will investigate whether this is possible in principle, and we will propose an automated approach for archiving this: Readability Decreasing Heuristics.
+	%     % (I) Gender, (I) age? 
 	
-	As the name already suggests, the applied transformations on the source code are only heuristics. To answer, whether the generated code is badly readable (assumption~\ref{poorly-readable-assumption}) we will utilize the results of the user study (section~\ref{user-study}).
+	% \end{itemize}
+
+% Last question?
+% Face Validity: Ask questioners about validity
+
+\subsection{Survey Questions} % Questionnaire- Opinion
+For each code snippet, the following closed-ended question is given: "How do you rate the readability of this code?". The answers follow the Likert Scale: very high (5), high (4), medium (3), low (2), very low (1).
+
+\subsection{Survey Result Evaluation}
+Once a survey is completed by a participant, the survey result is evaluated automatically to make sure the participants did not choose answers at random. The code snippet rating answers are checked for plausibility. For example, if a code snippet with expected rating 5 (by the heuristics and/or by other participants) is rated with 2 or less, this is an indication that the participant did not fill out the survey properly.
+
+\section{Software}
+We will use Prolific to pay participants for completing our survey. Our participants will fill out the survey using TODO: ADD TOOL.
+
+\section{Survey evaluation groups} \label{sec:survey-evaluation}
+We will evaluate the survey construction by presenting it to the following groups:
+\begin{itemize}
+	% \item Survey and questionnaire design experts
+	\item Subject-matter experts
+	\item Focus group (discussion with about 7 people)
+	\item Pilot survey group
+\end{itemize}
+
+\section{Threads to Validity and Reliability} % Quality assurance
+% Possible threads to the survey might be: 
+% \begin{itemize}
+	%     \item Ill-defined target population
+	%     \item Sampling method (stratified sampling)
+	%     \item Too few responses for conclusions
+	% \end{itemize}
+% To avoid those threads, we come up with the following countermeasures:
+% To overcome ill-defined target population we define our target population clearly in this document, and we evaluate the document (see section \ref{sec:survey-evaluation}) before conducting the survey. This will also ensure content and construct validity. 
+% Our sampling method is well-defined and proven in practice.
+% We scale our survey to an appropriate size to have enough responses. Therewith, we avoid taking conclusions from too little responses.
+This section addresses potential threats to the survey's validity and reliability. These threats include:
+\begin{enumerate}
+	\item \textbf{Ill-defined Target Population:} Ensuring a well-defined target population is critical to the survey's quality. To mitigate this threat, we clearly define our target population within this document (see section \ref{target-population}). Additionally, we conduct a pre-survey evaluation (see section \ref{sec:survey-evaluation}) to ensure the adequacy of our target population definition. Thereby, we enhance content and construct validity.
 	
-	\begin{resq} \textbf{(best-heuristics)} Which heuristics are best to generate poorly readable code from well readable code?\end{resq} \label{best-heuristic}
-	We want to compare the modifications of the proposed heuristics for generating poorly readable code to each other. Therefore we will train the same classifier model with badly readable code generated by different Readability Decreasing Heuristics. We will then evaluate the model variations against each other (section~\ref{compare-models}) to answer the research question.
+	\item \textbf{Sampling Method (Stratified Sampling):} Our chosen sampling method is well-defined and proven in practice. This approach ensures that our sample represents all parts of the population under investigation. This is improving the survey's external validity.
 	
-	\begin{resq} \textbf{(new-data)} To what extent can the new data improve existing readability models?\end{resq} \label{new-data}
-	It was shown that Deep Learning models get better the more training data is available~\cite{hestness2017deep}. This holds under the assumption that the quality of the data is the same or at least similar. We want to check if the quality of our new data is sufficient for improving the Deep Learning based readability classifier of \citeauthor{mi2022towards}~\cite{mi2022towards}. Therefore we will train their proposed model with and without the new data and then evaluate the models against each other (section~\ref{compare-models}).
-	
-	% Next RQ on new page
-	\pagebreak
-	
-%	\begin{resq} \textbf{(model-modifications)} Optional: How can existing Deep Learning approaches be further improved?\end{resq} \label{model-modifications}
-%	In recent years it was shown that Deep Learning models can be further improved by modifying the structure of the architecture or by introducing new components, parts or layers to existing architectures. We suggest two improvements for the model of \citeauthor{mi2022towards}~\cite{mi2022towards}: Embedding spaces and tabs as semantic tokens and adding a method name fitting component. We will evaluate the proposed improvements as described earlier~\ref{suggestions}.
-	
-	\begin{resq} \textbf{(embedding-spaces)} Optional: To what extend does the embedding of spaces and tabs in semantic code representations improve readability classification?\end{resq} \label{embedding-spaces}
-	The state-of-the-art model of \citeauthor{mi2022towards}~\cite{mi2022towards} does consider spaces and tabs only in its visual component. We want to investigate if it can improve the quality of a Deep Learning based model if spaces and tabs are encoded as semantic tokens. We also want to investigate if this makes the visual component superfluous. We will evaluate the proposed improvement as described earlier (section~\ref{compare-models}).
-	
-	\begin{resq} \textbf{(name-classifier)} Optional: To what extend does the usage of a method name classifier improve readability classification?\end{resq} \label{name-classifier}
-	Correct naming of identifiers is crucial for ensuring readability of software programs. It is of outstanding importance for readability of code that the name of methods fit the method bodies~\cite{liu2019learning}. We want to introduce a new component to the model of \citeauthor{mi2022towards}~\cite{mi2022towards} that is built similar to Code2Vec~\cite{alon2019code2vec}. We want to investigate if the newly introduced component improves the quality of the resulting model. We will evaluate the proposed improvement as previously described (section~\ref{compare-models}).
+	\item \textbf{Insufficient Responses for Drawing Conclusions:} To prevent drawing conclusions from an insufficient number of responses, we scale our survey to an appropriate size. This guarantees that we collect a substantial volume of responses, allowing for robust statistical analysis.
+\end{enumerate}
+
+% \subsection{Threads to Validity}
+% % Face validity: See Questions
+% To ensure content and construct validity, the survey will be reviewed by a focus group and presented to a pilot group before being distributed to the target group. We will measure the differences of the responses of the two different target population groups: students and programmers. Thereby, we check criterion validity. 
+
+% \subsection{Threads to Reliability}
+% % Reliability/External Validity/Generalizability
+% A small sample of the target group will be asked to conduct the survey again after a few months. In the second survey, we will ask the same questions in a different order. We will then measure the correlation between the results of the two surveys. The goal is to have a correlation greater than $0.7$. If achieved, test-reset reliability is given.
+% By conducting the survey fully online, we can be sure that observers do not interfere with the participants. Therewith, inter-observer reliability is given.
+
+\section{Schedule}
+% The survey concept proposal is finished latest till the November 2023. The survey is then presented to the survey evaluation groups and revised till January 2024. The survey will be conducted in February 2024 and the results are evaluated in March 2024.
+You can find the survey schedule in table \ref{tab:survey-timeline}.
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Task} & \textbf{Timeline (finished latest)} \\
+		\hline
+		Survey concept proposal & November 2023 \\
+		\hline
+		Presentation to survey evaluation groups & January 2024 \\
+		\hline
+		Survey conduction & February 2024 \\
+		\hline
+		Results evaluation & March 2024 \\
+		\hline
+	\end{tabular}
+	\caption{Survey Timeline}
+	\label{tab:survey-timeline}
+\end{table}
+
+% TODO: Move? Maybe to first section?
+\section{Expected Results}
+We expect that the averaged ratings of the selected code snippets matches the predicted code readability to a certain extent. We do not expect an exact match.
+We measure this extent by applying the mean as a measure of central tendency and standard deviation as a measure of variability, as proposed by X. We make those measurements with respect to stratified sampling.
+Our null hypothesis is, that both assumptions (\ref{well-readable-assumption} and \ref{poorly-readable-assumption}) hold, as the expected readability does not differ too much from the survey participant's mean.
+We will visualize our results by generating a bar chart for each evaluated snippet. We will also provide a visualization that summarizes the mean deviations of the participant's rating from the expected readability valued, summarized for all snippets.
+
+% TODO: Citeautor
+% "On the other hand, Likert scales should instead use the mean as a measure of central tendency, standard deviation as a measure of variability, and
+% Pearson’s r, ANOVA, t-test or regression for other statistical measures"
+% More: R. Johns, “Likert items and scales. Accessed on 13th March 2015 at: www.surveynet.ac.uk/sqb/datacollection/likertfactsheet.pdf.”
 	
 	\backmatter
 	
