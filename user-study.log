@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  14 OCT 2023 19:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.8.1)  15 OCT 2023 15:33
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -6,7 +6,7 @@ entering extended mode
 (user-study.tex
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-06-30>
-(C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/se2thesis\se2thesis.cls
+(C:\Program Files\MiKTeX\tex/latex/se2thesis\se2thesis.cls
 Document Class: se2thesis 2023-07-04 v3.1.0 A thesis class for the Chair of Sof
 tware Engineering II
 (C:\Program Files\MiKTeX\tex/latex/graphics\graphicx.sty
@@ -205,7 +205,7 @@ Package typearea Info: These are the values describing the layout:
 (typearea)              \baselineskip   = 13.6pt
 (typearea)              on input line 175.
 
-(C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/se2thesis\se2colors.sty
+(C:\Program Files\MiKTeX\tex/latex/se2thesis\se2colors.sty
 Package: se2colors 2023-07-04 v3.1.0 A colour support package for the se2thesis
  bundle
 
@@ -228,7 +228,7 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
 ))
-(C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/se2thesis\se2fonts.sty
+(C:\Program Files\MiKTeX\tex/latex/se2thesis\se2fonts.sty
 Package: se2fonts 2023-07-04 v3.1.0 A font-selection support package for the se
 2thesis bundle
 
@@ -663,7 +663,7 @@ Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 \c@blind@pangramcount=\count299
 \c@blind@pangrammax=\count300
 )
-(C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/se2thesis\se2packages.sty
+(C:\Program Files\MiKTeX\tex/latex/se2thesis\se2packages.sty
 Package: se2packages 2023-07-04 v3.1.0 Supporting packages for the se2thesis bu
 ndle
 
@@ -718,7 +718,7 @@ Package seiipackages Info: se2packages loads the siunitx packagenow.
 
 
 (C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/siunitx\siunitx.sty
-Package: siunitx 2023-06-12 v3.2.6 A comprehensive (SI) units package
+Package: siunitx 2023-07-26 v3.2.9 A comprehensive (SI) units package
 \l__siunitx_angle_tmp_dim=\dimen264
 \l__siunitx_angle_marker_box=\box70
 \l__siunitx_angle_unit_box=\box71
@@ -1496,8 +1496,7 @@ G,.JBIG2,.JB2,.eps]
 (C:\Program Files\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-(C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/se2thesis\se2translations-engl
-ish.trsl
+(C:\Program Files\MiKTeX\tex/latex/se2thesis\se2translations-english.trsl
 File: se2translations-english.trsl (english translation file `se2translations')
  2023/07/04
 )
@@ -1592,19 +1591,12 @@ Package biblatex Info: Automatic encoding selection.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'user-study.bbl' found.
- (user-study.bbl
-
-Package biblatex Warning: The following entry could not be found
-(biblatex)                in the database:
-(biblatex)                linaker2015guidelines
-(biblatex)                Please verify the spelling and rerun
-(biblatex)                LaTeX afterwards.
-
-)
+ (user-study.bbl)
 Package biblatex Info: Reference section=0 on input line 392.
 Package biblatex Info: Reference segment=0 on input line 392.
 Package hyperref Info: Link coloring OFF on input line 392.
- (user-study.out) (user-study.out)
+
+(user-study.out) (user-study.out)
 \@outlinefile=\write7
 \openout7 = `user-study.out'.
 
@@ -1684,15 +1676,6 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 418.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
 (Font)              scaled to size 6.0pt on input line 418.
-
-
-LaTeX Warning: Citation 'linaker2015guidelines' on page 1 undefined on input li
-ne 422.
-
-
-LaTeX Warning: Citation 'linaker2015guidelines' on page 1 undefined on input li
-ne 422.
-
 LaTeX Font Info:    Trying to load font information for TS1+LibertinusSerif-TLF
  on input line 427.
 
@@ -1721,21 +1704,7 @@ LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
 {C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts_mf
 adfl.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type
 1/lbts_sfissr.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libert
-inus-type1/lbts_rlktsf.enc}]
-
-LaTeX Warning: Citation 'thompson2012sampling' on page 2 undefined on input lin
-e 493.
-
-[2] [3]
-
-LaTeX Warning: Citation 'linaker2015guidelines' on page 4 undefined on input li
-ne 605.
-
-
-LaTeX Warning: Citation 'linaker2015guidelines' on page 4 undefined on input li
-ne 605.
-
-[4] [5]
+inus-type1/lbts_rlktsf.enc}] [2] [3] [4] [5]
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/b/n' will be
 (Font)              scaled to size 20.74pt on input line 611.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
@@ -1748,7 +1717,8 @@ LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
 
 
 {C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts_nu
-fysp.enc}] (user-study.aux)
+fysp.enc}]
+(user-study.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-06-30>
@@ -1840,7 +1810,7 @@ csquotes.sty    2022-09-14 v5.2n context-sensitive quotations (JAW)
 csquotes.def    2022-09-14 v5.2n csquotes generic definitions (JAW)
 csquotes.cfg    
 booktabs.sty    2020/01/12 v1.61803398 Publication quality tables
- siunitx.sty    2023-06-12 v3.2.6 A comprehensive (SI) units package
+ siunitx.sty    2023-07-26 v3.2.9 A comprehensive (SI) units package
  amstext.sty    2021/08/26 v2.01 AMS text
   amsgen.sty    1999/11/30 v2.0 generic functions
    array.sty    2022/09/04 v2.5g Tabular extension package (FMi)
@@ -1933,26 +1903,18 @@ t1libertinussans-tlf.fd
 ts1libertinusserif-tlf.fd
  ***********
 
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `user-study.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                user-study
-(biblatex)                and rerun LaTeX afterwards.
-
 Package logreq Info: Writing requests to 'user-study.run.xml'.
 \openout1 = `user-study.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46821 strings out of 475551
- 1002327 string characters out of 5772369
- 2007772 words of memory out of 5000000
- 67184 multiletter control sequences out of 15000+600000
- 669896 words of font info for 190 fonts, out of 8000000 for 9000
+ 46848 strings out of 475550
+ 1003136 string characters out of 5772349
+ 2006826 words of memory out of 5000000
+ 67194 multiletter control sequences out of 15000+600000
+ 671413 words of font info for 201 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  122i,20n,121p,10967b,2479s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/type1/public/libertinus-type1/Li
@@ -1961,9 +1923,9 @@ lic/libertinus-type1/LibertinusSerif-Bold.pfb><C:/Users/lukas/AppData/Roaming/M
 iKTeX/fonts/type1/public/libertinus-type1/LibertinusSerif-Italic.pfb><C:/Users/
 lukas/AppData/Roaming/MiKTeX/fonts/type1/public/libertinus-type1/LibertinusSeri
 f-Regular.pfb>
-Output written on user-study.pdf (7 pages, 427917 bytes).
+Output written on user-study.pdf (7 pages, 430673 bytes).
 PDF statistics:
- 171 PDF objects out of 1000 (max. 8388607)
- 37 named destinations out of 1000 (max. 500000)
+ 176 PDF objects out of 1000 (max. 8388607)
+ 39 named destinations out of 1000 (max. 500000)
  66698 words of extra memory for PDF output out of 74296 (max. 10000000)
 

@@ -75,6 +75,45 @@
       \field{title}{A technique for the measurement of attitudes.}
       \field{year}{1932}
     \endentry
+    \entry{linaker2015guidelines}{article}{}
+      \name{author}{4}{}{%
+        {{hash=78845484a1e9b8f8c480077855155c68}{%
+           family={Linåker},
+           familyi={L\bibinitperiod},
+           given={Johan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=fd98fdd6a423999835524a2a7fbf445a}{%
+           family={Sulaman},
+           familyi={S\bibinitperiod},
+           given={Sardar},
+           giveni={S\bibinitperiod}}}%
+        {{hash=c7e8af8c61598599fd5c2a0a7b7072c0}{%
+           family={Host},
+           familyi={H\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=b510e5b7a047ccc25e4258219b1e41cb}{%
+           family={Mello},
+           familyi={M\bibinitperiod},
+           given={Rafael},
+           giveni={R\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+      }
+      \strng{namehash}{51148f59675ee08de56f5bb79c33d170}
+      \strng{fullhash}{75591e8f5addf8983f3646bc50baa1d0}
+      \strng{bibnamehash}{51148f59675ee08de56f5bb79c33d170}
+      \strng{authorbibnamehash}{51148f59675ee08de56f5bb79c33d170}
+      \strng{authornamehash}{51148f59675ee08de56f5bb79c33d170}
+      \strng{authorfullhash}{75591e8f5addf8983f3646bc50baa1d0}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{05}
+      \field{title}{Guidelines for Conducting Surveys in Software Engineering}
+      \field{year}{2015}
+    \endentry
     \entry{posnett2011simpler}{inproceedings}{}
       \name{author}{3}{}{%
         {{hash=bfc2f15f3ea252edf4bb6ead52ac9d76}{%
@@ -151,8 +190,34 @@
       \field{pages}{1\bibrangedash 10}
       \range{pages}{10}
     \endentry
+    \entry{thompson2012sampling}{book}{}
+      \name{author}{1}{}{%
+        {{hash=e58fe597b6d5bee7f6cc3d0fd9ca9d40}{%
+           family={Thompson},
+           familyi={T\bibinitperiod},
+           given={Steven\bibnamedelima K},
+           giveni={S\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {John Wiley \& Sons}%
+      }
+      \strng{namehash}{e58fe597b6d5bee7f6cc3d0fd9ca9d40}
+      \strng{fullhash}{e58fe597b6d5bee7f6cc3d0fd9ca9d40}
+      \strng{bibnamehash}{e58fe597b6d5bee7f6cc3d0fd9ca9d40}
+      \strng{authorbibnamehash}{e58fe597b6d5bee7f6cc3d0fd9ca9d40}
+      \strng{authornamehash}{e58fe597b6d5bee7f6cc3d0fd9ca9d40}
+      \strng{authorfullhash}{e58fe597b6d5bee7f6cc3d0fd9ca9d40}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Sampling}
+      \field{volume}{755}
+      \field{year}{2012}
+      \field{pages}{141\bibrangedash 156}
+      \range{pages}{16}
+    \endentry
   \enddatalist
-  \missing{linaker2015guidelines}
 \endrefsection
 \endinput
 
