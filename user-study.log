@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.8.1)  15 OCT 2023 15:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.8.1)  15 OCT 2023 15:38
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1910,11 +1910,11 @@ Package logreq Info: Writing requests to 'user-study.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46848 strings out of 475550
- 1003136 string characters out of 5772349
+ 46854 strings out of 475550
+ 1003343 string characters out of 5772349
  2006826 words of memory out of 5000000
  67194 multiletter control sequences out of 15000+600000
- 671413 words of font info for 201 fonts, out of 8000000 for 9000
+ 671953 words of font info for 205 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  122i,20n,121p,10967b,2479s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/type1/public/libertinus-type1/Li
@@ -1923,7 +1923,7 @@ lic/libertinus-type1/LibertinusSerif-Bold.pfb><C:/Users/lukas/AppData/Roaming/M
 iKTeX/fonts/type1/public/libertinus-type1/LibertinusSerif-Italic.pfb><C:/Users/
 lukas/AppData/Roaming/MiKTeX/fonts/type1/public/libertinus-type1/LibertinusSeri
 f-Regular.pfb>
-Output written on user-study.pdf (7 pages, 430673 bytes).
+Output written on user-study.pdf (7 pages, 430681 bytes).
 PDF statistics:
  176 PDF objects out of 1000 (max. 8388607)
  39 named destinations out of 1000 (max. 500000)
