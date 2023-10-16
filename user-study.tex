@@ -453,7 +453,7 @@ To be more precise, the target population of the survey is as follows:
 % In total, we will create 20 unique questionnaires, with each questionnaire being rated by 10 individual participants. Consequently, we will generate a dataset of 400 code snippets. The expected expenditure for this survey, involving 200 participants via the Prolific platform, is estimated to be around €500.
 
 The first part of the survey is devoted to Prolific-specific questions and questionnaire attributes, as described in section~\ref{questionnaire-attributes}. The second part of the survey consists of 20 code snippets to be evaluated by the participants.
-In total, we will create 20 unique questionnaires, with each questionnaire being rated by 10 individual participants. Consequently, we will generate a dataset of 400 code snippets. The expected expenditure for this survey, involving 200 participants via the Prolific platform, is estimated to be around €500.
+In total, we create 20 unique questionnaires, with each questionnaire being rated by 10 individual participants. Consequently, we generate a dataset of 400 code snippets. The expected expenditure for this survey, involving 200 participants via the Prolific platform, is estimated to be around €500.
 
 \subsection{Sample Size}
 To get accurate study results, multiple participants have to rate the same code snippets. We specify a size of ten participants per code snippet, similar to \citeauthor{scalabrino2016improving}~\cite{scalabrino2016improving}. According to an online calculator\footnote{https://www.calculator.net/sample-size-calculator.html} we end up with a margin of error of 33.99\% at a confidence of 95\%. This means that we are 95\% confident that the actual readability of a code snippet is within 33.99\% of the survey result score. With a probability of 5\%, the readability of a code snippet differs by more than 33.99\% from the score of the survey result. On a Likert scale ranging from 1 to 5, the mean of the survey results is between 1.0 and 5.0. In this context, an offset of 33.99\% is an offset of more than one rating point~\cite{likert1932technique}. We need to consider this when evaluating our the gathered data.
@@ -482,17 +482,17 @@ To get accurate study results, multiple participants have to rate the same code 
 	% \end{itemize}
 
 \subsection{Time Requirement}
-The first part (Prolific-specific questions and questionnaire attributes) will take the participant about one minute. The average time for rating a snippet is estimated with 30 seconds. Thus, rating 20 snippets will take about 10 minutes. The total time for completing one questionnaire is estimated with 11 minutes.
+The first part (Prolific-specific questions and questionnaire attributes) takes the participant about one minute. The average time for rating a snippet is estimated with 30 seconds. Thus, rating 20 snippets takes about 10 minutes. The total time for completing one questionnaire is estimated with 11 minutes.
 
 \subsection{Sampling Design}
 % Manually selected computer science students from the University of Passau will participate in the survey.
-The survey participants will be selected using Prolific. The only restriction for the participants will be that they must be familiar with Java.
+The survey participants are selected using Prolific. The only restriction for the participants is that they must be familiar with Java.
 
 % TODO: Quelle
 % Paper on sampling: https://www.researchgate.net/profile/Anita-Acharya-2/publication/256446902_Sampling_Why_and_How_of_it_Anita_S_Acharya_Anupam_Prakash_Pikee_Saxena_Aruna_Nigam/links/0c960527c82d449788000000/Sampling-Why-and-How-of-it-Anita-S-Acharya-Anupam-Prakash-Pikee-Saxena-Aruna-Nigam.pdf
-A big part of our code snippets might be getters and setters. However, we do not want to mostly evaluate getters and setters in our study. Therefore, we will use stratified sampling~\cite{thompson2012sampling}. Thus, code snippets are split into groups with high similarity, so-called strata. When we then randomly sample within the strata, we make sure to not only sample getters and setters.
+A big part of our code snippets might be getters and setters. However, we do not want to mostly evaluate getters and setters in our study. Therefore, we use stratified sampling~\cite{thompson2012sampling}. Thus, code snippets are split into groups with high similarity, so-called strata. When we then randomly sample within the strata, we make sure to not only sample getters and setters.
 
-To create the required stratas we need to measure the similarity of code snippets. \citeauthor{scalabrino2016improving} developed a tool to generate various metrics for Java source code~\cite{scalabrino2016improving}. We will use this tool on each code snippet and create a code vector for each snippet. The Euclidean distance between these vectors provides an estimation of source code similarity, which will be used to create the strata.
+To create the required stratas we need to measure the similarity of code snippets. \citeauthor{scalabrino2016improving} developed a tool to generate various metrics for Java source code~\cite{scalabrino2016improving}. We use this tool on each code snippet and create a code vector for each snippet. The Euclidean distance between these vectors provides an estimation of source code similarity, which is used to create the strata.
 
 \subsection{Internal Questions} % Research Questions
 The internal research questions are as follows:
@@ -536,10 +536,10 @@ For each code snippet, the following closed-ended question is given: "How do you
 Once a survey is completed by a participant, the survey result is evaluated to make sure the participants did not choose answers at random. The code snippet rating answers are checked for plausibility. For example, if a code snippet with expected rating 5 (by the heuristics and/or by other participants) is rated with 2 or less, this is an indication that the participant did not fill out the survey carefully. Several such indications lead to the exclusion of the participant and his answers.
 
 \section{Software}
-We will use Prolific to pay participants for completing our survey. Our participants will fill out the survey using Tien Duc Nguyen's Code Annotation Tool.
+We use Prolific to pay participants for completing our survey. Our participants fill out the survey using Tien Duc Nguyen's Code Annotation Tool.
 
 \section{Survey evaluation groups} \label{sec:survey-evaluation}
-We will evaluate the survey construction by presenting it to the following groups:
+We evaluate the survey construction by presenting it to the following groups:
 \begin{itemize}
 	% \item Survey and questionnaire design experts
 	\item Subject-matter experts
@@ -604,7 +604,7 @@ You can find the survey schedule in table~\ref{tab:survey-timeline}.
 We expect that the averaged ratings of the selected code snippets matches the predicted code readability to a certain extent. We do not expect an exact match.
 We measure this extent by applying the mean as a measure of central tendency and standard deviation as a measure of variability, as proposed by \citeauthor{linaker2015guidelines}~\cite{linaker2015guidelines}. We make those measurements with respect to stratified sampling.
 Our null hypothesis is, that both assumptions (assumption~\ref{well-readable-assumption}~and~\ref{poorly-readable-assumption}) hold, i.e., that the expected readability does not deviate too much from the mean of the survey participants.
-We will visualize our results by generating a bar chart for each evaluated snippet. We will also provide a visualization that summarizes the mean deviations of participants' ratings from expected readability for all snippets.
+After conduction, we visualize our results by generating a bar chart for each evaluated snippet. We also provide a visualization that summarizes the mean deviations of participants' ratings from expected readability for all snippets.
 	
 	\backmatter
 	
