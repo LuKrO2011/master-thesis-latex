@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  2 OCT 2023 18:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  18 OCT 2023 12:13
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1399,7 +1399,7 @@ Class scrreprt Warning: Usage of package `parskip' together
 (scrreprt)              I'd suggest to use option
 (scrreprt)              `parskip' with one of it's several values.
 (scrreprt)              Nevertheless, using requested
-(scrreprt)              package `parskip' on input line 383.
+(scrreprt)              package `parskip' on input line 381.
 
 (C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/parskip\parskip.sty
 Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
@@ -1436,7 +1436,7 @@ Package cleveref Info: always capitalise cross-reference names on input line 78
 52.
 )
 LaTeX Font Info:    Trying to load font information for T1+LibertinusSerif-TLF 
-on input line 384.
+on input line 382.
 
 (C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/libertinus-type1\t1libertinuss
 erif-tlf.fd
@@ -1444,28 +1444,28 @@ File: T1LibertinusSerif-TLF.fd 2022/11/07 (autoinst) Font definitions for T1/Li
 bertinusSerif-TLF.
 )
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 10.95pt on input line 384.
+(Font)              scaled to size 10.95pt on input line 382.
  (expose.aux)
 \openout1 = `expose.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 384.
-LaTeX Font Info:    ... okay on input line 384.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 384.
-LaTeX Font Info:    ... okay on input line 384.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 384.
-LaTeX Font Info:    ... okay on input line 384.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 384.
-LaTeX Font Info:    ... okay on input line 384.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 384.
-LaTeX Font Info:    ... okay on input line 384.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 384.
-LaTeX Font Info:    ... okay on input line 384.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 384.
-LaTeX Font Info:    ... okay on input line 384.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 384.
-LaTeX Font Info:    ... okay on input line 384.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 384.
-LaTeX Font Info:    ... okay on input line 384.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 382.
+LaTeX Font Info:    ... okay on input line 382.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 382.
+LaTeX Font Info:    ... okay on input line 382.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 382.
+LaTeX Font Info:    ... okay on input line 382.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 382.
+LaTeX Font Info:    ... okay on input line 382.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 382.
+LaTeX Font Info:    ... okay on input line 382.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 382.
+LaTeX Font Info:    ... okay on input line 382.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 382.
+LaTeX Font Info:    ... okay on input line 382.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 382.
+LaTeX Font Info:    ... okay on input line 382.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 382.
+LaTeX Font Info:    ... okay on input line 382.
 
 (C:\Program Files\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1512,33 +1512,33 @@ File: translations-basic-dictionary-german.trsl (german translation file `trans
 lations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `german'. on input line 384.
-Package scrbase Info: activating UKenglish \abstractname on input line 384.
-Package scrbase Info: activating UKenglish \partname on input line 384.
-Package scrbase Info: activating UKenglish \chaptername on input line 384.
-Package scrbase Info: activating UKenglish \appendixname on input line 384.
-Package scrbase Info: activating UKenglish \figurename on input line 384.
-Package scrbase Info: activating UKenglish \tablename on input line 384.
-Package scrbase Info: activating UKenglish \contentsname on input line 384.
-Package scrbase Info: activating UKenglish \listfigurename on input line 384.
-Package scrbase Info: activating UKenglish \listtablename on input line 384.
-Package scrbase Info: activating UKenglish \bibname on input line 384.
-Package scrbase Info: activating UKenglish \indexname on input line 384.
+or `german'. on input line 382.
+Package scrbase Info: activating UKenglish \abstractname on input line 382.
+Package scrbase Info: activating UKenglish \partname on input line 382.
+Package scrbase Info: activating UKenglish \chaptername on input line 382.
+Package scrbase Info: activating UKenglish \appendixname on input line 382.
+Package scrbase Info: activating UKenglish \figurename on input line 382.
+Package scrbase Info: activating UKenglish \tablename on input line 382.
+Package scrbase Info: activating UKenglish \contentsname on input line 382.
+Package scrbase Info: activating UKenglish \listfigurename on input line 382.
+Package scrbase Info: activating UKenglish \listtablename on input line 382.
+Package scrbase Info: activating UKenglish \bibname on input line 382.
+Package scrbase Info: activating UKenglish \indexname on input line 382.
 \c@mv@tabular=\count512
 \c@mv@boldtabular=\count513
-LaTeX Info: Redefining \microtypecontext on input line 384.
-Package microtype Info: Applying patch `item' on input line 384.
-Package microtype Info: Applying patch `toc' on input line 384.
-Package microtype Info: Applying patch `eqnum' on input line 384.
-Package microtype Info: Applying patch `footnote' on input line 384.
-Package microtype Info: Applying patch `verbatim' on input line 384.
+LaTeX Info: Redefining \microtypecontext on input line 382.
+Package microtype Info: Applying patch `item' on input line 382.
+Package microtype Info: Applying patch `toc' on input line 382.
+Package microtype Info: Applying patch `eqnum' on input line 382.
+Package microtype Info: Applying patch `footnote' on input line 382.
+Package microtype Info: Applying patch `verbatim' on input line 382.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 384.
+LaTeX Info: Redefining \showhyphens on input line 382.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1593,9 +1593,9 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'expose.bbl' found.
  (expose.bbl)
-Package biblatex Info: Reference section=0 on input line 384.
-Package biblatex Info: Reference segment=0 on input line 384.
-Package hyperref Info: Link coloring OFF on input line 384.
+Package biblatex Info: Reference section=0 on input line 382.
+Package biblatex Info: Reference segment=0 on input line 382.
+Package hyperref Info: Link coloring OFF on input line 382.
 
 (expose.out) (expose.out)
 \@outlinefile=\write7
@@ -1608,7 +1608,7 @@ Class scrreprt Info: loading recommended package `bookmark'.
 (scrreprt)           `bookmarkpackage=false' before \begin{document} and
 (scrreprt)           you can avoid this message adding:
 (scrreprt)             \usepackage{bookmark}
-(scrreprt)           before \begin{document} on input line 384.
+(scrreprt)           before \begin{document} on input line 382.
 
 (C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/bookmark\bookmark.sty
 Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
@@ -1619,20 +1619,20 @@ File: bkm-pdftex.def 2020-11-06 v1.29 bookmark driver for pdfTeX (HO)
 ))
 \c@lstlisting=\count515
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 24.88pt on input line 389.
+(Font)              scaled to size 24.88pt on input line 387.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 389.
+(Font)              scaled to size 12.0pt on input line 387.
 
 (C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/microtype\mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 389.
+(Font)              <10.95> on input line 387.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 389.
+(Font)              <8> on input line 387.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 389.
+(Font)              <6> on input line 387.
  [1
 
 
@@ -1642,7 +1642,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 s/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts_75t36g.enc} <./L
 ogo_zentral_farbig_EN.png>]
 LaTeX Font Info:    Trying to load font information for T1+LibertinusSans-TLF o
-n input line 392.
+n input line 390.
 
 (C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/libertinus-type1\t1libertinuss
 ans-tlf.fd
@@ -1650,33 +1650,33 @@ File: T1LibertinusSans-TLF.fd 2022/11/07 (autoinst) Font definitions for T1/Lib
 ertinusSans-TLF.
 )
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
-(Font)              scaled to size 10.95pt on input line 392.
+(Font)              scaled to size 10.95pt on input line 390.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LibertinusSans-TLF' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/b/n' will be
-(Font)              scaled to size 10.95pt on input line 392.
+(Font)              scaled to size 10.95pt on input line 390.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/b/n' will be
-(Font)              scaled to size 14.4pt on input line 392.
+(Font)              scaled to size 14.4pt on input line 390.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 392.
+(Font)              scaled to size 12.0pt on input line 390.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 392.
+(Font)              scaled to size 12.0pt on input line 390.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 392.
+(Font)              <12> on input line 390.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 410.
+(Font)              scaled to size 8.0pt on input line 408.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 410.
+(Font)              scaled to size 9.0pt on input line 408.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 410.
+(Font)              <9> on input line 408.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 410.
+(Font)              <5> on input line 408.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 410.
+(Font)              scaled to size 6.0pt on input line 408.
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
-10.
+08.
  (C:\Program Files\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
@@ -1685,7 +1685,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--410
+Underfull \hbox (badness 10000) in paragraph at lines 408--408
   [][][][][][]$\T1/cmtt/m/n/9 https : / / github . com / apache / cassandra / b
 lob / trunk / src / java / org / apache /
  []
@@ -1699,7 +1699,7 @@ LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <9> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 8.
 )
 Package hyperref Info: bookmark level for unknown listing defaults to 0 on inpu
-t line 467.
+t line 465.
 \openout4 = `expose.pyg'.
 
 
@@ -1708,11 +1708,11 @@ t line 467.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/sl' in size <10.95> no
 t available
 (Font)              Font shape `T1/LibertinusSerif-TLF/m/it' tried instead on i
-nput line 507.
+nput line 505.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/it' will be
-(Font)              scaled to size 10.95pt on input line 507.
+(Font)              scaled to size 10.95pt on input line 505.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 507.
+(Font)              scaled to size 9.0pt on input line 505.
  [1
 
 
@@ -1721,25 +1721,25 @@ adfl.enc}] [2] [3]
 <Model_pipeline.png, id=110, 4460.665pt x 2176.13pt>
 File: Model_pipeline.png Graphic file (type png)
 <use Model_pipeline.png>
-Package pdftex.def Info: Model_pipeline.png  used on input line 526.
+Package pdftex.def Info: Model_pipeline.png  used on input line 524.
 (pdftex.def)             Requested size: 350.0pt x 170.74025pt.
  [4 <./Model_pipeline.png>]
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/b/n' will be
-(Font)              scaled to size 10.95pt on input line 546.
+(Font)              scaled to size 10.95pt on input line 544.
  [5{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts
 _sfissr.enc}] [6]
 Package hyperref Info: bookmark level for unknown resq defaults to 0 on input l
-ine 595.
+ine 593.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/b/it' will be
-(Font)              scaled to size 10.95pt on input line 595.
+(Font)              scaled to size 10.95pt on input line 593.
 
 [7{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts_
 opzo24.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-ty
 pe1/lbts_nufysp.enc}] [8]
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/b/n' will be
-(Font)              scaled to size 20.74pt on input line 623.
+(Font)              scaled to size 20.74pt on input line 621.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
-(Font)              scaled to size 20.74pt on input line 623.
+(Font)              scaled to size 20.74pt on input line 621.
  [9
 
 
@@ -1966,7 +1966,7 @@ c.pfb><C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/type1/public/libertinus-type
 /public/libertinus-type1/LibertinusSerif-Regular.pfb><C:/Program Files/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmsy6.pfb>
-Output written on expose.pdf (11 pages, 871669 bytes).
+Output written on expose.pdf (11 pages, 871675 bytes).
 PDF statistics:
  359 PDF objects out of 1000 (max. 8388607)
  62 named destinations out of 1000 (max. 500000)
