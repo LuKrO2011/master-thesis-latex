@@ -606,6 +606,69 @@ We expect that the averaged ratings of the selected code snippets matches the pr
 We measure this extent by applying the mean as a measure of central tendency and standard deviation as a measure of variability, as proposed by \citeauthor{linaker2015guidelines}~\cite{linaker2015guidelines}. We make those measurements with respect to stratified sampling.
 Our null hypothesis is, that both assumptions (Assumption~\ref{well-readable-assumption}~and~\ref{poorly-readable-assumption}) hold, i.e., that the expected readability does not deviate too much from the mean of the survey participants.
 After conduction, we visualize our results by generating car charts. We also provide a visualization that summarizes the mean deviations of participants' ratings from expected readability for all snippets.
+
+
+%\section{Survey Introduction}
+%In the following survey we will ask you to rate Java code snippets by their readability. Code readability is the impression of difficulty of code while trying to understand it. Please note, that readability is not the same as understandability or complexity. Consider this example:
+%
+%\begin{listing}[!ht]
+%	\begin{minted}[linenos, frame=lines, framesep=2mm]{java}
+%		public static int[] generateFibonacci(int n) {
+%			int[] fibonacci = new int[n];
+%			fibonacci[0] = 0;
+%			fibonacci[1] = 1;
+%			
+%			for (int i = 2; i < n; i++) {
+%				fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
+%			}
+%			
+%			return fibonacci;
+%		}
+%	\end{minted}
+%	\caption[Fibonacci program with high readability and understandability]{Fibonacci program with high readability and understandability}
+%	\label{lst:fibonacci-default}
+%\end{listing}
+%
+%\begin{listing}[!ht]
+%	\begin{minted}[linenos, frame=lines, framesep=2mm]{java}
+%		public static int[] foo(int x) {
+%			int[] bar = new int[x];
+%			bar[0] = 0;
+%			bar[1] = 1;
+%			
+%			for (int i = 2; i < x; i++) {
+%				bar[i] = bar[i - 1] + bar[i - 2];
+%			}
+%			
+%			return bar;
+%		}
+%	\end{minted}
+%	\caption[Fibonacci program with with high readability (formatting and short names), but low understandability (bad naming)]{Fibonacci program with with high readability (formatting and short names), but low understandability (bad naming)}
+%	\label{lst:fibonacci-readable}
+%\end{listing}
+%
+%\begin{listing}[!ht]
+%	\begin{minted}[linenos, frame=lines, framesep=2mm]{java}
+%		public static int[] generateFibonacciNumbersUntilInput(int n) { int[] fibonacciNumbers = new int[n]; fibonacciNumbers[0] = 0;
+%			fibonacciNumbers[1] = 1;
+%			for (
+%			int i = 2;
+%			i < n; i++) {
+%				fibonacciNumbers[i] = fibonacciNumbers[i - 1] 
+%				+ 
+%				fibonacciNumbers[i - 2];
+%			}
+%			
+%			return fibonacciNumbers
+%			;
+%		}
+%	\end{minted}
+%	\caption[Fibonacci program with with low readability (formatting and long names), but high understandability (precise naming, low complexity)]{Fibonacci program with with low readability (formatting and long names), but high understandability (precise naming, low complexity)}
+%	\label{lst:fibonacci-understandable}
+%\end{listing}
+%
+%
+%Thank you for taking the time to understand what code readability is. In the following we ask you to rate the given code snippets by their readability.
 	
 	\backmatter
 	

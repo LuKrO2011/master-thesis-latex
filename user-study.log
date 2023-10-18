@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  18 OCT 2023 17:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  18 OCT 2023 18:16
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1707,11 +1707,22 @@ adfl.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type
 1/lbts_sfissr.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libert
 inus-type1/lbts_rlktsf.enc}] [2] [3] [4] [5]
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/b/n' will be
-(Font)              scaled to size 20.74pt on input line 612.
+(Font)              scaled to size 20.74pt on input line 675.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
-(Font)              scaled to size 20.74pt on input line 612.
+(Font)              scaled to size 20.74pt on input line 675.
 \tf@thm=\write8
 \openout8 = `user-study.thm'.
+
+runsystem(del _minted-user-study\default.pygstyle)...executed.
+
+runsystem(del _minted-user-study\9168CA47441DB776023184478403A6BE20906C08E2178F
+E9B90BFB61CE2D582B.pygtex)...executed.
+
+runsystem(del _minted-user-study\C1A4D6298DB471CAFDF9E7F558E9B54520906C08E2178F
+E9B90BFB61CE2D582B.pygtex)...executed.
+
+runsystem(del _minted-user-study\18B3F34600A7047FF36CF75A82A878DD20906C08E2178F
+E9B90BFB61CE2D582B.pygtex)...executed.
 
  [6
 
@@ -1904,25 +1915,17 @@ t1libertinussans-tlf.fd
 ts1libertinusserif-tlf.fd
  ***********
 
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `user-study.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                user-study
-(biblatex)                and rerun LaTeX afterwards.
-
 Package logreq Info: Writing requests to 'user-study.run.xml'.
 \openout1 = `user-study.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46855 strings out of 475551
- 1003634 string characters out of 5772369
- 2007834 words of memory out of 5000000
- 67189 multiletter control sequences out of 15000+600000
+ 46873 strings out of 475551
+ 1004818 string characters out of 5772369
+ 2008487 words of memory out of 5000000
+ 67207 multiletter control sequences out of 15000+600000
  672271 words of font info for 208 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  122i,20n,121p,10967b,2479s stack positions out of 10000i,1000n,20000p,200000b,200000s
