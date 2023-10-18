@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  18 OCT 2023 16:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  18 OCT 2023 17:15
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1707,9 +1707,9 @@ adfl.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type
 1/lbts_sfissr.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libert
 inus-type1/lbts_rlktsf.enc}] [2] [3] [4] [5]
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/b/n' will be
-(Font)              scaled to size 20.74pt on input line 615.
+(Font)              scaled to size 20.74pt on input line 612.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
-(Font)              scaled to size 20.74pt on input line 615.
+(Font)              scaled to size 20.74pt on input line 612.
 \tf@thm=\write8
 \openout8 = `user-study.thm'.
 
@@ -1904,18 +1904,26 @@ t1libertinussans-tlf.fd
 ts1libertinusserif-tlf.fd
  ***********
 
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `user-study.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                user-study
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'user-study.run.xml'.
 \openout1 = `user-study.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46852 strings out of 475551
- 1003532 string characters out of 5772369
+ 46855 strings out of 475551
+ 1003634 string characters out of 5772369
  2007834 words of memory out of 5000000
  67189 multiletter control sequences out of 15000+600000
- 672001 words of font info for 206 fonts, out of 8000000 for 9000
+ 672271 words of font info for 208 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  122i,20n,121p,10967b,2479s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/type1/public/libertinus-type1/Li
@@ -1924,9 +1932,9 @@ lic/libertinus-type1/LibertinusSerif-Bold.pfb><C:/Users/lukas/AppData/Roaming/M
 iKTeX/fonts/type1/public/libertinus-type1/LibertinusSerif-Italic.pfb><C:/Users/
 lukas/AppData/Roaming/MiKTeX/fonts/type1/public/libertinus-type1/LibertinusSeri
 f-Regular.pfb>
-Output written on user-study.pdf (7 pages, 430115 bytes).
+Output written on user-study.pdf (7 pages, 429602 bytes).
 PDF statistics:
- 176 PDF objects out of 1000 (max. 8388607)
+ 174 PDF objects out of 1000 (max. 8388607)
  39 named destinations out of 1000 (max. 500000)
  66698 words of extra memory for PDF output out of 74296 (max. 10000000)
 
