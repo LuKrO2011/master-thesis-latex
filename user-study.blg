@@ -1,15 +1,15 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'user-study.blg'
-[153] biber-MSWIN64:340> INFO - === 
-[212] Biber.pm:419> INFO - Reading 'user-study.bcf'
-[382] Biber.pm:979> INFO - Found 6 citekeys in bib section 0
-[404] Biber.pm:4419> INFO - Processing section 0
-[421] Biber.pm:4610> INFO - Looking for bibtex file 'user-study.bib' for section 0
-[509] bibtex.pm:1713> INFO - LaTeX decoding ...
-[573] bibtex.pm:1519> INFO - Found BibTeX data source 'user-study.bib'
-[662] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'variable = shifted' with 'variable = non-ignorable'
-[664] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[664] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-UK'
-[664] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-UK'
-[672] bbl.pm:660> INFO - Writing 'user-study.bbl' with encoding 'UTF-8'
-[677] bbl.pm:763> INFO - Output to user-study.bbl
+[142] biber-MSWIN64:340> INFO - === 
+[176] Biber.pm:419> INFO - Reading 'user-study.bcf'
+[292] Biber.pm:979> INFO - Found 6 citekeys in bib section 0
+[308] Biber.pm:4419> INFO - Processing section 0
+[319] Biber.pm:4610> INFO - Looking for bibtex file 'user-study.bib' for section 0
+[370] bibtex.pm:1713> INFO - LaTeX decoding ...
+[410] bibtex.pm:1519> INFO - Found BibTeX data source 'user-study.bib'
+[474] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[475] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'variable = shifted' with 'variable = non-ignorable'
+[475] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-UK'
+[475] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-UK'
+[481] bbl.pm:660> INFO - Writing 'user-study.bbl' with encoding 'UTF-8'
+[484] bbl.pm:763> INFO - Output to user-study.bbl

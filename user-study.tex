@@ -80,13 +80,15 @@ cleveref=true,%
 		organization={IEEE}
 	}
 	
-	@inproceedings{scalabrino2016improving,
-		title={Improving code readability models with textual features},
-		author={Scalabrino, Simone and Linares-Vasquez, Mario and Poshyvanyk, Denys and Oliveto, Rocco},
-		booktitle={2016 IEEE 24th International Conference on Program Comprehension (ICPC)},
-		pages={1--10},
-		year={2016},
-		organization={IEEE}
+	@article{scalabrino2018comprehensive,
+		title={A comprehensive model for code readability},
+		author={Scalabrino, Simone and Linares-V{\'a}squez, Mario and Oliveto, Rocco and Poshyvanyk, Denys},
+		journal={Journal of Software: Evolution and Process},
+		volume={30},
+		number={6},
+		pages={e1958},
+		year={2018},
+		publisher={Wiley Online Library}
 	}
 	
 	@inproceedings{posnett2011simpler,
@@ -454,7 +456,7 @@ The first part of the survey is devoted to Prolific-specific questions and quest
 In total, we create 20 unique questionnaires, with each questionnaire being rated by 10 individual participants. Consequently, we generate a dataset of 400 code snippets. The expected expenditure for this survey, involving 200 participants via the Prolific platform, is estimated to be around €500.
 
 \subsection{Sample Size}
-To get accurate study results, multiple participants have to rate the same code snippets. We specify a size of ten participants per code snippet, similar to \citeauthor{scalabrino2016improving}~\cite{scalabrino2016improving}. According to an online calculator\footnote{https://www.calculator.net/sample-size-calculator.html} we end up with a margin of error of 33.99\% at a confidence of 95\%. This means that we are 95\% confident that the actual readability of a code snippet is within 33.99\% of the survey result score. With a probability of 5\%, the readability of a code snippet differs by more than 33.99\% from the score of the survey result. On a Likert scale ranging from 1 to 5, the mean of the survey results is between 1.0 and 5.0. In this context, an offset of 33.99\% is an offset of more than one rating point~\cite{likert1932technique}. We need to consider this when evaluating our the gathered data.
+To get accurate study results, multiple participants have to rate the same code snippets. We specify a size of ten participants per code snippet, similar to \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}. According to an online calculator\footnote{https://www.calculator.net/sample-size-calculator.html} we end up with a margin of error of 33.99\% at a confidence of 95\%. This means that we are 95\% confident that the actual readability of a code snippet is within 33.99\% of the survey result score. With a probability of 5\%, the readability of a code snippet differs by more than 33.99\% from the score of the survey result. On a Likert scale ranging from 1 to 5, the mean of the survey results is between 1.0 and 5.0. In this context, an offset of 33.99\% is an offset of more than one rating point~\cite{likert1932technique}. We need to consider this when evaluating our the gathered data.
 
 % In order to calculate the required sample size for a single code snippet, we need to specify a confidence level and a margin of error.
 % We have relatively small requirements to both, and therewith set the confidence level to 95\% and the margin of error to 25\%. Using an online calculator\footnote{https://www.calculator.net/sample-size-calculator.html} we find out, that we need 16 participants per code snippet in order to achieve this.
@@ -490,7 +492,7 @@ The survey participants are selected using Prolific. The only restriction for th
 % Paper on sampling: https://www.researchgate.net/profile/Anita-Acharya-2/publication/256446902_Sampling_Why_and_How_of_it_Anita_S_Acharya_Anupam_Prakash_Pikee_Saxena_Aruna_Nigam/links/0c960527c82d449788000000/Sampling-Why-and-How-of-it-Anita-S-Acharya-Anupam-Prakash-Pikee-Saxena-Aruna-Nigam.pdf
 A big part of our code snippets might be getters and setters. However, we do not want to mostly evaluate getters and setters in our study. Therefore, we use stratified sampling~\cite{thompson2012sampling}. Thus, code snippets are split into groups with high similarity, so-called strata. When we then randomly sample within the strata, we make sure to not only sample getters and setters.
 
-To create the required stratas we need to measure the similarity of code snippets. \citeauthor{scalabrino2016improving} developed a tool to generate various metrics for Java source code~\cite{scalabrino2016improving}. We use this tool on each code snippet and create a code vector for each snippet. The Euclidean distance between these vectors provides an estimation of source code similarity, which is used to create the strata.
+To create the required stratas we need to measure the similarity of code snippets. \citeauthor{scalabrino2018comprehensive} developed a tool to generate various metrics for Java source code~\cite{scalabrino2018comprehensive}. We use this tool on each code snippet and create a code vector for each snippet. The Euclidean distance between these vectors provides an estimation of source code similarity, which is used to create the strata.
 
 \subsection{Internal Questions} % Research Questions
 The internal research questions are as follows:
@@ -526,6 +528,9 @@ The survey neither contains demographic questions nor filter questions. Besides 
 
 % Last question?
 % Face Validity: Ask questioners about validity
+
+%TODO:
+%Definition von Readability von Scalabrion übernehmen
 
 \subsection{Survey Questions} % Questionnaire- Opinion
 For each code snippet, the following closed-ended question is given: "How do you rate the readability of this code?". The answers follow the Likert Scale: very high (5), high (4), medium (3), low (2), very low (1).
