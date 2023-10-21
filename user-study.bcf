@@ -2369,8 +2369,11 @@
     <bcf:citekey order="6" intorder="1">thompson2012sampling</bcf:citekey>
     <bcf:citekey order="7" intorder="1">scalabrino2018comprehensive</bcf:citekey>
     <bcf:citekey order="8" intorder="1">scalabrino2018comprehensive</bcf:citekey>
-    <bcf:citekey order="9" intorder="1">linaker2015guidelines</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">buse2009learning</bcf:citekey>
+    <bcf:citekey order="9" intorder="2">dorn2012general</bcf:citekey>
+    <bcf:citekey order="9" intorder="3">scalabrino2018comprehensive</bcf:citekey>
     <bcf:citekey order="10" intorder="1">linaker2015guidelines</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">linaker2015guidelines</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

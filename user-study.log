@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  18 OCT 2023 18:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.8.1)  21 OCT 2023 17:38
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -6,7 +6,7 @@ entering extended mode
 (user-study.tex
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-06-30>
-(C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/se2thesis\se2thesis.cls
+(C:\Program Files\MiKTeX\tex/latex/se2thesis\se2thesis.cls
 Document Class: se2thesis 2023-07-04 v3.1.0 A thesis class for the Chair of Sof
 tware Engineering II
 (C:\Program Files\MiKTeX\tex/latex/graphics\graphicx.sty
@@ -205,7 +205,7 @@ Package typearea Info: These are the values describing the layout:
 (typearea)              \baselineskip   = 13.6pt
 (typearea)              on input line 175.
 
-(C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/se2thesis\se2colors.sty
+(C:\Program Files\MiKTeX\tex/latex/se2thesis\se2colors.sty
 Package: se2colors 2023-07-04 v3.1.0 A colour support package for the se2thesis
  bundle
 
@@ -228,7 +228,7 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
 ))
-(C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/se2thesis\se2fonts.sty
+(C:\Program Files\MiKTeX\tex/latex/se2thesis\se2fonts.sty
 Package: se2fonts 2023-07-04 v3.1.0 A font-selection support package for the se
 2thesis bundle
 
@@ -663,7 +663,7 @@ Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 \c@blind@pangramcount=\count299
 \c@blind@pangrammax=\count300
 )
-(C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/se2thesis\se2packages.sty
+(C:\Program Files\MiKTeX\tex/latex/se2thesis\se2packages.sty
 Package: se2packages 2023-07-04 v3.1.0 Supporting packages for the se2thesis bu
 ndle
 
@@ -718,7 +718,7 @@ Package seiipackages Info: se2packages loads the siunitx packagenow.
 
 
 (C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/siunitx\siunitx.sty
-Package: siunitx 2023-06-12 v3.2.6 A comprehensive (SI) units package
+Package: siunitx 2023-07-26 v3.2.9 A comprehensive (SI) units package
 \l__siunitx_angle_tmp_dim=\dimen264
 \l__siunitx_angle_marker_box=\box70
 \l__siunitx_angle_unit_box=\box71
@@ -1496,8 +1496,7 @@ G,.JBIG2,.JB2,.eps]
 (C:\Program Files\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-(C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/se2thesis\se2translations-engl
-ish.trsl
+(C:\Program Files\MiKTeX\tex/latex/se2thesis\se2translations-english.trsl
 File: se2translations-english.trsl (english translation file `se2translations')
  2023/07/04
 )
@@ -1668,17 +1667,17 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/b/n' will be
 (Font)              scaled to size 10.95pt on input line 413.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 418.
+(Font)              scaled to size 8.0pt on input line 419.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 418.
+(Font)              scaled to size 9.0pt on input line 419.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 418.
+(Font)              <9> on input line 419.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 418.
+(Font)              <5> on input line 419.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 418.
+(Font)              scaled to size 6.0pt on input line 419.
 LaTeX Font Info:    Trying to load font information for TS1+LibertinusSerif-TLF
- on input line 427.
+ on input line 428.
 
 (C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/libertinus-type1\ts1libertinus
 serif-tlf.fd
@@ -1686,7 +1685,7 @@ File: TS1LibertinusSerif-TLF.fd 2022/11/07 (autoinst) Font definitions for TS1/
 LibertinusSerif-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 10.95pt on input line 427.
+(Font)              scaled to size 10.95pt on input line 428.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LibertinusSerif-TLF' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1694,43 +1693,48 @@ Package microtype Info: Loading generic protrusion settings for font family
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/sl' in size <10.95> no
 t available
 (Font)              Font shape `T1/LibertinusSerif-TLF/m/it' tried instead on i
-nput line 457.
+nput line 458.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/it' will be
-(Font)              scaled to size 10.95pt on input line 457.
+(Font)              scaled to size 10.95pt on input line 458.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 457.
+(Font)              scaled to size 9.0pt on input line 458.
  [1
 
 
 {C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts_mf
 adfl.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type
 1/lbts_sfissr.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libert
-inus-type1/lbts_rlktsf.enc}] [2] [3] [4] [5]
+inus-type1/lbts_rlktsf.enc}] [2] [3] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 624--626
+
+ []
+
+[5] [6]
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/b/n' will be
-(Font)              scaled to size 20.74pt on input line 675.
+(Font)              scaled to size 20.74pt on input line 695.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
-(Font)              scaled to size 20.74pt on input line 675.
+(Font)              scaled to size 20.74pt on input line 695.
+LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/sc' will be
+(Font)              scaled to size 10.95pt on input line 695.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 6
+95.
+ (C:\Program Files\MiKTeX\tex/latex/base\t1cmtt.fd
+File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `cmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
 \tf@thm=\write8
 \openout8 = `user-study.thm'.
 
-runsystem(del _minted-user-study\default.pygstyle)...executed.
-
-runsystem(del _minted-user-study\9168CA47441DB776023184478403A6BE20906C08E2178F
-E9B90BFB61CE2D582B.pygtex)...executed.
-
-runsystem(del _minted-user-study\C1A4D6298DB471CAFDF9E7F558E9B54520906C08E2178F
-E9B90BFB61CE2D582B.pygtex)...executed.
-
-runsystem(del _minted-user-study\18B3F34600A7047FF36CF75A82A878DD20906C08E2178F
-E9B90BFB61CE2D582B.pygtex)...executed.
-
- [6
+ [7
 
 
 
 {C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts_nu
-fysp.enc}]
-(user-study.aux)
+fysp.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type
+1/lbts_cb34qf.enc}] (user-study.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-06-30>
@@ -1822,7 +1826,7 @@ csquotes.sty    2022-09-14 v5.2n context-sensitive quotations (JAW)
 csquotes.def    2022-09-14 v5.2n csquotes generic definitions (JAW)
 csquotes.cfg    
 booktabs.sty    2020/01/12 v1.61803398 Publication quality tables
- siunitx.sty    2023-06-12 v3.2.6 A comprehensive (SI) units package
+ siunitx.sty    2023-07-26 v3.2.9 A comprehensive (SI) units package
  amstext.sty    2021/08/26 v2.01 AMS text
   amsgen.sty    1999/11/30 v2.0 generic functions
    array.sty    2022/09/04 v2.5g Tabular extension package (FMi)
@@ -1913,6 +1917,7 @@ bkm-pdftex.def    2020-11-06 v1.29 bookmark driver for pdfTeX (HO)
 RS)
 t1libertinussans-tlf.fd
 ts1libertinusserif-tlf.fd
+  t1cmtt.fd    2023/04/13 v2.5m Standard LaTeX font definitions
  ***********
 
 Package rerunfilecheck Info: File `user-study.out' has not changed.
@@ -1922,22 +1927,23 @@ Package logreq Info: Writing requests to 'user-study.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46873 strings out of 475551
- 1004818 string characters out of 5772369
- 2008487 words of memory out of 5000000
- 67207 multiletter control sequences out of 15000+600000
- 672271 words of font info for 208 fonts, out of 8000000 for 9000
+ 46910 strings out of 475550
+ 1005002 string characters out of 5772349
+ 2006910 words of memory out of 5000000
+ 67220 multiletter control sequences out of 15000+600000
+ 677778 words of font info for 220 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  122i,20n,121p,10967b,2479s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/type1/public/libertinus-type1/Li
-bertinusSans-Regular.pfb><C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/type1/pub
-lic/libertinus-type1/LibertinusSerif-Bold.pfb><C:/Users/lukas/AppData/Roaming/M
-iKTeX/fonts/type1/public/libertinus-type1/LibertinusSerif-Italic.pfb><C:/Users/
-lukas/AppData/Roaming/MiKTeX/fonts/type1/public/libertinus-type1/LibertinusSeri
-f-Regular.pfb>
-Output written on user-study.pdf (7 pages, 429602 bytes).
+ <C:\Users\lukas\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
+1095.pk><C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/type1/public/libertinus-ty
+pe1/LibertinusSans-Regular.pfb><C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/typ
+e1/public/libertinus-type1/LibertinusSerif-Bold.pfb><C:/Users/lukas/AppData/Roa
+ming/MiKTeX/fonts/type1/public/libertinus-type1/LibertinusSerif-Italic.pfb><C:/
+Users/lukas/AppData/Roaming/MiKTeX/fonts/type1/public/libertinus-type1/Libertin
+usSerif-Regular.pfb>
+Output written on user-study.pdf (8 pages, 444937 bytes).
 PDF statistics:
- 174 PDF objects out of 1000 (max. 8388607)
- 39 named destinations out of 1000 (max. 500000)
- 66698 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 222 PDF objects out of 1000 (max. 8388607)
+ 42 named destinations out of 1000 (max. 500000)
+ 71306 words of extra memory for PDF output out of 74296 (max. 10000000)
 

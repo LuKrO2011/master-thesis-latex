@@ -53,6 +53,33 @@
       \field{pages}{546\bibrangedash 558}
       \range{pages}{13}
     \endentry
+    \entry{dorn2012general}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=b538dcefa5d57bedc82e1f2dd9a0c3d0}{%
+           family={Dorn},
+           familyi={D\bibinitperiod},
+           given={Jonathan},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{b538dcefa5d57bedc82e1f2dd9a0c3d0}
+      \strng{fullhash}{b538dcefa5d57bedc82e1f2dd9a0c3d0}
+      \strng{bibnamehash}{b538dcefa5d57bedc82e1f2dd9a0c3d0}
+      \strng{authorbibnamehash}{b538dcefa5d57bedc82e1f2dd9a0c3d0}
+      \strng{authornamehash}{b538dcefa5d57bedc82e1f2dd9a0c3d0}
+      \strng{authorfullhash}{b538dcefa5d57bedc82e1f2dd9a0c3d0}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A General Software Readability Model}
+      \field{year}{2012}
+      \verb{urlraw}
+      \verb https://api.semanticscholar.org/CorpusID:14098740
+      \endverb
+      \verb{url}
+      \verb https://api.semanticscholar.org/CorpusID:14098740
+      \endverb
+    \endentry
     \entry{likert1932technique}{article}{}
       \name{author}{1}{}{%
         {{hash=85b07393f98f1590e08d998667417f9b}{%
@@ -113,40 +140,6 @@
       \field{month}{05}
       \field{title}{Guidelines for Conducting Surveys in Software Engineering}
       \field{year}{2015}
-    \endentry
-    \entry{posnett2011simpler}{inproceedings}{}
-      \name{author}{3}{}{%
-        {{hash=bfc2f15f3ea252edf4bb6ead52ac9d76}{%
-           family={Posnett},
-           familyi={P\bibinitperiod},
-           given={Daryl},
-           giveni={D\bibinitperiod}}}%
-        {{hash=a1c3b1c7ade656b4f3b8d9faf9e8608e}{%
-           family={Hindle},
-           familyi={H\bibinitperiod},
-           given={Abram},
-           giveni={A\bibinitperiod}}}%
-        {{hash=b14eb0759a69e6f4dca80cc529ce30de}{%
-           family={Devanbu},
-           familyi={D\bibinitperiod},
-           given={Premkumar},
-           giveni={P\bibinitperiod}}}%
-      }
-      \strng{namehash}{7a04d5f55a70c3b9e8d6a2e388b673b5}
-      \strng{fullhash}{2075bc3fc9deaabdd11b735bc8180ece}
-      \strng{bibnamehash}{2075bc3fc9deaabdd11b735bc8180ece}
-      \strng{authorbibnamehash}{2075bc3fc9deaabdd11b735bc8180ece}
-      \strng{authornamehash}{7a04d5f55a70c3b9e8d6a2e388b673b5}
-      \strng{authorfullhash}{2075bc3fc9deaabdd11b735bc8180ece}
-      \field{sortinit}{P}
-      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{Proceedings of the 8th working conference on mining software repositories}
-      \field{title}{A simpler model of software readability}
-      \field{year}{2011}
-      \field{pages}{73\bibrangedash 82}
-      \range{pages}{10}
     \endentry
     \entry{scalabrino2018comprehensive}{article}{}
       \name{author}{4}{}{%
