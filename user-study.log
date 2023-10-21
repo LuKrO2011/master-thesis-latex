@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.8.1)  21 OCT 2023 17:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.8.1)  21 OCT 2023 18:44
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1705,19 +1705,19 @@ LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
 adfl.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type
 1/lbts_sfissr.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libert
 inus-type1/lbts_rlktsf.enc}] [2] [3] [4]
-Underfull \hbox (badness 10000) in paragraph at lines 624--626
+Underfull \hbox (badness 10000) in paragraph at lines 623--625
 
  []
 
 [5] [6]
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/b/n' will be
-(Font)              scaled to size 20.74pt on input line 695.
+(Font)              scaled to size 20.74pt on input line 694.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
-(Font)              scaled to size 20.74pt on input line 695.
+(Font)              scaled to size 20.74pt on input line 694.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/sc' will be
-(Font)              scaled to size 10.95pt on input line 695.
+(Font)              scaled to size 10.95pt on input line 694.
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 6
-95.
+94.
  (C:\Program Files\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
@@ -1927,11 +1927,11 @@ Package logreq Info: Writing requests to 'user-study.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 46910 strings out of 475550
- 1005002 string characters out of 5772349
+ 46913 strings out of 475550
+ 1005170 string characters out of 5772349
  2006910 words of memory out of 5000000
  67220 multiletter control sequences out of 15000+600000
- 677778 words of font info for 220 fonts, out of 8000000 for 9000
+ 678207 words of font info for 223 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  122i,20n,121p,10967b,2479s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\lukas\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
@@ -1941,9 +1941,9 @@ e1/public/libertinus-type1/LibertinusSerif-Bold.pfb><C:/Users/lukas/AppData/Roa
 ming/MiKTeX/fonts/type1/public/libertinus-type1/LibertinusSerif-Italic.pfb><C:/
 Users/lukas/AppData/Roaming/MiKTeX/fonts/type1/public/libertinus-type1/Libertin
 usSerif-Regular.pfb>
-Output written on user-study.pdf (8 pages, 444937 bytes).
+Output written on user-study.pdf (8 pages, 444503 bytes).
 PDF statistics:
  222 PDF objects out of 1000 (max. 8388607)
- 42 named destinations out of 1000 (max. 500000)
+ 40 named destinations out of 1000 (max. 500000)
  71306 words of extra memory for PDF output out of 74296 (max. 10000000)
 

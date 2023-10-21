@@ -495,8 +495,6 @@ A big part of our code snippets might be getters and setters. However, we do not
 
 To create the required stratas we need to measure the similarity of code snippets. \citeauthor{scalabrino2018comprehensive} developed a tool to generate various metrics for Java source code~\cite{scalabrino2018comprehensive}. We use this tool on each code snippet and create a code vector for each snippet. The Euclidean distance between these vectors provides an estimation of source code similarity, which is used to create the strata.
 
-After sampling downloaded code snippets this way, we also want to include the same snippets after certain manipulations with a certain frequency are applied. Multiple snippets from the same source snippet (including the source snippet itself) are not in the same questionaire, so that a user can not compare the snippets to each other.
-
 After sampling the downloaded code snippets in this way, we want to include the same snippets after performing manipulations. There are several variants with differences in type and frequency for each downloaded snippet. Multiple snippets from the same source snippet (including the source snippet itself) are not in the same questionnaire. Thus, a user cannot compare the snippets with each other. This does not diminish the inferences that can be made about all the data based on stratified sampling. However, conclusions can be drawn about the effectiveness of different heuristics.
 
 \subsection{Internal Questions} % Research Questions
@@ -506,18 +504,19 @@ The internal research questions are as follows:
 	\item Does the poorly-readable-assumption (Assumption \ref{poorly-readable-assumption}) hold?
 \end{itemize}
 
-To answer these questions, the assumptions %(Assumption~\ref{well-readable-assumption}~and~\ref{poorly-readable-assumption})
-are considered as hypotheses along with the following associated null hypotheses:
-\begin{enumerate}
-	\item \textbf{For Assumption~\ref{well-readable-assumption}}: The mined code exhibits a normal distribution of readability scores.
-	\item \textbf{For Assumption~\ref{poorly-readable-assumption}}: The readability of code does not significantly deteriorate compared to the original code snippet.
-\end{enumerate}
-
 The results for these questions are equally important, and thus none of them is prioritized over the other.
+To answer them, the assumptions %(Assumption~\ref{well-readable-assumption}~and~\ref{poorly-readable-assumption})
+are considered as hypotheses along with the following associated null hypotheses:
+\begin{itemize}
+	\item For Assumption~\ref{well-readable-assumption}: The mined code exhibits a normal distribution of readability scores.
+	\item For Assumption~\ref{poorly-readable-assumption}: The readability of code does not significantly deteriorate compared to the original code snippet.
+\end{itemize}
+
+
 
 Another goal of the study is to find estimates of which heuristics need to be applied how often to make the code less readable to some degree. This helps us to further adjust the settings of our generation approach for poorly readable code.
 
-Note that the goal of our study is not to label code snippets by readability, but to validate our assumptions. If the assumptions  %(Assumption~\ref{well-readable-assumption}~and~\ref{poorly-readable-assumption})
+The goal of our study is \textbf{not} to label code snippets by readability. If our assumptions  (Assumption~\ref{well-readable-assumption}~and~\ref{poorly-readable-assumption})
 are confirmed, we can use them to make inferences about the readability of all code snippets generated with our approach. This is a crucial difference from comparable other studies~\cite{buse2009learning, dorn2012general, scalabrino2018comprehensive}.
 
 \subsection{Questionnaire Attributes} \label{questionnaire-attributes}
@@ -565,7 +564,7 @@ We evaluate the survey construction by presenting it to the following groups:
 	\item Pilot survey group
 \end{itemize}
 
-We are conducting the survey iteratively. We start with three questionnaires and expand the number based on our conclusions from the first ones. This offers several advantages. Firstly, we can still adjust the survey if problems arise. Secondly, we can start building our pipeline for evaluation earlier. Finally, after each iteration, we can decide whether to include more variants of the same source code snippet or to increase the number of source code snippets instead (see Section \ref{sampling-design}). The first option could give us more insights on how to adjust the settings for our heuristics. The second option could increase the number of stratas involved or allow us to increase the evidence for a particular stratum by including more samples of the respective one.
+Another way to evaluate our survey on an ongoing basis is to conduct it iteratively. We start with three questionnaires and expand the number based on our conclusions from the first ones. This offers several advantages. Firstly, we can still adjust the survey if problems arise. Secondly, we can start building our pipeline for evaluation earlier. Finally, after each iteration, we can decide whether to include more variants of the same source code snippet or to increase the number of source code snippets instead (see Section \ref{sampling-design}). The first option could give us more insights on how to adjust the settings for our heuristics. The second option could increase the number of stratas involved or allow us to increase the evidence for a particular stratum by including more samples of the respective one.
 
 \section{Threads} % Quality assurance
 % Possible threads to the survey might be: 
@@ -624,7 +623,9 @@ You can find the survey schedule in Table~\ref{tab:survey-timeline}.
 We expect that the averaged ratings of the selected code snippets matches the predicted code readability to a certain extent. We do not expect an exact match.
 We measure this extent by applying the mean as a measure of central tendency and standard deviation as a measure of variability, as proposed by \citeauthor{linaker2015guidelines}~\cite{linaker2015guidelines}. We make those measurements with respect to stratified sampling.\\
 
-The primary objective of this study is to validate a novel dataset. It aims to demonstrate its suitability for training  readability classifiers, despite its heuristic construction. The study seeks to validate our assumptions (Assumption~\ref{well-readable-assumption}~and~\ref{poorly-readable-assumption}).
+The primary objective is to validate our assumptions (Assumption~\ref{well-readable-assumption}~and~\ref{poorly-readable-assumption}). 
+The primary objective of this study is to validate a novel dataset. It aims to demonstrate its suitability for training  readability classifiers, despite its heuristic construction. Thus, the study seeks to validate our assumptions (Assumption~\ref{well-readable-assumption}~and~\ref{poorly-readable-assumption}).
+
 After conduction, we visualize our results by generating car charts. We also provide a visualization that summarizes the mean deviations of participants' ratings from expected readability for all snippets.
 
 
