@@ -306,6 +306,44 @@ cleveref=true,%
 		year={2020},
 		publisher={BioMed Central}
 	}
+	
+	@article{dubay2004principles,
+		title={The principles of readability.},
+		author={DuBay, William H},
+		journal={Online Submission},
+		year={2004},
+		publisher={ERIC}
+	}
+	
+	@article{tashtoush2013impact,
+		title={Impact of programming features on code readability},
+		author={Tashtoush, Yahya and Odat, Zeinab and Alsmadi, Izzat M and Yatim, Maryan},
+		year={2013}
+	}
+	
+	@inproceedings{sedano2016code,
+		title={Code readability testing, an empirical study},
+		author={Sedano, Todd},
+		booktitle={2016 IEEE 29th International conference on software engineering education and training (CSEET)},
+		pages={111--117},
+		year={2016},
+		organization={IEEE}
+	}
+	
+	@article{tashtoush2013impact,
+		title={Impact of programming features on code readability},
+		author={Tashtoush, Yahya and Odat, Zeinab and Alsmadi, Izzat M and Yatim, Maryan},
+		year={2013}
+	}
+	
+	@inproceedings{oliveira2020evaluating,
+		title={Evaluating code readability and legibility: An examination of human-centric studies},
+		author={Oliveira, Delano and Bruno, Reydne and Madeiral, Fernanda and Castor, Fernando},
+		booktitle={2020 IEEE International Conference on Software Maintenance and Evolution (ICSME)},
+		pages={348--359},
+		year={2020},
+		organization={IEEE}
+	}
 \end{filecontents}
 \addbibresource{\jobname.bib}
 
@@ -386,6 +424,13 @@ cleveref=true,%
 	
 	\maketitle
 	
+	\begin{abstract}
+		% TODO: Rework, Bard Text
+		This master thesis explores the topic of code readability. It will begin by providing a comprehensive overview of the concept of code readability, including its definition, its importance, and the factors that influence it. The thesis will then discuss a number of best practices for writing readable code. Finally, the thesis will present a study that investigates the relationship between code readability and other software quality attributes.
+		
+		The thesis is expected to make a significant contribution to the field of software engineering by providing a deeper understanding of code readability and its impact on software quality. The findings of the study are expected to be helpful to developers in writing more readable code and to software quality practitioners in improving the quality of software systems.
+	\end{abstract}
+	
 	\mainmatter
 	
 	\tableofcontents
@@ -393,6 +438,140 @@ cleveref=true,%
 	\section{Introduction} \label{Introduction}
 	
 	% TODO: Make Motivation a Introduction
+	
+	% Readability in general
+	George Klare (1963) defines readability as “the ease of understanding or
+	comprehension due to the style of writing.” This definition focuses on writing
+	style as separate from issues such as content, coherence, and organization. In a
+	similar manner, Gretchen Hargis and her colleagues at IBM (1998) state that
+	readability, the “ease of reading words and sentences,” is an attribute of clarity.
+	The creator of the SMOG readability formula G. Harry McLaughlin (1969)
+	defines readability as: “the degree to which a given class of people find certain
+	reading matter compelling and comprehensible.” This definition stresses the
+	interaction between the text and a class of readers of known characteristics such
+	as reading skill, prior knowledge, and motivation.
+	Edgar Dale and Jeanne Chall’s (1949) definition may be the most
+	comprehensive: “The sum total (including all the interactions) of all those
+	elements within a given piece of printed material that affect the success a group
+	of readers have with it. The success is the extent to which they understand it,
+	read it at an optimal speed, and find it interesting.” 
+	\cite{dubay2004principles}
+	
+	% Definition & Importance
+	%https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=89a7dab26a532a7f291453578197f6c368ff3011
+	WE define readability as a human judgment of how
+	easy a text is to understand. The readability of a
+	program is related to its maintainability, and is thus a key
+	factor in overall software quality. Typically, maintenance
+	will consume over 70% of the total lifecycle cost of
+	a software product [4]. Aggarwal claims that source
+	code readability and documentation readability are both
+	critical to the maintainability of a project [1]. Other
+	researchers have noted that the act of reading code is
+	the most time-consuming component of all maintenance
+	activities [8], [32], [34]. Readability is so significant, in
+	fact, that Elshoff and Marcotty, after recognizing that
+	many commercial programs were much more difficult
+	to read than necessary, proposed adding a development
+	phase in which the program is made more readable [10].
+	Knight and Myers suggested that one phase of software inspection should be a check of the source code
+	for readability [21] to ensure maintainability, portability,
+	and reusability of the code. Haneef proposed adding a
+	dedicated readability and documentation group to the
+	development team, observing that, “without established
+	and consistent guidelines for readability, individual reviewers may not be able to help much” [15]. \cite{buse2009learning}
+	
+	
+	% Importance
+	Software developers read code all the time. The very first step in each software evolution and
+	maintenance task is to carefully read and understand the code; this step needs to be done even
+	when the maintainer is the author of the code. Developers spend much time reading code, far more
+	than writing it from scratch [1]. Therefore, if code is readable, it is pretty easy to start changing it;
+	instead, modifying unreadable code is like assembling a piece of furniture with instructions written
+	in a foreign language the one does not speak: the task is not impossible, but difficult, and a few
+	screws still may remain unused.
+	Furthermore, incremental change [2, 3, 4], which is required to perform concept location, impact
+	analysis, and the corresponding change implementation/propagation, needs a prior code reading
+	step before it can take place. This is why “readable code” is a fundamental and highly desirable at
+	any stage during software maintenance and evolution.\cite{scalabrino2018comprehensive}
+	
+	% Definition
+	Yet, code readability remains to be a very subjective concept. Several facets, like complexity,
+	usage of design concepts, formatting, source code lexicon, and visual aspects (e.g., syntax
+	highlighting) have been widely recognized as elements that impact program understanding [5, 6, 7].	\cite{scalabrino2018comprehensive}
+	
+	% Definition
+	Readability vs understandability
+	Posnett et al. [9] compared the difference between readability and understandability to the difference
+	between syntactic and semantic analysis. Readability measures the effort of the developer to access
+	the information contained in the code, while understandability measures the complexity of such
+	information. We defined a set of textual features that still capture aspects of code related to the
+	difficulty of accessing the information contained in a snippet. For example, NOC estimates the
+	number of concepts implemented in a snippet. A snippet with a few concepts, potentially more
+	readable, can still be hard to understand if a few concepts are not easy to understand. In our opinion,
+	textual features, which do not take into account semantics, like the ones we defined, can be used to
+	measure readability
+	\cite{scalabrino2018comprehensive}
+	
+	
+	% Importance
+	Readability is one important quality attributes for software source codes. Readability has
+	also significant relation or impact with other quality attributes such as: reusability,
+	maintainability, reliability, complexity, and portability metrics.\cite{tashtoush2013impact}
+	
+	% Definition
+	Code Readability can be defined as a human judgment on how easy it is to understand a
+	program source code [1], the ratio between lines of code and number of commented lines [2],
+	writing to people not to computers [3], making a code locally understandable without
+	searching for declarations and definitions [4], and also, the average number of right answers
+	to a series of questions about a program in a given length of time [5]. Definitions show clearly
+	that such quality attribute is related to some other attributes such as: understandability,
+	usability, reusability, complexity, or maintainability. 
+	Code readability is usually connected with comments and naming standards. While
+	those are two major factors that impact readability, there are also some other aspects to
+	consider.
+	One of the new concepts that appear in relation with software quality and readability
+	is the refactoring process. It means changing code structure externally without affecting
+	internal behavior to improve readability, flexibility, and enable easier modifications
+	[12-14]. Refactoring often aims to add new non functional objectives for code, without
+	affecting its main purpose by testing the code frequently.
+	In [15] the author defines “improving code readability” as the first advantage for
+	code refactoring. The survey briefly explains code refactoring techniques such as: field
+	encapsulation, type generalization, or methods renaming. Refactoring advantages
+	include: improving readability, maintainability, less complexity, and reusability.
+	\cite{tashtoush2013impact}
+	
+	% Context
+	 A substantial portion of the cost of software during its
+	life cycle is consumed not in its development, but in its ongoing
+	maintenance. One of the factors that leads to improved code
+	maintainability is its readability. When code is difficult to read, it
+	is difficult for subsequent developers to understand its flow and its
+	side effects, and they are likely to introduce new bugs while trying
+	to fix old ones or while extending the code’s original
+	functionality. But how do software developers know they have
+	written readable code? \cite{sedano2016code}
+	
+	% Definitino
+	code readability, i.e., what makes a program easier or harder to
+	read and apprehend by developers \cite{oliveira2020evaluating}
+	
+	% Definition
+	In software engineering, the terms readability, legibility, understandability, and comprehensibility have overlapping meanings. For example, Buse and Weimer [22] define “readability
+	as a human judgment of how easy a text is to understand”.
+	In a similar vein, Almeida et al. [23] affirm that “legibility is
+	fundamental to code maintenance; if source code is written
+	in a complex way, understanding it will require much more
+	effort”. In addition, Lin and Wu [24] state that ““Software
+	understandability” determines whether a system can be understood by other individuals easily, or whether artifacts of
+	one system can be easily understood by other individuals”.
+	Xia et al. [25] treat comprehension and understanding as
+	synonyms, expressing that “Program comprehension (aka.,
+	program understanding, or source code comprehension) is a
+	process where developers actively acquire knowledge about a
+	software system by exploring and searching software artifacts,
+	and reading relevant source code and/or documentation”.\cite{oliveira2020evaluating}
+	
 	
 	In the realm of software development, the significance of code readability cannot be overstated. Together with understandability, it serves as the foundation for efficient collaboration, comprehension, and maintenance of software systems~\cite{posnett2011simpler, aggarwal2002integrated}. 
 	Maintenance alone will consume over 70\% of the total lifecycle cost of a software product and for maintenance, the most time-consuming act is reading code~\cite{buse2009learning, deimel1985uses, rugaber2000use, boehm2001defect}.
@@ -404,6 +583,39 @@ cleveref=true,%
 	\section{Background and related work} \label{Background and related work}
 	
 	\subsection{Readability} \label{Readability}
+	% New, check and extend (Bard)
+	Code readability is a human judgment of how easy a program source code is to understand \cite{buse2008evaluating}. It is a subjective concept that is influenced by a number of factors, including the complexity of the code, the usage of design concepts, the formatting of the code, the source code lexicon, and the visual aspects of the code \cite{scalabrino2018comprehensive}.
+	
+	Code readability is important because it has a significant impact on other quality attributes of software, such as maintainability, reusability, reliability, and portability \cite{tashtoush2013impact}. When code is readable, it is easier for developers to understand and make changes to, which can lead to reduced maintenance costs and improved software quality. Readable code is also more likely to be reused by other developers, which can save time and effort. Additionally, readable code is more likely to be reliable, as it is easier for developers to identify and fix bugs.
+	
+	There are a number of different definitions of code readability in the literature. Some of these definitions are:
+	
+	"Code readability is the ease of understanding a program source code." \cite{buse2008evaluating}
+	"Code readability is the ratio between lines of code and number of commented lines." \cite{sedano2016code}
+	"Code readability is writing to people, not to computers." \cite{oliveira2020evaluating}
+	"Code readability is making a code locally understandable without searching for declarations and definitions." \cite{oliveira2020evaluating}
+	"Code readability is the average number of right answers to a series of questions about a program in a given length of time." \cite{oliveira2020evaluating}
+	While these definitions vary, they all share the common theme of measuring how easy it is for humans to understand the code.
+	
+	% Differences
+	Differences between the terms readability and understandability in code
+	
+	Readability is a human judgment of how easy a program source code is to read and comprehend \cite{buse2008evaluating, sedano2016code}. It is concerned with the syntactic aspects of code, such as the use of meaningful variable names, consistent formatting, and clear commenting.
+	
+	Understandability is the ability to grasp the meaning of a program source code and how it works \cite{oliveira2020evaluating, posnett2011simpler}. It is concerned with the semantic aspects of code, such as the underlying logic and the use of design patterns.
+	
+	In other words, readability is about how easy it is to read code, while understandability is about how easy it is to understand code.
+	
+	% Importance
+	Code readability is important for a number of reasons, including:
+	
+	Maintainability: Readable code is easier to maintain, as it is easier for developers to understand and make changes to [cite{buse2008evaluating}, \cite{scalabrino2018comprehensive}]. This can lead to reduced maintenance costs and improved software quality.
+	Reusability: Readable code is more likely to be reused by other developers, as it is easier to understand how to use it [cite{oliveira2020evaluating}]. This can save time and effort.
+	Reliability: Readable code is more likely to be reliable, as it is easier for developers to identify and fix bugs [cite{buse2008evaluating}].
+	Productivity: Readable code can help developers to be more productive, as they spend less time trying to understand and debug the code [cite{scalabrino2018comprehensive}].
+	In addition, code readability can also have a positive impact on other quality attributes of software, such as portability and testability.
+	
+	% Old:
 	To improve readability classification, we need to capture what readability is. We define readability as a subjective impression of the difficulty of code while trying to understand it~\cite{posnett2011simpler, buse2009learning}. Readability of code is a perceived barrier that needs to be overcome before it is possible to work with the code. The more readable code is, the lower the barrier~\cite{posnett2011simpler}.
 	To give an example for high vs low readability, consider the code of listing~\ref{lst:cassandra-src-java-org-apache-cassandra-utils} from GitHub\curl{https://github.com/apache/cassandra/blob/trunk/src/java/org/apache/cassandra/utils/HeapUtils.java}{2023-25-07} and compare it to the code with the same functionality of listing~\ref{lst:cassandra-src-java-org-apache-cassandra-utils-modified}. You will notice that the first piece of code is more readable than the second one.
 	
