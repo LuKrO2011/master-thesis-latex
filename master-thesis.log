@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.8.1)  2 NOV 2023 13:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.8.1)  2 NOV 2023 13:44
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1657,26 +1657,37 @@ Package microtype Info: Loading generic protrusion settings for font family
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/b/n' will be
 (Font)              scaled to size 10.95pt on input line 391.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/b/n' will be
-(Font)              scaled to size 14.4pt on input line 391.
-LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 391.
+(Font)              scaled to size 20.74pt on input line 391.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 391.
+(Font)              scaled to size 20.74pt on input line 391.
+Package tocbasic Info: character protrusion at toc deactivated on input line 39
+1.
+ (master-thesis.toc)
+\tf@toc=\write8
+\openout8 = `master-thesis.toc'.
+
+LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/b/n' will be
+(Font)              scaled to size 14.4pt on input line 393.
+LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/b/n' will be
+(Font)              scaled to size 12.0pt on input line 393.
+LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
+(Font)              scaled to size 12.0pt on input line 393.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 391.
+(Font)              <12> on input line 393.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 409.
+(Font)              scaled to size 8.0pt on input line 408.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 409.
+(Font)              scaled to size 9.0pt on input line 408.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 409.
+(Font)              <9> on input line 408.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 409.
+(Font)              <5> on input line 408.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 409.
+(Font)              scaled to size 6.0pt on input line 408.
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
-09.
- (C:\Program Files\MiKTeX\tex/latex/base\t1cmtt.fd
+08.
+
+(C:\Program Files\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 Package microtype Info: Loading generic protrusion settings for font family
@@ -1684,70 +1695,67 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Underfull \hbox (badness 10000) in paragraph at lines 409--409
+Underfull \hbox (badness 10000) in paragraph at lines 408--408
   [][][][][][]$\T1/cmtt/m/n/9 https : / / github . com / apache / cassandra / b
 lob / trunk / src / java / org / apache /
  []
 
+LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/sl' in size <10.95> no
+t available
+(Font)              Font shape `T1/LibertinusSerif-TLF/m/it' tried instead on i
+nput line 409.
+LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/it' will be
+(Font)              scaled to size 10.95pt on input line 409.
+LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
+(Font)              scaled to size 9.0pt on input line 409.
+[1
+
+
+
+
+{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts_mf
+adfl.enc}]
 \openout4 = `master-thesis.pyg'.
 
-(_minted-master-thesis/default.pygstyle)
+ (_minted-master-thesis/default.pygstyle)
 (_minted-master-thesis/649CA68B6F15A2B63DE3CA5F88B15A54CD01F94EC48B0360C077F2DC
 250C61D2.pygtex
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <9> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 8.
 )
 Package hyperref Info: bookmark level for unknown listing defaults to 0 on inpu
-t line 466.
+t line 465.
 \openout4 = `master-thesis.pyg'.
 
 
 (_minted-master-thesis/326C3B61642F32218CA15406E0F4B0EFCD01F94EC48B0360C077F2DC
-250C61D2.pygtex)
-LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/sl' in size <10.95> no
-t available
-(Font)              Font shape `T1/LibertinusSerif-TLF/m/it' tried instead on i
-nput line 506.
-LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/it' will be
-(Font)              scaled to size 10.95pt on input line 506.
-LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 506.
- [1
-
-
-{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts_mf
-adfl.enc}] [2] [3]
-<Model_pipeline.png, id=110, 4460.665pt x 2176.13pt>
+250C61D2.pygtex) [2] [3]
+<Model_pipeline.png, id=131, 4460.665pt x 2176.13pt>
 File: Model_pipeline.png Graphic file (type png)
 <use Model_pipeline.png>
-Package pdftex.def Info: Model_pipeline.png  used on input line 525.
+Package pdftex.def Info: Model_pipeline.png  used on input line 528.
 (pdftex.def)             Requested size: 350.0pt x 170.74025pt.
- [4 <./Model_pipeline.png>]
+ [4] [5 <./Model_pipeline.png>]
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/b/n' will be
-(Font)              scaled to size 10.95pt on input line 545.
- [5{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts
-_sfissr.enc}]
-[6]
+(Font)              scaled to size 10.95pt on input line 548.
+ [6{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts
+_sfissr.enc}] [7]
 Package hyperref Info: bookmark level for unknown resq defaults to 0 on input l
-ine 594.
+ine 597.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/b/it' will be
-(Font)              scaled to size 10.95pt on input line 594.
- [7{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts
-_opzo24.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-t
-ype1/lbts_nufysp.enc}] [8]
-LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/b/n' will be
-(Font)              scaled to size 20.74pt on input line 622.
-LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
-(Font)              scaled to size 20.74pt on input line 622.
- [9
+(Font)              scaled to size 10.95pt on input line 597.
+
+[8{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts_
+opzo24.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-ty
+pe1/lbts_nufysp.enc}] [9] [10
 
 
 
 ]
-\tf@thm=\write8
-\openout8 = `master-thesis.thm'.
+\tf@thm=\write9
+\openout9 = `master-thesis.thm'.
 
- [10] (master-thesis.aux)
+ [11] (master-thesis.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-06-30>
@@ -1947,10 +1955,10 @@ Package logreq Info: Writing requests to 'master-thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47184 strings out of 475550
- 1013378 string characters out of 5772349
- 2017740 words of memory out of 5000000
- 67416 multiletter control sequences out of 15000+600000
+ 47215 strings out of 475550
+ 1013972 string characters out of 5772349
+ 2018001 words of memory out of 5000000
+ 67439 multiletter control sequences out of 15000+600000
  685564 words of font info for 253 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  122i,20n,121p,10970b,2479s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1965,9 +1973,9 @@ c.pfb><C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/type1/public/libertinus-type
 /public/libertinus-type1/LibertinusSerif-Regular.pfb><C:/Program Files/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmsy6.pfb>
-Output written on master-thesis.pdf (11 pages, 870702 bytes).
+Output written on master-thesis.pdf (12 pages, 877802 bytes).
 PDF statistics:
- 359 PDF objects out of 1000 (max. 8388607)
- 62 named destinations out of 1000 (max. 500000)
- 70247 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 390 PDF objects out of 1000 (max. 8388607)
+ 67 named destinations out of 1000 (max. 500000)
+ 70271 words of extra memory for PDF output out of 74296 (max. 10000000)
 
