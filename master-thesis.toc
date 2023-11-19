@@ -1,15 +1,16 @@
 \babel@toc {UKenglish}{}\relax 
 \contentsline {section}{\numberline {1}Introduction}{1}{section.0.0.1}%
-\contentsline {section}{\numberline {2}Background and related work}{4}{section.0.0.2}%
-\contentsline {subsection}{\numberline {2.1}Readability}{4}{subsection.0.0.2.1}%
+\contentsline {section}{\numberline {2}Background and related work}{2}{section.0.0.2}%
+\contentsline {subsection}{\numberline {2.1}Readability}{2}{subsection.0.0.2.1}%
 \contentsline {subsection}{\numberline {2.2}Classical calculation approaches}{7}{subsection.0.0.2.2}%
-\contentsline {subsection}{\numberline {2.3}Deep Learning based approaches}{7}{subsection.0.0.2.3}%
-\contentsline {subsection}{\numberline {2.4}Related work}{8}{subsection.0.0.2.4}%
-\contentsline {section}{\numberline {3}Dataset Generation Approach}{8}{section.0.0.3}%
-\contentsline {section}{\numberline {4}Readability Classification Model}{8}{section.0.0.4}%
-\contentsline {subsection}{\numberline {4.1}User study}{11}{subsection.0.0.4.1}%
-\contentsline {subsection}{\numberline {4.2}Comparing models}{11}{subsection.0.0.4.2}%
-\contentsline {subsection}{\numberline {4.3}Research questions}{12}{subsection.0.0.4.3}%
-\contentsline {section}{\numberline {5}Evaluation}{13}{section.0.0.5}%
-\contentsline {section}{\numberline {6}Conclusion}{13}{section.0.0.6}%
+\contentsline {subsection}{\numberline {2.3}Deep Learning based approaches}{8}{subsection.0.0.2.3}%
+\contentsline {subsection}{\numberline {2.4}Related work}{9}{subsection.0.0.2.4}%
+\contentsline {section}{\numberline {3}Dataset Generation Approach}{9}{section.0.0.3}%
+\contentsline {section}{\numberline {4}Readability Classification Model}{9}{section.0.0.4}%
+\contentsline {subsection}{\numberline {4.1}User study}{12}{subsection.0.0.4.1}%
+\contentsline {subsection}{\numberline {4.2}Comparing models}{12}{subsection.0.0.4.2}%
+\contentsline {subsection}{\numberline {4.3}Research questions}{13}{subsection.0.0.4.3}%
+\contentsline {section}{\numberline {5}Evaluation}{14}{section.0.0.5}%
+\contentsline {section}{\numberline {6}Discussion}{14}{section.0.0.6}%
+\contentsline {section}{\numberline {7}Conclusion}{14}{section.0.0.7}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
