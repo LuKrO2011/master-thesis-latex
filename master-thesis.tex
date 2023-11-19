@@ -315,6 +315,16 @@ cleveref=true,%
 		publisher={ERIC}
 	}
 	
+	@book{klare1964measurement,
+		location = {Ames},
+		title = {The measurement of readability},
+		pagetotal = {328},
+		publisher = {Iowa State University Press},
+		author = {Klare, George R.},
+		date = {1963},
+		keywords = {Bibliographies, Bibliography, Readability (Literary style)},
+	}
+	
 	@article{tashtoush2013impact,
 		title={Impact of programming features on code readability},
 		author={Tashtoush, Yahya and Odat, Zeinab and Alsmadi, Izzat M and Yatim, Maryan},
@@ -466,49 +476,82 @@ cleveref=true,%
 	In the last section we summarize our work, draw conclusions from it and propose future work.
 	
 	\section{Background and related work} \label{Background and related work}
+	In the following sections you find an overview over background and related work regarding code readability and our dataset generation approach.
 	
 	\subsection{Readability} \label{Readability}
-		% Readability in general
-	George Klare (1963) defines readability as “the ease of understanding or
-	comprehension due to the style of writing.” This definition focuses on writing
-	style as separate from issues such as content, coherence, and organization. In a
-	similar manner, Gretchen Hargis and her colleagues at IBM (1998) state that
-	readability, the “ease of reading words and sentences,” is an attribute of clarity.
-	The creator of the SMOG readability formula G. Harry McLaughlin (1969)
-	defines readability as: “the degree to which a given class of people find certain
-	reading matter compelling and comprehensible.” This definition stresses the
-	interaction between the text and a class of readers of known characteristics such
-	as reading skill, prior knowledge, and motivation.
-	Edgar Dale and Jeanne Chall’s (1949) definition may be the most
-	comprehensive: “The sum total (including all the interactions) of all those
-	elements within a given piece of printed material that affect the success a group
-	of readers have with it. The success is the extent to which they understand it,
-	read it at an optimal speed, and find it interesting.” 
-	\cite{dubay2004principles}
+	% What is readabiliy?
+	To properly discuss about readability, in particular readability of source code we first define this term. There are various slightly differing definitions of code readability:
 	
+	% Readability in general
+	\citeauthor{klare1964measurement} defines readability as “the ease of understanding or comprehension due to the style of writing.” TODO: More citations
+	
+	%https://files.eric.ed.gov/fulltext/ED490073.pdf
+%	 This definition focuses on writing
+%	style as separate from issues such as content, coherence, and organization. In a
+%	similar manner, Gretchen Hargis and her colleagues at IBM (1998) state that
+%	readability, the “ease of reading words and sentences,” is an attribute of clarity.
+%	The creator of the SMOG readability formula G. Harry McLaughlin (1969)
+%	defines readability as: “the degree to which a given class of people find certain
+%	reading matter compelling and comprehensible.” This definition stresses the
+%	interaction between the text and a class of readers of known characteristics such
+%	as reading skill, prior knowledge, and motivation.
+%	Edgar Dale and Jeanne Chall’s (1949) definition may be the most
+%	comprehensive: “The sum total (including all the interactions) of all those
+%	elements within a given piece of printed material that affect the success a group
+%	of readers have with it. The success is the extent to which they understand it,
+%	read it at an optimal speed, and find it interesting.” 
+%	\cite{dubay2004principles}
+% TODO: Even more?
+
+	To summarize readability in general in our own words, we come up with the following definition:
+	Readability is how easily readers understand, engage with, and find interest in written content, considering factors like style, structure, and reader characteristics.
+	
+	However, readability of source code is slightly different and there are various closely related terms to readability: Understandability, usability, reusability, complexity, and maintainability \citeauthor{tashtoush2013impact}.
+	
+	\citeauthor{scalabrino2018comprehensive} describes, that "complexity, usage of design concepts, formatting, source code lexicon, and visual aspects (e.g., syntax
+	highlighting) have been widely recognized as elements that impact program understanding". TODO [5, 6, 7]
+	
+	Based on \citeauthor{posnett2011simpler}, \citeauthor{scalabrino2018comprehensive} says about readability: "Readability measures the effort of the developer to access the information contained in the code, while understandability measures the complexity of such information."
+	
+	However, \citeauthor{scalabrino2018comprehensive} also states, that "code readability remains to be a very subjective concept".
+	
+	\citeauthor{tashtoush2013impact} summarizes various code readability definitions as follows:
+	"Code Readability can be defined as a human judgment on how easy it is to understand a
+	program source code [1], the ratio between lines of code and number of commented lines [2],
+	writing to people not to computers [3], making a code locally understandable without
+	searching for declarations and definitions [4], and also, the average number of right answers
+	to a series of questions about a program in a given length of time [5]"
+	
+	\citeauthor{oliveira2020evaluating} defines code readability as "what makes a program easier or harder to read and apprehend by developers".
+	
+	% TODO: Continue
+
+
+
+
 	% Definition & Importance
 	%https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=89a7dab26a532a7f291453578197f6c368ff3011
-	WE define readability as a human judgment of how
-	easy a text is to understand. The readability of a
-	program is related to its maintainability, and is thus a key
-	factor in overall software quality. Typically, maintenance
-	will consume over 70% of the total lifecycle cost of
-	a software product [4]. Aggarwal claims that source
-	code readability and documentation readability are both
-	critical to the maintainability of a project [1]. Other
-	researchers have noted that the act of reading code is
-	the most time-consuming component of all maintenance
-	activities [8], [32], [34]. Readability is so significant, in
-	fact, that Elshoff and Marcotty, after recognizing that
-	many commercial programs were much more difficult
-	to read than necessary, proposed adding a development
-	phase in which the program is made more readable [10].
-	Knight and Myers suggested that one phase of software inspection should be a check of the source code
-	for readability [21] to ensure maintainability, portability,
-	and reusability of the code. Haneef proposed adding a
-	dedicated readability and documentation group to the
-	development team, observing that, “without established
-	and consistent guidelines for readability, individual reviewers may not be able to help much” [15]. \cite{buse2009learning}
+%	WE define readability as a human judgment of how
+%	easy a text is to understand. The readability of a
+%	program is related to its maintainability, and is thus a key
+%	factor in overall software quality. Typically, maintenance
+%	will consume over 70% of the total lifecycle cost of
+%	a software product [4]. Aggarwal claims that source
+%	code readability and documentation readability are both
+%	critical to the maintainability of a project [1]. Other
+%	researchers have noted that the act of reading code is
+%	the most time-consuming component of all maintenance
+%	activities [8], [32], [34]. Readability is so significant, in
+%	fact, that Elshoff and Marcotty, after recognizing that
+%	many commercial programs were much more difficult
+%	to read than necessary, proposed adding a development
+%	phase in which the program is made more readable [10].
+%	Knight and Myers suggested that one phase of software inspection should be a check of the source code
+%	for readability [21] to ensure maintainability, portability,
+%	and reusability of the code. Haneef proposed adding a
+%	dedicated readability and documentation group to the
+%	development team, observing that, “without established
+%	and consistent guidelines for readability, individual reviewers may not be able to help much” [15]. \cite{buse2009learning}
 	
 	
 	% Importance
@@ -525,13 +568,8 @@ cleveref=true,%
 	any stage during software maintenance and evolution.\cite{scalabrino2018comprehensive}
 	
 	% Definition
-	Yet, code readability remains to be a very subjective concept. Several facets, like complexity,
-	usage of design concepts, formatting, source code lexicon, and visual aspects (e.g., syntax
-	highlighting) have been widely recognized as elements that impact program understanding [5, 6, 7].	\cite{scalabrino2018comprehensive}
-	
-	% Definition
 	Readability vs understandability
-	Posnett et al. [9] compared the difference between readability and understandability to the difference
+	t et al. [9] compared the difference between readability and understandability to the difference
 	between syntactic and semantic analysis. Readability measures the effort of the developer to access
 	the information contained in the code, while understandability measures the complexity of such
 	information. We defined a set of textual features that still capture aspects of code related to the
