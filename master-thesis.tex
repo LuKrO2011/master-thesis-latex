@@ -921,11 +921,44 @@ cleveref=true,%
 	By combining the results of the study and model evaluation we can answer the third research question: The rating of our automatic dataset generation approach is not as accurate as letting multiple users rate a certain code snippet. However, being able to fully automate the dataset generation approach and the vast amount of data generated that way makes up for this. The larger dataset improves the performance, especially of our new adjusted model by a significant extent of TODO. Therefore we conclude, that our new dataset and it's generation approach is suitable for training deep learning based code readability classifiers.
 	
 	\section{Discussion} \label{Discussion}
+	% Approach Threads
+	The biggest thread to our approach is the reliance on heuristics for the dataset generation. We can not show, that the labeled code snippets of our dataset actually fit the score we assigned them. This would require an manual evaluation of X code snippets by human annotators and is therefore not feasible. We can reduce the extent of this with our model results. 
 	
+	% Study Threads
+	TODO: Copy from study paper
 	
+	% Model threads
+	TODO: Copy from towards and newer model
+		
 	
 	\section{Conclusion} \label{Conclusion}
-	TODO
+	TODO: Add conclusion
+	
+	% Future work
+	% Transformer
+	The new dataset has another advantage that is not yet utilized in this work: For the first time there is a dataset with one well readable and a second one less readable code snippet that is functionally equivalent. This could be used to train a transformer on source code readability improvement. Such a transformer could take code as input and improve it's readability. Such a tool would probably be of high usability among programmers.
+	
+	% Languages
+	A current restriction of the dataset is that it only works for java code. Another proposal for future work is therefore to overcome this restriction by extending the tool for other languages. This is not trivial as one has to adjust the readability decreasing heuristics to work with a different language. Furthermore a general tool that works for all languages will be very hard, if possible at all.
+	
+	% Survey
+	In order to further improve the readability estimations for both, the well and the badly readable code, one could conduct more surveys. By separating the code snippets into more fine granular clusters and by getting a more accurate average score by asking more persons about readability of code within the same cluster one can increase the accuracy of label estimation. Such an improvement can then again improve the model predictions as it is learning from this data.
+	
+	% Syntax Tree
+	As XY suggested another useful representation for code readability studies is the syntax tree representation of code. One could improve the performance of this model by adding another representation encoding extractor for java code that automatically extracts the abstract syntax tree of code. 
+	
+	%  Method name fitting
+	A crucial aspect of code readability is naming. For the scope of methods, the most crucial part are methods names. Therefore one could improve this tool by adding a component that explicitly considers how well a method name fits its body.
+	
+	% Other representations
+	Further research could also be to come up with another encoding that represents code in a different way.
+	
+	% Other model structure
+	Another way to improve existing code readability classifiers could be to come up with a different structure for some layers or entire different models.
+	
+	% More heuristics
+	The heuristics described in this work is only a part of the possible heuristics one could come up with. One could come up with more heuristics and evaluate them using user studies in order to further improve the variety of badly readable code. This might increase the number of internal features the model could learn which might again increase the tools accuracy.
+
 	
 	\backmatter
 	
