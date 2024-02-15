@@ -354,6 +354,17 @@ cleveref=true,%
 		year={2020},
 		organization={IEEE}
 	}
+	
+	@article{mi2023graph,
+		title={A graph-based code representation method to improve code readability classification},
+		author={Mi, Qing and Zhan, Yi and Weng, Han and Bao, Qinghang and Cui, Longjie and Ma, Wei},
+		journal={Empirical Software Engineering},
+		volume={28},
+		number={4},
+		pages={87},
+		year={2023},
+		publisher={Springer}
+	}
 \end{filecontents}
 \addbibresource{\jobname.bib}
 
@@ -524,7 +535,11 @@ cleveref=true,%
 	
 	\citeauthor{oliveira2020evaluating} defines code readability as "what makes a program easier or harder to read and apprehend by developers".
 	
+	For now we stick with the definition of BUSE and WEIMER which also \citeauthor{mi2023graph} sticks with:
+	Code readability is defined as a measure of how easily developers can read and understand
+	the source code (Buse and Weimer 2010; Lee et al 2013)
 	% TODO: Continue
+	
 
 
 
@@ -552,6 +567,18 @@ cleveref=true,%
 %	dedicated readability and documentation group to the
 %	development team, observing that, “without established
 %	and consistent guidelines for readability, individual reviewers may not be able to help much” [15]. \cite{buse2009learning}
+
+	% Importance
+	It is an essential software quality
+	attribute, which may well influence the source code’s maintainability, reusability, portability,
+	and reliability (Alawad et al 2019; Sedano 2016). Code with poor readability cause the rise
+	in the possibility of introducing bugs (Mannan et al 2018; Scalabrino et al 2018) and bring
+	higher potential costs in the subsequent software maintenance and development (Johnson
+	et al 2019). Recent research shows that nearly 58% time of developers is spent reading and
+	understanding source code (Xia et al 2017). Consequently, if a tool is highly consistent with
+	most developers’ perception of code readability, it is prone to speed up the maintenance
+	process and avoid costly large-scale reconstruction
+	\cite{mi2023graph}
 	
 	
 	% Importance
@@ -805,7 +832,7 @@ cleveref=true,%
 	
 	\begin{figure}[t]
 		\centering
-		\includegraphics[width=\textwidth]{Model_pipeline.png}
+		\includegraphics[width=\textwidth]{img/model_pipeline_old.png}
 		\caption{Overview of the planned approach.}
 		\label{fig:model_pipeline}
 	\end{figure}
