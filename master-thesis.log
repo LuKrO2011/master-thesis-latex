@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.8.1)  15 FEB 2024 10:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.8.1)  15 FEB 2024 11:34
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1735,133 +1735,93 @@ LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/b/n' will be
 (Font)              scaled to size 10.95pt on input line 507.
 
 LaTeX Warning: Citation 'tashtoush2013impact' on page 2 undefined on input line
- 530.
+ 533.
 
 [2{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts_
 sfissr.enc}]
 
-LaTeX Warning: Citation 'tashtoush2013impact' on page 3 undefined on input line
- 539.
+LaTeX Warning: Citation 'oliveira2020evaluating' on page 3 undefined on input l
+ine 543.
 
 
 LaTeX Warning: Citation 'oliveira2020evaluating' on page 3 undefined on input l
-ine 546.
+ine 543.
 
 
-LaTeX Warning: Citation 'mi2023graph' on page 3 undefined on input line 548.
-
-
-Overfull \hbox (16.86047pt too wide) in paragraph at lines 548--552
-[]\T1/LibertinusSerif-TLF/m/n/10.95 (-20) For now we stick with the defin-i-tio
-n of BUSE and WEIMER which also []
+Overfull \hbox (3.14552pt too wide) in paragraph at lines 543--544
+\T1/LibertinusSerif-TLF/m/n/10.95 (-20) easier or harder to read and ap-pre-hen
+d by de-velopers" [[]]. 
  []
 
 
-LaTeX Warning: Citation 'mi2023graph' on page 3 undefined on input line 591.
+LaTeX Warning: Citation 'mi2021effectiveness' on page 3 undefined on input line
+ 546.
+
+
+LaTeX Warning: Citation 'mi2021effectiveness' on page 3 undefined on input line
+ 547.
+
+
+LaTeX Warning: Citation 'tashtoush2013impact' on page 3 undefined on input line
+ 550.
+
+
+LaTeX Warning: Citation 'buse2008evaluating' on page 3 undefined on input line 
+563.
+
+
+LaTeX Warning: Citation 'sedano2016code' on page 3 undefined on input line 563.
+
+
+
+LaTeX Warning: Citation 'oliveira2020evaluating' on page 3 undefined on input l
+ine 565.
 
 [3]
 
 LaTeX Warning: Citation 'tashtoush2013impact' on page 4 undefined on input line
- 624.
+ 587.
+
+
+LaTeX Warning: Citation 'sedano2016code' on page 4 undefined on input line 587.
+
+
+
+LaTeX Warning: Citation 'Xia2017' on page 4 undefined on input line 587.
 
 
 LaTeX Warning: Citation 'tashtoush2013impact' on page 4 undefined on input line
- 646.
+ 588.
 
 
-LaTeX Warning: Citation 'sedano2016code' on page 4 undefined on input line 657.
-
-
-[4]
-
-LaTeX Warning: Citation 'oliveira2020evaluating' on page 5 undefined on input l
-ine 661.
-
-
-LaTeX Warning: Citation 'oliveira2020evaluating' on page 5 undefined on input l
-ine 677.
-
-
-LaTeX Warning: Citation 'mi2021effectiveness' on page 5 undefined on input line
- 681.
-
-
-LaTeX Warning: Citation 'buse2008evaluating' on page 5 undefined on input line 
-697.
-
-[5]
-
-LaTeX Warning: Citation 'tashtoush2013impact' on page 6 undefined on input line
- 699.
-
-
-LaTeX Warning: Citation 'buse2008evaluating' on page 6 undefined on input line 
-703.
-
-
-LaTeX Warning: Citation 'sedano2016code' on page 6 undefined on input line 704.
+LaTeX Warning: Citation 'sedano2016code' on page 4 undefined on input line 588.
 
 
 
-LaTeX Warning: Citation 'oliveira2020evaluating' on page 6 undefined on input l
-ine 705.
+LaTeX Warning: Citation 'Sedano2016' on page 4 undefined on input line 588.
 
 
-LaTeX Warning: Citation 'oliveira2020evaluating' on page 6 undefined on input l
-ine 706.
+LaTeX Warning: Citation 'Xia2017' on page 4 undefined on input line 588.
 
 
-LaTeX Warning: Citation 'oliveira2020evaluating' on page 6 undefined on input l
-ine 707.
+LaTeX Warning: Citation 'Mannan2018' on page 4 undefined on input line 588.
 
 
-Overfull \hbox (55.90302pt too wide) in paragraph at lines 703--709
-[]\T1/LibertinusSerif-TLF/m/n/10.95 (-20) "Code read-ab-il-ity is the ease of u
-n-der-stand-ing a pro-gram source code." [[]]
- []
-
-
-Overfull \hbox (49.0321pt too wide) in paragraph at lines 703--709
-\T1/LibertinusSerif-TLF/m/n/10.95 (-20) der-stand-able without search-ing for d
-e-clar-a-tions and defin-i-tions." [[]]
- []
-
-
-LaTeX Warning: Citation 'buse2008evaluating' on page 6 undefined on input line 
-713.
-
-
-LaTeX Warning: Citation 'sedano2016code' on page 6 undefined on input line 713.
+LaTeX Warning: Citation 'Scalabrino2018' on page 4 undefined on input line 588.
 
 
 
-LaTeX Warning: Citation 'oliveira2020evaluating' on page 6 undefined on input l
-ine 715.
+LaTeX Warning: Citation 'Alawad2019' on page 4 undefined on input line 588.
 
-[6]
-LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 730.
-LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 730.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 730.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 730.
-LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 730.
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 7
-30.
- (C:\Program Files\MiKTeX\tex/latex/base\t1cmtt.fd
-File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-)
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `cmtt' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
 
-Underfull \hbox (badness 10000) in paragraph at lines 730--730
-  [][][][][][]$\T1/cmtt/m/n/9 https : / / github . com / apache / cassandra / b
-lob / trunk / src / java / org / apache /
+LaTeX Warning: Citation 'Johnson2019' on page 4 undefined on input line 588.
+
+
+LaTeX Warning: Citation 'mi2023graph' on page 4 undefined on input line 588.
+
+
+Overfull \hbox (38.84924pt too wide) in paragraph at lines 584--590
+[]\T1/LibertinusSerif-TLF/m/n/10.95 (-20) , [], [], [], [], [],
  []
 
 \openout4 = `master-thesis.pyg'.
@@ -1869,30 +1829,50 @@ lob / trunk / src / java / org / apache /
 (_minted-master-thesis/default.pygstyle)
 (_minted-master-thesis/649CA68B6F15A2B63DE3CA5F88B15A54CD01F94EC48B0360C077F2DC
 250C61D2.pygtex
+LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
+(Font)              scaled to size 9.0pt on input line 1.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
+.
+ (C:\Program Files\MiKTeX\tex/latex/base\t1cmtt.fd
+File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `cmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
+(Font)              scaled to size 6.0pt on input line 2.
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <9> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 8.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 10.
 )
 Package hyperref Info: bookmark level for unknown listing defaults to 0 on inpu
-t line 787.
+t line 750.
 \openout4 = `master-thesis.pyg'.
 
 
 (_minted-master-thesis/326C3B61642F32218CA15406E0F4B0EFCD01F94EC48B0360C077F2DC
-250C61D2.pygtex) [7] [8] [9]
-<img/model_pipeline_old.png, id=183, 4460.665pt x 2176.13pt>
+250C61D2.pygtex) [4]
+LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
+(Font)              scaled to size 8.0pt on input line 796.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 796.
+ [5] [6]
+<img/model_pipeline_old.png, id=169, 4460.665pt x 2176.13pt>
 File: img/model_pipeline_old.png Graphic file (type png)
 <use img/model_pipeline_old.png>
-Package pdftex.def Info: img/model_pipeline_old.png  used on input line 849.
+Package pdftex.def Info: img/model_pipeline_old.png  used on input line 812.
 (pdftex.def)             Requested size: 350.0pt x 170.74025pt.
- [10 <./img/model_pipeline_old.png>] [11] [12]
+ [7 <./img/model_pipeline_old.png>] [8] [9]
 Package hyperref Info: bookmark level for unknown resq defaults to 0 on input l
-ine 918.
+ine 881.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/b/it' will be
-(Font)              scaled to size 10.95pt on input line 918.
+(Font)              scaled to size 10.95pt on input line 881.
 
-[13{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts
+[10{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts
 _opzo24.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-t
-ype1/lbts_nufysp.enc}] [14] [15] [16] [17
+ype1/lbts_nufysp.enc}] [11] [12] [13] [14
 
 
 
@@ -1900,7 +1880,7 @@ ype1/lbts_nufysp.enc}] [14] [15] [16] [17
 \tf@thm=\write9
 \openout9 = `master-thesis.thm'.
 
- [18] (master-thesis.aux)
+ [15] (master-thesis.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-06-30>
@@ -2082,10 +2062,10 @@ bkm-pdftex.def    2020-11-06 v1.29 bookmark driver for pdfTeX (HO)
   mt-cmr.cfg    2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 RS)
 t1libertinussans-tlf.fd
-  t1cmtt.fd    2023/04/13 v2.5m Standard LaTeX font definitions
 "_minted-master-thesis/default.pygstyle"
 _minted-master-thesis/649CA68B6F15A2B63DE3CA5F88B15A54CD01F94EC48B0360C077F2DC2
 50C61D2.pygtex
+  t1cmtt.fd    2023/04/13 v2.5m Standard LaTeX font definitions
 _minted-master-thesis/326C3B61642F32218CA15406E0F4B0EFCD01F94EC48B0360C077F2DC2
 50C61D2.pygtex
 img/model_pipeline_old.png
@@ -2108,16 +2088,16 @@ Package logreq Info: Writing requests to 'master-thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47239 strings out of 475550
- 1014472 string characters out of 5772349
- 2018389 words of memory out of 5000000
- 67447 multiletter control sequences out of 15000+600000
+ 47236 strings out of 475550
+ 1014144 string characters out of 5772349
+ 2018437 words of memory out of 5000000
+ 67444 multiletter control sequences out of 15000+600000
  686104 words of font info for 257 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  122i,21n,121p,10970b,2479s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\lukas\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecit
+ <C:\Users\lukas\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
 0900.pk> <C:\Users\lukas\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
-0\ectt0900.pk><C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/type1/public/liberti
+0\ecit0900.pk><C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/type1/public/liberti
 nus-type1/LibertinusSans-Regular.pfb><C:/Users/lukas/AppData/Roaming/MiKTeX/fon
 ts/type1/public/libertinus-type1/LibertinusSerif-Bold.pfb><C:/Users/lukas/AppDa
 ta/Roaming/MiKTeX/fonts/type1/public/libertinus-type1/LibertinusSerif-BoldItali
@@ -2126,9 +2106,9 @@ c.pfb><C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/type1/public/libertinus-type
 /public/libertinus-type1/LibertinusSerif-Regular.pfb><C:/Program Files/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmsy6.pfb>
-Output written on master-thesis.pdf (20 pages, 909472 bytes).
+Output written on master-thesis.pdf (17 pages, 899883 bytes).
 PDF statistics:
- 450 PDF objects out of 1000 (max. 8388607)
+ 432 PDF objects out of 1000 (max. 8388607)
  77 named destinations out of 1000 (max. 500000)
  70279 words of extra memory for PDF output out of 74296 (max. 10000000)
 
