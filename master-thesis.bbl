@@ -873,11 +873,25 @@
       \range{pages}{10}
     \endentry
   \enddatalist
+  \missing{alawad2019empirical}
+  \missing{beck2007implementation}
   \missing{buse2008evaluating}
-  \missing{dubay2004principles}
+  \missing{choi2020metric}
+  \missing{johnson2019empirical}
+  \missing{klare1964measurement}
+  \missing{mannan2018towards}
+  \missing{martin2009clean}
+  \missing{mi2018inception}
+  \missing{mi2021effectiveness}
+  \missing{mi2023graph}
   \missing{oliveira2020evaluating}
+  \missing{ribeiro2018attributes}
   \missing{sedano2016code}
+  \missing{segedinac2024assessing}
+  \missing{sharma2020egan}
   \missing{tashtoush2013impact}
+  \missing{wilson2007beautiful}
+  \missing{xia2017measuring}
 \endrefsection
 \endinput
 

@@ -1,21 +1,35 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'master-thesis.blg'
-[152] biber-MSWIN64:340> INFO - === 
-[203] Biber.pm:419> INFO - Reading 'master-thesis.bcf'
-[371] Biber.pm:979> INFO - Found 27 citekeys in bib section 0
-[390] Biber.pm:4419> INFO - Processing section 0
-[406] Biber.pm:4610> INFO - Looking for bibtex file 'master-thesis.bib' for section 0
-[484] bibtex.pm:1713> INFO - LaTeX decoding ...
-[552] bibtex.pm:1519> INFO - Found BibTeX data source 'master-thesis.bib'
-[786] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[786] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'variable = shifted' with 'variable = non-ignorable'
-[786] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-UK'
-[786] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-UK'
-[812] bbl.pm:660> INFO - Writing 'master-thesis.bbl' with encoding 'UTF-8'
-[829] bbl.pm:763> INFO - Output to master-thesis.bbl
-[829] Biber.pm:131> WARN - I didn't find a database entry for 'dubay2004principles' (section 0)
-[830] Biber.pm:131> WARN - I didn't find a database entry for 'tashtoush2013impact' (section 0)
-[830] Biber.pm:131> WARN - I didn't find a database entry for 'sedano2016code' (section 0)
-[830] Biber.pm:131> WARN - I didn't find a database entry for 'oliveira2020evaluating' (section 0)
-[830] Biber.pm:131> WARN - I didn't find a database entry for 'buse2008evaluating' (section 0)
-[830] Biber.pm:133> INFO - WARNINGS: 5
+[176] biber-MSWIN64:340> INFO - === 
+[239] Biber.pm:419> INFO - Reading 'master-thesis.bcf'
+[427] Biber.pm:979> INFO - Found 41 citekeys in bib section 0
+[447] Biber.pm:4419> INFO - Processing section 0
+[468] Biber.pm:4610> INFO - Looking for bibtex file 'master-thesis.bib' for section 0
+[558] bibtex.pm:1713> INFO - LaTeX decoding ...
+[620] bibtex.pm:1519> INFO - Found BibTeX data source 'master-thesis.bib'
+[840] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'variable = shifted' with 'variable = non-ignorable'
+[840] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[840] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-UK'
+[840] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-UK'
+[868] bbl.pm:660> INFO - Writing 'master-thesis.bbl' with encoding 'UTF-8'
+[890] bbl.pm:763> INFO - Output to master-thesis.bbl
+[891] Biber.pm:131> WARN - I didn't find a database entry for 'klare1964measurement' (section 0)
+[891] Biber.pm:131> WARN - I didn't find a database entry for 'tashtoush2013impact' (section 0)
+[891] Biber.pm:131> WARN - I didn't find a database entry for 'oliveira2020evaluating' (section 0)
+[891] Biber.pm:131> WARN - I didn't find a database entry for 'mi2021effectiveness' (section 0)
+[891] Biber.pm:131> WARN - I didn't find a database entry for 'martin2009clean' (section 0)
+[891] Biber.pm:131> WARN - I didn't find a database entry for 'wilson2007beautiful' (section 0)
+[892] Biber.pm:131> WARN - I didn't find a database entry for 'beck2007implementation' (section 0)
+[892] Biber.pm:131> WARN - I didn't find a database entry for 'buse2008evaluating' (section 0)
+[892] Biber.pm:131> WARN - I didn't find a database entry for 'sedano2016code' (section 0)
+[892] Biber.pm:131> WARN - I didn't find a database entry for 'alawad2019empirical' (section 0)
+[892] Biber.pm:131> WARN - I didn't find a database entry for 'mannan2018towards' (section 0)
+[892] Biber.pm:131> WARN - I didn't find a database entry for 'johnson2019empirical' (section 0)
+[892] Biber.pm:131> WARN - I didn't find a database entry for 'mi2023graph' (section 0)
+[892] Biber.pm:131> WARN - I didn't find a database entry for 'xia2017measuring' (section 0)
+[892] Biber.pm:131> WARN - I didn't find a database entry for 'segedinac2024assessing' (section 0)
+[892] Biber.pm:131> WARN - I didn't find a database entry for 'ribeiro2018attributes' (section 0)
+[893] Biber.pm:131> WARN - I didn't find a database entry for 'mi2018inception' (section 0)
+[893] Biber.pm:131> WARN - I didn't find a database entry for 'sharma2020egan' (section 0)
+[893] Biber.pm:131> WARN - I didn't find a database entry for 'choi2020metric' (section 0)
+[893] Biber.pm:133> INFO - WARNINGS: 19
