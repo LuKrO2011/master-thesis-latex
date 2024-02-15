@@ -1000,8 +1000,9 @@ cleveref=true,%
 	
 	In between of the two steps and while pretty printing various code modifications can be applied (see Figure \ref{fig:rdh}).
 	Renaming is done while the code is in it's AST representation to make sure that the declaration and usages of variables, fields and methods are all renamed to the same new name. 
+	The other rdhs are applied while transforming the AST back to source code. Those include adding additional spaces, adding or removing newlines and changing the indentation of code in term of tabs.
 	
-	
+	After this the individual methods are extracted from the class files. As already mentioned, we require for all methods to have a method comment. Therefore, we apply the remove-comment RDH after method extraction is completed.
 	
 	\begin{figure}[t]
 		\centering
@@ -1009,6 +1010,71 @@ cleveref=true,%
 		\caption{Overview of the used dataset generation approach.}
 		\label{fig:rdh}
 	\end{figure}
+	
+	The RDH works with a configuration file where one can specify a probability for each heuristic that can be applied. We chose the probabilities so that the generated code snippets are still realistic in a sense that they might be written as well by humans.
+	
+	\section{Survey} \label{Survey}
+	We evaluate the dataset generated with the new approach with a survey. Therefore we had to carefully sample suitable code snippets from the dataset. You can find an overview over the approach in Figure \ref{fig:survey_pipeline}.
+	
+	\begin{figure}[t]
+		\centering
+		\includegraphics[width=\textwidth]{img/survey_pipeline.png}
+		\caption{Overview over the steps performed to craft survey sheets from the dataset.}
+		\label{fig:survey_pipeline}
+	\end{figure}
+	
+	The first step was to find realistic configurations for the readability decreasing tool. After creating an initial dataset using the heuristics a pilot survey was conducted. Afterwards the heuristics that seemed to be too strong were weekend and adjusted according to the pilot survey result. The result of this were 9 different rdhs, which were:
+	
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{|l|l|l|}
+			\hline
+			\textbf{Configuration} & \textbf{RDH probabilities} \\
+			\hline
+			none & - \\
+			\hline
+			comments\_remove & removeComment: 1.0 \\
+			\hline
+			newline\_instead\_of\_space & newLineInsteadOfSpace: 0.15 \\
+			\hline
+			newlines\_few & \begin{tabular}[t]{@{}l@{}}removeNewline: 0.3 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
+			\hline
+			newlines\_many & \begin{tabular}[t]{@{}l@{}}add1Newline: 0.15 \\ add2Newlines: 0.05\end{tabular} \\
+			\hline
+			rename & \begin{tabular}[t]{@{}l@{}}renameVariable: 0.3 \\ renameField: 0.3 \\ renameMethod: 0.3\end{tabular} \\
+			\hline
+			spaces\_many & \begin{tabular}[t]{@{}l@{}}Add1Space: 0.2 \\ Add2Spaces: 0.1 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
+			\hline
+			tabs & \begin{tabular}[t]{@{}l@{}}remove1IncTab: 0.2 \\ add1IncTab: 0.1 \\ remove1DecTab: 0.1 \\ add1DecTab: 0.1 \\ incTabInsteadOfDecTab: 0.05 \\ decTabInsteadOfIncTab: 0.05\end{tabular} \\
+			\hline
+			all7 & all probabilites/7\\
+			\hline
+		\end{tabular}
+		\caption{Chosen configurations and their probabilities for the RDH tool}
+		\label{tab:rdh_configurations}
+	\end{table}
+
+	Together with the original methods this resulted in 10 different configurations.
+	
+	In a second step we applied stratified sampling to those to be able to distinguish between very simple methods such as getters and setters and more complex methods. In order to be able to compare original methods with their modified variants, we performed the sampling only on the original methods and matched the rdh methods to those in a later step.
+	Thus we first had to calculate features for the original code snippets. This was done using TODOs tool. Therefore a TODO-dimensional features vector was calculated for each original code snippet. Next we calculate the cosine similarity metrix between all feature vectors and finally, using Ward's hierarchical clustering we were able to cluster the methods into an arbitrary amount of clusters.
+	By comparing the merge distances in each step (see Figure \ref{fig:survey_cluster_amount}) we evaluated that a cluster size of 4 makes most sense: The merge distance from 5 to 4 is small, so we should still do this merge, but the merge distance from 4 to 3 is large, so one should rather not do this merge. Additionally, 4 is the size with the last possibility for a small merge distance. We assigned each cluster/strata manually a name, which can be found in Figure \ref{fig:survey_strata_labeles}.
+	
+	\begin{figure}[t]
+		\centering
+		\includegraphics[width=\textwidth]{img/survey_pipeline.png}
+		\caption{TODO: Replace. The merge difference and the local derivative for amount of clusters between 2 and 10.} 
+		\label{fig:survey_cluster_amount}
+	\end{figure}
+	
+	\begin{figure}[t]
+		\centering
+		\includegraphics[width=\textwidth]{img/stratas_manual_labelled.png}
+		\caption{TODO: TO TABLE. The resulting clusters/stratas and a manually assigned name based on the method snippets within each.} 
+		\label{fig:survey_strata_labeles}
+	\end{figure}
+	
+	
 	
 	\section{Readability Classification Model} \label{Readability Classification Model}
 
@@ -1154,7 +1220,7 @@ cleveref=true,%
 	A current restriction of the dataset is that it only works for java code. Another proposal for future work is therefore to overcome this restriction by extending the tool for other languages. This is not trivial as one has to adjust the readability decreasing heuristics to work with a different language. Furthermore a general tool that works for all languages will be very hard, if possible at all.
 	
 	% Survey
-	In order to further improve the readability estimations for both, the well and the badly readable code, one could conduct more surveys. By separating the code snippets into more fine granular clusters and by getting a more accurate average score by asking more persons about readability of code within the same cluster one can increase the accuracy of label estimation. Such an improvement can then again improve the model predictions as it is learning from this data.
+	In order to further improve the readability estimations for both, the well and the badly readable code, one could conduct more s. By separating the code snippets into more fine granular clusters and by getting a more accurate average score by asking more persons about readability of code within the same cluster one can increase the accuracy of label estimation. Such an improvement can then again improve the model predictions as it is learning from this data.
 	
 	% Syntax Tree
 	As XY suggested another useful representation for code readability studies is the syntax tree representation of code. One could improve the performance of this model by adding another representation encoding extractor for java code that automatically extracts the abstract syntax tree of code. 

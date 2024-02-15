@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.8.1)  15 FEB 2024 17:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.8.1)  15 FEB 2024 19:52
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1989,7 +1989,7 @@ LaTeX Warning: Citation 'mi2023makes' on page 9 undefined on input line 965.
 LaTeX Warning: Citation 'oliveira2020evaluating' on page 9 undefined on input l
 ine 968.
 
-<img/dataset_generation.png, id=168, 643.40375pt x 543.02875pt>
+<img/dataset_generation.png, id=170, 643.40375pt x 543.02875pt>
 File: img/dataset_generation.png Graphic file (type png)
 <use img/dataset_generation.png>
 Package pdftex.def Info: img/dataset_generation.png  used on input line 976.
@@ -2015,26 +2015,35 @@ s_rlktsf.enc} <./img/dataset_generation.png>]
 LaTeX Warning: Citation 'pawlak2016spoon' on page 11 undefined on input line 99
 7.
 
-<img/rdh.png, id=188, 510.90875pt x 663.47874pt>
+<img/rdh.png, id=190, 510.90875pt x 663.47874pt>
 File: img/rdh.png Graphic file (type png)
 <use img/rdh.png>
-Package pdftex.def Info: img/rdh.png  used on input line 1005.
+Package pdftex.def Info: img/rdh.png  used on input line 1009.
 (pdftex.def)             Requested size: 350.0pt x 454.51056pt.
 [11]
-<img/model_pipeline_old.png, id=201, 4460.665pt x 2176.13pt>
+<img/survey_pipeline.png, id=200, 643.40375pt x 402.50375pt>
+File: img/survey_pipeline.png Graphic file (type png)
+<use img/survey_pipeline.png>
+Package pdftex.def Info: img/survey_pipeline.png  used on input line 1021.
+(pdftex.def)             Requested size: 350.0pt x 218.9579pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<img/model_pipeline_old.png, id=205, 4460.665pt x 2176.13pt>
 File: img/model_pipeline_old.png Graphic file (type png)
 <use img/model_pipeline_old.png>
-Package pdftex.def Info: img/model_pipeline_old.png  used on input line 1017.
+Package pdftex.def Info: img/model_pipeline_old.png  used on input line 1067.
 (pdftex.def)             Requested size: 350.0pt x 170.74025pt.
- [12] [13] [14]
+[12] [13] [14] [15]
 Package hyperref Info: bookmark level for unknown resq defaults to 0 on input l
-ine 1086.
+ine 1136.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/b/it' will be
-(Font)              scaled to size 10.95pt on input line 1086.
- [15{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbt
+(Font)              scaled to size 10.95pt on input line 1136.
+ [16{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbt
 s_opzo24.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-
-type1/lbts_nufysp.enc}] [16] [17] [18] [19 <./img/rdh.png>]
-[20 <./img/model_pipeline_old.png>] [21
+type1/lbts_nufysp.enc}] [17] [18] [19] [20 <./img/rdh.png>]
+[21 <./img/survey_pipeline.png> <./img/model_pipeline_old.png>] [22
 
 
 
@@ -2042,7 +2051,8 @@ type1/lbts_nufysp.enc}] [16] [17] [18] [19 <./img/rdh.png>]
 \tf@thm=\write9
 \openout9 = `master-thesis.thm'.
 
- [22] (master-thesis.aux)
+ [23]
+(master-thesis.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-06-30>
@@ -2233,6 +2243,7 @@ _minted-master-thesis/326C3B61642F32218CA15406E0F4B0EFCD01F94EC48B0360C077F2DC2
 img/dataset_generation.png
 ts1libertinusserif-tlf.fd
  img/rdh.png
+img/survey_pipeline.png
 img/model_pipeline_old.png
  ***********
 
@@ -2253,10 +2264,10 @@ Package logreq Info: Writing requests to 'master-thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47344 strings out of 475550
- 1017276 string characters out of 5772349
- 2018427 words of memory out of 5000000
- 67520 multiletter control sequences out of 15000+600000
+ 47366 strings out of 475550
+ 1017756 string characters out of 5772349
+ 2018751 words of memory out of 5000000
+ 67538 multiletter control sequences out of 15000+600000
  687373 words of font info for 266 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  122i,21n,121p,10970b,2479s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2271,9 +2282,9 @@ c.pfb><C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/type1/public/libertinus-type
 /public/libertinus-type1/LibertinusSerif-Regular.pfb><C:/Program Files/MiKTeX/f
 onts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmsy6.pfb>
-Output written on master-thesis.pdf (24 pages, 957826 bytes).
+Output written on master-thesis.pdf (25 pages, 979407 bytes).
 PDF statistics:
- 481 PDF objects out of 1000 (max. 8388607)
- 90 named destinations out of 1000 (max. 500000)
- 74393 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 497 PDF objects out of 1000 (max. 8388607)
+ 94 named destinations out of 1000 (max. 500000)
+ 74406 words of extra memory for PDF output out of 89155 (max. 10000000)
 
