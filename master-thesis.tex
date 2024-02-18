@@ -987,9 +987,7 @@ cleveref=true,%
 	
 	Secondly, evaluation is performed with only those 200 snippets as well. This means, that the model was only evaluated on 50\% of the available data. This is certainly a huge thread to validity. It suggests, that the performance of the model is to a remarkable degree lower when evaluation is performed on random unseen data.
 	
-	However, we will both stick to the binary classification approach as well as to \citeauthor{mi2022towards}'s model to make our results comparable to theirs.
-	
-	
+	However, we will both stick to the binary classification approach as well as to \citeauthor{mi2022towards}'s model to make our results comparable to theirs.	
 	
 \section{Dataset Generation Approach} \label{Dataset Generation Approach}
 	Other than previous datasets for readability classification, our dataset was generated using an automated approach. This approach is novel to the best of our knowledge. You can find a visualization in Figure \ref{fig:dataset_generation}.
@@ -1149,9 +1147,25 @@ cleveref=true,%
 	
 	Finally the methods for each survey sheet where randomly shuffled within each survey sheet so that the positions of the variants within each sheet are randomly distributed. This was done to minimize any effect of the position of a snippet/variant within a survey on the rating.	
 	
-	\section{Readability Classification Model} \label{Readability Classification Model}
+\section{Survey Results} \label{Survey Results}
 
 	
+	
+	
+\section{Code base} \label{Code base}
+	Our code is available on GitHub. TODO: Refs
+	
+	You can find an overview over all programs used to create the merged dataset, the new dataset the model and all our evaluation results in Figure \ref{fig:scripts_pipline}.
+	
+	\begin{figure}[t]
+		\centering
+		\includegraphics[width=\textwidth]{img/scripts_pipeline.png}
+		\caption{Overview over the used scripts and their output}
+		\label{fig:scripts_pipline}
+	\end{figure}
+	
+	
+\section{Readability Classification Model} \label{Readability Classification Model}
 	We will investigate whether it is possible to score a higher accuracy as current models in classifying code readability for Java using Deep Learning. Therefore, we will train the model from \citeauthor{mi2022towards}~\cite{mi2022towards} with more data. We will consider augmenting the model with a method name classifier and incorporating semantic encoding for tabs and spaces. The training data will be generated in a novel way for classification of readability, inspired by \citeauthor{loriot2022styler}~\cite{loriot2022styler}. The method name classifier is similar to Code2Vec~\cite{alon2019code2vec}. The combination of all components is novel to the best of our knowledge. You can find a visualization of the planned modifications of \citeauthor{mi2022towards}'s model in figure~\ref{fig:model_pipeline}. We will focus on generating training data, as the approach will be usable for further research in the field of source code readability.
 	
 	\begin{figure}[t]
