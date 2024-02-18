@@ -1228,38 +1228,108 @@ cleveref=true,%
 %		\label{tab:pilot_survey_results}
 %	\end{table}
 
-\begin{table}[htbp]
-	\centering
-	\begin{tabular}{llp{6cm}c}
-		\toprule
-		\textbf{Stratum} & \textbf{Feature} & \textbf{File} & \textbf{Score} \\
-		\midrule
-		stratum\_3 & methods & \seqsplit{hbase\_PreviousBlockCompressionRatePredicator.java\_updateLatestBlockSizes.java} & 4,6 \\
-		stratum\_0 & tabs\_few & \seqsplit{hadoop\_DataNodeFaultInjector.java\_delayWriteToDisk.java} & 4,3 \\
-		stratum\_2 & tabs\_few & \seqsplit{framework\_WindowMoveListener.java\_getTicketNumber.java} & 3,8 \\
-		stratum\_1 & methods & \seqsplit{flink\_HiveParserSemanticAnalyzer.java\_processPTFSource.java} & 3,7 \\
-		stratum\_2 & methods & \seqsplit{hibernate-validator\_PESELValidator.java\_year.java} & 3,7 \\
-		stratum\_3 & newlines\_many & \seqsplit{hadoop\_CompressionCodec.java\_createInputStreamWithCodecPool.java} & 3,3 \\
-		stratum\_1 & comments\_remove & \seqsplit{flink\_MemorySegment.java\_get.java} & 3,1 \\
-		stratum\_0 & spaces\_few & \seqsplit{hadoop\_FilePosition.java\_bufferFullyRead.java} & 3 \\
-		stratum\_1 & all\_weak\_3 & \seqsplit{hadoop\_SingleFilePerBlockCache.java\_getIntList.java} & 3 \\
-		stratum\_1 & newlines\_many & \seqsplit{pulsar\_LoadSimulationController.java\_writeProducerOptions.java} & 2,9 \\
-		stratum\_1 & spaces\_few & \seqsplit{hbase\_HBaseZKTestingUtility.java\_startMiniZKCluster.java} & 2,6 \\
-		stratum\_1 & misc & \seqsplit{hbase\_Encryption.java\_decryptWithSubjectKey.java} & 2,4 \\
-		stratum\_2 & newlines\_few & \seqsplit{zxing\_ModulusPoly.java\_isZero.java} & 2,4 \\
-		stratum\_1 & tabs\_few & \seqsplit{hbase\_ZKMainServer.java\_main.java} & 2,2 \\
-		stratum\_1 & tabs\_many & \seqsplit{flink\_HiveParserSemanticAnalyzer.java\_findCTEFromName.java} & 2,2 \\
-		stratum\_1 & spaces\_many & \seqsplit{hadoop\_ActiveAuditManagerS3A.java\_createExecutionInterceptors.java} & 2,1 \\
-		stratum\_1 & newlines\_few & \seqsplit{hudi\_Pipelines.java\_hoodieStreamWrite.java} & 1,7 \\
-		stratum\_3 & tabs\_many & \seqsplit{hadoop\_S3AInputPolicy.java\_getPolicy.java} & 1,7 \\
-		stratum\_1 & all\_weak & \seqsplit{flink\_SSLUtils.java\_createInternalNettySSLContext.java} & 1,3 \\
-		stratum\_1 & all & \seqsplit{hudi\_HoodieMultiTableStreamer.java\_populateTableExecutionContextList.java} & 1,2 \\
-		\bottomrule
-	\end{tabular}
-	\caption{Overview over the pilot survey results.}
-	\label{tab:pilot_survey_results}
-\end{table}
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{llp{6cm}c}
+			\toprule
+			\textbf{Stratum} & \textbf{Feature} & \textbf{File} & \textbf{Score} \\
+			\midrule
+			stratum\_3 & methods & \seqsplit{hbase\_PreviousBlockCompressionRatePredicator.java\_updateLatestBlockSizes.java} & 4,6 \\
+			stratum\_0 & tabs\_few & \seqsplit{hadoop\_DataNodeFaultInjector.java\_delayWriteToDisk.java} & 4,3 \\
+			stratum\_2 & tabs\_few & \seqsplit{framework\_WindowMoveListener.java\_getTicketNumber.java} & 3,8 \\
+			stratum\_1 & methods & \seqsplit{flink\_HiveParserSemanticAnalyzer.java\_processPTFSource.java} & 3,7 \\
+			stratum\_2 & methods & \seqsplit{hibernate-validator\_PESELValidator.java\_year.java} & 3,7 \\
+			stratum\_3 & newlines\_many & \seqsplit{hadoop\_CompressionCodec.java\_createInputStreamWithCodecPool.java} & 3,3 \\
+			stratum\_1 & comments\_remove & \seqsplit{flink\_MemorySegment.java\_get.java} & 3,1 \\
+			stratum\_0 & spaces\_few & \seqsplit{hadoop\_FilePosition.java\_bufferFullyRead.java} & 3 \\
+			stratum\_1 & all\_weak\_3 & \seqsplit{hadoop\_SingleFilePerBlockCache.java\_getIntList.java} & 3 \\
+			stratum\_1 & newlines\_many & \seqsplit{pulsar\_LoadSimulationController.java\_writeProducerOptions.java} & 2,9 \\
+			stratum\_1 & spaces\_few & \seqsplit{hbase\_HBaseZKTestingUtility.java\_startMiniZKCluster.java} & 2,6 \\
+			stratum\_1 & misc & \seqsplit{hbase\_Encryption.java\_decryptWithSubjectKey.java} & 2,4 \\
+			stratum\_2 & newlines\_few & \seqsplit{zxing\_ModulusPoly.java\_isZero.java} & 2,4 \\
+			stratum\_1 & tabs\_few & \seqsplit{hbase\_ZKMainServer.java\_main.java} & 2,2 \\
+			stratum\_1 & tabs\_many & \seqsplit{flink\_HiveParserSemanticAnalyzer.java\_findCTEFromName.java} & 2,2 \\
+			stratum\_1 & spaces\_many & \seqsplit{hadoop\_ActiveAuditManagerS3A.java\_createExecutionInterceptors.java} & 2,1 \\
+			stratum\_1 & newlines\_few & \seqsplit{hudi\_Pipelines.java\_hoodieStreamWrite.java} & 1,7 \\
+			stratum\_3 & tabs\_many & \seqsplit{hadoop\_S3AInputPolicy.java\_getPolicy.java} & 1,7 \\
+			stratum\_1 & all\_weak & \seqsplit{flink\_SSLUtils.java\_createInternalNettySSLContext.java} & 1,3 \\
+			stratum\_1 & all & \seqsplit{hudi\_HoodieMultiTableStreamer.java\_populateTableExecutionContextList.java} & 1,2 \\
+			\bottomrule
+		\end{tabular}
+		\caption{Overview over the pilot survey results.}
+		\label{tab:pilot_survey_results}
+	\end{table}
 
+	After the feedback regarding the survey tool was implemented, the actual study was conducted.
+	
+\section{Prolific Study Results} \label{Prolific Study Results}
+	In this section we will summarize the results of the main study conducted via prolific.
+	
+	You can find an overview over the time required by the participants in the Figures \ref{fig:survey_time_box} and \ref{fig:survey_time_histogramm}. Additionally you can find the amount of participants that required less than 3 minutes for one survey sheet in Figure \ref{fig:survey_time_less_than_180}. The results of those participants might be a thread to validity to which we will come back later.
+	
+	\begin{figure}[t]
+		\centering
+		\includegraphics[width=\textwidth]{img/survey_time_box.png}
+		\caption{Time required by the participants to complete the survey}
+		\label{fig:survey_time_box}
+	\end{figure}
+	
+	\begin{figure}[t]
+		\centering
+		\includegraphics[width=\textwidth]{img/survey_time_histogramm.png}
+		\caption{Time required by the participants to complete the survey}
+		\label{fig:survey_time_histogramm}
+	\end{figure}
+	
+	\begin{figure}[t]
+		\centering
+		\includegraphics[width=\textwidth]{img/survey_time_less_than_180.png}
+		\caption{Amount of participants per survey sheet that required less than 3 minutes to complete the survey}
+		\label{fig:survey_time_less_than_180}
+	\end{figure}
+	
+	You can find an overview over the familiarity of the participants with Java in Figure \ref{fig:survey_java_familiarity_pie}.
+
+	\begin{figure}[t]
+		\centering
+		\includegraphics[width=\textwidth]{img/survey_java_familiarity_pie.png}
+		\caption{Familiarity of survey participants with Java}
+		\label{fig:survey_java_familiarity_pie}
+	\end{figure}
+	
+	You can find an overview of the ratings for each RDH for all stratas combined in Figure \ref{fig:survey_ratings_violin_all}.
+
+	\begin{figure}[t]
+		\centering
+		\includegraphics[width=\textwidth]{img/survey_ratings_violin_all.png}
+		\caption{Violin plot of the survey ratings for each RDH and all stratas}
+		\label{fig:survey_ratings_violin_all}
+	\end{figure}
+	
+	We evaluated whether the deviation in the ratings between the various RDHs has statistical significance. We therefore used the Mann-Whitney-U-Test comparing the ratings for all snippets for a RDH against the corresponding none snippets. You can find the results of this in Table \ref{tab:survey_statistical_evidence}.
+	
+	Our results suggest, that doing no modification (none) is not different from the original methods. The difference here might as well come from a random variation with a probability of 92\%. When we compare the RDHs against the none methods we can be sure, that the ratings of all but newlines many and rename are actually statistically different from the ratings of none. This confirms that the readability decreasing heuristics are actually working in the sense that they decrease the readability of the given input methods.
+		
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{lccc}
+			\toprule
+			\textbf{Condition} & \textbf{P-value} & \textbf{Reject} \\
+			\midrule
+			None - Methods & 0.9224 & False \\
+			None - Newlines Few & $5.23 \times 10^{-6}$ & True \\
+			None - Spaces Many & 0.0407 & True \\
+			None - Newlines Many & 0.3006 & False \\
+			None - Comments Remove & 0.00364 & True \\
+			None - Rename & 0.099 & False \\
+			None - Newline Instead Of Space & $4.57 \times 10^{-6}$ & True \\
+			None - Tabs & $3.06 \times 10^{-8}$ & True \\
+			None - All7 & $1.80 \times 10^{-7}$ & True \\
+			\bottomrule
+		\end{tabular}
+		\caption{Mann-Whitney U Test Results of none against each RDH. If the p-value is smaller or equal to 0.05 the null-hypothesis is rejected confirming, that the ratings are actually different and not just a random variation. TODO: Update data}
+		\label{tab:survey_statistical_evidence}
+	\end{table}
 	
 \section{Code base} \label{Code base}
 	Our code is available on GitHub. TODO: Refs
@@ -1439,3 +1509,33 @@ cleveref=true,%
 	\printbibliography
 	
 \end{document}
+
+% TODO: Appendix
+%Did at first not where to rate the code
+%I was confused about the textfield for the comments, because I only remembered that we should rate the code snippets, not that we have to make comments. Since I was not able to navigate back to the task description I did not know what to do with them.
+%Für einen Anfänger mit sehr wenig Java Erfahrung ist meines Erachtens der Code zu kompliziert
+%In the first place, I didn't really understand what readability meant. But after slide 3 or 4 I understood, what this was about.
+%I found it difficult to categorize the first examples because you don't know what's still to come. For example, what the least readable code is.
+%What problems were there with the survey tool? If there were none, leave blank.
+%6 Antworten
+%Mobile is not easy to use because of the scrolling needed to complete the survey
+%First I needed to figure out how this tool works and that the rating is done with the stars below. I thought I should write my rating as a comment in the comment field below. After number 20 I didn't know whether I could close the survey or not.
+%I also thought that I should use the drop-down menu on the upper left.
+%It is sometimes necessary to swipe horizontally to see all of the code, which is a bit inconvenient.
+%Für einen Anfänger ist das Tool meiner Meinung nach nicht geeignet. Der Code ist zu verschachtelt und teilweise unverständlich
+%After finishing the task, at least message should be shown.
+%I didn't understand what the button at the top left meant, where you could select the programming language. There were too many fonts to choose. I also wasn't sure whether to write a comment or not. It wasn't described at the beginning.
+%What improvements would you make to the survey? If none, leave blank.
+%6 Antworten
+%Maybe one sentence that one should use the stars for the rating, then it would be clear. Also the submit note after the last question could contain that one can close the survey now.
+%I suggest to make the task description accessible during the rating
+%Maybe the option to leave the survey, when clicking to submit.
+%Mehr Hilfestellung zum Lesen des Codes. Mehr Beschreibung oder ein zusätliches Cheat Sheet mit Bedeutungen von Befehlen
+%I think it's good idea to ask the participant at the beginning to explain what readability mean for him.
+%I would leave out the buttons described above. I was missing a scrollbar at the bottom of the code-window. A conclusion page with a message like "Thank you for your participation", "You're Done!" or other further information was missing, too.
+%Do you have any other feedback? If none, leave blank.
+%4 Antworten
+%There werde drop downs for the programming language, but choosing another language did not change anything. It was a bit confusing that (almost?) all code snippets had very long imports within the code, which made them badly readable
+%I spent the most time understanding methods with complete Java import names. (org.foo.bar.ClassName).
+%-
+%GOOD LUCK
