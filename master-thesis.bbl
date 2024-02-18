@@ -56,6 +56,50 @@
       \field{pages}{235\bibrangedash 241}
       \range{pages}{7}
     \endentry
+    \entry{alawad2019empirical}{article}{}
+      \name{author}{4}{}{%
+        {{hash=8bbae314c96511a8fb933d2fbe2351fc}{%
+           family={Alawad},
+           familyi={A\bibinitperiod},
+           given={Duaa},
+           giveni={D\bibinitperiod}}}%
+        {{hash=3f8a1edc5f109e93cfa7330e0ed4757c}{%
+           family={Panta},
+           familyi={P\bibinitperiod},
+           given={Manisha},
+           giveni={M\bibinitperiod}}}%
+        {{hash=c36e6f18598602b1811f06f4b30bf939}{%
+           family={Zibran},
+           familyi={Z\bibinitperiod},
+           given={Minhaz},
+           giveni={M\bibinitperiod}}}%
+        {{hash=66d1013de36391f44501c344f83dfbc6}{%
+           family={Islam},
+           familyi={I\bibinitperiod},
+           given={Md\bibnamedelima Rakibul},
+           giveni={M\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \strng{namehash}{9bbb1128b2a0c482888f99e17610cf05}
+      \strng{fullhash}{b1d706e43d2f376cee50ac18d7f8d387}
+      \strng{bibnamehash}{9bbb1128b2a0c482888f99e17610cf05}
+      \strng{authorbibnamehash}{9bbb1128b2a0c482888f99e17610cf05}
+      \strng{authornamehash}{9bbb1128b2a0c482888f99e17610cf05}
+      \strng{authorfullhash}{b1d706e43d2f376cee50ac18d7f8d387}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{ArXiv preprint}
+      \field{title}{An empirical study of the relationships between code readability and software complexity}
+      \field{volume}{abs/1909.01760}
+      \field{year}{2019}
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1909.01760
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1909.01760
+      \endverb
+    \endentry
     \entry{allamanis2016convolutional}{inproceedings}{}
       \name{author}{3}{}{%
         {{hash=e1e5eb773f262866a97eef52c0456008}{%
@@ -74,8 +118,20 @@
            given={Charles},
            giveni={C\bibinitperiod}}}%
       }
-      \list{organization}{1}{%
-        {PMLR}%
+      \name{editor}{2}{}{%
+        {{hash=cc044fe1286d34711800ba57507df30a}{%
+           family={Balcan},
+           familyi={B\bibinitperiod},
+           given={Maria{-}Florina},
+           giveni={M\bibinitperiod}}}%
+        {{hash=68a0238356fbd88b34be8886f25938a7}{%
+           family={Weinberger},
+           familyi={W\bibinitperiod},
+           given={Kilian\bibnamedelima Q.},
+           giveni={K\bibinitperiod\bibinitdelim Q\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {JMLR.org}%
       }
       \strng{namehash}{7886d3262d152e8882e12f995783030f}
       \strng{fullhash}{7551bb66af9c280ea8f95495790ba1e1}
@@ -83,15 +139,26 @@
       \strng{authorbibnamehash}{7551bb66af9c280ea8f95495790ba1e1}
       \strng{authornamehash}{7886d3262d152e8882e12f995783030f}
       \strng{authorfullhash}{7551bb66af9c280ea8f95495790ba1e1}
+      \strng{editorbibnamehash}{af1b977d59e4a89487ffed5ddba66a9e}
+      \strng{editornamehash}{af1b977d59e4a89487ffed5ddba66a9e}
+      \strng{editorfullhash}{af1b977d59e4a89487ffed5ddba66a9e}
       \field{sortinit}{A}
       \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{booktitle}{International conference on machine learning}
-      \field{title}{A convolutional attention network for extreme summarization of source code}
+      \field{booktitle}{Proceedings of the 33nd International Conference on Machine Learning, {ICML} 2016, New York City, NY, USA, June 19-24, 2016}
+      \field{series}{{JMLR} Workshop and Conference Proceedings}
+      \field{title}{A Convolutional Attention Network for Extreme Summarization of Source Code}
+      \field{volume}{48}
       \field{year}{2016}
       \field{pages}{2091\bibrangedash 2100}
       \range{pages}{10}
+      \verb{urlraw}
+      \verb http://proceedings.mlr.press/v48/allamanis16.html
+      \endverb
+      \verb{url}
+      \verb http://proceedings.mlr.press/v48/allamanis16.html
+      \endverb
     \endentry
     \entry{alon2019code2vec}{article}{}
       \name{author}{4}{}{%
@@ -136,6 +203,30 @@
       \field{year}{2019}
       \field{pages}{1\bibrangedash 29}
       \range{pages}{29}
+    \endentry
+    \entry{beck2007implementation}{book}{}
+      \name{author}{1}{}{%
+        {{hash=c5dcbe71f60a8d55caa11fe1493614d0}{%
+           family={Beck},
+           familyi={B\bibinitperiod},
+           given={Kent},
+           giveni={K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Pearson Education}%
+      }
+      \strng{namehash}{c5dcbe71f60a8d55caa11fe1493614d0}
+      \strng{fullhash}{c5dcbe71f60a8d55caa11fe1493614d0}
+      \strng{bibnamehash}{c5dcbe71f60a8d55caa11fe1493614d0}
+      \strng{authorbibnamehash}{c5dcbe71f60a8d55caa11fe1493614d0}
+      \strng{authornamehash}{c5dcbe71f60a8d55caa11fe1493614d0}
+      \strng{authorfullhash}{c5dcbe71f60a8d55caa11fe1493614d0}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Implementation patterns}
+      \field{year}{2007}
     \endentry
     \entry{boehm2001defect}{article}{}
       \name{author}{2}{}{%
@@ -197,6 +288,36 @@
       \field{title}{No silver bullet}
       \field{year}{1987}
     \endentry
+    \entry{buse2008metric}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=91168f1ccc26805c128a7fbc951c7d41}{%
+           family={Buse},
+           familyi={B\bibinitperiod},
+           given={Raymond\bibnamedelima PL},
+           giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=57337109cb2845707a761585349ca724}{%
+           family={Weimer},
+           familyi={W\bibinitperiod},
+           given={Westley\bibnamedelima R},
+           giveni={W\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \strng{namehash}{5f443773e890e9bf330442e930078411}
+      \strng{fullhash}{5f443773e890e9bf330442e930078411}
+      \strng{bibnamehash}{5f443773e890e9bf330442e930078411}
+      \strng{authorbibnamehash}{5f443773e890e9bf330442e930078411}
+      \strng{authornamehash}{5f443773e890e9bf330442e930078411}
+      \strng{authorfullhash}{5f443773e890e9bf330442e930078411}
+      \field{extraname}{1}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 2008 international symposium on Software testing and analysis}
+      \field{title}{A metric for software readability}
+      \field{year}{2008}
+      \field{pages}{121\bibrangedash 130}
+      \range{pages}{10}
+    \endentry
     \entry{buse2009learning}{article}{}
       \name{author}{2}{}{%
         {{hash=91168f1ccc26805c128a7fbc951c7d41}{%
@@ -219,6 +340,7 @@
       \strng{authorbibnamehash}{5f443773e890e9bf330442e930078411}
       \strng{authornamehash}{5f443773e890e9bf330442e930078411}
       \strng{authorfullhash}{5f443773e890e9bf330442e930078411}
+      \field{extraname}{2}
       \field{sortinit}{B}
       \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
       \field{labelnamesource}{author}
@@ -264,6 +386,42 @@
       \field{year}{2020}
       \field{pages}{1\bibrangedash 13}
       \range{pages}{13}
+    \endentry
+    \entry{choi2020metric}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{2}{}{%
+        {{hash=d700b2695913aa9ae4ec42e84b447755}{%
+           family={Choi},
+           familyi={C\bibinitperiod},
+           given={Sangchul},
+           giveni={S\bibinitperiod}}}%
+        {{hash=0dd36a3337e014921699f7d98f3271ef}{%
+           family={Park},
+           familyi={P\bibinitperiod},
+           given={Sooyong},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Faculty of Mechanical Engineering in Slavonski Brod; Faculty of Electrical~…}%
+      }
+      \strng{namehash}{880bcb5ba2b4d708b30db3194e75c8ce}
+      \strng{fullhash}{880bcb5ba2b4d708b30db3194e75c8ce}
+      \strng{bibnamehash}{880bcb5ba2b4d708b30db3194e75c8ce}
+      \strng{authorbibnamehash}{880bcb5ba2b4d708b30db3194e75c8ce}
+      \strng{authornamehash}{880bcb5ba2b4d708b30db3194e75c8ce}
+      \strng{authorfullhash}{880bcb5ba2b4d708b30db3194e75c8ce}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Tehnički vjesnik}
+      \field{number}{1}
+      \field{title}{Metric and tool support for instant feedback of source code readability}
+      \field{volume}{27}
+      \field{year}{2020}
+      \field{pages}{221\bibrangedash 228}
+      \range{pages}{8}
     \endentry
     \entry{daka2015modeling}{inproceedings}{}
       \name{author}{5}{}{%
@@ -459,9 +617,63 @@
       \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{arXiv preprint arXiv:1712.00409}
+      \field{journaltitle}{ArXiv preprint}
       \field{title}{Deep learning scaling is predictable, empirically}
+      \field{volume}{abs/1712.00409}
       \field{year}{2017}
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/1712.00409
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/1712.00409
+      \endverb
+    \endentry
+    \entry{johnson2019empirical}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=f17d99b4d2d6c85fa69f4f8bb94c19b9}{%
+           family={Johnson},
+           familyi={J\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=8e4ca6a68981855d5f9f3d7627840989}{%
+           family={Lubo},
+           familyi={L\bibinitperiod},
+           given={Sergio},
+           giveni={S\bibinitperiod}}}%
+        {{hash=0fe19c31b28e2aee7be7fc11f371104c}{%
+           family={Yedla},
+           familyi={Y\bibinitperiod},
+           given={Nishitha},
+           giveni={N\bibinitperiod}}}%
+        {{hash=056bead87ad597782f77339cb91daa84}{%
+           family={Aponte},
+           familyi={A\bibinitperiod},
+           given={Jairo},
+           giveni={J\bibinitperiod}}}%
+        {{hash=1a8c09b13424f05fc3b80526b6b41a66}{%
+           family={Sharif},
+           familyi={S\bibinitperiod},
+           given={Bonita},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{9a14a8a809cc698dbf415b9ce8e46a5d}
+      \strng{fullhash}{51a7359313c081d676c410f906fa838f}
+      \strng{bibnamehash}{9a14a8a809cc698dbf415b9ce8e46a5d}
+      \strng{authorbibnamehash}{9a14a8a809cc698dbf415b9ce8e46a5d}
+      \strng{authornamehash}{9a14a8a809cc698dbf415b9ce8e46a5d}
+      \strng{authorfullhash}{51a7359313c081d676c410f906fa838f}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2019 IEEE International conference on software maintenance and evolution (ICSME)}
+      \field{title}{An empirical study assessing source code readability in comprehension}
+      \field{year}{2019}
+      \field{pages}{513\bibrangedash 523}
+      \range{pages}{11}
     \endentry
     \entry{likert1932technique}{article}{}
       \name{author}{1}{}{%
@@ -586,6 +798,226 @@
       \field{pages}{149}
       \range{pages}{1}
     \endentry
+    \entry{mannan2018towards}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=14127b19468c77769a277d18723ec8dd}{%
+           family={Mannan},
+           familyi={M\bibinitperiod},
+           given={Umme\bibnamedelima Ayda},
+           giveni={U\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=7991df34ab6f7cacecbbbffd7df908cf}{%
+           family={Ahmed},
+           familyi={A\bibinitperiod},
+           given={Iftekhar},
+           giveni={I\bibinitperiod}}}%
+        {{hash=e9b0ce2454cb7a6260507eec99cbb07f}{%
+           family={Sarma},
+           familyi={S\bibinitperiod},
+           given={Anita},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{01f7803573bed149a115d17748b3e043}
+      \strng{fullhash}{71640ef9cdfca5784a121b42bd51321a}
+      \strng{bibnamehash}{71640ef9cdfca5784a121b42bd51321a}
+      \strng{authorbibnamehash}{71640ef9cdfca5784a121b42bd51321a}
+      \strng{authornamehash}{01f7803573bed149a115d17748b3e043}
+      \strng{authorfullhash}{71640ef9cdfca5784a121b42bd51321a}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 4th ACM SIGSOFT International Workshop on NLP for Software Engineering}
+      \field{title}{Towards understanding code readability and its impact on design quality}
+      \field{year}{2018}
+      \field{pages}{18\bibrangedash 21}
+      \range{pages}{4}
+    \endentry
+    \entry{martin2009clean}{book}{}
+      \name{author}{1}{}{%
+        {{hash=6f41df64eb0dc4855be70172368604c2}{%
+           family={Martin},
+           familyi={M\bibinitperiod},
+           given={Robert\bibnamedelima C},
+           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Pearson Education}%
+      }
+      \strng{namehash}{6f41df64eb0dc4855be70172368604c2}
+      \strng{fullhash}{6f41df64eb0dc4855be70172368604c2}
+      \strng{bibnamehash}{6f41df64eb0dc4855be70172368604c2}
+      \strng{authorbibnamehash}{6f41df64eb0dc4855be70172368604c2}
+      \strng{authornamehash}{6f41df64eb0dc4855be70172368604c2}
+      \strng{authorfullhash}{6f41df64eb0dc4855be70172368604c2}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Clean code: a handbook of agile software craftsmanship}
+      \field{year}{2009}
+    \endentry
+    \entry{mi2022rank}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=43bac1c092db182fcdeab542180a47d4}{%
+           family={Mi},
+           familyi={M\bibinitperiod},
+           given={Qing},
+           giveni={Q\bibinitperiod}}}%
+      }
+      \strng{namehash}{43bac1c092db182fcdeab542180a47d4}
+      \strng{fullhash}{43bac1c092db182fcdeab542180a47d4}
+      \strng{bibnamehash}{43bac1c092db182fcdeab542180a47d4}
+      \strng{authorbibnamehash}{43bac1c092db182fcdeab542180a47d4}
+      \strng{authornamehash}{43bac1c092db182fcdeab542180a47d4}
+      \strng{authorfullhash}{43bac1c092db182fcdeab542180a47d4}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 37th IEEE/ACM International Conference on Automated Software Engineering}
+      \field{title}{Rank Learning-Based Code Readability Assessment with Siamese Neural Networks}
+      \field{year}{2022}
+      \field{pages}{1\bibrangedash 2}
+      \range{pages}{2}
+    \endentry
+    \entry{mi2023graph}{article}{}
+      \name{author}{6}{}{%
+        {{hash=43bac1c092db182fcdeab542180a47d4}{%
+           family={Mi},
+           familyi={M\bibinitperiod},
+           given={Qing},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=955fb48614fa34567dffb300d7afced9}{%
+           family={Zhan},
+           familyi={Z\bibinitperiod},
+           given={Yi},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=d189eb3d92e9544953dcc6cfae2fc692}{%
+           family={Weng},
+           familyi={W\bibinitperiod},
+           given={Han},
+           giveni={H\bibinitperiod}}}%
+        {{hash=c617f086447f6bfc4d3454b797149a37}{%
+           family={Bao},
+           familyi={B\bibinitperiod},
+           given={Qinghang},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=20d3527d1897d18fb972beae99b593f4}{%
+           family={Cui},
+           familyi={C\bibinitperiod},
+           given={Longjie},
+           giveni={L\bibinitperiod}}}%
+        {{hash=2b6578e1df806bc8063470593723097f}{%
+           family={Ma},
+           familyi={M\bibinitperiod},
+           given={Wei},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{efe98168a3015680b4e8bb446778ac1a}
+      \strng{fullhash}{91be0928c9f8c7304521ca7dd34e6f0e}
+      \strng{bibnamehash}{efe98168a3015680b4e8bb446778ac1a}
+      \strng{authorbibnamehash}{efe98168a3015680b4e8bb446778ac1a}
+      \strng{authornamehash}{efe98168a3015680b4e8bb446778ac1a}
+      \strng{authorfullhash}{91be0928c9f8c7304521ca7dd34e6f0e}
+      \field{extraname}{1}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Empirical Software Engineering}
+      \field{number}{4}
+      \field{title}{A graph-based code representation method to improve code readability classification}
+      \field{volume}{28}
+      \field{year}{2023}
+      \field{pages}{87}
+      \range{pages}{1}
+    \endentry
+    \entry{mi2022enhanced}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=43bac1c092db182fcdeab542180a47d4}{%
+           family={Mi},
+           familyi={M\bibinitperiod},
+           given={Qing},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=774eef427fd2621d3ff1c391ebee596a}{%
+           family={Hao},
+           familyi={H\bibinitperiod},
+           given={Yiqun},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=cf803e4e6079c326ce4a2ed99916f237}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Maran},
+           giveni={M\bibinitperiod}}}%
+        {{hash=ad91b770e817f9790c91a9292f1cf742}{%
+           family={Ou},
+           familyi={O\bibinitperiod},
+           given={Liwei},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{efe98168a3015680b4e8bb446778ac1a}
+      \strng{fullhash}{5e1da67ea985e6f6a60c4e6d55dab764}
+      \strng{bibnamehash}{efe98168a3015680b4e8bb446778ac1a}
+      \strng{authorbibnamehash}{efe98168a3015680b4e8bb446778ac1a}
+      \strng{authornamehash}{efe98168a3015680b4e8bb446778ac1a}
+      \strng{authorfullhash}{5e1da67ea985e6f6a60c4e6d55dab764}
+      \field{extraname}{2}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{International conference on software engineering and knowledge engineering}
+      \field{title}{An enhanced data augmentation approach to support multi-class code readability classification}
+      \field{year}{2022}
+    \endentry
+    \entry{mi2018inception}{inproceedings}{}
+      \name{author}{5}{}{%
+        {{hash=43bac1c092db182fcdeab542180a47d4}{%
+           family={Mi},
+           familyi={M\bibinitperiod},
+           given={Qing},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=69d587f05c8a813f8013895aefcd8183}{%
+           family={Keung},
+           familyi={K\bibinitperiod},
+           given={Jacky},
+           giveni={J\bibinitperiod}}}%
+        {{hash=282135a06a8b1cb46088e109b55bba83}{%
+           family={Xiao},
+           familyi={X\bibinitperiod},
+           given={Yan},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=e3d0b161c5d523b0045e2d46b2eedcc9}{%
+           family={Mensah},
+           familyi={M\bibinitperiod},
+           given={Solomon},
+           giveni={S\bibinitperiod}}}%
+        {{hash=bfaa12dcd55e69f919694e42b368f4bd}{%
+           family={Mei},
+           familyi={M\bibinitperiod},
+           given={Xiupei},
+           giveni={X\bibinitperiod}}}%
+      }
+      \strng{namehash}{efe98168a3015680b4e8bb446778ac1a}
+      \strng{fullhash}{cd4a5c731aa213ad22a24cabb5d5c17d}
+      \strng{bibnamehash}{efe98168a3015680b4e8bb446778ac1a}
+      \strng{authorbibnamehash}{efe98168a3015680b4e8bb446778ac1a}
+      \strng{authornamehash}{efe98168a3015680b4e8bb446778ac1a}
+      \strng{authorfullhash}{cd4a5c731aa213ad22a24cabb5d5c17d}
+      \field{extraname}{3}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 22nd International Conference on Evaluation and Assessment in Software Engineering 2018}
+      \field{title}{An inception architecture-based model for improving code readability classification}
+      \field{year}{2018}
+      \field{pages}{139\bibrangedash 144}
+      \range{pages}{6}
+    \endentry
     \entry{mi2018improving}{article}{}
       \name{author}{5}{}{%
         {{hash=43bac1c092db182fcdeab542180a47d4}{%
@@ -623,7 +1055,7 @@
       \strng{authorbibnamehash}{efe98168a3015680b4e8bb446778ac1a}
       \strng{authornamehash}{efe98168a3015680b4e8bb446778ac1a}
       \strng{authorfullhash}{90a909182cf34fece9869a83ab8ae1ef}
-      \field{extraname}{1}
+      \field{extraname}{4}
       \field{sortinit}{M}
       \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
       \field{labelnamesource}{author}
@@ -634,6 +1066,50 @@
       \field{year}{2018}
       \field{pages}{60\bibrangedash 71}
       \range{pages}{12}
+    \endentry
+    \entry{mi2021effectiveness}{article}{}
+      \name{author}{4}{}{%
+        {{hash=43bac1c092db182fcdeab542180a47d4}{%
+           family={Mi},
+           familyi={M\bibinitperiod},
+           given={Qing},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=282135a06a8b1cb46088e109b55bba83}{%
+           family={Xiao},
+           familyi={X\bibinitperiod},
+           given={Yan},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=e580e81a7c6e1a0887361e7764045f51}{%
+           family={Cai},
+           familyi={C\bibinitperiod},
+           given={Zhi},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=165aa72b131c124e423f64a590b3b793}{%
+           family={Jia},
+           familyi={J\bibinitperiod},
+           given={Xibin},
+           giveni={X\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{efe98168a3015680b4e8bb446778ac1a}
+      \strng{fullhash}{549a6cfbcc3c49bd45ef1a7451f62a79}
+      \strng{bibnamehash}{efe98168a3015680b4e8bb446778ac1a}
+      \strng{authorbibnamehash}{efe98168a3015680b4e8bb446778ac1a}
+      \strng{authornamehash}{efe98168a3015680b4e8bb446778ac1a}
+      \strng{authorfullhash}{549a6cfbcc3c49bd45ef1a7451f62a79}
+      \field{extraname}{5}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Information and Software Technology}
+      \field{title}{The effectiveness of data augmentation in code readability classification}
+      \field{volume}{129}
+      \field{year}{2021}
+      \field{pages}{106378}
+      \range{pages}{1}
     \endentry
     \entry{mi2022towards}{article}{}
       \name{author}{4}{}{%
@@ -667,7 +1143,7 @@
       \strng{authorbibnamehash}{efe98168a3015680b4e8bb446778ac1a}
       \strng{authornamehash}{efe98168a3015680b4e8bb446778ac1a}
       \strng{authorfullhash}{d6c537d5fb6ead34a0ac7e769b90bdaa}
-      \field{extraname}{2}
+      \field{extraname}{6}
       \field{sortinit}{M}
       \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
       \field{labelnamesource}{author}
@@ -678,6 +1154,93 @@
       \field{year}{2022}
       \field{pages}{111454}
       \range{pages}{1}
+    \endentry
+    \entry{mi2023makes}{article}{}
+      \name{author}{4}{}{%
+        {{hash=43bac1c092db182fcdeab542180a47d4}{%
+           family={Mi},
+           familyi={M\bibinitperiod},
+           given={Qing},
+           giveni={Q\bibinitperiod}}}%
+        {{hash=a1b2a232e1d89f01ec38ab5f9ca1e76a}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Mingjie},
+           giveni={M\bibinitperiod}}}%
+        {{hash=e580e81a7c6e1a0887361e7764045f51}{%
+           family={Cai},
+           familyi={C\bibinitperiod},
+           given={Zhi},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=165aa72b131c124e423f64a590b3b793}{%
+           family={Jia},
+           familyi={J\bibinitperiod},
+           given={Xibin},
+           giveni={X\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{efe98168a3015680b4e8bb446778ac1a}
+      \strng{fullhash}{8d9bcb55f1c716bec806522c34227f0c}
+      \strng{bibnamehash}{efe98168a3015680b4e8bb446778ac1a}
+      \strng{authorbibnamehash}{efe98168a3015680b4e8bb446778ac1a}
+      \strng{authornamehash}{efe98168a3015680b4e8bb446778ac1a}
+      \strng{authorfullhash}{8d9bcb55f1c716bec806522c34227f0c}
+      \field{extraname}{7}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Software: Practice and Experience}
+      \field{number}{6}
+      \field{title}{What makes a readable code? A causal analysis method}
+      \field{volume}{53}
+      \field{year}{2023}
+      \field{pages}{1391\bibrangedash 1409}
+      \range{pages}{19}
+    \endentry
+    \entry{oliveira2020evaluating}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=5840c4893c1ddaec936e738d83a3f3f8}{%
+           family={Oliveira},
+           familyi={O\bibinitperiod},
+           given={Delano},
+           giveni={D\bibinitperiod}}}%
+        {{hash=1181e323db7ef1f9308674dba0017471}{%
+           family={Bruno},
+           familyi={B\bibinitperiod},
+           given={Reydne},
+           giveni={R\bibinitperiod}}}%
+        {{hash=65b584874260ba380ceba4b4ce376b11}{%
+           family={Madeiral},
+           familyi={M\bibinitperiod},
+           given={Fernanda},
+           giveni={F\bibinitperiod}}}%
+        {{hash=34ab5e740797625f0c40be1f639aa096}{%
+           family={Castor},
+           familyi={C\bibinitperiod},
+           given={Fernando},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{8c6c27838f1c5a7e217361c72fdadcff}
+      \strng{fullhash}{5ac5d45dfe602e1a73f20eeacccd18fc}
+      \strng{bibnamehash}{8c6c27838f1c5a7e217361c72fdadcff}
+      \strng{authorbibnamehash}{8c6c27838f1c5a7e217361c72fdadcff}
+      \strng{authornamehash}{8c6c27838f1c5a7e217361c72fdadcff}
+      \strng{authorfullhash}{5ac5d45dfe602e1a73f20eeacccd18fc}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2020 IEEE International Conference on Software Maintenance and Evolution (ICSME)}
+      \field{title}{Evaluating code readability and legibility: An examination of human-centric studies}
+      \field{year}{2020}
+      \field{pages}{348\bibrangedash 359}
+      \range{pages}{12}
     \endentry
     \entry{pawlak2016spoon}{article}{}
       \name{author}{5}{}{%
@@ -761,6 +1324,37 @@
       \field{year}{2011}
       \field{pages}{73\bibrangedash 82}
       \range{pages}{10}
+    \endentry
+    \entry{ribeiro2018attributes}{article}{}
+      \name{author}{2}{}{%
+        {{hash=077b0917d2467cddab73bbb9bbb65ed5}{%
+           family={Ribeiro},
+           familyi={R\bibinitperiod},
+           given={Talita\bibnamedelima Vieira},
+           giveni={T\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+        {{hash=0019d7a607a9111a78464b6b36769b37}{%
+           family={Travassos},
+           familyi={T\bibinitperiod},
+           given={Guilherme\bibnamedelima Horta},
+           giveni={G\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{8d49c35dbdbe2c7fe4af78fcad5dc729}
+      \strng{fullhash}{8d49c35dbdbe2c7fe4af78fcad5dc729}
+      \strng{bibnamehash}{8d49c35dbdbe2c7fe4af78fcad5dc729}
+      \strng{authorbibnamehash}{8d49c35dbdbe2c7fe4af78fcad5dc729}
+      \strng{authornamehash}{8d49c35dbdbe2c7fe4af78fcad5dc729}
+      \strng{authorfullhash}{8d49c35dbdbe2c7fe4af78fcad5dc729}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{CLEI Electronic Journal}
+      \field{number}{1}
+      \field{title}{Attributes influencing the reading and comprehension of source code--discussing contradictory evidence}
+      \field{volume}{21}
+      \field{year}{2018}
+      \field{pages}{5\bibrangedash 1}
+      \range{pages}{-3}
     \endentry
     \entry{rugaber2000use}{article}{}
       \name{author}{1}{}{%
@@ -889,6 +1483,275 @@
       \field{pages}{417\bibrangedash 427}
       \range{pages}{11}
     \endentry
+    \entry{sedano2016code}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=47ff7a8088ea2aab7468840a21e2b05b}{%
+           family={Sedano},
+           familyi={S\bibinitperiod},
+           given={Todd},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{47ff7a8088ea2aab7468840a21e2b05b}
+      \strng{fullhash}{47ff7a8088ea2aab7468840a21e2b05b}
+      \strng{bibnamehash}{47ff7a8088ea2aab7468840a21e2b05b}
+      \strng{authorbibnamehash}{47ff7a8088ea2aab7468840a21e2b05b}
+      \strng{authornamehash}{47ff7a8088ea2aab7468840a21e2b05b}
+      \strng{authorfullhash}{47ff7a8088ea2aab7468840a21e2b05b}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2016 IEEE 29th International conference on software engineering education and training (CSEET)}
+      \field{title}{Code readability testing, an empirical study}
+      \field{year}{2016}
+      \field{pages}{111\bibrangedash 117}
+      \range{pages}{7}
+    \endentry
+    \entry{segedinac2024assessing}{article}{}
+      \name{author}{5}{}{%
+        {{hash=2315a6f577c8497ea61bef1ae6f2f842}{%
+           family={Segedinac},
+           familyi={S\bibinitperiod},
+           given={Milan},
+           giveni={M\bibinitperiod}}}%
+        {{hash=2c2a80516d38700fffa19d19b22fe7c0}{%
+           family={Savić},
+           familyi={S\bibinitperiod},
+           given={Goran},
+           giveni={G\bibinitperiod}}}%
+        {{hash=e2ad2e4d9a840d0eb40977507c0504c9}{%
+           family={Zeljković},
+           familyi={Z\bibinitperiod},
+           given={Ivana},
+           giveni={I\bibinitperiod}}}%
+        {{hash=2b2ce45036eb062d3f89a68948eebb22}{%
+           family={Slivka},
+           familyi={S\bibinitperiod},
+           given={Jelena},
+           giveni={J\bibinitperiod}}}%
+        {{hash=f9727b2d3cef209adc9808f343f1e002}{%
+           family={Konjović},
+           familyi={K\bibinitperiod},
+           given={Zora},
+           giveni={Z\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{cb1f0f717fa7ab124fcfafb662524767}
+      \strng{fullhash}{4527363df7835e112ef360a8d94effe3}
+      \strng{bibnamehash}{cb1f0f717fa7ab124fcfafb662524767}
+      \strng{authorbibnamehash}{cb1f0f717fa7ab124fcfafb662524767}
+      \strng{authornamehash}{cb1f0f717fa7ab124fcfafb662524767}
+      \strng{authorfullhash}{4527363df7835e112ef360a8d94effe3}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computer Applications in Engineering Education}
+      \field{number}{1}
+      \field{title}{Assessing code readability in Python programming courses using eye-tracking}
+      \field{volume}{32}
+      \field{year}{2024}
+      \field{pages}{e22685}
+      \range{pages}{-1}
+    \endentry
+    \entry{sharma2020egan}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=82bc9bf618db0da9f54457b53a91ea18}{%
+           family={Sharma},
+           familyi={S\bibinitperiod},
+           given={Shashank},
+           giveni={S\bibinitperiod}}}%
+        {{hash=3db8bde122723e1e571cd8196b8110e8}{%
+           family={Srivastava},
+           familyi={S\bibinitperiod},
+           given={Sumit},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{d23891b3f9b85ce88bae53b758767d76}
+      \strng{fullhash}{d23891b3f9b85ce88bae53b758767d76}
+      \strng{bibnamehash}{d23891b3f9b85ce88bae53b758767d76}
+      \strng{authorbibnamehash}{d23891b3f9b85ce88bae53b758767d76}
+      \strng{authornamehash}{d23891b3f9b85ce88bae53b758767d76}
+      \strng{authorfullhash}{d23891b3f9b85ce88bae53b758767d76}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2020 International Conference on Computation, Automation and Knowledge Management (ICCAKM)}
+      \field{title}{EGAN: An Effective Code Readability Classification using Ensemble Generative Adversarial Networks}
+      \field{year}{2020}
+      \field{pages}{312\bibrangedash 316}
+      \range{pages}{5}
+    \endentry
+    \entry{tashtoush2013impact}{article}{}
+      \name{author}{4}{}{%
+        {{hash=1b7593c802a9b80723561efe1eb6a9c9}{%
+           family={Tashtoush},
+           familyi={T\bibinitperiod},
+           given={Yahya},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=fc34e8027fdeeba1ce111935598234b8}{%
+           family={Odat},
+           familyi={O\bibinitperiod},
+           given={Zeinab},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=baa1f0d6db16b416124bc1ad81db0363}{%
+           family={Alsmadi},
+           familyi={A\bibinitperiod},
+           given={Izzat\bibnamedelima M},
+           giveni={I\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=69c637e4a58c712c696b356b0ceb169a}{%
+           family={Yatim},
+           familyi={Y\bibinitperiod},
+           given={Maryan},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{4b92ef04b80a207c50b171d97e4c300d}
+      \strng{fullhash}{06bd96adfb2320364047d47feb099a0e}
+      \strng{bibnamehash}{4b92ef04b80a207c50b171d97e4c300d}
+      \strng{authorbibnamehash}{4b92ef04b80a207c50b171d97e4c300d}
+      \strng{authornamehash}{4b92ef04b80a207c50b171d97e4c300d}
+      \strng{authorfullhash}{06bd96adfb2320364047d47feb099a0e}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Impact of programming features on code readability}
+      \field{year}{2013}
+    \endentry
+    \entry{vitale2023using}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=150f9db0f78c535bd07f575e981d34a0}{%
+           family={Vitale},
+           familyi={V\bibinitperiod},
+           given={Antonio},
+           giveni={A\bibinitperiod}}}%
+        {{hash=52bbd112d3d7a47b7f6bc133de5f8373}{%
+           family={Piantadosi},
+           familyi={P\bibinitperiod},
+           given={Valentina},
+           giveni={V\bibinitperiod}}}%
+        {{hash=e8319e956848e35a7b05e7dbbbca9a61}{%
+           family={Scalabrino},
+           familyi={S\bibinitperiod},
+           given={Simone},
+           giveni={S\bibinitperiod}}}%
+        {{hash=ebbd5f36c9d746916bb6b816286162d1}{%
+           family={Oliveto},
+           familyi={O\bibinitperiod},
+           given={Rocco},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{3ba9d7546620a2a48998623199287b10}
+      \strng{fullhash}{b0297f01a1561680175a81abc8b38da0}
+      \strng{bibnamehash}{3ba9d7546620a2a48998623199287b10}
+      \strng{authorbibnamehash}{3ba9d7546620a2a48998623199287b10}
+      \strng{authornamehash}{3ba9d7546620a2a48998623199287b10}
+      \strng{authorfullhash}{b0297f01a1561680175a81abc8b38da0}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2023 38th IEEE/ACM International Conference on Automated Software Engineering (ASE)}
+      \field{title}{Using Deep Learning to Automatically Improve Code Readability}
+      \field{year}{2023}
+      \field{pages}{573\bibrangedash 584}
+      \range{pages}{12}
+    \endentry
+    \entry{wilson2007beautiful}{book}{}
+      \name{author}{2}{}{%
+        {{hash=fda30198609a1ab29a82b93d4e8f347b}{%
+           family={Wilson},
+           familyi={W\bibinitperiod},
+           given={Greg},
+           giveni={G\bibinitperiod}}}%
+        {{hash=84a8020842f99bcec4848a67e1f1d700}{%
+           family={Oram},
+           familyi={O\bibinitperiod},
+           given={Andy},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {" O'Reilly Media, Inc."}%
+      }
+      \strng{namehash}{0e00847549f9150d2e944356d5fc4412}
+      \strng{fullhash}{0e00847549f9150d2e944356d5fc4412}
+      \strng{bibnamehash}{0e00847549f9150d2e944356d5fc4412}
+      \strng{authorbibnamehash}{0e00847549f9150d2e944356d5fc4412}
+      \strng{authornamehash}{0e00847549f9150d2e944356d5fc4412}
+      \strng{authorfullhash}{0e00847549f9150d2e944356d5fc4412}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Beautiful code: Leading programmers explain how they think}
+      \field{year}{2007}
+    \endentry
+    \entry{xia2017measuring}{article}{}
+      \name{author}{6}{}{%
+        {{hash=389bc525f2088642cfd16749beb3312e}{%
+           family={Xia},
+           familyi={X\bibinitperiod},
+           given={Xin},
+           giveni={X\bibinitperiod}}}%
+        {{hash=02be7d0d2d03669907fe2b09091b4529}{%
+           family={Bao},
+           familyi={B\bibinitperiod},
+           given={Lingfeng},
+           giveni={L\bibinitperiod}}}%
+        {{hash=cac8ebdbf2f8a8f2b7f49f6e737c2649}{%
+           family={Lo},
+           familyi={L\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=4ae2acd2b75c048ed13c08ebfc75e822}{%
+           family={Xing},
+           familyi={X\bibinitperiod},
+           given={Zhenchang},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=37a79f9b3d67c262a89ed8c5521d654f}{%
+           family={Hassan},
+           familyi={H\bibinitperiod},
+           given={Ahmed\bibnamedelima E},
+           giveni={A\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=50395496c46838f6984b813ae892840a}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Shanping},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{7426f68ea8cd4b799e2afa44b536c4f0}
+      \strng{fullhash}{2035e66dd62d9b79a0d9a7b61b9c9f80}
+      \strng{bibnamehash}{7426f68ea8cd4b799e2afa44b536c4f0}
+      \strng{authorbibnamehash}{7426f68ea8cd4b799e2afa44b536c4f0}
+      \strng{authornamehash}{7426f68ea8cd4b799e2afa44b536c4f0}
+      \strng{authorfullhash}{2035e66dd62d9b79a0d9a7b61b9c9f80}
+      \field{sortinit}{X}
+      \field{sortinithash}{1965c258adceecf23ce3d67b05113442}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Software Engineering}
+      \field{number}{10}
+      \field{title}{Measuring program comprehension: A large-scale field study with professionals}
+      \field{volume}{44}
+      \field{year}{2017}
+      \field{pages}{951\bibrangedash 976}
+      \range{pages}{26}
+    \endentry
     \entry{yasunaga2020graph}{inproceedings}{}
       \name{author}{2}{}{%
         {{hash=f95714ad66afcfa71b317b3bec07d01d}{%
@@ -902,7 +1765,7 @@
            given={Percy},
            giveni={P\bibinitperiod}}}%
       }
-      \list{organization}{1}{%
+      \list{publisher}{1}{%
         {PMLR}%
       }
       \strng{namehash}{1d68a470def4f664a0aa43ab2971b8f0}
@@ -915,36 +1778,21 @@
       \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{booktitle}{International Conference on Machine Learning}
-      \field{title}{Graph-based, self-supervised program repair from diagnostic feedback}
+      \field{booktitle}{Proceedings of the 37th International Conference on Machine Learning, {ICML} 2020, 13-18 July 2020, Virtual Event}
+      \field{series}{Proceedings of Machine Learning Research}
+      \field{title}{Graph-based, Self-Supervised Program Repair from Diagnostic Feedback}
+      \field{volume}{119}
       \field{year}{2020}
       \field{pages}{10799\bibrangedash 10808}
       \range{pages}{10}
+      \verb{urlraw}
+      \verb http://proceedings.mlr.press/v119/yasunaga20a.html
+      \endverb
+      \verb{url}
+      \verb http://proceedings.mlr.press/v119/yasunaga20a.html
+      \endverb
     \endentry
   \enddatalist
-  \missing{alawad2019empirical}
-  \missing{beck2007implementation}
-  \missing{buse2008evaluating}
-  \missing{choi2020metric}
-  \missing{johnson2019empirical}
-  \missing{klare1964measurement}
-  \missing{mannan2018towards}
-  \missing{martin2009clean}
-  \missing{mi2018inception}
-  \missing{mi2021effectiveness}
-  \missing{mi2022enhanced}
-  \missing{mi2022rank}
-  \missing{mi2023graph}
-  \missing{mi2023makes}
-  \missing{oliveira2020evaluating}
-  \missing{ribeiro2018attributes}
-  \missing{sedano2016code}
-  \missing{segedinac2024assessing}
-  \missing{sharma2020egan}
-  \missing{tashtoush2013impact}
-  \missing{vitale2023using}
-  \missing{wilson2007beautiful}
-  \missing{xia2017measuring}
 \endrefsection
 \endinput
 
