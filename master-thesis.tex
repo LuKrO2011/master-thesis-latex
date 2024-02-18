@@ -967,6 +967,29 @@ cleveref=true,%
 	% Related work
 	\citeauthor{oliveira2020evaluating}'s study addresses the challenge of acquiring large datasets with manual labels for training deep learning models in code readability classification. To overcome this limitation, the authors propose data augmentation approaches to artificially increase the training set size, reducing the risk of overfitting and aiming to improve classification accuracy. They create transformed versions of code snippets by manipulating aspects such as comments, indentations, and names of classes/methods/variables, based on domain-specific knowledge. Additionally, they explore the use of Auxiliary Classifier GANs to generate synthetic data. Experimental results show a significant improvement in the classification performance of deep neural networks when trained on the augmented corpus, achieving a state-of-the-art accuracy of 87.38\%. The findings highlight the effectiveness of data augmentation in code readability classification. Future work involves extending the proposed approach systematically, exploring more ground-truth data, experimenting with other classifiers, and aiming for better performance with larger datasets and more complex deep learning models.
 		
+\section{Work on Existing Dataset} \label{Work on Existing Datasets}
+	Later we will compare our new dataset and generation approach against existing datasets for readability classification. Most of the related work (TOOD: refs) use a combination of \citeauthor{buse2009learning}, \citeauthor{dorn2012general} and \citeauthor{scalabrino2018comprehensive} data. The raw data from their surveys can be downloaded \curl{https://dibt.unimol.it/report/readability/}{2024-02-18}, but their data is not uniformly formatted, also contains not-Java code snippet ratings and contains the raw ratings rather than the mean over the ratings, which is used for training machine learning models.
+	
+	Therefore, we converted and combined the three datasets into one dataset: code-readability-merged. In recent years, Huggingface \curl{https://huggingface.co/}{2024-02-18} established as the pioneer in making models and datasets easily available. Therefore we decided to publish the merged dataset on Huggingface \curl{https://huggingface.co/datasets/se2p/code-readability-merged}{2024-02-18}.
+	
+	When it comes to code readability classification, it is still state of the art to perform binary classification into readable and not-readable code (TODO: cites). 
+	
+	However, code readability classification is not a binary classification task per se. When rating code snippets, this is done on a Likert scale ranging from 1 to 5. So one could argue, that there are actually 5 classes rather than two.	
+	However, the actual readability value of a code snippet lies somewhere in between those ratings, it can have any value from 1.0 to 5.0.  The range is continuous, not discrete. Especially when normalizing this by subtracting 1 from the mean values and divide then by 4 we come end up with a continuous value ranging from 0.0 to 1.0. At this point it is trivial to say, that this is at it's core actually a regression problem.
+	
+	This arises the question, why the research in the field of readability always see the problem as a (binary) classification problem. To answer this question is probably worth a research on it's one. 
+	
+	As our evaluation model is the same as that of \citeauthor{mi2022towards}, we will only point out, how they converted the regression problem to a binary classification problem. First, the mean values of all ratings are calculated. In a second step, the snippets are ranked by their mean score. Then, the top 25\% of the data are labeled as well-readable and the bottom most 25\% are labeled as badly-readable. The intermediate 50\% of the data are not used as all.
+	
+	While this conversion is in principle fine, especially with the argument that the data in the middle is not clearly either readable or not readable it has the clear drawback that only 50\% of the available data is used for model training and evaluation. This has two drawbacks:
+	
+	First, the available data of 421 rated code snippets is further reduced to 200 code snippets for training. Keep in mind, that a bottleneck of readability classification is the little amount of available data, which makes this a significant loss.
+	
+	Secondly, evaluation is performed with only those 200 snippets as well. This means, that the model was only evaluated on 50\% of the available data. This is certainly a huge thread to validity. It suggests, that the performance of the model is to a remarkable degree lower when evaluation is performed on random unseen data.
+	
+	However, we will both stick to the binary classification approach as well as to \citeauthor{mi2022towards}'s model to make our results comparable to theirs.
+	
+	
 	
 \section{Dataset Generation Approach} \label{Dataset Generation Approach}
 	Other than previous datasets for readability classification, our dataset was generated using an automated approach. This approach is novel to the best of our knowledge. You can find a visualization in Figure \ref{fig:dataset_generation}.
