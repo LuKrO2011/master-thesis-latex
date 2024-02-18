@@ -8,11 +8,11 @@
 \contentsline {section}{\numberline {3}Dataset Generation Approach}{10}{section.0.0.3}%
 \contentsline {section}{\numberline {4}Readability Decreasing Heuristics}{11}{section.0.0.4}%
 \contentsline {section}{\numberline {5}Survey}{12}{section.0.0.5}%
-\contentsline {section}{\numberline {6}Readability Classification Model}{12}{section.0.0.6}%
-\contentsline {subsection}{\numberline {6.1}User study}{15}{subsection.0.0.6.1}%
-\contentsline {subsection}{\numberline {6.2}Comparing models}{15}{subsection.0.0.6.2}%
-\contentsline {subsection}{\numberline {6.3}Research questions}{16}{subsection.0.0.6.3}%
-\contentsline {section}{\numberline {7}Evaluation}{17}{section.0.0.7}%
-\contentsline {section}{\numberline {8}Discussion}{18}{section.0.0.8}%
-\contentsline {section}{\numberline {9}Conclusion}{18}{section.0.0.9}%
+\contentsline {section}{\numberline {6}Readability Classification Model}{15}{section.0.0.6}%
+\contentsline {subsection}{\numberline {6.1}User study}{17}{subsection.0.0.6.1}%
+\contentsline {subsection}{\numberline {6.2}Comparing models}{17}{subsection.0.0.6.2}%
+\contentsline {subsection}{\numberline {6.3}Research questions}{18}{subsection.0.0.6.3}%
+\contentsline {section}{\numberline {7}Evaluation}{19}{section.0.0.7}%
+\contentsline {section}{\numberline {8}Discussion}{20}{section.0.0.8}%
+\contentsline {section}{\numberline {9}Conclusion}{20}{section.0.0.9}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

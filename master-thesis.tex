@@ -968,7 +968,7 @@ cleveref=true,%
 	\citeauthor{oliveira2020evaluating}'s study addresses the challenge of acquiring large datasets with manual labels for training deep learning models in code readability classification. To overcome this limitation, the authors propose data augmentation approaches to artificially increase the training set size, reducing the risk of overfitting and aiming to improve classification accuracy. They create transformed versions of code snippets by manipulating aspects such as comments, indentations, and names of classes/methods/variables, based on domain-specific knowledge. Additionally, they explore the use of Auxiliary Classifier GANs to generate synthetic data. Experimental results show a significant improvement in the classification performance of deep neural networks when trained on the augmented corpus, achieving a state-of-the-art accuracy of 87.38\%. The findings highlight the effectiveness of data augmentation in code readability classification. Future work involves extending the proposed approach systematically, exploring more ground-truth data, experimenting with other classifiers, and aiming for better performance with larger datasets and more complex deep learning models.
 		
 	
-	\section{Dataset Generation Approach} \label{Dataset Generation Approach}
+\section{Dataset Generation Approach} \label{Dataset Generation Approach}
 	Other than previous datasets for readability classification, our dataset was generated using an automated approach. This approach is novel to the best of our knowledge. You can find a visualization in Figure \ref{fig:dataset_generation}.
 	
 	\begin{figure}[t]
@@ -992,7 +992,7 @@ cleveref=true,%
 	The fourth and final step is to generate badly readable code from the well readable one. Therefore we use the proposed Readability Decreasing Heuristics (RDH). Afterwards we again extract all methods with a comment at the beginning of the method.
 	Initially we planned to not require comments for the badly readable dataset part. However, it turns out that in this case all well-readable methods have a comment while most of the badly-readble don't. This lead to shortcut learning, whether a method has a comment or not instead of learning the readability of the code snippet.
 	
-	\section{Readability Decreasing Heuristics} \label{Readability Decreasing Heursitcs}
+\section{Readability Decreasing Heuristics} \label{Readability Decreasing Heursitcs}
 	We already mentioned, that Readability Decreasing Heuristics (RDH) are used to generated badly readable code from well readable one. In this section we will cover, what is meant by RDH.
 	The RDH is a set of code manipulation heuristics that are performed on the abstract syntax tree of java files using the spoon library (\curl{https://spoon.gforge.inria.fr/}{2024-15-02}) \cite{pawlak2016spoon}.
 	
@@ -1013,7 +1013,7 @@ cleveref=true,%
 	
 	The RDH works with a configuration file where one can specify a probability for each heuristic that can be applied. We chose the probabilities so that the generated code snippets are still realistic in a sense that they might be written as well by humans.
 	
-	\section{Survey} \label{Survey}
+\section{Survey} \label{Survey}
 	We evaluate the dataset generated with the new approach with a survey. Therefore we had to carefully sample suitable code snippets from the dataset. You can find an overview over the approach in Figure \ref{fig:survey_pipeline}.
 	
 	\begin{figure}[t]
@@ -1023,7 +1023,7 @@ cleveref=true,%
 		\label{fig:survey_pipeline}
 	\end{figure}
 	
-	The first step was to find realistic configurations for the readability decreasing tool. After creating an initial dataset using the heuristics a pilot survey was conducted. Afterwards the heuristics that seemed to be too strong were weekend and adjusted according to the pilot survey result. The result of this were 9 different rdhs, which were:
+	The first step was to find realistic configurations for the readability decreasing tool. After creating an initial dataset using the heuristics a pilot survey was conducted. Afterwards the heuristics that seemed to be too strong were weekend and adjusted according to the pilot survey result. The result of this were 9 different rdhs, which can be found in Table \ref{tab:rdh_configurations}.
 	
 	\begin{table}[h]
 		\centering
@@ -1056,9 +1056,13 @@ cleveref=true,%
 
 	Together with the original methods this resulted in 10 different configurations.
 	
+	The configurations are based on probabilities for different heuristics. A heuristic is applied with the given probability one each occurrence of the object to apply it to. For example, comment\_remove is applied with a probability of 10\% on each comment that occurs within the code snippet. Thus, the exact amount of changes for one method is uncertain. It might even happen (especially for short methods, such as getters and setters) that a method is not changed at all. For example, if a method has only a single comment and we apply comment\_remove, it is very likely, that a method is not changed at all.
+	
 	In a second step we applied stratified sampling to those to be able to distinguish between very simple methods such as getters and setters and more complex methods. In order to be able to compare original methods with their modified variants, we performed the sampling only on the original methods and matched the rdh methods to those in a later step.
+	
 	Thus we first had to calculate features for the original code snippets. This was done using TODOs tool. Therefore a TODO-dimensional features vector was calculated for each original code snippet. Next we calculate the cosine similarity metrix between all feature vectors and finally, using Ward's hierarchical clustering we were able to cluster the methods into an arbitrary amount of clusters.
-	By comparing the merge distances in each step (see Figure \ref{fig:survey_cluster_amount}) we evaluated that a cluster size of 4 makes most sense: The merge distance from 5 to 4 is small, so we should still do this merge, but the merge distance from 4 to 3 is large, so one should rather not do this merge. Additionally, 4 is the size with the last possibility for a small merge distance. We assigned each cluster/strata manually a name, which can be found in Figure \ref{fig:survey_strata_labeles}.
+	
+	By comparing the merge distances in each step (see Figure \ref{fig:survey_cluster_amount}) we evaluated that a cluster size of 4 makes most sense: The merge distance from 5 to 4 is small, so we should still do this merge, but the merge distance from 4 to 3 is large, so one should rather not do this merge. Additionally, 4 is the size with the last possibility for a small merge distance. We assigned each cluster/strata manually a name, which can be found in Figure \ref{tab:survey_strata_labeles}.
 	
 	\begin{figure}[t]
 		\centering
@@ -1067,14 +1071,60 @@ cleveref=true,%
 		\label{fig:survey_cluster_amount}
 	\end{figure}
 	
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{ll}
+			\toprule
+			\textbf{Stratum} & \textbf{Method Type} \\
+			\midrule
+			Stratum 0 & Simple methods \\
+			Stratum 1 & Complex methods \\
+			Stratum 2 & Magic number methods \\
+			Stratum 3 & Medium complex methods \\
+			\bottomrule
+		\end{tabular}
+		\caption{The created stratas and a manually assigned name based on the methods within.}
+		\label{tab:survey_strata_labeles}
+	\end{table}
+	
+	In the third step we crafted the surveys from the stratas. We decided to provide for each original method all 10 configurations mentioned earlier as we want to compare the original methods to their rdh-variants. As we have a capacity of rating 400 code snippets, we require to sample 40 original code snippets (and than add all their rdh-variants).	
+	
+	We chose to sample randomly from within the stratas. However, we distributed the 40 snippets among the stratas as can be seen in table \ref{tab:sampled_methods}.
+	
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{lccc}
+			\toprule
+			\textbf{Stratum} & \textbf{Percentage} & \textbf{Count} \\
+			\midrule
+			Stratum 0 & 10\% & 4 \\
+			Stratum 1 & 40\% & 16 \\
+			Stratum 2 & 10\% & 4 \\
+			Stratum 3 & 40\% & 16 \\
+			\midrule
+			\textbf{Total} & \textbf{100\%} & \textbf{40} \\
+			\bottomrule
+		\end{tabular}
+		\caption{Distribution of Sampled Methods}
+		\label{tab:sampled_methods}
+	\end{table}
+	
+	This decision was made due to the relative high frequency of methods not being different from their original methods (see Figure \ref{fig:sampling_not_different_overall}). Another factor for this decision is, that especially simple methods are rather uninteresting for readability classification, as they are often generated and mostly follow a straight forward pattern.
+	
 	\begin{figure}[t]
 		\centering
-		\includegraphics[width=\textwidth]{img/stratas_manual_labelled.png}
-		\caption{TODO: TO TABLE. The resulting clusters/stratas and a manually assigned name based on the method snippets within each.} 
-		\label{fig:survey_strata_labeles}
+		\includegraphics[width=\textwidth]{img/sampling_not_different_overall.png}
+		\caption{Relative frequency of the case that a rdh-method is not different from it's original method.} 
+		\label{fig:sampling_not_different_overall}
 	\end{figure}
 	
+	After sampling the 40 original methods, we next sampled all 9*40 rdh-variants that belong to the original methods. This was done mostly automatically using the sample name of the original methods and the sample names of the rdh-variant-methods. However, if the method was renamed earlier due to the rename-method-heuristic, the new method name did not match the one of the original method anymore and therefore we had to match those manually.
 	
+	After gathering all 400 methods we than had to distribute those among the 20 survey sheets, 20 snippets each. To not manipulate the raters we decided, that a variant of each method can only be once in each survey sheet. For example, if the original method is in survey sheet 1, the comment\_remove-variant (or any other variant) must not be in the same sheet.
+	
+	To achieve this, we created four permutation matrices with 10 snippets each. 10 was chosen, as it is possible to distribute 10 snippets with 10 variants each among at least 10 survey sheets while not violating our condition. By combining two 10-permutation-matrices we could create 10 survey sheets with 20 code snippets each. One implication of this approach is, that each survey sheet has each variant exactly twice. By doing this twice, we ended up with a desired distribution of 20 survey sheets à 20 methods. Additionally, our condition holds: In each survey sheet there is only one variant of the same method.
+	
+	Finally the methods for each survey sheet where randomly shuffled within each survey sheet so that the positions of the variants within each sheet are randomly distributed. This was done to minimize any effect of the position of a snippet/variant within a survey on the rating.	
 	
 	\section{Readability Classification Model} \label{Readability Classification Model}
 

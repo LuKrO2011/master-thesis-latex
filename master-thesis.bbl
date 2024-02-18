@@ -679,6 +679,55 @@
       \field{pages}{111454}
       \range{pages}{1}
     \endentry
+    \entry{pawlak2016spoon}{article}{}
+      \name{author}{5}{}{%
+        {{hash=9882e72c96831c048867bf483f5f1fb2}{%
+           family={Pawlak},
+           familyi={P\bibinitperiod},
+           given={Renaud},
+           giveni={R\bibinitperiod}}}%
+        {{hash=98f471912e248a73379dde4aa46e4ecf}{%
+           family={Monperrus},
+           familyi={M\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=06e252814e9fe28a30e4ad8ccb95f16a}{%
+           family={Petitprez},
+           familyi={P\bibinitperiod},
+           given={Nicolas},
+           giveni={N\bibinitperiod}}}%
+        {{hash=5be67ae4958d5e0f4f0efe167af5c334}{%
+           family={Noguera},
+           familyi={N\bibinitperiod},
+           given={Carlos},
+           giveni={C\bibinitperiod}}}%
+        {{hash=a3444157771bd88713eb1e59eba46888}{%
+           family={Seinturier},
+           familyi={S\bibinitperiod},
+           given={Lionel},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{b0a8fcfd1568c24d7a378491e277bd10}
+      \strng{fullhash}{19dffd696b111aba87f88c047715d82f}
+      \strng{bibnamehash}{b0a8fcfd1568c24d7a378491e277bd10}
+      \strng{authorbibnamehash}{b0a8fcfd1568c24d7a378491e277bd10}
+      \strng{authornamehash}{b0a8fcfd1568c24d7a378491e277bd10}
+      \strng{authorfullhash}{19dffd696b111aba87f88c047715d82f}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Software: Practice and Experience}
+      \field{number}{9}
+      \field{title}{Spoon: A library for implementing analyses and transformations of java source code}
+      \field{volume}{46}
+      \field{year}{2016}
+      \field{pages}{1155\bibrangedash 1179}
+      \range{pages}{25}
+    \endentry
     \entry{posnett2011simpler}{inproceedings}{}
       \name{author}{3}{}{%
         {{hash=bfc2f15f3ea252edf4bb6ead52ac9d76}{%
@@ -883,13 +932,17 @@
   \missing{martin2009clean}
   \missing{mi2018inception}
   \missing{mi2021effectiveness}
+  \missing{mi2022enhanced}
+  \missing{mi2022rank}
   \missing{mi2023graph}
+  \missing{mi2023makes}
   \missing{oliveira2020evaluating}
   \missing{ribeiro2018attributes}
   \missing{sedano2016code}
   \missing{segedinac2024assessing}
   \missing{sharma2020egan}
   \missing{tashtoush2013impact}
+  \missing{vitale2023using}
   \missing{wilson2007beautiful}
   \missing{xia2017measuring}
 \endrefsection
