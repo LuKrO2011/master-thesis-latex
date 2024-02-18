@@ -1,0 +1,22 @@
+\babel@toc {UKenglish}{}\relax 
+\contentsline {section}{\numberline {1}Introduction}{1}{section.0.0.1}%
+\contentsline {section}{\numberline {2}Background and related work}{2}{section.0.0.2}%
+\contentsline {subsection}{\numberline {2.1}Code Readability}{2}{subsection.0.0.2.1}%
+\contentsline {subsection}{\numberline {2.2}Classical calculation approaches}{5}{subsection.0.0.2.2}%
+\contentsline {subsection}{\numberline {2.3}Deep Learning based approaches}{5}{subsection.0.0.2.3}%
+\contentsline {subsection}{\numberline {2.4}Related work}{6}{subsection.0.0.2.4}%
+\contentsline {section}{\numberline {3}Work on Existing Dataset}{10}{section.0.0.3}%
+\contentsline {section}{\numberline {4}Dataset Generation Approach}{11}{section.0.0.4}%
+\contentsline {section}{\numberline {5}Readability Decreasing Heuristics}{12}{section.0.0.5}%
+\contentsline {section}{\numberline {6}Survey}{13}{section.0.0.6}%
+\contentsline {section}{\numberline {7}Survey Results}{16}{section.0.0.7}%
+\contentsline {subsection}{\numberline {7.1}Pilot survey}{16}{subsection.0.0.7.1}%
+\contentsline {section}{\numberline {8}Code base}{17}{section.0.0.8}%
+\contentsline {section}{\numberline {9}Readability Classification Model}{17}{section.0.0.9}%
+\contentsline {subsection}{\numberline {9.1}User study}{21}{subsection.0.0.9.1}%
+\contentsline {subsection}{\numberline {9.2}Comparing models}{21}{subsection.0.0.9.2}%
+\contentsline {subsection}{\numberline {9.3}Research questions}{22}{subsection.0.0.9.3}%
+\contentsline {section}{\numberline {10}Evaluation}{23}{section.0.0.10}%
+\contentsline {section}{\numberline {11}Discussion}{24}{section.0.0.11}%
+\contentsline {section}{\numberline {12}Conclusion}{24}{section.0.0.12}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

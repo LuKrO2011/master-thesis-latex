@@ -583,6 +583,9 @@ cleveref=true,%
 % Nice skips between paragraphs
 \usepackage{parskip} 
 
+% Skips at \_ within table
+\usepackage{seqsplit}
+
 \begin{document}
 	
 	\frontmatter
@@ -1148,9 +1151,115 @@ cleveref=true,%
 	Finally the methods for each survey sheet where randomly shuffled within each survey sheet so that the positions of the variants within each sheet are randomly distributed. This was done to minimize any effect of the position of a snippet/variant within a survey on the rating.	
 	
 \section{Survey Results} \label{Survey Results}
+	The results from our survey are separated into two parts: The results from the pilot survey used to improve the main survey pre start and the main survey results used to answer our research questions.
+	
+	\subsection{Pilot survey} \label{Pilot Survey}
+	The pilot survey was used to adjust the rdh-probability settings and the survey itself before start.
+	
+	The pilot survey gave an insight into how much time one would need to rate 20 code snippets regarding it's readability. You can find an overview over the times needed in Figure \ref{fig:pilot_survey_time_box.png}. Based on this we estimated the time requirement for our survey with 10 minutes.
+	
+	\begin{figure}[t]
+		\centering
+		\includegraphics[width=\textwidth]{img/survey_time_box.png}
+		\caption{TODO: Replace with actual one.}
+		\label{fig:pilot_survey_time_box.png}
+	\end{figure}
+	
+	Most of the problems that came up where due to the survey tool (for example: "I also thought that I should use the drop-down menu on the upper left."). You can find all feedback in appendix TODO.
+	
+%	It is sometimes necessary to swipe horizontally to see all of the code, which is a bit inconvenient.
+%	After finishing the task, at least message should be shown.
+%	First I needed to figure out how this tool works and that the rating is done with the stars below. I thought I should write my rating as a comment in the comment field below. After number 20 I didn't know whether I could close the survey or not.
+%	I also thought that I should use the drop-down menu on the upper left.
+%	Mobile is not easy to use because of the scrolling needed to complete the survey
+%	I didn't understand what the button at the top left meant, where you could select the programming language. There were too many fonts to choose. I also wasn't sure whether to write a comment or not. It wasn't described at the beginning.
+%	I suggest to make the task description accessible during the rating
+%	Submit vote after the last question could contain that one can close the survey now.
+%	Maybe the option to leave the survey, when clicking to submit.
+%	I would leave out the buttons described above. I was missing a scrollbar at the bottom of the code-window. A conclusion page with a message like "Thank you for your participation", "You're Done!" or other further information was missing, too.
+%	There werde drop downs for the programming language, but choosing another language did not change anything.
+%	9:53
+%	Das müsste alles Feedback zum Tool sein, ich schau mal, ob ich das auf die schnelle noch etwas zusammenfassen kann :slightly_smiling_face:
+%	9:57
+%	Zusammengefasst:
+%	Feature Request: "You're done! Thank you for your participation!" - message at the end
+%	Feature Request: Hide comment fields
+%	Feature Request: Predefine code parser (per survey/snippet) and hide selection during survey for participants
+%	Feature Request: Possibility to show a hint or the task description again during the survey
 
+	Additionally some manual evaluation of the different rdhs, especially for stratum 1 suggested a few things:
 	
+	First of all, original methods where rated comparably well, which suggests the well-readable-assumption to hold.
 	
+	Secondly, the rdh tool did always fully declare each imported method or class with its fully specified classifier. For example, instead of 
+	"InputStream", "java.io.InputStream" was declared. This gave the raters the feeling, that the code was actually not written by a human and drastically decreased it's readability. Afterwards, we adjusted the rdh-tool to not print the fully qualified name anymore. This has however the drawback, that it can not be guaranteed anymore that the generated code compiles and does the same as it's original. However, this property was lost anywhere upon extracting the individual methods from the class files.
+	
+	Third, some rdhs where configured to strong so that some methods were again not presumed to be written by a human anymore. These rdhs were adjusted and their probabilities were decreased accordingly (for example newlines\_few). For all results see Table \ref{tab:pilot_survey_results}.
+
+%	\begin{table}[htbp]
+%		\centering
+%		\begin{tabular}{llp{6cm}c}
+%			\toprule
+%			\textbf{Stratum} & \textbf{RDH} & \textbf{File} & \textbf{Score} \\
+%			\midrule
+%			stratum\_0 & spaces\_few & \seqsplit{hadoop\_FilePosition.java\_bufferFullyRead.java} & 3 \\
+%			stratum\_0 & tabs\_few & \seqsplit{hadoop\_DataNodeFaultInjector.java\_delayWriteToDisk.java} & 4,3 \\
+%			stratum\_1 & all & \seqsplit{hudi\_HoodieMultiTableStreamer.java\_populateTableExecutionContextList.java} & 1,2 \\
+%			stratum\_1 & all\_weak & \seqsplit{flink\_SSLUtils.java\_createInternalNettySSLContext.java} & 1,3 \\
+%			stratum\_1 & newlines\_few & \seqsplit{hudi\_Pipelines.java\_hoodieStreamWrite.java} & 1,7 \\
+%			stratum\_1 & spaces\_many & \seqsplit{hadoop\_ActiveAuditManagerS3A.java\_createExecutionInterceptors.java} & 2,1 \\
+%			stratum\_1 & tabs\_few & \seqsplit{hbase\_ZKMainServer.java\_main.java} & 2,2 \\
+%			stratum\_1 & tabs\_many & \seqsplit{flink\_HiveParserSemanticAnalyzer.java\_findCTEFromName.java} & 2,2 \\
+%			stratum\_1 & misc & \seqsplit{hbase\_Encryption.java\_decryptWithSubjectKey.java} & 2,4 \\
+%			stratum\_1 & spaces\_few & \seqsplit{hbase\_HBaseZKTestingUtility.java\_startMiniZKCluster.java} & 2,6 \\
+%			stratum\_1 & newlines\_many & \seqsplit{pulsar\_LoadSimulationController.java\_writeProducerOptions.java} & 2,9 \\
+%			stratum\_1 & all\_weak\_3 & \seqsplit{hadoop\_SingleFilePerBlockCache.java\_getIntList.java} & 3 \\
+%			stratum\_1 & comments\_remove & \seqsplit{flink\_MemorySegment.java\_get.java} & 3,1 \\
+%			stratum\_1 & methods & \seqsplit{flink\_HiveParserSemanticAnalyzer.java\_processPTFSource.java} & 3,7 \\
+%			stratum\_2 & newlines\_few & \seqsplit{zxing\_ModulusPoly.java\_isZero.java} & 2,4 \\
+%			stratum\_2 & methods & \seqsplit{hibernate-validator\_PESELValidator.java\_year.java} & 3,7 \\
+%			stratum\_2 & tabs\_few & \seqsplit{framework\_WindowMoveListener.java\_getTicketNumber.java} & 3,8 \\
+%			stratum\_3 & tabs\_many & \seqsplit{hadoop\_S3AInputPolicy.java\_getPolicy.java} & 1,7 \\
+%			stratum\_3 & newlines\_many & \seqsplit{hadoop\_CompressionCodec.java\_createInputStreamWithCodecPool.java} & 3,3 \\
+%			stratum\_3 & methods & \seqsplit{hbase\_PreviousBlockCompressionRatePredicator.java\_updateLatestBlockSizes.java} & 4,6 \\
+%			\bottomrule
+%		\end{tabular}
+%		\caption{Data with Highlighted Row}
+%		\label{tab:pilot_survey_results}
+%	\end{table}
+
+\begin{table}[htbp]
+	\centering
+	\begin{tabular}{llp{6cm}c}
+		\toprule
+		\textbf{Stratum} & \textbf{Feature} & \textbf{File} & \textbf{Score} \\
+		\midrule
+		stratum\_3 & methods & \seqsplit{hbase\_PreviousBlockCompressionRatePredicator.java\_updateLatestBlockSizes.java} & 4,6 \\
+		stratum\_0 & tabs\_few & \seqsplit{hadoop\_DataNodeFaultInjector.java\_delayWriteToDisk.java} & 4,3 \\
+		stratum\_2 & tabs\_few & \seqsplit{framework\_WindowMoveListener.java\_getTicketNumber.java} & 3,8 \\
+		stratum\_1 & methods & \seqsplit{flink\_HiveParserSemanticAnalyzer.java\_processPTFSource.java} & 3,7 \\
+		stratum\_2 & methods & \seqsplit{hibernate-validator\_PESELValidator.java\_year.java} & 3,7 \\
+		stratum\_3 & newlines\_many & \seqsplit{hadoop\_CompressionCodec.java\_createInputStreamWithCodecPool.java} & 3,3 \\
+		stratum\_1 & comments\_remove & \seqsplit{flink\_MemorySegment.java\_get.java} & 3,1 \\
+		stratum\_0 & spaces\_few & \seqsplit{hadoop\_FilePosition.java\_bufferFullyRead.java} & 3 \\
+		stratum\_1 & all\_weak\_3 & \seqsplit{hadoop\_SingleFilePerBlockCache.java\_getIntList.java} & 3 \\
+		stratum\_1 & newlines\_many & \seqsplit{pulsar\_LoadSimulationController.java\_writeProducerOptions.java} & 2,9 \\
+		stratum\_1 & spaces\_few & \seqsplit{hbase\_HBaseZKTestingUtility.java\_startMiniZKCluster.java} & 2,6 \\
+		stratum\_1 & misc & \seqsplit{hbase\_Encryption.java\_decryptWithSubjectKey.java} & 2,4 \\
+		stratum\_2 & newlines\_few & \seqsplit{zxing\_ModulusPoly.java\_isZero.java} & 2,4 \\
+		stratum\_1 & tabs\_few & \seqsplit{hbase\_ZKMainServer.java\_main.java} & 2,2 \\
+		stratum\_1 & tabs\_many & \seqsplit{flink\_HiveParserSemanticAnalyzer.java\_findCTEFromName.java} & 2,2 \\
+		stratum\_1 & spaces\_many & \seqsplit{hadoop\_ActiveAuditManagerS3A.java\_createExecutionInterceptors.java} & 2,1 \\
+		stratum\_1 & newlines\_few & \seqsplit{hudi\_Pipelines.java\_hoodieStreamWrite.java} & 1,7 \\
+		stratum\_3 & tabs\_many & \seqsplit{hadoop\_S3AInputPolicy.java\_getPolicy.java} & 1,7 \\
+		stratum\_1 & all\_weak & \seqsplit{flink\_SSLUtils.java\_createInternalNettySSLContext.java} & 1,3 \\
+		stratum\_1 & all & \seqsplit{hudi\_HoodieMultiTableStreamer.java\_populateTableExecutionContextList.java} & 1,2 \\
+		\bottomrule
+	\end{tabular}
+	\caption{Overview over the pilot survey results.}
+	\label{tab:pilot_survey_results}
+\end{table}
+
 	
 \section{Code base} \label{Code base}
 	Our code is available on GitHub. TODO: Refs
