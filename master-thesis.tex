@@ -1068,7 +1068,7 @@ cleveref=true,%
 	% Related work: Public code mining
 	Another concept we will employ is from \citeauthor{allamanis2016convolutional}. They cloned the top open source Java projects on GitHub\curl{https://github.com/}{2023-07-25} for training a Deep Learning model. Those top projects were selected by taking the sum of the z-scores of the number of watchers and forks of each project. As the projects have thousands of forks and stars and are widely used among software developers, they can be assumed to be of high quality~\cite{allamanis2016convolutional}.
 	
-\section{Other} \label{Other}
+subsection{Other} \label{Other}
 
 	There is also other important research in the field of readability classification, that does not directly affect this work, but might have impact in future work regarding the research field.
 	
@@ -1084,7 +1084,10 @@ cleveref=true,%
 	% Related work: Eye tracking
 	\citeauthor{segedinac2024assessing} introduces a novel approach for code readability classification using eye-tracking data from 90 undergraduate students assessing Python code snippets.
 		
-\section{Work on Existing Dataset} \label{Work on Existing Datasets}
+\section{Mined and Modified Code for Dataset Generation} \label{Mined and Modified Code for Dataset Generation}
+	In the following section we will describe our approach.
+		
+\subsection{Work on Existing Dataset} \label{Work on Existing Datasets}
 	Later we will compare our new dataset and generation approach against existing datasets for readability classification. Most of the related work (TOOD: refs) use a combination of \citeauthor{buse2009learning}, \citeauthor{dorn2012general} and \citeauthor{scalabrino2018comprehensive} data. The raw data from their surveys can be downloaded \curl{https://dibt.unimol.it/report/readability/}{2024-02-18}, but their data is not uniformly formatted, also contains not-Java code snippet ratings and contains the raw ratings rather than the mean over the ratings, which is used for training machine learning models.
 	
 	Therefore, we converted and combined the three datasets into one dataset: code-readability-merged. In recent years, Huggingface \curl{https://huggingface.co/}{2024-02-18} established as the pioneer in making models and datasets easily available. Therefore we decided to publish the merged dataset on Huggingface \curl{https://huggingface.co/datasets/se2p/code-readability-merged}{2024-02-18}.
@@ -1106,7 +1109,7 @@ cleveref=true,%
 	
 	However, we will both stick to the binary classification approach as well as to \citeauthor{mi2022towards}'s model to make our results comparable to theirs.	
 	
-\section{Dataset Generation Approach} \label{Dataset Generation Approach}
+\subsection{Dataset Generation Approach} \label{Dataset Generation Approach}
 	Other than previous datasets for readability classification, our dataset was generated using an automated approach. This approach is novel to the best of our knowledge. You can find a visualization in Figure \ref{fig:dataset_generation}.
 	
 	\begin{figure}[t]
@@ -1130,7 +1133,7 @@ cleveref=true,%
 	The fourth and final step is to generate badly readable code from the well readable one. Therefore we use the proposed Readability Decreasing Heuristics (RDH). Afterwards we again extract all methods with a comment at the beginning of the method.
 	Initially we planned to not require comments for the badly readable dataset part. However, it turns out that in this case all well-readable methods have a comment while most of the badly-readble don't. This lead to shortcut learning, whether a method has a comment or not instead of learning the readability of the code snippet.
 	
-\section{Readability Decreasing Heuristics} \label{Readability Decreasing Heursitcs}
+\subsection{Readability Decreasing Heuristics} \label{Readability Decreasing Heursitcs}
 	We already mentioned, that Readability Decreasing Heuristics (RDH) are used to generated badly readable code from well readable one. In this section we will cover, what is meant by RDH.
 	The RDH is a set of code manipulation heuristics that are performed on the abstract syntax tree of java files using the spoon library (\curl{https://spoon.gforge.inria.fr/}{2024-15-02}) \cite{pawlak2016spoon}.
 	
@@ -1144,14 +1147,14 @@ cleveref=true,%
 	
 	\begin{figure}[t]
 		\centering
-		\includegraphics[width=\textwidth]{img/rdh.png}
+		\includegraphics[width=0.5\textwidth]{img/rdh.png}
 		\caption{Overview of the used dataset generation approach.}
 		\label{fig:rdh}
 	\end{figure}
 	
 	The RDH works with a configuration file where one can specify a probability for each heuristic that can be applied. We chose the probabilities so that the generated code snippets are still realistic in a sense that they might be written as well by humans.
 	
-\section{Survey} \label{Survey}
+\subsection{Survey} \label{Survey}
 	We evaluate the dataset generated with the new approach with a survey. Therefore we had to carefully sample suitable code snippets from the dataset. You can find an overview over the approach in Figure \ref{fig:survey_pipeline}.
 	
 	\begin{figure}[t]
@@ -1262,248 +1265,9 @@ cleveref=true,%
 	
 	To achieve this, we created four permutation matrices with 10 snippets each. 10 was chosen, as it is possible to distribute 10 snippets with 10 variants each among at least 10 survey sheets while not violating our condition. By combining two 10-permutation-matrices we could create 10 survey sheets with 20 code snippets each. One implication of this approach is, that each survey sheet has each variant exactly twice. By doing this twice, we ended up with a desired distribution of 20 survey sheets à 20 methods. Additionally, our condition holds: In each survey sheet there is only one variant of the same method.
 	
-	Finally the methods for each survey sheet where randomly shuffled within each survey sheet so that the positions of the variants within each sheet are randomly distributed. This was done to minimize any effect of the position of a snippet/variant within a survey on the rating.	
+	Finally the methods for each survey sheet where randomly shuffled within each survey sheet so that the positions of the variants within each sheet are randomly distributed. This was done to minimize any effect of the position of a snippet/variant within a survey on the rating.			
 	
-\section{Survey Results} \label{Survey Results}
-	The results from our survey are separated into two parts: The results from the pilot survey used to improve the main survey pre start and the main survey results used to answer our research questions.
-	
-	\subsection{Pilot survey} \label{Pilot Survey}
-	The pilot survey was used to adjust the rdh-probability settings and the survey itself before start.
-	
-	The pilot survey gave an insight into how much time one would need to rate 20 code snippets regarding it's readability. You can find an overview over the times needed in Figure \ref{fig:pilot_survey_time_box.png}. Based on this we estimated the time requirement for our survey with 10 minutes.
-	
-	\begin{figure}[t]
-		\centering
-		\includegraphics[width=\textwidth]{img/survey_time_box.png}
-		\caption{TODO: Replace with actual one.}
-		\label{fig:pilot_survey_time_box.png}
-	\end{figure}
-	
-	Most of the problems that came up where due to the survey tool (for example: "I also thought that I should use the drop-down menu on the upper left."). You can find all feedback in appendix TODO.
-	
-%	It is sometimes necessary to swipe horizontally to see all of the code, which is a bit inconvenient.
-%	After finishing the task, at least message should be shown.
-%	First I needed to figure out how this tool works and that the rating is done with the stars below. I thought I should write my rating as a comment in the comment field below. After number 20 I didn't know whether I could close the survey or not.
-%	I also thought that I should use the drop-down menu on the upper left.
-%	Mobile is not easy to use because of the scrolling needed to complete the survey
-%	I didn't understand what the button at the top left meant, where you could select the programming language. There were too many fonts to choose. I also wasn't sure whether to write a comment or not. It wasn't described at the beginning.
-%	I suggest to make the task description accessible during the rating
-%	Submit vote after the last question could contain that one can close the survey now.
-%	Maybe the option to leave the survey, when clicking to submit.
-%	I would leave out the buttons described above. I was missing a scrollbar at the bottom of the code-window. A conclusion page with a message like "Thank you for your participation", "You're Done!" or other further information was missing, too.
-%	There werde drop downs for the programming language, but choosing another language did not change anything.
-%	9:53
-%	Das müsste alles Feedback zum Tool sein, ich schau mal, ob ich das auf die schnelle noch etwas zusammenfassen kann :slightly_smiling_face:
-%	9:57
-%	Zusammengefasst:
-%	Feature Request: "You're done! Thank you for your participation!" - message at the end
-%	Feature Request: Hide comment fields
-%	Feature Request: Predefine code parser (per survey/snippet) and hide selection during survey for participants
-%	Feature Request: Possibility to show a hint or the task description again during the survey
-
-	Additionally some manual evaluation of the different rdhs, especially for stratum 1 suggested a few things:
-	
-	First of all, original methods where rated comparably well, which suggests the well-readable-assumption to hold.
-	
-	Secondly, the rdh tool did always fully declare each imported method or class with its fully specified classifier. For example, instead of 
-	"InputStream", "java.io.InputStream" was declared. This gave the raters the feeling, that the code was actually not written by a human and drastically decreased it's readability. Afterwards, we adjusted the rdh-tool to not print the fully qualified name anymore. This has however the drawback, that it can not be guaranteed anymore that the generated code compiles and does the same as it's original. However, this property was lost anywhere upon extracting the individual methods from the class files.
-	
-	Third, some rdhs where configured to strong so that some methods were again not presumed to be written by a human anymore. These rdhs were adjusted and their probabilities were decreased accordingly (for example newlines\_few). For all results see Table \ref{tab:pilot_survey_results}.
-
-%	\begin{table}[htbp]
-%		\centering
-%		\begin{tabular}{llp{6cm}c}
-%			\toprule
-%			\textbf{Stratum} & \textbf{RDH} & \textbf{File} & \textbf{Score} \\
-%			\midrule
-%			stratum\_0 & spaces\_few & \seqsplit{hadoop\_FilePosition.java\_bufferFullyRead.java} & 3 \\
-%			stratum\_0 & tabs\_few & \seqsplit{hadoop\_DataNodeFaultInjector.java\_delayWriteToDisk.java} & 4,3 \\
-%			stratum\_1 & all & \seqsplit{hudi\_HoodieMultiTableStreamer.java\_populateTableExecutionContextList.java} & 1,2 \\
-%			stratum\_1 & all\_weak & \seqsplit{flink\_SSLUtils.java\_createInternalNettySSLContext.java} & 1,3 \\
-%			stratum\_1 & newlines\_few & \seqsplit{hudi\_Pipelines.java\_hoodieStreamWrite.java} & 1,7 \\
-%			stratum\_1 & spaces\_many & \seqsplit{hadoop\_ActiveAuditManagerS3A.java\_createExecutionInterceptors.java} & 2,1 \\
-%			stratum\_1 & tabs\_few & \seqsplit{hbase\_ZKMainServer.java\_main.java} & 2,2 \\
-%			stratum\_1 & tabs\_many & \seqsplit{flink\_HiveParserSemanticAnalyzer.java\_findCTEFromName.java} & 2,2 \\
-%			stratum\_1 & misc & \seqsplit{hbase\_Encryption.java\_decryptWithSubjectKey.java} & 2,4 \\
-%			stratum\_1 & spaces\_few & \seqsplit{hbase\_HBaseZKTestingUtility.java\_startMiniZKCluster.java} & 2,6 \\
-%			stratum\_1 & newlines\_many & \seqsplit{pulsar\_LoadSimulationController.java\_writeProducerOptions.java} & 2,9 \\
-%			stratum\_1 & all\_weak\_3 & \seqsplit{hadoop\_SingleFilePerBlockCache.java\_getIntList.java} & 3 \\
-%			stratum\_1 & comments\_remove & \seqsplit{flink\_MemorySegment.java\_get.java} & 3,1 \\
-%			stratum\_1 & methods & \seqsplit{flink\_HiveParserSemanticAnalyzer.java\_processPTFSource.java} & 3,7 \\
-%			stratum\_2 & newlines\_few & \seqsplit{zxing\_ModulusPoly.java\_isZero.java} & 2,4 \\
-%			stratum\_2 & methods & \seqsplit{hibernate-validator\_PESELValidator.java\_year.java} & 3,7 \\
-%			stratum\_2 & tabs\_few & \seqsplit{framework\_WindowMoveListener.java\_getTicketNumber.java} & 3,8 \\
-%			stratum\_3 & tabs\_many & \seqsplit{hadoop\_S3AInputPolicy.java\_getPolicy.java} & 1,7 \\
-%			stratum\_3 & newlines\_many & \seqsplit{hadoop\_CompressionCodec.java\_createInputStreamWithCodecPool.java} & 3,3 \\
-%			stratum\_3 & methods & \seqsplit{hbase\_PreviousBlockCompressionRatePredicator.java\_updateLatestBlockSizes.java} & 4,6 \\
-%			\bottomrule
-%		\end{tabular}
-%		\caption{Data with Highlighted Row}
-%		\label{tab:pilot_survey_results}
-%	\end{table}
-
-	\begin{table}[htbp]
-		\centering
-		\begin{tabular}{llp{6cm}c}
-			\toprule
-			\textbf{Stratum} & \textbf{Feature} & \textbf{File} & \textbf{Score} \\
-			\midrule
-			stratum\_3 & methods & \seqsplit{hbase\_PreviousBlockCompressionRatePredicator.java\_updateLatestBlockSizes.java} & 4,6 \\
-			stratum\_0 & tabs\_few & \seqsplit{hadoop\_DataNodeFaultInjector.java\_delayWriteToDisk.java} & 4,3 \\
-			stratum\_2 & tabs\_few & \seqsplit{framework\_WindowMoveListener.java\_getTicketNumber.java} & 3,8 \\
-			stratum\_1 & methods & \seqsplit{flink\_HiveParserSemanticAnalyzer.java\_processPTFSource.java} & 3,7 \\
-			stratum\_2 & methods & \seqsplit{hibernate-validator\_PESELValidator.java\_year.java} & 3,7 \\
-			stratum\_3 & newlines\_many & \seqsplit{hadoop\_CompressionCodec.java\_createInputStreamWithCodecPool.java} & 3,3 \\
-			stratum\_1 & comments\_remove & \seqsplit{flink\_MemorySegment.java\_get.java} & 3,1 \\
-			stratum\_0 & spaces\_few & \seqsplit{hadoop\_FilePosition.java\_bufferFullyRead.java} & 3 \\
-			stratum\_1 & all\_weak\_3 & \seqsplit{hadoop\_SingleFilePerBlockCache.java\_getIntList.java} & 3 \\
-			stratum\_1 & newlines\_many & \seqsplit{pulsar\_LoadSimulationController.java\_writeProducerOptions.java} & 2,9 \\
-			stratum\_1 & spaces\_few & \seqsplit{hbase\_HBaseZKTestingUtility.java\_startMiniZKCluster.java} & 2,6 \\
-			stratum\_1 & misc & \seqsplit{hbase\_Encryption.java\_decryptWithSubjectKey.java} & 2,4 \\
-			stratum\_2 & newlines\_few & \seqsplit{zxing\_ModulusPoly.java\_isZero.java} & 2,4 \\
-			stratum\_1 & tabs\_few & \seqsplit{hbase\_ZKMainServer.java\_main.java} & 2,2 \\
-			stratum\_1 & tabs\_many & \seqsplit{flink\_HiveParserSemanticAnalyzer.java\_findCTEFromName.java} & 2,2 \\
-			stratum\_1 & spaces\_many & \seqsplit{hadoop\_ActiveAuditManagerS3A.java\_createExecutionInterceptors.java} & 2,1 \\
-			stratum\_1 & newlines\_few & \seqsplit{hudi\_Pipelines.java\_hoodieStreamWrite.java} & 1,7 \\
-			stratum\_3 & tabs\_many & \seqsplit{hadoop\_S3AInputPolicy.java\_getPolicy.java} & 1,7 \\
-			stratum\_1 & all\_weak & \seqsplit{flink\_SSLUtils.java\_createInternalNettySSLContext.java} & 1,3 \\
-			stratum\_1 & all & \seqsplit{hudi\_HoodieMultiTableStreamer.java\_populateTableExecutionContextList.java} & 1,2 \\
-			\bottomrule
-		\end{tabular}
-		\caption{Overview over the pilot survey results.}
-		\label{tab:pilot_survey_results}
-	\end{table}
-
-	After the feedback regarding the survey tool was implemented, the actual study was conducted.
-	
-\section{Prolific Study Results} \label{Prolific Study Results}
-	In this section we will summarize the results of the main study conducted via prolific.
-	
-	You can find an overview over the time required by the participants in the Figures \ref{fig:survey_time_box} and \ref{fig:survey_time_histogramm}. Additionally you can find the amount of participants that required less than 3 minutes for one survey sheet in Figure \ref{fig:survey_time_less_than_180}. The results of those participants might be a thread to validity to which we will come back later.
-	
-	\begin{figure}[t]
-		\centering
-		\includegraphics[width=\textwidth]{img/survey_time_box.png}
-		\caption{Time required by the participants to complete the survey}
-		\label{fig:survey_time_box}
-	\end{figure}
-	
-	\begin{figure}[t]
-		\centering
-		\includegraphics[width=\textwidth]{img/survey_time_histogramm.png}
-		\caption{Time required by the participants to complete the survey}
-		\label{fig:survey_time_histogramm}
-	\end{figure}
-	
-	\begin{figure}[t]
-		\centering
-		\includegraphics[width=\textwidth]{img/survey_time_less_than_180.png}
-		\caption{Amount of participants per survey sheet that required less than 3 minutes to complete the survey}
-		\label{fig:survey_time_less_than_180}
-	\end{figure}
-	
-	You can find an overview over the familiarity of the participants with Java in Figure \ref{fig:survey_java_familiarity_pie}.
-
-	\begin{figure}[t]
-		\centering
-		\includegraphics[width=\textwidth]{img/survey_java_familiarity_pie.png}
-		\caption{Familiarity of survey participants with Java}
-		\label{fig:survey_java_familiarity_pie}
-	\end{figure}
-	
-	You can find an overview of the ratings for each RDH for all stratas combined in Figure \ref{fig:survey_ratings_violin_all}.
-
-	\begin{figure}[t]
-		\centering
-		\includegraphics[width=\textwidth]{img/survey_ratings_violin_all.png}
-		\caption{Violin plot of the survey ratings for each RDH and all stratas}
-		\label{fig:survey_ratings_violin_all}
-	\end{figure}
-	
-	We evaluated whether the deviation in the ratings between the various RDHs has statistical significance. We therefore used the Mann-Whitney-U-Test comparing the ratings for all snippets for a RDH against the corresponding none snippets. You can find the results of this in Table \ref{tab:survey_statistical_evidence}.
-	
-	Our results suggest, that doing no modification (none) is not different from the original methods. The difference here might as well come from a random variation with a probability of 92\%. When we compare the RDHs against the none methods we can be sure, that the ratings of all but newlines many and rename are actually statistically different from the ratings of none. This confirms that the readability decreasing heuristics are actually working in the sense that they decrease the readability of the given input methods.
-		
-	\begin{table}[h]
-		\centering
-		\begin{tabular}{lccc}
-			\toprule
-			\textbf{Condition} & \textbf{P-value} & \textbf{Reject} \\
-			\midrule
-			None - Methods & 0.9224 & False \\
-			None - Newlines Few & $5.23 \times 10^{-6}$ & True \\
-			None - Spaces Many & 0.0407 & True \\
-			None - Newlines Many & 0.3006 & False \\
-			None - Comments Remove & 0.00364 & True \\
-			None - Rename & 0.099 & False \\
-			None - Newline Instead Of Space & $4.57 \times 10^{-6}$ & True \\
-			None - Tabs & $3.06 \times 10^{-8}$ & True \\
-			None - All7 & $1.80 \times 10^{-7}$ & True \\
-			\bottomrule
-		\end{tabular}
-		\caption{Mann-Whitney U Test Results of none against each RDH. If the p-value is smaller or equal to 0.05 the null-hypothesis is rejected confirming, that the ratings are actually different and not just a random variation. TODO: Update data}
-		\label{tab:survey_statistical_evidence}
-	\end{table}
-
-	
-\section{Model training results} \label{Model training results}
-	You can find the training, evaluation and fine-tuning results in table \ref{tab:dataset_performance}.
-		
-	\begin{table}[h]
-		\centering
-		\begin{tabular}{|c|c|c|c|c|c|c|c|}
-			\hline
-			\textbf{Train} & \textbf{Eval} & \textbf{Acc} & \textbf{Prec} & \textbf{Rec} & \textbf{AUC} & \textbf{F1} & \textbf{MCC} \\
-			\hline
-			\textbf{Krod} 		& \textbf{Krod} 	& 0.918 & 0.923 & 0.913 & 0.918 & 0.917 & 0.836 \\
-			\textbf{Krod} 		& \textbf{All}  	& 0.619 & 0.636 & 0.636 & 0.636 & 0.636 & 0.236 \\
-			\textbf{All} 		& \textbf{Krod} 	& 0.538 & 0.526 & 0.778 & 0.652 & 0.628 & 0.087 \\
-			\textbf{All}  		& \textbf{All}  	& 0.847 & 0.877 & 0.823 & 0.850 & 0.837 & 0.704 \\
-			
-			\textbf{Krod-FT-All}& \textbf{All}  	& 0.804 & 0.840 & 0.738 & 0.789 & 0.772 & 0.600 \\
-			\textbf{Krod210}  	& \textbf{Krod210}  & 0.809 & 0.827 & 0.776 & 0.802 & 0.789 & 0.609 \\
-			\hline
-		\end{tabular}
-		\caption{Performance of different dataset configurations for the same model. FT = Fine-Tuning}
-		\label{tab:dataset_performance}
-	\end{table}
-
-	When training the towards model on the Krod dataset and evaluating it on it using 10-fold cross validation, we get an average accuracy score of 91.8\%. However, when we evaluate the trained model on the combined dataset used in the towards paper, we get an accuracy of only 61.9\%. We can conclude a couple of things from this:
-	
-	The towards model works well for our new dataset. However, the readability retrieved using the all dataset is different from the readability using our approach. Otherwise, the scores for all-krod and krod-all would be similar to the all-all score. This suggests, that our dataset is not suitable for general readability classification, but we might have found a subproblem. However, adding more readability decreasing features and adding well-designed data augmentation might overcome this limitation.
-	
-	When we compare the accuracy scores for all-krod and krod-all we get another interesting finding: While the model trained on the krod dataset is able to classify readabilty to some extend, this does not hold the other way around, as 53.8\% is almost a random classifier. This suggests, that fine-tuning a model trained on the krod dataset using the all dataset might score better results than the original model proposed in the towards paper.
-	
-	To verify that the model works correctly and as a baseline comparison score we also added the all-all case. Here we achieve the same accuracy as \citeauthor{mi2022towards}, which suggests that our model is implemented in the same way as theirs.
-	
-	We tried to do fine-tuning using the all dataset by freezing different layers of the model trained on the krod dataset. The best we could come up with was when freezing the input layers as well as the first convolution and pooling layer of all encoders. However, the performance of this fine-tuned model was still worse than the baseline model. This is in direct contrast to our previous suggestion, that fine-tuning in this way might score better results. One explanation for this might be, that the model is to small to deal with the now larger amount of data. Introducing more or bigger layers, so that the model can memorize more features internally might overcome this problem. However, this is not part of this work, where we soely deal with creating a new dataset.
-
-	We also trained the model with a random sample of 210 datapoints to get a initial insight of what a change in the training size might accomplish. As we can see, the model has similar metrics as the all-all model. When we now compare the stats, for example the accuracy of the krod-krod against the all-all model, we can see, that an improvement of about 8\% might be possible with a larger dataset. This suggests the importance of finding new ways of data generation for readability classification.
-		
-	
-\section{Code base} \label{Code base}
-	Our code is available on GitHub. TODO: Refs
-	
-	You can find an overview over all programs used to create the merged dataset, the new dataset the model and all our evaluation results in Figure \ref{fig:scripts_pipline}.
-		
-	\begin{figure}[t]
-		\centering
-		\includegraphics[width=\textwidth]{img/scripts_pipeline.png}
-		\caption{Overview over the used scripts and their output}
-		\label{fig:scripts_pipline}
-	\end{figure}
-	
-	While re implementing the original model we came across the following possible issue of the model:
-	The token length for the bert encoding (bert-base-cased) used within the model is set to 100. What is a token in a piece of code? Besides special tokens to mark the beginning [CLS] and end [SEP] of the input, each word is represented by a token. However, also each special character (such as /(){},;= and many more) is represented by a own token. Java identifiers are split using the camel case convention. Long words are split again into multiple tokens.
-	
-	Consider the method from Listing \ref{lst:cassandra-src-java-org-apache-cassandra-utils}. With a token limit of 100, the last encoded token is the last closing brace in line 9. Everything from line 10 onward is not encoded anymore, which means, that the information is lost for the semantic encoder. To put it in other words: The model of \citeauthor{mi2022towards} considers only the first few lines of code snippets in it's semantic component.
-	
-	The visual and structural have similar limitations, however, they are less conservative. The structural encoder encodes the first 50 lines of each code snippet and the visual encoder encodes the first 43 lines. While the restrictions for both of those encoders seem to be long enough to capture most of the code snippets fully, the semantic encoder seems to be too limited to capture most of the code snippets fully. One reason for this could be, that the first part of a method is of higher semantic importance.
-	
-	While we want to remark these limitations, we will stick with them to allow later a fair comparison of the datasets against the model of of \citeauthor{mi2022towards} trained on the combined dataset.	
-		
-	
-\section{Readability Classification Model} \label{Readability Classification Model}
+\subsection{Readability Classification Model} \label{Readability Classification Model}
 	We will investigate whether it is possible to score a higher accuracy as current models in classifying code readability for Java using Deep Learning. Therefore, we will train the model from \citeauthor{mi2022towards}~\cite{mi2022towards} with more data. We will consider augmenting the model with a method name classifier and incorporating semantic encoding for tabs and spaces. The training data will be generated in a novel way for classification of readability, inspired by \citeauthor{loriot2022styler}~\cite{loriot2022styler}. The method name classifier is similar to Code2Vec~\cite{alon2019code2vec}. The combination of all components is novel to the best of our knowledge. You can find a visualization of the planned modifications of \citeauthor{mi2022towards}'s model in figure~\ref{fig:model_pipeline}. We will focus on generating training data, as the approach will be usable for further research in the field of source code readability.
 	
 	\begin{figure}[t]
@@ -1550,6 +1314,27 @@ cleveref=true,%
 	
 	\pagebreak
 	
+\subsection{Code base} \label{Code base}
+	Our code is available on GitHub. TODO: Refs
+	
+	You can find an overview over all programs used to create the merged dataset, the new dataset the model and all our evaluation results in Figure \ref{fig:scripts_pipline}.
+	
+	\begin{figure}[t]
+		\centering
+		\includegraphics[width=\textwidth]{img/scripts_pipeline.png}
+		\caption{Overview over the used scripts and their output}
+		\label{fig:scripts_pipline}
+	\end{figure}
+	
+	While re implementing the original model we came across the following possible issue of the model:
+	The token length for the bert encoding (bert-base-cased) used within the model is set to 100. What is a token in a piece of code? Besides special tokens to mark the beginning [CLS] and end [SEP] of the input, each word is represented by a token. However, also each special character (such as /(){},;= and many more) is represented by a own token. Java identifiers are split using the camel case convention. Long words are split again into multiple tokens.
+	
+	Consider the method from Listing \ref{lst:cassandra-src-java-org-apache-cassandra-utils}. With a token limit of 100, the last encoded token is the last closing brace in line 9. Everything from line 10 onward is not encoded anymore, which means, that the information is lost for the semantic encoder. To put it in other words: The model of \citeauthor{mi2022towards} considers only the first few lines of code snippets in it's semantic component.
+	
+	The visual and structural have similar limitations, however, they are less conservative. The structural encoder encodes the first 50 lines of each code snippet and the visual encoder encodes the first 43 lines. While the restrictions for both of those encoders seem to be long enough to capture most of the code snippets fully, the semantic encoder seems to be too limited to capture most of the code snippets fully. One reason for this could be, that the first part of a method is of higher semantic importance.
+	
+	While we want to remark these limitations, we will stick with them to allow later a fair comparison of the datasets against the model of of \citeauthor{mi2022towards} trained on the combined dataset.	
+	
 \subsection{User study}\label{user-study}
 	% We will conclude a user study to evaluate the newly generated data for readability classifier models.
 	The goal of the user study is to answer the following key questions:
@@ -1561,7 +1346,7 @@ cleveref=true,%
 	
 	We will achieve this by showing programmers code snippets that were generated with the presented approach. Therefore, human annotators give each code snippet a rating of its readability. The annotators are selected by prolific\curl{https://www.prolific.com/}{2023-09-30}. Particular attention is paid to a high proportion of people from industry. The readability rating is based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable). We apply the same rating as done previously~\cite{buse2009learning, dorn2012general, scalabrino2018comprehensive}, but, other than before, we will not use the rating for labeling the training data. Instead, we will only use the ratings to validate a few randomly selected code snippets out of many that are automatically labeled.
 		
-	\subsection{Comparing models}\label{compare-models}
+	\subsubsection{Comparing models}\label{compare-models}
 	Besides the user study we will evaluate our suggestions by comparing machine learning models against each other.
 	The comparisons are based on common metrics such as accuracy, F1-score and MCC~\cite{chicco2020advantages}. One can distinguish further between the following variants of comparing models:
 	
@@ -1571,7 +1356,7 @@ cleveref=true,%
 
 	A third comparison variant is created by combining the first two. Both of them lead to many options in what to compare, especially if only small changes to training data or model architecture are done. To find out, if our suggestions lead to a better model overall, we will compare our newly created model with all changes at once to the state-of-the-art model of \citeauthor{mi2022towards}~\cite{mi2022towards}.
 	
-	\subsection{Research questions}\label{research-questions}
+	\subsubsection{Research questions}\label{research-questions}
 	We come up with the following research questions:
 	
 %	\begin{resq}What is the quality of our new approach for data generation?\end{resq} \label{RQ1}
@@ -1604,6 +1389,224 @@ cleveref=true,%
 	Correct naming of identifiers is crucial for ensuring readability of software programs. It is of outstanding importance for readability of code that the name of methods fit the method bodies~\cite{liu2019learning}. We want to introduce a new component to the model of \citeauthor{mi2022towards}~\cite{mi2022towards} that is built similar to Code2Vec~\cite{alon2019code2vec}. We want to investigate if the newly introduced component improves the quality of the resulting model. We will evaluate the proposed improvement as previously described (section~\ref{compare-models}).
 	
 \section{Evaluation} \label{Evaluation}
+In this section we will present our evaluation results.
+
+\subsection{Survey Results} \label{Survey Results}
+	The results from our survey are separated into two parts: The results from the pilot survey used to improve the main survey pre start and the main survey results used to answer our research questions.
+
+\subsubsection{Pilot survey} \label{Pilot Survey}
+	The pilot survey was used to adjust the rdh-probability settings and the survey itself before start.
+	
+	The pilot survey gave an insight into how much time one would need to rate 20 code snippets regarding it's readability. You can find an overview over the times needed in Figure \ref{fig:pilot_survey_time_box.png}. Based on this we estimated the time requirement for our survey with 10 minutes.
+	
+	\begin{figure}[t]
+		\centering
+		\includegraphics[width=\textwidth]{img/survey_time_box.png}
+		\caption{TODO: Replace with actual one.}
+		\label{fig:pilot_survey_time_box.png}
+	\end{figure}
+	
+	Most of the problems that came up where due to the survey tool (for example: "I also thought that I should use the drop-down menu on the upper left."). You can find all feedback in appendix TODO.
+	
+	%	It is sometimes necessary to swipe horizontally to see all of the code, which is a bit inconvenient.
+	%	After finishing the task, at least message should be shown.
+	%	First I needed to figure out how this tool works and that the rating is done with the stars below. I thought I should write my rating as a comment in the comment field below. After number 20 I didn't know whether I could close the survey or not.
+	%	I also thought that I should use the drop-down menu on the upper left.
+	%	Mobile is not easy to use because of the scrolling needed to complete the survey
+	%	I didn't understand what the button at the top left meant, where you could select the programming language. There were too many fonts to choose. I also wasn't sure whether to write a comment or not. It wasn't described at the beginning.
+	%	I suggest to make the task description accessible during the rating
+	%	Submit vote after the last question could contain that one can close the survey now.
+	%	Maybe the option to leave the survey, when clicking to submit.
+	%	I would leave out the buttons described above. I was missing a scrollbar at the bottom of the code-window. A conclusion page with a message like "Thank you for your participation", "You're Done!" or other further information was missing, too.
+	%	There werde drop downs for the programming language, but choosing another language did not change anything.
+	%	9:53
+	%	Das müsste alles Feedback zum Tool sein, ich schau mal, ob ich das auf die schnelle noch etwas zusammenfassen kann :slightly_smiling_face:
+	%	9:57
+	%	Zusammengefasst:
+	%	Feature Request: "You're done! Thank you for your participation!" - message at the end
+	%	Feature Request: Hide comment fields
+	%	Feature Request: Predefine code parser (per survey/snippet) and hide selection during survey for participants
+	%	Feature Request: Possibility to show a hint or the task description again during the survey
+	
+	Additionally some manual evaluation of the different rdhs, especially for stratum 1 suggested a few things:
+	
+	First of all, original methods where rated comparably well, which suggests the well-readable-assumption to hold.
+	
+	Secondly, the rdh tool did always fully declare each imported method or class with its fully specified classifier. For example, instead of 
+	"InputStream", "java.io.InputStream" was declared. This gave the raters the feeling, that the code was actually not written by a human and drastically decreased it's readability. Afterwards, we adjusted the rdh-tool to not print the fully qualified name anymore. This has however the drawback, that it can not be guaranteed anymore that the generated code compiles and does the same as it's original. However, this property was lost anywhere upon extracting the individual methods from the class files.
+	
+	Third, some rdhs where configured to strong so that some methods were again not presumed to be written by a human anymore. These rdhs were adjusted and their probabilities were decreased accordingly (for example newlines\_few). For all results see Table \ref{tab:pilot_survey_results}.
+	
+	%	\begin{table}[htbp]
+		%		\centering
+		%		\begin{tabular}{llp{6cm}c}
+			%			\toprule
+			%			\textbf{Stratum} & \textbf{RDH} & \textbf{File} & \textbf{Score} \\
+			%			\midrule
+			%			stratum\_0 & spaces\_few & \seqsplit{hadoop\_FilePosition.java\_bufferFullyRead.java} & 3 \\
+			%			stratum\_0 & tabs\_few & \seqsplit{hadoop\_DataNodeFaultInjector.java\_delayWriteToDisk.java} & 4,3 \\
+			%			stratum\_1 & all & \seqsplit{hudi\_HoodieMultiTableStreamer.java\_populateTableExecutionContextList.java} & 1,2 \\
+			%			stratum\_1 & all\_weak & \seqsplit{flink\_SSLUtils.java\_createInternalNettySSLContext.java} & 1,3 \\
+			%			stratum\_1 & newlines\_few & \seqsplit{hudi\_Pipelines.java\_hoodieStreamWrite.java} & 1,7 \\
+			%			stratum\_1 & spaces\_many & \seqsplit{hadoop\_ActiveAuditManagerS3A.java\_createExecutionInterceptors.java} & 2,1 \\
+			%			stratum\_1 & tabs\_few & \seqsplit{hbase\_ZKMainServer.java\_main.java} & 2,2 \\
+			%			stratum\_1 & tabs\_many & \seqsplit{flink\_HiveParserSemanticAnalyzer.java\_findCTEFromName.java} & 2,2 \\
+			%			stratum\_1 & misc & \seqsplit{hbase\_Encryption.java\_decryptWithSubjectKey.java} & 2,4 \\
+			%			stratum\_1 & spaces\_few & \seqsplit{hbase\_HBaseZKTestingUtility.java\_startMiniZKCluster.java} & 2,6 \\
+			%			stratum\_1 & newlines\_many & \seqsplit{pulsar\_LoadSimulationController.java\_writeProducerOptions.java} & 2,9 \\
+			%			stratum\_1 & all\_weak\_3 & \seqsplit{hadoop\_SingleFilePerBlockCache.java\_getIntList.java} & 3 \\
+			%			stratum\_1 & comments\_remove & \seqsplit{flink\_MemorySegment.java\_get.java} & 3,1 \\
+			%			stratum\_1 & methods & \seqsplit{flink\_HiveParserSemanticAnalyzer.java\_processPTFSource.java} & 3,7 \\
+			%			stratum\_2 & newlines\_few & \seqsplit{zxing\_ModulusPoly.java\_isZero.java} & 2,4 \\
+			%			stratum\_2 & methods & \seqsplit{hibernate-validator\_PESELValidator.java\_year.java} & 3,7 \\
+			%			stratum\_2 & tabs\_few & \seqsplit{framework\_WindowMoveListener.java\_getTicketNumber.java} & 3,8 \\
+			%			stratum\_3 & tabs\_many & \seqsplit{hadoop\_S3AInputPolicy.java\_getPolicy.java} & 1,7 \\
+			%			stratum\_3 & newlines\_many & \seqsplit{hadoop\_CompressionCodec.java\_createInputStreamWithCodecPool.java} & 3,3 \\
+			%			stratum\_3 & methods & \seqsplit{hbase\_PreviousBlockCompressionRatePredicator.java\_updateLatestBlockSizes.java} & 4,6 \\
+			%			\bottomrule
+			%		\end{tabular}
+		%		\caption{Data with Highlighted Row}
+		%		\label{tab:pilot_survey_results}
+		%	\end{table}
+	
+	\begin{table}[htbp]
+		\centering
+		\begin{tabular}{llp{6cm}c}
+			\toprule
+			\textbf{Stratum} & \textbf{Feature} & \textbf{File} & \textbf{Score} \\
+			\midrule
+			stratum\_3 & methods & \seqsplit{hbase\_PreviousBlockCompressionRatePredicator.java\_updateLatestBlockSizes.java} & 4,6 \\
+			stratum\_0 & tabs\_few & \seqsplit{hadoop\_DataNodeFaultInjector.java\_delayWriteToDisk.java} & 4,3 \\
+			stratum\_2 & tabs\_few & \seqsplit{framework\_WindowMoveListener.java\_getTicketNumber.java} & 3,8 \\
+			stratum\_1 & methods & \seqsplit{flink\_HiveParserSemanticAnalyzer.java\_processPTFSource.java} & 3,7 \\
+			stratum\_2 & methods & \seqsplit{hibernate-validator\_PESELValidator.java\_year.java} & 3,7 \\
+			stratum\_3 & newlines\_many & \seqsplit{hadoop\_CompressionCodec.java\_createInputStreamWithCodecPool.java} & 3,3 \\
+			stratum\_1 & comments\_remove & \seqsplit{flink\_MemorySegment.java\_get.java} & 3,1 \\
+			stratum\_0 & spaces\_few & \seqsplit{hadoop\_FilePosition.java\_bufferFullyRead.java} & 3 \\
+			stratum\_1 & all\_weak\_3 & \seqsplit{hadoop\_SingleFilePerBlockCache.java\_getIntList.java} & 3 \\
+			stratum\_1 & newlines\_many & \seqsplit{pulsar\_LoadSimulationController.java\_writeProducerOptions.java} & 2,9 \\
+			stratum\_1 & spaces\_few & \seqsplit{hbase\_HBaseZKTestingUtility.java\_startMiniZKCluster.java} & 2,6 \\
+			stratum\_1 & misc & \seqsplit{hbase\_Encryption.java\_decryptWithSubjectKey.java} & 2,4 \\
+			stratum\_2 & newlines\_few & \seqsplit{zxing\_ModulusPoly.java\_isZero.java} & 2,4 \\
+			stratum\_1 & tabs\_few & \seqsplit{hbase\_ZKMainServer.java\_main.java} & 2,2 \\
+			stratum\_1 & tabs\_many & \seqsplit{flink\_HiveParserSemanticAnalyzer.java\_findCTEFromName.java} & 2,2 \\
+			stratum\_1 & spaces\_many & \seqsplit{hadoop\_ActiveAuditManagerS3A.java\_createExecutionInterceptors.java} & 2,1 \\
+			stratum\_1 & newlines\_few & \seqsplit{hudi\_Pipelines.java\_hoodieStreamWrite.java} & 1,7 \\
+			stratum\_3 & tabs\_many & \seqsplit{hadoop\_S3AInputPolicy.java\_getPolicy.java} & 1,7 \\
+			stratum\_1 & all\_weak & \seqsplit{flink\_SSLUtils.java\_createInternalNettySSLContext.java} & 1,3 \\
+			stratum\_1 & all & \seqsplit{hudi\_HoodieMultiTableStreamer.java\_populateTableExecutionContextList.java} & 1,2 \\
+			\bottomrule
+		\end{tabular}
+		\caption{Overview over the pilot survey results.}
+		\label{tab:pilot_survey_results}
+	\end{table}
+	
+	After the feedback regarding the survey tool was implemented, the actual study was conducted.
+
+\subsubsection{Prolific Study Results} \label{Prolific Study Results}
+	In this section we will summarize the results of the main study conducted via prolific.
+	
+	You can find an overview over the time required by the participants in the Figures \ref{fig:survey_time_box} and \ref{fig:survey_time_histogramm}. Additionally you can find the amount of participants that required less than 3 minutes for one survey sheet in Figure \ref{fig:survey_time_less_than_180}. The results of those participants might be a thread to validity to which we will come back later.
+	
+	\begin{figure}[t]
+		\centering
+		\includegraphics[width=\textwidth]{img/survey_time_box.png}
+		\caption{Time required by the participants to complete the survey}
+		\label{fig:survey_time_box}
+	\end{figure}
+	
+	\begin{figure}[t]
+		\centering
+		\includegraphics[width=\textwidth]{img/survey_time_histogramm.png}
+		\caption{Time required by the participants to complete the survey}
+		\label{fig:survey_time_histogramm}
+	\end{figure}
+	
+	\begin{figure}[t]
+		\centering
+		\includegraphics[width=0.75\textwidth]{img/survey_time_less_than_180.png}
+		\caption{Amount of participants per survey sheet that required less than 3 minutes to complete the survey}
+		\label{fig:survey_time_less_than_180}
+	\end{figure}
+	
+	You can find an overview over the familiarity of the participants with Java in Figure \ref{fig:survey_java_familiarity_pie}.
+	
+	\begin{figure}[t]
+		\centering
+		\includegraphics[width=\textwidth]{img/survey_java_familiarity_pie.png}
+		\caption{Familiarity of survey participants with Java}
+		\label{fig:survey_java_familiarity_pie}
+	\end{figure}
+	
+	You can find an overview of the ratings for each RDH for all stratas combined in Figure \ref{fig:survey_ratings_violin_all}.
+	
+	\begin{figure}[t]
+		\centering
+		\includegraphics[width=\textwidth]{img/survey_ratings_violin_all.png}
+		\caption{Violin plot of the survey ratings for each RDH and all stratas}
+		\label{fig:survey_ratings_violin_all}
+	\end{figure}
+	
+	We evaluated whether the deviation in the ratings between the various RDHs has statistical significance. We therefore used the Mann-Whitney-U-Test comparing the ratings for all snippets for a RDH against the corresponding none snippets. You can find the results of this in Table \ref{tab:survey_statistical_evidence}.
+	
+	Our results suggest, that doing no modification (none) is not different from the original methods. The difference here might as well come from a random variation with a probability of 92\%. When we compare the RDHs against the none methods we can be sure, that the ratings of all but newlines many and rename are actually statistically different from the ratings of none. This confirms that the readability decreasing heuristics are actually working in the sense that they decrease the readability of the given input methods.
+	
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{lccc}
+			\toprule
+			\textbf{Condition} & \textbf{P-value} & \textbf{Reject} \\
+			\midrule
+			None - Methods & 0.9224 & False \\
+			None - Newlines Few & $5.23 \times 10^{-6}$ & True \\
+			None - Spaces Many & 0.0407 & True \\
+			None - Newlines Many & 0.3006 & False \\
+			None - Comments Remove & 0.00364 & True \\
+			None - Rename & 0.099 & False \\
+			None - Newline Instead Of Space & $4.57 \times 10^{-6}$ & True \\
+			None - Tabs & $3.06 \times 10^{-8}$ & True \\
+			None - All7 & $1.80 \times 10^{-7}$ & True \\
+			\bottomrule
+		\end{tabular}
+		\caption{Mann-Whitney U Test Results of none against each RDH. If the p-value is smaller or equal to 0.05 the null-hypothesis is rejected confirming, that the ratings are actually different and not just a random variation. TODO: Update data}
+		\label{tab:survey_statistical_evidence}
+	\end{table}
+
+
+\subsection{Model training results} \label{Model training results}
+	You can find the training, evaluation and fine-tuning results in table \ref{tab:dataset_performance}.
+	
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			\textbf{Train} & \textbf{Eval} & \textbf{Acc} & \textbf{Prec} & \textbf{Rec} & \textbf{AUC} & \textbf{F1} & \textbf{MCC} \\
+			\hline
+			\textbf{Krod} 		& \textbf{Krod} 	& 0.918 & 0.923 & 0.913 & 0.918 & 0.917 & 0.836 \\
+			\textbf{Krod} 		& \textbf{All}  	& 0.619 & 0.636 & 0.636 & 0.636 & 0.636 & 0.236 \\
+			\textbf{All} 		& \textbf{Krod} 	& 0.538 & 0.526 & 0.778 & 0.652 & 0.628 & 0.087 \\
+			\textbf{All}  		& \textbf{All}  	& 0.847 & 0.877 & 0.823 & 0.850 & 0.837 & 0.704 \\
+			
+			\textbf{Krod-FT-All}& \textbf{All}  	& 0.804 & 0.840 & 0.738 & 0.789 & 0.772 & 0.600 \\
+			\textbf{Krod210}  	& \textbf{Krod210}  & 0.809 & 0.827 & 0.776 & 0.802 & 0.789 & 0.609 \\
+			\hline
+		\end{tabular}
+		\caption{Performance of different dataset configurations for the same model. FT = Fine-Tuning}
+		\label{tab:dataset_performance}
+	\end{table}
+	
+	When training the towards model on the Krod dataset and evaluating it on it using 10-fold cross validation, we get an average accuracy score of 91.8\%. However, when we evaluate the trained model on the combined dataset used in the towards paper, we get an accuracy of only 61.9\%. We can conclude a couple of things from this:
+	
+	The towards model works well for our new dataset. However, the readability retrieved using the all dataset is different from the readability using our approach. Otherwise, the scores for all-krod and krod-all would be similar to the all-all score. This suggests, that our dataset is not suitable for general readability classification, but we might have found a subproblem. However, adding more readability decreasing features and adding well-designed data augmentation might overcome this limitation.
+	
+	When we compare the accuracy scores for all-krod and krod-all we get another interesting finding: While the model trained on the krod dataset is able to classify readabilty to some extend, this does not hold the other way around, as 53.8\% is almost a random classifier. This suggests, that fine-tuning a model trained on the krod dataset using the all dataset might score better results than the original model proposed in the towards paper.
+	
+	To verify that the model works correctly and as a baseline comparison score we also added the all-all case. Here we achieve the same accuracy as \citeauthor{mi2022towards}, which suggests that our model is implemented in the same way as theirs.
+	
+	We tried to do fine-tuning using the all dataset by freezing different layers of the model trained on the krod dataset. The best we could come up with was when freezing the input layers as well as the first convolution and pooling layer of all encoders. However, the performance of this fine-tuned model was still worse than the baseline model. This is in direct contrast to our previous suggestion, that fine-tuning in this way might score better results. One explanation for this might be, that the model is to small to deal with the now larger amount of data. Introducing more or bigger layers, so that the model can memorize more features internally might overcome this problem. However, this is not part of this work, where we soely deal with creating a new dataset.
+	
+	We also trained the model with a random sample of 210 datapoints to get a initial insight of what a change in the training size might accomplish. As we can see, the model has similar metrics as the all-all model. When we now compare the stats, for example the accuracy of the krod-krod against the all-all model, we can see, that an improvement of about 8\% might be possible with a larger dataset. This suggests the importance of finding new ways of data generation for readability classification.
+
 	% Study evaluation
 	% Assumption 1 - RQ1
 	The readability ratings of code snippets mined from Github are not very accurate. Therefore the well readable assumption TODO only holds for certain clusters of code snippets: TODO. For clusters that can be labeled with X or Y this assumption does not hold. Therefore we labeled the mined code depending on the cluster they where grouped in as you can see in Table TODO. While the rating does not hold for each and every snippet within such a cluster it is a good estimation on average. This should be sufficient to train a readability classifier.
@@ -1634,7 +1637,7 @@ cleveref=true,%
 	TODO: Copy from towards and newer model
 		
 	
-	\section{Conclusion} \label{Conclusion}
+	\section{Conclusions} \label{Conclusions}
 	TODO: Add conclusion
 	
 	% Future work
