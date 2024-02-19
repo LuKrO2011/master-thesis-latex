@@ -4,21 +4,21 @@
 \contentsline {subsection}{\numberline {2.1}Code Readability}{2}{subsection.0.0.2.1}%
 \contentsline {subsection}{\numberline {2.2}Classical calculation approaches}{4}{subsection.0.0.2.2}%
 \contentsline {subsection}{\numberline {2.3}Deep Learning based approaches}{5}{subsection.0.0.2.3}%
-\contentsline {subsection}{\numberline {2.4}Related work}{6}{subsection.0.0.2.4}%
+\contentsline {subsection}{\numberline {2.4}Related work}{7}{subsection.0.0.2.4}%
 \contentsline {section}{\numberline {3}Work on Existing Dataset}{10}{section.0.0.3}%
 \contentsline {section}{\numberline {4}Dataset Generation Approach}{11}{section.0.0.4}%
-\contentsline {section}{\numberline {5}Readability Decreasing Heuristics}{12}{section.0.0.5}%
-\contentsline {section}{\numberline {6}Survey}{13}{section.0.0.6}%
-\contentsline {section}{\numberline {7}Survey Results}{16}{section.0.0.7}%
-\contentsline {subsection}{\numberline {7.1}Pilot survey}{16}{subsection.0.0.7.1}%
-\contentsline {section}{\numberline {8}Prolific Study Results}{17}{section.0.0.8}%
+\contentsline {section}{\numberline {5}Readability Decreasing Heuristics}{13}{section.0.0.5}%
+\contentsline {section}{\numberline {6}Survey}{14}{section.0.0.6}%
+\contentsline {section}{\numberline {7}Survey Results}{17}{section.0.0.7}%
+\contentsline {subsection}{\numberline {7.1}Pilot survey}{17}{subsection.0.0.7.1}%
+\contentsline {section}{\numberline {8}Prolific Study Results}{19}{section.0.0.8}%
 \contentsline {section}{\numberline {9}Model training results}{19}{section.0.0.9}%
-\contentsline {section}{\numberline {10}Code base}{19}{section.0.0.10}%
-\contentsline {section}{\numberline {11}Readability Classification Model}{20}{section.0.0.11}%
-\contentsline {subsection}{\numberline {11.1}User study}{22}{subsection.0.0.11.1}%
-\contentsline {subsection}{\numberline {11.2}Comparing models}{22}{subsection.0.0.11.2}%
-\contentsline {subsection}{\numberline {11.3}Research questions}{23}{subsection.0.0.11.3}%
-\contentsline {section}{\numberline {12}Evaluation}{24}{section.0.0.12}%
-\contentsline {section}{\numberline {13}Discussion}{25}{section.0.0.13}%
-\contentsline {section}{\numberline {14}Conclusion}{25}{section.0.0.14}%
+\contentsline {section}{\numberline {10}Code base}{21}{section.0.0.10}%
+\contentsline {section}{\numberline {11}Readability Classification Model}{22}{section.0.0.11}%
+\contentsline {subsection}{\numberline {11.1}User study}{24}{subsection.0.0.11.1}%
+\contentsline {subsection}{\numberline {11.2}Comparing models}{24}{subsection.0.0.11.2}%
+\contentsline {subsection}{\numberline {11.3}Research questions}{25}{subsection.0.0.11.3}%
+\contentsline {section}{\numberline {12}Evaluation}{26}{section.0.0.12}%
+\contentsline {section}{\numberline {13}Discussion}{27}{section.0.0.13}%
+\contentsline {section}{\numberline {14}Conclusion}{27}{section.0.0.14}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

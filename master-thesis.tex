@@ -950,6 +950,31 @@ cleveref=true,%
 		\label{lst:cassandra-src-java-org-apache-cassandra-utils-modified}
 	\end{listing}
 	
+	
+	\begin{listing}[!ht]
+		\begin{minted}[linenos, frame=lines, framesep=2mm]{java}
+			/**
+			* Prints a personalized greeting message based on the provided name.
+			*
+			* @param name The name of the person for whom the greeting is intended.
+			*             If {@code null} or an empty string is provided, a generic greeting is displayed.
+			*/
+			public static void printGreeting(String name) {
+				// Check if the name is provided
+				if (name != null && !name.isEmpty()) {
+					System.out.println("Hello, " + name + "! How are you today?");
+				} else {
+					System.out.println("Hello! How are you today?");
+				}
+			}
+		\end{minted}
+		\caption{A simple method that prints a greeting in Java}
+		\label{lst:print-greeting}
+	\end{listing}
+	
+
+	
+	
 %	\lstinputlisting[language=Java, firstline=8, lastline=26, caption={An example for highly readable code of the highly rated cassandra github repository},label={lst:cassandra-src-java-org-apache-cassandra-utils}]{cassandra-src-java-org-apache-cassandra-utils.java}
 %	
 %	\lstinputlisting[language=Java, firstline=8, lastline=29, caption={The same example modified to be poorly readable},label={lst:cassandra-src-java-org-apache-cassandra-utils-modified}]{cassandra-src-java-org-apache-cassandra-utils-modified.java}
@@ -1019,9 +1044,9 @@ cleveref=true,%
 	
 	While this conversion is in principle fine, especially with the argument that the data in the middle is not clearly either readable or not readable it has the clear drawback that only 50\% of the available data is used for model training and evaluation. This has two drawbacks:
 	
-	First, the available data of 421 rated code snippets is further reduced to 200 code snippets for training. Keep in mind, that a bottleneck of readability classification is the little amount of available data, which makes this a significant loss.
+	First, the available data of 421 rated code snippets is further reduced to 210 code snippets for training. Keep in mind, that a bottleneck of readability classification is the little amount of available data, which makes this a significant loss.
 	
-	Secondly, evaluation is performed with only those 200 snippets as well. This means, that the model was only evaluated on 50\% of the available data. This is certainly a huge thread to validity. It suggests, that the performance of the model is to a remarkable degree lower when evaluation is performed on random unseen data.
+	Secondly, evaluation is performed with only those 210 snippets as well. This means, that the model was only evaluated on 50\% of the available data. This is certainly a huge thread to validity. It suggests, that the performance of the model is to a remarkable degree lower when evaluation is performed on random unseen data.
 	
 	However, we will both stick to the binary classification approach as well as to \citeauthor{mi2022towards}'s model to make our results comparable to theirs.	
 	
@@ -1377,15 +1402,16 @@ cleveref=true,%
 			\textbf{Krod} 		& \textbf{Krod} 	& 0.918 & 0.923 & 0.913 & 0.918 & 0.917 & 0.836 \\
 			\textbf{Krod} 		& \textbf{All}  	& 0.619 & 0.636 & 0.636 & 0.636 & 0.636 & 0.236 \\
 			\textbf{All} 		& \textbf{Krod} 	& 0.538 & 0.526 & 0.778 & 0.652 & 0.628 & 0.087 \\
-			\textbf{All}  		& \textbf{All}  	& 0.847 & 0.877 & 0.823 & 0.837 & 0.628 & 0.704 \\
+			\textbf{All}  		& \textbf{All}  	& 0.847 & 0.877 & 0.823 & 0.850 & 0.837 & 0.704 \\
 			
-			\textbf{Krod200}  	& \textbf{Krod200}  & 0.809 & 0.827 & 0.776 & 0.802 & 0.789 & 0.609 \\
+			\textbf{Krod-FT-All}& \textbf{All}  	& 0.804 & 0.840 & 0.738 & 0.789 & 0.772 & 0.600 \\
+			\textbf{Krod210}  	& \textbf{Krod210}  & 0.809 & 0.827 & 0.776 & 0.802 & 0.789 & 0.609 \\
 			\hline
 		\end{tabular}
-		\caption{Performance of different dataset configurations for the same model}
+		\caption{Performance of different dataset configurations for the same model. FT = Fine-Tuning}
 		\label{tab:dataset_performance}
 	\end{table}
-	
+
 	When training the towards model on the Krod dataset and evaluating it on it using 10-fold cross validation, we get an average accuracy score of 91.8\%. However, when we evaluate the trained model on the combined dataset used in the towards paper, we get an accuracy of only 61.9\%. We can conclude a couple of things from this:
 	
 	The towards model works well for our new dataset. However, the readability retrieved using the all dataset is different from the readability using our approach. Otherwise, the scores for all-krod and krod-all would be similar to the all-all score. This suggests, that our dataset is not suitable for general readability classification, but we might have found a subproblem. However, adding more readability decreasing features and adding well-designed data augmentation might overcome this limitation.
@@ -1393,13 +1419,17 @@ cleveref=true,%
 	When we compare the accuracy scores for all-krod and krod-all we get another interesting finding: While the model trained on the krod dataset is able to classify readabilty to some extend, this does not hold the other way around, as 53.8\% is almost a random classifier. This suggests, that fine-tuning a model trained on the krod dataset using the all dataset might score better results than the original model proposed in the towards paper.
 	
 	To verify that the model works correctly and as a baseline comparison score we also added the all-all case. Here we achieve the same accuracy as \citeauthor{mi2022towards}, which suggests that our model is implemented in the same way as theirs.
+	
+	We tried to do fine-tuning using the all dataset by freezing different layers of the model trained on the krod dataset. The best we could come up with was when freezing the input layers as well as the first convolution and pooling layer of all encoders. However, the performance of this fine-tuned model was still worse than the baseline model. This is in direct contrast to our previous suggestion, that fine-tuning in this way might score better results. One explanation for this might be, that the model is to small to deal with the now larger amount of data. Introducing more or bigger layers, so that the model can memorize more features internally might overcome this problem. However, this is not part of this work, where we soely deal with creating a new dataset.
+
+	We also trained the model with a random sample of 210 datapoints to get a initial insight of what a change in the training size might accomplish. As we can see, the model has similar metrics as the all-all model. When we now compare the stats, for example the accuracy of the krod-krod against the all-all model, we can see, that an improvement of about 8\% might be possible with a larger dataset. This suggests the importance of finding new ways of data generation for readability classification.
 		
 	
 \section{Code base} \label{Code base}
 	Our code is available on GitHub. TODO: Refs
 	
 	You can find an overview over all programs used to create the merged dataset, the new dataset the model and all our evaluation results in Figure \ref{fig:scripts_pipline}.
-	
+		
 	\begin{figure}[t]
 		\centering
 		\includegraphics[width=\textwidth]{img/scripts_pipeline.png}
@@ -1407,6 +1437,15 @@ cleveref=true,%
 		\label{fig:scripts_pipline}
 	\end{figure}
 	
+	While re implementing the original model we came across the following possible issue of the model:
+	The token length for the bert encoding (bert-base-cased) used within the model is set to 100. What is a token in a piece of code? Besides special tokens to mark the beginning [CLS] and end [SEP] of the input, each word is represented by a token. However, also each special character (such as /(){},;= and many more) is represented by a own token. Java identifiers are split using the camel case convention. Long words are split again into multiple tokens.
+	
+	Consider the method from Listing \ref{lst:cassandra-src-java-org-apache-cassandra-utils}. With a token limit of 100, the last encoded token is the last closing brace in line 9. Everything from line 10 onward is not encoded anymore, which means, that the information is lost for the semantic encoder. To put it in other words: The model of \citeauthor{mi2022towards} considers only the first few lines of code snippets in it's semantic component.
+	
+	The visual and structural have similar limitations, however, they are less conservative. The structural encoder encodes the first 50 lines of each code snippet and the visual encoder encodes the first 43 lines. While the restrictions for both of those encoders seem to be long enough to capture most of the code snippets fully, the semantic encoder seems to be too limited to capture most of the code snippets fully. One reason for this could be, that the first part of a method is of higher semantic importance.
+	
+	While we want to remark these limitations, we will stick with them to allow later a fair comparison of the datasets against the model of of \citeauthor{mi2022towards} trained on the combined dataset.	
+		
 	
 \section{Readability Classification Model} \label{Readability Classification Model}
 	We will investigate whether it is possible to score a higher accuracy as current models in classifying code readability for Java using Deep Learning. Therefore, we will train the model from \citeauthor{mi2022towards}~\cite{mi2022towards} with more data. We will consider augmenting the model with a method name classifier and incorporating semantic encoding for tabs and spaces. The training data will be generated in a novel way for classification of readability, inspired by \citeauthor{loriot2022styler}~\cite{loriot2022styler}. The method name classifier is similar to Code2Vec~\cite{alon2019code2vec}. The combination of all components is novel to the best of our knowledge. You can find a visualization of the planned modifications of \citeauthor{mi2022towards}'s model in figure~\ref{fig:model_pipeline}. We will focus on generating training data, as the approach will be usable for further research in the field of source code readability.
