@@ -1,15 +1,17 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'master-thesis.blg'
-[118] biber-MSWIN64:340> INFO - === 
-[153] Biber.pm:419> INFO - Reading 'master-thesis.bcf'
-[288] Biber.pm:979> INFO - Found 45 citekeys in bib section 0
-[304] Biber.pm:4419> INFO - Processing section 0
-[316] Biber.pm:4610> INFO - Looking for bibtex file 'master-thesis.bib' for section 0
-[378] bibtex.pm:1713> INFO - LaTeX decoding ...
-[445] bibtex.pm:1519> INFO - Found BibTeX data source 'master-thesis.bib'
-[742] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'variable = shifted' with 'variable = non-ignorable'
-[742] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[742] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-UK'
-[742] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-UK'
-[788] bbl.pm:660> INFO - Writing 'master-thesis.bbl' with encoding 'UTF-8'
-[815] bbl.pm:763> INFO - Output to master-thesis.bbl
+[184] biber-MSWIN64:340> INFO - === 
+[250] Biber.pm:419> INFO - Reading 'master-thesis.bcf'
+[386] Biber.pm:979> INFO - Found 46 citekeys in bib section 0
+[402] Biber.pm:4419> INFO - Processing section 0
+[425] Biber.pm:4610> INFO - Looking for bibtex file 'master-thesis.bib' for section 0
+[473] bibtex.pm:1713> INFO - LaTeX decoding ...
+[535] bibtex.pm:1519> INFO - Found BibTeX data source 'master-thesis.bib'
+[848] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'variable = shifted' with 'variable = non-ignorable'
+[849] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[849] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-UK'
+[849] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-UK'
+[927] bbl.pm:660> INFO - Writing 'master-thesis.bbl' with encoding 'UTF-8'
+[953] bbl.pm:763> INFO - Output to master-thesis.bbl
+[953] Biber.pm:131> WARN - I didn't find a database entry for 'scalabrino2016improving' (section 0)
+[953] Biber.pm:133> INFO - WARNINGS: 1
