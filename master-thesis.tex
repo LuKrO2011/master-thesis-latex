@@ -719,7 +719,7 @@ cleveref=true,%
 	text is to understand."
 
 	% Definition
-	\citeauthor{tashtoush2013impact} combines numerous other aspects from various definitions. According to them code readability can be measured by looking at the following aspects:
+	\citeauthor{tashtoush2013impact} combines numerous other aspects from various definitions. According to them code readability can be measured by looking at the following aspects \cite{tashtoush2013impact}:
 	\begin{itemize}
 		\item Ratio between lines of code and number of commented lines
 		\item Writing to people not to computers
@@ -728,14 +728,14 @@ cleveref=true,%
 	\end{itemize}
 	
 	% Definition
-	Recent definitions of code readability are shorter, trying to focus on the key aspects. \citeauthor{oliveira2020evaluating} defines readability as "what makes a program easier or harder to read and apprehend by developers".
+	Recent definitions of code readability are shorter, trying to focus on the key aspects. \citeauthor{oliveira2020evaluating} defines readability as "what makes a program easier or harder to read and apprehend by developers" \cite{oliveira2020evaluating}.
 			
 	% Definition
 	Also \citeauthor{mi2021effectiveness} summarizes code readability as "a human judgment of how easy a piece of
-	source code is to understand". This comes close to the definition of \citeauthor{buse2009learning}.
+	source code is to understand" \cite{mi2021effectiveness}. This comes close to the definition of \citeauthor{buse2009learning}~\cite{buse2009learning}.
 	
 	% Related terms	
-	There are various related terms to readability: Understandability, usability, reusability, complexity, and maintainability \cite{tashtoush2013impact}. Among those especially complexity and understandability are closely related to readability.
+	There are various related terms to readability: Understandability, usability, reusability, complexity, and maintainability \cite{tashtoush2013impact}~\cite{tashtoush2013impact}. Among those especially complexity and understandability are closely related to readability.
 	
 	Readability is not the same as complexity. Complexity is an “essential” property of software that arises
 	from system requirements, while readability is an “accidental” property that is not determined by the problem statement~\cite{buse2009learning, brooks1987no}.
@@ -749,9 +749,9 @@ cleveref=true,%
 		\item Visual aspects (e.g., syntax highlighting)
 	\end{itemize}
 	
-	\citeauthor{posnett2011simpler} states that readability is the syntactic aspect of processing code, while understandability is the semantic aspect.
+	\citeauthor{posnett2011simpler} states that readability is the syntactic aspect of processing code, while understandability is the semantic aspect \cite{posnett2011simpler}.
 	
-	Based on \citeauthor{posnett2011simpler}, \citeauthor{scalabrino2018comprehensive} writes about readability: "Readability measures the effort of the developer to access the information contained in the code, while understandability measures the complexity of such information."
+	Based on \citeauthor{posnett2011simpler}, \citeauthor{scalabrino2018comprehensive} writes about readability: "Readability measures the effort of the developer to access the information contained in the code, while understandability measures the complexity of such information" \cite{scalabrino2018comprehensive, posnett2011simpler}.
 	
 	%	Readability is a human judgment of how easy a program source code is to read and comprehend \cite{buse2008metric, sedano2016code}. It is concerned with the syntactic aspects of code, such as the use of meaningful variable names, consistent formatting, and clear commenting.
 	%	
@@ -1003,29 +1003,29 @@ cleveref=true,%
 %	\lstinputlisting[language=Java, firstline=8, lastline=29, caption={The same example modified to be poorly readable},label={lst:cassandra-src-java-org-apache-cassandra-utils-modified}]{cassandra-src-java-org-apache-cassandra-utils-modified.java}
 	
 \subsection{Classical calculation approaches} \label{Classical calculation approaches}
-	A first estimation for source code readability was the percentage of comment lines over total code lines~\cite{aggarwal2002integrated}. In the last years, researchers have proposed several more complex metrics and models for assessing code readability~\cite{buse2009learning, posnett2011simpler, dorn2012general, scalabrino2018comprehensive}.
+	A first estimation for source code readability was the percentage of comment lines over total code lines~\cite{aggarwal2002integrated}. Then researchers proposed several more complex metrics and models for assessing code readability~\cite{buse2009learning, posnett2011simpler, dorn2012general, scalabrino2018comprehensive}.
 	Those approaches used handcrafted features to calculate how readable a piece of code is. They were able to achieve up to 81.8\% accuracy in classification~\cite{scalabrino2018comprehensive}.
 	
 \subsection{Deep Learning based approaches} \label{(Deep) Learning based approaches}
-	In recent years code readability classification is dominated by machine learning, especially deep learning approaches. In the following you can find the most important contributions.
+	In recent years code readability classification is dominated by machine learning, especially deep learning approaches. As the quality of the models increased, so did their accuracy (see Figure \ref{tab:rel-acc-scores}).
 	
 	% Related work: ML - Inception (82.2\% to 84.2\% acc)
-	\citeauthor{mi2018inception} introduces a novel approach, IncepCRM, for Code Readability Classification using deep learning, specifically based on the Inception architecture. Unlike traditional methods that rely on handcrafted features and various machine learning algorithms, IncepCRM automatically learns multi-scale features from source code with minimal manual intervention.
+	\citeauthor{mi2018inception} introduced a deep learning model called IncepCRM for code readability classification. IncepCRM automatically learns multi-scale features from source code with minimal manual intervention \cite{mi2018inception}.
 	
 	% Related work: ML - CNN (83.8\% acc)
-	\cite{mi2018improving} addresses the issue of code readability classification using Convolutional Neural Networks (ConvNets) as an alternative to manual feature engineering. The proposed model, DeepCRM, employs three ConvNets with identical architectures, trained on differently preprocessed data.
+	\citeauthor{mi2018improving} use Convolutional Neural Networks (ConvNets). Their proposed model, DeepCRM, employs three ConvNets with identical architectures, trained on differently preprocessed data \cite{mi2018improving}.
 		
 	% Related work: ML - GANs (84.8\% acc)
-	Another study addresses concerns regarding the classification of code script readability by proposing a novel approach using Generative Adversarial Networks (GANs). Unlike previous studies relying on labor-intensive manual feature engineering, the proposed method involves encoding source codes into integer matrices with multiple granularities and utilizing an EGAN (Enhanced GAN) for code readability classification \cite{sharma2020egan}.
+	Another study addresses concerns regarding the classification of code script readability by proposing an approach using Generative Adversarial Networks (GANs). The proposed method involves encoding source codes into integer matrices with multiple granularities and utilizing an EGAN (Enhanced GAN) \cite{sharma2020egan}.
 	
 	% Related work: ML - Towards (85.3\% acc)
-	\citeauthor{mi2022towards} addresses the limitation of existing deep learning-based code readability models, which primarily focus on structural features. The proposed method aims to enhance code readability classification by extracting features from visual, semantic, and structural aspects of source code. Using a hybrid neural network composed of BERT, CNN, and BiLSTM, the model processes RGB matrices, token sequences, and character matrices to capture various features.
+	\citeauthor{mi2022towards} address the limitation of the previous deep learning-based code readability models, which primarily focus on structural features. Their proposed method aims to enhance code readability classification by extracting features from visual, semantic, and structural aspects of source code. Using a hybrid neural network composed of BERT, CNN, and BiLSTM, the model processes RGB matrices, token sequences, and character matrices to capture various features \cite{mi2022towards}.
 	
 	% Related work: ML - Code pairs (83.5\% acc)
-	\citeauthor{mi2022rank} introduce a novel approach to code readability assessment by framing it as a learning-to-rank task. The proposed model employs siamese neural networks to rank code pairs based on their readability.
+	\citeauthor{mi2022rank} introduced a novel approach to code readability assessment by framing it as a learning-to-rank task. The proposed model employs siamese neural networks to rank code pairs based on their readability \cite{mi2022rank}.
 
 	% Related work: ML - AST + GNN (72.5\% three class, 88\% two class acc)
-	\citeauthor{mi2023graph}'s study addresses the importance of code readability in software development and introduces a novel graph-based representation method for code readability classification. The proposed method involves parsing source code into a graph with abstract syntax tree (AST), combining control and data flow edges, and converting node information into vectors. The model, comprising Graph Convolutional Network (GCN), DMoNPooling, and K-dimensional Graph Neural Networks (k-GNNs) layers, extracts syntactic and semantic features.
+	\citeauthor{mi2023graph}'s study addresses the importance of code readability in software development and introduces a novel graph-based representation method for code readability classification. The proposed method involves parsing source code into a graph with abstract syntax tree (AST), combining control and data flow edges, and converting node information into vectors. The model, comprising Graph Convolutional Network (GCN), DMoNPooling, and K-dimensional Graph Neural Networks (k-GNNs) layers, extracts syntactic and semantic features \cite{mi2023graph}.
 
 	You can find an overview over the accuracy scores for the mentioned models in table \ref{tab:rel-acc-scores}.
 	\begin{table}[ht]
@@ -1051,7 +1051,7 @@ cleveref=true,%
 		\label{tab:rel-acc-scores}
 	\end{table}
 	
-	However, the main contribution of this work is not a model that outperforms a state of the art model but rather a new dataset. For evaluation we decided to use the second best performing 2-class classification model, which is the Towards model of \citeauthor{mi2022towards}. We did not choose the best performing one, M\_Mi\_Graph, as that one works with the AST representation of the code, while our dataset generation approach will include features that are not represented in the AST \cite{mi2023graph}.
+	However, the main contribution of this work is not a model that outperforms a state of the art model but rather a new dataset. For evaluation we decided to use the second best performing 2-class classification model, which is the Towards model of \citeauthor{mi2022towards}~\cite{mi2022towards}. We did not choose the best performing one, M\_Mi\_Graph, as that one works with the AST representation of the code, while our dataset generation approach will include features that are not represented in the AST \cite{mi2023graph}.
 			
 \subsection{Data Augmentation} \label{Data Augmentation}
 
@@ -1064,16 +1064,16 @@ cleveref=true,%
 	\citeauthor{fakhoury2019improving} showed based on readability improving commit analysis that these models do not capture what developers think of readability improvements. They therefore analyzed 548 GitHub{https://github.com/}{2023-07-25} commits manually. They suggest considering other metrics such as incoming method calls or method name fitting~\cite{fakhoury2019improving}.		
 				
 	% Related work: Data Augmentation
-	\citeauthor{oliveira2020evaluating} conducts a systematic literature review of 54 relevant studies on code readability and legibility, examining how different factors impact comprehension. The authors analyze tasks and response variables used in studies comparing programming constructs, coding idioms, naming conventions, and formatting guidelines.
+	\citeauthor{oliveira2020evaluating} conducts a systematic literature review of 54 relevant studies on code readability and legibility, examining how different factors impact comprehension. The authors analyze tasks and response variables used in studies comparing programming constructs, coding idioms, naming conventions, and formatting guidelines~\cite{oliveira2020evaluating}.
 	
 	% Related work: Data Augmentation - GAN (87.38\% acc)
-	\citeauthor{mi2021effectiveness} addresses the challenge of acquiring a sufficient amount of labeled data for training deep learning models in the field of code readability classification. Due to the time-consuming and expensive nature of obtaining manual labels, the researchers propose the use of data augmentation techniques to artificially expand the training set. They employ domain-specific transformations, such as manipulating comments, indentations, and names of classes/methods/variables, and explore the use of Auxiliary Classifier GANs to generate synthetic data.
+	\citeauthor{mi2021effectiveness} addresses the challenge of acquiring a sufficient amount of labeled data for training deep learning models in the field of code readability classification. Due to the time-consuming and expensive nature of obtaining manual labels, the researchers propose the use of data augmentation techniques to artificially expand the training set. They employ domain-specific transformations, such as manipulating comments, indentations, and names of classes/methods/variables, and explore the use of Auxiliary Classifier GANs to generate synthetic data~\cite{mi2021effectiveness}.
 	
 	% Related work: Data Augmentation - GAN (68.0\% acc)
-	\citeauthor{mi2022enhanced} address the challenge of multi-class code readability classification, emphasizing the importance of code readability in software maintenance. Due to a scarcity of labeled data, most prior research focused on binary classification. The authors propose an enhanced data augmentation approach, incorporating domain-specific data transformation and Generative Adversarial Networks (GANs).
+	\citeauthor{mi2022enhanced} address the challenge of multi-class code readability classification, emphasizing the importance of code readability in software maintenance. Due to a scarcity of labeled data, most prior research focused on binary classification. The authors propose an enhanced data augmentation approach, incorporating domain-specific data transformation and Generative Adversarial Networks (GANs)~\cite{mi2022enhanced}.
 	
 	% Related work: Data Generation - GitHub commits
-	\citeauthor{vitale2023using} introduce a novel approach to automatically identify and suggest readability-improving actions for code snippets. The authors develop a methodology to identify readability-improving commits, creating a dataset of 122k commits from GitHub's revision history. They train the T5 model to emulate developers' actions in improving code readability, achieving a prediction accuracy between 21\% and 28\%. The empirical evaluation shows that 82-90.8\% of the dataset commits aim to improve readability, and the model successfully mimics developers in 21\% of cases.
+	\citeauthor{vitale2023using} introduce a novel approach to automatically identify and suggest readability-improving actions for code snippets. The authors develop a methodology to identify readability-improving commits, creating a dataset of 122k commits from GitHub's revision history. They train the T5 model to emulate developers' actions in improving code readability, achieving a prediction accuracy between 21\% and 28\%. The empirical evaluation shows that 82-90.8\% of the dataset commits aim to improve readability, and the model successfully mimics developers in 21\% of cases~\cite{vitale2023using}.
 	
 \subsection{Data Generation} \label{Data Generation}
 
@@ -1093,13 +1093,13 @@ subsection{Other} \label{Other}
 	In a recent study participants demonstrated a consistent perception that Python code with more lines was deemed more comprehensible, irrespective of their level of experience. However, when it came to readability, variations were observed based on code size, with less experienced participants expressing a preference for longer code, while those with more experience favored shorter code. Both novices and experts agreed that long and complete-word identifiers enhanced readability and comprehensibility. Additionally, the inclusion of comments was found to positively impact comprehension, and a consensus emerged in favor of four indentation spaces \cite{ribeiro2018attributes}.
 	
 	% Related work: Eclipse tool
-	The paper of \citeauthor{choi2020metric} introduces an enhanced source code readability metric aimed at quantitatively measuring code readability in the software maintenance phase. The proposed metric achieves a substantial explanatory power of 75.74\%. Additionally, the authors developed a tool named Instant R. Gauge, integrated with Eclipse IDE, to provide real-time readability feedback and track readability history, allowing developers to gradually improve their coding habits.
+	The paper of \citeauthor{choi2020metric} introduces an enhanced source code readability metric aimed at quantitatively measuring code readability in the software maintenance phase. The proposed metric achieves a substantial explanatory power of 75.74\%. Additionally, the authors developed a tool named Instant R. Gauge, integrated with Eclipse IDE, to provide real-time readability feedback and track readability history, allowing developers to gradually improve their coding habits \cite{choi2020metric}.
 	
 	% Related work: Relationships between features and readability
-	\citeauthor{mi2023makes} aim to understand the causal relationship between code features and readability. To overcome potential spurious correlations, the authors propose a causal theory-based approach, utilizing the PC algorithm and additive noise models to construct a causal graph. Experimental results using human-annotated readability data reveal that the average number of comments positively impacts code readability, while the average number of assignments, identifiers, and periods has a negative impact.
+	\citeauthor{mi2023makes} aim to understand the causal relationship between code features and readability. To overcome potential spurious correlations, the authors propose a causal theory-based approach, utilizing the PC algorithm and additive noise models to construct a causal graph. Experimental results using human-annotated readability data reveal that the average number of comments positively impacts code readability, while the average number of assignments, identifiers, and periods has a negative impact \cite{mi2023makes}.
 	
 	% Related work: Eye tracking
-	\citeauthor{segedinac2024assessing} introduces a novel approach for code readability classification using eye-tracking data from 90 undergraduate students assessing Python code snippets.
+	\citeauthor{segedinac2024assessing} introduces a novel approach for code readability classification using eye-tracking data from 90 undergraduate students assessing Python code snippets \cite{segedinac2024assessing}.
 		
 \section{Mined and Modified Code for Dataset Generation} \label{Mined and Modified Code for Dataset Generation}
 	In the following section we will describe our approach.
