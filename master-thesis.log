@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  19 FEB 2024 15:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  19 FEB 2024 15:36
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1756,26 +1756,27 @@ Overfull \hbox (39.95915pt too wide) in paragraph at lines 1020--1036
  [][] 
  []
 
-[7{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts_
-sfissr.enc}]
+[7] [8{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/l
+bts_sfissr.enc}]
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 1055.
+(Font)              scaled to size 8.0pt on input line 1066.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 1055.
- [8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 1081--1081
+(Font)              <9> on input line 1066.
+ [9]
+Underfull \hbox (badness 10000) in paragraph at lines 1090--1090
   [][][][][][]$\T1/cmtt/m/n/9 https : / / huggingface . co / datasets / se2p / 
 code-[]readability-[]merged$[]\T1/LibertinusSerif-TLF/m/n/9 (+20) , ac-cessed:
  []
 
 [10]
-<img/dataset_generation.png, id=242, 643.40375pt x 543.02875pt>
+<img/dataset_generation.png, id=246, 643.40375pt x 543.02875pt>
 File: img/dataset_generation.png Graphic file (type png)
 <use img/dataset_generation.png>
-Package pdftex.def Info: img/dataset_generation.png  used on input line 1105.
+Package pdftex.def Info: img/dataset_generation.png  used on input line 1114.
 (pdftex.def)             Requested size: 350.0pt x 295.40207pt.
+ [11]
 LaTeX Font Info:    Trying to load font information for TS1+LibertinusSerif-TLF
- on input line 1115.
+ on input line 1124.
 
 (C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/libertinus-type1\ts1libertinus
 serif-tlf.fd
@@ -1783,115 +1784,122 @@ File: TS1LibertinusSerif-TLF.fd 2022/11/07 (autoinst) Font definitions for TS1/
 LibertinusSerif-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 10.95pt on input line 1115.
+(Font)              scaled to size 10.95pt on input line 1124.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LibertinusSerif-TLF' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [11{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbt
-s_rlktsf.enc}] [12 <./img/dataset_generation.png>]
-<img/rdh.png, id=267, 510.90875pt x 663.47874pt>
+ [12{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbt
+s_rlktsf.enc} <./img/dataset_generation.png>]
+<img/rdh.png, id=268, 510.90875pt x 663.47874pt>
 File: img/rdh.png Graphic file (type png)
 <use img/rdh.png>
-Package pdftex.def Info: img/rdh.png  used on input line 1138.
+Package pdftex.def Info: img/rdh.png  used on input line 1147.
 (pdftex.def)             Requested size: 350.0pt x 454.51056pt.
-<img/survey_pipeline.png, id=269, 643.40375pt x 402.50375pt>
+ [13]
+<img/survey_pipeline.png, id=278, 643.40375pt x 402.50375pt>
 File: img/survey_pipeline.png Graphic file (type png)
 <use img/survey_pipeline.png>
-Package pdftex.def Info: img/survey_pipeline.png  used on input line 1150.
+Package pdftex.def Info: img/survey_pipeline.png  used on input line 1159.
 (pdftex.def)             Requested size: 350.0pt x 218.9579pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[13]
+[14]
 File: img/survey_pipeline.png Graphic file (type png)
 <use img/survey_pipeline.png>
-Package pdftex.def Info: img/survey_pipeline.png  used on input line 1198.
+Package pdftex.def Info: img/survey_pipeline.png  used on input line 1207.
 (pdftex.def)             Requested size: 350.0pt x 218.9579pt.
- [14]
-<img/sampling_not_different_overall.png, id=287, 642.4pt x 481.8pt>
+ [15]
+<img/sampling_not_different_overall.png, id=298, 642.4pt x 481.8pt>
 File: img/sampling_not_different_overall.png Graphic file (type png)
 <use img/sampling_not_different_overall.png>
 Package pdftex.def Info: img/sampling_not_different_overall.png  used on input 
-line 1245.
+line 1254.
 (pdftex.def)             Requested size: 350.0pt x 262.50595pt.
- [15]
-<img/survey_time_box.png, id=296, 602.25pt x 803.0pt>
+ [16]
+<img/survey_time_box.png, id=304, 602.25pt x 803.0pt>
 File: img/survey_time_box.png Graphic file (type png)
 <use img/survey_time_box.png>
-Package pdftex.def Info: img/survey_time_box.png  used on input line 1268.
+Package pdftex.def Info: img/survey_time_box.png  used on input line 1277.
 (pdftex.def)             Requested size: 350.0pt x 466.68379pt.
- [16]
-Overfull \hbox (48.20337pt too wide) in paragraph at lines 1299--1301
+
+Overfull \hbox (48.20337pt too wide) in paragraph at lines 1308--1310
 \T1/LibertinusSerif-TLF/m/n/10.95 (-20) with its fully spe-cified clas-si-fier.
  For ex-ample, in-stead of "In-put-Stream", "java.io.InputStream"
  []
 
-
-Overfull \hbox (24.97267pt too wide) in paragraph at lines 1338--1364
+[17]
+Overfull \hbox (24.97267pt too wide) in paragraph at lines 1347--1373
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 13.78444pt on input line 1366.
+LaTeX Warning: Float too large for page by 13.78444pt on input line 1375.
 
 File: img/survey_time_box.png Graphic file (type png)
 <use img/survey_time_box.png>
-Package pdftex.def Info: img/survey_time_box.png  used on input line 1377.
+Package pdftex.def Info: img/survey_time_box.png  used on input line 1386.
 (pdftex.def)             Requested size: 350.0pt x 466.68379pt.
-<img/survey_time_histogramm.png, id=306, 481.8pt x 361.35pt>
+<img/survey_time_histogramm.png, id=315, 481.8pt x 361.35pt>
 File: img/survey_time_histogramm.png Graphic file (type png)
 <use img/survey_time_histogramm.png>
-Package pdftex.def Info: img/survey_time_histogramm.png  used on input line 138
-4.
+Package pdftex.def Info: img/survey_time_histogramm.png  used on input line 139
+3.
 (pdftex.def)             Requested size: 350.0pt x 262.50412pt.
-<img/survey_time_less_than_180.png, id=307, 642.4pt x 481.8pt>
+<img/survey_time_less_than_180.png, id=316, 642.4pt x 481.8pt>
 File: img/survey_time_less_than_180.png Graphic file (type png)
 <use img/survey_time_less_than_180.png>
 Package pdftex.def Info: img/survey_time_less_than_180.png  used on input line 
-1391.
+1400.
 (pdftex.def)             Requested size: 350.0pt x 262.50595pt.
-<img/survey_java_familiarity_pie.png, id=309, 642.4pt x 481.8pt>
+<img/survey_java_familiarity_pie.png, id=318, 642.4pt x 481.8pt>
 File: img/survey_java_familiarity_pie.png Graphic file (type png)
 <use img/survey_java_familiarity_pie.png>
 Package pdftex.def Info: img/survey_java_familiarity_pie.png  used on input lin
-e 1400.
+e 1409.
 (pdftex.def)             Requested size: 350.0pt x 262.50595pt.
-<img/survey_ratings_violin_all.png, id=311, 642.4pt x 481.8pt>
+<img/survey_ratings_violin_all.png, id=320, 642.4pt x 481.8pt>
 File: img/survey_ratings_violin_all.png Graphic file (type png)
 <use img/survey_ratings_violin_all.png>
 Package pdftex.def Info: img/survey_ratings_violin_all.png  used on input line 
-1409.
+1418.
 (pdftex.def)             Requested size: 350.0pt x 262.50595pt.
-[17] [18] [19]
-<img/scripts_pipeline.png, id=341, 1286.8075pt x 1011.78pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[18] [19] [20]
+<img/scripts_pipeline.png, id=349, 1286.8075pt x 1011.78pt>
 File: img/scripts_pipeline.png Graphic file (type png)
 <use img/scripts_pipeline.png>
-Package pdftex.def Info: img/scripts_pipeline.png  used on input line 1482.
+Package pdftex.def Info: img/scripts_pipeline.png  used on input line 1491.
 (pdftex.def)             Requested size: 350.0pt x 275.19125pt.
- [20]
-<img/model_pipeline_old.png, id=351, 4460.665pt x 2176.13pt>
+ [21]
+<img/model_pipeline_old.png, id=360, 4460.665pt x 2176.13pt>
 File: img/model_pipeline_old.png Graphic file (type png)
 <use img/model_pipeline_old.png>
-Package pdftex.def Info: img/model_pipeline_old.png  used on input line 1502.
+Package pdftex.def Info: img/model_pipeline_old.png  used on input line 1511.
 (pdftex.def)             Requested size: 350.0pt x 170.74025pt.
- [21] [22] [23] [24]
+ [22] [23] [24]
 Package hyperref Info: bookmark level for unknown resq defaults to 0 on input l
-ine 1571.
+ine 1580.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/b/it' will be
-(Font)              scaled to size 10.95pt on input line 1571.
+(Font)              scaled to size 10.95pt on input line 1580.
  [25{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbt
 s_opzo24.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-
-type1/lbts_nufysp.enc}] [26] [27]
-[28] [29 <./img/rdh.png>] [30 <./img/survey_pipeline.png>] [31 <./img/sampling_
-not_different_overall.png (PNG copy)>] [32 <./img/survey_time_box.png (PNG copy
-)>] [33] [34 <./img/survey_time_histogramm.png>] [35 <./img/survey_time_less_th
-an_180.png (PNG copy)>] [36 <./img/survey_java_familiarity_pie.png (PNG copy)>]
+type1/lbts_nufysp.enc}] [26] [27] [28]
+[29 <./img/rdh.png>] [30 <./img/survey_pipeline.png>] [31 <./img/sampling_not_d
+ifferent_overall.png (PNG copy)>] [32 <./img/survey_time_box.png (PNG copy)>]
+[33] [34 <./img/survey_time_histogramm.png>] [35 <./img/survey_time_less_than_1
+80.png (PNG copy)>] [36 <./img/survey_java_familiarity_pie.png (PNG copy)>]
 [37 <./img/survey_ratings_violin_all.png (PNG copy)>] [38 <./img/scripts_pipeli
 ne.png> <./img/model_pipeline_old.png>]
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/sc' will be
-(Font)              scaled to size 10.95pt on input line 1659.
+(Font)              scaled to size 10.95pt on input line 1668.
  [39
 
 
@@ -2119,10 +2127,10 @@ Package logreq Info: Writing requests to 'master-thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47715 strings out of 475551
- 1029580 string characters out of 5772369
- 2040610 words of memory out of 5000000
- 67769 multiletter control sequences out of 15000+600000
+ 47723 strings out of 475551
+ 1029682 string characters out of 5772369
+ 2046772 words of memory out of 5000000
+ 67775 multiletter control sequences out of 15000+600000
  696225 words of font info for 295 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  122i,21n,121p,10970b,2479s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2142,9 +2150,9 @@ msfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cm
 r8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/P
 rogram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/
 MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on master-thesis.pdf (44 pages, 1311936 bytes).
+Output written on master-thesis.pdf (44 pages, 1314185 bytes).
 PDF statistics:
- 809 PDF objects out of 1000 (max. 8388607)
- 161 named destinations out of 1000 (max. 500000)
- 79097 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 820 PDF objects out of 1000 (max. 8388607)
+ 163 named destinations out of 1000 (max. 500000)
+ 79113 words of extra memory for PDF output out of 89155 (max. 10000000)
 
