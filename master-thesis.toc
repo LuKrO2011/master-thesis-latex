@@ -14,15 +14,11 @@
 \contentsline {subsection}{\numberline {3.4}Readability Decreasing Heuristics}{15}{subsection.0.0.3.4}%
 \contentsline {subsection}{\numberline {3.5}Survey}{17}{subsection.0.0.3.5}%
 \contentsline {subsection}{\numberline {3.6}Readability Classification Model}{22}{subsection.0.0.3.6}%
-\contentsline {subsection}{\numberline {3.7}Code base}{22}{subsection.0.0.3.7}%
-\contentsline {subsection}{\numberline {3.8}User study}{24}{subsection.0.0.3.8}%
-\contentsline {subsubsection}{\nonumberline Comparing models}{25}{subsubsection*.4}%
-\contentsline {subsubsection}{\nonumberline Research questions}{25}{subsubsection*.6}%
-\contentsline {section}{\numberline {4}Evaluation}{27}{section.0.0.4}%
-\contentsline {subsection}{\numberline {4.1}Survey Results}{27}{subsection.0.0.4.1}%
-\contentsline {subsubsection}{\nonumberline Pilot survey}{27}{subsubsection*.8}%
-\contentsline {subsubsection}{\nonumberline Prolific Study Results}{28}{subsubsection*.10}%
-\contentsline {subsection}{\numberline {4.2}Model training results}{30}{subsection.0.0.4.2}%
-\contentsline {section}{\numberline {5}Discussion}{32}{section.0.0.5}%
-\contentsline {section}{\numberline {6}Conclusions}{33}{section.0.0.6}%
+\contentsline {section}{\numberline {4}Evaluation}{24}{section.0.0.4}%
+\contentsline {subsection}{\numberline {4.1}Survey Results}{24}{subsection.0.0.4.1}%
+\contentsline {subsubsection}{\nonumberline Pilot survey}{24}{subsubsection*.4}%
+\contentsline {subsubsection}{\nonumberline Prolific Study Results}{25}{subsubsection*.6}%
+\contentsline {subsection}{\numberline {4.2}Model training results}{27}{subsection.0.0.4.2}%
+\contentsline {section}{\numberline {5}Discussion}{30}{section.0.0.5}%
+\contentsline {section}{\numberline {6}Conclusions}{30}{section.0.0.6}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

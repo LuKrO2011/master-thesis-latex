@@ -1391,6 +1391,59 @@ cleveref=true,%
 	
 	Each snippet of the easily readable code (original) is labeled with the mean value of all ratings of the original variant across all survey results. Similarly, we label all7 code snippets with their mean value. Note that in the binary classification with the underlying towards model, this results in the original methods being labeled with the class "well readable" and the all7 rdh with the class "badly readable".
 	
+	
+%	% We will conclude a user study to evaluate the newly generated data for readability classifier models.
+%	The goal of the user study is to answer the following key questions:
+%	
+%	\begin{enumerate}
+%		\item Does the well-readable-assumption (assumption \ref{well-readable-assumption}) hold?
+%		\item Does the poorly-readable-assumption (assumption \ref{poorly-readable-assumption}) hold?
+%	\end{enumerate}
+%	
+%	We will achieve this by showing programmers code snippets that were generated with the presented approach. Therefore, human annotators give each code snippet a rating of its readability. The annotators are selected by prolific\curl{https://www.prolific.com/}{2023-09-30}. Particular attention is paid to a high proportion of people from industry. The readability rating is based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable). We apply the same rating as done previously~\cite{buse2009learning, dorn2012general, scalabrino2018comprehensive}, but, other than before, we will not use the rating for labeling the training data. Instead, we will only use the ratings to validate a few randomly selected code snippets out of many that are automatically labeled.
+%	
+%	\subsubsection{Comparing models}\label{compare-models}
+%	Besides the user study we will evaluate our suggestions by comparing machine learning models against each other.
+%	The comparisons are based on common metrics such as accuracy, F1-score and MCC~\cite{chicco2020advantages}. One can distinguish further between the following variants of comparing models:
+%	
+%	In one variant we compare models that have the same architecture (same layers, same weight initialization, same components, etc.) while they differ in the data they are trained on. For example, we can train a model with the old and new datasets, separately and combined. If done for multiple model architectures we can evaluate how the differences in training data influence the model performance. 
+%	
+%	Another variant would be to compare models with different architecture but the same training data. In this way, we can evaluate newly introduced components by measuring and comparing the performance of such models.
+%	
+%	A third comparison variant is created by combining the first two. Both of them lead to many options in what to compare, especially if only small changes to training data or model architecture are done. To find out, if our suggestions lead to a better model overall, we will compare our newly created model with all changes at once to the state-of-the-art model of \citeauthor{mi2022towards}~\cite{mi2022towards}.
+%	
+%	\subsubsection{Research questions}\label{research-questions}
+%	We come up with the following research questions:
+%	
+%	%	\begin{resq}What is the quality of our new approach for data generation?\end{resq} \label{RQ1}
+%	%	Until now, the data for readability classification was generated manually. Therefore, human annotators ranked code snippets by their readability level based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable)~\cite{buse2009learning, dorn2012general, scalabrino2018comprehensive}. Our new data will be generated in an automatic approach, where no manual labeling of code is necessary. We want to compare the quality of this data to the data used for previous models.
+%	
+%	\begin{resq} \textbf{(select-well)} Can automatically selected code be assumed to be well readable?\end{resq} \label{select-well}
+%	In our new approach for generating training data, we assume that the code from repositories is readable under certain conditions (assumption~\ref{well-readable-assumption}). We want to check whether that holds. To answer this question we will use the results of the user study (section~\ref{user-study}).
+%	
+%	\begin{resq} \textbf{(generate-poor)} Can poorly readable code be generated from well readable code?\end{resq} \label{generate-poor}
+%	It is not sufficient to have only well readable code for training a classifier. We also need poorly readable code. Therefore, we will try to generate such code from the well readable code. We will investigate whether this is possible in principle, and we will propose an automated approach for archiving this: Readability Decreasing Heuristics.
+%	
+%	As the name already suggests, the applied transformations on the source code are only heuristics. To answer, whether the generated code is badly readable (assumption~\ref{poorly-readable-assumption}) we will utilize the results of the user study (section~\ref{user-study}).
+%	
+%	\begin{resq} \textbf{(best-heuristics)} Which heuristics are best to generate poorly readable code from well readable code?\end{resq} \label{best-heuristic}
+%	We want to compare the modifications of the proposed heuristics for generating poorly readable code to each other. Therefore we will train the same classifier model with badly readable code generated by different Readability Decreasing Heuristics. We will then evaluate the model variations against each other (section~\ref{compare-models}) to answer the research question.
+%	
+%	\begin{resq} \textbf{(new-data)} To what extent can the new data improve existing readability models?\end{resq} \label{new-data}
+%	It was shown that Deep Learning models get better the more training data is available~\cite{hestness2017deep}. This holds under the assumption that the quality of the data is the same or at least similar. We want to check if the quality of our new data is sufficient for improving the Deep Learning based readability classifier of \citeauthor{mi2022towards}~\cite{mi2022towards}. Therefore we will train their proposed model with and without the new data and then evaluate the models against each other (section~\ref{compare-models}).
+%	
+%	% Next RQ on new page
+%	\pagebreak
+%	
+%	%	\begin{resq} \textbf{(model-modifications)} Optional: How can existing Deep Learning approaches be further improved?\end{resq} \label{model-modifications}
+%	%	In recent years it was shown that Deep Learning models can be further improved by modifying the structure of the architecture or by introducing new components, parts or layers to existing architectures. We suggest two improvements for the model of \citeauthor{mi2022towards}~\cite{mi2022towards}: Embedding spaces and tabs as semantic tokens and adding a method name fitting component. We will evaluate the proposed improvements as described earlier~\ref{suggestions}.
+%	
+%	\begin{resq} \textbf{(embedding-spaces)} Optional: To what extend does the embedding of spaces and tabs in semantic code representations improve readability classification?\end{resq} \label{embedding-spaces}
+%	The state-of-the-art model of \citeauthor{mi2022towards}~\cite{mi2022towards} does consider spaces and tabs only in its visual component. We want to investigate if it can improve the quality of a Deep Learning based model if spaces and tabs are encoded as semantic tokens. We also want to investigate if this makes the visual component superfluous. We will evaluate the proposed improvement as described earlier (section~\ref{compare-models}).
+%	
+%	\begin{resq} \textbf{(name-classifier)} Optional: To what extend does the usage of a method name classifier improve readability classification?\end{resq} \label{name-classifier}
+%	Correct naming of identifiers is crucial for ensuring readability of software programs. It is of outstanding importance for readability of code that the name of methods fit the method bodies~\cite{liu2019learning}. We want to introduce a new component to the model of \citeauthor{mi2022towards}~\cite{mi2022towards} that is built similar to Code2Vec~\cite{alon2019code2vec}. We want to investigate if the newly introduced component improves the quality of the resulting model. We will evaluate the proposed improvement as previously described (section~\ref{compare-models}).
+	
 \subsection{Readability Classification Model} \label{Readability Classification Model}
 
 	Next we investigate whether it is possible to score a higher accuracy as the towards model in classifying code readability with our new dataset.
@@ -1418,69 +1471,16 @@ cleveref=true,%
 	\end{figure}
 	
 	
-\subsection{User study}\label{user-study}
-	% We will conclude a user study to evaluate the newly generated data for readability classifier models.
-	The goal of the user study is to answer the following key questions:
-	
-	\begin{enumerate}
-		\item Does the well-readable-assumption (assumption \ref{well-readable-assumption}) hold?
-		\item Does the poorly-readable-assumption (assumption \ref{poorly-readable-assumption}) hold?
-	\end{enumerate}
-	
-	We will achieve this by showing programmers code snippets that were generated with the presented approach. Therefore, human annotators give each code snippet a rating of its readability. The annotators are selected by prolific\curl{https://www.prolific.com/}{2023-09-30}. Particular attention is paid to a high proportion of people from industry. The readability rating is based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable). We apply the same rating as done previously~\cite{buse2009learning, dorn2012general, scalabrino2018comprehensive}, but, other than before, we will not use the rating for labeling the training data. Instead, we will only use the ratings to validate a few randomly selected code snippets out of many that are automatically labeled.
-		
-	\subsubsection{Comparing models}\label{compare-models}
-	Besides the user study we will evaluate our suggestions by comparing machine learning models against each other.
-	The comparisons are based on common metrics such as accuracy, F1-score and MCC~\cite{chicco2020advantages}. One can distinguish further between the following variants of comparing models:
-	
-	In one variant we compare models that have the same architecture (same layers, same weight initialization, same components, etc.) while they differ in the data they are trained on. For example, we can train a model with the old and new datasets, separately and combined. If done for multiple model architectures we can evaluate how the differences in training data influence the model performance. 
-	
-	Another variant would be to compare models with different architecture but the same training data. In this way, we can evaluate newly introduced components by measuring and comparing the performance of such models.
-
-	A third comparison variant is created by combining the first two. Both of them lead to many options in what to compare, especially if only small changes to training data or model architecture are done. To find out, if our suggestions lead to a better model overall, we will compare our newly created model with all changes at once to the state-of-the-art model of \citeauthor{mi2022towards}~\cite{mi2022towards}.
-	
-	\subsubsection{Research questions}\label{research-questions}
-	We come up with the following research questions:
-	
-%	\begin{resq}What is the quality of our new approach for data generation?\end{resq} \label{RQ1}
-%	Until now, the data for readability classification was generated manually. Therefore, human annotators ranked code snippets by their readability level based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable)~\cite{buse2009learning, dorn2012general, scalabrino2018comprehensive}. Our new data will be generated in an automatic approach, where no manual labeling of code is necessary. We want to compare the quality of this data to the data used for previous models.
-	
-	\begin{resq} \textbf{(select-well)} Can automatically selected code be assumed to be well readable?\end{resq} \label{select-well}
-	In our new approach for generating training data, we assume that the code from repositories is readable under certain conditions (assumption~\ref{well-readable-assumption}). We want to check whether that holds. To answer this question we will use the results of the user study (section~\ref{user-study}).
-	
-	\begin{resq} \textbf{(generate-poor)} Can poorly readable code be generated from well readable code?\end{resq} \label{generate-poor}
-	It is not sufficient to have only well readable code for training a classifier. We also need poorly readable code. Therefore, we will try to generate such code from the well readable code. We will investigate whether this is possible in principle, and we will propose an automated approach for archiving this: Readability Decreasing Heuristics.
-	
-	As the name already suggests, the applied transformations on the source code are only heuristics. To answer, whether the generated code is badly readable (assumption~\ref{poorly-readable-assumption}) we will utilize the results of the user study (section~\ref{user-study}).
-	
-	\begin{resq} \textbf{(best-heuristics)} Which heuristics are best to generate poorly readable code from well readable code?\end{resq} \label{best-heuristic}
-	We want to compare the modifications of the proposed heuristics for generating poorly readable code to each other. Therefore we will train the same classifier model with badly readable code generated by different Readability Decreasing Heuristics. We will then evaluate the model variations against each other (section~\ref{compare-models}) to answer the research question.
-	
-	\begin{resq} \textbf{(new-data)} To what extent can the new data improve existing readability models?\end{resq} \label{new-data}
-	It was shown that Deep Learning models get better the more training data is available~\cite{hestness2017deep}. This holds under the assumption that the quality of the data is the same or at least similar. We want to check if the quality of our new data is sufficient for improving the Deep Learning based readability classifier of \citeauthor{mi2022towards}~\cite{mi2022towards}. Therefore we will train their proposed model with and without the new data and then evaluate the models against each other (section~\ref{compare-models}).
-	
-	% Next RQ on new page
-	\pagebreak
-	
-%	\begin{resq} \textbf{(model-modifications)} Optional: How can existing Deep Learning approaches be further improved?\end{resq} \label{model-modifications}
-%	In recent years it was shown that Deep Learning models can be further improved by modifying the structure of the architecture or by introducing new components, parts or layers to existing architectures. We suggest two improvements for the model of \citeauthor{mi2022towards}~\cite{mi2022towards}: Embedding spaces and tabs as semantic tokens and adding a method name fitting component. We will evaluate the proposed improvements as described earlier~\ref{suggestions}.
-	
-	\begin{resq} \textbf{(embedding-spaces)} Optional: To what extend does the embedding of spaces and tabs in semantic code representations improve readability classification?\end{resq} \label{embedding-spaces}
-	The state-of-the-art model of \citeauthor{mi2022towards}~\cite{mi2022towards} does consider spaces and tabs only in its visual component. We want to investigate if it can improve the quality of a Deep Learning based model if spaces and tabs are encoded as semantic tokens. We also want to investigate if this makes the visual component superfluous. We will evaluate the proposed improvement as described earlier (section~\ref{compare-models}).
-	
-	\begin{resq} \textbf{(name-classifier)} Optional: To what extend does the usage of a method name classifier improve readability classification?\end{resq} \label{name-classifier}
-	Correct naming of identifiers is crucial for ensuring readability of software programs. It is of outstanding importance for readability of code that the name of methods fit the method bodies~\cite{liu2019learning}. We want to introduce a new component to the model of \citeauthor{mi2022towards}~\cite{mi2022towards} that is built similar to Code2Vec~\cite{alon2019code2vec}. We want to investigate if the newly introduced component improves the quality of the resulting model. We will evaluate the proposed improvement as previously described (section~\ref{compare-models}).
-	
 \section{Evaluation} \label{Evaluation}
-In this section we will present our evaluation results.
+	We will present our results in the following subsections.
 
 \subsection{Survey Results} \label{Survey Results}
-	The results from our survey are separated into two parts: The results from the pilot survey used to improve the main survey pre start and the main survey results used to answer our research questions.
-
-\subsubsection{Pilot survey} \label{Pilot Survey}
-	The pilot survey was used to adjust the rdh-probability settings and the survey itself before start.
+	The results of our survey are divided into two parts: The results of the pilot survey, which were used to improve the main survey pre-launch, and the results of the main survey, which were used to answer our research questions and to craft our dataset.
 	
-	The pilot survey gave an insight into how much time one would need to rate 20 code snippets regarding it's readability. You can find an overview over the times needed in Figure \ref{fig:pilot_survey_time_box.png}. Based on this we estimated the time requirement for our survey with 10 minutes.
+\subsubsection{Pilot survey} \label{Pilot Survey}
+	The pilot survey was used to adjust the rdh probability settings and the survey itself before the start.
+
+	The pilot survey provided information on how much time it would take to evaluate 20 code snippets in terms of their readability. An overview of the times required can be found in Figure \ref{fig:pilot_survey_time_box.png}. On this basis, we estimated the time required for our survey at 10 minutes.
 	
 	\begin{figure}[t]
 		\centering
@@ -1489,7 +1489,7 @@ In this section we will present our evaluation results.
 		\label{fig:pilot_survey_time_box.png}
 	\end{figure}
 	
-	Most of the problems that came up where due to the survey tool (for example: "I also thought that I should use the drop-down menu on the upper left."). You can find all feedback in appendix TODO.
+	Most of the problems that occurred were due to the survey tool (e.g.: "I also felt that I should use the drop-down menu at the top left."). You can find all feedback in the appendix TODO.
 	
 	%	It is sometimes necessary to swipe horizontally to see all of the code, which is a bit inconvenient.
 	%	After finishing the task, at least message should be shown.
@@ -1511,15 +1511,14 @@ In this section we will present our evaluation results.
 	%	Feature Request: Predefine code parser (per survey/snippet) and hide selection during survey for participants
 	%	Feature Request: Possibility to show a hint or the task description again during the survey
 	
-	Additionally some manual evaluation of the different rdhs, especially for stratum 1 suggested a few things:
+	In addition, a manual evaluation of the various rdhs, especially for stratum 1, revealed some clues:
 	
-	First of all, original methods where rated comparably well, which suggests the well-readable-assumption to hold.
+	First, the original methods were rated comparably well, which suggests that the assumption of good readability is correct.
 	
-	Secondly, the rdh tool did always fully declare each imported method or class with its fully specified classifier. For example, instead of 
-	"InputStream", "java.io.InputStream" was declared. This gave the raters the feeling, that the code was actually not written by a human and drastically decreased it's readability. Afterwards, we adjusted the rdh-tool to not print the fully qualified name anymore. This has however the drawback, that it can not be guaranteed anymore that the generated code compiles and does the same as it's original. However, this property was lost anywhere upon extracting the individual methods from the class files.
+	Secondly, the rdh tool always specified each imported method or class completely with its fully specified classifier. For example, instead of "InputStream", "java.io.InputStream" was written. This gave the participants the feeling that the code was not written by a human and drastically reduced readability. We then adapted the rdh tool to print the shorter name. However, this has the disadvantage that it can no longer be guaranteed that the generated code will compile and behave exactly like the original. However, this property was lost anyway when extracting the individual methods from the class files.
 	
-	Third, some rdhs where configured to strong so that some methods were again not presumed to be written by a human anymore. These rdhs were adjusted and their probabilities were decreased accordingly (for example newlines\_few). For all results see Table \ref{tab:pilot_survey_results}.
-	
+	Thirdly, some rdhs were configured too strongly, so that for some methods it was no longer assumed that they were written by a human. These rdhs were adjusted and their probabilities reduced accordingly (for example newlines\_few). All results can be found in table \ref{tab:pilot_survey_results}.
+
 	%	\begin{table}[htbp]
 		%		\centering
 		%		\begin{tabular}{llp{6cm}c}
@@ -1580,16 +1579,18 @@ In this section we will present our evaluation results.
 			stratum\_1 & all & \seqsplit{hudi\_HoodieMultiTableStreamer.java\_populateTableExecutionContextList.java} & 1,2 \\
 			\bottomrule
 		\end{tabular}
-		\caption{Overview over the pilot survey results.}
+		\caption{Pilot survey results}
 		\label{tab:pilot_survey_results}
 	\end{table}
 	
-	After the feedback regarding the survey tool was implemented, the actual study was conducted.
+	Once the aforementioned adjustments had been made and the feedback on the survey instrument had been implemented, the actual study was carried out.
 
 \subsubsection{Prolific Study Results} \label{Prolific Study Results}
-	In this section we will summarize the results of the main study conducted via prolific.
+	In this section we summarize the results of the main study conducted via prolific.
 	
 	You can find an overview over the time required by the participants in the Figures \ref{fig:survey_time_box} and \ref{fig:survey_time_histogramm}. Additionally you can find the amount of participants that required less than 3 minutes for one survey sheet in Figure \ref{fig:survey_time_less_than_180}. The results of those participants might be a thread to validity to which we will come back later.
+	
+	An overview of the time required by the participants can be found in the figures \ref{fig:survey_time_box} and \ref{fig:survey_time_histogram}. In addition, figure \ref{fig:survey_time_less_than_180} shows the number of participants who took less than 3 minutes to complete a survey questionnaire. The results of these participants could have a negative impact on validity, which we will come back to later. 
 	
 	\begin{figure}[t]
 		\centering
@@ -1608,11 +1609,11 @@ In this section we will present our evaluation results.
 	\begin{figure}[t]
 		\centering
 		\includegraphics[width=0.75\textwidth]{img/survey_time_less_than_180.png}
-		\caption{Amount of participants per survey sheet that required less than 3 minutes to complete the survey}
+		\caption{Amount of participants per questionnaire that required less than 3 minutes to complete the survey}
 		\label{fig:survey_time_less_than_180}
 	\end{figure}
 	
-	You can find an overview over the familiarity of the participants with Java in Figure \ref{fig:survey_java_familiarity_pie}.
+	The participants' familiarity with Java is shown in Figure \ref{fig:survey_java_familiarity_pie}.
 	
 	\begin{figure}[t]
 		\centering
@@ -1621,18 +1622,20 @@ In this section we will present our evaluation results.
 		\label{fig:survey_java_familiarity_pie}
 	\end{figure}
 	
-	You can find an overview of the ratings for each RDH for all stratas combined in Figure \ref{fig:survey_ratings_violin_all}.
+	The ratings for each RDH for all shifts together can be found in Figure \ref{fig:survey_ratings_violin_all}.
 	
 	\begin{figure}[t]
 		\centering
 		\includegraphics[width=\textwidth]{img/survey_ratings_violin_all.png}
-		\caption{Violin plot of the survey ratings for each RDH and all stratas}
+		\caption{Survey ratings for each rdh and all stratas}
 		\label{fig:survey_ratings_violin_all}
 	\end{figure}
 	
 	We evaluated whether the deviation in the ratings between the various RDHs has statistical significance. We therefore used the Mann-Whitney-U-Test comparing the ratings for all snippets for a RDH against the corresponding none snippets. You can find the results of this in Table \ref{tab:survey_statistical_evidence}.
 	
-	Our results suggest, that doing no modification (none) is not different from the original methods. The difference here might as well come from a random variation with a probability of 92\%. When we compare the RDHs against the none methods we can be sure, that the ratings of all but newlines many and rename are actually statistically different from the ratings of none. This confirms that the readability decreasing heuristics are actually working in the sense that they decrease the readability of the given input methods.
+	We analysed whether the difference in ratings between the different rdhs is statistically significant. To do this, we used the Mann-Whitney U test to compare the ratings for all snippets for an rdh with the corresponding none rdh snippets. The results can be found in table \ref{tab:survey_statistical_evidence}.
+	
+	Our results suggest that no modification (none rdh) besides converting to the AST and back makes no difference to the original methods. The difference could just as well be due to random variation with a probability of 92\%. If we compare the RDHs with the none methods, we can be sure that the scores of all methods except newlines many and rename are indeed statistically different from the scores of none. This confirms that the heuristics actually reduce the readability of the given code.
 	
 	\begin{table}[h]
 		\centering
@@ -1651,7 +1654,7 @@ In this section we will present our evaluation results.
 			None - All7 & $1.80 \times 10^{-7}$ & True \\
 			\bottomrule
 		\end{tabular}
-		\caption{Mann-Whitney U Test Results of none against each RDH. If the p-value is smaller or equal to 0.05 the null-hypothesis is rejected confirming, that the ratings are actually different and not just a random variation. TODO: Update data}
+		\caption{Mann-Whitney U test results of none against each RDH. If the p-value is smaller or equal to 0.05 the null-hypothesis is rejected confirming, that the ratings are actually different and not just a random variation. TODO: Update data}
 		\label{tab:survey_statistical_evidence}
 	\end{table}
 
