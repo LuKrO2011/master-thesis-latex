@@ -8,20 +8,21 @@
 \contentsline {subsection}{\numberline {2.5}Diverse Perspectives}{8}{subsection.0.0.2.5}%
 \contentsline {subsection}{\numberline {2.6}Data Generation}{9}{subsection.0.0.2.6}%
 \contentsline {section}{\numberline {3}Mined and Modified Code for Dataset Generation}{10}{section.0.0.3}%
-\contentsline {subsection}{\numberline {3.1}Work on Existing Dataset}{10}{subsection.0.0.3.1}%
-\contentsline {subsection}{\numberline {3.2}Dataset Generation Approach}{11}{subsection.0.0.3.2}%
-\contentsline {subsection}{\numberline {3.3}Readability Decreasing Heuristics}{13}{subsection.0.0.3.3}%
-\contentsline {subsection}{\numberline {3.4}Survey}{14}{subsection.0.0.3.4}%
-\contentsline {subsection}{\numberline {3.5}Readability Classification Model}{18}{subsection.0.0.3.5}%
-\contentsline {subsection}{\numberline {3.6}Code base}{21}{subsection.0.0.3.6}%
-\contentsline {subsection}{\numberline {3.7}User study}{22}{subsection.0.0.3.7}%
-\contentsline {subsubsection}{\nonumberline Comparing models}{22}{subsubsection*.4}%
-\contentsline {subsubsection}{\nonumberline Research questions}{23}{subsubsection*.6}%
-\contentsline {section}{\numberline {4}Evaluation}{25}{section.0.0.4}%
-\contentsline {subsection}{\numberline {4.1}Survey Results}{25}{subsection.0.0.4.1}%
-\contentsline {subsubsection}{\nonumberline Pilot survey}{25}{subsubsection*.8}%
-\contentsline {subsubsection}{\nonumberline Prolific Study Results}{26}{subsubsection*.10}%
-\contentsline {subsection}{\numberline {4.2}Model training results}{28}{subsection.0.0.4.2}%
-\contentsline {section}{\numberline {5}Discussion}{30}{section.0.0.5}%
-\contentsline {section}{\numberline {6}Conclusions}{31}{section.0.0.6}%
+\contentsline {subsection}{\numberline {3.1}Work on Existing Datasets}{10}{subsection.0.0.3.1}%
+\contentsline {subsection}{\numberline {3.2}Considerations}{10}{subsection.0.0.3.2}%
+\contentsline {subsection}{\numberline {3.3}Dataset Generation Approach}{12}{subsection.0.0.3.3}%
+\contentsline {subsection}{\numberline {3.4}Readability Decreasing Heuristics}{13}{subsection.0.0.3.4}%
+\contentsline {subsection}{\numberline {3.5}Survey}{14}{subsection.0.0.3.5}%
+\contentsline {subsection}{\numberline {3.6}Readability Classification Model}{18}{subsection.0.0.3.6}%
+\contentsline {subsection}{\numberline {3.7}Code base}{22}{subsection.0.0.3.7}%
+\contentsline {subsection}{\numberline {3.8}User study}{23}{subsection.0.0.3.8}%
+\contentsline {subsubsection}{\nonumberline Comparing models}{23}{subsubsection*.4}%
+\contentsline {subsubsection}{\nonumberline Research questions}{24}{subsubsection*.6}%
+\contentsline {section}{\numberline {4}Evaluation}{26}{section.0.0.4}%
+\contentsline {subsection}{\numberline {4.1}Survey Results}{26}{subsection.0.0.4.1}%
+\contentsline {subsubsection}{\nonumberline Pilot survey}{26}{subsubsection*.8}%
+\contentsline {subsubsection}{\nonumberline Prolific Study Results}{27}{subsubsection*.10}%
+\contentsline {subsection}{\numberline {4.2}Model training results}{29}{subsection.0.0.4.2}%
+\contentsline {section}{\numberline {5}Discussion}{31}{section.0.0.5}%
+\contentsline {section}{\numberline {6}Conclusions}{32}{section.0.0.6}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

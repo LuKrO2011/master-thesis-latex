@@ -1103,29 +1103,34 @@ cleveref=true,%
 	Another concept we will employ is from \citeauthor{allamanis2016convolutional}. They cloned the top open source Java projects on GitHub\curl{https://github.com/}{2023-07-25} for training a Deep Learning model. Those top projects were selected by taking the sum of the z-scores of the number of watchers and forks of each project. As the projects have thousands of forks and stars and are widely used among software developers, they can be assumed to be of high quality~\cite{allamanis2016convolutional}.
 		
 \section{Mined and Modified Code for Dataset Generation} \label{Mined and Modified Code for Dataset Generation}
-	In the following section we will describe our approach.
+	In the following subsections we will describe our approach.
 		
-\subsection{Work on Existing Dataset} \label{Work on Existing Datasets}
-	Later we will compare our new dataset and generation approach against existing datasets for readability classification. Most of the related work (TOOD: refs) use a combination of \citeauthor{buse2009learning}, \citeauthor{dorn2012general} and \citeauthor{scalabrino2018comprehensive} data. The raw data from their surveys can be downloaded \curl{https://dibt.unimol.it/report/readability/}{2024-02-18}, but their data is not uniformly formatted, also contains not-Java code snippet ratings and contains the raw ratings rather than the mean over the ratings, which is used for training machine learning models.
+\subsection{Work on Existing Datasets} \label{Work on Existing Datasets}
+%	Later we will compare our new dataset and generation approach against existing datasets for readability classification.
+	Most of the related work (see Section \ref{Background and related work}) uses a combination of \citeauthor{buse2009learning}, \citeauthor{dorn2012general} and \citeauthor{scalabrino2018comprehensive} data. The raw data from their surveys can be downloaded \curl{https://dibt.unimol.it/report/readability/}{2024-02-18}, but their data is not uniformly formatted, including ratings that are not Java code snippets, as well as the individual ratings rather than the mean of the ratings used for training machine learning models.
 	
-	Therefore, we converted and combined the three datasets into one dataset: code-readability-merged. In recent years, Huggingface \curl{https://huggingface.co/}{2024-02-18} established as the pioneer in making models and datasets easily available. Therefore we decided to publish the merged dataset on Huggingface \curl{https://huggingface.co/datasets/se2p/code-readability-merged}{2024-02-18}.
+	We converted and combined the three datasets into one: code-readability-merged. In recent years, Huggingface \curl{https://huggingface.co/}{2024-02-18} established as the pioneer in making models and datasets easily available. Therefore we decided to publish the merged dataset on Huggingface \curl{https://huggingface.co/datasets/se2p/code-readability-merged}{2024-02-18}.
 	
-	When it comes to code readability classification, it is still state of the art to perform binary classification into readable and not-readable code (TODO: cites). 
+\subsection{Considerations} \label{Considerations}
 	
-	However, code readability classification is not a binary classification task per se. When rating code snippets, this is done on a Likert scale ranging from 1 to 5. So one could argue, that there are actually 5 classes rather than two.	
-	However, the actual readability value of a code snippet lies somewhere in between those ratings, it can have any value from 1.0 to 5.0.  The range is continuous, not discrete. Especially when normalizing this by subtracting 1 from the mean values and divide then by 4 we come end up with a continuous value ranging from 0.0 to 1.0. At this point it is trivial to say, that this is at it's core actually a regression problem.
+	In code readability classification it is still state of the art to make a binary classification into readable and unreadable code \cite{mi2018inception, mi2018improving, sharma20, mi2022towards, mi2022rank}. 
 	
-	This arises the question, why the research in the field of readability always see the problem as a (binary) classification problem. To answer this question is probably worth a research on it's one. 
+	However, code readability classification is not a binary classification task per se. \citeauthor{mi2023graph} introduced a third, neutral class to address this problem \cite{mi2023graph}. 
 	
-	As our evaluation model is the same as that of \citeauthor{mi2022towards}, we will only point out, how they converted the regression problem to a binary classification problem. First, the mean values of all ratings are calculated. In a second step, the snippets are ranked by their mean score. Then, the top 25\% of the data are labeled as well-readable and the bottom most 25\% are labeled as badly-readable. The intermediate 50\% of the data are not used as all.
+	When rating code snippets, a Likert scale~\cite{likert1932technique} from 1 to 5 was mostly used. So one could argue, that there are actually 5 classes rather than two or three.
+	However, the actual readability score of a code snippet lies somewhere in between. It can have any value from 1.0 to 5.0 and thus the range is continuous, not discrete. In particular, if you normalize by subtracting 1 and divide then by 4, we get a continuous value between 0.0 to 1.0. At this point, it is trivial to say that it is basically a regression problem.
 	
-	While this conversion is in principle fine, especially with the argument that the data in the middle is not clearly either readable or not readable it has the clear drawback that only 50\% of the available data is used for model training and evaluation. This has two drawbacks:
+	The question arises as to why research in the field of code readability always views the problem as a (binary) classification problem. The answer to this question is probably worthy of its own research and therefore not covered in this work.
 	
-	First, the available data of 421 rated code snippets is further reduced to 210 code snippets for training. Keep in mind, that a bottleneck of readability classification is the little amount of available data, which makes this a significant loss.
+	Our evaluation model is the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards}. Therefore, we want to show how they transformed the rating scores into a binary classification problem. First, the mean values of all scores are calculated. In a second step, the snippets are ranked according to their mean score. Then, the top 25\% of the data is labeled as well-readable and the bottom 25\% is labeled as badly-readable. The 50\% of the data in between is not used at all~\cite{mi2022towards}.
 	
-	Secondly, evaluation is performed with only those 210 snippets as well. This means, that the model was only evaluated on 50\% of the available data. This is certainly a huge thread to validity. It suggests, that the performance of the model is to a remarkable degree lower when evaluation is performed on random unseen data.
+	While this transformation is fine in principle, especially with the argument that the data in the middle is not clearly either readable or unreadable, it has drawbacks that only 50\% of the available data is used for model training and evaluation:
 	
-	However, we will both stick to the binary classification approach as well as to \citeauthor{mi2022towards}'s model to make our results comparable to theirs.	
+	First, the available data is further reduced from 421 evaluated Java code fragments to 210 code fragments for training. Note that a bottleneck in readability classification is the small amount of available data. So this is a significant loss.
+	
+	Secondly, evaluation is performed with only those 210 snippets as well. This means, that the model was only evaluated on 50\% of the available data. We suspect that this might be a thread to validity. It could be that the performance of the model is remarkably lower when the evaluation is performed with random, unseen data that also contains moderately readable code snippets.
+	
+	However, we will both stick to the binary classification approach as well as to the towards model \cite{mi2022towards} to make our results comparable to theirs.
 	
 \subsection{Dataset Generation Approach} \label{Dataset Generation Approach}
 	Other than previous datasets for readability classification, our dataset was generated using an automated approach. This approach is novel to the best of our knowledge. You can find a visualization in Figure \ref{fig:dataset_generation}.
