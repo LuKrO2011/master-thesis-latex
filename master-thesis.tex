@@ -688,6 +688,53 @@ cleveref=true,%
 	% Conclusion
 	In the last section we summarize our work, draw conclusions from it and propose future work.
 	
+
+	We will investigate whether it is possible to score a higher accuracy as current models in classifying code readability for Java using Deep Learning. Therefore, we will train the model from \citeauthor{mi2022towards}~\cite{mi2022towards} with more data. We will consider augmenting the model with a method name classifier and incorporating semantic encoding for tabs and spaces. The training data will be generated in a novel way for classification of readability, inspired by \citeauthor{loriot2022styler}~\cite{loriot2022styler}. The method name classifier is similar to Code2Vec~\cite{alon2019code2vec}. The combination of all components is novel to the best of our knowledge. You can find a visualization of the planned modifications of \citeauthor{mi2022towards}'s model in figure~\ref{fig:model_pipeline}. We will focus on generating training data, as the approach will be usable for further research in the field of source code readability.
+	
+	\begin{figure}[t]
+		\centering
+		\includegraphics[width=\textwidth]{img/model_pipeline_old.png}
+		\caption{Overview of the planned approach.}
+		\label{fig:model_pipeline}
+	\end{figure}
+	
+	% TODO: Inline this in research questions?
+	% \subsection{Data generation} \label{Data generation}
+	Deep Learning based models perform better the more training data they get~\cite{hestness2017deep}. Therefore, one approach in order to further improve existing models is to gather more training data.
+	This requires, as it was done previously, a lot of effort and persons willing to rate code based on their readability. We present another approach for gathering training data.
+	
+	In a first step, GitHub repositories with known high code quality are downloaded and labeled as highly readable. We select repositories using a similar approach as \citeauthor{allamanis2016convolutional}~\cite{allamanis2016convolutional} and then assume that they contain only well readable code.
+	In a second step, the code is manipulated so that it is subsequently less readable. This approach is similar to the approach of \citeauthor{loriot2022styler}~\cite{loriot2022styler}. After both steps, we have a new, automatically generated training dataset for source code readability classification.
+	
+	% Readabililty Decreasing Heuristics
+	This brings up the question, how to manipulate code so that it is less readable afterwards. We therefore introduce a tool called Readability Decreasing Heuristics. As the name suggests this is a collection of heuristics that, when applied to source code, lower the readability of it. For example such a heuristic is to replace spaces with newlines. Another example is to increase the indentation of a code block by a tab or multiple spaces. Moreover, with most changes it is also possible to do exactly the opposite (replacing newlines with spaces, decreasing indentation), which in most cases also decreases the readability of source code.
+	
+	Code snippets in Java are syntactically the same, before and after applying Readability Decreasing Heuristics. Complexity did not change either. However, if various modifications are applied many times, those changes are capable of lowering the readability of source code, as the comparison of listing~\ref{lst:cassandra-src-java-org-apache-cassandra-utils} and listing~\ref{lst:cassandra-src-java-org-apache-cassandra-utils-modified} suggests.
+	
+	Note that we assume two things for the data generation approach:
+	\begin{enumerate}[label={Assumption \arabic*},ref={\arabic*},leftmargin=*]
+		\item \label{well-readable-assumption} \textbf{(well-readable-assumption)} The selected repositories contain only well-readable code.
+		\item \label{poorly-readable-assumption} \textbf{(poorly-readable-assumption)} After applying Readability Decreasing Heuristics, the code is poorly readable.
+	\end{enumerate}
+	
+	% Model modifications/Further improvements
+	\label{model-modifications}
+	In recent years it was shown that Deep Learning models can be further improved by modifying the structure of the architecture or by introducing new components, parts or layers to existing architectures. 
+	We suggest two improvements for the model of \citeauthor{mi2022towards}~\cite{mi2022towards}. Firstly, we want to embed spaces and tabs as semantic tokens. Secondly, adding a method name fitting classifier as a component of the overall model could be an improvement.
+	% Surpassing
+	\label{suggestions}If there is time left, we will try to surpass the performance of recent source code readability classifiers with those improvements to data generation and the model.
+	%, such as the model proposed by \citeauthor{mi2022towards}~\cite{mi2022towards}.
+	
+	% We suggest two improvements for the model of \citeauthor{mi2022towards}~\cite{mi2022towards}:
+	%\begin{enumerate}
+	%	\item \label{embedding-spaces-component} \textbf{(embedding-spaces-component)} Embedding spaces and tabs as semantic tokens.
+	%	\item \label{name-classifier-component} \textbf{(name-classifier-component)} Adding a method name fitting classifier as a component of % the overall model.
+	%\end{enumerate}
+	
+	We will evaluate our suggestions with two methods. Firstly, we conclude a user study. Secondly, we compare code readability models with each other.
+	
+	\pagebreak
+	
 \section{Background and related work} \label{Background and related work}
 	In the following subsections you find an overview of the background and related work on code readability and our approach to dataset creation.
 	
@@ -1335,57 +1382,31 @@ cleveref=true,%
 		
 	For this purpose, we created four permutation matrices with 10 snippets each. The number 10 was chosen because it is possible to distribute 10 snippets, each with 10 variants, to at least 10 survey arcs without violating our condition. By combining two 10-permutation matrices, we were able to create 10 survey arcs with 20 code snippets each. An implication of this approach is that each survey sheet contains each variant exactly twice. By doing this twice, we obtain the desired distribution of 20 survey questionnaires with 20 methods each. Our condition also applies: There is only one variant of the same method in each questionnaire.
 		
-	Finally, the methods for each survey questionnaire were randomly shuffled within each survey questionnaire. This was done to minimize the impact of the position of a snippet/variant within a survey on the rating.			
+	Finally, the methods for each survey questionnaire were randomly shuffled within each survey questionnaire. This was done to minimize the impact of the position of a snippet/variant within a survey on the rating.
+	
+	% After survey conduction	
+	Once the survey is complete, we will aggregate the ratings across all strats and all methods and group the results into the 10 rdhs. In this way, we want to assess whether the rdhs work, which rdhs work best and how strong the impact on readability of each rdh is. In addition, we will use the results of the survey to label our new dataset, which consists of the original and all7 rdh methods.
+	
+	Now that we have generated a dataset and evaluated the impact of the different rdhs we use the survey results to label each snippet of the well readable code (original) with the mean over all ratings of the original variant over all survey results. Similary we label the all7 code snippets with its mean score. Note that for binary classification with the towards model this results in the same as labelling the original methods with the well readable class and the all7 rdh with the badly readable class.		
+	
+	Each snippet of the easily readable code (original) is labeled with the mean value of all ratings of the original variant across all survey results. Similarly, we label all7 code snippets with their mean value. Note that in the binary classification with the underlying towards model, this results in the original methods being labeled with the class "well readable" and the all7 rdh with the class "badly readable".
 	
 \subsection{Readability Classification Model} \label{Readability Classification Model}
-	We will investigate whether it is possible to score a higher accuracy as current models in classifying code readability for Java using Deep Learning. Therefore, we will train the model from \citeauthor{mi2022towards}~\cite{mi2022towards} with more data. We will consider augmenting the model with a method name classifier and incorporating semantic encoding for tabs and spaces. The training data will be generated in a novel way for classification of readability, inspired by \citeauthor{loriot2022styler}~\cite{loriot2022styler}. The method name classifier is similar to Code2Vec~\cite{alon2019code2vec}. The combination of all components is novel to the best of our knowledge. You can find a visualization of the planned modifications of \citeauthor{mi2022towards}'s model in figure~\ref{fig:model_pipeline}. We will focus on generating training data, as the approach will be usable for further research in the field of source code readability.
+
+	Next we investigate whether it is possible to score a higher accuracy as the towards model in classifying code readability with our new dataset.
 	
-	\begin{figure}[t]
-		\centering
-		\includegraphics[width=\textwidth]{img/model_pipeline_old.png}
-		\caption{Overview of the planned approach.}
-		\label{fig:model_pipeline}
-	\end{figure}
-	
-	% TODO: Inline this in research questions?
-	% \subsection{Data generation} \label{Data generation}
-	Deep Learning based models perform better the more training data they get~\cite{hestness2017deep}. Therefore, one approach in order to further improve existing models is to gather more training data.
-	This requires, as it was done previously, a lot of effort and persons willing to rate code based on their readability. We present another approach for gathering training data.
-	
-	In a first step, GitHub repositories with known high code quality are downloaded and labeled as highly readable. We select repositories using a similar approach as \citeauthor{allamanis2016convolutional}~\cite{allamanis2016convolutional} and then assume that they contain only well readable code.
-	In a second step, the code is manipulated so that it is subsequently less readable. This approach is similar to the approach of \citeauthor{loriot2022styler}~\cite{loriot2022styler}. After both steps, we have a new, automatically generated training dataset for source code readability classification.
+	We have therefore created our own implementation of the model with Keras\curl{https://keras.io/about/}{2024-02-20}. In contrast to the publicly available code of \citeauthor{mi2022towards}\curl{https://github.com/swy0601/Readability-Features}{2024-02-20}, our model also includes (batch) encoders required for the model to be trained on new data and to perform the prediction task for new code snippets.  In addition, our model supports fine-tuning by freezing certain layers as well as storing intermediate results, such as the encoded dataset. During evaluation, the model returns the evaluation statistics in the form of a json file.
 		
-	% Readabililty Decreasing Heuristics
-	This brings up the question, how to manipulate code so that it is less readable afterwards. We therefore introduce a tool called Readability Decreasing Heuristics. As the name suggests this is a collection of heuristics that, when applied to source code, lower the readability of it. For example such a heuristic is to replace spaces with newlines. Another example is to increase the indentation of a code block by a tab or multiple spaces. Moreover, with most changes it is also possible to do exactly the opposite (replacing newlines with spaces, decreasing indentation), which in most cases also decreases the readability of source code.
+	During implementation, we also encountered the following potential problem with the model:
+	The token length for the bert encoding (bert-base-cased\curl{https://huggingface.co/google-bert/bert-base-cased}{2024-02-20}) used in the model is fixed at 100. What is a token in a piece of code? In addition to special tokens that mark the beginning [CLS] and the end [SEP] of the input, each word is represented by a token. However, each special character (such as /(){},;= and many more) is also represented by its own token. Java identifiers are split according to the convention of upper and lower case. Long words are in turn divided into several tokens.
 	
-	Code snippets in Java are syntactically the same, before and after applying Readability Decreasing Heuristics. Complexity did not change either. However, if various modifications are applied many times, those changes are capable of lowering the readability of source code, as the comparison of listing~\ref{lst:cassandra-src-java-org-apache-cassandra-utils} and listing~\ref{lst:cassandra-src-java-org-apache-cassandra-utils-modified} suggests.
+	Consider the method from Listing \ref{lst:cassandra-src-java-org-apache-cassandra-utils}. With a token limit of 100, the last encoded token is the last closing parenthesis in line 9. Everything from line 10 onwards is no longer encoded, which means that the information is lost after the semantic encoder or for the model. To put it in other words: The model of \citeauthor{mi2022towards} only considers the first few lines of code snippets in its semantic component.
 	
-	Note that we assume two things for the data generation approach:
-	\begin{enumerate}[label={Assumption \arabic*},ref={\arabic*},leftmargin=*]
-		\item \label{well-readable-assumption} \textbf{(well-readable-assumption)} The selected repositories contain only well-readable code.
-		\item \label{poorly-readable-assumption} \textbf{(poorly-readable-assumption)} After applying Readability Decreasing Heuristics, the code is poorly readable.
-	\end{enumerate}
+	The visual and structural encoders have similar limitations, but to a much lesser extent. The structural encoder encodes the first 50 lines of each code snippet and the visual encoder encodes the first 43 lines. While the constraints for these two coders seem to be long enough to fully capture most code snippets, the semantic coder seems to be too limited to do so.
+
+	Although we want to note these limitations, we will keep them in order to later allow a fair comparison of the datasets with the model of \citeauthor{mi2022towards} trained on the combined dataset.	
 	
-	% Model modifications/Further improvements
-	\label{model-modifications}
-	In recent years it was shown that Deep Learning models can be further improved by modifying the structure of the architecture or by introducing new components, parts or layers to existing architectures. 
-	We suggest two improvements for the model of \citeauthor{mi2022towards}~\cite{mi2022towards}. Firstly, we want to embed spaces and tabs as semantic tokens. Secondly, adding a method name fitting classifier as a component of the overall model could be an improvement.
-	% Surpassing
-	\label{suggestions}If there is time left, we will try to surpass the performance of recent source code readability classifiers with those improvements to data generation and the model.
-	%, such as the model proposed by \citeauthor{mi2022towards}~\cite{mi2022towards}.
-	
-	% We suggest two improvements for the model of \citeauthor{mi2022towards}~\cite{mi2022towards}:
-	%\begin{enumerate}
-	%	\item \label{embedding-spaces-component} \textbf{(embedding-spaces-component)} Embedding spaces and tabs as semantic tokens.
-	%	\item \label{name-classifier-component} \textbf{(name-classifier-component)} Adding a method name fitting classifier as a component of % the overall model.
-	%\end{enumerate}
-	
-	We will evaluate our suggestions with two methods. Firstly, we conclude a user study. Secondly, we compare code readability models with each other.
-	
-	\pagebreak
-	
-\subsection{Code base} \label{Code base}
-	Our code is available on GitHub. TODO: Refs
+	Our code is publicly available on GitHub. TODO: Refs
 	
 	You can find an overview over all programs used to create the merged dataset, the new dataset the model and all our evaluation results in Figure \ref{fig:scripts_pipline}.
 	
@@ -1396,14 +1417,6 @@ cleveref=true,%
 		\label{fig:scripts_pipline}
 	\end{figure}
 	
-	While re implementing the original model we came across the following possible issue of the model:
-	The token length for the bert encoding (bert-base-cased) used within the model is set to 100. What is a token in a piece of code? Besides special tokens to mark the beginning [CLS] and end [SEP] of the input, each word is represented by a token. However, also each special character (such as /(){},;= and many more) is represented by a own token. Java identifiers are split using the camel case convention. Long words are split again into multiple tokens.
-	
-	Consider the method from Listing \ref{lst:cassandra-src-java-org-apache-cassandra-utils}. With a token limit of 100, the last encoded token is the last closing brace in line 9. Everything from line 10 onward is not encoded anymore, which means, that the information is lost for the semantic encoder. To put it in other words: The model of \citeauthor{mi2022towards} considers only the first few lines of code snippets in it's semantic component.
-	
-	The visual and structural have similar limitations, however, they are less conservative. The structural encoder encodes the first 50 lines of each code snippet and the visual encoder encodes the first 43 lines. While the restrictions for both of those encoders seem to be long enough to capture most of the code snippets fully, the semantic encoder seems to be too limited to capture most of the code snippets fully. One reason for this could be, that the first part of a method is of higher semantic importance.
-	
-	While we want to remark these limitations, we will stick with them to allow later a fair comparison of the datasets against the model of of \citeauthor{mi2022towards} trained on the combined dataset.	
 	
 \subsection{User study}\label{user-study}
 	% We will conclude a user study to evaluate the newly generated data for readability classifier models.
