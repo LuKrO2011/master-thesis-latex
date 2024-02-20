@@ -1113,7 +1113,7 @@ cleveref=true,%
 \subsection{Data Augmentation} \label{Data Augmentation}
 
 	% Related work: Existing data
-	All the mentioned models were trained with (a part of) the data from Buse, Dorn and Scalabrino consisting of a total of 421 java code snippets. The data was generated with surveys. They therefore asked developers several questions, including how well readable the proposed source code is~\cite{buse2009learning, dorn2012general, scalabrino2018comprehensive}.
+	All the mentioned models were trained with (a part of) the data from Buse, Dorn and Scalabrino consisting of a total of 421 java code snippets. The data was generated with surveys. They therefore asked developers several questions, including how well readable the proposed source code is~\cite{buse2009learning, dorn2012general, scalabrino2018comprehensive}. We will refer to this dataset as old dataset.
 	
 	The problem that there is little data in the area of code readability classification for machine learning models has been recognized.
 					
@@ -1660,7 +1660,7 @@ cleveref=true,%
 
 
 \subsection{Model training results} \label{Model training results}
-	You can find the training, evaluation and fine-tuning results in table \ref{tab:dataset_performance}.
+	The results of the training, evaluation and fine-tuning can be found in the table \ref{tab:dataset_performance}.
 	
 	\begin{table}[h]
 		\centering
@@ -1668,32 +1668,35 @@ cleveref=true,%
 			\hline
 			\textbf{Train} & \textbf{Eval} & \textbf{Acc} & \textbf{Prec} & \textbf{Rec} & \textbf{AUC} & \textbf{F1} & \textbf{MCC} \\
 			\hline
-			\textbf{Krod} 		& \textbf{Krod} 	& 0.918 & 0.923 & 0.913 & 0.918 & 0.917 & 0.836 \\
-			\textbf{Krod} 		& \textbf{All}  	& 0.619 & 0.636 & 0.636 & 0.636 & 0.636 & 0.236 \\
-			\textbf{All} 		& \textbf{Krod} 	& 0.538 & 0.526 & 0.778 & 0.652 & 0.628 & 0.087 \\
-			\textbf{All}  		& \textbf{All}  	& 0.847 & 0.877 & 0.823 & 0.850 & 0.837 & 0.704 \\
+			\textbf{New} 		& \textbf{New} 	& 0.918 & 0.923 & 0.913 & 0.918 & 0.917 & 0.836 \\
+			\textbf{New} 		& \textbf{Old}  	& 0.619 & 0.636 & 0.636 & 0.636 & 0.636 & 0.236 \\
+			\textbf{Old} 		& \textbf{Old} 	& 0.538 & 0.526 & 0.778 & 0.652 & 0.628 & 0.087 \\
+			\textbf{Old}  		& \textbf{Old}  	& 0.847 & 0.877 & 0.823 & 0.850 & 0.837 & 0.704 \\
 			
-			\textbf{Krod-FT-All}& \textbf{All}  	& 0.804 & 0.840 & 0.738 & 0.789 & 0.772 & 0.600 \\
-			\textbf{Krod210}  	& \textbf{Krod210}  & 0.809 & 0.827 & 0.776 & 0.802 & 0.789 & 0.609 \\
+			\textbf{New-FT-Old}& \textbf{Old}  	& 0.804 & 0.840 & 0.738 & 0.789 & 0.772 & 0.600 \\
+			\textbf{New210}  	& \textbf{New210}  & 0.809 & 0.827 & 0.776 & 0.802 & 0.789 & 0.609 \\
 			\hline
 		\end{tabular}
 		\caption{Performance of different dataset configurations for the same model. FT = Fine-Tuning}
 		\label{tab:dataset_performance}
 	\end{table}
+		
+	When we train the model on the new dataset and evaluate it with 10-fold cross-validation, we obtain an average accuracy of 91.8\%. However, if we evaluate the trained model on the old dataset, we get an accuracy of only 61.9\%. From this we can draw some conclusions:
 	
-	When training the towards model on the Krod dataset and evaluating it on it using 10-fold cross validation, we get an average accuracy score of 91.8\%. However, when we evaluate the trained model on the combined dataset used in the towards paper, we get an accuracy of only 61.9\%. We can conclude a couple of things from this:
+	The towards model works well for our new dataset. However, the readability determined with the all dataset differs from the readability with our approach. Otherwise, the values for all-krod and krod-all would be similar to the value for all-all. This indicates that our dataset is not suitable for a general classification of readability, but we may have found a subproblem. However, adding more features to reduce readability and well-designed data augmentation could overcome this limitation.
+		
+	While the model trained on the new dataset is able to classify readability to a certain degree, the reverse is not the case, as 53.8\% is almost a random classifier. This suggests that fine-tuning a model trained on the new dataset using the entire dataset could lead to better results than the original towards model.
 	
-	The towards model works well for our new dataset. However, the readability retrieved using the all dataset is different from the readability using our approach. Otherwise, the scores for all-krod and krod-all would be similar to the all-all score. This suggests, that our dataset is not suitable for general readability classification, but we might have found a subproblem. However, adding more readability decreasing features and adding well-designed data augmentation might overcome this limitation.
+	To check whether our implementation of the model works correctly, we also included the old-old case in the comparison. Here we achieve a very similar accuracy to \citeauthor{mi2022towards} (84.7\% vs 85.3\%), which indicates that our implementation of the model works correctly.
 	
-	When we compare the accuracy scores for all-krod and krod-all we get another interesting finding: While the model trained on the krod dataset is able to classify readabilty to some extend, this does not hold the other way around, as 53.8\% is almost a random classifier. This suggests, that fine-tuning a model trained on the krod dataset using the all dataset might score better results than the original model proposed in the towards paper.
-	
-	To verify that the model works correctly and as a baseline comparison score we also added the all-all case. Here we achieve the same accuracy as \citeauthor{mi2022towards}, which suggests that our model is implemented in the same way as theirs.
-	
-	We tried to do fine-tuning using the all dataset by freezing different layers of the model trained on the krod dataset. The best we could come up with was when freezing the input layers as well as the first convolution and pooling layer of all encoders. However, the performance of this fine-tuned model was still worse than the baseline model. This is in direct contrast to our previous suggestion, that fine-tuning in this way might score better results. One explanation for this might be, that the model is to small to deal with the now larger amount of data. Introducing more or bigger layers, so that the model can memorize more features internally might overcome this problem. However, this is not part of this work, where we soely deal with creating a new dataset.
+	We tried to fine-tune with the old dataset by freezing different layers of the model trained with the new dataset. The best we could achieve was to freeze the input layers as well as the first convolution and pooling layer of all encoders. However, the performance of this fine-tuned model was still worse than the baseline model. This is in direct contrast to our earlier assumption that such fine-tuning could lead to better results. One explanation for this could be that the model is too small to be effective with the larger amount of data. Introducing more or bigger layers so that the model can store more features internally could solve this problem. However, this is not part of this work, in which we only deal with a new dataset (generation approach).
 	
 	We also trained the model with a random sample of 210 datapoints to get a initial insight of what a change in the training size might accomplish. As we can see, the model has similar metrics as the all-all model. When we now compare the stats, for example the accuracy of the krod-krod against the all-all model, we can see, that an improvement of about 8\% might be possible with a larger dataset. This suggests the importance of finding new ways of data generation for readability classification.
+	
+	We also trained the model with a random sample of 210 data points to gain insight into what a change in training size might do. As we can see, the model has similar metrics to the all-all model. If we now compare the statistics, e.g. the accuracy of the new-new compared to the old-old model, we see that with a larger dataset an improvement of about 8\% is possible. Similar results are suggested by previous research on data augmentation, where an accuracy of 87.3\% was achieved~\citeauthor{mi2021effectiveness}. This emphasizes the importance of finding new ways of generating data for readability classification. 
+	
+\subsection{Research Question Results} \label{Research Question Results}
 
-	% Study evaluation
 	% Assumption 1 - RQ1
 	The readability ratings of code snippets mined from Github are not very accurate. Therefore the well readable assumption TODO only holds for certain clusters of code snippets: TODO. For clusters that can be labeled with X or Y this assumption does not hold. Therefore we labeled the mined code depending on the cluster they where grouped in as you can see in Table TODO. While the rating does not hold for each and every snippet within such a cluster it is a good estimation on average. This should be sufficient to train a readability classifier.
 	
