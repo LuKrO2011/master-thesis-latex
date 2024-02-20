@@ -550,6 +550,16 @@ cleveref=true,%
 	year={2016},
 	organization={IEEE}
 }
+
+@article{mullner2013fastcluster,
+	title={fastcluster: Fast hierarchical, agglomerative clustering routines for R and Python},
+	author={M{\"u}llner, Daniel},
+	journal={Journal of Statistical Software},
+	volume={53},
+	pages={1--18},
+	year={2013}
+}
+
 \end{filecontents}
 \addbibresource{\jobname.bib}
 
@@ -1214,16 +1224,16 @@ cleveref=true,%
 	We have also added Code2Vec~\cite{alon2019code2vec} to the tool. This makes it possible to rename methods not only to iterating or arbitrary strings or numbers, but also to other realistic method names. The idea was to use worse method names predicted by Code2Vec and rename the methods to these. However, due to time and resource constraints regarding the survey, we did not pursue this approach.	However, there is a corresponding mode supported by the tool. This can be used for further research.
 	
 \subsection{Survey} \label{Survey}
-	We evaluate the dataset generated with the new approach with a survey. Therefore we had to carefully sample suitable code snippets from the dataset. You can find an overview over the approach in Figure \ref{fig:survey_pipeline}.
+	We evaluated the data set generated and the new approach with a survey. To do this, we had to carefully select suitable code snippets from the dataset. An overview of the approach can be found in Figure \ref{fig:survey_pipeline}.
 	
 	\begin{figure}[t]
 		\centering
 		\includegraphics[width=\textwidth]{img/survey_pipeline.png}
-		\caption{Overview over the steps performed to craft survey sheets from the dataset.}
+		\caption{Steps performed to craft survey sheets from the dataset}
 		\label{fig:survey_pipeline}
 	\end{figure}
-	
-	The first step was to find realistic configurations for the readability decreasing tool. After creating an initial dataset using the heuristics a pilot survey was conducted. Afterwards the heuristics that seemed to be too strong were weekend and adjusted according to the pilot survey result. The result of this were 9 different rdhs, which can be found in Table \ref{tab:rdh_configurations}.
+		
+	The first step was to find realistic configurations for the readability reduction tool. After an initial data set with the heuristics was created, a pilot study was conducted. Subsequently, the heuristics that proved to be too strong were checked and, if necessary, adjusted to be weaker according to the results of the pilot survey. The result was 9 different rdhs, which can be found in table \ref{tab:rdh_configurations}. Together with the original methods this resulted in 10 different configurations.
 	
 	\begin{table}[h]
 		\centering
@@ -1253,21 +1263,20 @@ cleveref=true,%
 		\caption{Chosen configurations and their probabilities for the RDH tool}
 		\label{tab:rdh_configurations}
 	\end{table}
-
-	Together with the original methods this resulted in 10 different configurations.
 	
-	The configurations are based on probabilities for different heuristics. A heuristic is applied with the given probability one each occurrence of the object to apply it to. For example, comment\_remove is applied with a probability of 10\% on each comment that occurs within the code snippet. Thus, the exact amount of changes for one method is uncertain. It might even happen (especially for short methods, such as getters and setters) that a method is not changed at all. For example, if a method has only a single comment and we apply comment\_remove, it is very likely, that a method is not changed at all.
+	The configurations are based on probabilities for different heuristics. A heuristic is applied with the specified probability to each occurrence of the object to which it is to be applied. For example, comment\_remove is applied with a probability of 10\% to each comment that occurs within the code snippet. The exact scope of changes for a method is therefore uncertain. It can even happen (especially with short methods such as getters and setters) that a method is not changed at all. For example, if a method only has a single comment and we use comment\_remove, it is very likely that the method will not be changed at all.
 	
-	In a second step we applied stratified sampling to those to be able to distinguish between very simple methods such as getters and setters and more complex methods. In order to be able to compare original methods with their modified variants, we performed the sampling only on the original methods and matched the rdh methods to those in a later step.
+	In a second step, we applied a stratified sampling to distinguish between very simple methods such as getter and setter and more complex methods. In order to be able to compare the original methods with their modified variants, we only carried out the random sampling for the original methods and compared the rdh methods with these in a later step.
 	
-	Thus we first had to calculate features for the original code snippets. This was done using TODOs tool. Therefore a TODO-dimensional features vector was calculated for each original code snippet. Next we calculate the cosine similarity metrix between all feature vectors and finally, using Ward's hierarchical clustering we were able to cluster the methods into an arbitrary amount of clusters.
-	
-	By comparing the merge distances in each step (see Figure \ref{fig:survey_cluster_amount}) we evaluated that a cluster size of 4 makes most sense: The merge distance from 5 to 4 is small, so we should still do this merge, but the merge distance from 4 to 3 is large, so one should rather not do this merge. Additionally, 4 is the size with the last possibility for a small merge distance. We assigned each cluster/strata manually a name, which can be found in Figure \ref{tab:survey_strata_labeles}.
+	Thus, we first had to calculate features for the original code snippets. This was done using \citeauthor{scalabrino2018comprehensive}s tool~\cite{scalabrino2018comprehensive}. Therefore, a 110-dimensional features vector was calculated for each original code snippet. Next we compute the cosine similarity metrix between all feature vectors using scikit\curl{https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html}{2024-02-20}. 
+	Finally, using the fastcluster implementation \cite{mullner2013fastcluster} of Ward's hierarchical clustering we were able to cluster the methods into an arbitrary amount of clusters.	
+		
+	By comparing the merge distances in each step (see figure \ref{fig:survey_cluster_amount}), we found that a cluster size of 4 makes the most sense: the merge distance of 5 to 4 is small, so we should still perform this merge, but the merge distance of 4 to 3 is large, so it is better not to perform this merge. Also, 4 is the size with the last possibility for a small merge distance. We have manually assigned a name to each of the 4 cluster/strata, which can be seen in Table \ref{tab:survey_strata_labeles}.
 	
 	\begin{figure}[t]
 		\centering
 		\includegraphics[width=\textwidth]{img/survey_pipeline.png}
-		\caption{TODO: Replace. The merge difference and the local derivative for amount of clusters between 2 and 10.} 
+		\caption{TODO: Replace. Merge difference and local derivative for amount of clusters/strata between 2 and 10} 
 		\label{fig:survey_cluster_amount}
 	\end{figure}
 	
@@ -1283,13 +1292,15 @@ cleveref=true,%
 			Stratum 3 & Medium complex methods \\
 			\bottomrule
 		\end{tabular}
-		\caption{The created stratas and a manually assigned name based on the methods within.}
+		\caption{Computed stratas and manually assigned name based on the methods within}
 		\label{tab:survey_strata_labeles}
 	\end{table}
-	
-	In the third step we crafted the surveys from the stratas. We decided to provide for each original method all 10 configurations mentioned earlier as we want to compare the original methods to their rdh-variants. As we have a capacity of rating 400 code snippets, we require to sample 40 original code snippets (and than add all their rdh-variants).	
+		
+	In the third step, we crafted the surveys from the layers. We decided to provide all 10 previously mentioned configurations for each original method, as we want to compare the original methods with their rdh variants. Since we have a survey capacity of 400 code snippets, we need to select 40 original code snippets (and then add all their rdh).	
 	
 	We chose to sample randomly from within the stratas. However, we distributed the 40 snippets among the stratas as can be seen in table \ref{tab:sampled_methods}.
+	
+	We opted for a random sample within the strata. However, we distributed the 40 snippets across the strata as shown in Table~\ref{tab:sampled_methods}.
 	
 	\begin{table}[htbp]
 		\centering
@@ -1305,11 +1316,11 @@ cleveref=true,%
 			\textbf{Total} & \textbf{100\%} & \textbf{40} \\
 			\bottomrule
 		\end{tabular}
-		\caption{Distribution of Sampled Methods}
+		\caption{Strata distribution of sampled methods}
 		\label{tab:sampled_methods}
 	\end{table}
 	
-	This decision was made due to the relative high frequency of methods not being different from their original methods (see Figure \ref{fig:sampling_not_different_overall}). Another factor for this decision is, that especially simple methods are rather uninteresting for readability classification, as they are often generated and mostly follow a straight forward pattern.
+	This decision was made due to the relatively high frequency of methods that do not differ from their original methods (see Figure \ref{fig:sampling_not_different_overall}). Another reason for this decision is that particularly simple methods are rather uninteresting for the classification of readability, as they are often generated (e.g. by IDEs) and usually follow a straightforward pattern.
 	
 	\begin{figure}[t]
 		\centering
@@ -1317,14 +1328,14 @@ cleveref=true,%
 		\caption{Relative frequency of the case that a rdh-method is not different from it's original method.} 
 		\label{fig:sampling_not_different_overall}
 	\end{figure}
-	
-	After sampling the 40 original methods, we next sampled all 9*40 rdh-variants that belong to the original methods. This was done mostly automatically using the sample name of the original methods and the sample names of the rdh-variant-methods. However, if the method was renamed earlier due to the rename-method-heuristic, the new method name did not match the one of the original method anymore and therefore we had to match those manually.
-	
-	After gathering all 400 methods we than had to distribute those among the 20 survey sheets, 20 snippets each. To not manipulate the raters we decided, that a variant of each method can only be once in each survey sheet. For example, if the original method is in survey sheet 1, the comment\_remove-variant (or any other variant) must not be in the same sheet.
-	
-	To achieve this, we created four permutation matrices with 10 snippets each. 10 was chosen, as it is possible to distribute 10 snippets with 10 variants each among at least 10 survey sheets while not violating our condition. By combining two 10-permutation-matrices we could create 10 survey sheets with 20 code snippets each. One implication of this approach is, that each survey sheet has each variant exactly twice. By doing this twice, we ended up with a desired distribution of 20 survey sheets à 20 methods. Additionally, our condition holds: In each survey sheet there is only one variant of the same method.
-	
-	Finally the methods for each survey sheet where randomly shuffled within each survey sheet so that the positions of the variants within each sheet are randomly distributed. This was done to minimize any effect of the position of a snippet/variant within a survey on the rating.			
+		
+	After selecting the 40 original methods, we next selected all 9*40 rdh variants that belong to the original methods. This was mostly done automatically based on the names of the original methods and the names of the rdh variant methods. However, if the method was renamed at an earlier stage due to the method renaming heuristic, the new method did no longer match the original method, so we had to match them manually.
+		
+	Once we had collected all 400 methods, we had to distribute them across the 20 survey forms, each with 20 methods. In order not to manipulate the raters, we decided that a variant of each method could only appear once in each survey sheet. For example, if the original method is in questionnaire 1, the comment\_remove variant (or another variant of the same method) must not be included in the same questionnaire.
+		
+	For this purpose, we created four permutation matrices with 10 snippets each. The number 10 was chosen because it is possible to distribute 10 snippets, each with 10 variants, to at least 10 survey arcs without violating our condition. By combining two 10-permutation matrices, we were able to create 10 survey arcs with 20 code snippets each. An implication of this approach is that each survey sheet contains each variant exactly twice. By doing this twice, we obtain the desired distribution of 20 survey questionnaires with 20 methods each. Our condition also applies: There is only one variant of the same method in each questionnaire.
+		
+	Finally, the methods for each survey questionnaire were randomly shuffled within each survey questionnaire. This was done to minimize the impact of the position of a snippet/variant within a survey on the rating.			
 	
 \subsection{Readability Classification Model} \label{Readability Classification Model}
 	We will investigate whether it is possible to score a higher accuracy as current models in classifying code readability for Java using Deep Learning. Therefore, we will train the model from \citeauthor{mi2022towards}~\cite{mi2022towards} with more data. We will consider augmenting the model with a method name classifier and incorporating semantic encoding for tabs and spaces. The training data will be generated in a novel way for classification of readability, inspired by \citeauthor{loriot2022styler}~\cite{loriot2022styler}. The method name classifier is similar to Code2Vec~\cite{alon2019code2vec}. The combination of all components is novel to the best of our knowledge. You can find a visualization of the planned modifications of \citeauthor{mi2022towards}'s model in figure~\ref{fig:model_pipeline}. We will focus on generating training data, as the approach will be usable for further research in the field of source code readability.
