@@ -1025,25 +1025,25 @@ cleveref=true,%
 	\citeauthor{mi2022rank} introduced a novel approach to code readability assessment by framing it as a learning-to-rank task. The proposed model employs siamese neural networks to rank code pairs based on their readability \cite{mi2022rank}.
 
 	% Related work: ML - AST + GNN (72.5\% three class, 88\% two class acc)
-	\citeauthor{mi2023graph}'s study addresses the importance of code readability in software development and introduces a novel graph-based representation method for code readability classification. The proposed method involves parsing source code into a graph with abstract syntax tree (AST), combining control and data flow edges, and converting node information into vectors. The model, comprising Graph Convolutional Network (GCN), DMoNPooling, and K-dimensional Graph Neural Networks (k-GNNs) layers, extracts syntactic and semantic features \cite{mi2023graph}.
+	\citeauthor{mi2023graph} address the importance of code readability in software development and introduced a graph-based representation method for code readability classification. The proposed method involves parsing source code into a graph with abstract syntax tree (AST), combining control and data flow edges, and converting node information into vectors. The model, comprising Graph Convolutional Network (GCN), DMoNPooling, and K-dimensional Graph Neural Networks (k-GNNs) layers, extracts syntactic and semantic features \cite{mi2023graph}.
 
-	You can find an overview over the accuracy scores for the mentioned models in table \ref{tab:rel-acc-scores}.
+	You can find an overview over the accuracy scores for the models mentioned in Table \ref{tab:rel-acc-scores}.
 	\begin{table}[ht]
 		\centering
 		\begin{tabular}{lccc}
 			\toprule
-			\textbf{Method} & \textbf{Accuracy (\%)} \\
+			\textbf{Model} & \textbf{Accuracy (\%)} \\
 			\midrule
-			M\_Buse \cite{buse2009learning} & 76.5 \\
-			M\_Possnet \cite{posnett2011simpler} & 71.7 \\
-			M\_Dorn \cite{dorn2012general} & 78.6 \\
-			M\_Scallabrino \cite{scalabrino2016improving} & 81.8 \\
-			M\_Mi\_IncepCRM \cite{mi2018inception} & 82.2 - 84.2 \\
-			M\_Mi\_DeepCRM \cite{mi2018improving} & 83.8 \\
-			M\_Sharma \cite{sharma2020egan} & 84.8 \\
-			M\_Mi\_Towards \cite{mi2022towards} & 85.3 \\
-			M\_Mi\_Ranking \cite{mi2022rank} & 83.5 \\
-			M\_Mi\_Graph \cite{mi2023graph} & 88.0 \\
+			Buse \cite{buse2009learning} & 76.5 \\
+			Possnet \cite{posnett2011simpler} & 71.7 \\
+			Dorn \cite{dorn2012general} & 78.6 \\
+			Scallabrino \cite{scalabrino2016improving} & 81.8 \\
+			Mi\_IncepCRM \cite{mi2018inception} & 82.2 - 84.2 \\
+			Mi\_DeepCRM \cite{mi2018improving} & 83.8 \\
+			Sharma \cite{sharma2020egan} & 84.8 \\
+			Mi\_Towards \cite{mi2022towards} & 85.3 \\
+			Mi\_Ranking \cite{mi2022rank} & 83.5 \\
+			Mi\_Graph \cite{mi2023graph} & 88.0 \\
 			
 			\bottomrule
 		\end{tabular}
@@ -1051,55 +1051,56 @@ cleveref=true,%
 		\label{tab:rel-acc-scores}
 	\end{table}
 	
-	However, the main contribution of this work is not a model that outperforms a state of the art model but rather a new dataset. For evaluation we decided to use the second best performing 2-class classification model, which is the Towards model of \citeauthor{mi2022towards}~\cite{mi2022towards}. We did not choose the best performing one, M\_Mi\_Graph, as that one works with the AST representation of the code, while our dataset generation approach will include features that are not represented in the AST \cite{mi2023graph}.
+	The main contribution of this work is not a model that outperforms a state of the art model but rather a new dataset (generation approach). For evaluation we opted for the Mi\_Towards model (hereinafter referred to as towards model) from \citeauthor{mi2022towards}~\cite{mi2022towards}. We did not choose the best performing one, Mi\_Graph, as its main contribution is to use the AST representation of the code, while our dataset generation approach includes features that are not represented in the AST \cite{mi2023graph}.
 			
 \subsection{Data Augmentation} \label{Data Augmentation}
 
 	% Related work: Existing data
-	All the mentioned models were trained on the data of Buse, Dorn and Scalabrino consisting of in total 660 code snippets. The data was generated with surveys. They therefore asked developers several questions, including the question, how well readable the proposed source code is~\cite{buse2009learning, dorn2012general, scalabrino2018comprehensive}.
+	All the mentioned models were trained with (a part of) the data from Buse, Dorn and Scalabrino consisting of a total of 421 java code snippets. The data was generated with surveys. They therefore asked developers several questions, including how well readable the proposed source code is~\cite{buse2009learning, dorn2012general, scalabrino2018comprehensive}.
 	
-	The problem that there is little data in the field of code readability classification for machine learning models got recognized by many authors recently.
-	
-	% Related work: Data genertion - GitHub commits
-	\citeauthor{fakhoury2019improving} showed based on readability improving commit analysis that these models do not capture what developers think of readability improvements. They therefore analyzed 548 GitHub{https://github.com/}{2023-07-25} commits manually. They suggest considering other metrics such as incoming method calls or method name fitting~\cite{fakhoury2019improving}.		
-				
-	% Related work: Data Augmentation
-	\citeauthor{oliveira2020evaluating} conducts a systematic literature review of 54 relevant studies on code readability and legibility, examining how different factors impact comprehension. The authors analyze tasks and response variables used in studies comparing programming constructs, coding idioms, naming conventions, and formatting guidelines~\cite{oliveira2020evaluating}.
-	
+	The problem that there is little data in the area of code readability classification for machine learning models has been recognized.
+					
 	% Related work: Data Augmentation - GAN (87.38\% acc)
-	\citeauthor{mi2021effectiveness} addresses the challenge of acquiring a sufficient amount of labeled data for training deep learning models in the field of code readability classification. Due to the time-consuming and expensive nature of obtaining manual labels, the researchers propose the use of data augmentation techniques to artificially expand the training set. They employ domain-specific transformations, such as manipulating comments, indentations, and names of classes/methods/variables, and explore the use of Auxiliary Classifier GANs to generate synthetic data~\cite{mi2021effectiveness}.
+	\citeauthor{mi2021effectiveness} address the challenge of acquiring a sufficient amount of labeled data for training deep learning models. Due to the time-consuming and expensive nature of obtaining manual labels, the researchers propose the use of data augmentation techniques to artificially expand the training set. They employ domain-specific transformations, such as manipulating comments, indentations, and names of classes/methods/variables, and explore the use of Auxiliary Classifier GANs to generate synthetic data~\cite{mi2021effectiveness}.
 	
 	% Related work: Data Augmentation - GAN (68.0\% acc)
-	\citeauthor{mi2022enhanced} address the challenge of multi-class code readability classification, emphasizing the importance of code readability in software maintenance. Due to a scarcity of labeled data, most prior research focused on binary classification. The authors propose an enhanced data augmentation approach, incorporating domain-specific data transformation and Generative Adversarial Networks (GANs)~\cite{mi2022enhanced}.
+	\citeauthor{mi2022enhanced} address the challenge of multi-class code readability classification. Due to a scarcity of labeled data, most prior research focused on binary classification. The authors propose an enhanced data augmentation approach, incorporating domain-specific data transformation and Generative Adversarial Networks (GANs)~\cite{mi2022enhanced}.
 	
 	% Related work: Data Generation - GitHub commits
 	\citeauthor{vitale2023using} introduce a novel approach to automatically identify and suggest readability-improving actions for code snippets. The authors develop a methodology to identify readability-improving commits, creating a dataset of 122k commits from GitHub's revision history. They train the T5 model to emulate developers' actions in improving code readability, achieving a prediction accuracy between 21\% and 28\%. The empirical evaluation shows that 82-90.8\% of the dataset commits aim to improve readability, and the model successfully mimics developers in 21\% of cases~\cite{vitale2023using}.
 	
-\subsection{Data Generation} \label{Data Generation}
-
-	Besides the related work regarding models and datasets we also need to mention related work that used some of the ideas we will use in our proposed data generation approach as well:
 	
-	% Related work: RDH
-	\citeauthor{loriot2022styler} created a model that is able to fix Checkstyle\curl{https://checkstyle.org/}{2023-07-25} violations using Deep Learning. They inserted formatting violations based on a project specific format checker ruleset into code in a first step. They then used a LSTM neural network that learned how to undo those injections. Their approach is working on abstract token sequences. Their data is generated in a self-supervised manner~\cite{loriot2022styler}. A similar idea has been explored by \citeauthor{yasunaga2020graph}~\cite{yasunaga2020graph}. We will use the idea of intentional degradation of code for data generation.
-		
-	% Related work: Public code mining
-	Another concept we will employ is from \citeauthor{allamanis2016convolutional}. They cloned the top open source Java projects on GitHub\curl{https://github.com/}{2023-07-25} for training a Deep Learning model. Those top projects were selected by taking the sum of the z-scores of the number of watchers and forks of each project. As the projects have thousands of forks and stars and are widely used among software developers, they can be assumed to be of high quality~\cite{allamanis2016convolutional}.
-	
-subsection{Other} \label{Other}
+\subsection{Diverse Perspectives} \label{Diverse Perspectives}
 
-	There is also other important research in the field of readability classification, that does not directly affect this work, but might have impact in future work regarding the research field.
+	There is also other important research in the field of readability classification that does not directly affect this work, but could have implications for future work.
+	
+	% Related work: Commit analysis - GitHub commits
+	\citeauthor{fakhoury2019improving} showed based on readability improving commit analysis that previous models do not capture what developers think of readability improvements. They therefore analyzed 548 GitHub{https://github.com/}{2023-07-25} commits manually. They suggest considering other metrics such as incoming method calls or method name fitting~\cite{fakhoury2019improving}.	
+	
+	% Related work: Data Augmentation
+	\citeauthor{oliveira2020evaluating} conducted a systematic literature review of 54 relevant studies on code readability and legibility, examining how different factors impact comprehension. The authors analyze tasks and response variables used in studies comparing programming constructs, coding idioms, naming conventions, and formatting guidelines~\cite{oliveira2020evaluating}.
 	
 	% Related work: Manual (python)
 	In a recent study participants demonstrated a consistent perception that Python code with more lines was deemed more comprehensible, irrespective of their level of experience. However, when it came to readability, variations were observed based on code size, with less experienced participants expressing a preference for longer code, while those with more experience favored shorter code. Both novices and experts agreed that long and complete-word identifiers enhanced readability and comprehensibility. Additionally, the inclusion of comments was found to positively impact comprehension, and a consensus emerged in favor of four indentation spaces \cite{ribeiro2018attributes}.
 	
 	% Related work: Eclipse tool
-	The paper of \citeauthor{choi2020metric} introduces an enhanced source code readability metric aimed at quantitatively measuring code readability in the software maintenance phase. The proposed metric achieves a substantial explanatory power of 75.74\%. Additionally, the authors developed a tool named Instant R. Gauge, integrated with Eclipse IDE, to provide real-time readability feedback and track readability history, allowing developers to gradually improve their coding habits \cite{choi2020metric}.
+	\citeauthor{choi2020metric} introduced an enhanced source code readability metric aimed at quantitatively measuring code readability in the software maintenance phase. The proposed metric achieves a substantial explanatory power of 75.74\%. Additionally, the authors developed a tool named Instant R. Gauge, integrated with Eclipse IDE, to provide real-time readability feedback and track readability history, allowing developers to gradually improve their coding habits \cite{choi2020metric}.
 	
 	% Related work: Relationships between features and readability
 	\citeauthor{mi2023makes} aim to understand the causal relationship between code features and readability. To overcome potential spurious correlations, the authors propose a causal theory-based approach, utilizing the PC algorithm and additive noise models to construct a causal graph. Experimental results using human-annotated readability data reveal that the average number of comments positively impacts code readability, while the average number of assignments, identifiers, and periods has a negative impact \cite{mi2023makes}.
 	
 	% Related work: Eye tracking
 	\citeauthor{segedinac2024assessing} introduces a novel approach for code readability classification using eye-tracking data from 90 undergraduate students assessing Python code snippets \cite{segedinac2024assessing}.
+	
+\subsection{Data Generation} \label{Data Generation}
+
+	In addition to related work on models and datasets, there is also related work that uses some of the ideas that we will employ in our proposed approach to data generation.
+	
+	% Related work: RDH
+	\citeauthor{loriot2022styler} created a model that is able to fix Checkstyle\curl{https://checkstyle.org/}{2023-07-25} violations using Deep Learning. They inserted formatting violations based on a project specific format checker ruleset into code in a first step. They then used a LSTM neural network that learned how to undo those injections. Their approach is working on abstract token sequences. Their data is generated in a self-supervised manner~\cite{loriot2022styler}. A similar idea has been explored by \citeauthor{yasunaga2020graph}~\cite{yasunaga2020graph}. We will use the idea of intentional degradation of code for data generation.
+	
+	% Related work: Public code mining
+	Another concept we will employ is from \citeauthor{allamanis2016convolutional}. They cloned the top open source Java projects on GitHub\curl{https://github.com/}{2023-07-25} for training a Deep Learning model. Those top projects were selected by taking the sum of the z-scores of the number of watchers and forks of each project. As the projects have thousands of forks and stars and are widely used among software developers, they can be assumed to be of high quality~\cite{allamanis2016convolutional}.
 		
 \section{Mined and Modified Code for Dataset Generation} \label{Mined and Modified Code for Dataset Generation}
 	In the following section we will describe our approach.

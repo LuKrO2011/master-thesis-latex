@@ -2248,4 +2248,310 @@
       <bcf:entrytype>incollection</bcf:entrytype>
       <bcf:entrytype>suppcollection</bcf:entrytype>
       <bcf:entrytype>inreference</bcf:entrytype>
-      <bcf:constraint type="m
+      <bcf:constraint type="mandatory">
+        <bcf:field>author</bcf:field>
+        <bcf:field>editor</bcf:field>
+        <bcf:field>title</bcf:field>
+        <bcf:field>booktitle</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:entrytype>dataset</bcf:entrytype>
+      <bcf:constraint type="mandatory">
+        <bcf:field>title</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:entrytype>manual</bcf:entrytype>
+      <bcf:constraint type="mandatory">
+        <bcf:field>title</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:entrytype>misc</bcf:entrytype>
+      <bcf:entrytype>software</bcf:entrytype>
+      <bcf:constraint type="mandatory">
+        <bcf:field>title</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:entrytype>online</bcf:entrytype>
+      <bcf:constraint type="mandatory">
+        <bcf:field>title</bcf:field>
+        <bcf:fieldor>
+          <bcf:field>url</bcf:field>
+          <bcf:field>doi</bcf:field>
+          <bcf:field>eprint</bcf:field>
+        </bcf:fieldor>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:entrytype>patent</bcf:entrytype>
+      <bcf:constraint type="mandatory">
+        <bcf:field>author</bcf:field>
+        <bcf:field>title</bcf:field>
+        <bcf:field>number</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:entrytype>periodical</bcf:entrytype>
+      <bcf:constraint type="mandatory">
+        <bcf:field>editor</bcf:field>
+        <bcf:field>title</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:entrytype>proceedings</bcf:entrytype>
+      <bcf:entrytype>mvproceedings</bcf:entrytype>
+      <bcf:constraint type="mandatory">
+        <bcf:field>title</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:entrytype>inproceedings</bcf:entrytype>
+      <bcf:constraint type="mandatory">
+        <bcf:field>author</bcf:field>
+        <bcf:field>title</bcf:field>
+        <bcf:field>booktitle</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:entrytype>report</bcf:entrytype>
+      <bcf:constraint type="mandatory">
+        <bcf:field>author</bcf:field>
+        <bcf:field>title</bcf:field>
+        <bcf:field>type</bcf:field>
+        <bcf:field>institution</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:entrytype>thesis</bcf:entrytype>
+      <bcf:constraint type="mandatory">
+        <bcf:field>author</bcf:field>
+        <bcf:field>title</bcf:field>
+        <bcf:field>type</bcf:field>
+        <bcf:field>institution</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:entrytype>unpublished</bcf:entrytype>
+      <bcf:constraint type="mandatory">
+        <bcf:field>author</bcf:field>
+        <bcf:field>title</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+    <bcf:constraints>
+      <bcf:constraint type="data" datatype="isbn">
+        <bcf:field>isbn</bcf:field>
+      </bcf:constraint>
+      <bcf:constraint type="data" datatype="issn">
+        <bcf:field>issn</bcf:field>
+      </bcf:constraint>
+      <bcf:constraint type="data" datatype="ismn">
+        <bcf:field>ismn</bcf:field>
+      </bcf:constraint>
+      <bcf:constraint type="data" datatype="pattern" pattern="(?:sf|sm|sn|pf|pm|pn|pp)">
+        <bcf:field>gender</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+  </bcf:datamodel>
+  <!-- CITATION DATA -->
+  <!-- SECTION 0 -->
+  <bcf:bibdata section="0">
+    <bcf:datasource type="file" datatype="bibtex" glob="false">master-thesis.bib</bcf:datasource>
+  </bcf:bibdata>
+  <bcf:section number="0">
+    <bcf:citekey order="1" intorder="1">posnett2011simpler</bcf:citekey>
+    <bcf:citekey order="1" intorder="2">aggarwal2002integrated</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">buse2009learning</bcf:citekey>
+    <bcf:citekey order="2" intorder="2">deimel1985uses</bcf:citekey>
+    <bcf:citekey order="2" intorder="3">rugaber2000use</bcf:citekey>
+    <bcf:citekey order="2" intorder="4">boehm2001defect</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">buse2009learning</bcf:citekey>
+    <bcf:citekey order="3" intorder="2">posnett2011simpler</bcf:citekey>
+    <bcf:citekey order="3" intorder="3">dorn2012general</bcf:citekey>
+    <bcf:citekey order="3" intorder="4">daka2015modeling</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">mi2018improving</bcf:citekey>
+    <bcf:citekey order="4" intorder="2">mi2022towards</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">fakhoury2019improving</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">posnett2011simpler</bcf:citekey>
+    <bcf:citekey order="6" intorder="2">aggarwal2002integrated</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">alawad2019empirical</bcf:citekey>
+    <bcf:citekey order="7" intorder="2">sedano2016code</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">mannan2018towards</bcf:citekey>
+    <bcf:citekey order="8" intorder="2">scalabrino2018comprehensive</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">johnson2019empirical</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">mi2023graph</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">buse2009learning</bcf:citekey>
+    <bcf:citekey order="11" intorder="2">deimel1985uses</bcf:citekey>
+    <bcf:citekey order="11" intorder="3">rugaber2000use</bcf:citekey>
+    <bcf:citekey order="11" intorder="4">boehm2001defect</bcf:citekey>
+    <bcf:citekey order="11" intorder="5">tashtoush2013impact</bcf:citekey>
+    <bcf:citekey order="11" intorder="6">sedano2016code</bcf:citekey>
+    <bcf:citekey order="11" intorder="7">xia2017measuring</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">buse2009learning</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">tashtoush2013impact</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">tashtoush2013impact</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">oliveira2020evaluating</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">oliveira2020evaluating</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">mi2021effectiveness</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">mi2021effectiveness</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">buse2009learning</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">buse2009learning</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">tashtoush2013impact</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">tashtoush2013impact</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">buse2009learning</bcf:citekey>
+    <bcf:citekey order="23" intorder="2">brooks1987no</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">scalabrino2018comprehensive</bcf:citekey>
+    <bcf:citekey order="24" intorder="2">martin2009clean</bcf:citekey>
+    <bcf:citekey order="24" intorder="3">wilson2007beautiful</bcf:citekey>
+    <bcf:citekey order="24" intorder="4">beck2007implementation</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">posnett2011simpler</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">posnett2011simpler</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">posnett2011simpler</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">scalabrino2018comprehensive</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">scalabrino2018comprehensive</bcf:citekey>
+    <bcf:citekey order="29" intorder="2">posnett2011simpler</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">scalabrino2017automatically</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">buse2009learning</bcf:citekey>
+    <bcf:citekey order="31" intorder="2">posnett2011simpler</bcf:citekey>
+    <bcf:citekey order="31" intorder="3">dorn2012general</bcf:citekey>
+    <bcf:citekey order="31" intorder="4">daka2015modeling</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">mi2018improving</bcf:citekey>
+    <bcf:citekey order="32" intorder="2">mi2022towards</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">mi2021effectiveness</bcf:citekey>
+    <bcf:citekey order="34" intorder="1">aggarwal2002integrated</bcf:citekey>
+    <bcf:citekey order="35" intorder="1">buse2009learning</bcf:citekey>
+    <bcf:citekey order="35" intorder="2">posnett2011simpler</bcf:citekey>
+    <bcf:citekey order="35" intorder="3">dorn2012general</bcf:citekey>
+    <bcf:citekey order="35" intorder="4">scalabrino2018comprehensive</bcf:citekey>
+    <bcf:citekey order="36" intorder="1">scalabrino2018comprehensive</bcf:citekey>
+    <bcf:citekey order="37" intorder="1">mi2018inception</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">mi2018inception</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">mi2018improving</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">mi2018improving</bcf:citekey>
+    <bcf:citekey order="41" intorder="1">sharma2020egan</bcf:citekey>
+    <bcf:citekey order="42" intorder="1">mi2022towards</bcf:citekey>
+    <bcf:citekey order="43" intorder="1">mi2022towards</bcf:citekey>
+    <bcf:citekey order="44" intorder="1">mi2022rank</bcf:citekey>
+    <bcf:citekey order="45" intorder="1">mi2022rank</bcf:citekey>
+    <bcf:citekey order="46" intorder="1">mi2023graph</bcf:citekey>
+    <bcf:citekey order="47" intorder="1">mi2023graph</bcf:citekey>
+    <bcf:citekey order="48" intorder="1">buse2009learning</bcf:citekey>
+    <bcf:citekey order="49" intorder="1">posnett2011simpler</bcf:citekey>
+    <bcf:citekey order="50" intorder="1">dorn2012general</bcf:citekey>
+    <bcf:citekey order="51" intorder="1">scalabrino2016improving</bcf:citekey>
+    <bcf:citekey order="52" intorder="1">mi2018inception</bcf:citekey>
+    <bcf:citekey order="53" intorder="1">mi2018improving</bcf:citekey>
+    <bcf:citekey order="54" intorder="1">sharma2020egan</bcf:citekey>
+    <bcf:citekey order="55" intorder="1">mi2022towards</bcf:citekey>
+    <bcf:citekey order="56" intorder="1">mi2022rank</bcf:citekey>
+    <bcf:citekey order="57" intorder="1">mi2023graph</bcf:citekey>
+    <bcf:citekey order="58" intorder="1">mi2022towards</bcf:citekey>
+    <bcf:citekey order="59" intorder="1">mi2022towards</bcf:citekey>
+    <bcf:citekey order="60" intorder="1">mi2023graph</bcf:citekey>
+    <bcf:citekey order="61" intorder="1">buse2009learning</bcf:citekey>
+    <bcf:citekey order="61" intorder="2">dorn2012general</bcf:citekey>
+    <bcf:citekey order="61" intorder="3">scalabrino2018comprehensive</bcf:citekey>
+    <bcf:citekey order="62" intorder="1">mi2021effectiveness</bcf:citekey>
+    <bcf:citekey order="63" intorder="1">mi2021effectiveness</bcf:citekey>
+    <bcf:citekey order="64" intorder="1">mi2022enhanced</bcf:citekey>
+    <bcf:citekey order="65" intorder="1">mi2022enhanced</bcf:citekey>
+    <bcf:citekey order="66" intorder="1">vitale2023using</bcf:citekey>
+    <bcf:citekey order="67" intorder="1">vitale2023using</bcf:citekey>
+    <bcf:citekey order="68" intorder="1">fakhoury2019improving</bcf:citekey>
+    <bcf:citekey order="69" intorder="1">fakhoury2019improving</bcf:citekey>
+    <bcf:citekey order="70" intorder="1">oliveira2020evaluating</bcf:citekey>
+    <bcf:citekey order="71" intorder="1">oliveira2020evaluating</bcf:citekey>
+    <bcf:citekey order="72" intorder="1">ribeiro2018attributes</bcf:citekey>
+    <bcf:citekey order="73" intorder="1">choi2020metric</bcf:citekey>
+    <bcf:citekey order="74" intorder="1">choi2020metric</bcf:citekey>
+    <bcf:citekey order="75" intorder="1">mi2023makes</bcf:citekey>
+    <bcf:citekey order="76" intorder="1">mi2023makes</bcf:citekey>
+    <bcf:citekey order="77" intorder="1">segedinac2024assessing</bcf:citekey>
+    <bcf:citekey order="78" intorder="1">segedinac2024assessing</bcf:citekey>
+    <bcf:citekey order="79" intorder="1">loriot2022styler</bcf:citekey>
+    <bcf:citekey order="80" intorder="1">loriot2022styler</bcf:citekey>
+    <bcf:citekey order="81" intorder="1">yasunaga2020graph</bcf:citekey>
+    <bcf:citekey order="82" intorder="1">yasunaga2020graph</bcf:citekey>
+    <bcf:citekey order="83" intorder="1">allamanis2016convolutional</bcf:citekey>
+    <bcf:citekey order="84" intorder="1">allamanis2016convolutional</bcf:citekey>
+    <bcf:citekey order="85" intorder="1">buse2009learning</bcf:citekey>
+    <bcf:citekey order="86" intorder="1">dorn2012general</bcf:citekey>
+    <bcf:citekey order="87" intorder="1">scalabrino2018comprehensive</bcf:citekey>
+    <bcf:citekey order="88" intorder="1">mi2022towards</bcf:citekey>
+    <bcf:citekey order="89" intorder="1">mi2022towards</bcf:citekey>
+    <bcf:citekey order="90" intorder="1">pawlak2016spoon</bcf:citekey>
+    <bcf:citekey order="91" intorder="1">mi2022towards</bcf:citekey>
+    <bcf:citekey order="92" intorder="1">mi2022towards</bcf:citekey>
+    <bcf:citekey order="93" intorder="1">loriot2022styler</bcf:citekey>
+    <bcf:citekey order="94" intorder="1">loriot2022styler</bcf:citekey>
+    <bcf:citekey order="95" intorder="1">alon2019code2vec</bcf:citekey>
+    <bcf:citekey order="96" intorder="1">mi2022towards</bcf:citekey>
+    <bcf:citekey order="97" intorder="1">hestness2017deep</bcf:citekey>
+    <bcf:citekey order="98" intorder="1">allamanis2016convolutional</bcf:citekey>
+    <bcf:citekey order="99" intorder="1">allamanis2016convolutional</bcf:citekey>
+    <bcf:citekey order="100" intorder="1">loriot2022styler</bcf:citekey>
+    <bcf:citekey order="101" intorder="1">loriot2022styler</bcf:citekey>
+    <bcf:citekey order="102" intorder="1">mi2022towards</bcf:citekey>
+    <bcf:citekey order="103" intorder="1">mi2022towards</bcf:citekey>
+    <bcf:citekey order="104" intorder="1">mi2022towards</bcf:citekey>
+    <bcf:citekey order="105" intorder="1">mi2022towards</bcf:citekey>
+    <bcf:citekey order="106" intorder="1">likert1932technique</bcf:citekey>
+    <bcf:citekey order="107" intorder="1">buse2009learning</bcf:citekey>
+    <bcf:citekey order="107" intorder="2">dorn2012general</bcf:citekey>
+    <bcf:citekey order="107" intorder="3">scalabrino2018comprehensive</bcf:citekey>
+    <bcf:citekey order="108" intorder="1">chicco2020advantages</bcf:citekey>
+    <bcf:citekey order="109" intorder="1">mi2022towards</bcf:citekey>
+    <bcf:citekey order="110" intorder="1">mi2022towards</bcf:citekey>
+    <bcf:citekey order="111" intorder="1">hestness2017deep</bcf:citekey>
+    <bcf:citekey order="112" intorder="1">mi2022towards</bcf:citekey>
+    <bcf:citekey order="113" intorder="1">mi2022towards</bcf:citekey>
+    <bcf:citekey order="114" intorder="1">mi2022towards</bcf:citekey>
+    <bcf:citekey order="115" intorder="1">mi2022towards</bcf:citekey>
+    <bcf:citekey order="116" intorder="1">liu2019learning</bcf:citekey>
+    <bcf:citekey order="117" intorder="1">mi2022towards</bcf:citekey>
+    <bcf:citekey order="118" intorder="1">mi2022towards</bcf:citekey>
+    <bcf:citekey order="119" intorder="1">alon2019code2vec</bcf:citekey>
+    <bcf:citekey order="120" intorder="1">mi2022towards</bcf:citekey>
+  </bcf:section>
+  <!-- SORTING TEMPLATES -->
+  <bcf:sortingtemplate name="nty">
+    <bcf:sort order="1">
+      <bcf:sortitem order="1">presort</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="2" final="1">
+      <bcf:sortitem order="1">sortkey</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="3">
+      <bcf:sortitem order="1">sortname</bcf:sortitem>
+      <bcf:sortitem order="2">author</bcf:sortitem>
+      <bcf:sortitem order="3">editor</bcf:sortitem>
+      <bcf:sortitem order="4">translator</bcf:sortitem>
+      <bcf:sortitem order="5">sorttitle</bcf:sortitem>
+      <bcf:sortitem order="6">title</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="4">
+      <bcf:sortitem order="1">sorttitle</bcf:sortitem>
+      <bcf:sortitem order="2">title</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="5">
+      <bcf:sortitem order="1">sortyear</bcf:sortitem>
+      <bcf:sortitem order="2">year</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="6">
+      <bcf:sortitem order="1">volume</bcf:sortitem>
+      <bcf:sortitem literal="1" order="2">0</bcf:sortitem>
+    </bcf:sort>
+  </bcf:sortingtemplate>
+  <!-- DATALISTS -->
+  <bcf:datalist section="0"
+                name="nty/global//global/global"
+                type="entry"
+                sortingtemplatename="nty"
+                sortingnamekeytemplatename="global"
+                labelprefix=""
+                uniquenametemplatename="global"
+                labelalphanametemplatename="global">
+  </bcf:datalist>
+</bcf:controlfile>
