@@ -713,7 +713,7 @@ cleveref=true,%
 	%	We will then answer our research questions based on results of the survey and model performance in section TODO.
 	%	
 	%	% Discussion
-	%	We will show possible threads to the dataset generation approach and our evaluation and discuss them in section TODO.
+	%	We will show possible threats to the dataset generation approach and our evaluation and discuss them in section TODO.
 	%	
 	%	% Conclusion
 	%	In the last section we summarize our work, draw conclusions from it and propose future work.
@@ -765,8 +765,8 @@ cleveref=true,%
 	
 	As the name already suggests, the applied transformations on the source code are only heuristics. To answer, whether the generated code is badly readable (assumption~\ref{poorly-readable-assumption}) we will utilize the results of the user study (section~\ref{user-study}).
 	
-	\begin{resq} \textbf{(best-heuristics)} Which heuristics are best to generate poorly readable code from well readable code?\end{resq} \label{best-heuristic}
-	We want to compare the modifications of the proposed heuristics for generating poorly readable code to each other. Therefore we will use the results of the user study (section~\ref{user-study}).
+	%	\begin{resq} \textbf{(best-heuristics)} Which heuristics are best to generate poorly readable code from well readable code?\end{resq} \label{best-heuristic}
+	%	We want to compare the modifications of the proposed heuristics for generating poorly readable code to each other. Therefore we will use the results of the user study (section~\ref{user-study}).
 	
 	\begin{resq} \textbf{(new-data)} To what extent can the new data improve existing readability models?\end{resq} \label{new-data}
 	It was shown that Deep Learning models get better the more training data is available~\cite{hestness2017deep}. This holds under the assumption that the quality of the data is the same or at least similar. We want to check if the quality of our new data is sufficient for improving the Deep Learning based readability classifier of \citeauthor{mi2022towards}~\cite{mi2022towards}. Therefore we will train their proposed model with different datasets and then evaluate the models against each other (section~\ref{compare-models}).
@@ -1661,20 +1661,27 @@ cleveref=true,%
 		\label{fig:survey_java_familiarity_pie}
 	\end{figure}
 	
-	The ratings for each RDH for all shifts together can be found in Figure \ref{fig:survey_ratings_violin_all}.
+	The ratings for each RDH for all shifts together can be found in Figures \ref{fig:survey_ratings_violin_all} and \ref{fig:survey_ratings_bar_all}.
 	
 	\begin{figure}[t]
 		\centering
 		\includegraphics[width=\textwidth]{img/survey_ratings_violin_all.png}
-		\caption{Survey ratings for each rdh and all stratas}
+		\caption{Absolute survey ratings for each rdh and all stratas}
 		\label{fig:survey_ratings_violin_all}
 	\end{figure}
 	
+	\begin{figure}[t]
+		\centering
+		\includegraphics[width=\textwidth]{img/survey_ratings_bar_all.png}
+		\caption{Relative survey ratings for each rdh and all stratas comppared to original}
+		\label{fig:survey_ratings_bar_all}
+	\end{figure}
+		
 	We evaluated whether the deviation in the ratings between the various RDHs has statistical significance. We therefore used the Mann-Whitney-U-Test comparing the ratings for all snippets for a RDH against the corresponding none snippets. You can find the results of this in Table \ref{tab:survey_statistical_evidence}.
 	
 	We analysed whether the difference in ratings between the different rdhs is statistically significant. To do this, we used the Mann-Whitney U test to compare the ratings for all snippets for an rdh with the corresponding none rdh snippets. The results can be found in table \ref{tab:survey_statistical_evidence}.
 	
-	Our results suggest that no modification (none rdh) besides converting to the AST and back makes no difference to the original methods. The difference could just as well be due to random variation with a probability of 92\%. If we compare the RDHs with the none methods, we can be sure that the scores of all methods except newlines many and rename are indeed statistically different from the scores of none. This confirms that the heuristics actually reduce the readability of the given code.
+	Our results suggest that no modification (none rdh) besides converting to the AST and back makes no difference to the original methods. The difference could just as well be due to random variation with a probability of 92\%. If we compare the RDHs with the none methods, we can be sure that the scores of all methods except newlines many and rename are indeed statistically different from the scores of none. If we consider binary readability classification and split the data for none and Newlines Many into into two classes (not-readable: 1,2; readable: 3-5) we also get significance that the ratings for newlines many are statistically significantly different from none (TODO: Add p Values). This leaves only rename where we can not confirm statistical significance. Overall, this confirms that the heuristics actually reduce the readability of the given code.
 	
 	\begin{table}[h]
 		\centering
@@ -1737,35 +1744,54 @@ cleveref=true,%
 \subsection{Research Question Results} \label{Research Question Results}
 
 	% Assumption 1 - RQ1
-	The readability ratings of code snippets mined from Github are not very accurate. Therefore the well readable assumption TODO only holds for certain clusters of code snippets: TODO. For clusters that can be labeled with X or Y this assumption does not hold. Therefore we labeled the mined code depending on the cluster they where grouped in as you can see in Table TODO. While the rating does not hold for each and every snippet within such a cluster it is a good estimation on average. This should be sufficient to train a readability classifier.
+	The readability ratings of code snippets mined from Github are not very accurate as we take the mean of all ratings for all methods and assign it to each snippet. However, the score of 3.68 is 0.XX TODO larger than the mean score for all ratings in the old dataset. Therefore we conclude that well readable assumption (Assumption~\ref{well-readable-assumption}) holds and answer the research question \ref{select-well}: Yes, automatically selected code can be assumed to be well readable.
 	
 	% Assumption 2 - RQ2
-	The badly readable assumption holds. Especially the heuristics X Y and Z decrease the readability by a significant extend. We estimate the readability decrease for a certain probability of a certain type as can be seen in table TODO. We therefore calculate the readability of a new snippet by taking the original readability score and decreasing the readability percent depending on the probability of such a refactoring beeing applied.	In Table TODO you can see how can to which extend we combined certain manually selected probabilities and how we then calculated the new readability score.
+	The badly readable assumption holds. All of the 7 heuristics but rename decrease readability by a significant extend compared to none. We estimate the readability decrease for a certain probability oaf a certain type as can be seen in Figure \ref{fig:survey_ratings_bar_all}. We estimate our original methods with a score of 3.68 and the all7 with a score of 3.26. We answer the research question \ref{generate-poor} with: Yes, poorly readable code can be generated from well readable code.
 	
-	% Model evaluation
-	% Variant 1: More data
-	When we compare the model of TOWARDS trained with the old dataset we can reproduce the results described in their paper. Once we add our own dataset we achieve an accuracy improvement of TODO. You can find a detailed comparison in Figure TODO.
+	% RQ3
+	When it comes to research question \ref{new-data} we can not clearly give an answer. An accuracy within the new dataset of 91.8\% is very well. However, the accuracy of 61.9\% percent when evaluating on the old dataset suggests, that the new training data is less valuable than the old one. We could neither improve the accuracy of the towards model by applying fine-tuning. While it is still possible that we successfully addressed a sub problem of readability with a good score, we are not able to improve existing general readability models.
 	
-	% Variant 2 & 3
-	When we scale up the architecture by increasing XY we can achieve an even higher accuracy of TODO when using the new training data. However, with the old dataset only the results are worse. This suggests that the new fits the new larger dataset better while the architecture of TOWARDS was built for small datasets.
-	% TODO: Method name fitting?
-	% TODO: Encoding of tabs?
+\section{Discussion} \label{Discussion}
+
+	% Threats
+	% Mean assignment
+	The biggest thread to our approach is the reliance on heuristics for the dataset generation. We can not show, that the labeled code snippets of our dataset actually fit the score we assigned them. This would require an manual evaluation of 63460 code snippets by human annotators and is therefore not feasible.
 	
-	% Dataset evaluation
-	By combining the results of the study and model evaluation we can answer the third research question: The rating of our automatic dataset generation approach is not as accurate as letting multiple users rate a certain code snippet. However, being able to fully automate the dataset generation approach and the vast amount of data generated that way makes up for this. The larger dataset improves the performance, especially of our new adjusted model by a significant extent of TODO. Therefore we conclude, that our new dataset and it's generation approach is suitable for training deep learning based code readability classifiers.
+	% Study threats
+	Another thread regarding the study might be the sampling approach applied. While we argue that we avoided to spend resources for labeling rdh data that is likely not different from the original methods or rather uninteresting, this might also introduce statistical errors to our survey results.
 	
-	\section{Discussion} \label{Discussion}
-	% Approach Threads
-	The biggest thread to our approach is the reliance on heuristics for the dataset generation. We can not show, that the labeled code snippets of our dataset actually fit the score we assigned them. This would require an manual evaluation of X code snippets by human annotators and is therefore not feasible. We can reduce the extent of this with our model results. 
-	
-	% Study Threads
-	TODO: Copy from study paper
-	
-	% Model threads
-	TODO: Copy from towards and newer model
+	% Other study threats
+	\begin{enumerate}
+		\item \textbf{Ill-defined Target Population:} Ensuring a well-defined target population is critical to the survey's quality. To mitigate this threat, we clearly define our target population within this document (see Section~\ref{target-population}). Additionally, we conduct a pre-survey evaluation (see Section~\ref{sec:survey-evaluation}) to ensure the adequacy of our target population definition. Thereby, we enhance content and construct validity.
 		
+		\item \textbf{Sampling Method (Stratified Sampling):} Our chosen sampling method is well-defined and proven in practice. This approach ensures that our sample represents all parts of the population under investigation. This is improving the survey's external validity.
+		
+		\item \textbf{Insufficient Responses for Drawing Conclusions:} To prevent drawing conclusions from an insufficient number of responses, we scale our survey to an appropriate size. This guarantees that we collect a substantial volume of responses, allowing for robust statistical analysis.
+	\end{enumerate}
 	
-	\section{Conclusions} \label{Conclusions}
+	% Model threats
+	When we compare the model performance trained on the new and the old dataset one has to consider that the old dataset is small. Consequently, comparisons among classifiers trained on the old dataset may also be unreliable.
+	
+	
+	TODO: Copy from towards and newer model
+	
+
+	% TODO: Continue here
+%	 In this case, the characteristics and evaluation of
+%	datasets are different. Therefore, the conclusions made in RQ3
+%	might not be rigorous.
+%	External Validity. Currently, our model has not been trained
+%	on other programming languages but Java which limits its generalizability. Besides, our model could not handle longer code
+%	snippets due to the predefined maximum length we set. To address this issue, we propose to partition longer code snippets in
+%	our future work.
+%	Construct Validity. Most previous code readability classification researches merely used accuracy and f-measure. This approach might not be comprehensive enough in evaluating model
+%	performance. Thus, we propose to add AUC and MCC in our
+%	evaluation metrics to comprehensively evaluate our model and
+%	minimize threats to construct validity.
+	
+	
+\section{Conclusions} \label{Conclusions}
 	TODO: Add conclusion
 	
 	% Future work

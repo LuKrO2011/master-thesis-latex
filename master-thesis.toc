@@ -1,6 +1,6 @@
 \babel@toc {UKenglish}{}\relax 
 \contentsline {section}{\numberline {1}Introduction}{1}{section.0.0.1}%
-\contentsline {section}{\numberline {2}Background and related work}{5}{section.0.0.2}%
+\contentsline {section}{\numberline {2}Background and related work}{4}{section.0.0.2}%
 \contentsline {subsection}{\numberline {2.1}Code Readability}{5}{subsection.0.0.2.1}%
 \contentsline {subsection}{\numberline {2.2}Classical calculation approaches}{7}{subsection.0.0.2.2}%
 \contentsline {subsection}{\numberline {2.3}Deep Learning based approaches}{7}{subsection.0.0.2.3}%
@@ -11,12 +11,12 @@
 \contentsline {subsection}{\numberline {3.1}Work on Existing Datasets}{12}{subsection.0.0.3.1}%
 \contentsline {subsection}{\numberline {3.2}Classification Considerations}{13}{subsection.0.0.3.2}%
 \contentsline {subsection}{\numberline {3.3}Dataset Generation Approach}{14}{subsection.0.0.3.3}%
-\contentsline {subsection}{\numberline {3.4}Readability Decreasing Heuristics}{16}{subsection.0.0.3.4}%
+\contentsline {subsection}{\numberline {3.4}Readability Decreasing Heuristics}{15}{subsection.0.0.3.4}%
 \contentsline {subsection}{\numberline {3.5}Survey}{17}{subsection.0.0.3.5}%
 \contentsline {subsection}{\numberline {3.6}Readability Classification Model}{22}{subsection.0.0.3.6}%
 \contentsline {section}{\numberline {4}Evaluation}{24}{section.0.0.4}%
 \contentsline {subsection}{\numberline {4.1}Survey Results}{24}{subsection.0.0.4.1}%
-\contentsline {subsubsection}{\nonumberline Pilot survey}{25}{subsubsection*.4}%
+\contentsline {subsubsection}{\nonumberline Pilot survey}{24}{subsubsection*.4}%
 \contentsline {subsubsection}{\nonumberline Prolific Study Results}{25}{subsubsection*.6}%
 \contentsline {subsection}{\numberline {4.2}Model training results}{28}{subsection.0.0.4.2}%
 \contentsline {subsection}{\numberline {4.3}Research Question Results}{29}{subsection.0.0.4.3}%
