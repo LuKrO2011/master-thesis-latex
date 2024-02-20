@@ -1111,9 +1111,9 @@ cleveref=true,%
 	
 	We converted and combined the three datasets into one: code-readability-merged. In recent years, Huggingface \curl{https://huggingface.co/}{2024-02-18} established as the pioneer in making models and datasets easily available. Therefore we decided to publish the merged dataset on Huggingface \curl{https://huggingface.co/datasets/se2p/code-readability-merged}{2024-02-18}.
 	
-\subsection{Considerations} \label{Considerations}
+\subsection{Classification Considerations} \label{Classification Considerations}
 	
-	In code readability classification it is still state of the art to make a binary classification into readable and unreadable code \cite{mi2018inception, mi2018improving, sharma20, mi2022towards, mi2022rank}. 
+	In code readability classification it is still state of the art to make a binary classification into readable and unreadable code \cite{mi2018inception, mi2018improving, sharma2020egan, mi2022towards, mi2022rank}. 
 	
 	However, code readability classification is not a binary classification task per se. \citeauthor{mi2023graph} introduced a third, neutral class to address this problem \cite{mi2023graph}. 
 	
@@ -1133,49 +1133,85 @@ cleveref=true,%
 	However, we will both stick to the binary classification approach as well as to the towards model \cite{mi2022towards} to make our results comparable to theirs.
 	
 \subsection{Dataset Generation Approach} \label{Dataset Generation Approach}
-	Other than previous datasets for readability classification, our dataset was generated using an automated approach. This approach is novel to the best of our knowledge. You can find a visualization in Figure \ref{fig:dataset_generation}.
+	Other than previous datasets for readability classification, our dataset is generated using an automated approach. The aim is to mine modify code from GitHub to obtain both readable and unreadable code. This approach is novel to the best of our knowledge. You can find a visualization in Figure \ref{fig:dataset_generation}.
 	
 	\begin{figure}[t]
 		\centering
 		\includegraphics[width=\textwidth]{img/dataset_generation.png}
-		\caption{Overview of the used dataset generation approach.}
+		\caption{The used dataset generation approach.}
 		\label{fig:dataset_generation}
 	\end{figure}
 	
-	The approach is divided into four parts. First, the GitHub REST API (\curl{https://docs.github.com/en/rest}{2024-02-15}) is queried for repositories that use checkstyle. % TODO: Add regex
-	The repository information (containing the URL) are stored together with their main branch.
+	The approach is divided into four parts. The first three steps are used to mine well readable java code. In a final step, we will modify the well readable code to achieve our second goal, namely poorly readable source code.
 	
-	Next, certain repositories are filtered out by the following criteria:
+	We start by querying the GitHub REST API\curl{https://docs.github.com/en/rest}{2024-02-15} for repositories that use checkstyle (query string: "checkstyle filename:pom.xml"). The repository informations (including the URL) are stored together with the main branches.
+	We remove all repositories that do not fulfill these criteria:
 	\begin{itemize}
-		\item TODO
+		\item The repository is not a fork of another repository
+		\item The repository is not archived
+		\item The repository is not disabled
+		\item The repository language is Java
+		\item The repository has at least 20 stars
+		\item The repository has at least 20 forks
 	\end{itemize}
+	
+	% TODO: Why miteinbauen oder eher nicht?
+		
 	The remaining ones are sorted by their star and fork count (equally weighted). The 100 best are cloned and their main branch is checked out.
 	
 	In a third step we run checkstyle (\curl{https://checkstyle.sourceforge.io/}{2024-02-15}) against the project own checkstyle configuration to get all java class files, that pass the own checkstyle test. From the java classes that passed this filter we extract all methods that have a comment of any kind at the beginning of the method. This results in 36077 code snippets which we assume to be well readable.
 	
-	The fourth and final step is to generate badly readable code from the well readable one. Therefore we use the proposed Readability Decreasing Heuristics (RDH). Afterwards we again extract all methods with a comment at the beginning of the method.
-	Initially we planned to not require comments for the badly readable dataset part. However, it turns out that in this case all well-readable methods have a comment while most of the badly-readble don't. This lead to shortcut learning, whether a method has a comment or not instead of learning the readability of the code snippet.
+	The fourth and final step is to generate badly readable code from the well readable one. Therefore we use the proposed Readability Decreasing Heuristics (RDH, see section \ref{Readability Decreasing Heursitcs}). Afterwards we again extract all methods with a comment at the beginning of the method.
+	Initially we planned to not require comments for the badly readable dataset part. However, it turns out that in this case all well-readable methods have a comment while most of the badly-readble do not have one. This lead to shortcut learning, whether a method has a comment or not instead of learning to distinguishing the methods by all other criteria as well.
 	
 \subsection{Readability Decreasing Heuristics} \label{Readability Decreasing Heursitcs}
-	We already mentioned, that Readability Decreasing Heuristics (RDH) are used to generated badly readable code from well readable one. In this section we will cover, what is meant by RDH.
-	The RDH is a set of code manipulation heuristics that are performed on the abstract syntax tree of java files using the spoon library (\curl{https://spoon.gforge.inria.fr/}{2024-15-02}) \cite{pawlak2016spoon}.
+	We already mentioned, that Readability Decreasing Heuristics (RDH) are used to generate badly readable code from well readable code. In this section we will explain how we achieved this and what is meant by RDH.
+	The RDH are a set of code manipulation heuristics that are applied to Java files. One part is performed on the abstract syntax tree (AST) representation of the Java files using the spoon library (\curl{https://spoon.gforge.inria.fr/}{2024-15-02}) \cite{pawlak2016spoon}. Another part is performed when converting the AST back into Java files.
+	From now on, we will use the abbreviation RDH or RDH tool when referring to the entire program. If a specific manipulation or a subset of all manipulations is meant, we will use [name] rdh instead.
 	
-	The RDH tool converts the java code of each well-readable java class file into an abstract syntax tree. In the end the abstract syntax tree (AST) is parsed back to java code using an pretty printer. If nothing else is done, this results in the "none" rdh. Note that the code that is delivered by the tool in this way is slightly different from the original input code, as the styling and formatting of the original code is overwritten by the default formatting of the java pretty printer.
+	The RDH tool converts the Java code of each well readable Java class file into an AST. In the end the AST is parsed back to Java code using an pretty printer. If nothing else is done, this results in the "none" rdh. Note that the code produced by the tool in this way will be slightly different from the original input code, as the styling and formatting of the original code will be overwritten by the default formatting of the Java Pretty Printer of the spoon library.
 	
-	In between of the two steps and while pretty printing various code modifications can be applied (see Figure \ref{fig:rdh}).
-	Renaming is done while the code is in it's AST representation to make sure that the declaration and usages of variables, fields and methods are all renamed to the same new name. 
-	The other rdhs are applied while transforming the AST back to source code. Those include adding additional spaces, adding or removing newlines and changing the indentation of code in term of tabs.
-	
-	After this the individual methods are extracted from the class files. As already mentioned, we require for all methods to have a method comment. Therefore, we apply the remove-comment RDH after method extraction is completed.
+	Various code changes can be made between the two steps and during printing (see Figure \ref{fig:rdh}).
+	The renaming is done while the code is in its AST representation to ensure that the declarations and usages of variables, fields and methods are all renamed to the same new name. 
+	The other transformations are performed when the AST is converted back to source code. This includes adding additional spaces, adding or removing newlines and changing the indentation of code in term of tabs.
 	
 	\begin{figure}[t]
 		\centering
 		\includegraphics[width=0.5\textwidth]{img/rdh.png}
-		\caption{Overview of the used dataset generation approach.}
+		\caption{The available Readability Decreasing Heuristics (RDH)}
 		\label{fig:rdh}
 	\end{figure}
 	
-	The RDH works with a configuration file where one can specify a probability for each heuristic that can be applied. We chose the probabilities so that the generated code snippets are still realistic in a sense that they might be written as well by humans.
+	The individual methods are then extracted from the class files. As already mentioned, we need a method comment for all methods. We therefore use the RDH "remove-comment" after completing the method extraction.
+	
+	The RDH works with a configuration file in which one can specify a probability for each heuristic that can be applied. We have chosen the probabilities so that the generated code snippets are still realistic in the sense that they could also be written by humans. You can find the configuration file for the none rdh in Appendix \ref{app:TODO}.
+	
+	Some of the heuristics were not included in the final version of the new dataset. You can find them in table \ref{tab:not-included-rdhs} together with the reason why they were not included.
+	
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{|c|c|}
+			\hline
+			\textbf{Heuristic} & \textbf{Reason} \\
+			\hline
+			\texttt{inlineMethod} & Makes methods to long \\
+			\hline
+			\texttt{add0} & Limited survey capacity \\
+			\hline
+			\texttt{insertBraces} & Limited survey capacity \\
+			\hline
+			\texttt{starImport} & No effect after comment extraction \\
+			\hline
+			\texttt{inlineField} & Limited survey capacity \\
+			\hline
+			\texttt{partiallyEvaluate} & Might increase readability \\
+			\hline
+		\end{tabular}
+		\caption{Readability Decreasing Heuristics that are not included in the final version of the new dataset and why}
+		\label{tab:not-included-rdhs}
+	\end{table}
+	
+	We have also added Code2Vec~\cite{alon2019code2vec} to the tool. This makes it possible to rename methods not only to iterating or arbitrary strings or numbers, but also to other realistic method names. The idea was to use worse method names predicted by Code2Vec and rename the methods to these. However, due to time and resource constraints regarding the survey, we did not pursue this approach.	However, there is a corresponding mode supported by the tool. This can be used for further research.
 	
 \subsection{Survey} \label{Survey}
 	We evaluate the dataset generated with the new approach with a survey. Therefore we had to carefully sample suitable code snippets from the dataset. You can find an overview over the approach in Figure \ref{fig:survey_pipeline}.
@@ -1724,3 +1760,31 @@ In this section we will present our evaluation results.
 %I spent the most time understanding methods with complete Java import names. (org.foo.bar.ClassName).
 %-
 %GOOD LUCK
+
+% TODO: Appendix 2
+%newline:
+%- 0.0  # Probability for no newline
+%- 1.0  # Probability for one newline
+%incTab:
+%- 0.0  # Probability for no tab
+%- 1.0  # Probability for one tab
+%decTab:
+%- 0.0  # Probability for no tab
+%- 1.0  # Probability for one tab
+%space:
+%- 0.0  # Probability for no space
+%- 1.0  # Probability for one space
+%newLineInsteadOfSpace: 0
+%spaceInsteadOfNewline: 0
+%incTabInsteadOfDecTab: 0
+%decTabInsteadOfIncTab: 0
+%renameVariable: 0
+%renameField: 0
+%renameMethod: 0
+%inlineMethod: 0
+%removeComment: 0
+%add0: 0
+%insertBraces: 0
+%starImport: 0
+%inlineField: 0.2
+%partiallyEvaluate: 0
