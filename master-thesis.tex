@@ -734,13 +734,13 @@ cleveref=true,%
 	
 	% Contents
 	%	% Background and related work		
-	%	In the next section (\ref{Background and related work}) we will look at related work. The explanation of source code readability is presented in section \ref{Readability}. A presentation of classical computational approaches is presented in section \ref{Classical calculation approaches}, followed by an overview of deep learning-based approaches in section \ref{Deep Learning based approaches}. Furthermore, in section \ref{Data Augmentation}, we provide insights into relevant studies dealing with data augmentation for code readability. Then, in section \ref{Diverse Perspectives}, we provide a summary of recent advances in the field of code readability. Finally, in section \ref{Data Generation}, we turn to studies related to our proposed data generation approach.
+	%	In the next section (\ref{Background and Related Work}) we will look at related work. The explanation of source code readability is presented in section \ref{Code Readability}. A presentation of classical computational approaches is presented in section \ref{Conventional Calculation Approaches}, followed by an overview of deep learning-based approaches in section \ref{Deep Learning Based Approaches}. Furthermore, in section \ref{Data Augmentation}, we provide insights into relevant studies dealing with data augmentation for code readability. Then, in section \ref{Diverse Perspectives}, we provide a summary of recent advances in the field of code readability. Finally, in section \ref{Data Generation}, we turn to studies related to our proposed data generation approach.
 	%	
 	%	% Main	
-	%	We will then describe our presented approach to dataset generation in detail in section \ref{Mined and Modified Code for Dataset Generation}. In section \ref{Work on Existing Datasets}, we present our work on existing datasets, followed by some considerations on classifying readability versus regression in section \ref{Classification Considerations}. Next, in section \ref{Dataset Generation Approach}, we present our approach to generating datasets in detail, which requires the use of readability reduction heuristics (see section \ref{Readability Decreasing Heursitcs}). Finally, section \ref{Survey} explains how we evaluated our new dataset using a survey, and section \ref{Readability Classification Model} compares the new data with existing ones.
+	%	We will then describe our presented approach to dataset generation in detail in section \ref{Mined and Modified Code for Dataset Generation}. In section \ref{Work on Existing Datasets}, we present our work on existing datasets, followed by some considerations on classifying readability versus regression in section \ref{Classification Considerations}. Next, in section \ref{Dataset Generation Approach}, we present our approach to generating datasets in detail, which requires the use of readability reduction heuristics (see section \ref{Readability Decreasing Heursitcs}). Finally, section \ref{Construction of Questionnaires} explains how we evaluated our new dataset using a survey, and section \ref{Readability Classification Model} compares the new data with existing ones.
 	%	
 	%	% Evaluation
-	%	Finally, we will present the results of the evaluation of our new dataset in the section \ref{Evaluation}. This section is divided into the presentation of the results of the survey \ref{Survey Results}, the trained model \ref{Model training results} and finally the research questions we proposed \ref{Research Question Results}.
+	%	Finally, we will present the results of the evaluation of our new dataset in the section \ref{Evaluation}. This section is divided into the presentation of the results of the survey \ref{Survey}, the trained model \ref{Model Training Results} and finally the research questions we proposed \ref{Research Question Results}.
 	%	
 	%	% Discussion and Conslusion
 	%	We finish our work by discussing our findings in section \ref{Discussion} and then draw conclusions from our work in section \ref{Conclusions}.
@@ -792,7 +792,7 @@ cleveref=true,%
 	% Contributions
 	Our contributions are as follows:
 	\begin{itemize}
-		\item We combine and unify existing datasets \citeolddataset and make the result easily accessible
+		\item We combine and unify existing datasets \citeolddataset and make the result accessible
 		\item We propose a approach to mine well readable code snippets
 		\item We create a tool to decrease the readability of Java class files
 		\item We propose a new dataset generation approach
@@ -805,10 +805,10 @@ cleveref=true,%
 	% Implications
 	The survey confirms both, the well-readable-assumption (assumption \ref{well-readable-assumption}) and the poorly-readable-assumption (assumption \ref{poorly-readable-assumption}). Although our approach for creating a dataset works in principlewe were not able to address enough aspects of code readability with the proposed heuristics. Thus, our dataset probably only addresses a partial problem of code readability.
 		
-\section{Background and related work} \label{Background and related work}
+\section{Background and Related Work} \label{Background and Related Work}
 	In the following subsections you find an overview of the background and related work on code readability and our approach to dataset creation.
 	
-\subsection{Code Readability} \label{Readability}
+\subsection{Code Readability} \label{Code Readability}
 		
 	% Importance	
 	In the domain of software development, the importance of code readability cannot be emphasized enough. Alongside understandability, it forms the basis for effective collaboration, comprehension, and maintenance of software systems~\cite{posnett2011simpler, aggarwal2002integrated}.
@@ -1129,11 +1129,11 @@ cleveref=true,%
 %	
 %	\lstinputlisting[language=Java, firstline=8, lastline=29, caption={The same example modified to be poorly readable},label={lst:cassandra-src-java-org-apache-cassandra-utils-modified}]{cassandra-src-java-org-apache-cassandra-utils-modified.java}
 	
-\subsection{Classical calculation approaches} \label{Classical calculation approaches}
+\subsection{Conventional Calculation Approaches} \label{Classical Calculation Approaches}
 	A first estimation for source code readability was the percentage of comment lines over total code lines~\cite{aggarwal2002integrated}. Then researchers proposed several more complex metrics and models for assessing code readability~\cite{buse2009learning, posnett2011simpler, dorn2012general, scalabrino2018comprehensive}.
 	Those approaches used handcrafted features to calculate how readable a piece of code is. They were able to achieve up to 81.8\% accuracy in classification~\cite{scalabrino2018comprehensive}.
 	
-\subsection{Deep Learning based approaches} \label{Deep Learning based approaches}
+\subsection{Deep Learning Based Approaches} \label{Deep Learning Based Approaches}
 	In recent years code readability classification is dominated by machine learning, especially deep learning approaches. As the quality of the models increased, so did their accuracy (see Figure \ref{tab:rel-acc-scores}).
 	
 	% Related work: ML - Inception (82.2\% to 84.2\% acc)
@@ -1237,9 +1237,9 @@ cleveref=true,%
 		
 \subsection{Work on Existing Datasets} \label{Work on Existing Datasets}
 %	Later we will compare our new dataset and generation approach against existing datasets for readability classification.
-	Most of the related work (see Section \ref{Background and related work}) uses a combination of \citeauthor{buse2009learning}, \citeauthor{dorn2012general} and \citeauthor{scalabrino2018comprehensive} data. The raw data from their surveys can be downloaded \curl{https://dibt.unimol.it/report/readability/}{2024-02-18}, but their data is not uniformly formatted, including ratings that are not Java code snippets, as well as the individual ratings rather than the mean of the ratings used for training machine learning models.
+	Most of the related work (see Section \ref{Background and Related Work}) uses a combination of \citeauthor{buse2009learning}, \citeauthor{dorn2012general} and \citeauthor{scalabrino2018comprehensive} data. The raw data from their surveys can be downloaded \curl{https://dibt.unimol.it/report/readability/}{2024-02-18}, but their data is not uniformly formatted, including ratings that are not Java code snippets, as well as the individual ratings rather than the mean of the ratings used for training machine learning models.
 	
-	We converted and combined the three datasets into one: code-readability-merged. In recent years, Huggingface \curl{https://huggingface.co/}{2024-02-18} established as the pioneer in making models and datasets easily available. Therefore we decided to publish the merged dataset on Huggingface \curl{https://huggingface.co/datasets/se2p/code-readability-merged}{2024-02-18}.
+	We converted and combined the three datasets into one: code-readability-merged. In recent years, Huggingface \curl{https://huggingface.co/}{2024-02-18} established as the pioneer in making models and datasets available. Therefore we decided to publish the merged dataset on Huggingface \curl{https://huggingface.co/datasets/se2p/code-readability-merged}{2024-02-18}.
 	
 \subsection{Classification Considerations} \label{Classification Considerations}
 	
@@ -1254,7 +1254,7 @@ cleveref=true,%
 	
 	Our evaluation model is the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards}. Therefore, we want to show how they transformed the rating scores into a binary classification problem. First, the mean values of all scores are calculated. In a second step, the snippets are ranked according to their mean score. Then, the top 25\% of the data is labeled as well-readable and the bottom 25\% is labeled as badly-readable. The 50\% of the data in between is not used at all~\cite{mi2022towards}.
 	
-	While this transformation is fine in principle, especially with the argument that the data in the middle is not clearly either readable or unreadable, it has drawbacks that only 50\% of the available data is used for model training and evaluation:
+	While this transformation is fine in principle, especially with the argument that the data in the middle is neither readable or unreadable, it has drawbacks that only 50\% of the available data is used for model training and evaluation:
 	
 	First, the available data is further reduced from 421 evaluated Java code fragments to 210 code fragments for training. Note that a bottleneck in readability classification is the small amount of available data. So this is a significant loss.
 	
@@ -1343,7 +1343,7 @@ cleveref=true,%
 	
 	We have also added Code2Vec~\cite{alon2019code2vec} to the tool. This makes it possible to rename methods not only to iterating or arbitrary strings or numbers, but also to other realistic method names. The idea was to use worse method names predicted by Code2Vec and rename the methods to these. However, due to time and resource constraints regarding the survey, we did not pursue this approach.	However, there is a corresponding mode supported by the tool. This can be used for further research.
 	
-\subsection{Survey} \label{Survey}
+\subsection{Construction of Questionnaires} \label{Construction of Questionnaires}
 	We evaluated the data set generated and the new approach with a survey. To do this, we had to carefully select suitable code snippets from the dataset. An overview of the approach can be found in Figure \ref{fig:survey_pipeline}.
 	
 	\begin{figure}[t]
@@ -1462,7 +1462,7 @@ cleveref=true,%
 	
 	Now that we have generated a dataset and evaluated the impact of the different rdhs we use the survey results to label each snippet of the well readable code (original) with the mean over all ratings of the original variant over all survey results. Similary we label the all7 code snippets with its mean score. Note that for binary classification with the towards model this results in the same as labelling the original methods with the well readable class and the all7 rdh with the badly readable class.		
 	
-	Each snippet of the easily readable code (original) is labeled with the mean value of all ratings of the original variant across all survey results. Similarly, we label all7 code snippets with their mean value. Note that in the binary classification with the underlying towards model, this results in the original methods being labeled with the class "well readable" and the all7 rdh with the class "badly readable".
+	Each snippet of the well readable code (original) is labeled with the mean value of all ratings of the original variant across all survey results. Similarly, we label all7 code snippets with their mean value. Note that in the binary classification with the underlying towards model, this results in the original methods being labeled with the class "well readable" and the all7 rdh with the class "badly readable".
 	
 	
 %	% We will conclude a user study to evaluate the newly generated data for readability classifier models.
@@ -1573,7 +1573,7 @@ cleveref=true,%
 
 	We will present our results in the following subsections.
 
-\subsection{Survey} \label{Survey Results}
+\subsection{Survey} \label{Survey}
 	The results of our survey are divided into two parts: The results of the pilot survey, which were used to improve the main survey pre-launch, and the results of the main survey, which were used to answer our research questions and to craft our dataset.
 	
 \subsubsection{Pilot Survey} \label{Pilot Survey}
@@ -1581,7 +1581,7 @@ cleveref=true,%
 	
 	% Experimental setup
 	\textit{1. Experimental setup:}
-	We therefore manually sampled 20 code snippets across all stratas but mainly from statum 1, due to reasons mentioned in section \ref{Survey}. Between the 6th and the 14th of January 10 participants, mostly students, participated in the survey. Additionally to rating 20 code snippets the participants were also asked to complete an additional survey form where they could provide feedback about the actual survey.
+	We therefore manually sampled 20 code snippets across all stratas but mainly from statum 1, due to reasons mentioned in section \ref{Construction of Questionnaires}. Between the 6th and the 14th of January 10 participants, mostly students, participated in the survey. Additionally to rating 20 code snippets the participants were also asked to complete an additional survey form where they could provide feedback about the actual survey.
 	
 	% Questions
 	Here they were asked the following questions:
@@ -1717,7 +1717,7 @@ cleveref=true,%
 	
 	Once the aforementioned adjustments had been made and the feedback on the survey instrument had been implemented, the actual study was carried out.
 
-\subsubsection{Prolific Study} \label{Prolific Study Results}
+\subsubsection{Prolific Survey} \label{Prolific Survey}
 	In this section we summarize the results of the main study conducted via prolific.
 	
 \textit{1. Experimental setup:}
@@ -1725,7 +1725,7 @@ cleveref=true,%
 	The survey was conducted between January 31, 2024 and February 7, 2024. A total of 221 participants took part. Each of the 20 questionnaires was answered by 11 participants (similar to the survey of \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}). In one survey, one more participant was assigned by mistake. 
 	%	According to an online calculator\footnote{https://www.calculator.net/sample-size-calculator.html} 
 	We end up with a margin of error of 29.55\% at a confidence of 95\% for an individual snippet. However, we will aggregate over stratas and multiple snippets later anyway.
-	Each questionnaire consists of 20 code snippets. Consequently, 400 different code snippets are rated in total. The surveys were configured in such a way that each participant could only take part in one of the questionnaires. You can find the texts of the survey in appendix \ref{TODO}. The questionnaires were crafted as described in section \ref{Survey}.
+	Each questionnaire consists of 20 code snippets. Consequently, 400 different code snippets are rated in total. The surveys were configured in such a way that each participant could only take part in one of the questionnaires. You can find the texts of the survey in appendix \ref{TODO}. The questionnaires were crafted as described in section \ref{Construction of Questionnaires}.
 		
 	\begin{figure}[t]
 		\centering
@@ -1772,7 +1772,7 @@ cleveref=true,%
 \textit{2. Threats:}
 	We identified the following threats:
 	\begin{itemize}
-		\item \textbf{Ill-defined Target Population:} Ensuring a well-defined target population is critical to the survey's quality. To mitigate this threat, we clearly define our target population. Additionally, we conduct a pre-survey evaluation (see Section~\ref{Pilot Survey}) to ensure the adequacy of our target population definition. Thereby, we enhance content and construct validity.
+		\item \textbf{Ill-defined Target Population:} Ensuring a well-defined target population is critical to the survey's quality. To mitigate this threat, we define our target population. Additionally, we conduct a pre-survey evaluation (see Section~\ref{Pilot Survey}) to ensure the adequacy of our target population definition. Thereby, we enhance content and construct validity.
 		
 		\item \textbf{Sampling Method (Stratified Sampling):} Our chosen sampling method is well-defined and proven in practice. This approach ensures that our sample represents all parts of the population under investigation. This is improving the survey's external validity.
 		
@@ -1866,7 +1866,7 @@ cleveref=true,%
 		All of the 7 heuristics but rename decrease readability by a significant extend compared to none. We estimate the readability decrease for a certain probability oaf a certain type as can be seen in Figure \ref{fig:survey_ratings_bar_all}. The poorly readable assumption (Assumption~\ref{poorly-readable-assumption}) holds. 
 	\end{researchbox}
 
-\subsection{Model training results} \label{Model training results}
+\subsection{Model Training Results} \label{Model training results}
 	The results of the training, evaluation and fine-tuning can be found in the table \ref{tab:dataset_performance}.
 	
 	\begin{table}[h]
@@ -1924,7 +1924,7 @@ cleveref=true,%
 	
 	% Future work	
 	% New dataset style
-	The new approach to generating data sets has an advantage that is not yet used in this work: For the first time, it is possible to generate a dataset with one easily readable and a second, less readable and functionally equivalent code snippet. This could be used to train various models, including transformers. Such a transformer could take the code as input and improve its readability. We suspect that such a tool could be of great benefit to programmers.
+	The new approach to generating data sets has an advantage that is not yet used in this work: For the first time, it is possible to generate a dataset with one well readable and a second, less readable and functionally equivalent code snippet. This could be used to train various models, including transformers. Such a transformer could take the code as input and improve its readability. We suspect that such a tool could be of great benefit to programmers.
 	
 	% Languages	
 	A current limitation of the new dataset is that it only works for Java code. A suggestion for future work is to overcome this limitation by extending the tool for other programming languages. This is not trivial, as one has to adapt the readability reduction heuristics to work with another language. Furthermore, a general tool that works for all languages will be difficult if not impossible.

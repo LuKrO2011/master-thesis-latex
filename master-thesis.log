@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  21 FEB 2024 19:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  21 FEB 2024 19:41
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2180,8 +2180,8 @@ Package logreq Info: Writing requests to 'master-thesis.run.xml'.
  ) 
 Here is how much of TeX's memory you used:
  47850 strings out of 475551
- 1033344 string characters out of 5772369
- 2038812 words of memory out of 5000000
+ 1033372 string characters out of 5772369
+ 2038840 words of memory out of 5000000
  67886 multiletter control sequences out of 15000+600000
  701579 words of font info for 301 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
@@ -2203,7 +2203,7 @@ fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/p
 ublic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts
 /cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pf
 b><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on master-thesis.pdf (47 pages, 1183717 bytes).
+Output written on master-thesis.pdf (47 pages, 1183878 bytes).
 PDF statistics:
  904 PDF objects out of 1000 (max. 8388607)
  171 named destinations out of 1000 (max. 500000)
