@@ -1907,30 +1907,7 @@ cleveref=true,%
 	We analysed whether the difference in ratings between the different rdhs is statistically significant. To do this, we used the Mann-Whitney U test to compare the ratings for all snippets for an rdh with the corresponding none rdh snippets. The results can be found in table \ref{tab:survey_statistical_evidence}.
 		
 	Our results suggest that no modification (none rdh) besides converting to the AST and back makes no difference to the original methods. The difference could just as well be due to random variation with a probability of 92\%. If we compare the RDHs with the none methods, we can be sure that the scores of all methods except newlines many and rename are indeed statistically different from the scores of none. If we consider binary readability classification and split the data for none and Newlines Many into into two classes (not-readable: 1,2; readable: 3-5) we also get significance that the ratings for newlines many are statistically significantly different from none (TODO: Add p Values). This leaves only rename where we can not confirm statistical significance. Overall, this confirms that the heuristics actually reduce the readability of the given code.
-	
-	%	\begin{table}[h]
-	%		\centering
-	%		%		\caption{Mann-Whitney U test results of none against each RDH. If the p-value is smaller or equal to 0.05 the null-hypothesis is rejected confirming, that the ratings are actually different and not just a random variation. TODO: Update data}
-	%		\caption{Mann-Whitney U test results of none against each rdh}
-	%		\vspace{8pt}
-	%		\label{tab:survey_statistical_evidence}
-	%		\begin{tabular}{lr}
-	%			\toprule
-	%			\textbf{Condition} & \textbf{$p$} \\
-	%			\midrule
-	%			None - Methods & 0.9224 \\
-	%			None - Newlines Few & $5.23 \times 10^{-6}$ \\
-	%			None - Spaces Many & 0.0407 \\
-	%			None - Newlines Many & 0.3006 \\
-	%			None - Comments Remove & 0.00364 \\
-	%			None - Rename & 0.099 \\
-	%			None - Newline Instead Of Space & $4.57 \times 10^{-6}$ & True \\
-	%			None - Tabs & $3.06 \times 10^{-8}$ \\
-	%			None - All7 & $1.80 \times 10^{-7}$ \\
-	%			\bottomrule
-	%		\end{tabular}
-	%	\end{table}
-	
+
 %	\begin{table}[h]
 %		\centering
 %		\caption{Mann-Whitney U test results of none against each RDH}
@@ -1940,15 +1917,15 @@ cleveref=true,%
 %			\toprule
 %			\textbf{Condition} & \textbf{$p$} \\
 %			\midrule
-%			None - Methods & \num{9.22e-1} \\
-%			None - Newlines Few & \num{5.23e-6} \\
-%			None - Spaces Many & \num{4.07e-2} \\
-%			None - Newlines Many & \num{3.00e-1} \\
-%			None - Comments Remove & \num{3.64e-3} \\
-%			None - Rename & \num{9.90e-2} \\
-%			None - Newline Instead Of Space & \num{4.57e-6} \\
-%			None - Tabs & \num{3.06e-8} \\
-%			None - All7 & \num{1.80e-7} \\
+%			None - Methods & \cellcolor{red!25}\num{9.22e-1} \\
+%			None - Newlines Few & \cellcolor{green!25}\num{5.23e-6} \\
+%			None - Spaces Many & \cellcolor{green!25}\num{4.07e-2} \\
+%			None - Newlines Many & \cellcolor{red!25}\num{3.00e-1} \\
+%			None - Comments Remove & \cellcolor{green!25}\num{3.64e-3} \\
+%			None - Rename & \cellcolor{red!25}\num{9.90e-2} \\
+%			None - Newline Instead Of Space & \cellcolor{green!25}\num{4.57e-6} \\
+%			None - Tabs & \cellcolor{green!25}\num{3.06e-8} \\
+%			None - All7 & \cellcolor{green!25}\num{1.80e-7} \\
 %			\bottomrule
 %		\end{tabular}
 %	\end{table}
@@ -1960,17 +1937,17 @@ cleveref=true,%
 		\label{tab:survey_statistical_evidence}
 		\begin{tabular}{lS[table-format=1.2e-2]}
 			\toprule
-			\textbf{Condition} & \textbf{$p$} \\
+			\textbf{Comparison} & \textbf{$p$} \\
 			\midrule
-			None - Methods & \cellcolor{red!25}\num{9.22e-1} \\
-			None - Newlines Few & \cellcolor{green!25}\num{5.23e-6} \\
-			None - Spaces Many & \cellcolor{green!25}\num{4.07e-2} \\
-			None - Newlines Many & \cellcolor{red!25}\num{3.00e-1} \\
-			None - Comments Remove & \cellcolor{green!25}\num{3.64e-3} \\
-			None - Rename & \cellcolor{red!25}\num{9.90e-2} \\
-			None - Newline Instead Of Space & \cellcolor{green!25}\num{4.57e-6} \\
-			None - Tabs & \cellcolor{green!25}\num{3.06e-8} \\
-			None - All7 & \cellcolor{green!25}\num{1.80e-7} \\
+			\textbf{None - Methods} & \num{9.22e-1} \\
+			None - Newlines Few & \num{5.23e-6} \\
+			None - Spaces Many & \num{4.07e-2} \\
+			\textbf{None - Newlines Many} & \num{3.00e-1} \\
+			None - Comments Remove & \num{3.64e-3} \\
+			\textbf{None - Rename} & \num{9.90e-2} \\
+			None - Newline Instead Of Space & \num{4.57e-6} \\
+			None - Tabs & \num{3.06e-8} \\
+			None - All7 & \num{1.80e-7} \\
 			\bottomrule
 		\end{tabular}
 	\end{table}
@@ -1981,26 +1958,26 @@ cleveref=true,%
 
 \subsection{Model Training Results} \label{Model training results}
 	The results of the training, evaluation and fine-tuning can be found in the table \ref{tab:dataset_performance}.
-	
+		
 	\begin{table}[h]
 		\centering
-		\begin{tabular}{|c|c|c|c|c|c|c|c|}
-			\hline
-			\textbf{Train} & \textbf{Eval} & \textbf{Acc} & \textbf{Prec} & \textbf{Rec} & \textbf{AUC} & \textbf{F1} & \textbf{MCC} \\
-			\hline
-			\textbf{New} 		& \textbf{New} 	& 0.918 & 0.923 & 0.913 & 0.918 & 0.917 & 0.836 \\
-			\textbf{New} 		& \textbf{Old}  	& 0.619 & 0.636 & 0.636 & 0.636 & 0.636 & 0.236 \\
-			\textbf{Old} 		& \textbf{Old} 	& 0.538 & 0.526 & 0.778 & 0.652 & 0.628 & 0.087 \\
-			\textbf{Old}  		& \textbf{Old}  	& 0.847 & 0.877 & 0.823 & 0.850 & 0.837 & 0.704 \\
-			
-			\textbf{New-FT-Old}& \textbf{Old}  	& 0.804 & 0.840 & 0.738 & 0.789 & 0.772 & 0.600 \\
-			\textbf{New210}  	& \textbf{New210}  & 0.809 & 0.827 & 0.776 & 0.802 & 0.789 & 0.609 \\
-			\hline
-		\end{tabular}
-		\caption{Performance of different dataset configurations for the same model. FT = Fine-Tuning}
+		\caption{Performance of different dataset configurations for the same model. New-Old is training on the new dataset and fine tuning on the old one.}
+		\vspace{8pt}
 		\label{tab:dataset_performance}
+		\begin{tabular}{llrrrrrr}
+			\toprule
+			\textbf{Train} & \textbf{Eval} & \textbf{Acc} & \textbf{Prec} & \textbf{Rec} & \textbf{AUC} & \textbf{F1} & \textbf{MCC} \\
+			\midrule
+			\textbf{New}        & \textbf{New}     & 91.8 \% & 92.3 \% & 91.3 \% & 91.8 \% & 91.7 \% & 83.6 \% \\
+			\textbf{New}        & \textbf{Old}     & 61.9 \% & 63.6 \% & 63.6 \% & 63.6 \% & 63.6 \% & 23.6 \% \\
+			\textbf{Old}        & \textbf{Old}     & 53.8 \% & 52.6 \% & 77.8 \% & 65.2 \% & 62.8 \% & 08.7 \% \\
+			\textbf{Old}        & \textbf{Old}     & 84.7 \% & 87.7 \% & 82.3 \% & 85.0 \% & 83.7 \% & 70.4 \% \\
+			\textbf{New-Old} & \textbf{Old}     & 80.4 \% & 84.0 \% & 73.8 \% & 78.9 \% & 77.2 \% & 60.0 \% \\
+			\textbf{New210}     & \textbf{New210}  & 80.9 \% & 82.7 \% & 77.6 \% & 80.2 \% & 78.9 \% & 60.9 \% \\
+			\bottomrule
+		\end{tabular}
 	\end{table}
-		
+			
 	When we train the model on the new dataset and evaluate it with 10-fold cross-validation, we obtain an average accuracy of 91.8\%. However, if we evaluate the trained model on the old dataset, we get an accuracy of only 61.9\%. From this we can draw some conclusions:
 	
 	The towards model works well for our new dataset. However, the readability determined with the all dataset differs from the readability with our approach. Otherwise, the values for all-krod and krod-all would be similar to the value for all-all. This indicates that our dataset is not suitable for a general classification of readability, but we may have found a subproblem. However, adding more features to reduce readability and well-designed data augmentation could overcome this limitation.
