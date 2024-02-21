@@ -650,6 +650,9 @@ cleveref=true,%
 % See Section
 \newcommand{\seeSectionRef}[1]{(see Section~\ref{#1})}
 
+% Num samples
+\newcommand{\numSamples}{36077 }
+
 
 \begin{document}
 	
@@ -658,12 +661,35 @@ cleveref=true,%
 	\maketitle
 	
 	\begin{abstract}
-		% TODO: Rework once work is done
-		This work presents an innovative method for generating datasets intended for code readability classification in the context of a master's thesis. We offer a comprehensive overview of code readability, delving into existing classifiers that consider both manually crafted and automatically extracted code readability features. Furthermore, we summarize existing datasets of manually annotated Java code snippets.
 		
-		The core contribution of this work lies in the introduction of an automatic data generation technique, alongside a dataset produced using this methodology. Our approach relies on the extraction and modification of code snippets sourced from public GitHub repositories. Notably, our dataset significantly surpasses the scale of any previously available dataset designed for readability classification.
+		% Structure:
+		% 1-2 	Basic Into to field
+		% 2-3 	Background (for experts)
+		% 1-2 	Problem
+		% 1		Main result/approach/method (Use "here we show", "we investigate")
+		% 2-3	Main results (new knowledge)
+		% 1		Put the results in general context
 		
-		To evaluate the newly generated dataset, we conducted a user survey and train a state of the art code readability classification model, both with and without the integration of the new dataset. This analysis aims to assess the quality of our new dataset and the effectiveness of the generation approach employed.
+		% Basic Intro
+		Deep learning-based models are achieving increasingly superior accuracy in classifying the readability of code.
+		% Background
+		Recent research focuses mostly on different model architectures to further improve code readability classification. The models mostly use (parts of) the same labeled dataset, consisting of 421 code snippets.
+		% Problem
+		However, deep learning-based approaches are known to require a large amount of data in order to be efficient.
+		Consequently, a large labeled dataset could greatly advance the research field of code readability classification.
+		% Main result/approach/method
+		In this work, we investigate the use of a new dataset consisting of \numSamples code snippets together with its novel generation approach.
+		% Main results	
+		The generation approach involves the extraction and modification of code snippets from public GitHub repositories. The generated dataset is evaluated using a survey with 200 participants and by training a state of the art code readability classification model both with and without the new dataset.
+		% Context of results
+		In the future, our dataset might increase the accuracy of all readability classification models.
+		
+		% Old abstract:
+		%		We present an innovative method for generating datasets intended for code readability classification in the context of a master's thesis. We offer a comprehensive overview of code readability, delving into existing classifiers that consider both manually crafted and automatically extracted code readability features. Furthermore, we summarize existing datasets of manually annotated Java code snippets.
+		%		
+		%		The core contribution of this work lies in the introduction of an automatic data generation technique, alongside a dataset produced using this methodology. Our approach relies on the extraction and modification of code snippets sourced from public GitHub repositories. Notably, our dataset significantly surpasses the scale of any previously available dataset designed for readability classification.
+		%		
+		%		To evaluate the newly generated dataset, we conducted a user survey and train a state of the art code readability classification model, both with and without the integration of the new dataset. This analysis aims to assess the quality of our new dataset and the effectiveness of the generation approach employed.
 
 	\end{abstract}
 	
@@ -1756,10 +1782,10 @@ cleveref=true,%
 
 	% Threats
 	% Mean assignment
-	The biggest thread to our approach is the reliance on heuristics for the dataset generation. We can not show, that the labeled code snippets of our dataset actually fit the score we assigned them. This would require an manual evaluation of 63460 code snippets by human annotators and is therefore not feasible.
+	The main drawback of our approach is that we rely on estimations to create the new dataset. The score labels of our code snippets are rough estimates and not exact values. Accurate ratings would require manual review of 63460 code snippets by human annotators and is therefore not feasible.
 	
-	% Study threats
-	Another thread regarding the study might be the sampling approach applied. While we argue that we avoided to spend resources for labeling rdh data that is likely not different from the original methods or rather uninteresting, this might also introduce statistical errors to our survey results.
+	% Study threats	
+	A thread related to the study could be the sampling approach used. While we argue that we avoided spending resources on labeling rdh data that is likely not different from the original methods or rather uninteresting, this might also introduce statistical errors to our survey results.
 	
 	% Other study threats
 	\begin{enumerate}
@@ -1770,54 +1796,39 @@ cleveref=true,%
 		\item \textbf{Insufficient Responses for Drawing Conclusions:} To prevent drawing conclusions from an insufficient number of responses, we scale our survey to an appropriate size. This guarantees that we collect a substantial volume of responses, allowing for robust statistical analysis.
 	\end{enumerate}
 	
-	% Model threats
-	When we compare the model performance trained on the new and the old dataset one has to consider that the old dataset is small. Consequently, comparisons among classifiers trained on the old dataset may also be unreliable.
-	
-	
-	TODO: Copy from towards and newer model
-	
-
-	% TODO: Continue here
-%	 In this case, the characteristics and evaluation of
-%	datasets are different. Therefore, the conclusions made in RQ3
-%	might not be rigorous.
-%	External Validity. Currently, our model has not been trained
-%	on other programming languages but Java which limits its generalizability. Besides, our model could not handle longer code
-%	snippets due to the predefined maximum length we set. To address this issue, we propose to partition longer code snippets in
-%	our future work.
-%	Construct Validity. Most previous code readability classification researches merely used accuracy and f-measure. This approach might not be comprehensive enough in evaluating model
-%	performance. Thus, we propose to add AUC and MCC in our
-%	evaluation metrics to comprehensively evaluate our model and
-%	minimize threats to construct validity.
-	
+	% Model threats	
+	When comparing the model performance trained on the new and old data set, it should be noted that the old data set is small. Consequently, comparisons between classifiers trained on the old dataset may also be unreliable \cite{mi2022towards}.
 	
 \section{Conclusions} \label{Conclusions}
 	TODO: Add conclusion
 	
 	% Future work
 	% Transformer
-	The new dataset has another advantage that is not yet utilized in this work: For the first time there is a dataset with one well readable and a second one less readable code snippet that is functionally equivalent. This could be used to train a transformer on source code readability improvement. Such a transformer could take code as input and improve it's readability. Such a tool would probably be of high usability among programmers.
+	The new dataset generation approach has another advantage that is not yet utilized in this work: For the first time it is possible to generate a dataset with one well readable and a second one less readable code snippet that is functionally equivalent. This could be used to train a transformer on source code readability improvement. Such a transformer could take code as input and improve it's readability. Such a tool would probably be of high usability among programmers.
 	
-	% Languages
-	A current restriction of the dataset is that it only works for java code. Another proposal for future work is therefore to overcome this restriction by extending the tool for other languages. This is not trivial as one has to adjust the readability decreasing heuristics to work with a different language. Furthermore a general tool that works for all languages will be very hard, if possible at all.
+	The new approach to generating data sets has another advantage that is not yet used in this work: For the first time, it is possible to generate a dataset with one easily readable and a second, less readable and functionally equivalent code snippet. This could be used to train various models, including transformers. Such a transformer could take the code as input and improve its readability. We suspect that such a tool could be of great benefit to programmers.
 	
-	% Survey
-	In order to further improve the readability estimations for both, the well and the badly readable code, one could conduct more s. By separating the code snippets into more fine granular clusters and by getting a more accurate average score by asking more persons about readability of code within the same cluster one can increase the accuracy of label estimation. Such an improvement can then again improve the model predictions as it is learning from this data.
+	% Languages	
+	A current limitation of the dataset is that it only works for Java code. A suggestion for future work is to overcome this limitation by extending the tool for other programming languages. This is not trivial, as one has to adapt the readability reduction heuristics to work with another language. Furthermore, a general tool that works for all languages will be difficult if not impossible.
 	
-	% Syntax Tree
-	As XY suggested another useful representation for code readability studies is the syntax tree representation of code. One could improve the performance of this model by adding another representation encoding extractor for java code that automatically extracts the abstract syntax tree of code. 
+	% More surveys	
+	%	To further improve the readability estimates for both the good and poorly readable code, further surveys could be conducted. By splitting the code snippets into more granular clusters and obtaining a more accurate average by asking more people about the readability of the code within the same cluster, one can increase the accuracy of the label estimation. Such an improvement can then in turn improve the predictions of the model as it learns from this data.
+	
+	% Syntax Tree	
+	As \citeauthor{mi2023graph} suggested, another useful representation for code readability studies could be the syntax tree representation of code \cite{mi2023graph}. One could try to improve the performance of the towards model by adding another representation encoding extractor for Java code that automatically extracts the abstract syntax tree of the code.
 	
 	%  Method name fitting
 	A crucial aspect of code readability is naming. For the scope of methods, the most crucial part are methods names. Therefore one could improve this tool by adding a component that explicitly considers how well a method name fits its body.
+	An important aspect of the readability of code is the naming. For the scope of methods, the method names are the most important part. Therefore, the towards model could be improved by adding a component that explicitly takes into account how well a method name matches its body. This component might be similar to Code2vec \cite{alon2019code2vec}.
 	
-	% Other representations
-	Further research could also be to come up with another encoding that represents code in a different way.
+	% Other encodings
+	Further research could also consist of finding and evaluating other encodings that represents the code in a different way.
 	
-	% Other model structure
-	Another way to improve existing code readability classifiers could be to come up with a different structure for some layers or entire different models.
+	% Other model structure.
+	Another way to improve existing code readability classifiers, such as the towards model, could be to develop a different structure for some layers of the model. We suggest increasing the size and depth of the layers so that the new dataset can be made useful. Alternatively, a completely different model architecture could be developed. 
 	
 	% More heuristics
-	The heuristics described in this work is only a part of the possible heuristics one could come up with. One could come up with more heuristics and evaluate them using user studies in order to further improve the variety of badly readable code. This might increase the number of internal features the model could learn which might again increase the tools accuracy.
+	The heuristics described in this work are only part of the possible heuristics that could be developed. Additional heuristics could further improve the diversity of poorly readable code. This could increase the number of internal features that a model can learn, which in turn could increase the accuracy of the model.
 
 	
 	\backmatter
