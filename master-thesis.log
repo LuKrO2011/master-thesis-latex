@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  21 FEB 2024 14:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  21 FEB 2024 15:14
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1400,7 +1400,7 @@ Class scrreprt Warning: Usage of package `parskip' together
 (scrreprt)              I'd suggest to use option
 (scrreprt)              `parskip' with one of it's several values.
 (scrreprt)              Nevertheless, using requested
-(scrreprt)              package `parskip' on input line 636.
+(scrreprt)              package `parskip' on input line 644.
 
 (C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/parskip\parskip.sty
 Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
@@ -1412,7 +1412,7 @@ Package: seqsplit 2006/08/07 v0.1 Splitting long sequences (DNA, RNA, proteins,
 )
 
 LaTeX Warning: Unknown theoremstyle `definition'. Using `plain' on input line 6
-41.
+49.
 
 \c@definition=\count506
 Package csquotes Info: Checking for multilingual support...
@@ -1445,7 +1445,7 @@ Package cleveref Info: always capitalise cross-reference names on input line 78
 52.
 )
 LaTeX Font Info:    Trying to load font information for T1+LibertinusSerif-TLF 
-on input line 657.
+on input line 665.
 
 (C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/libertinus-type1\t1libertinuss
 erif-tlf.fd
@@ -1453,28 +1453,28 @@ File: T1LibertinusSerif-TLF.fd 2022/11/07 (autoinst) Font definitions for T1/Li
 bertinusSerif-TLF.
 )
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 10.95pt on input line 657.
+(Font)              scaled to size 10.95pt on input line 665.
  (master-thesis.aux)
 \openout1 = `master-thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 657.
-LaTeX Font Info:    ... okay on input line 657.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 657.
-LaTeX Font Info:    ... okay on input line 657.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 657.
-LaTeX Font Info:    ... okay on input line 657.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 657.
-LaTeX Font Info:    ... okay on input line 657.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 657.
-LaTeX Font Info:    ... okay on input line 657.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 657.
-LaTeX Font Info:    ... okay on input line 657.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 657.
-LaTeX Font Info:    ... okay on input line 657.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 657.
-LaTeX Font Info:    ... okay on input line 657.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 657.
-LaTeX Font Info:    ... okay on input line 657.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 665.
+LaTeX Font Info:    ... okay on input line 665.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 665.
+LaTeX Font Info:    ... okay on input line 665.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 665.
+LaTeX Font Info:    ... okay on input line 665.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 665.
+LaTeX Font Info:    ... okay on input line 665.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 665.
+LaTeX Font Info:    ... okay on input line 665.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 665.
+LaTeX Font Info:    ... okay on input line 665.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 665.
+LaTeX Font Info:    ... okay on input line 665.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 665.
+LaTeX Font Info:    ... okay on input line 665.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 665.
+LaTeX Font Info:    ... okay on input line 665.
 
 (C:\Program Files\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1521,33 +1521,33 @@ File: translations-basic-dictionary-german.trsl (german translation file `trans
 lations-basic-dictionary')
 )
 Package translations Info: loading dictionary `translations-basic-dictionary' f
-or `german'. on input line 657.
-Package scrbase Info: activating UKenglish \abstractname on input line 657.
-Package scrbase Info: activating UKenglish \partname on input line 657.
-Package scrbase Info: activating UKenglish \chaptername on input line 657.
-Package scrbase Info: activating UKenglish \appendixname on input line 657.
-Package scrbase Info: activating UKenglish \figurename on input line 657.
-Package scrbase Info: activating UKenglish \tablename on input line 657.
-Package scrbase Info: activating UKenglish \contentsname on input line 657.
-Package scrbase Info: activating UKenglish \listfigurename on input line 657.
-Package scrbase Info: activating UKenglish \listtablename on input line 657.
-Package scrbase Info: activating UKenglish \bibname on input line 657.
-Package scrbase Info: activating UKenglish \indexname on input line 657.
+or `german'. on input line 665.
+Package scrbase Info: activating UKenglish \abstractname on input line 665.
+Package scrbase Info: activating UKenglish \partname on input line 665.
+Package scrbase Info: activating UKenglish \chaptername on input line 665.
+Package scrbase Info: activating UKenglish \appendixname on input line 665.
+Package scrbase Info: activating UKenglish \figurename on input line 665.
+Package scrbase Info: activating UKenglish \tablename on input line 665.
+Package scrbase Info: activating UKenglish \contentsname on input line 665.
+Package scrbase Info: activating UKenglish \listfigurename on input line 665.
+Package scrbase Info: activating UKenglish \listtablename on input line 665.
+Package scrbase Info: activating UKenglish \bibname on input line 665.
+Package scrbase Info: activating UKenglish \indexname on input line 665.
 \c@mv@tabular=\count513
 \c@mv@boldtabular=\count514
-LaTeX Info: Redefining \microtypecontext on input line 657.
-Package microtype Info: Applying patch `item' on input line 657.
-Package microtype Info: Applying patch `toc' on input line 657.
-Package microtype Info: Applying patch `eqnum' on input line 657.
-Package microtype Info: Applying patch `footnote' on input line 657.
-Package microtype Info: Applying patch `verbatim' on input line 657.
+LaTeX Info: Redefining \microtypecontext on input line 665.
+Package microtype Info: Applying patch `item' on input line 665.
+Package microtype Info: Applying patch `toc' on input line 665.
+Package microtype Info: Applying patch `eqnum' on input line 665.
+Package microtype Info: Applying patch `footnote' on input line 665.
+Package microtype Info: Applying patch `verbatim' on input line 665.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 657.
+LaTeX Info: Redefining \showhyphens on input line 665.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1605,14 +1605,28 @@ Package biblatex Info: ... file 'master-thesis.bbl' found.
 
 Package biblatex Warning: The following entry could not be found
 (biblatex)                in the database:
+(biblatex)                mullner2013fastcluster
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
 (biblatex)                scalabrino2016improving
 (biblatex)                Please verify the spelling and rerun
 (biblatex)                LaTeX afterwards.
 
+
+Package biblatex Warning: The following entry could not be found
+(biblatex)                in the database:
+(biblatex)                thompson2012sampling
+(biblatex)                Please verify the spelling and rerun
+(biblatex)                LaTeX afterwards.
+
 )
-Package biblatex Info: Reference section=0 on input line 657.
-Package biblatex Info: Reference segment=0 on input line 657.
-Package hyperref Info: Link coloring OFF on input line 657.
+Package biblatex Info: Reference section=0 on input line 665.
+Package biblatex Info: Reference segment=0 on input line 665.
+Package hyperref Info: Link coloring OFF on input line 665.
  (master-thesis.out) (master-thesis.out)
 \@outlinefile=\write7
 \openout7 = `master-thesis.out'.
@@ -1624,7 +1638,7 @@ Class scrreprt Info: loading recommended package `bookmark'.
 (scrreprt)           `bookmarkpackage=false' before \begin{document} and
 (scrreprt)           you can avoid this message adding:
 (scrreprt)             \usepackage{bookmark}
-(scrreprt)           before \begin{document} on input line 657.
+(scrreprt)           before \begin{document} on input line 665.
 
 (C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/bookmark\bookmark.sty
 Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
@@ -1635,20 +1649,20 @@ File: bkm-pdftex.def 2020-11-06 v1.29 bookmark driver for pdfTeX (HO)
 ))
 \c@lstlisting=\count516
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 24.88pt on input line 662.
+(Font)              scaled to size 24.88pt on input line 670.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 662.
+(Font)              scaled to size 12.0pt on input line 670.
 
 (C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/microtype\mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 662.
+(Font)              <10.95> on input line 670.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 662.
+(Font)              <8> on input line 670.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 662.
+(Font)              <6> on input line 670.
  [1
 
 
@@ -1658,7 +1672,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 s/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts_75t36g.enc} <./L
 ogo_zentral_farbig_EN.png>]
 LaTeX Font Info:    Trying to load font information for T1+LibertinusSans-TLF o
-n input line 664.
+n input line 672.
 
 (C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/libertinus-type1\t1libertinuss
 ans-tlf.fd
@@ -1666,64 +1680,64 @@ File: T1LibertinusSans-TLF.fd 2022/11/07 (autoinst) Font definitions for T1/Lib
 ertinusSans-TLF.
 )
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
-(Font)              scaled to size 10.95pt on input line 664.
+(Font)              scaled to size 10.95pt on input line 672.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LibertinusSans-TLF' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/b/n' will be
-(Font)              scaled to size 10.95pt on input line 664.
+(Font)              scaled to size 10.95pt on input line 672.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/b/n' will be
-(Font)              scaled to size 20.74pt on input line 664.
+(Font)              scaled to size 20.74pt on input line 672.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
-(Font)              scaled to size 20.74pt on input line 664.
+(Font)              scaled to size 20.74pt on input line 672.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/sl' in size <10.95> no
 t available
 (Font)              Font shape `T1/LibertinusSerif-TLF/m/it' tried instead on i
-nput line 696.
+nput line 704.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/it' will be
-(Font)              scaled to size 10.95pt on input line 696.
+(Font)              scaled to size 10.95pt on input line 704.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 696.
+(Font)              scaled to size 9.0pt on input line 704.
  [2
 
 {C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts_mf
 adfl.enc}]
-Package tocbasic Info: character protrusion at toc deactivated on input line 69
-8.
+Package tocbasic Info: character protrusion at toc deactivated on input line 70
+6.
  (master-thesis.toc)
 \tf@toc=\write8
 \openout8 = `master-thesis.toc'.
 
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/b/n' will be
-(Font)              scaled to size 14.4pt on input line 700.
+(Font)              scaled to size 14.4pt on input line 708.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 700.
+(Font)              scaled to size 12.0pt on input line 708.
 LaTeX Font Info:    Font shape `T1/LibertinusSans-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 700.
+(Font)              scaled to size 12.0pt on input line 708.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 700.
+(Font)              <12> on input line 708.
  [1
 
 
 
 ]
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/b/n' will be
-(Font)              scaled to size 10.95pt on input line 766.
+(Font)              scaled to size 10.95pt on input line 774.
  [2{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts
 _sfissr.enc}]
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 8.0pt on input line 773.
+(Font)              scaled to size 8.0pt on input line 781.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 773.
+(Font)              scaled to size 9.0pt on input line 781.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 773.
+(Font)              <9> on input line 781.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 773.
+(Font)              <5> on input line 781.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 773.
+(Font)              scaled to size 6.0pt on input line 781.
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 7
-73.
+81.
 
 (C:\Program Files\MiKTeX\tex/latex/base\t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
@@ -1733,7 +1747,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Trying to load font information for TS1+LibertinusSerif-TLF
- on input line 783.
+ on input line 791.
 
 (C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/libertinus-type1\ts1libertinus
 serif-tlf.fd
@@ -1741,7 +1755,7 @@ File: TS1LibertinusSerif-TLF.fd 2022/11/07 (autoinst) Font definitions for TS1/
 LibertinusSerif-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/LibertinusSerif-TLF/m/n' will be
-(Font)              scaled to size 10.95pt on input line 783.
+(Font)              scaled to size 10.95pt on input line 791.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LibertinusSerif-TLF' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
@@ -1749,7 +1763,7 @@ Package microtype Info: Loading generic protrusion settings for font family
  [3{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts
 _rlktsf.enc}] [4]
 Package hyperref Info: bookmark level for unknown definition defaults to 0 on i
-nput line 893.
+nput line 901.
  [5{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts
 _nufysp.enc}]
 \openout4 = `master-thesis.pyg'.
@@ -1762,7 +1776,7 @@ LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <9> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 8.
 )
 Package hyperref Info: bookmark level for unknown listing defaults to 0 on inpu
-t line 1058.
+t line 1066.
 \openout4 = `master-thesis.pyg'.
 
 
@@ -1779,10 +1793,10 @@ LaTeX Warning: Text page 7 contains only floats.
 [7]
 
 LaTeX Warning: Citation 'scalabrino2016improving' on page 8 undefined on input 
-line 1155.
+line 1163.
 
 [8] [9] [10] [11]
-Underfull \hbox (badness 10000) in paragraph at lines 1230--1230
+Underfull \hbox (badness 10000) in paragraph at lines 1238--1238
   [][][][][][]$\T1/cmtt/m/n/9 https : / / huggingface . co / datasets / se2p / 
 code-[]readability-[]merged$[]\T1/LibertinusSerif-TLF/m/n/9 (+20) , ac-cessed:
  []
@@ -1791,17 +1805,17 @@ code-[]readability-[]merged$[]\T1/LibertinusSerif-TLF/m/n/9 (+20) , ac-cessed:
 <img/dataset_generation.png, id=316, 643.40375pt x 543.02875pt>
 File: img/dataset_generation.png Graphic file (type png)
 <use img/dataset_generation.png>
-Package pdftex.def Info: img/dataset_generation.png  used on input line 1258.
+Package pdftex.def Info: img/dataset_generation.png  used on input line 1266.
 (pdftex.def)             Requested size: 350.0pt x 295.40207pt.
  [13] [14 <./img/dataset_generation.png>]
 <img/rdh.png, id=338, 510.90875pt x 663.47874pt>
 File: img/rdh.png Graphic file (type png)
 <use img/rdh.png>
-Package pdftex.def Info: img/rdh.png  used on input line 1298.
+Package pdftex.def Info: img/rdh.png  used on input line 1306.
 (pdftex.def)             Requested size: 175.0pt x 227.25021pt.
 
 
-LaTeX Warning: Reference `app:TODO' on page 15 undefined on input line 1305.
+LaTeX Warning: Reference `app:TODO' on page 15 undefined on input line 1313.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -1810,161 +1824,158 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 <img/survey_pipeline.png, id=351, 643.40375pt x 402.50375pt>
 File: img/survey_pipeline.png Graphic file (type png)
 <use img/survey_pipeline.png>
-Package pdftex.def Info: img/survey_pipeline.png  used on input line 1339.
+Package pdftex.def Info: img/survey_pipeline.png  used on input line 1347.
 (pdftex.def)             Requested size: 350.0pt x 218.9579pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [16 <./img/rdh.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1379--1379
+
+LaTeX Warning: Citation 'thompson2012sampling' on page 17 undefined on input li
+ne 1385.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1387--1387
   [][][][][][]$\T1/cmtt/m/n/9 https : / / scikit-[]learn . org / stable / modul
 es / generated / sklearn . metrics .
  []
 
 
 LaTeX Warning: Citation 'mullner2013fastcluster' on page 17 undefined on input 
-line 1380.
+line 1388.
 
 File: img/survey_pipeline.png Graphic file (type png)
 <use img/survey_pipeline.png>
-Package pdftex.def Info: img/survey_pipeline.png  used on input line 1386.
+Package pdftex.def Info: img/survey_pipeline.png  used on input line 1394.
 (pdftex.def)             Requested size: 350.0pt x 218.9579pt.
 [17]
 <img/sampling_not_different_overall.png, id=378, 642.4pt x 481.8pt>
 File: img/sampling_not_different_overall.png Graphic file (type png)
 <use img/sampling_not_different_overall.png>
 Package pdftex.def Info: img/sampling_not_different_overall.png  used on input 
-line 1435.
+line 1443.
 (pdftex.def)             Requested size: 350.0pt x 262.50595pt.
  [18 <./img/survey_pipeline.png>] [19] [20] [21]
 <img/scripts_pipeline.png, id=409, 1286.8075pt x 1011.78pt>
 File: img/scripts_pipeline.png Graphic file (type png)
 <use img/scripts_pipeline.png>
-Package pdftex.def Info: img/scripts_pipeline.png  used on input line 1529.
+Package pdftex.def Info: img/scripts_pipeline.png  used on input line 1537.
 (pdftex.def)             Requested size: 350.0pt x 275.19125pt.
  [22 <./img/sampling_not_different_overall.png (PNG copy)>]
 Package hyperref Info: bookmark level for unknown resq defaults to 0 on input l
-ine 1548.
+ine 1556.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/b/it' will be
-(Font)              scaled to size 10.95pt on input line 1548.
+(Font)              scaled to size 10.95pt on input line 1556.
 
 
-LaTeX Warning: Reference `user-study' on page 23 undefined on input line 1549.
+LaTeX Warning: Reference `user-study' on page 23 undefined on input line 1557.
 
 [23{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts
 _opzo24.enc} <./img/scripts_pipeline.png>]
 
-LaTeX Warning: Reference `user-study' on page 24 undefined on input line 1554.
+LaTeX Warning: Reference `user-study' on page 24 undefined on input line 1562.
 
 
 LaTeX Warning: Reference `compare-models' on page 24 undefined on input line 15
-60.
+68.
 
 [24]
 <img/survey_time_box.png, id=442, 602.25pt x 803.0pt>
 File: img/survey_time_box.png Graphic file (type png)
 <use img/survey_time_box.png>
-Package pdftex.def Info: img/survey_time_box.png  used on input line 1607.
+Package pdftex.def Info: img/survey_time_box.png  used on input line 1615.
 (pdftex.def)             Requested size: 350.0pt x 466.68379pt.
  [25]
-Overfull \hbox (24.97267pt too wide) in paragraph at lines 1676--1702
+Overfull \hbox (24.97267pt too wide) in paragraph at lines 1684--1710
  [][] 
  []
 
 
-LaTeX Warning: Float too large for page by 13.78444pt on input line 1704.
+LaTeX Warning: Float too large for page by 13.78444pt on input line 1712.
 
 
-LaTeX Warning: Reference `TODO' on page 26 undefined on input line 1713.
+LaTeX Warning: Reference `TODO' on page 26 undefined on input line 1724.
 
-<img/survey_tool.png, id=456, 574.64688pt x 333.74687pt>
+<img/survey_tool.png, id=460, 574.64688pt x 333.74687pt>
 File: img/survey_tool.png Graphic file (type png)
 <use img/survey_tool.png>
-Package pdftex.def Info: img/survey_tool.png  used on input line 1719.
+Package pdftex.def Info: img/survey_tool.png  used on input line 1728.
 (pdftex.def)             Requested size: 350.0pt x 203.27974pt.
 [26] [27]
 
-LaTeX Warning: Citation 'thompson2012sampling' on page 28 undefined on input li
-ne 1756.
+LaTeX Warning: Reference `target-population' on page 28 undefined on input line
+ 1816.
+
+
+LaTeX Warning: Reference `sec:survey-evaluation' on page 28 undefined on input 
+line 1816.
 
 [28]
 
-LaTeX Warning: Reference `target-population' on page 29 undefined on input line
- 1801.
-
-
-LaTeX Warning: Reference `sec:survey-evaluation' on page 29 undefined on input 
-line 1801.
-
-[29]
-
-LaTeX Warning: Reference `fig:survey_time_histogram' on page 30 undefined on in
-put line 1811.
+LaTeX Warning: Reference `fig:survey_time_histogram' on page 29 undefined on in
+put line 1826.
 
 File: img/survey_time_box.png Graphic file (type png)
 <use img/survey_time_box.png>
-Package pdftex.def Info: img/survey_time_box.png  used on input line 1815.
+Package pdftex.def Info: img/survey_time_box.png  used on input line 1830.
 (pdftex.def)             Requested size: 350.0pt x 466.68379pt.
-<img/survey_time_histogramm.png, id=496, 481.8pt x 361.35pt>
+<img/survey_time_histogramm.png, id=490, 481.8pt x 361.35pt>
 File: img/survey_time_histogramm.png Graphic file (type png)
 <use img/survey_time_histogramm.png>
-Package pdftex.def Info: img/survey_time_histogramm.png  used on input line 182
-2.
+Package pdftex.def Info: img/survey_time_histogramm.png  used on input line 183
+7.
 (pdftex.def)             Requested size: 350.0pt x 262.50412pt.
-<img/survey_time_less_than_180.png, id=497, 642.4pt x 481.8pt>
+<img/survey_time_less_than_180.png, id=491, 642.4pt x 481.8pt>
 File: img/survey_time_less_than_180.png Graphic file (type png)
 <use img/survey_time_less_than_180.png>
 Package pdftex.def Info: img/survey_time_less_than_180.png  used on input line 
-1829.
+1844.
 (pdftex.def)             Requested size: 262.5pt x 196.87762pt.
-<img/survey_java_familiarity_pie.png, id=499, 642.4pt x 481.8pt>
+<img/survey_java_familiarity_pie.png, id=493, 642.4pt x 481.8pt>
 File: img/survey_java_familiarity_pie.png Graphic file (type png)
 <use img/survey_java_familiarity_pie.png>
 Package pdftex.def Info: img/survey_java_familiarity_pie.png  used on input lin
-e 1838.
+e 1853.
 (pdftex.def)             Requested size: 350.0pt x 262.50595pt.
-<img/survey_ratings_violin_all.png, id=502, 642.4pt x 481.8pt>
+<img/survey_ratings_violin_all.png, id=496, 642.4pt x 481.8pt>
 File: img/survey_ratings_violin_all.png Graphic file (type png)
 <use img/survey_ratings_violin_all.png>
 Package pdftex.def Info: img/survey_ratings_violin_all.png  used on input line 
-1847.
+1862.
 (pdftex.def)             Requested size: 350.0pt x 262.50595pt.
-<img/survey_ratings_bar_all.png, id=503, 642.4pt x 481.8pt>
+<img/survey_ratings_bar_all.png, id=497, 642.4pt x 481.8pt>
 File: img/survey_ratings_bar_all.png Graphic file (type png)
 <use img/survey_ratings_bar_all.png>
-Package pdftex.def Info: img/survey_ratings_bar_all.png  used on input line 185
-4.
+Package pdftex.def Info: img/survey_ratings_bar_all.png  used on input line 186
+9.
 (pdftex.def)             Requested size: 350.0pt x 262.50595pt.
+[29] [30] [31]
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[30] [31] [32]
-
-LaTeX Warning: Reference `target-population' on page 33 undefined on input line
- 1945.
+LaTeX Warning: Reference `target-population' on page 32 undefined on input line
+ 1962.
 
 
-LaTeX Warning: Reference `sec:survey-evaluation' on page 33 undefined on input 
-line 1945.
+LaTeX Warning: Reference `sec:survey-evaluation' on page 32 undefined on input 
+line 1962.
 
-[33] [34] [35] [36 <./img/survey_time_box.png (PNG copy)>] [37 <./img/survey_to
-ol.png>] [38] [39 <./img/survey_time_histogramm.png> <./img/survey_time_less_th
-an_180.png (PNG copy)>] [40 <./img/survey_java_familiarity_pie.png (PNG copy)>]
-[41 <./img/survey_ratings_violin_all.png (PNG copy)>] [42 <./img/survey_ratings
+[32] [33] [34] [35 <./img/survey_time_box.png (PNG copy)>] [36 <./img/survey_to
+ol.png>] [37] [38 <./img/survey_time_histogramm.png> <./img/survey_time_less_th
+an_180.png (PNG copy)>] [39 <./img/survey_java_familiarity_pie.png (PNG copy)>]
+[40 <./img/survey_ratings_violin_all.png (PNG copy)>] [41 <./img/survey_ratings
 _bar_all.png (PNG copy)>]
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/sc' will be
-(Font)              scaled to size 10.95pt on input line 1989.
- [43
+(Font)              scaled to size 10.95pt on input line 2006.
+ [42
 
 
 
 {C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts_cb
-34qf.enc}] [44] [45]
+34qf.enc}] [43] [44]
 \tf@thm=\write9
 \openout9 = `master-thesis.thm'.
 
- [46] (master-thesis.aux)
+ [45] (master-thesis.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-06-30>
@@ -2180,21 +2191,16 @@ Package rerunfilecheck Info: File `master-thesis.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 runsystem(del master-thesis.pyg)...executed.
 
-
-Package biblatex Warning: Please (re)run Biber on the file:
-(biblatex)                master-thesis
-(biblatex)                and rerun LaTeX afterwards.
-
 Package logreq Info: Writing requests to 'master-thesis.run.xml'.
 \openout1 = `master-thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 47823 strings out of 475551
- 1032776 string characters out of 5772369
- 2040846 words of memory out of 5000000
- 67838 multiletter control sequences out of 15000+600000
- 702758 words of font info for 308 fonts, out of 8000000 for 9000
+ 47803 strings out of 475551
+ 1032035 string characters out of 5772369
+ 2038831 words of memory out of 5000000
+ 67832 multiletter control sequences out of 15000+600000
+ 701579 words of font info for 301 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  122i,21n,121p,10970b,2479s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\lukas\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
@@ -2214,9 +2220,9 @@ fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/p
 ublic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts
 /cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pf
 b><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on master-thesis.pdf (48 pages, 1189478 bytes).
+Output written on master-thesis.pdf (47 pages, 1184957 bytes).
 PDF statistics:
- 925 PDF objects out of 1000 (max. 8388607)
- 182 named destinations out of 1000 (max. 500000)
+ 916 PDF objects out of 1000 (max. 8388607)
+ 178 named destinations out of 1000 (max. 500000)
  83190 words of extra memory for PDF output out of 89155 (max. 10000000)
 

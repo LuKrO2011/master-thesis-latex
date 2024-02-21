@@ -1,17 +1,19 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'master-thesis.blg'
-[129] biber-MSWIN64:340> INFO - === 
-[180] Biber.pm:419> INFO - Reading 'master-thesis.bcf'
-[349] Biber.pm:979> INFO - Found 46 citekeys in bib section 0
-[367] Biber.pm:4419> INFO - Processing section 0
-[380] Biber.pm:4610> INFO - Looking for bibtex file 'master-thesis.bib' for section 0
-[441] bibtex.pm:1713> INFO - LaTeX decoding ...
-[514] bibtex.pm:1519> INFO - Found BibTeX data source 'master-thesis.bib'
-[799] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'variable = shifted' with 'variable = non-ignorable'
-[799] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[799] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-UK'
-[799] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-UK'
-[844] bbl.pm:660> INFO - Writing 'master-thesis.bbl' with encoding 'UTF-8'
-[870] bbl.pm:763> INFO - Output to master-thesis.bbl
-[871] Biber.pm:131> WARN - I didn't find a database entry for 'scalabrino2016improving' (section 0)
-[871] Biber.pm:133> INFO - WARNINGS: 1
+[126] biber-MSWIN64:340> INFO - === 
+[168] Biber.pm:419> INFO - Reading 'master-thesis.bcf'
+[329] Biber.pm:979> INFO - Found 45 citekeys in bib section 0
+[346] Biber.pm:4419> INFO - Processing section 0
+[358] Biber.pm:4610> INFO - Looking for bibtex file 'master-thesis.bib' for section 0
+[431] bibtex.pm:1713> INFO - LaTeX decoding ...
+[500] bibtex.pm:1519> INFO - Found BibTeX data source 'master-thesis.bib'
+[807] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'variable = shifted' with 'variable = non-ignorable'
+[807] UCollate.pm:68> INFO - Overriding locale 'en-UK' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[807] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-UK'
+[807] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-UK'
+[851] bbl.pm:660> INFO - Writing 'master-thesis.bbl' with encoding 'UTF-8'
+[875] bbl.pm:763> INFO - Output to master-thesis.bbl
+[876] Biber.pm:131> WARN - I didn't find a database entry for 'scalabrino2016improving' (section 0)
+[876] Biber.pm:131> WARN - I didn't find a database entry for 'thompson2012sampling' (section 0)
+[876] Biber.pm:131> WARN - I didn't find a database entry for 'mullner2013fastcluster' (section 0)
+[876] Biber.pm:133> INFO - WARNINGS: 3

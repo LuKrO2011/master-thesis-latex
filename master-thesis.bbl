@@ -288,36 +288,6 @@
       \field{title}{No silver bullet}
       \field{year}{1987}
     \endentry
-    \entry{buse2008metric}{inproceedings}{}
-      \name{author}{2}{}{%
-        {{hash=91168f1ccc26805c128a7fbc951c7d41}{%
-           family={Buse},
-           familyi={B\bibinitperiod},
-           given={Raymond\bibnamedelima PL},
-           giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
-        {{hash=57337109cb2845707a761585349ca724}{%
-           family={Weimer},
-           familyi={W\bibinitperiod},
-           given={Westley\bibnamedelima R},
-           giveni={W\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
-      }
-      \strng{namehash}{5f443773e890e9bf330442e930078411}
-      \strng{fullhash}{5f443773e890e9bf330442e930078411}
-      \strng{bibnamehash}{5f443773e890e9bf330442e930078411}
-      \strng{authorbibnamehash}{5f443773e890e9bf330442e930078411}
-      \strng{authornamehash}{5f443773e890e9bf330442e930078411}
-      \strng{authorfullhash}{5f443773e890e9bf330442e930078411}
-      \field{extraname}{1}
-      \field{sortinit}{B}
-      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{Proceedings of the 2008 international symposium on Software testing and analysis}
-      \field{title}{A metric for software readability}
-      \field{year}{2008}
-      \field{pages}{121\bibrangedash 130}
-      \range{pages}{10}
-    \endentry
     \entry{buse2009learning}{article}{}
       \name{author}{2}{}{%
         {{hash=91168f1ccc26805c128a7fbc951c7d41}{%
@@ -340,7 +310,6 @@
       \strng{authorbibnamehash}{5f443773e890e9bf330442e930078411}
       \strng{authornamehash}{5f443773e890e9bf330442e930078411}
       \strng{authorfullhash}{5f443773e890e9bf330442e930078411}
-      \field{extraname}{2}
       \field{sortinit}{B}
       \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
       \field{labelnamesource}{author}
@@ -422,50 +391,6 @@
       \field{year}{2020}
       \field{pages}{221\bibrangedash 228}
       \range{pages}{8}
-    \endentry
-    \entry{daka2015modeling}{inproceedings}{}
-      \name{author}{5}{}{%
-        {{hash=9da4ab0be4dac5cb6ecf1b1aae48e8db}{%
-           family={Daka},
-           familyi={D\bibinitperiod},
-           given={Ermira},
-           giveni={E\bibinitperiod}}}%
-        {{hash=e4572a2313a2ac217adcad051ea9aa22}{%
-           family={Campos},
-           familyi={C\bibinitperiod},
-           given={José},
-           giveni={J\bibinitperiod}}}%
-        {{hash=fc66f39b83d69c05a49d023f90b98586}{%
-           family={Fraser},
-           familyi={F\bibinitperiod},
-           given={Gordon},
-           giveni={G\bibinitperiod}}}%
-        {{hash=b538dcefa5d57bedc82e1f2dd9a0c3d0}{%
-           family={Dorn},
-           familyi={D\bibinitperiod},
-           given={Jonathan},
-           giveni={J\bibinitperiod}}}%
-        {{hash=677914c38f79edf457407a0ac011ac56}{%
-           family={Weimer},
-           familyi={W\bibinitperiod},
-           given={Westley},
-           giveni={W\bibinitperiod}}}%
-      }
-      \strng{namehash}{3a803fc903b5d3fcb60eee451a5a1522}
-      \strng{fullhash}{5f6e360ad34f0f61d871a17dcfbb9429}
-      \strng{bibnamehash}{3a803fc903b5d3fcb60eee451a5a1522}
-      \strng{authorbibnamehash}{3a803fc903b5d3fcb60eee451a5a1522}
-      \strng{authornamehash}{3a803fc903b5d3fcb60eee451a5a1522}
-      \strng{authorfullhash}{5f6e360ad34f0f61d871a17dcfbb9429}
-      \field{sortinit}{D}
-      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{Proceedings of the 2015 10th Joint Meeting on Foundations of Software Engineering}
-      \field{title}{Modeling readability to improve unit tests}
-      \field{year}{2015}
-      \field{pages}{107\bibrangedash 118}
-      \range{pages}{12}
     \endentry
     \entry{deimel1985uses}{article}{}
       \name{author}{1}{}{%
@@ -696,68 +621,6 @@
       \field{journaltitle}{Archives of psychology}
       \field{title}{A technique for the measurement of attitudes.}
       \field{year}{1932}
-    \endentry
-    \entry{liu2019learning}{inproceedings}{}
-      \name{author}{8}{}{%
-        {{hash=ab3ead9cd451b65f4a7344409c8d068d}{%
-           family={Liu},
-           familyi={L\bibinitperiod},
-           given={Kui},
-           giveni={K\bibinitperiod}}}%
-        {{hash=24b815f42979de139f7338d022f42278}{%
-           family={Kim},
-           familyi={K\bibinitperiod},
-           given={Dongsun},
-           giveni={D\bibinitperiod}}}%
-        {{hash=2236b66b73d9fa89328252d116f72e21}{%
-           family={Bissyandé},
-           familyi={B\bibinitperiod},
-           given={Tegawendé\bibnamedelima F},
-           giveni={T\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
-        {{hash=5ad04372f8b1672193f7608550cbb30f}{%
-           family={Kim},
-           familyi={K\bibinitperiod},
-           given={Taeyoung},
-           giveni={T\bibinitperiod}}}%
-        {{hash=8e62a8373ef2d9b982753566ef857501}{%
-           family={Kim},
-           familyi={K\bibinitperiod},
-           given={Kisub},
-           giveni={K\bibinitperiod}}}%
-        {{hash=c98c6eae52076e3aa0a19d985c10abb8}{%
-           family={Koyuncu},
-           familyi={K\bibinitperiod},
-           given={Anil},
-           giveni={A\bibinitperiod}}}%
-        {{hash=a7d8c2566df0cb26225323a178b85064}{%
-           family={Kim},
-           familyi={K\bibinitperiod},
-           given={Suntae},
-           giveni={S\bibinitperiod}}}%
-        {{hash=ab351b738d5cc3078883c26940742353}{%
-           family={Le\bibnamedelima Traon},
-           familyi={L\bibinitperiod\bibinitdelim T\bibinitperiod},
-           given={Yves},
-           giveni={Y\bibinitperiod}}}%
-      }
-      \list{organization}{1}{%
-        {IEEE}%
-      }
-      \strng{namehash}{f5ed66a6e6afd15dfa3288411d4fe5eb}
-      \strng{fullhash}{f59ba40f1466bc887f00c14c5e3f38f0}
-      \strng{bibnamehash}{f5ed66a6e6afd15dfa3288411d4fe5eb}
-      \strng{authorbibnamehash}{f5ed66a6e6afd15dfa3288411d4fe5eb}
-      \strng{authornamehash}{f5ed66a6e6afd15dfa3288411d4fe5eb}
-      \strng{authorfullhash}{f59ba40f1466bc887f00c14c5e3f38f0}
-      \field{sortinit}{L}
-      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{2019 IEEE/ACM 41st International Conference on Software Engineering (ICSE)}
-      \field{title}{Learning to spot and refactor inconsistent method names}
-      \field{year}{2019}
-      \field{pages}{1\bibrangedash 12}
-      \range{pages}{12}
     \endentry
     \entry{loriot2022styler}{article}{}
       \name{author}{3}{}{%
@@ -1793,7 +1656,9 @@
       \endverb
     \endentry
   \enddatalist
+  \missing{mullner2013fastcluster}
   \missing{scalabrino2016improving}
+  \missing{thompson2012sampling}
 \endrefsection
 \endinput
 

@@ -560,6 +560,14 @@ cleveref=true,%
 	year={2013}
 }
 
+@book{thompson2012sampling,
+	title={Sampling},
+	author={Thompson, Steven K},
+	volume={755},
+	year={2012},
+	publisher={John Wiley \& Sons}
+}
+
 \end{filecontents}
 \addbibresource{\jobname.bib}
 
@@ -1374,7 +1382,7 @@ cleveref=true,%
 	
 	The configurations are based on probabilities for different heuristics. A heuristic is applied with the specified probability to each occurrence of the object to which it is to be applied. For example, comment\_remove is applied with a probability of 10\% to each comment that occurs within the code snippet. The exact scope of changes for a method is therefore uncertain. It can even happen (especially with short methods such as getters and setters) that a method is not changed at all. For example, if a method only has a single comment and we use comment\_remove, it is very likely that the method will not be changed at all.
 	
-	In a second step, we applied a stratified sampling to distinguish between very simple methods such as getter and setter and more complex methods. In order to be able to compare the original methods with their modified variants, we only carried out the random sampling for the original methods and compared the rdh methods with these in a later step.
+	In a second step, we applied a stratified sampling~\cite{thompson2012sampling} to distinguish between very simple methods such as getter and setter and more complex methods. In order to be able to compare the original methods with their modified variants, we only carried out the random sampling for the original methods and compared the rdh methods with these in a later step.
 	
 	Thus, we first had to calculate features for the original code snippets. This was done using \citeauthor{scalabrino2018comprehensive}s tool~\cite{scalabrino2018comprehensive}. Therefore, a 110-dimensional features vector was calculated for each original code snippet. Next we compute the cosine similarity metrix between all feature vectors using scikit\curl{https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html}{2024-02-20}. 
 	Finally, using the fastcluster implementation \cite{mullner2013fastcluster} of Ward's hierarchical clustering we were able to cluster the methods into an arbitrary amount of clusters.	
@@ -1709,11 +1717,12 @@ cleveref=true,%
 	In this section we summarize the results of the main study conducted via prolific.
 	
 \textit{1. Experimental setup:}
-
-	The survey was conducted from the 31th January 2024 to the 7th February 2024. 221 participants were in total involved. Each of the 20 survey sheets was answered by 11 participants. For one survey prolific accidentally assigned one participant more. Each survey was configured so that a participant for one survey could not attend another one. Each survey had the same texts and configuration (see Appendix \ref{TODO}).
-	
-	You can find an example of a snippet being rated with the tool in figure \ref{fig:survey_tool}
-	
+	The survey was conducted using Tien Duc Nguyen's Code Annotation Tool (see Figure \ref{fig:survey_tool}) along with the platform prolific\curl{https://app.prolific.com/}{2024-02-21} for the recruitment and payment of participants.
+	The survey was conducted between January 31, 2024 and February 7, 2024. A total of 221 participants took part. Each of the 20 questionnaires was answered by 11 participants (similar to the survey of \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}). In one survey, one more participant was assigned by mistake. 
+	%	According to an online calculator\footnote{https://www.calculator.net/sample-size-calculator.html} 
+	We end up with a margin of error of 29.55\% at a confidence of 95\% for an individual snippet. However, we will aggregate over stratas and multiple snippets later anyway.
+	Each questionnaire consists of 20 code snippets. Consequently, 400 different code snippets are rated in total. The surveys were configured in such a way that each participant could only take part in one of the questionnaires. You can find the texts of the survey in appendix \ref{TODO}. The questionnaires were crafted as described in section \ref{Survey}.
+		
 	\begin{figure}[t]
 		\centering
 		\includegraphics[width=\textwidth]{img/survey_tool.png}
@@ -1721,9 +1730,7 @@ cleveref=true,%
 		\label{fig:survey_tool}
 	\end{figure}
 
-
 	% Target population
-	\textit{1.1 Target population:}
 	The target population consists of Java programmers selected by prolific. They may be students or work in industry. They can come from any country. Overall, there were no requirements other than familiarity with Java (see also table \ref{tab:prolific-audience}).
 	\begin{table}
 		\begin{tabular}{|l|l|}
@@ -1739,24 +1746,7 @@ cleveref=true,%
 		\label{tab:prolific-audience}
 	\end{table}
 	
-	% Survey
-	\textit{1.2 Survey construction:}
-	The first part of the survey is devoted to questionnaire attributes. The second part of the survey consists of 20 code snippets to be evaluated by the participants.
-	In total, we create 20 unique questionnaires, with each questionnaire being rated by 10 individual participants. Consequently, we generate a dataset of 400 code snippets. The expected expenditure for this survey, involving 200 participants via the Prolific platform, was about €500.
-	% Sample size
-	To get accurate study results, multiple participants have to rate the same code snippets. We specify a size of 11 participants per code snippet, similar to \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}. According to an online calculator\footnote{https://www.calculator.net/sample-size-calculator.html} we end up with a margin of error of 29.55\% at a confidence of 95\%. This means that we are 95\% confident that the actual readability of a code snippet is within 29.55\% of the survey result score. With a probability of 5\%, the readability of a code snippet differs by more than 29.55\% from the score of the survey result. On a Likert scale ranging from 1 to 5, the mean of the survey results is between 1.0 and 5.0. In this context, an offset of 29.55\% is an offset of more than one rating point~\cite{likert1932technique}. We need to consider this when evaluating our the gathered data.
-	
-	% Time Requirement
-	\textit{1.3 Time requirement:}
-	The first part (Prolific-specific questions and questionnaire attributes) takes the participant about one minute. The average time for rating a snippet is estimated with 30 seconds. Thus, rating 20 snippets takes about 10 minutes. The total time for completing one questionnaire is estimated with 11 minutes.
-	
-	% Sampling design
-	\textit{1.4 Sampling design:}
-	The survey participants are selected using Prolific. The only restriction for the participants is that they must be familiar with Java.
-	A big part of our code snippets might be getters and setters. However, we do not want to mostly evaluate getters and setters in our study. Therefore, we use stratified sampling~\cite{thompson2012sampling} and craft the surveys as described in section \ref{Survey}.
-			
 	% Internal/Research Questions
-	\textit{1.5 Sampling design:}
 	The internal research questions are as follows:
 	\begin{itemize}
 		\item Does the well-readable-assumption (Assumption \ref{well-readable-assumption}) hold?
@@ -1770,30 +1760,10 @@ cleveref=true,%
 		\item For Assumption~\ref{poorly-readable-assumption}: The readability of code does not significantly deteriorate compared to the original code snippet.
 	\end{itemize}
 	
-	%	Another goal of the study is to find estimates of which heuristics need to be applied how often to make the code less readable to some degree. This helps us to further adjust the settings of our generation approach for poorly readable code.
-	%	
-	%	The goal of our study is \textbf{not} to label code snippets by readability. If our assumptions  (Assumption~\ref{well-readable-assumption}~and~\ref{poorly-readable-assumption})
-	%	are confirmed, we can use them to make inferences about the readability of all code snippets generated with our approach. This is a crucial difference from comparable other studies~\cite{buse2009learning, dorn2012general, scalabrino2018comprehensive}.
-	
 	% Questionnaire Attributes
-	\textit{1.6 Questionnaire Attributes:}
-	The survey neither contains demographic questions nor filter questions. Besides the readability questions, each user is asked the following dependent question: "How would you describe your familiarity with Java?". The user can answer within a five point Likert scale: expert (5), advanced (4), intermediate (3), beginner (2), novice (1).
+	The survey neither contained demographic questions nor filter questions. Besides the readability questions, each user was asked the following dependent question: "How would you describe your familiarity with Java?". The user can answer within a five point Likert scale: expert (5), advanced (4), intermediate (3), beginner (2), novice (1).
 	
-	% Questionnaire - Opinion
-	\textit{1.7 Questionnaire:}
-	For each code snippet, the following closed-ended question is given: "How do you rate the readability of this code?". The answers follow the Likert Scale: very high (5), high (4), medium (3), low (2), very low (1).
-	
-	% Survey Result Evaluation
-	\textit{1.8 Survey Result Evaluation:}
-	Once a survey is completed by a participant, the survey result is evaluated to make sure the participants did not choose answers at random. The code snippet rating answers are checked for plausibility. For example, if a code snippet with expected rating 5 (by the heuristics and/or by other participants) is rated with 2 or less, this is an indication that the participant did not fill out the survey carefully. Several such indications lead to the exclusion of the participants and their answers.
-	
-	% Software
-	\textit{1.9 Software}
-	We use Prolific to pay participants for completing our survey. Our participants fill out the survey using Tien Duc Nguyen's Code Annotation Tool.
-	
-	% Evaluation
-	%	Another way to evaluate our survey on an ongoing basis is to conduct it iteratively. We start with three questionnaires and expand the number based on our conclusions from the first ones. This offers several advantages. Firstly, we can still adjust the survey if problems arise. Secondly, we can start building our pipeline for evaluation earlier. Finally, after each iteration, we can decide whether to include more variants of the same source code snippet or to increase the number of source code snippets instead (see Section \ref{sampling-design}). The first option could give us more insights on how to adjust the settings for our heuristics. The second option could increase the number of stratas involved or allow us to increase the evidence for a particular stratum by including more samples of the respective one.
-			
+	The expenditure for this survey was about €500.				
 	
 \textit{2. Threats:}
 	We identified the following threats:
@@ -1921,6 +1891,8 @@ cleveref=true,%
 	We also trained the model with a random sample of 210 data points to gain insight into what a change in training size might do. As we can see, the model has similar metrics to the all-all model. If we now compare the statistics, e.g. the accuracy of the new-new compared to the old-old model, we see that with a larger dataset an improvement of about 8\% is possible. Similar results are suggested by previous research on data augmentation, where an accuracy of 87.3\% was achieved~\citeauthor{mi2021effectiveness}. This emphasizes the importance of finding new ways of generating data for readability classification. 
 	
 \subsection{Research Question Results} \label{Research Question Results}
+
+	% TODO: Split up and add to previous subsections?
 
 	% Assumption 1 - RQ1
 	The readability ratings of code snippets mined from Github are not very accurate as we take the mean of all ratings for all methods and assign it to each snippet. However, the score of 3.68 is 0.XX TODO larger than the mean score for all ratings in the old dataset. Therefore we conclude that well readable assumption (Assumption~\ref{well-readable-assumption}) holds and answer the research question \ref{select-well}: Yes, automatically selected code can be assumed to be well readable.
