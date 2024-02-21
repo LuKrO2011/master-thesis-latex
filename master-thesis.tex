@@ -661,6 +661,10 @@ cleveref=true,%
 % Num samples
 \newcommand{\numSamples}{36077 }
 
+% Research question summary boxes
+\usepackage{tcolorbox}
+\newenvironment{researchbox}[1]{\begin{tcolorbox}[colback=blue!10!white,colframe=blue!50!black,title=#1]}{\end{tcolorbox}}
+
 
 \begin{document}
 	
@@ -1902,6 +1906,18 @@ cleveref=true,%
 	
 	% RQ3
 	When it comes to research question \ref{new-data} we can not clearly give an answer. An accuracy within the new dataset of 91.8\% is very well. However, the accuracy of 61.9\% percent when evaluating on the old dataset suggests, that the new training data is less valuable than the old one. We could neither improve the accuracy of the towards model by applying fine-tuning. While it is still possible that we successfully addressed a sub problem of readability with a good score, we are not able to improve existing general readability models.
+		
+	\begin{researchbox}{Summary (RQ1 - select-well):}
+		TODO
+	\end{researchbox}
+	
+	\begin{researchbox}{Summary (RQ2 - generate-poo):}
+		TODO
+	\end{researchbox}
+	
+	\begin{researchbox}{Summary (RQ3 - new-data):}
+		TODO
+	\end{researchbox}
 	
 \section{Discussion} \label{Discussion}
 
