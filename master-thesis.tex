@@ -1761,19 +1761,19 @@ cleveref=true,%
 	\end{itemize}
 	
 	% Questionnaire Attributes
-	The survey neither contained demographic questions nor filter questions. Besides the readability questions, each user was asked the following dependent question: "How would you describe your familiarity with Java?". The user can answer within a five point Likert scale: expert (5), advanced (4), intermediate (3), beginner (2), novice (1).
+	The survey neither contained demographic questions nor filter questions. Besides the readability questions, each user was asked the following dependent question: "How would you describe your familiarity with Java?". The user could answer within a five point Likert scale: expert (5), advanced (4), intermediate (3), beginner (2), novice (1).
 	
 	The expenditure for this survey was about €500.				
 	
 \textit{2. Threats:}
 	We identified the following threats:
-	\begin{enumerate}
-		\item \textbf{Ill-defined Target Population:} Ensuring a well-defined target population is critical to the survey's quality. To mitigate this threat, we clearly define our target population within this document (see Section~\ref{target-population}). Additionally, we conduct a pre-survey evaluation (see Section~\ref{sec:survey-evaluation}) to ensure the adequacy of our target population definition. Thereby, we enhance content and construct validity.
+	\begin{itemize}
+		\item \textbf{Ill-defined Target Population:} Ensuring a well-defined target population is critical to the survey's quality. To mitigate this threat, we clearly define our target population. Additionally, we conduct a pre-survey evaluation (see Section~\ref{Pilot Survey}) to ensure the adequacy of our target population definition. Thereby, we enhance content and construct validity.
 		
 		\item \textbf{Sampling Method (Stratified Sampling):} Our chosen sampling method is well-defined and proven in practice. This approach ensures that our sample represents all parts of the population under investigation. This is improving the survey's external validity.
 		
 		\item \textbf{Insufficient Responses for Drawing Conclusions:} To prevent drawing conclusions from an insufficient number of responses, we scale our survey to an appropriate size. This guarantees that we collect a substantial volume of responses, allowing for robust statistical analysis.
-	\end{enumerate}
+	\end{itemize}
 	
 \textit{3. Results:}
 	You can find an overview over the time required by the participants in the Figures \ref{fig:survey_time_box} and \ref{fig:survey_time_histogramm}. Additionally you can find the amount of participants that required less than 3 minutes for one survey sheet in Figure \ref{fig:survey_time_less_than_180}. The results of those participants might be a thread to validity to which we will come back later.
@@ -1912,29 +1912,19 @@ cleveref=true,%
 	% Study threats	
 	A thread related to the study could be the sampling approach used. While we argue that we avoided spending resources on labeling rdh data that is likely not different from the original methods or rather uninteresting, this might also introduce statistical errors to our survey results.
 	
-	% Other study threats
-	\begin{enumerate}
-		\item \textbf{Ill-defined Target Population:} Ensuring a well-defined target population is critical to the survey's quality. To mitigate this threat, we clearly define our target population within this document (see Section~\ref{target-population}). Additionally, we conduct a pre-survey evaluation (see Section~\ref{sec:survey-evaluation}) to ensure the adequacy of our target population definition. Thereby, we enhance content and construct validity.
-		
-		\item \textbf{Sampling Method (Stratified Sampling):} Our chosen sampling method is well-defined and proven in practice. This approach ensures that our sample represents all parts of the population under investigation. This is improving the survey's external validity.
-		
-		\item \textbf{Insufficient Responses for Drawing Conclusions:} To prevent drawing conclusions from an insufficient number of responses, we scale our survey to an appropriate size. This guarantees that we collect a substantial volume of responses, allowing for robust statistical analysis.
-	\end{enumerate}
-	
 	% Model threats	
 	When comparing the model performance trained on the new and old data set, it should be noted that the old data set is small. Consequently, comparisons between classifiers trained on the old dataset may also be unreliable \cite{mi2022towards}.
 	
 \section{Conclusions} \label{Conclusions}
-	TODO: Add conclusion
+	% Summary with Implications: So what?	
+	Recent research in the field of code readability classification has mainly focused on various deep learning model architectures to further improve accuracy. Little attention is paid to the fact that only 421 labeled code snippets are available to train these models. We introduced a novel approach to generate data, with which we created a dataset of \numSamples code snippets. Although our results show that the dataset does not have the same quality as previous data, it still captures code readability and could accordingly contribute to improve code readability classification accuracy in future research.
 	
-	% Future work
-	% Transformer
-	The new dataset generation approach has another advantage that is not yet utilized in this work: For the first time it is possible to generate a dataset with one well readable and a second one less readable code snippet that is functionally equivalent. This could be used to train a transformer on source code readability improvement. Such a transformer could take code as input and improve it's readability. Such a tool would probably be of high usability among programmers.
-	
-	The new approach to generating data sets has another advantage that is not yet used in this work: For the first time, it is possible to generate a dataset with one easily readable and a second, less readable and functionally equivalent code snippet. This could be used to train various models, including transformers. Such a transformer could take the code as input and improve its readability. We suspect that such a tool could be of great benefit to programmers.
+	% Future work	
+	% New dataset style
+	The new approach to generating data sets has an advantage that is not yet used in this work: For the first time, it is possible to generate a dataset with one easily readable and a second, less readable and functionally equivalent code snippet. This could be used to train various models, including transformers. Such a transformer could take the code as input and improve its readability. We suspect that such a tool could be of great benefit to programmers.
 	
 	% Languages	
-	A current limitation of the dataset is that it only works for Java code. A suggestion for future work is to overcome this limitation by extending the tool for other programming languages. This is not trivial, as one has to adapt the readability reduction heuristics to work with another language. Furthermore, a general tool that works for all languages will be difficult if not impossible.
+	A current limitation of the new dataset is that it only works for Java code. A suggestion for future work is to overcome this limitation by extending the tool for other programming languages. This is not trivial, as one has to adapt the readability reduction heuristics to work with another language. Furthermore, a general tool that works for all languages will be difficult if not impossible.
 	
 	% More surveys	
 	%	To further improve the readability estimates for both the good and poorly readable code, further surveys could be conducted. By splitting the code snippets into more granular clusters and obtaining a more accurate average by asking more people about the readability of the code within the same cluster, one can increase the accuracy of the label estimation. Such an improvement can then in turn improve the predictions of the model as it learns from this data.
@@ -1949,12 +1939,14 @@ cleveref=true,%
 	% Other encodings
 	Further research could also consist of finding and evaluating other encodings that represents the code in a different way.
 	
-	% Other model structure.
+	% Other model structure
 	Another way to improve existing code readability classifiers, such as the towards model, could be to develop a different structure for some layers of the model. We suggest increasing the size and depth of the layers so that the new dataset can be made useful. Alternatively, a completely different model architecture could be developed. 
 	
 	% More heuristics
 	The heuristics described in this work are only part of the possible heuristics that could be developed. Additional heuristics could further improve the diversity of poorly readable code. This could increase the number of internal features that a model can learn, which in turn could increase the accuracy of the model.
-
+	
+	% Summary
+	In summary, there are many opportunities to further investigate and thus most likely improve the classification accuracy of code readability. Our new data set and the generation approach could be useful here.
 	
 	\backmatter
 	
