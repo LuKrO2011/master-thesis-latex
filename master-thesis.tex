@@ -665,6 +665,11 @@ cleveref=true,%
 \usepackage{tcolorbox}
 \newenvironment{researchbox}[1]{\begin{tcolorbox}[colback=blue!10!white,colframe=blue!50!black,title=#1]}{\end{tcolorbox}}
 
+% Formatting x10^ numers
+\usepackage{siunitx}
+
+% Highlight rows of table
+\usepackage{colortbl}
 
 \begin{document}
 	
@@ -1157,25 +1162,25 @@ cleveref=true,%
 	You can find an overview over the accuracy scores for the models mentioned in Table \ref{tab:rel-acc-scores}.
 	\begin{table}[ht]
 		\centering
-		\begin{tabular}{lccc}
+		\caption{Accuracy scores of two-class readability classification models}
+		\vspace{8pt}
+		\label{tab:rel-acc-scores}
+		\begin{tabular}{lr}
 			\toprule
-			\textbf{Model} & \textbf{Accuracy (\%)} \\
+			\textbf{Model} & \textbf{Accuracy} \\
 			\midrule
-			Buse \cite{buse2009learning} & 76.5 \\
-			Possnet \cite{posnett2011simpler} & 71.7 \\
-			Dorn \cite{dorn2012general} & 78.6 \\
-			Scallabrino \cite{scalabrino2016improving} & 81.8 \\
-			Mi\_IncepCRM \cite{mi2018inception} & 82.2 - 84.2 \\
-			Mi\_DeepCRM \cite{mi2018improving} & 83.8 \\
-			Sharma \cite{sharma2020egan} & 84.8 \\
-			Mi\_Towards \cite{mi2022towards} & 85.3 \\
-			Mi\_Ranking \cite{mi2022rank} & 83.5 \\
-			Mi\_Graph \cite{mi2023graph} & 88.0 \\
-			
+			Buse \cite{buse2009learning} & 76.5 \% \\
+			Possnet \cite{posnett2011simpler} & 71.7 \% \\
+			Dorn \cite{dorn2012general} & 78.6 \% \\
+			Scallabrino \cite{scalabrino2016improving} & 81.8 \% \\
+			Mi\_IncepCRM \cite{mi2018inception} & 84.2 \% \\
+			Mi\_DeepCRM \cite{mi2018improving} & 83.8 \% \\
+			Sharma \cite{sharma2020egan} & 84.8 \% \\
+			Mi\_Towards \cite{mi2022towards} & 85.3 \% \\
+			Mi\_Ranking \cite{mi2022rank} & 83.5 \% \\
+			Mi\_Graph \cite{mi2023graph} & 88.0 \% \\
 			\bottomrule
 		\end{tabular}
-		\caption{Accuracy scores of two-class readability classification models}
-		\label{tab:rel-acc-scores}
 	\end{table}
 	% All: \cite{buse2009learning, posnett2011simpler, dorn2012general, scalabrino2016improving, mi2018inception, mi2018improving, sharma2020egan, mi2022towards, mi2022rank, mi2023graph}
 	% Classic: \cite{buse2009learning, posnett2011simpler, dorn2012general, scalabrino2016improving, mi2018inception, mi2018improving, sharma2020egan, mi2022towards, mi2022rank, mi2023graph}
@@ -1320,25 +1325,21 @@ cleveref=true,%
 	
 	\begin{table}[h]
 		\centering
-		\begin{tabular}{|c|c|}
-			\hline
-			\textbf{Heuristic} & \textbf{Reason} \\
-			\hline
-			\texttt{inlineMethod} & Makes methods to long \\
-			\hline
-			\texttt{add0} & Limited survey capacity \\
-			\hline
-			\texttt{insertBraces} & Limited survey capacity \\
-			\hline
-			\texttt{starImport} & No effect after comment extraction \\
-			\hline
-			\texttt{inlineField} & Limited survey capacity \\
-			\hline
-			\texttt{partiallyEvaluate} & Might increase readability \\
-			\hline
-		\end{tabular}
 		\caption{Readability Decreasing Heuristics that are not included in the final version of the new dataset and why}
+		\vspace{8pt}
 		\label{tab:not-included-rdhs}
+		\begin{tabular}{ll}
+			\toprule
+			\textbf{Heuristic} & \textbf{Reason} \\
+			\midrule
+			\texttt{inlineMethod} & Makes methods too long \\
+			\texttt{add0} & Limited survey capacity \\
+			\texttt{insertBraces} & Limited survey capacity \\
+			\texttt{starImport} & No effect after comment extraction \\
+			\texttt{inlineField} & Limited survey capacity \\
+			\texttt{partiallyEvaluate} & Might increase readability \\
+			\bottomrule
+		\end{tabular}
 	\end{table}
 	
 	We have also added Code2Vec~\cite{alon2019code2vec} to the tool. This makes it possible to rename methods not only to iterating or arbitrary strings or numbers, but also to other realistic method names. The idea was to use worse method names predicted by Code2Vec and rename the methods to these. However, due to time and resource constraints regarding the survey, we did not pursue this approach.	However, there is a corresponding mode supported by the tool. This can be used for further research.
@@ -1357,9 +1358,12 @@ cleveref=true,%
 	
 	\begin{table}[h]
 		\centering
+		\caption{Chosen configurations and their probabilities for the Readability Decreasing Heuristics}
+		\vspace{8pt}
+		\label{tab:rdh_configurations}
 		\begin{tabular}{|l|l|l|}
 			\hline
-			\textbf{Configuration} & \textbf{RDH probabilities} \\
+			\textbf{Configuration} & \textbf{Probabilities} \\
 			\hline
 			none & - \\
 			\hline
@@ -1380,9 +1384,31 @@ cleveref=true,%
 			all7 & all probabilites/7\\
 			\hline
 		\end{tabular}
-		\caption{Chosen configurations and their probabilities for the RDH tool}
-		\label{tab:rdh_configurations}
+
 	\end{table}
+	
+%	\begin{table}[h]
+%		\centering
+%		\caption{Chosen configurations and their probabilities for the Readability Decreasing Heuristics}
+%		\vspace{8pt}
+%		\label{tab:rdh_configurations}
+%		\begin{tabular}{ll}
+%			\toprule
+%			\textbf{Configuration} & \textbf{Probabilities} \\
+%			\midrule
+%			none & - \\
+%			comments\_remove & removeComment: 1.0 \\
+%			newline\_instead\_of\_space & newLineInsteadOfSpace: 0.15 \\
+%			newlines\_few & \begin{tabular}[t]{@{}l@{}}removeNewline: 0.3 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
+%			newlines\_many & \begin{tabular}[t]{@{}l@{}}add1Newline: 0.15 \\ add2Newlines: 0.05\end{tabular} \\
+%			rename & \begin{tabular}[t]{@{}l@{}}renameVariable: 0.3 \\ renameField: 0.3 \\ renameMethod: 0.3\end{tabular} \\
+%			spaces\_many & \begin{tabular}[t]{@{}l@{}}Add1Space: 0.2 \\ Add2Spaces: 0.1 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
+%			tabs & \begin{tabular}[t]{@{}l@{}}remove1IncTab: 0.2 \\ add1IncTab: 0.1 \\ remove1DecTab: 0.1 \\ add1DecTab: 0.1 \\ incTabInsteadOfDecTab: 0.05 \\ decTabInsteadOfIncTab: 0.05\end{tabular} \\
+%			all7 & all probabilities/7 \\
+%			\bottomrule
+%		\end{tabular}
+%	\end{table}
+	
 	
 	The configurations are based on probabilities for different heuristics. A heuristic is applied with the specified probability to each occurrence of the object to which it is to be applied. For example, comment\_remove is applied with a probability of 10\% to each comment that occurs within the code snippet. The exact scope of changes for a method is therefore uncertain. It can even happen (especially with short methods such as getters and setters) that a method is not changed at all. For example, if a method only has a single comment and we use comment\_remove, it is very likely that the method will not be changed at all.
 	
@@ -1424,20 +1450,22 @@ cleveref=true,%
 	
 	\begin{table}[htbp]
 		\centering
-		\begin{tabular}{lccc}
+		\caption{Strata distribution of sampled methods}
+		\vspace{8pt}
+		\label{tab:sampled_methods}
+		\begin{tabular}{lrr}
 			\toprule
 			\textbf{Stratum} & \textbf{Percentage} & \textbf{Count} \\
 			\midrule
-			Stratum 0 & 10\% & 4 \\
-			Stratum 1 & 40\% & 16 \\
-			Stratum 2 & 10\% & 4 \\
-			Stratum 3 & 40\% & 16 \\
+			Stratum 0 & 10 \% & 4 \\
+			Stratum 1 & 40 \% & 16 \\
+			Stratum 2 & 10 \% & 4 \\
+			Stratum 3 & 40 \% & 16 \\
 			\midrule
-			\textbf{Total} & \textbf{100\%} & \textbf{40} \\
+			\textbf{Total} & \textbf{100 \%} & \textbf{40} \\
 			\bottomrule
 		\end{tabular}
-		\caption{Strata distribution of sampled methods}
-		\label{tab:sampled_methods}
+
 	\end{table}
 	
 	This decision was made due to the relatively high frequency of methods that do not differ from their original methods (see Figure \ref{fig:sampling_not_different_overall}). Another reason for this decision is that particularly simple methods are rather uninteresting for the classification of readability, as they are often generated (e.g. by IDEs) and usually follow a straightforward pattern.
@@ -1683,36 +1711,70 @@ cleveref=true,%
 		%		\label{tab:pilot_survey_results}
 		%	\end{table}
 	
+%	\begin{table}[htbp]
+%		\centering
+%		\caption{Mean score ratings for the pilot survey}
+%		\vspace{8pt}
+%		\label{tab:pilot_survey_results}
+%		\begin{tabular}{llp{6cm}r}
+%			\toprule
+%			\textbf{Stratum} & \textbf{Feature} & \textbf{File} & \textbf{Score} \\
+%			\midrule
+%			stratum\_3 & methods & \seqsplit{hbase\_PreviousBlockCompressionRatePredicator.java\_updateLatestBlockSizes.java} & 4,6 \\
+%			stratum\_0 & tabs\_few & \seqsplit{hadoop\_DataNodeFaultInjector.java\_delayWriteToDisk.java} & 4,3 \\
+%			stratum\_2 & tabs\_few & \seqsplit{framework\_WindowMoveListener.java\_getTicketNumber.java} & 3,8 \\
+%			stratum\_1 & methods & \seqsplit{flink\_HiveParserSemanticAnalyzer.java\_processPTFSource.java} & 3,7 \\
+%			stratum\_2 & methods & \seqsplit{hibernate-validator\_PESELValidator.java\_year.java} & 3,7 \\
+%			stratum\_3 & newlines\_many & \seqsplit{hadoop\_CompressionCodec.java\_createInputStreamWithCodecPool.java} & 3,3 \\
+%			stratum\_1 & comments\_remove & \seqsplit{flink\_MemorySegment.java\_get.java} & 3,1 \\
+%			stratum\_0 & spaces\_few & \seqsplit{hadoop\_FilePosition.java\_bufferFullyRead.java} & 3,0 \\
+%			stratum\_1 & all\_weak\_3 & \seqsplit{hadoop\_SingleFilePerBlockCache.java\_getIntList.java} & 3,0 \\
+%			stratum\_1 & newlines\_many & \seqsplit{pulsar\_LoadSimulationController.java\_writeProducerOptions.java} & 2,9 \\
+%			stratum\_1 & spaces\_few & \seqsplit{hbase\_HBaseZKTestingUtility.java\_startMiniZKCluster.java} & 2,6 \\
+%			stratum\_1 & misc & \seqsplit{hbase\_Encryption.java\_decryptWithSubjectKey.java} & 2,4 \\
+%			stratum\_2 & newlines\_few & \seqsplit{zxing\_ModulusPoly.java\_isZero.java} & 2,4 \\
+%			stratum\_1 & tabs\_few & \seqsplit{hbase\_ZKMainServer.java\_main.java} & 2,2 \\
+%			stratum\_1 & tabs\_many & \seqsplit{flink\_HiveParserSemanticAnalyzer.java\_findCTEFromName.java} & 2,2 \\
+%			stratum\_1 & spaces\_many & \seqsplit{hadoop\_ActiveAuditManagerS3A.java\_createExecutionInterceptors.java} & 2,1 \\
+%			stratum\_1 & newlines\_few & \seqsplit{hudi\_Pipelines.java\_hoodieStreamWrite.java} & 1,7 \\
+%			stratum\_3 & tabs\_many & \seqsplit{hadoop\_S3AInputPolicy.java\_getPolicy.java} & 1,7 \\
+%			stratum\_1 & all\_weak & \seqsplit{flink\_SSLUtils.java\_createInternalNettySSLContext.java} & 1,3 \\
+%			stratum\_1 & all & \seqsplit{hudi\_HoodieMultiTableStreamer.java\_populateTableExecutionContextList.java} & 1,2 \\
+%			\bottomrule
+%		\end{tabular}
+%	\end{table}
+		
 	\begin{table}[htbp]
 		\centering
-		\begin{tabular}{llp{6cm}c}
+		\caption{Mean score ratings for the pilot survey}
+		\vspace{8pt}
+		\label{tab:pilot_survey_results}
+		\begin{tabular}{llr}
 			\toprule
-			\textbf{Stratum} & \textbf{Feature} & \textbf{File} & \textbf{Score} \\
+			\textbf{Stratum} & \textbf{RDH} & \textbf{Score} \\
 			\midrule
-			stratum\_3 & methods & \seqsplit{hbase\_PreviousBlockCompressionRatePredicator.java\_updateLatestBlockSizes.java} & 4,6 \\
-			stratum\_0 & tabs\_few & \seqsplit{hadoop\_DataNodeFaultInjector.java\_delayWriteToDisk.java} & 4,3 \\
-			stratum\_2 & tabs\_few & \seqsplit{framework\_WindowMoveListener.java\_getTicketNumber.java} & 3,8 \\
-			stratum\_1 & methods & \seqsplit{flink\_HiveParserSemanticAnalyzer.java\_processPTFSource.java} & 3,7 \\
-			stratum\_2 & methods & \seqsplit{hibernate-validator\_PESELValidator.java\_year.java} & 3,7 \\
-			stratum\_3 & newlines\_many & \seqsplit{hadoop\_CompressionCodec.java\_createInputStreamWithCodecPool.java} & 3,3 \\
-			stratum\_1 & comments\_remove & \seqsplit{flink\_MemorySegment.java\_get.java} & 3,1 \\
-			stratum\_0 & spaces\_few & \seqsplit{hadoop\_FilePosition.java\_bufferFullyRead.java} & 3 \\
-			stratum\_1 & all\_weak\_3 & \seqsplit{hadoop\_SingleFilePerBlockCache.java\_getIntList.java} & 3 \\
-			stratum\_1 & newlines\_many & \seqsplit{pulsar\_LoadSimulationController.java\_writeProducerOptions.java} & 2,9 \\
-			stratum\_1 & spaces\_few & \seqsplit{hbase\_HBaseZKTestingUtility.java\_startMiniZKCluster.java} & 2,6 \\
-			stratum\_1 & misc & \seqsplit{hbase\_Encryption.java\_decryptWithSubjectKey.java} & 2,4 \\
-			stratum\_2 & newlines\_few & \seqsplit{zxing\_ModulusPoly.java\_isZero.java} & 2,4 \\
-			stratum\_1 & tabs\_few & \seqsplit{hbase\_ZKMainServer.java\_main.java} & 2,2 \\
-			stratum\_1 & tabs\_many & \seqsplit{flink\_HiveParserSemanticAnalyzer.java\_findCTEFromName.java} & 2,2 \\
-			stratum\_1 & spaces\_many & \seqsplit{hadoop\_ActiveAuditManagerS3A.java\_createExecutionInterceptors.java} & 2,1 \\
-			stratum\_1 & newlines\_few & \seqsplit{hudi\_Pipelines.java\_hoodieStreamWrite.java} & 1,7 \\
-			stratum\_3 & tabs\_many & \seqsplit{hadoop\_S3AInputPolicy.java\_getPolicy.java} & 1,7 \\
-			stratum\_1 & all\_weak & \seqsplit{flink\_SSLUtils.java\_createInternalNettySSLContext.java} & 1,3 \\
-			stratum\_1 & all & \seqsplit{hudi\_HoodieMultiTableStreamer.java\_populateTableExecutionContextList.java} & 1,2 \\
+			Stratum 3 & methods & 4,6 \\
+			Stratum 0 & tabs\_few & 4,3 \\
+			Stratum 2 & tabs\_few & 3,8 \\
+			Stratum 1 & methods & 3,7 \\
+			Stratum 2 & methods & 3,7 \\
+			Stratum 3 & newlines\_many & 3,3 \\
+			Stratum 1 & comments\_remove & 3,1 \\
+			Stratum 0 & spaces\_few & 3,0 \\
+			Stratum 1 & all\_weak\_3 & 3,0 \\
+			Stratum 1 & newlines\_many & 2,9 \\
+			Stratum 1 & spaces\_few & 2,6 \\
+			Stratum 1 & misc & 2,4 \\
+			Stratum 2 & newlines\_few & 2,4 \\
+			Stratum 1 & tabs\_few & 2,2 \\
+			Stratum 1 & tabs\_many & 2,2 \\
+			Stratum 1 & spaces\_many & 2,1 \\
+			Stratum 1 & newlines\_few & 1,7 \\
+			Stratum 3 & tabs\_many & 1,7 \\
+			Stratum 1 & all\_weak & 1,3 \\
+			Stratum 1 & all & 1,2 \\
 			\bottomrule
 		\end{tabular}
-		\caption{Pilot survey results}
-		\label{tab:pilot_survey_results}
 	\end{table}
 	
 	Once the aforementioned adjustments had been made and the feedback on the survey instrument had been implemented, the actual study was carried out.
@@ -1736,18 +1798,23 @@ cleveref=true,%
 
 	% Target population
 	The target population consists of Java programmers selected by prolific. They may be students or work in industry. They can come from any country. Overall, there were no requirements other than familiarity with Java (see also table \ref{tab:prolific-audience}).
+	
 	\begin{table}
-		\begin{tabular}{|l|l|}
-			\hline
+		\centering
+		\caption{Target population for the prolific survey}
+		\vspace{8pt}
+		\label{tab:prolific-audience}
+		\begin{tabular}{ll}
+			\toprule
+			\textbf{Type} & \textbf{Target Population} \\
+			\midrule
 			Target Audience      & Java programmers \\
 			Unit of Observation  & Java programmers \\
 			Unit of Analysis     & Java programmers \\
 			Search Unit          & Selected by Prolific (Programming Languages: Java)\\
 			Source of Sampling   & Prolific \\
-			\hline
+			\bottomrule
 		\end{tabular}
-		\caption{Target population for the prolific survey}
-		\label{tab:prolific-audience}
 	\end{table}
 	
 	% Internal/Research Questions
@@ -1841,27 +1908,73 @@ cleveref=true,%
 		
 	Our results suggest that no modification (none rdh) besides converting to the AST and back makes no difference to the original methods. The difference could just as well be due to random variation with a probability of 92\%. If we compare the RDHs with the none methods, we can be sure that the scores of all methods except newlines many and rename are indeed statistically different from the scores of none. If we consider binary readability classification and split the data for none and Newlines Many into into two classes (not-readable: 1,2; readable: 3-5) we also get significance that the ratings for newlines many are statistically significantly different from none (TODO: Add p Values). This leaves only rename where we can not confirm statistical significance. Overall, this confirms that the heuristics actually reduce the readability of the given code.
 	
+	%	\begin{table}[h]
+	%		\centering
+	%		%		\caption{Mann-Whitney U test results of none against each RDH. If the p-value is smaller or equal to 0.05 the null-hypothesis is rejected confirming, that the ratings are actually different and not just a random variation. TODO: Update data}
+	%		\caption{Mann-Whitney U test results of none against each rdh}
+	%		\vspace{8pt}
+	%		\label{tab:survey_statistical_evidence}
+	%		\begin{tabular}{lr}
+	%			\toprule
+	%			\textbf{Condition} & \textbf{$p$} \\
+	%			\midrule
+	%			None - Methods & 0.9224 \\
+	%			None - Newlines Few & $5.23 \times 10^{-6}$ \\
+	%			None - Spaces Many & 0.0407 \\
+	%			None - Newlines Many & 0.3006 \\
+	%			None - Comments Remove & 0.00364 \\
+	%			None - Rename & 0.099 \\
+	%			None - Newline Instead Of Space & $4.57 \times 10^{-6}$ & True \\
+	%			None - Tabs & $3.06 \times 10^{-8}$ \\
+	%			None - All7 & $1.80 \times 10^{-7}$ \\
+	%			\bottomrule
+	%		\end{tabular}
+	%	\end{table}
+	
+%	\begin{table}[h]
+%		\centering
+%		\caption{Mann-Whitney U test results of none against each RDH}
+%		\vspace{8pt}
+%		\label{tab:survey_statistical_evidence}
+%		\begin{tabular}{lS[table-format=1.2e-2]}
+%			\toprule
+%			\textbf{Condition} & \textbf{$p$} \\
+%			\midrule
+%			None - Methods & \num{9.22e-1} \\
+%			None - Newlines Few & \num{5.23e-6} \\
+%			None - Spaces Many & \num{4.07e-2} \\
+%			None - Newlines Many & \num{3.00e-1} \\
+%			None - Comments Remove & \num{3.64e-3} \\
+%			None - Rename & \num{9.90e-2} \\
+%			None - Newline Instead Of Space & \num{4.57e-6} \\
+%			None - Tabs & \num{3.06e-8} \\
+%			None - All7 & \num{1.80e-7} \\
+%			\bottomrule
+%		\end{tabular}
+%	\end{table}
+
 	\begin{table}[h]
 		\centering
-		\begin{tabular}{lccc}
+		\caption{Mann-Whitney U test results of none against each RDH}
+		\vspace{8pt}
+		\label{tab:survey_statistical_evidence}
+		\begin{tabular}{lS[table-format=1.2e-2]}
 			\toprule
-			\textbf{Condition} & \textbf{P-value} & \textbf{Reject} \\
+			\textbf{Condition} & \textbf{$p$} \\
 			\midrule
-			None - Methods & 0.9224 & False \\
-			None - Newlines Few & $5.23 \times 10^{-6}$ & True \\
-			None - Spaces Many & 0.0407 & True \\
-			None - Newlines Many & 0.3006 & False \\
-			None - Comments Remove & 0.00364 & True \\
-			None - Rename & 0.099 & False \\
-			None - Newline Instead Of Space & $4.57 \times 10^{-6}$ & True \\
-			None - Tabs & $3.06 \times 10^{-8}$ & True \\
-			None - All7 & $1.80 \times 10^{-7}$ & True \\
+			None - Methods & \cellcolor{red!25}\num{9.22e-1} \\
+			None - Newlines Few & \cellcolor{green!25}\num{5.23e-6} \\
+			None - Spaces Many & \cellcolor{green!25}\num{4.07e-2} \\
+			None - Newlines Many & \cellcolor{red!25}\num{3.00e-1} \\
+			None - Comments Remove & \cellcolor{green!25}\num{3.64e-3} \\
+			None - Rename & \cellcolor{red!25}\num{9.90e-2} \\
+			None - Newline Instead Of Space & \cellcolor{green!25}\num{4.57e-6} \\
+			None - Tabs & \cellcolor{green!25}\num{3.06e-8} \\
+			None - All7 & \cellcolor{green!25}\num{1.80e-7} \\
 			\bottomrule
 		\end{tabular}
-		\caption{Mann-Whitney U test results of none against each RDH. If the p-value is smaller or equal to 0.05 the null-hypothesis is rejected confirming, that the ratings are actually different and not just a random variation. TODO: Update data}
-		\label{tab:survey_statistical_evidence}
 	\end{table}
-	
+		
 	\begin{researchbox}{Summary (RQ2 - generate-poor):}
 		All of the 7 heuristics but rename decrease readability by a significant extend compared to none. We estimate the readability decrease for a certain probability oaf a certain type as can be seen in Figure \ref{fig:survey_ratings_bar_all}. The poorly readable assumption (Assumption~\ref{poorly-readable-assumption}) holds. 
 	\end{researchbox}
