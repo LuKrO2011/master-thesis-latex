@@ -642,10 +642,10 @@ cleveref=true,%
 \newtheorem{definition}{Definition}[section]
 
 % Multi-citations
-\newcommand{\citeclassicmodels}{\cite{buse2009learning, posnett2011simpler, dorn2012general, scalabrino2018comprehensive}}
-\newcommand{\citedeepmodels}{\cite{mi2018inception, mi2018improving, sharma2020egan, mi2022towards, mi2022rank, mi2023graph}}
-\newcommand{\citeallmodels}{\cite{buse2009learning, posnett2011simpler, dorn2012general, scalabrino2018comprehensive, mi2018inception, mi2018improving, sharma2020egan, mi2022towards, mi2022rank, mi2023graph}}
-\newcommand{\citeolddataset}{\cite{buse2009learning, dorn2012general, scalabrino2018comprehensive}}
+\newcommand{\citeclassicmodels}{\cite{buse2009learning, posnett2011simpler, dorn2012general, scalabrino2018comprehensive} }
+\newcommand{\citedeepmodels}{\cite{mi2018inception, mi2018improving, sharma2020egan, mi2022towards, mi2022rank, mi2023graph} }
+\newcommand{\citeallmodels}{\cite{buse2009learning, posnett2011simpler, dorn2012general, scalabrino2018comprehensive, mi2018inception, mi2018improving, sharma2020egan, mi2022towards, mi2022rank, mi2023graph} }
+\newcommand{\citeolddataset}{\cite{buse2009learning, dorn2012general, scalabrino2018comprehensive} }
 
 % See Section
 \newcommand{\seeSectionRef}[1]{(see Section~\ref{#1})}
@@ -702,31 +702,41 @@ cleveref=true,%
 	% TODO: Not used: expose: 3.1, 3.2, 3.3
 	% TODO: Not used: Readability study
 
-	% Importance
+	% Motivation: Importance
 	In the realm of software development, the significance of code readability cannot be overstated. Together with understandability, it serves as the foundation for efficient collaboration, comprehension, and maintenance of software systems~\cite{posnett2011simpler, aggarwal2002integrated}. 
 	Maintenance alone will consume over 70\% of the total lifecycle cost of a software product and for maintenance, the most time-consuming act is reading code~\cite{buse2009learning, deimel1985uses, rugaber2000use, boehm2001defect}.
 	Therefore, it is important to ensure a high readability of code. In order to archive this, we need to measure readability.
-	
-	% Current state
+	% Motivation: Current state
 	In the last years, researchers have proposed several metrics and models for assessing code readability with an accuracy of up to 81.8\%~\citeclassicmodels. In recent years, deep learning based models are able to achieve an accuracy of up to 88.0\%~\citedeepmodels.
-	However, these models do not capture what developers think of readability improvements~\cite{fakhoury2019improving}. This suggests that there is room for improvement in readability classification of source code. 
 	
-	% Proposed work
-	We are investigating whether it is possible to achieve higher accuracy in code readability classification for Java using more data. Instead of introducing a new model, we will try to achieve this with more training data. Therefore, we propose a novel approach to data generation for code readability classification. We will evaluate such a generated dataset using a survey and by comparing the accuracy of the model of \citeauthor{mi2022towards}~\cite{mi2022towards} trained on the old and the new data.
+	% Main problem
+	%	However, these models do not capture what developers think of readability improvements~\cite{fakhoury2019improving}. This suggests that there is room for improvement in readability classification of source code. 
+	However, a major limitation of these models is not their architecture, but the size of the available dataset for the code readability classification, which comprises 421 code snippets \citeolddataset.
+	
+	% Problem details
+	% Effects of more data
+	Deep Learning based models perform better the more training data they get~\cite{hestness2017deep}. Therefore, one approach in order to further improve existing models is to gather more training data.
+	% Effort of studys
+	This requires, as it was done previously, a lot of effort and persons willing to rate code based on their readability.
+	
+	% Approach
+	The main idea of this work is to investigate whether it is possible to achieve higher accuracy in code readability classification for Java using automated generated data. 
+	%	Instead of introducing a new model, we will try to achieve this with more training data. Therefore, we propose a novel approach to data generation for code readability classification. We will evaluate such a generated dataset using a survey and by comparing the accuracy of the model of \citeauthor{mi2022towards}~\cite{mi2022towards} trained on the old and the new data.
 	
 	% Contents
-	% Background and related work		
-	In the next section (\ref{Background and related work}) we will look at related work. The explanation of source code readability is presented in section \ref{Readability}. A presentation of classical computational approaches is presented in section \ref{Classical calculation approaches}, followed by an overview of deep learning-based approaches in section \ref{Deep Learning based approaches}. Furthermore, in section \ref{Data Augmentation}, we provide insights into relevant studies dealing with data augmentation for code readability. Then, in section \ref{Diverse Perspectives}, we provide a summary of recent advances in the field of code readability. Finally, in section \ref{Data Generation}, we turn to studies related to our proposed data generation approach.
-	
-	% Main	
-	We will then describe our presented approach to dataset generation in detail in section \ref{Mined and Modified Code for Dataset Generation}. In section \ref{Work on Existing Datasets}, we present our work on existing datasets, followed by some considerations on classifying readability versus regression in section \ref{Classification Considerations}. Next, in section \ref{Dataset Generation Approach}, we present our approach to generating datasets in detail, which requires the use of readability reduction heuristics (see section \ref{Readability Decreasing Heursitcs}). Finally, section \ref{Survey} explains how we evaluated our new dataset using a survey, and section \ref{Readability Classification Model} compares the new data with existing ones.
-	
-	% Evaluation
-	Finally, we will present the results of the evaluation of our new dataset in the section \ref{Evaluation}. This section is divided into the presentation of the results of the survey \ref{Survey Results}, the trained model \ref{Model training results} and finally the research questions we proposed \ref{Research Question Results}.
-	
-	% Discussion and Conslusion
-	We finish our work by discussing our findings in section \ref{Discussion} and then draw conclusions from our work in section \ref{Conclusions}.
+	%	% Background and related work		
+	%	In the next section (\ref{Background and related work}) we will look at related work. The explanation of source code readability is presented in section \ref{Readability}. A presentation of classical computational approaches is presented in section \ref{Classical calculation approaches}, followed by an overview of deep learning-based approaches in section \ref{Deep Learning based approaches}. Furthermore, in section \ref{Data Augmentation}, we provide insights into relevant studies dealing with data augmentation for code readability. Then, in section \ref{Diverse Perspectives}, we provide a summary of recent advances in the field of code readability. Finally, in section \ref{Data Generation}, we turn to studies related to our proposed data generation approach.
+	%	
+	%	% Main	
+	%	We will then describe our presented approach to dataset generation in detail in section \ref{Mined and Modified Code for Dataset Generation}. In section \ref{Work on Existing Datasets}, we present our work on existing datasets, followed by some considerations on classifying readability versus regression in section \ref{Classification Considerations}. Next, in section \ref{Dataset Generation Approach}, we present our approach to generating datasets in detail, which requires the use of readability reduction heuristics (see section \ref{Readability Decreasing Heursitcs}). Finally, section \ref{Survey} explains how we evaluated our new dataset using a survey, and section \ref{Readability Classification Model} compares the new data with existing ones.
+	%	
+	%	% Evaluation
+	%	Finally, we will present the results of the evaluation of our new dataset in the section \ref{Evaluation}. This section is divided into the presentation of the results of the survey \ref{Survey Results}, the trained model \ref{Model training results} and finally the research questions we proposed \ref{Research Question Results}.
+	%	
+	%	% Discussion and Conslusion
+	%	We finish our work by discussing our findings in section \ref{Discussion} and then draw conclusions from our work in section \ref{Conclusions}.
 		
+	% Old contents
 	%	We will summarize background knowledge for both classical and deep learning based classification approaches. We will have a look at related work.
 	%	
 	%	% Dataset generation approach
@@ -743,15 +753,10 @@ cleveref=true,%
 	%	
 	%	% Conclusion
 	%	In the last section we summarize our work, draw conclusions from it and propose future work.
-
-	% TODO: Inline this somewhere?
-	% Effects of more data
-	Deep Learning based models perform better the more training data they get~\cite{hestness2017deep}. Therefore, one approach in order to further improve existing models is to gather more training data.
-	This requires, as it was done previously, a lot of effort and persons willing to rate code based on their readability. We present another approach for gathering training data.
 	
 	% Dataset generation
 	In a first step, GitHub repositories with known high code quality are downloaded and labeled as highly readable. We select repositories using a similar approach as \citeauthor{allamanis2016convolutional}~\cite{allamanis2016convolutional} and then assume that they contain only well readable code.
-	In a second step, the code is manipulated so that it is subsequently less readable. This approach is similar to the approach of \citeauthor{loriot2022styler}~\cite{loriot2022styler}. After both steps, we have a new, automatically generated training dataset for source code readability classification.
+	In a second step, the code is manipulated so that it is subsequently less readable. This approach is similar to the approach of \citeauthor{loriot2022styler}~\cite{loriot2022styler}. After both steps, we have a new, automatically generated dataset for code readability classification.
 	
 	% Readabililty Decreasing Heuristics
 	This brings up the question, how to manipulate code so that it is less readable afterwards. We therefore introduce a tool called Readability Decreasing Heuristics. As the name suggests this is a collection of heuristics that, when applied to source code, lower the readability of it. For example such a heuristic is to replace spaces with newlines. Another example is to increase the indentation of a code block by a tab or multiple spaces. Moreover, with most changes it is also possible to do exactly the opposite (replacing newlines with spaces, decreasing indentation), which in most cases also decreases the readability of source code.
@@ -766,36 +771,30 @@ cleveref=true,%
 	\end{enumerate}
 	
 	% Study goals
-	% We will conclude a user study to evaluate the newly generated data for readability classifier models.
-	The goal of the user study is to answer the following key questions:
-	\begin{enumerate}
-			\item Does the well-readable-assumption (assumption \ref{well-readable-assumption}) hold?
-			\item Does the poorly-readable-assumption (assumption \ref{poorly-readable-assumption}) hold?
-		\end{enumerate}
-	
+	We will conduct a survey to confirm these assumptions (Assumption \ref{well-readable-assumption} and \ref{poorly-readable-assumption}).
 	% Study details
-	We will achieve this by showing Java programmers code snippets that were generated with the presented approach. Therefore, human annotators give each code snippet a rating of its readability. The annotators are selected by prolific\curl{https://www.prolific.com/}{2023-09-30}. Particular attention is paid to a high proportion of people from industry. The readability rating is based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable). We apply the same rating as done previously~\citeolddataset, but, other than before, we will not use the rating for labeling the training data. Instead, we will only use the ratings to validate a few randomly selected code snippets out of many that are automatically labeled.
+	There we will ask Java programmers to rate code snippets that were generated with the presented approach. Therefore, human annotators give each code snippet a rating of its readability. The annotators are selected by prolific\curl{https://www.prolific.com/}{2023-09-30}. Particular attention is paid to a high proportion of people from industry. The readability rating is based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable). We apply the same rating as done previously~\citeolddataset, but, other than before, we will not use the rating for labeling the training data. Instead, we will only use the ratings to validate a few randomly selected code snippets out of many that are automatically labeled.
 	
 	% Model comparison details
-	Besides the user study we will evaluate our suggestions by comparing machine learning models against each other.
-	The comparisons are based on common metrics such as accuracy, F1-score and MCC~\cite{chicco2020advantages}. We compare the towards model trained on different data against each other.
+	Besides the user study we will evaluate our approach by comparing performance of the towards model of \citeauthor{mi2022towards} \cite{mi2022towards} when trained with the new and the old dataset.
+	The comparisons are based on common metrics such as accuracy, F1-score and MCC~\cite{chicco2020advantages}.
+	% The towards model of \citeauthor{mi2022towards} \cite{mi2022towards} achieves an accuracy of 91.8\% when trained and evaluated on the new dataset. 
+		
+	% Contributions
+	Our contributions are as follows:
+	\begin{itemize}
+		\item We combine and unify existing datasets \citeolddataset and make the result easily accessible
+		\item We propose a approach to mine well readable code snippets
+		\item We create a tool to decrease the readability of Java class files
+		\item We propose a new dataset generation approach
+		\item We introduce a new readability classification dataset
+		\item We publish a re-implementation of the towards model of \citeauthor{mi2022towards} \cite{mi2022towards}
+		\item We evaluate parts of our new dataset and our generation approach with a user study
+		\item We evaluate our generation approach by comparing the model performance of the towards model of \citeauthor{mi2022towards} \cite{mi2022towards} trained with and without the new dataset		
+	\end{itemize}
 	
-	% RQs
-	We come up with the following research questions:
-	
-	\begin{resq} \textbf{(select-well)} Can automatically selected code be assumed to be well readable?\end{resq} \label{select-well}
-	In our new approach for generating training data, we assume that the code from repositories is readable under certain conditions (assumption~\ref{well-readable-assumption}). We want to check whether that holds. To answer this question we will use the results of the user study (section~\ref{user-study}).
-	
-	\begin{resq} \textbf{(generate-poor)} Can poorly readable code be generated from well readable code?\end{resq} \label{generate-poor}
-	It is not sufficient to have only well readable code for training a classifier. We also need poorly readable code. Therefore, we will try to generate such code from the well readable code. We will investigate whether this is possible in principle, and we will propose an automated approach for archiving this: Readability Decreasing Heuristics.
-	
-	As the name already suggests, the applied transformations on the source code are only heuristics. To answer, whether the generated code is badly readable (assumption~\ref{poorly-readable-assumption}) we will utilize the results of the user study (section~\ref{user-study}).
-	
-	%	\begin{resq} \textbf{(best-heuristics)} Which heuristics are best to generate poorly readable code from well readable code?\end{resq} \label{best-heuristic}
-	%	We want to compare the modifications of the proposed heuristics for generating poorly readable code to each other. Therefore we will use the results of the user study (section~\ref{user-study}).
-	
-	\begin{resq} \textbf{(new-data)} To what extent can the new data improve existing readability models?\end{resq} \label{new-data}
-	It was shown that Deep Learning models get better the more training data is available~\cite{hestness2017deep}. This holds under the assumption that the quality of the data is the same or at least similar. We want to check if the quality of our new data is sufficient for improving the Deep Learning based readability classifier of \citeauthor{mi2022towards}~\cite{mi2022towards}. Therefore we will train their proposed model with different datasets and then evaluate the models against each other (section~\ref{compare-models}).
+	% Implications
+	The survey confirms both, the well-readable-assumption (assumption \ref{well-readable-assumption}) and the poorly-readable-assumption (assumption \ref{poorly-readable-assumption}). Although our approach for creating a dataset works in principlewe were not able to address enough aspects of code readability with the proposed heuristics. Thus, our dataset probably only addresses a partial problem of code readability.
 		
 \section{Background and related work} \label{Background and related work}
 	In the following subsections you find an overview of the background and related work on code readability and our approach to dataset creation.
@@ -1537,6 +1536,35 @@ cleveref=true,%
 	
 	
 \section{Evaluation} \label{Evaluation}
+
+	% TODO: Add RQs and study goals here
+	
+	% Study details
+	%	We will conclude a user study to evaluate the newly generated data for readability classifier models.
+	%	The goal of the user study is to answer the following key questions:
+	%	\begin{enumerate}
+	%		\item Does the well-readable-assumption (assumption \ref{well-readable-assumption}) hold?
+	%		\item Does the poorly-readable-assumption (assumption \ref{poorly-readable-assumption}) hold?
+	%	\end{enumerate}
+
+	% RQs
+	%	We come up with the following research questions:
+	%	
+	%	\begin{resq} \textbf{(select-well)} Can automatically selected code be assumed to be well readable?\end{resq} \label{select-well}
+	%	In our new approach for generating training data, we assume that the code from repositories is readable under certain conditions (assumption~\ref{well-readable-assumption}). We want to check whether that holds. To answer this question we will use the results of the user study (section~\ref{user-study}).
+	%	
+	%	\begin{resq} \textbf{(generate-poor)} Can poorly readable code be generated from well readable code?\end{resq} \label{generate-poor}
+	%	It is not sufficient to have only well readable code for training a classifier. We also need poorly readable code. Therefore, we will try to generate such code from the well readable code. We will investigate whether this is possible in principle, and we will propose an automated approach for archiving this: Readability Decreasing Heuristics.
+	%	
+	%	As the name already suggests, the applied transformations on the source code are only heuristics. To answer, whether the generated code is badly readable (assumption~\ref{poorly-readable-assumption}) we will utilize the results of the user study (section~\ref{user-study}).
+	%	
+	%	%	\begin{resq} \textbf{(best-heuristics)} Which heuristics are best to generate poorly readable code from well readable code?\end{resq} \label{best-heuristic}
+	%	%	We want to compare the modifications of the proposed heuristics for generating poorly readable code to each other. Therefore we will use the results of the user study (section~\ref{user-study}).
+	%	
+	%	\begin{resq} \textbf{(new-data)} To what extent can the new data improve existing readability models?\end{resq} \label{new-data}
+	%	It was shown that Deep Learning models get better the more training data is available~\cite{hestness2017deep}. This holds under the assumption that the quality of the data is the same or at least similar. We want to check if the quality of our new data is sufficient for improving the Deep Learning based readability classifier of \citeauthor{mi2022towards}~\cite{mi2022towards}. Therefore we will train their proposed model with different datasets and then evaluate the models against each other (section~\ref{compare-models}).
+
+
 	We will present our results in the following subsections.
 
 \subsection{Survey Results} \label{Survey Results}

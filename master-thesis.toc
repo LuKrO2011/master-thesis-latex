@@ -1,25 +1,25 @@
 \babel@toc {UKenglish}{}\relax 
 \contentsline {section}{\numberline {1}Introduction}{1}{section.0.0.1}%
 \contentsline {section}{\numberline {2}Background and related work}{4}{section.0.0.2}%
-\contentsline {subsection}{\numberline {2.1}Code Readability}{5}{subsection.0.0.2.1}%
-\contentsline {subsection}{\numberline {2.2}Classical calculation approaches}{7}{subsection.0.0.2.2}%
-\contentsline {subsection}{\numberline {2.3}Deep Learning based approaches}{7}{subsection.0.0.2.3}%
-\contentsline {subsection}{\numberline {2.4}Data Augmentation}{10}{subsection.0.0.2.4}%
-\contentsline {subsection}{\numberline {2.5}Diverse Perspectives}{11}{subsection.0.0.2.5}%
-\contentsline {subsection}{\numberline {2.6}Data Generation}{12}{subsection.0.0.2.6}%
-\contentsline {section}{\numberline {3}Mined and Modified Code for Dataset Generation}{12}{section.0.0.3}%
-\contentsline {subsection}{\numberline {3.1}Work on Existing Datasets}{12}{subsection.0.0.3.1}%
-\contentsline {subsection}{\numberline {3.2}Classification Considerations}{13}{subsection.0.0.3.2}%
-\contentsline {subsection}{\numberline {3.3}Dataset Generation Approach}{14}{subsection.0.0.3.3}%
+\contentsline {subsection}{\numberline {2.1}Code Readability}{4}{subsection.0.0.2.1}%
+\contentsline {subsection}{\numberline {2.2}Classical calculation approaches}{6}{subsection.0.0.2.2}%
+\contentsline {subsection}{\numberline {2.3}Deep Learning based approaches}{6}{subsection.0.0.2.3}%
+\contentsline {subsection}{\numberline {2.4}Data Augmentation}{9}{subsection.0.0.2.4}%
+\contentsline {subsection}{\numberline {2.5}Diverse Perspectives}{10}{subsection.0.0.2.5}%
+\contentsline {subsection}{\numberline {2.6}Data Generation}{11}{subsection.0.0.2.6}%
+\contentsline {section}{\numberline {3}Mined and Modified Code for Dataset Generation}{11}{section.0.0.3}%
+\contentsline {subsection}{\numberline {3.1}Work on Existing Datasets}{11}{subsection.0.0.3.1}%
+\contentsline {subsection}{\numberline {3.2}Classification Considerations}{12}{subsection.0.0.3.2}%
+\contentsline {subsection}{\numberline {3.3}Dataset Generation Approach}{13}{subsection.0.0.3.3}%
 \contentsline {subsection}{\numberline {3.4}Readability Decreasing Heuristics}{15}{subsection.0.0.3.4}%
-\contentsline {subsection}{\numberline {3.5}Survey}{17}{subsection.0.0.3.5}%
-\contentsline {subsection}{\numberline {3.6}Readability Classification Model}{22}{subsection.0.0.3.6}%
-\contentsline {section}{\numberline {4}Evaluation}{24}{section.0.0.4}%
-\contentsline {subsection}{\numberline {4.1}Survey Results}{24}{subsection.0.0.4.1}%
+\contentsline {subsection}{\numberline {3.5}Survey}{16}{subsection.0.0.3.5}%
+\contentsline {subsection}{\numberline {3.6}Readability Classification Model}{21}{subsection.0.0.3.6}%
+\contentsline {section}{\numberline {4}Evaluation}{23}{section.0.0.4}%
+\contentsline {subsection}{\numberline {4.1}Survey Results}{23}{subsection.0.0.4.1}%
 \contentsline {subsubsection}{\nonumberline Pilot survey}{24}{subsubsection*.4}%
-\contentsline {subsubsection}{\nonumberline Prolific Study Results}{25}{subsubsection*.6}%
-\contentsline {subsection}{\numberline {4.2}Model training results}{28}{subsection.0.0.4.2}%
-\contentsline {subsection}{\numberline {4.3}Research Question Results}{29}{subsection.0.0.4.3}%
-\contentsline {section}{\numberline {5}Discussion}{30}{section.0.0.5}%
+\contentsline {subsubsection}{\nonumberline Prolific Study Results}{24}{subsubsection*.6}%
+\contentsline {subsection}{\numberline {4.2}Model training results}{26}{subsection.0.0.4.2}%
+\contentsline {subsection}{\numberline {4.3}Research Question Results}{28}{subsection.0.0.4.3}%
+\contentsline {section}{\numberline {5}Discussion}{29}{section.0.0.5}%
 \contentsline {section}{\numberline {6}Conclusions}{30}{section.0.0.6}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
