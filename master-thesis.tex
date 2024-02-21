@@ -699,9 +699,6 @@ cleveref=true,%
 	
 \section{Introduction} \label{Introduction}
 
-	% TODO: Not used: expose: 3.1, 3.2, 3.3
-	% TODO: Not used: Readability study
-
 	% Motivation: Importance
 	In the realm of software development, the significance of code readability cannot be overstated. Together with understandability, it serves as the foundation for efficient collaboration, comprehension, and maintenance of software systems~\cite{posnett2011simpler, aggarwal2002integrated}. 
 	Maintenance alone will consume over 70\% of the total lifecycle cost of a software product and for maintenance, the most time-consuming act is reading code~\cite{buse2009learning, deimel1985uses, rugaber2000use, boehm2001defect}.
@@ -1537,42 +1534,72 @@ cleveref=true,%
 	
 \section{Evaluation} \label{Evaluation}
 
-	% TODO: Add RQs and study goals here
-	
-	% Study details
-	%	We will conclude a user study to evaluate the newly generated data for readability classifier models.
-	%	The goal of the user study is to answer the following key questions:
-	%	\begin{enumerate}
-	%		\item Does the well-readable-assumption (assumption \ref{well-readable-assumption}) hold?
-	%		\item Does the poorly-readable-assumption (assumption \ref{poorly-readable-assumption}) hold?
-	%	\end{enumerate}
+	% User study
+	To determine the quality of the new dataset, we are completing a user study to evaluate the newly generated data for readability classification models.
+	The aim of the user study is to answer the following key questions:
+	\begin{enumerate}
+		\item Does the well-readable-assumption (assumption \ref{well-readable-assumption}) hold?
+		\item Does the poorly-readable-assumption (assumption \ref{poorly-readable-assumption}) hold?
+	\end{enumerate}
 
 	% RQs
-	%	We come up with the following research questions:
-	%	
-	%	\begin{resq} \textbf{(select-well)} Can automatically selected code be assumed to be well readable?\end{resq} \label{select-well}
-	%	In our new approach for generating training data, we assume that the code from repositories is readable under certain conditions (assumption~\ref{well-readable-assumption}). We want to check whether that holds. To answer this question we will use the results of the user study (section~\ref{user-study}).
-	%	
-	%	\begin{resq} \textbf{(generate-poor)} Can poorly readable code be generated from well readable code?\end{resq} \label{generate-poor}
-	%	It is not sufficient to have only well readable code for training a classifier. We also need poorly readable code. Therefore, we will try to generate such code from the well readable code. We will investigate whether this is possible in principle, and we will propose an automated approach for archiving this: Readability Decreasing Heuristics.
-	%	
-	%	As the name already suggests, the applied transformations on the source code are only heuristics. To answer, whether the generated code is badly readable (assumption~\ref{poorly-readable-assumption}) we will utilize the results of the user study (section~\ref{user-study}).
-	%	
-	%	%	\begin{resq} \textbf{(best-heuristics)} Which heuristics are best to generate poorly readable code from well readable code?\end{resq} \label{best-heuristic}
-	%	%	We want to compare the modifications of the proposed heuristics for generating poorly readable code to each other. Therefore we will use the results of the user study (section~\ref{user-study}).
-	%	
-	%	\begin{resq} \textbf{(new-data)} To what extent can the new data improve existing readability models?\end{resq} \label{new-data}
-	%	It was shown that Deep Learning models get better the more training data is available~\cite{hestness2017deep}. This holds under the assumption that the quality of the data is the same or at least similar. We want to check if the quality of our new data is sufficient for improving the Deep Learning based readability classifier of \citeauthor{mi2022towards}~\cite{mi2022towards}. Therefore we will train their proposed model with different datasets and then evaluate the models against each other (section~\ref{compare-models}).
-
+	Therefore, we come up with the following research questions:
+	
+	\begin{resq} \textbf{(select-well)} Can automatically selected code be assumed to be well readable?\end{resq} \label{select-well}
+	In our new approach for generating training data, we assume that the code from repositories is readable under certain conditions (assumption~\ref{well-readable-assumption}). We want to check whether that holds. To answer this question we will use the results of the user study (section~\ref{user-study}).
+	
+	\begin{resq} \textbf{(generate-poor)} Can poorly readable code be generated from well readable code?\end{resq} \label{generate-poor}
+	It is not sufficient to have only well readable code for training a classifier. We also need poorly readable code. Therefore, we will try to generate such code from the well readable code. We will investigate whether this is possible in principle, and we will propose an automated approach for archiving this: Readability Decreasing Heuristics.
+	
+	As the name already suggests, the applied transformations on the source code are only heuristics. To answer, whether the generated code is badly readable (assumption~\ref{poorly-readable-assumption}) we will utilize the results of the user study (section~\ref{user-study}).
+	
+	%	\begin{resq} \textbf{(best-heuristics)} Which heuristics are best to generate poorly readable code from well readable code?\end{resq} \label{best-heuristic}
+	%	We want to compare the modifications of the proposed heuristics for generating poorly readable code to each other. Therefore we will use the results of the user study (section~\ref{user-study}).
+	
+	\begin{resq} \textbf{(new-data)} To what extent can the new data improve existing readability models?\end{resq} \label{new-data}
+	It was shown that Deep Learning models get better the more training data is available~\cite{hestness2017deep}. This holds under the assumption that the quality of the data is the same or at least similar. We want to check if the quality of our new data is sufficient for improving the Deep Learning based readability classifier of \citeauthor{mi2022towards}~\cite{mi2022towards}. Therefore we will train their proposed model with different datasets and then evaluate the models against each other (section~\ref{compare-models}).
 
 	We will present our results in the following subsections.
 
-\subsection{Survey Results} \label{Survey Results}
+\subsection{Survey} \label{Survey Results}
 	The results of our survey are divided into two parts: The results of the pilot survey, which were used to improve the main survey pre-launch, and the results of the main survey, which were used to answer our research questions and to craft our dataset.
 	
-\subsubsection{Pilot survey} \label{Pilot Survey}
-	The pilot survey was used to adjust the rdh probability settings and the survey itself before the start.
-
+\subsubsection{Pilot Survey} \label{Pilot Survey}
+	The pilot survey was used to adjust the rdh probability settings and the survey itself before the start. 
+	
+	% Experimental setup
+	\textit{1. Experimental setup:}
+	We therefore manually sampled 20 code snippets across all stratas but mainly from statum 1, due to reasons mentioned in section \ref{Survey}. Between the 6th and the 14th of January 10 participants, mostly students, participated in the survey. Additionally to rating 20 code snippets the participants were also asked to complete an additional survey form where they could provide feedback about the actual survey.
+	
+	% Questions
+	Here they were asked the following questions:
+	\begin{enumerate}
+		\item How long did it take you to complete the survey? (short answer)
+		\item How clear was your task? (1 (very unclear) to 5 (very clear))
+		\item What problems were with the task? If there were none, leave blank. (long answer)
+		\item What problems were there with the survey tool? If there were none, leave blank.  (long answer)
+		\item What improvements would you make to the survey? If none, leave blank.  (long answer)
+		\item Do you have any other feedback? If none, leave blank. (long answer)
+	\end{enumerate}
+	The participants answers can be found TODO.
+	
+	% Usage
+	The feedback of the pilot survey was used in the following ways to prepare the prolific study:
+	\begin{itemize}
+		\item To adjust the survey texts and questions
+		\item To estimate how long completion of one survey sheet will take
+		\item To adjust the readability-decreasing heuristic settings
+		\item To discover problems with the survey tool
+		\item To discover fundamental problems with the dataset
+	\end{itemize}
+	
+	% Threats
+	\textit{2. Threats:}
+	The results do not generalize. We did not sample a the data in a specific, (semi-) automated way, so there is a selection bias. The survey participants were not selected among all Java programmers randomly. The final formulations for the prolific survey were adjusted afterwards and therefore were sub-optimal.
+	However, we did not use the results from this survey to evaluate our dataset or the generation approach, as the intention of the survey was rather to prepare for the main survey. 
+	
+	% Results
+	\textit{3. Results:}
 	The pilot survey provided information on how much time it would take to evaluate 20 code snippets in terms of their readability. An overview of the times required can be found in Figure \ref{fig:pilot_survey_time_box.png}. On this basis, we estimated the time required for our survey at 10 minutes.
 	
 	\begin{figure}[t]
@@ -1678,9 +1705,107 @@ cleveref=true,%
 	
 	Once the aforementioned adjustments had been made and the feedback on the survey instrument had been implemented, the actual study was carried out.
 
-\subsubsection{Prolific Study Results} \label{Prolific Study Results}
+\subsubsection{Prolific Study} \label{Prolific Study Results}
 	In this section we summarize the results of the main study conducted via prolific.
 	
+\textit{1. Experimental setup:}
+
+	The survey was conducted from the 31th January 2024 to the 7th February 2024. 221 participants were in total involved. Each of the 20 survey sheets was answered by 11 participants. For one survey prolific accidentally assigned one participant more. Each survey was configured so that a participant for one survey could not attend another one. Each survey had the same texts and configuration (see Appendix \ref{TODO}).
+	
+	You can find an example of a snippet being rated with the tool in figure \ref{fig:survey_tool}
+	
+	\begin{figure}[t]
+		\centering
+		\includegraphics[width=\textwidth]{img/survey_tool.png}
+		\caption{Tool for rating a code snippet from the perspective of the survey participant}
+		\label{fig:survey_tool}
+	\end{figure}
+
+
+	% Target population
+	\textit{1.1 Target population:}
+	The target population consists of Java programmers selected by prolific. They may be students or work in industry. They can come from any country. Overall, there were no requirements other than familiarity with Java (see also table \ref{tab:prolific-audience}).
+	\begin{table}
+		\begin{tabular}{|l|l|}
+			\hline
+			Target Audience      & Java programmers \\
+			Unit of Observation  & Java programmers \\
+			Unit of Analysis     & Java programmers \\
+			Search Unit          & Selected by Prolific (Programming Languages: Java)\\
+			Source of Sampling   & Prolific \\
+			\hline
+		\end{tabular}
+		\caption{Target population for the prolific survey}
+		\label{tab:prolific-audience}
+	\end{table}
+	
+	% Survey
+	\textit{1.2 Survey construction:}
+	The first part of the survey is devoted to questionnaire attributes. The second part of the survey consists of 20 code snippets to be evaluated by the participants.
+	In total, we create 20 unique questionnaires, with each questionnaire being rated by 10 individual participants. Consequently, we generate a dataset of 400 code snippets. The expected expenditure for this survey, involving 200 participants via the Prolific platform, was about €500.
+	% Sample size
+	To get accurate study results, multiple participants have to rate the same code snippets. We specify a size of 11 participants per code snippet, similar to \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}. According to an online calculator\footnote{https://www.calculator.net/sample-size-calculator.html} we end up with a margin of error of 29.55\% at a confidence of 95\%. This means that we are 95\% confident that the actual readability of a code snippet is within 29.55\% of the survey result score. With a probability of 5\%, the readability of a code snippet differs by more than 29.55\% from the score of the survey result. On a Likert scale ranging from 1 to 5, the mean of the survey results is between 1.0 and 5.0. In this context, an offset of 29.55\% is an offset of more than one rating point~\cite{likert1932technique}. We need to consider this when evaluating our the gathered data.
+	
+	% Time Requirement
+	\textit{1.3 Time requirement:}
+	The first part (Prolific-specific questions and questionnaire attributes) takes the participant about one minute. The average time for rating a snippet is estimated with 30 seconds. Thus, rating 20 snippets takes about 10 minutes. The total time for completing one questionnaire is estimated with 11 minutes.
+	
+	% Sampling design
+	\textit{1.4 Sampling design:}
+	The survey participants are selected using Prolific. The only restriction for the participants is that they must be familiar with Java.
+	A big part of our code snippets might be getters and setters. However, we do not want to mostly evaluate getters and setters in our study. Therefore, we use stratified sampling~\cite{thompson2012sampling} and craft the surveys as described in section \ref{Survey}.
+			
+	% Internal/Research Questions
+	\textit{1.5 Sampling design:}
+	The internal research questions are as follows:
+	\begin{itemize}
+		\item Does the well-readable-assumption (Assumption \ref{well-readable-assumption}) hold?
+		\item Does the poorly-readable-assumption (Assumption \ref{poorly-readable-assumption}) hold?
+	\end{itemize}
+	
+	The results for these questions are equally important, and thus none of them is prioritized over the other.
+	To answer them, the assumptions	are considered as hypotheses along with the following associated null hypotheses:
+	\begin{itemize}
+		\item For Assumption~\ref{well-readable-assumption}: The mined code exhibits a normal distribution of readability scores.
+		\item For Assumption~\ref{poorly-readable-assumption}: The readability of code does not significantly deteriorate compared to the original code snippet.
+	\end{itemize}
+	
+	%	Another goal of the study is to find estimates of which heuristics need to be applied how often to make the code less readable to some degree. This helps us to further adjust the settings of our generation approach for poorly readable code.
+	%	
+	%	The goal of our study is \textbf{not} to label code snippets by readability. If our assumptions  (Assumption~\ref{well-readable-assumption}~and~\ref{poorly-readable-assumption})
+	%	are confirmed, we can use them to make inferences about the readability of all code snippets generated with our approach. This is a crucial difference from comparable other studies~\cite{buse2009learning, dorn2012general, scalabrino2018comprehensive}.
+	
+	% Questionnaire Attributes
+	\textit{1.6 Questionnaire Attributes:}
+	The survey neither contains demographic questions nor filter questions. Besides the readability questions, each user is asked the following dependent question: "How would you describe your familiarity with Java?". The user can answer within a five point Likert scale: expert (5), advanced (4), intermediate (3), beginner (2), novice (1).
+	
+	% Questionnaire - Opinion
+	\textit{1.7 Questionnaire:}
+	For each code snippet, the following closed-ended question is given: "How do you rate the readability of this code?". The answers follow the Likert Scale: very high (5), high (4), medium (3), low (2), very low (1).
+	
+	% Survey Result Evaluation
+	\textit{1.8 Survey Result Evaluation:}
+	Once a survey is completed by a participant, the survey result is evaluated to make sure the participants did not choose answers at random. The code snippet rating answers are checked for plausibility. For example, if a code snippet with expected rating 5 (by the heuristics and/or by other participants) is rated with 2 or less, this is an indication that the participant did not fill out the survey carefully. Several such indications lead to the exclusion of the participants and their answers.
+	
+	% Software
+	\textit{1.9 Software}
+	We use Prolific to pay participants for completing our survey. Our participants fill out the survey using Tien Duc Nguyen's Code Annotation Tool.
+	
+	% Evaluation
+	%	Another way to evaluate our survey on an ongoing basis is to conduct it iteratively. We start with three questionnaires and expand the number based on our conclusions from the first ones. This offers several advantages. Firstly, we can still adjust the survey if problems arise. Secondly, we can start building our pipeline for evaluation earlier. Finally, after each iteration, we can decide whether to include more variants of the same source code snippet or to increase the number of source code snippets instead (see Section \ref{sampling-design}). The first option could give us more insights on how to adjust the settings for our heuristics. The second option could increase the number of stratas involved or allow us to increase the evidence for a particular stratum by including more samples of the respective one.
+			
+	
+\textit{2. Threats:}
+	We identified the following threats:
+	\begin{enumerate}
+		\item \textbf{Ill-defined Target Population:} Ensuring a well-defined target population is critical to the survey's quality. To mitigate this threat, we clearly define our target population within this document (see Section~\ref{target-population}). Additionally, we conduct a pre-survey evaluation (see Section~\ref{sec:survey-evaluation}) to ensure the adequacy of our target population definition. Thereby, we enhance content and construct validity.
+		
+		\item \textbf{Sampling Method (Stratified Sampling):} Our chosen sampling method is well-defined and proven in practice. This approach ensures that our sample represents all parts of the population under investigation. This is improving the survey's external validity.
+		
+		\item \textbf{Insufficient Responses for Drawing Conclusions:} To prevent drawing conclusions from an insufficient number of responses, we scale our survey to an appropriate size. This guarantees that we collect a substantial volume of responses, allowing for robust statistical analysis.
+	\end{enumerate}
+	
+\textit{3. Results:}
 	You can find an overview over the time required by the participants in the Figures \ref{fig:survey_time_box} and \ref{fig:survey_time_histogramm}. Additionally you can find the amount of participants that required less than 3 minutes for one survey sheet in Figure \ref{fig:survey_time_less_than_180}. The results of those participants might be a thread to validity to which we will come back later.
 	
 	An overview of the time required by the participants can be found in the figures \ref{fig:survey_time_box} and \ref{fig:survey_time_histogram}. In addition, figure \ref{fig:survey_time_less_than_180} shows the number of participants who took less than 3 minutes to complete a survey questionnaire. The results of these participants could have a negative impact on validity, which we will come back to later. 
@@ -1922,3 +2047,28 @@ cleveref=true,%
 %starImport: 0
 %inlineField: 0.2
 %partiallyEvaluate: 0
+
+% TODO: Appendix 3
+%Prolific:
+%Readability of Java Code
+%We study the readability of Java source code. Therefore, please read Java methods and rate their readability on a scale from 1 (very unreadable) to 5 (very readable).
+%
+%Top:
+%Readability of Java Code
+%Read the Java methods and rate their readability on a scale from 1 (very unreadable) to 5 (very readable) using the stars below the code box. To navigate between methods, use the arrows above or below the code box. Make sure to rate each snippet.
+%
+%Page 1:
+%This study aims to investigate the readability of Java source code. In this survey, we will show you 20 Java methods. Please read the methods thoroughly and rate how readable you think they are. Before we begin, please answer the following question:
+%
+%How would you describe your familiarity with Java?
+%Options: Expert, Advanced, Intermediate, Beginner, Novice
+%
+%Page 2:
+%Below is an example of the interface for displaying and rating the code. Use the stars below the code box for your rating. Please rate the readability on a scale from 1 (very unreadable) to 5 (very readable). At the top left, you can adjust the syntax highlighting and theme (dark/light) according to your preferences (optional). Comments are not available during this survey.
+%
+%[EXAMPLE]
+%
+%Page 3:
+%This survey should take about 10 minutes to complete. Now you are ready to go! 
+%
+%[20 CODE SNIPPETS]
