@@ -1063,6 +1063,31 @@
       \field{pages}{1391\bibrangedash 1409}
       \range{pages}{19}
     \endentry
+    \entry{mullner2013fastcluster}{article}{}
+      \name{author}{1}{}{%
+        {{hash=5fd9119c4acc671b33ea7436d665baa6}{%
+           family={Müllner},
+           familyi={M\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{5fd9119c4acc671b33ea7436d665baa6}
+      \strng{fullhash}{5fd9119c4acc671b33ea7436d665baa6}
+      \strng{bibnamehash}{5fd9119c4acc671b33ea7436d665baa6}
+      \strng{authorbibnamehash}{5fd9119c4acc671b33ea7436d665baa6}
+      \strng{authornamehash}{5fd9119c4acc671b33ea7436d665baa6}
+      \strng{authorfullhash}{5fd9119c4acc671b33ea7436d665baa6}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Statistical Software}
+      \field{title}{fastcluster: Fast hierarchical, agglomerative clustering routines for R and Python}
+      \field{volume}{53}
+      \field{year}{2013}
+      \field{pages}{1\bibrangedash 18}
+      \range{pages}{18}
+    \endentry
     \entry{oliveira2020evaluating}{inproceedings}{}
       \name{author}{4}{}{%
         {{hash=5840c4893c1ddaec936e738d83a3f3f8}{%
@@ -1490,6 +1515,31 @@
       \field{title}{Impact of programming features on code readability}
       \field{year}{2013}
     \endentry
+    \entry{thompson2012sampling}{book}{}
+      \name{author}{1}{}{%
+        {{hash=e58fe597b6d5bee7f6cc3d0fd9ca9d40}{%
+           family={Thompson},
+           familyi={T\bibinitperiod},
+           given={Steven\bibnamedelima K},
+           giveni={S\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {John Wiley \& Sons}%
+      }
+      \strng{namehash}{e58fe597b6d5bee7f6cc3d0fd9ca9d40}
+      \strng{fullhash}{e58fe597b6d5bee7f6cc3d0fd9ca9d40}
+      \strng{bibnamehash}{e58fe597b6d5bee7f6cc3d0fd9ca9d40}
+      \strng{authorbibnamehash}{e58fe597b6d5bee7f6cc3d0fd9ca9d40}
+      \strng{authornamehash}{e58fe597b6d5bee7f6cc3d0fd9ca9d40}
+      \strng{authorfullhash}{e58fe597b6d5bee7f6cc3d0fd9ca9d40}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Sampling}
+      \field{volume}{755}
+      \field{year}{2012}
+    \endentry
     \entry{vitale2023using}{inproceedings}{}
       \name{author}{4}{}{%
         {{hash=150f9db0f78c535bd07f575e981d34a0}{%
@@ -1656,8 +1706,6 @@
       \endverb
     \endentry
   \enddatalist
-  \missing{mullner2013fastcluster}
-  \missing{thompson2012sampling}
 \endrefsection
 \endinput
 
