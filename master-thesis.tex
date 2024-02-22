@@ -2058,91 +2058,134 @@ cleveref=true,%
 	% Summary
 	In summary, there are many opportunities to further investigate and thus most likely improve the classification accuracy of code readability. Our new data set and the generation approach could be useful here.
 	
-	\backmatter
+\backmatter
+
+\printbibliography
 	
-	\printbibliography
+	% Appendix settings
+%	\pagenumbering{roman}
+	\appendix
+	\renewcommand{\thechapter}{\alph{chapter}}
+	\renewcommand{\thesection}{\Roman{section}}
+	\renewcommand{\thesubsection}{\fnsymbol{subsection}}
+	
+\pagebreak
+\section{Pilot Survey Feedback}\label{appendix:pilot-survey-feedback}
+
+	\textbf{How clear was your task?}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.6\textwidth]{img/survey_java_familiarity_pie.png} % TODO: Replace
+%		\caption{How clear was your task?}
+		\label{fig:pilot-task-clear}
+	\end{figure}
+	
+	\textbf{What problems were with the task? If there were none, leave blank.}
+	\begin{itemize}
+		\item Did at first not know where to rate the code.
+		\item I was confused about the textfield for the comments because I only remembered that we should rate the code snippets, not that we have to make comments. Since I was not able to navigate back to the task description, I did not know what to do with them.
+		\item Für einen Anfänger mit sehr wenig Java Erfahrung ist meiner Meinung nach der Code zu kompliziert.
+		\item In the first place, I didn't really understand what readability meant. But after slide 3 or 4, I understood what this was about.
+		\item I found it difficult to categorize the first examples because you don't know what's still to come. For example, what the least readable code is.
+	\end{itemize}
+
+	\textbf{What problems were there with the survey tool? If there were none, leave blank.}
+	\begin{itemize}
+		\item Mobile is not easy to use because of the scrolling needed to complete the survey.
+		\item First, I needed to figure out how this tool works and that the rating is done with the stars below. I thought I should write my rating as a comment in the comment field below. After number 20, I didn't know whether I could close the survey or not.
+		\item I also thought that I should use the drop-down menu on the upper left.
+		\item It is sometimes necessary to swipe horizontally to see all of the code, which is a bit inconvenient.
+		\item Für einen Anfänger ist das Tool meiner Meinung nach nicht geeignet. Der Code ist zu verschachtelt und teilweise unverständlich.
+		\item After finishing the task, at least a message should be shown.
+		\item I didn't understand what the button at the top left meant, where you could select the programming language. There were too many fonts to choose. I also wasn't sure whether to write a comment or not. It wasn't described at the beginning.
+	\end{itemize}
+
+	\textbf{What improvements would you make to the survey? If none, leave blank.}
+	\begin{itemize}
+		\item Maybe one sentence that one should use the stars for the rating, then it would be clear. Also, the submit note after the last question could contain that one can close the survey now.
+		\item I suggest making the task description accessible during the rating.
+		\item Maybe the option to leave the survey when clicking to submit.
+		\item Mehr Hilfestellung zum Lesen des Codes. Mehr Beschreibung oder ein zusätzliches Cheat Sheet mit Bedeutungen von Befehlen.
+		\item I think it's a good idea to ask the participant at the beginning to explain what readability means for him.
+		\item I would leave out the buttons described above. I was missing a scrollbar at the bottom of the code-window. A conclusion page with a message like "Thank you for your participation", "You're Done!" or other further information was missing, too.
+	\end{itemize}
+	
+	\textbf{Do you have any other feedback? If none, leave blank.}
+	\begin{itemize}
+		\item There were drop downs for the programming language, but choosing another language did not change anything. It was a bit confusing that (almost?) all code snippets had very long imports within the code, which made them badly readable.
+		\item I spent the most time understanding methods with complete Java import names. (org.foo.bar.ClassName).
+		\item GOOD LUCK
+	\end{itemize}
+	
+\pagebreak
+\section{Readability Decreasing Heuristics Configuration File}\label{appendix:rdh-config-file}
+	\begin{listing}[h!]
+		\begin{minted}[linenos, frame=lines, framesep=2mm]{YAML}
+			newline:
+			- 0.0  # Probability for no newline
+			- 1.0  # Probability for one newline
+			incTab:
+			- 0.0  # Probability for no tab
+			- 1.0  # Probability for one tab
+			decTab:
+			- 0.0  # Probability for no tab
+			- 1.0  # Probability for one tab
+			space:
+			- 0.0  # Probability for no space
+			- 1.0  # Probability for one space. Must be 1.0
+			newLineInsteadOfSpace: 0
+			spaceInsteadOfNewline: 0
+			incTabInsteadOfDecTab: 0
+			decTabInsteadOfIncTab: 0
+			renameVariable: 0
+			renameField: 0
+			renameMethod: 0
+			inlineMethod: 0
+			removeComment: 0
+			add0: 0
+			insertBraces: 0
+			starImport: 0
+			inlineField: 0
+			partiallyEvaluate: 0
+		\end{minted}
+		\label{lst:rdh-config-file}
+	\end{listing}
+	
+\pagebreak
+\section{Prolific Survey Texts}\label{appendix:prolific-survey-texts}
+	\textbf{On Prolific:}
+	
+	Readability of Java Code
+	
+	We study the readability of Java source code. Therefore, please read Java methods and rate their readability on a scale from 1 (very unreadable) to 5 (very readable).
+	
+	\textbf{At the top of the tool:}
+	
+	Readability of Java Code
+	
+	Read the Java methods and rate their readability on a scale from 1 (very unreadable) to 5 (very readable) using the stars below the code box. To navigate between methods, use the arrows above or below the code box. Make sure to rate each snippet.
+	
+	\textbf{Introduction page 1:}
+	
+	This study aims to investigate the readability of Java source code. In this survey, we will show you 20 Java methods. Please read the methods thoroughly and rate how readable you think they are. Before we begin, please answer the following question:
+	
+	How would you describe your familiarity with Java?
+	\begin{enumerate}
+		\item Expert
+		\item Advanced
+		\item Intermediate
+		\item Beginner
+		\item Novice
+	\end{enumerate}
+	
+	\textbf{Introduction Page 2:}
+	
+	Below is an example of the interface for displaying and rating the code. Use the stars below the code box for your rating. Please rate the readability on a scale from 1 (very unreadable) to 5 (very readable). At the top left, you can adjust the syntax highlighting and theme (dark/light) according to your preferences (optional). Comments are not available during this survey.
+	
+	[EXAMPLE]
+	
+	\textbf{Introduction Page 3:}
+	
+	This survey should take about 10 minutes to complete. Now you are ready to go! 
 	
 \end{document}
-
-% TODO: Appendix
-%Did at first not where to rate the code
-%I was confused about the textfield for the comments, because I only remembered that we should rate the code snippets, not that we have to make comments. Since I was not able to navigate back to the task description I did not know what to do with them.
-%Für einen Anfänger mit sehr wenig Java Erfahrung ist meines Erachtens der Code zu kompliziert
-%In the first place, I didn't really understand what readability meant. But after slide 3 or 4 I understood, what this was about.
-%I found it difficult to categorize the first examples because you don't know what's still to come. For example, what the least readable code is.
-%What problems were there with the survey tool? If there were none, leave blank.
-%6 Antworten
-%Mobile is not easy to use because of the scrolling needed to complete the survey
-%First I needed to figure out how this tool works and that the rating is done with the stars below. I thought I should write my rating as a comment in the comment field below. After number 20 I didn't know whether I could close the survey or not.
-%I also thought that I should use the drop-down menu on the upper left.
-%It is sometimes necessary to swipe horizontally to see all of the code, which is a bit inconvenient.
-%Für einen Anfänger ist das Tool meiner Meinung nach nicht geeignet. Der Code ist zu verschachtelt und teilweise unverständlich
-%After finishing the task, at least message should be shown.
-%I didn't understand what the button at the top left meant, where you could select the programming language. There were too many fonts to choose. I also wasn't sure whether to write a comment or not. It wasn't described at the beginning.
-%What improvements would you make to the survey? If none, leave blank.
-%6 Antworten
-%Maybe one sentence that one should use the stars for the rating, then it would be clear. Also the submit note after the last question could contain that one can close the survey now.
-%I suggest to make the task description accessible during the rating
-%Maybe the option to leave the survey, when clicking to submit.
-%Mehr Hilfestellung zum Lesen des Codes. Mehr Beschreibung oder ein zusätliches Cheat Sheet mit Bedeutungen von Befehlen
-%I think it's good idea to ask the participant at the beginning to explain what readability mean for him.
-%I would leave out the buttons described above. I was missing a scrollbar at the bottom of the code-window. A conclusion page with a message like "Thank you for your participation", "You're Done!" or other further information was missing, too.
-%Do you have any other feedback? If none, leave blank.
-%4 Antworten
-%There werde drop downs for the programming language, but choosing another language did not change anything. It was a bit confusing that (almost?) all code snippets had very long imports within the code, which made them badly readable
-%I spent the most time understanding methods with complete Java import names. (org.foo.bar.ClassName).
-%-
-%GOOD LUCK
-
-% TODO: Appendix 2
-%newline:
-%- 0.0  # Probability for no newline
-%- 1.0  # Probability for one newline
-%incTab:
-%- 0.0  # Probability for no tab
-%- 1.0  # Probability for one tab
-%decTab:
-%- 0.0  # Probability for no tab
-%- 1.0  # Probability for one tab
-%space:
-%- 0.0  # Probability for no space
-%- 1.0  # Probability for one space
-%newLineInsteadOfSpace: 0
-%spaceInsteadOfNewline: 0
-%incTabInsteadOfDecTab: 0
-%decTabInsteadOfIncTab: 0
-%renameVariable: 0
-%renameField: 0
-%renameMethod: 0
-%inlineMethod: 0
-%removeComment: 0
-%add0: 0
-%insertBraces: 0
-%starImport: 0
-%inlineField: 0.2
-%partiallyEvaluate: 0
-
-% TODO: Appendix 3
-%Prolific:
-%Readability of Java Code
-%We study the readability of Java source code. Therefore, please read Java methods and rate their readability on a scale from 1 (very unreadable) to 5 (very readable).
-%
-%Top:
-%Readability of Java Code
-%Read the Java methods and rate their readability on a scale from 1 (very unreadable) to 5 (very readable) using the stars below the code box. To navigate between methods, use the arrows above or below the code box. Make sure to rate each snippet.
-%
-%Page 1:
-%This study aims to investigate the readability of Java source code. In this survey, we will show you 20 Java methods. Please read the methods thoroughly and rate how readable you think they are. Before we begin, please answer the following question:
-%
-%How would you describe your familiarity with Java?
-%Options: Expert, Advanced, Intermediate, Beginner, Novice
-%
-%Page 2:
-%Below is an example of the interface for displaying and rating the code. Use the stars below the code box for your rating. Please rate the readability on a scale from 1 (very unreadable) to 5 (very readable). At the top left, you can adjust the syntax highlighting and theme (dark/light) according to your preferences (optional). Comments are not available during this survey.
-%
-%[EXAMPLE]
-%
-%Page 3:
-%This survey should take about 10 minutes to complete. Now you are ready to go! 
-%
-%[20 CODE SNIPPETS]

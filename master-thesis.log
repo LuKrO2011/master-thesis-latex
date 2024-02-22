@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  22 FEB 2024 10:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  22 FEB 2024 11:25
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1763,8 +1763,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 ]
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/b/n' will be
 (Font)              scaled to size 10.95pt on input line 788.
- [2{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts
-_sfissr.enc}]
+ [2]
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
 (Font)              scaled to size 8.0pt on input line 795.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/n' will be
@@ -1800,11 +1799,10 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
  [3{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts
-_rlktsf.enc}] [4]
+_sfissr.enc}{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-t
+ype1/lbts_rlktsf.enc}] [4] [5]
 Package hyperref Info: bookmark level for unknown definition defaults to 0 on i
 nput line 915.
- [5{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts
-_nufysp.enc}]
 \openout4 = `master-thesis.pyg'.
 
 
@@ -1820,20 +1818,21 @@ t line 1080.
 
 
 (_minted-master-thesis/326C3B61642F32218CA15406E0F4B0EFCD01F94EC48B0360C077F2DC
-250C61D2.pygtex) [6] [7] [8] [9] [10]
+250C61D2.pygtex) [6{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/liber
+tinus-type1/lbts_nufysp.enc}] [7] [8] [9] [10]
 Underfull \hbox (badness 10000) in paragraph at lines 1252--1252
   [][][][][][]$\T1/cmtt/m/n/9 https : / / huggingface . co / datasets / se2p / 
 code-[]readability-[]merged$[]\T1/LibertinusSerif-TLF/m/n/9 (+20) , ac-cessed:
  []
 
-[11]
-<img/dataset_generation.png, id=310, 643.40375pt x 543.02875pt>
+[11] [12]
+<img/dataset_generation.png, id=320, 643.40375pt x 543.02875pt>
 File: img/dataset_generation.png Graphic file (type png)
 <use img/dataset_generation.png>
 Package pdftex.def Info: img/dataset_generation.png  used on input line 1280.
 (pdftex.def)             Requested size: 314.99786pt x 265.86269pt.
- [12] [13 <./img/dataset_generation.png>] [14]
-<img/rdh.png, id=339, 510.90875pt x 663.47874pt>
+ [13 <./img/dataset_generation.png>] [14]
+<img/rdh.png, id=344, 510.90875pt x 663.47874pt>
 File: img/rdh.png Graphic file (type png)
 <use img/rdh.png>
 Package pdftex.def Info: img/rdh.png  used on input line 1320.
@@ -1842,13 +1841,13 @@ Package pdftex.def Info: img/rdh.png  used on input line 1320.
 
 LaTeX Warning: Reference `app:TODO' on page 15 undefined on input line 1327.
 
-[15 <./img/rdh.png>]
-<img/survey_pipeline.png, id=348, 643.40375pt x 402.50375pt>
+[15]
+<img/survey_pipeline.png, id=355, 643.40375pt x 402.50375pt>
 File: img/survey_pipeline.png Graphic file (type png)
 <use img/survey_pipeline.png>
 Package pdftex.def Info: img/survey_pipeline.png  used on input line 1357.
 (pdftex.def)             Requested size: 314.99786pt x 197.06273pt.
- [16]
+ [16 <./img/rdh.png>]
 
 LaTeX Warning: Citation 'thompson2012sampling' on page 17 undefined on input li
 ne 1420.
@@ -1863,19 +1862,20 @@ es / generated / sklearn . metrics .
 LaTeX Warning: Citation 'mullner2013fastcluster' on page 17 undefined on input 
 line 1423.
 
+[17 <./img/survey_pipeline.png>]
 File: img/survey_pipeline.png Graphic file (type png)
 <use img/survey_pipeline.png>
 Package pdftex.def Info: img/survey_pipeline.png  used on input line 1429.
 (pdftex.def)             Requested size: 314.99786pt x 197.06273pt.
-[17 <./img/survey_pipeline.png>] [18]
-<img/sampling_not_different_overall.png, id=383, 642.4pt x 481.8pt>
+ [18]
+<img/sampling_not_different_overall.png, id=387, 642.4pt x 481.8pt>
 File: img/sampling_not_different_overall.png Graphic file (type png)
 <use img/sampling_not_different_overall.png>
 Package pdftex.def Info: img/sampling_not_different_overall.png  used on input 
 line 1480.
 (pdftex.def)             Requested size: 350.0pt x 262.50595pt.
  [19] [20] [21 <./img/sampling_not_different_overall.png (PNG copy)>]
-<img/scripts_pipeline.png, id=406, 1286.8075pt x 1011.78pt>
+<img/scripts_pipeline.png, id=410, 1286.8075pt x 1011.78pt>
 File: img/scripts_pipeline.png Graphic file (type png)
 <use img/scripts_pipeline.png>
 Package pdftex.def Info: img/scripts_pipeline.png  used on input line 1574.
@@ -1889,17 +1889,17 @@ LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/b/it' will be
 
 LaTeX Warning: Reference `user-study' on page 23 undefined on input line 1594.
 
-
-LaTeX Warning: Reference `user-study' on page 23 undefined on input line 1599.
-
 [23{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts
 _opzo24.enc} <./img/scripts_pipeline.png>]
+
+LaTeX Warning: Reference `user-study' on page 24 undefined on input line 1599.
+
 
 LaTeX Warning: Reference `compare-models' on page 24 undefined on input line 16
 05.
 
 [24]
-<img/survey_time_box.png, id=443, 602.25pt x 803.0pt>
+<img/survey_time_box.png, id=446, 602.25pt x 803.0pt>
 File: img/survey_time_box.png Graphic file (type png)
 <use img/survey_time_box.png>
 Package pdftex.def Info: img/survey_time_box.png  used on input line 1655.
@@ -1910,17 +1910,17 @@ File: img/survey_time_box.png Graphic file (type png)
 <use img/survey_time_box.png>
 Package pdftex.def Info: img/survey_time_box.png  used on input line 1662.
 (pdftex.def)             Requested size: 171.50192pt x 228.67358pt.
- [25]
+ [25] [26 <./img/survey_time_box.png (PNG copy)>]
 
-LaTeX Warning: Reference `TODO' on page 26 undefined on input line 1808.
+LaTeX Warning: Reference `TODO' on page 27 undefined on input line 1808.
 
-[26 <./img/survey_time_box.png (PNG copy)>]
-<img/survey_tool.png, id=465, 389.95688pt x 346.29375pt>
+[27]
+<img/survey_tool.png, id=477, 389.95688pt x 346.29375pt>
 File: img/survey_tool.png Graphic file (type png)
 <use img/survey_tool.png>
 Package pdftex.def Info: img/survey_tool.png  used on input line 1812.
 (pdftex.def)             Requested size: 350.0pt x 310.82132pt.
- [27] [28 <./img/survey_tool.png>]
+ [28 <./img/survey_tool.png>]
 
 LaTeX Warning: Reference `fig:survey_time_histogramm' on page 29 undefined on i
 nput line 1868.
@@ -1929,46 +1929,45 @@ nput line 1868.
 LaTeX Warning: Reference `fig:survey_time_less_than_180' on page 29 undefined o
 n input line 1868.
 
+[29]
 
-LaTeX Warning: Reference `fig:survey_time_histogram' on page 29 undefined on in
+LaTeX Warning: Reference `fig:survey_time_histogram' on page 30 undefined on in
 put line 1870.
 
 
-LaTeX Warning: Reference `fig:survey_time_less_than_180' on page 29 undefined o
+LaTeX Warning: Reference `fig:survey_time_less_than_180' on page 30 undefined o
 n input line 1870.
 
-[29]
-<img/survey_time_histogramm.png, id=491, 481.8pt x 361.35pt>
+<img/survey_time_histogramm.png, id=497, 481.8pt x 361.35pt>
 File: img/survey_time_histogramm.png Graphic file (type png)
 <use img/survey_time_histogramm.png>
 Package pdftex.def Info: img/survey_time_histogramm.png  used on input line 187
 5.
 (pdftex.def)             Requested size: 171.50192pt x 128.62476pt.
-<img/survey_time_less_than_180.png, id=492, 642.4pt x 481.8pt>
+<img/survey_time_less_than_180.png, id=498, 642.4pt x 481.8pt>
 File: img/survey_time_less_than_180.png Graphic file (type png)
 <use img/survey_time_less_than_180.png>
 Package pdftex.def Info: img/survey_time_less_than_180.png  used on input line 
 1881.
 (pdftex.def)             Requested size: 171.50192pt x 128.62476pt.
-<img/survey_java_familiarity_pie.png, id=494, 642.4pt x 481.8pt>
+<img/survey_java_familiarity_pie.png, id=500, 642.4pt x 481.8pt>
 File: img/survey_java_familiarity_pie.png Graphic file (type png)
 <use img/survey_java_familiarity_pie.png>
 Package pdftex.def Info: img/survey_java_familiarity_pie.png  used on input lin
 e 1893.
 (pdftex.def)             Requested size: 262.5pt x 196.87762pt.
-<img/survey_ratings_violin_all.png, id=499, 642.4pt x 481.8pt>
+<img/survey_ratings_violin_all.png, id=505, 642.4pt x 481.8pt>
 File: img/survey_ratings_violin_all.png Graphic file (type png)
 <use img/survey_ratings_violin_all.png>
 Package pdftex.def Info: img/survey_ratings_violin_all.png  used on input line 
 1908.
 (pdftex.def)             Requested size: 350.0pt x 262.50595pt.
-<img/survey_ratings_bar_all.png, id=500, 642.4pt x 481.8pt>
+<img/survey_ratings_bar_all.png, id=506, 642.4pt x 481.8pt>
 File: img/survey_ratings_bar_all.png Graphic file (type png)
 <use img/survey_ratings_bar_all.png>
 Package pdftex.def Info: img/survey_ratings_bar_all.png  used on input line 191
 4.
 (pdftex.def)             Requested size: 350.0pt x 262.50595pt.
-
 
 LaTeX Warning: Float too large for page by 18.6119pt on input line 1920.
 
@@ -1983,11 +1982,22 @@ LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/sc' will be
 
 
 {C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts_cb
-34qf.enc}] [38] [39]
+34qf.enc}] [38] [39] [40]
+File: img/survey_java_familiarity_pie.png Graphic file (type png)
+<use img/survey_java_familiarity_pie.png>
+Package pdftex.def Info: img/survey_java_familiarity_pie.png  used on input lin
+e 2078.
+(pdftex.def)             Requested size: 210.00214pt x 157.50209pt.
+ [41] [42]
+\openout4 = `master-thesis.pyg'.
+
+
+(_minted-master-thesis/A1049E6393AA0637EB78CE26D0A27905C7566544A189DF3F09EC89E1
+F6504A73.pygtex) [43]
 \tf@thm=\write9
 \openout9 = `master-thesis.thm'.
 
- [40] (master-thesis.aux)
+ [44] (master-thesis.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-06-30>
@@ -2198,6 +2208,9 @@ img/survey_time_less_than_180.png
 img/survey_java_familiarity_pie.png
 img/survey_ratings_violin_all.png
 img/survey_ratings_bar_all.png
+img/survey_java_familiarity_pie.png
+_minted-master-thesis/A1049E6393AA0637EB78CE26D0A27905C7566544A189DF3F09EC89E1F
+6504A73.pygtex
  ***********
 
 
@@ -2212,11 +2225,11 @@ Package logreq Info: Writing requests to 'master-thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 49359 strings out of 475551
- 1062971 string characters out of 5772369
- 2051209 words of memory out of 5000000
- 69379 multiletter control sequences out of 15000+600000
- 707548 words of font info for 309 fonts, out of 8000000 for 9000
+ 49401 strings out of 475551
+ 1064366 string characters out of 5772369
+ 2051947 words of memory out of 5000000
+ 69406 multiletter control sequences out of 15000+600000
+ 707283 words of font info for 307 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  122i,21n,131p,10970b,2479s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\lukas\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
@@ -2236,9 +2249,9 @@ fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/p
 ublic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts
 /cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pf
 b><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on master-thesis.pdf (42 pages, 1168835 bytes).
+Output written on master-thesis.pdf (46 pages, 1186725 bytes).
 PDF statistics:
- 858 PDF objects out of 1000 (max. 8388607)
- 162 named destinations out of 1000 (max. 500000)
- 87278 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 912 PDF objects out of 1000 (max. 8388607)
+ 176 named destinations out of 1000 (max. 500000)
+ 87302 words of extra memory for PDF output out of 89155 (max. 10000000)
 
