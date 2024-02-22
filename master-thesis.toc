@@ -5,20 +5,20 @@
 \contentsline {subsection}{\numberline {2.2}Conventional Calculation Approaches}{6}{subsection.0.0.2.2}%
 \contentsline {subsection}{\numberline {2.3}Deep Learning Based Approaches}{6}{subsection.0.0.2.3}%
 \contentsline {subsection}{\numberline {2.4}Data Augmentation}{9}{subsection.0.0.2.4}%
-\contentsline {subsection}{\numberline {2.5}Diverse Perspectives}{10}{subsection.0.0.2.5}%
-\contentsline {subsection}{\numberline {2.6}Data Generation}{11}{subsection.0.0.2.6}%
+\contentsline {subsection}{\numberline {2.5}Diverse Perspectives}{9}{subsection.0.0.2.5}%
+\contentsline {subsection}{\numberline {2.6}Data Generation}{10}{subsection.0.0.2.6}%
 \contentsline {section}{\numberline {3}Mined and Modified Code for Dataset Generation}{11}{section.0.0.3}%
 \contentsline {subsection}{\numberline {3.1}Work on Existing Datasets}{11}{subsection.0.0.3.1}%
-\contentsline {subsection}{\numberline {3.2}Classification Considerations}{12}{subsection.0.0.3.2}%
-\contentsline {subsection}{\numberline {3.3}Dataset Generation Approach}{13}{subsection.0.0.3.3}%
-\contentsline {subsection}{\numberline {3.4}Readability Decreasing Heuristics}{15}{subsection.0.0.3.4}%
+\contentsline {subsection}{\numberline {3.2}Classification Considerations}{11}{subsection.0.0.3.2}%
+\contentsline {subsection}{\numberline {3.3}Dataset Generation Approach}{12}{subsection.0.0.3.3}%
+\contentsline {subsection}{\numberline {3.4}Readability Decreasing Heuristics}{14}{subsection.0.0.3.4}%
 \contentsline {subsection}{\numberline {3.5}Construction of Questionnaires}{16}{subsection.0.0.3.5}%
 \contentsline {subsection}{\numberline {3.6}Readability Classification Model}{21}{subsection.0.0.3.6}%
-\contentsline {section}{\numberline {4}Evaluation}{23}{section.0.0.4}%
+\contentsline {section}{\numberline {4}Evaluation}{22}{section.0.0.4}%
 \contentsline {subsection}{\numberline {4.1}Survey}{24}{subsection.0.0.4.1}%
-\contentsline {subsubsection}{\nonumberline Pilot Survey}{24}{subsubsection*.4}%
-\contentsline {subsubsection}{\nonumberline Prolific Survey}{26}{subsubsection*.6}%
-\contentsline {subsection}{\numberline {4.2}Model Training Results}{31}{subsection.0.0.4.2}%
-\contentsline {section}{\numberline {5}Discussion}{32}{section.0.0.5}%
-\contentsline {section}{\numberline {6}Conclusions}{33}{section.0.0.6}%
+\contentsline {subsubsection}{\nonumberline Pilot Survey}{24}{subsubsection*.17}%
+\contentsline {subsubsection}{\nonumberline Prolific Survey}{26}{subsubsection*.21}%
+\contentsline {subsection}{\numberline {4.2}Model Training Results}{33}{subsection.0.0.4.2}%
+\contentsline {section}{\numberline {5}Discussion}{35}{section.0.0.5}%
+\contentsline {section}{\numberline {6}Conclusions}{35}{section.0.0.6}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

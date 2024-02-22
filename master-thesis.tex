@@ -671,6 +671,11 @@ cleveref=true,%
 % Highlight rows of table
 \usepackage{colortbl}
 
+% Subfigures
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+
 \begin{document}
 	
 	\frontmatter
@@ -1050,7 +1055,7 @@ cleveref=true,%
 %	\end{listing}
 %	\footnotetext{\url{https://github.com/apache/cassandra/blob/trunk/src/java/org/apache/cassandra/utils/HeapUtils.java}, accessed: 2023-07-25}
 	
-	\begin{listing}[!ht]
+	\begin{listing}[tb]
 		\begin{minted}[linenos, frame=lines, framesep=2mm]{java}
 			/**
 			* Logs the output of the specified process.
@@ -1072,11 +1077,11 @@ cleveref=true,%
 				}
 			}
 		\end{minted}
-		\caption[An example for well readable code of the highly rated Cassandra GitHub repository]{An example for well readable code of the highly rated Cassandra GitHub repository}
+		\caption[An example for well readable code of the highly rated Cassandra GitHub repository]{An example for well readable code of the highly rated Cassandra GitHub repository.}
 		\label{lst:cassandra-src-java-org-apache-cassandra-utils}
 	\end{listing}
 	
-	\begin{listing}[!ht]
+	\begin{listing}[tb]
 		\begin{minted}[linenos, frame=lines, framesep=2mm]{java}
 			private 
 				static 
@@ -1101,31 +1106,31 @@ cleveref=true,%
 				}
 			}
 		\end{minted}
-		\caption{The same example as in listing~\ref{lst:cassandra-src-java-org-apache-cassandra-utils} but modified to be poorly readable}
+		\caption{The same example as in Listing~\ref{lst:cassandra-src-java-org-apache-cassandra-utils} but modified to be poorly readable.}
 		\label{lst:cassandra-src-java-org-apache-cassandra-utils-modified}
 	\end{listing}
 	
-	
-	\begin{listing}[!ht]
-		\begin{minted}[linenos, frame=lines, framesep=2mm]{java}
-			/**
-			* Prints a personalized greeting message based on the provided name.
-			*
-			* @param name The name of the person for whom the greeting is intended.
-			*             If {@code null} or an empty string is provided, a generic greeting is displayed.
-			*/
-			public static void printGreeting(String name) {
-				// Check if the name is provided
-				if (name != null && !name.isEmpty()) {
-					System.out.println("Hello, " + name + "! How are you today?");
-				} else {
-					System.out.println("Hello! How are you today?");
-				}
-			}
-		\end{minted}
-		\caption{A simple method that prints a greeting in Java}
-		\label{lst:print-greeting}
-	\end{listing}
+%	
+%	\begin{listing}[!ht]
+%		\begin{minted}[linenos, frame=lines, framesep=2mm]{java}
+%			/**
+%			* Prints a personalized greeting message based on the provided name.
+%			*
+%			* @param name The name of the person for whom the greeting is intended.
+%			*             If {@code null} or an empty string is provided, a generic greeting is displayed.
+%			*/
+%			public static void printGreeting(String name) {
+%				// Check if the name is provided
+%				if (name != null && !name.isEmpty()) {
+%					System.out.println("Hello, " + name + "! How are you today?");
+%				} else {
+%					System.out.println("Hello! How are you today?");
+%				}
+%			}
+%		\end{minted}
+%		\caption{A simple method that prints a greeting in Java}
+%		\label{lst:print-greeting}
+%	\end{listing}
 	
 
 	
@@ -1160,19 +1165,19 @@ cleveref=true,%
 	\citeauthor{mi2023graph} address the importance of code readability in software development and introduced a graph-based representation method for code readability classification. The proposed method involves parsing source code into a graph with abstract syntax tree (AST), combining control and data flow edges, and converting node information into vectors. The model, comprising Graph Convolutional Network (GCN), DMoNPooling, and K-dimensional Graph Neural Networks (k-GNNs) layers, extracts syntactic and semantic features \cite{mi2023graph}.
 
 	You can find an overview over the accuracy scores for the models mentioned in Table \ref{tab:rel-acc-scores}.
-	\begin{table}[ht]
+	\begin{table}[tb]
 		\centering
-		\caption{Accuracy scores of two-class readability classification models}
+		\caption{Accuracy scores of two-class readability classification models.}
 		\vspace{8pt}
 		\label{tab:rel-acc-scores}
 		\begin{tabular}{lr}
 			\toprule
-			\textbf{Model} & \textbf{Accuracy} \\
+			Model & Accuracy \\
 			\midrule
 			Buse \cite{buse2009learning} & 76.5 \% \\
 			Possnet \cite{posnett2011simpler} & 71.7 \% \\
 			Dorn \cite{dorn2012general} & 78.6 \% \\
-			Scallabrino \cite{scalabrino2016improving} & 81.8 \% \\
+			Scallabrino \cite{scalabrino2018comprehensive} & 81.8 \% \\
 			Mi\_IncepCRM \cite{mi2018inception} & 84.2 \% \\
 			Mi\_DeepCRM \cite{mi2018improving} & 83.8 \% \\
 			Sharma \cite{sharma2020egan} & 84.8 \% \\
@@ -1270,9 +1275,9 @@ cleveref=true,%
 \subsection{Dataset Generation Approach} \label{Dataset Generation Approach}
 	Other than previous datasets for readability classification, our dataset is generated using an automated approach. The aim is to mine modify code from GitHub to obtain both readable and unreadable code. This approach is novel to the best of our knowledge. You can find a visualization in Figure \ref{fig:dataset_generation}.
 	
-	\begin{figure}[t]
+	\begin{figure}[tb]
 		\centering
-		\includegraphics[width=\textwidth]{img/dataset_generation.png}
+		\includegraphics[width=0.9\textwidth]{img/dataset_generation.png}
 		\caption{The used dataset generation approach.}
 		\label{fig:dataset_generation}
 	\end{figure}
@@ -1310,10 +1315,10 @@ cleveref=true,%
 	The renaming is done while the code is in its AST representation to ensure that the declarations and usages of variables, fields and methods are all renamed to the same new name. 
 	The other transformations are performed when the AST is converted back to source code. This includes adding additional spaces, adding or removing newlines and changing the indentation of code in term of tabs.
 	
-	\begin{figure}[t]
+	\begin{figure}[tb]
 		\centering
-		\includegraphics[width=0.5\textwidth]{img/rdh.png}
-		\caption{The available Readability Decreasing Heuristics (RDH)}
+		\includegraphics[width=0.75\textwidth]{img/rdh.png}
+		\caption{The available Readability Decreasing Heuristics (RDH).}
 		\label{fig:rdh}
 	\end{figure}
 	
@@ -1323,14 +1328,14 @@ cleveref=true,%
 	
 	Some of the heuristics were not included in the final version of the new dataset. You can find them in table \ref{tab:not-included-rdhs} together with the reason why they were not included.
 	
-	\begin{table}[h]
+	\begin{table}[tb]
 		\centering
-		\caption{Readability Decreasing Heuristics that are not included in the final version of the new dataset and why}
+		\caption{Readability Decreasing Heuristics that are not included in the final version of the new dataset and why.}
 		\vspace{8pt}
 		\label{tab:not-included-rdhs}
 		\begin{tabular}{ll}
 			\toprule
-			\textbf{Heuristic} & \textbf{Reason} \\
+			Heuristic & Reason \\
 			\midrule
 			\texttt{inlineMethod} & Makes methods too long \\
 			\texttt{add0} & Limited survey capacity \\
@@ -1347,18 +1352,18 @@ cleveref=true,%
 \subsection{Construction of Questionnaires} \label{Construction of Questionnaires}
 	We evaluated the data set generated and the new approach with a survey. To do this, we had to carefully select suitable code snippets from the dataset. An overview of the approach can be found in Figure \ref{fig:survey_pipeline}.
 	
-	\begin{figure}[t]
+	\begin{figure}[tb]
 		\centering
-		\includegraphics[width=\textwidth]{img/survey_pipeline.png}
+		\includegraphics[width=0.9\textwidth]{img/survey_pipeline.png}
 		\caption{Steps performed to craft survey sheets from the dataset}
 		\label{fig:survey_pipeline}
 	\end{figure}
 		
 	The first step was to find realistic configurations for the readability reduction tool. After an initial data set with the heuristics was created, a pilot study was conducted. Subsequently, the heuristics that proved to be too strong were checked and, if necessary, adjusted to be weaker according to the results of the pilot survey. The result was 9 different rdhs, which can be found in table \ref{tab:rdh_configurations}. Together with the original methods this resulted in 10 different configurations.
 	
-	\begin{table}[h]
+	\begin{table}[tb]
 		\centering
-		\caption{Chosen configurations and their probabilities for the Readability Decreasing Heuristics}
+		\caption{Chosen configurations and their probabilities for the Readability Decreasing Heuristics.}
 		\vspace{8pt}
 		\label{tab:rdh_configurations}
 		\begin{tabular}{|l|l|l|}
@@ -1419,18 +1424,18 @@ cleveref=true,%
 		
 	By comparing the merge distances in each step (see figure \ref{fig:survey_cluster_amount}), we found that a cluster size of 4 makes the most sense: the merge distance of 5 to 4 is small, so we should still perform this merge, but the merge distance of 4 to 3 is large, so it is better not to perform this merge. Also, 4 is the size with the last possibility for a small merge distance. We have manually assigned a name to each of the 4 cluster/strata, which can be seen in Table \ref{tab:survey_strata_labeles}.
 	
-	\begin{figure}[t]
+	\begin{figure}[tb]
 		\centering
-		\includegraphics[width=\textwidth]{img/survey_pipeline.png}
-		\caption{TODO: Replace. Merge difference and local derivative for amount of clusters/strata between 2 and 10} 
+		\includegraphics[width=0.9\textwidth]{img/survey_pipeline.png}
+		\caption{TODO: Replace. Merge difference and local derivative for amount of clusters/strata between 2 and 10.} 
 		\label{fig:survey_cluster_amount}
 	\end{figure}
 	
-	\begin{table}[htbp]
+	\begin{table}[tb]
 		\centering
 		\begin{tabular}{ll}
 			\toprule
-			\textbf{Stratum} & \textbf{Method Type} \\
+			Stratum & Method Type \\
 			\midrule
 			Stratum 0 & Simple methods \\
 			Stratum 1 & Complex methods \\
@@ -1438,7 +1443,7 @@ cleveref=true,%
 			Stratum 3 & Medium complex methods \\
 			\bottomrule
 		\end{tabular}
-		\caption{Computed stratas and manually assigned name based on the methods within}
+		\caption{Computed stratas and manually assigned name based on the methods within.}
 		\label{tab:survey_strata_labeles}
 	\end{table}
 		
@@ -1448,14 +1453,14 @@ cleveref=true,%
 	
 	We opted for a random sample within the strata. However, we distributed the 40 snippets across the strata as shown in Table~\ref{tab:sampled_methods}.
 	
-	\begin{table}[htbp]
+	\begin{table}[tb]
 		\centering
-		\caption{Strata distribution of sampled methods}
+		\caption{Strata distribution of sampled methods.}
 		\vspace{8pt}
 		\label{tab:sampled_methods}
 		\begin{tabular}{lrr}
 			\toprule
-			\textbf{Stratum} & \textbf{Percentage} & \textbf{Count} \\
+			Stratum & Percentage & Count \\
 			\midrule
 			Stratum 0 & 10 \% & 4 \\
 			Stratum 1 & 40 \% & 16 \\
@@ -1470,7 +1475,7 @@ cleveref=true,%
 	
 	This decision was made due to the relatively high frequency of methods that do not differ from their original methods (see Figure \ref{fig:sampling_not_different_overall}). Another reason for this decision is that particularly simple methods are rather uninteresting for the classification of readability, as they are often generated (e.g. by IDEs) and usually follow a straightforward pattern.
 	
-	\begin{figure}[t]
+	\begin{figure}[tb]
 		\centering
 		\includegraphics[width=\textwidth]{img/sampling_not_different_overall.png}
 		\caption{Relative frequency of the case that a rdh-method is not different from it's original method.} 
@@ -1564,10 +1569,10 @@ cleveref=true,%
 	
 	You can find an overview over all programs used to create the merged dataset, the new dataset the model and all our evaluation results in Figure \ref{fig:scripts_pipline}.
 	
-	\begin{figure}[t]
+	\begin{figure}[tb]
 		\centering
 		\includegraphics[width=\textwidth]{img/scripts_pipeline.png}
-		\caption{Overview over the used scripts and their output}
+		\caption{Overview over the used scripts and their output.}
 		\label{fig:scripts_pipline}
 	\end{figure}
 	
@@ -1641,12 +1646,25 @@ cleveref=true,%
 	% Results
 	\textit{3. Results:}
 	The pilot survey provided information on how much time it would take to evaluate 20 code snippets in terms of their readability. An overview of the times required can be found in Figure \ref{fig:pilot_survey_time_box.png}. On this basis, we estimated the time required for our survey at 10 minutes.
-	
-	\begin{figure}[t]
+		
+	% TODO: Combine into one figure using python
+	\begin{figure}[tb]
 		\centering
-		\includegraphics[width=\textwidth]{img/survey_time_box.png}
-		\caption{TODO: Replace with actual one.}
-		\label{fig:pilot_survey_time_box.png}
+		\begin{subfigure}{0.49\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{img/survey_time_box.png}
+			\caption{Time required by the participants to complete the prolific survey.}
+			\label{fig:survey_time_box}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}{0.49\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{img/survey_time_box.png}
+			\caption{Time required by the participants to complete the pilot survey.} % TODO: Replace with actual one. 
+			\label{fig:pilot_survey_time_box.png}
+		\end{subfigure}
+		\caption{Time required to complete the surveys.}
+		\label{fig:survey_time_both}
 	\end{figure}
 	
 	Most of the problems that occurred were due to the survey tool (e.g.: "I also felt that I should use the drop-down menu at the top left."). You can find all feedback in the appendix TODO.
@@ -1744,14 +1762,14 @@ cleveref=true,%
 %		\end{tabular}
 %	\end{table}
 		
-	\begin{table}[htbp]
+	\begin{table}[tb]
 		\centering
-		\caption{Mean score ratings for the pilot survey}
+		\caption{Mean score ratings for the pilot survey.}
 		\vspace{8pt}
 		\label{tab:pilot_survey_results}
 		\begin{tabular}{llr}
 			\toprule
-			\textbf{Stratum} & \textbf{RDH} & \textbf{Score} \\
+			Stratum & RDH & Score \\
 			\midrule
 			Stratum 3 & methods & 4,6 \\
 			Stratum 0 & tabs\_few & 4,3 \\
@@ -1789,24 +1807,24 @@ cleveref=true,%
 	We end up with a margin of error of 29.55\% at a confidence of 95\% for an individual snippet. However, we will aggregate over stratas and multiple snippets later anyway.
 	Each questionnaire consists of 20 code snippets. Consequently, 400 different code snippets are rated in total. The surveys were configured in such a way that each participant could only take part in one of the questionnaires. You can find the texts of the survey in appendix \ref{TODO}. The questionnaires were crafted as described in section \ref{Construction of Questionnaires}.
 		
-	\begin{figure}[t]
+	\begin{figure}[tb]
 		\centering
 		\includegraphics[width=\textwidth]{img/survey_tool.png}
-		\caption{Tool for rating a code snippet from the perspective of the survey participant}
+		\caption{Tool for rating a code snippet from the perspective of a survey participant.}
 		\label{fig:survey_tool}
 	\end{figure}
 
 	% Target population
 	The target population consists of Java programmers selected by prolific. They may be students or work in industry. They can come from any country. Overall, there were no requirements other than familiarity with Java (see also table \ref{tab:prolific-audience}).
 	
-	\begin{table}
+	\begin{table}[tb]
 		\centering
-		\caption{Target population for the prolific survey}
+		\caption{Target population for the prolific survey.}
 		\vspace{8pt}
 		\label{tab:prolific-audience}
 		\begin{tabular}{ll}
 			\toprule
-			\textbf{Type} & \textbf{Target Population} \\
+			Type & Target Population \\
 			\midrule
 			Target Audience      & Java programmers \\
 			Unit of Observation  & Java programmers \\
@@ -1850,34 +1868,30 @@ cleveref=true,%
 	You can find an overview over the time required by the participants in the Figures \ref{fig:survey_time_box} and \ref{fig:survey_time_histogramm}. Additionally you can find the amount of participants that required less than 3 minutes for one survey sheet in Figure \ref{fig:survey_time_less_than_180}. The results of those participants might be a thread to validity to which we will come back later.
 	
 	An overview of the time required by the participants can be found in the figures \ref{fig:survey_time_box} and \ref{fig:survey_time_histogram}. In addition, figure \ref{fig:survey_time_less_than_180} shows the number of participants who took less than 3 minutes to complete a survey questionnaire. The results of these participants could have a negative impact on validity, which we will come back to later. 
-	
-	\begin{figure}[t]
+		
+	\begin{figure}[tb]
 		\centering
-		\includegraphics[width=\textwidth]{img/survey_time_box.png}
-		\caption{Time required by the participants to complete the survey}
-		\label{fig:survey_time_box}
-	\end{figure}
-	
-	\begin{figure}[t]
-		\centering
-		\includegraphics[width=\textwidth]{img/survey_time_histogramm.png}
-		\caption{Time required by the participants to complete the survey}
-		\label{fig:survey_time_histogramm}
-	\end{figure}
-	
-	\begin{figure}[t]
-		\centering
-		\includegraphics[width=0.75\textwidth]{img/survey_time_less_than_180.png}
-		\caption{Amount of participants per questionnaire that required less than 3 minutes to complete the survey}
-		\label{fig:survey_time_less_than_180}
+		\begin{subfigure}{0.49\textwidth}
+			\includegraphics[width=\linewidth]{img/survey_time_histogramm.png}
+			\caption{Time required by participants to complete the survey.}
+			\label{subfig:survey_time_histogramm}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}{0.49\textwidth}
+			\includegraphics[width=\linewidth]{img/survey_time_less_than_180.png}
+			\caption{Participants per questionnaire requiring less than 3 minutes.}
+			\label{subfig:survey_time_less_than_180}
+		\end{subfigure}
+		\caption{Time analysis of participants completing the prolific survey.}
+		\label{fig:survey_time_prolific}
 	\end{figure}
 	
 	The participants' familiarity with Java is shown in Figure \ref{fig:survey_java_familiarity_pie}.
 	
-	\begin{figure}[t]
+	\begin{figure}[tb]
 		\centering
-		\includegraphics[width=\textwidth]{img/survey_java_familiarity_pie.png}
-		\caption{Familiarity of survey participants with Java}
+		\includegraphics[width=0.75\textwidth]{img/survey_java_familiarity_pie.png}
+		\caption{Familiarity of prolific survey participants with Java.}
 		\label{fig:survey_java_familiarity_pie}
 	\end{figure}
 	
@@ -1888,18 +1902,21 @@ cleveref=true,%
 		%		and answer the research question \ref{select-well}: Yes, automatically selected code can be assumed to be well readable.
 	\end{researchbox}
 	
-	\begin{figure}[t]
+	\begin{figure}[p]
 		\centering
-		\includegraphics[width=\textwidth]{img/survey_ratings_violin_all.png}
-		\caption{Absolute survey ratings for each rdh and all stratas}
-		\label{fig:survey_ratings_violin_all}
-	\end{figure}
-	
-	\begin{figure}[t]
-		\centering
-		\includegraphics[width=\textwidth]{img/survey_ratings_bar_all.png}
-		\caption{Relative survey ratings for each rdh and all stratas comppared to original}
-		\label{fig:survey_ratings_bar_all}
+		\begin{subfigure}{\linewidth}
+			\includegraphics[width=\textwidth]{img/survey_ratings_violin_all.png}
+			\caption{Absolute survey ratings for each rdh and all stratas}
+			\label{fig:survey_ratings_violin_all}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}{\textwidth}
+			\includegraphics[width=\linewidth]{img/survey_ratings_bar_all.png}
+			\caption{Relative survey ratings for each rdh and all stratas compared to original}
+			\label{fig:survey_ratings_bar_all}
+		\end{subfigure}
+		\caption{Survey ratings for each rdh and all stratas.}
+		\label{fig:survey_time_all}
 	\end{figure}
 		
 	We evaluated whether the deviation in the ratings between the various RDHs has statistical significance. We therefore used the Mann-Whitney-U-Test comparing the ratings for all snippets for a RDH against the corresponding none snippets. You can find the results of this in Table \ref{tab:survey_statistical_evidence}.
@@ -1930,14 +1947,14 @@ cleveref=true,%
 %		\end{tabular}
 %	\end{table}
 
-	\begin{table}[h]
+	\begin{table}[tb]
 		\centering
-		\caption{Mann-Whitney U test results of none against each RDH}
+		\caption{Mann-Whitney U test results of none against each RDH.}
 		\vspace{8pt}
 		\label{tab:survey_statistical_evidence}
 		\begin{tabular}{lS[table-format=1.2e-2]}
 			\toprule
-			\textbf{Comparison} & \textbf{$p$} \\
+			Comparison & \textbf{$p$} \\
 			\midrule
 			\textbf{None - Methods} & \num{9.22e-1} \\
 			None - Newlines Few & \num{5.23e-6} \\
@@ -1959,21 +1976,21 @@ cleveref=true,%
 \subsection{Model Training Results} \label{Model training results}
 	The results of the training, evaluation and fine-tuning can be found in the table \ref{tab:dataset_performance}.
 		
-	\begin{table}[h]
+	\begin{table}[tb]
 		\centering
 		\caption{Performance of different dataset configurations for the same model. New-Old is training on the new dataset and fine tuning on the old one.}
 		\vspace{8pt}
 		\label{tab:dataset_performance}
 		\begin{tabular}{llrrrrrr}
 			\toprule
-			\textbf{Train} & \textbf{Eval} & \textbf{Acc} & \textbf{Prec} & \textbf{Rec} & \textbf{AUC} & \textbf{F1} & \textbf{MCC} \\
+			Train & Eval & Acc & Prec & Rec & AUC & F1 & MCC \\
 			\midrule
-			\textbf{New}        & \textbf{New}     & 91.8 \% & 92.3 \% & 91.3 \% & 91.8 \% & 91.7 \% & 83.6 \% \\
-			\textbf{New}        & \textbf{Old}     & 61.9 \% & 63.6 \% & 63.6 \% & 63.6 \% & 63.6 \% & 23.6 \% \\
-			\textbf{Old}        & \textbf{Old}     & 53.8 \% & 52.6 \% & 77.8 \% & 65.2 \% & 62.8 \% & 08.7 \% \\
-			\textbf{Old}        & \textbf{Old}     & 84.7 \% & 87.7 \% & 82.3 \% & 85.0 \% & 83.7 \% & 70.4 \% \\
-			\textbf{New-Old} & \textbf{Old}     & 80.4 \% & 84.0 \% & 73.8 \% & 78.9 \% & 77.2 \% & 60.0 \% \\
-			\textbf{New210}     & \textbf{New210}  & 80.9 \% & 82.7 \% & 77.6 \% & 80.2 \% & 78.9 \% & 60.9 \% \\
+			New        	& New    	& 91.8 \% & 92.3 \% & 91.3 \% & 91.8 \% & 91.7 \% & 83.6 \% \\
+			New			& Old     	& 61.9 \% & 63.6 \% & 63.6 \% & 63.6 \% & 63.6 \% & 23.6 \% \\
+			Old        	& Old     	& 53.8 \% & 52.6 \% & 77.8 \% & 65.2 \% & 62.8 \% & 08.7 \% \\
+			Old        	& Old   	& 84.7 \% & 87.7 \% & 82.3 \% & 85.0 \% & 83.7 \% & 70.4 \% \\
+			New-Old 	& Old     	& 80.4 \% & 84.0 \% & 73.8 \% & 78.9 \% & 77.2 \% & 60.0 \% \\
+			New210     	& New210  	& 80.9 \% & 82.7 \% & 77.6 \% & 80.2 \% & 78.9 \% & 60.9 \% \\
 			\bottomrule
 		\end{tabular}
 	\end{table}
