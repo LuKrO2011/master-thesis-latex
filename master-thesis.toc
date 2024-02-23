@@ -12,16 +12,16 @@
 \contentsline {subsection}{\numberline {3.2}Classification Considerations}{11}{subsection.0.0.3.2}%
 \contentsline {subsection}{\numberline {3.3}Dataset Generation Approach}{12}{subsection.0.0.3.3}%
 \contentsline {subsection}{\numberline {3.4}Readability Decreasing Heuristics}{14}{subsection.0.0.3.4}%
-\contentsline {subsection}{\numberline {3.5}Construction of Questionnaires}{16}{subsection.0.0.3.5}%
-\contentsline {subsection}{\numberline {3.6}Readability Classification Model}{21}{subsection.0.0.3.6}%
-\contentsline {section}{\numberline {4}Evaluation}{22}{section.0.0.4}%
-\contentsline {subsection}{\numberline {4.1}Survey}{24}{subsection.0.0.4.1}%
-\contentsline {subsubsection}{\nonumberline Pilot Survey}{24}{subsubsection*.17}%
-\contentsline {subsubsection}{\nonumberline Prolific Survey}{26}{subsubsection*.21}%
+\contentsline {subsection}{\numberline {3.5}Construction of Questionnaires}{15}{subsection.0.0.3.5}%
+\contentsline {subsection}{\numberline {3.6}Readability Classification Model}{20}{subsection.0.0.3.6}%
+\contentsline {section}{\numberline {4}Evaluation}{21}{section.0.0.4}%
+\contentsline {subsection}{\numberline {4.1}Survey}{23}{subsection.0.0.4.1}%
+\contentsline {subsubsection}{\nonumberline Pilot Survey}{23}{subsubsection*.15}%
+\contentsline {subsubsection}{\nonumberline Prolific Survey}{26}{subsubsection*.19}%
 \contentsline {subsection}{\numberline {4.2}Model Training Results}{31}{subsection.0.0.4.2}%
-\contentsline {section}{\numberline {5}Discussion}{35}{section.0.0.5}%
-\contentsline {section}{\numberline {6}Conclusions}{35}{section.0.0.6}%
-\contentsline {section}{\numberline {I}Pilot Survey Feedback}{41}{section.Alph0.1}%
-\contentsline {section}{\numberline {II}Readability Decreasing Heuristics Configuration File}{43}{section.Alph0.2}%
-\contentsline {section}{\numberline {III}Prolific Survey Texts}{44}{section.Alph0.3}%
+\contentsline {section}{\numberline {5}Discussion}{33}{section.0.0.5}%
+\contentsline {section}{\numberline {6}Conclusions}{34}{section.0.0.6}%
+\contentsline {section}{\numberline {I}Pilot Survey Feedback}{40}{section.Alph0.1}%
+\contentsline {section}{\numberline {II}Readability Decreasing Heuristics Configuration File}{42}{section.Alph0.2}%
+\contentsline {section}{\numberline {III}Prolific Survey Texts}{43}{section.Alph0.3}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

@@ -668,6 +668,7 @@ cleveref=true,%
 
 % TODO: Check tenses (Present tense to describe the paper itself)
 % TODO: Badly readable vs unreadable
+% TODO: Clearify code snippets vs methods
 \begin{document}
 	
 	\frontmatter
@@ -1144,7 +1145,7 @@ cleveref=true,%
 	Those approaches used handcrafted features to calculate how readable a piece of code is. They were able to achieve up to 81.8\% accuracy in classification~\cite{scalabrino2018comprehensive}.
 	
 \subsection{Deep Learning Based Approaches} \label{Deep Learning Based Approaches}
-	In recent years code readability classification is dominated by machine learning, especially deep learning approaches. As the quality of the models increased, so did their accuracy (see Figure \ref{tab:rel-acc-scores}).
+	In recent years code readability classification is dominated by machine learning, especially deep learning approaches. As the quality of the models increased, so did their accuracy (see \autoref{tab:rel-acc-scores}).
 	
 	% Related work: ML - Inception (82.2\% to 84.2\% acc)
 	\citeauthor{mi2018inception} introduced a deep learning model called IncepCRM for code readability classification. IncepCRM automatically learns multi-scale features from source code with minimal manual intervention~\cite{mi2018inception}.
@@ -1164,7 +1165,7 @@ cleveref=true,%
 	% Related work: ML - AST + GNN (72.5\% three class, 88\% two class acc)
 	\citeauthor{mi2023graph} address the importance of code readability in software development and introduced a graph-based representation method for code readability classification. The proposed method involves parsing source code into a graph with abstract syntax tree (AST), combining control and data flow edges, and converting node information into vectors. The model, comprising Graph Convolutional Network (GCN), DMoNPooling, and K-dimensional Graph Neural Networks (k-GNNs) layers, extracts syntactic and semantic features~\cite{mi2023graph}.
 
-	You can find an overview over the accuracy scores for the models mentioned in Table \ref{tab:rel-acc-scores}.
+	You can find an overview over the accuracy scores for the models mentioned in \autoref{tab:rel-acc-scores}.
 	\begin{table}[tb]
 		\centering
 		\caption{Accuracy scores of two-class readability classification models.}
@@ -1272,7 +1273,7 @@ cleveref=true,%
 	However, we will both stick to the binary classification approach as well as to the towards model~\cite{mi2022towards} to make our results comparable to theirs.
 	
 \subsection{Dataset Generation Approach} \label{Dataset Generation Approach}
-	Other than previous datasets for readability classification, our dataset is generated using an automated approach. The aim is to mine and modify code from GitHub to obtain both well readable and badly readable code. This approach is novel to the best of our knowledge. You can find a visualization in Figure \ref{fig:dataset_generation}.
+	Other than previous datasets for readability classification, our dataset is generated using an automated approach. The aim is to mine and modify code from GitHub to obtain both well readable and badly readable code. This approach is novel to the best of our knowledge. You can find a visualization in \autoref{fig:dataset_generation}.
 	
 	\begin{figure}[tb]
 		\centering
@@ -1303,28 +1304,28 @@ cleveref=true,%
 	Initially we planned to not require comments for the badly readable dataset part. However, it turns out that in this case all well readable methods have a comment while most of the badly readable do not have one. This lead to shortcut learning, whether a method has a comment or not instead of learning to distinguishing the methods by all other criteria as well.
 	
 \subsection{Readability Decreasing Heuristics} \label{Readability Decreasing Heursitcs}
-	We already mentioned, that Readability Decreasing Heuristics (RDH) are used to generate badly readable code from well readable code. In this section we will explain how we achieved this and what is meant by RDH.
-	The RDH are a set of code manipulation heuristics that are applied to Java files. One part is performed on the abstract syntax tree (AST) representation of the Java files using the spoon library (\curl{https://spoon.gforge.inria.fr/}{2024-15-02})~\cite{pawlak2016spoon}. Another part is performed when converting the AST back into Java files.
-	From now on, we will use the abbreviation RDH or RDH tool when referring to the entire program. If a specific manipulation or a subset of all manipulations is meant, we will use [name] rdh instead.
+	In this section we explain how we achieved to decrease the readability of code using Readability Decreasing Heuristics (RDH).
+	The RDH are a set of code manipulation heuristics that are applied to Java files. One part is performed on the abstract syntax tree (AST) representation of the Java files using the spoon library\curl{https://spoon.gforge.inria.fr/}{2024-15-02}~\cite{pawlak2016spoon}. Another part is performed when converting the AST back into Java files.
+	From now on, we will use the abbreviation \textit{RDH} or \textit{RDH tool} when referring to the entire program. If a specific manipulation or a configuration of the RDH tool is meant, we will use \textit{[name] rdh} or \textit{[name]} instead.
 	
-	The RDH tool converts the Java code of each well readable Java class file into an AST. In the end the AST is parsed back to Java code using an pretty printer. If nothing else is done, this results in the "none" rdh. Note that the code produced by the tool in this way will be slightly different from the original input code, as the styling and formatting of the original code will be overwritten by the default formatting of the Java Pretty Printer of the spoon library.
+	The RDH tool initially converts the Java code of any well readable Java class file into an AST. In the end the AST is parsed back to Java code using an pretty printer. If nothing else is done, this results in the "none" rdh. Note that the code produced by the tool in this way will be slightly different from the original input code, as the styling and formatting of the original code will be overwritten by the default formatting of the Java Pretty Printer of the spoon library\curl{https://spoon.gforge.inria.fr/}{2024-15-02}~\cite{pawlak2016spoon}.
 	
-	Various code changes can be made between the two steps and during printing (see Figure \ref{fig:rdh}).
+	Various code changes can be made between the two steps and during printing.
 	The renaming is done while the code is in its AST representation to ensure that the declarations and usages of variables, fields and methods are all renamed to the same new name. 
 	The other transformations are performed when the AST is converted back to source code. This includes adding additional spaces, adding or removing newlines and changing the indentation of code in term of tabs.
 	
-	\begin{figure}[tb]
-		\centering
-		\includegraphics[width=0.75\textwidth]{img/rdh.png}
-		\caption{The available Readability Decreasing Heuristics (RDH).}
-		\label{fig:rdh}
-	\end{figure}
+%	\begin{figure}[tb]
+%		\centering
+%		\includegraphics[width=0.75\textwidth]{img/rdh.png}
+%		\caption{The available Readability Decreasing Heuristics (RDH).}
+%		\label{fig:rdh}
+%	\end{figure}
 	
-	The individual methods are then extracted from the class files. As already mentioned, we need a method comment for all methods. We therefore use the RDH "remove-comment" after completing the method extraction.
+	The individual methods are then extracted from the class files. As already mentioned, we need a method comment for all methods. We therefore use the remove comment rdh after completing the method extraction.
 	
-	The RDH works with a configuration file in which one can specify a probability for each heuristic that can be applied. We have chosen the probabilities so that the generated code snippets are still realistic in the sense that they could also be written by humans. You can find the configuration file for the none rdh in Appendix \ref{appendix:rdh-config-file}.
+	The RDH tool works with a configuration file in which one can specify a probability for each heuristic that can be applied. We have chosen the probabilities so that the generated code snippets are still realistic in the sense that they could also be written by humans. You can find the configuration file for the none rdh in Appendix \ref{appendix:rdh-config-file}.
 	
-	Some of the heuristics were not included in the final version of the new dataset. You can find them in table \ref{tab:not-included-rdhs} together with the reason why they were not included.
+	Some of the heuristics were not included in the final version of the new dataset. You can find them in \autoref{tab:not-included-rdhs} together with the reason why they were not included.
 	
 	\begin{table}[tb]
 		\centering
@@ -1348,16 +1349,47 @@ cleveref=true,%
 	We have also added Code2Vec~\cite{alon2019code2vec} to the tool. This makes it possible to rename methods not only to iterating or arbitrary strings or numbers, but also to other realistic method names. The idea was to use worse method names predicted by Code2Vec and rename the methods to these. However, due to time and resource constraints regarding the survey, we did not pursue this approach.	However, there is a corresponding mode supported by the tool. This can be used for further research.
 	
 \subsection{Construction of Questionnaires} \label{Construction of Questionnaires}
-	We evaluated the data set generated and the new approach with a survey. To do this, we had to carefully select suitable code snippets from the dataset. An overview of the approach can be found in Figure \ref{fig:survey_pipeline}.
+	We evaluated the data set generated and the new approach with a survey. To do this, we had to carefully select suitable code snippets from the dataset. An overview of the approach can be found in \autoref{fig:survey_pipeline}.
 	
 	\begin{figure}[tb]
 		\centering
 		\includegraphics[width=0.9\textwidth]{img/survey_pipeline.png}
-		\caption{Steps performed to craft survey sheets from the dataset}
+		\caption{Steps performed to craft questionnaires from the dataset.}
 		\label{fig:survey_pipeline}
 	\end{figure}
 		
-	The first step was to find realistic configurations for the readability reduction tool. After an initial data set with the heuristics was created, a pilot study was conducted. Subsequently, the heuristics that proved to be too strong were checked and, if necessary, adjusted to be weaker according to the results of the pilot survey. The result was 9 different rdhs, which can be found in table \ref{tab:rdh_configurations}. Together with the original methods this resulted in 10 different configurations.
+	The first step was to find realistic configurations for the RDH tool. After an initial data set with the heuristics was created, a pilot study was conducted. Subsequently, the heuristics that proved to be too strong were checked and, if necessary, adjusted to be weaker according to the results of the pilot survey. The result consisted of 9 different rdhs, which can be found in \autoref{tab:rdh_configurations}. Together with the original methods this resulted in 10 different configurations.
+	
+%	\begin{table}[tb]
+%		\centering
+%		\caption{Chosen configurations and their probabilities for the Readability Decreasing Heuristics.}
+%		\vspace{8pt}
+%		\label{tab:rdh_configurations}
+%		\begin{tabular}{|l|l|l|}
+%			\hline
+%			\textbf{Configuration} & \textbf{Probabilities} \\
+%			\hline
+%			none & - \\
+%			\hline
+%			comments\_remove & removeComment: 0.1 \\
+%			\hline
+%			newline\_instead\_of\_space & newLineInsteadOfSpace: 0.15 \\
+%			\hline
+%			newlines\_few & \begin{tabular}[t]{@{}l@{}}removeNewline: 0.3 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
+%			\hline
+%			newlines\_many & \begin{tabular}[t]{@{}l@{}}add1Newline: 0.15 \\ add2Newlines: 0.05\end{tabular} \\
+%			\hline
+%			rename & \begin{tabular}[t]{@{}l@{}}renameVariable: 0.3 \\ renameField: 0.3 \\ renameMethod: 0.3\end{tabular} \\
+%			\hline
+%			spaces\_many & \begin{tabular}[t]{@{}l@{}}Add1Space: 0.2 \\ Add2Spaces: 0.1 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
+%			\hline
+%			tabs & \begin{tabular}[t]{@{}l@{}}remove1IncTab: 0.2 \\ add1IncTab: 0.1 \\ remove1DecTab: 0.1 \\ add1DecTab: 0.1 \\ incTabInsteadOfDecTab: 0.05 \\ decTabInsteadOfIncTab: 0.05\end{tabular} \\
+%			\hline
+%			all7 & all probabilites/7\\
+%			\hline
+%		\end{tabular}
+%
+%	\end{table}
 	
 	\begin{table}[tb]
 		\centering
@@ -1370,24 +1402,24 @@ cleveref=true,%
 			\hline
 			none & - \\
 			\hline
-			comments\_remove & removeComment: 1.0 \\
+			comments\_remove & removeComment: 10 \% \\
 			\hline
-			newline\_instead\_of\_space & newLineInsteadOfSpace: 0.15 \\
+			newline\_instead\_of\_space & newLineInsteadOfSpace: 15 \% \\
 			\hline
-			newlines\_few & \begin{tabular}[t]{@{}l@{}}removeNewline: 0.3 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
+			newlines\_few & \begin{tabular}[t]{@{}l@{}}removeNewline: 30 \% \\ spaceInsteadOfNewline: 5 \%\end{tabular} \\
 			\hline
-			newlines\_many & \begin{tabular}[t]{@{}l@{}}add1Newline: 0.15 \\ add2Newlines: 0.05\end{tabular} \\
+			newlines\_many & \begin{tabular}[t]{@{}l@{}}add1Newline: 15 \% \\ add2Newlines: 5 \%\end{tabular} \\
 			\hline
-			rename & \begin{tabular}[t]{@{}l@{}}renameVariable: 0.3 \\ renameField: 0.3 \\ renameMethod: 0.3\end{tabular} \\
+			rename & \begin{tabular}[t]{@{}l@{}}renameVariable: 30 \% \\ renameField: 30 \% \\ renameMethod: 30 \%\end{tabular} \\
 			\hline
-			spaces\_many & \begin{tabular}[t]{@{}l@{}}Add1Space: 0.2 \\ Add2Spaces: 0.1 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
+			spaces\_many & \begin{tabular}[t]{@{}l@{}}Add1Space: 20 \% \\ Add2Spaces: 10 \% \\ spaceInsteadOfNewline: 5 \%\end{tabular} \\
 			\hline
-			tabs & \begin{tabular}[t]{@{}l@{}}remove1IncTab: 0.2 \\ add1IncTab: 0.1 \\ remove1DecTab: 0.1 \\ add1DecTab: 0.1 \\ incTabInsteadOfDecTab: 0.05 \\ decTabInsteadOfIncTab: 0.05\end{tabular} \\
+			tabs & \begin{tabular}[t]{@{}l@{}}remove1IncTab: 20 \% \\ add1IncTab: 10 \% \\ remove1DecTab: 10 \% \\ add1DecTab: 10 \% \\ incTabInsteadOfDecTab: 5 \% \\ decTabInsteadOfIncTab: 5 \%\end{tabular} \\
 			\hline
 			all7 & all probabilites/7\\
 			\hline
-		\end{tabular}
-
+	\end{tabular}
+		
 	\end{table}
 	
 %	\begin{table}[h]
@@ -1413,14 +1445,14 @@ cleveref=true,%
 %	\end{table}
 	
 	
-	The configurations are based on probabilities for different heuristics. A heuristic is applied with the specified probability to each occurrence of the object to which it is to be applied. For example, comment\_remove is applied with a probability of 10\% to each comment that occurs within the code snippet. The exact scope of changes for a method is therefore uncertain. It can even happen (especially with short methods such as getters and setters) that a method is not changed at all. For example, if a method only has a single comment and we use comment\_remove, it is very likely that the method will not be changed at all.
+	The configurations are based on probabilities for different heuristics. A heuristic is applied with the specified probability to each occurrence of the object to which it is to be applied. For example, when removeComment is applied with a probability of 10\% to each comment that occurs within the code snippet. The exact scope of changes is therefore uncertain. It can even happen (especially with short methods such as getters and setters) that a method is not changed at all. For example, if a method only has a single comment and we use removeComment, the probability that the method will not be changed is 90\%.
 	
-	In a second step, we applied a stratified sampling~\cite{thompson2012sampling} to distinguish between very simple methods such as getter and setter and more complex methods. In order to be able to compare the original methods with their modified variants, we only carried out the random sampling for the original methods and compared the rdh methods with these in a later step.
+	In a second step, we applied stratified sampling~\cite{thompson2012sampling} to distinguish between very simple methods such as getter and setter and more complex methods. In order to be able to compare the original methods with their modified variants, we only carried out the random sampling for the original methods and compared the rdh methods with these in a later step.
 	
-	Thus, we first had to calculate features for the original code snippets. This was done using \citeauthor{scalabrino2018comprehensive}s tool~\cite{scalabrino2018comprehensive}. Therefore, a 110-dimensional features vector was calculated for each original code snippet. Next we compute the cosine similarity metrix between all feature vectors using scikit\curl{https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html}{2024-02-20}. 
+	Thus, we first had to calculate features for the original code snippets. This was done using the tool of \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}. Therefore, a 110-dimensional features vector was calculated for each original code snippet. Next we compute the cosine similarity metrix between all feature vectors using scikit\curl{https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html}{2024-02-20}. 
 	Finally, using the fastcluster implementation~\cite{mullner2013fastcluster} of Ward's hierarchical clustering we were able to cluster the methods into an arbitrary amount of clusters.	
 		
-	By comparing the merge distances in each step (see figure \ref{fig:survey_cluster_amount}), we found that a cluster size of 4 makes the most sense: the merge distance of 5 to 4 is small, so we should still perform this merge, but the merge distance of 4 to 3 is large, so it is better not to perform this merge. Also, 4 is the size with the last possibility for a small merge distance. We have manually assigned a name to each of the 4 cluster/strata, which can be seen in Table \ref{tab:survey_strata_labeles}.
+	By comparing the merge distances in each step (see \autoref{fig:survey_cluster_amount}), we found that a cluster size of 4 makes the most sense: the merge distance of 5 to 4 is small, so we should still perform this merge, but the merge distance of 4 to 3 is large, so it is better not to perform this merge. Also, 4 is the size with the last possibility for a small merge distance. We have manually assigned a name to each of the 4 cluster/strata, which we see in \autoref{tab:strata_info}.
 	
 	\begin{figure}[tb]
 		\centering
@@ -1429,71 +1461,88 @@ cleveref=true,%
 		\label{fig:survey_cluster_amount}
 	\end{figure}
 	
-	\begin{table}[tb]
-		\centering
-		\begin{tabular}{ll}
-			\toprule
-			Stratum & Method Type \\
-			\midrule
-			Stratum 0 & Simple methods \\
-			Stratum 1 & Complex methods \\
-			Stratum 2 & Magic number methods \\
-			Stratum 3 & Medium complex methods \\
-			\bottomrule
-		\end{tabular}
-		\caption{Computed stratas and manually assigned name based on the methods within.}
-		\label{tab:survey_strata_labeles}
-	\end{table}
+%	\begin{table}[tb]
+%		\centering
+%		\caption{Computed stratas and manually assigned name based on the methods within.}
+%		\vspace{8pt}
+%		\label{tab:survey_strata_labeles}
+%		\begin{tabular}{ll}
+%			\toprule
+%			Stratum & Method Type \\
+%			\midrule
+%			Stratum 0 & Simple methods \\
+%			Stratum 1 & Complex methods \\
+%			Stratum 2 & Magic number methods \\
+%			Stratum 3 & Medium complex methods \\
+%			\bottomrule
+%		\end{tabular}
+%	\end{table}
 		
-	In the third step, we crafted the surveys from the layers. We decided to provide all 10 previously mentioned configurations for each original method, as we want to compare the original methods with their rdh variants. Since we have a survey capacity of 400 code snippets, we need to select 40 original code snippets (and then add all their rdh).	
+	In a third step, we crafted the surveys from the layers. We decided to provide all 10 previously mentioned configurations for each original method, as we want to compare the original methods with their rdh variants. Since we have a survey capacity of 400 code snippets, we need to select 40 original code snippets (and then add all their rdh).	
 	
-	We chose to sample randomly from within the stratas. However, we distributed the 40 snippets among the stratas as can be seen in table \ref{tab:sampled_methods}.
+	We opted for a random sample within the strata. However, we distributed the 40 snippets across the strata as shown in Table~\ref{tab:strata_info}.
 	
-	We opted for a random sample within the strata. However, we distributed the 40 snippets across the strata as shown in Table~\ref{tab:sampled_methods}.
+%	\begin{table}[tb]
+%		\centering
+%		\caption{Strata distribution of sampled methods.}
+%		\vspace{8pt}
+%		\label{tab:sampled_methods}
+%		\begin{tabular}{lrr}
+%			\toprule
+%			Stratum & Percentage & Count \\
+%			\midrule
+%			Stratum 0 & 10 \% & 4 \\
+%			Stratum 1 & 40 \% & 16 \\
+%			Stratum 2 & 10 \% & 4 \\
+%			Stratum 3 & 40 \% & 16 \\
+%			\midrule
+%			\textbf{Total} & \textbf{100 \%} & \textbf{40} \\
+%			\bottomrule
+%		\end{tabular}
+%
+%	\end{table}
 	
 	\begin{table}[tb]
 		\centering
-		\caption{Strata distribution of sampled methods.}
+		\caption{Computed stratas, manually assigned names based on the methods within and distribution for survey creation.} 
 		\vspace{8pt}
-		\label{tab:sampled_methods}
-		\begin{tabular}{lrr}
+		\label{tab:strata_info}
+		\begin{tabular}{llrr}
 			\toprule
-			Stratum & Percentage & Count \\
+			Stratum & Method Type & Percentage & Count \\
 			\midrule
-			Stratum 0 & 10 \% & 4 \\
-			Stratum 1 & 40 \% & 16 \\
-			Stratum 2 & 10 \% & 4 \\
-			Stratum 3 & 40 \% & 16 \\
+			Stratum 0 & Simple methods & 10 \% & 4 \\
+			Stratum 1 & Complex methods & 40 \% & 16 \\
+			Stratum 2 & Magic number methods & 10 \% & 4 \\
+			Stratum 3 & Medium complex methods & 40 \% & 16 \\
 			\midrule
-			\textbf{Total} & \textbf{100 \%} & \textbf{40} \\
+			\textbf{Total} & \textbf{} & \textbf{100 \%} & \textbf{40} \\
 			\bottomrule
 		\end{tabular}
-
 	\end{table}
 	
-	This decision was made due to the relatively high frequency of methods that do not differ from their original methods (see Figure \ref{fig:sampling_not_different_overall}). Another reason for this decision is that particularly simple methods are rather uninteresting for the classification of readability, as they are often generated (e.g. by IDEs) and usually follow a straightforward pattern.
+	
+	This decision was made due to the relatively high frequency of methods that do not differ from their original methods (see \autoref{fig:sampling_not_different_overall}). Another reason for this decision is that particularly simple methods are rather uninteresting for the classification of readability, as they are often generated (e.g. by IDEs) and usually follow a straightforward pattern.
 	
 	\begin{figure}[tb]
 		\centering
 		\includegraphics[width=\textwidth]{img/sampling_not_different_overall.png}
-		\caption{Relative frequency of the case that a rdh-method is not different from it's original method.} 
+		\caption{Relative frequency of the case that a rdh-method is not different from its original method.} 
 		\label{fig:sampling_not_different_overall}
 	\end{figure}
 		
-	After selecting the 40 original methods, we next selected all 9*40 rdh variants that belong to the original methods. This was mostly done automatically based on the names of the original methods and the names of the rdh variant methods. However, if the method was renamed at an earlier stage due to the method renaming heuristic, the new method did no longer match the original method, so we had to match them manually.
+	After selecting the 40 original methods, we next selected all 9*40 rdh variants that belong to the original methods. This was mostly done automatically based on the names of the original methods and the names of the rdh variant methods. However, if the method was renamed at an earlier stage due to the method renaming heuristic, the new method did no longer match the original method, in which case we had to match them manually.
 		
-	Once we had collected all 400 methods, we had to distribute them across the 20 survey forms, each with 20 methods. In order not to manipulate the raters, we decided that a variant of each method could only appear once in each survey sheet. For example, if the original method is in questionnaire 1, the comment\_remove variant (or another variant of the same method) must not be included in the same questionnaire.
+	Once we collected all 400 methods, we distributed them across the 20 survey forms, each with 20 methods. In order not to manipulate the raters, we decided that a variant of each method could only appear once in each questionnaire. For example, if the original method is in questionnaire 1, the removeComment variant (or another variant of the same method) must not be included in the same questionnaire.
 		
-	For this purpose, we created four permutation matrices with 10 snippets each. The number 10 was chosen because it is possible to distribute 10 snippets, each with 10 variants, to at least 10 survey arcs without violating our condition. By combining two 10-permutation matrices, we were able to create 10 survey arcs with 20 code snippets each. An implication of this approach is that each survey sheet contains each variant exactly twice. By doing this twice, we obtain the desired distribution of 20 survey questionnaires with 20 methods each. Our condition also applies: There is only one variant of the same method in each questionnaire.
+	For this purpose, we created four permutation matrices with 10 snippets each. The number 10 was chosen because it is possible to distribute 10 snippets, each with 10 variants, across at least 10 survey questionnaires without violating our condition. By combining two 10-permutation matrices, we were able to create 10 survey questionnaires with 20 code snippets each. An implication of this approach is that each questionnaires contains each variant kind exactly twice. By doing this twice, we obtain the desired distribution of 20 survey questionnaires with 20 methods each. Our condition applies: There is only one variant of the same method in each questionnaire.
 		
-	Finally, the methods for each survey questionnaire were randomly shuffled within each survey questionnaire. This was done to minimize the impact of the position of a snippet/variant within a survey on the rating.
+	Finally, the methods of each questionnaire were randomly shuffled within itself. This was done to minimize the impact of the position of a snippet or variant within a survey on the rating.
 	
 	% After survey conduction	
-	Once the survey is complete, we will aggregate the ratings across all strats and all methods and group the results into the 10 rdhs. In this way, we want to assess whether the rdhs work, which rdhs work best and how strong the impact on readability of each rdh is. In addition, we will use the results of the survey to label our new dataset, which consists of the original and all7 rdh methods.
-	
-	Now that we have generated a dataset and evaluated the impact of the different rdhs we use the survey results to label each snippet of the well readable code (original) with the mean over all ratings of the original variant over all survey results. Similary we label the all7 code snippets with its mean score. Note that for binary classification with the towards model this results in the same as labelling the original methods with the well readable class and the all7 rdh with the badly readable class.		
-	
-	Each snippet of the well readable code (original) is labeled with the mean value of all ratings of the original variant across all survey results. Similarly, we label all7 code snippets with their mean value. Note that in the binary classification with the underlying towards model, this results in the original methods being labeled with the class "well readable" and the all7 rdh with the class "badly readable".
+	Once the survey was completed, we aggregated the ratings across all strats and all methods and group the results into the 10 rdhs. In this way, we assess whether the rdhs work, which rdhs work best and how strong the impact on readability of each rdh is. In addition, we use the results of the survey to label our new dataset, which consists of the original and all7 rdh methods.
+
+	Each snippet of the well readable code (original) is labeled with the mean value of all ratings of the original variant across all survey results. Similarly, we label all7 code snippets with their mean value. Note that in the binary classification with the underlying towards model, this results in the original methods being labeled with "well readable" and the all7 rdh with "badly readable".
 	
 	
 %	% We will conclude a user study to evaluate the newly generated data for readability classifier models.
@@ -1553,20 +1602,20 @@ cleveref=true,%
 
 	Next we investigate whether it is possible to score a higher accuracy as the towards model in classifying code readability with our new dataset.
 	
-	We have therefore created our own implementation of the model with Keras\curl{https://keras.io/about/}{2024-02-20}. In contrast to the publicly available code of \citeauthor{mi2022towards}\curl{https://github.com/swy0601/Readability-Features}{2024-02-20}, our model also includes (batch) encoders required for the model to be trained on new data and to perform the prediction task for new code snippets. In addition, our model supports fine-tuning by freezing certain layers as well as storing intermediate results, such as the encoded dataset. During evaluation, the model returns the evaluation statistics in the form of a json file.
+	Therefore we created our own implementation of the towards model using Keras\curl{https://keras.io/about/}{2024-02-20}. In contrast to the publicly available code of \citeauthor{mi2022towards}\curl{https://github.com/swy0601/Readability-Features}{2024-02-20}, our model also includes (batch) encoders required for the model to be trained on new data and to perform the prediction task for new code snippets. In addition, our model supports fine-tuning by freezing certain layers as well as storing intermediate results, such as the encoded dataset. During evaluation, the model returns the evaluation statistics in form of a JSON file.
 		
 	During implementation, we also encountered the following potential problem with the model:
-	The token length for the bert encoding (bert-base-cased\curl{https://huggingface.co/google-bert/bert-base-cased}{2024-02-20}) used in the model is fixed at 100. What is a token in a piece of code? In addition to special tokens that mark the beginning [CLS] and the end [SEP] of the input, each word is represented by a token. However, each special character (such as /(){},;= and many more) is also represented by its own token. Java identifiers are split according to the convention of upper and lower case. Long words are in turn divided into several tokens.
+	The token length for the bert encoding (bert-base-cased\curl{https://huggingface.co/google-bert/bert-base-cased}{2024-02-20}) used in the model is 100. What is a token in a piece of code? In addition to special tokens that mark the beginning \textit{[CLS]} and the end \textit{[SEP]} of the input, each word is represented by a token. However, each special character (such as \textit{/(){},;=} and many more) is also represented by its own token. Java identifiers are split according to the convention of upper and lower case. Long words are in turn divided into several tokens.
 	
-	Consider the method from \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils}. With a token limit of 100, the last encoded token is the last closing parenthesis in line 9. Everything from line 10 onwards is no longer encoded, which means that the information is lost after the semantic encoder or for the model. To put it in other words: The model of \citeauthor{mi2022towards} only considers the first few lines of code snippets in its semantic component.
+	Consider the method from \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils}. With a token limit of 100, the last encoded token is the last closing parenthesis in line 9. Everything from line 10 onwards is no longer encoded, which means that the information is lost for the semantic encoding of the model. To put it in other words: The model of \citeauthor{mi2022towards} only considers the first few lines of code snippets in its semantic component.
 	
-	The visual and structural encoders have similar limitations, but to a much lesser extent. The structural encoder encodes the first 50 lines of each code snippet and the visual encoder encodes the first 43 lines. While the constraints for these two coders seem to be long enough to fully capture most code snippets, the semantic coder seems to be too limited to do so.
+	The visual and structural encoders have similar limitations, but to a much lesser extent. The structural encoder encodes the first 50 lines of each code snippet and the visual encoder encodes the first 43 lines. While the constraints for these two encoders seem to be long enough to fully capture most code snippets, the semantic encoder seems to be too limited to do so.
 
 	Although we want to note these limitations, we will keep them in order to later allow a fair comparison of the datasets with the model of \citeauthor{mi2022towards} trained on the combined dataset.	
 	
 	Our code is publicly available on GitHub. TODO: Refs
 	
-	You can find an overview over all programs used to create the merged dataset, the new dataset the model and all our evaluation results in Figure \ref{fig:scripts_pipline}.
+	You can find an overview over all programs used to create the merged dataset, the new dataset, the model and all our evaluation results in \autoref{fig:scripts_pipline}.
 	
 	\begin{figure}[tb]
 		\centering
@@ -1579,12 +1628,13 @@ cleveref=true,%
 \section{Evaluation} \label{Evaluation}
 
 	% User study
-	To determine the quality of the new dataset, we are completing a user study to evaluate the newly generated data for readability classification models.
-	The aim of the user study is to answer the following key questions:
+	To determine the quality of the new dataset, we are completing a user study. The aim of the user study is to answer the following key questions:
 	\begin{enumerate}
-		\item Does the well-readable-assumption (assumption \ref{well-readable-assumption}) hold?
-		\item Does the poorly-readable-assumption (assumption \ref{poorly-readable-assumption}) hold?
+		\item Does the well-readable-assumption (Assumption \ref{well-readable-assumption}) hold?
+		\item Does the poorly-readable-assumption (Assumption \ref{poorly-readable-assumption}) hold?
 	\end{enumerate}
+	
+	% TODO: Continue here with proof reading
 
 	% RQs
 	Therefore, we come up with the following research questions:
@@ -1631,7 +1681,7 @@ cleveref=true,%
 	The feedback of the pilot survey was used in the following ways to prepare the prolific study:
 	\begin{itemize}
 		\item To adjust the survey texts and questions
-		\item To estimate how long completion of one survey sheet will take
+		\item To estimate how long completion of one questionnaire will take
 		\item To adjust the readability-decreasing heuristic settings
 		\item To discover problems with the survey tool
 		\item To discover fundamental problems with the dataset
@@ -1644,7 +1694,7 @@ cleveref=true,%
 	
 	% Results
 	\textit{3. Results:}
-	The pilot survey provided information on how much time it would take to evaluate 20 code snippets in terms of their readability. An overview of the times required can be found in Figure \ref{fig:pilot_survey_time_box.png}. On this basis, we estimated the time required for our survey at 10 minutes.
+	The pilot survey provided information on how much time it would take to evaluate 20 code snippets in terms of their readability. An overview of the times required can be found in \autoref{fig:pilot_survey_time_box.png}. On this basis, we estimated the time required for our survey at 10 minutes.
 		
 	% TODO: Combine into one figure using python
 	\begin{figure}[tb]
@@ -1680,7 +1730,7 @@ cleveref=true,%
 	
 	Secondly, the rdh tool always specified each imported method or class completely with its fully specified classifier. For example, instead of "InputStream", "Java.io.InputStream" was written. This gave the participants the feeling that the code was not written by a human and drastically reduced readability. We then adapted the rdh tool to print the shorter name. However, this has the disadvantage that it can no longer be guaranteed that the generated code will compile and behave exactly like the original. However, this property was lost anyway when extracting the individual methods from the class files.
 	
-	Thirdly, some rdhs were configured too strongly, so that for some methods it was no longer assumed that they were written by a human. These rdhs were adjusted and their probabilities reduced accordingly (for example newlines\_few). All results can be found in table \ref{tab:pilot_survey_results}.
+	Thirdly, some rdhs were configured too strongly, so that for some methods it was no longer assumed that they were written by a human. These rdhs were adjusted and their probabilities reduced accordingly (for example newlines\_few). All results can be found in \autoref{tab:pilot_survey_results}.
 
 	%	\begin{table}[htbp]
 		%		\centering
@@ -1786,7 +1836,7 @@ cleveref=true,%
 	In this section we summarize the results of the main study conducted via prolific.
 	
 \textit{1. Experimental setup:}
-	The survey was conducted using Tien Duc Nguyen's Code Annotation Tool (see Figure \ref{fig:survey_tool}) along with the platform prolific\curl{https://app.prolific.com/}{2024-02-21} for the recruitment and payment of participants.
+	The survey was conducted using Tien Duc Nguyen's Code Annotation Tool (see \autoref{fig:survey_tool}) along with the platform prolific\curl{https://app.prolific.com/}{2024-02-21} for the recruitment and payment of participants.
 	The survey was conducted between January 31, 2024 and February 7, 2024. A total of 221 participants took part. Each of the 20 questionnaires was answered by 11 participants (similar to the survey of \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}). In one survey, one more participant was assigned by mistake. 
 	%	According to an online calculator\footnote{https://www.calculator.net/sample-size-calculator.html} 
 	We end up with a margin of error of 29.55\% at a confidence of 95\% for an individual snippet. However, we will aggregate over stratas and multiple snippets later anyway.
@@ -1800,7 +1850,7 @@ cleveref=true,%
 	\end{figure}
 
 	% Target population
-	The target population consists of Java programmers selected by prolific. They may be students or work in industry. They can come from any country. Overall, there were no requirements other than familiarity with Java (see also table \ref{tab:prolific-audience}).
+	The target population consists of Java programmers selected by prolific. They may be students or work in industry. They can come from any country. Overall, there were no requirements other than familiarity with Java (see also \autoref{tab:prolific-audience}).
 	
 	\begin{table}[tb]
 		\centering
@@ -1850,9 +1900,9 @@ cleveref=true,%
 	\end{itemize}
 	
 \textit{3. Results:}
-	You can find an overview over the time required by the participants in the Figures \ref{fig:survey_time_box} and \ref{fig:survey_time_histogramm}. Additionally you can find the amount of participants that required less than 3 minutes for one survey sheet in Figure \ref{fig:survey_time_less_than_180}. The results of those participants might be a thread to validity to which we will come back later.
+	You can find an overview over the time required by the participants in the Figures \ref{fig:survey_time_box} and \ref{fig:survey_time_histogramm}. Additionally you can find the amount of participants that required less than 3 minutes for one questionnaire in \autoref{fig:survey_time_less_than_180}. The results of those participants might be a thread to validity to which we will come back later.
 	
-	An overview of the time required by the participants can be found in the figures \ref{fig:survey_time_box} and \ref{fig:survey_time_histogram}. In addition, figure \ref{fig:survey_time_less_than_180} shows the number of participants who took less than 3 minutes to complete a survey questionnaire. The results of these participants could have a negative impact on validity, which we will come back to later. 
+	An overview of the time required by the participants can be found in the figures \ref{fig:survey_time_box} and \ref{fig:survey_time_histogram}. In addition, \autoref{fig:survey_time_less_than_180} shows the number of participants who took less than 3 minutes to complete a survey questionnaire. The results of these participants could have a negative impact on validity, which we will come back to later. 
 		
 	\begin{figure}[tb]
 		\centering
@@ -1871,7 +1921,7 @@ cleveref=true,%
 		\label{fig:survey_time_prolific}
 	\end{figure}
 	
-	The participants' familiarity with Java is shown in Figure \ref{fig:survey_Java_familiarity_pie}.
+	The participants' familiarity with Java is shown in \autoref{fig:survey_Java_familiarity_pie}.
 	
 	\begin{figure}[tb]
 		\centering
@@ -1880,7 +1930,7 @@ cleveref=true,%
 		\label{fig:survey_Java_familiarity_pie}
 	\end{figure}
 	
-	The ratings for each RDH for all strata combined can be found in the figures \ref{fig:survey_ratings_violin_all} and \ref{fig:survey_ratings_bar_all}. Figure \ref{fig:survey_ratings_violin_all} shows that the mean value of our original methods is 3.68, while for all7 it is 3.26. We label each method in both groups with the corresponding mean score.
+	The ratings for each RDH for all strata combined can be found in the figures \ref{fig:survey_ratings_violin_all} and \ref{fig:survey_ratings_bar_all}. \autoref{fig:survey_ratings_violin_all} shows that the mean value of our original methods is 3.68, while for all7 it is 3.26. We label each method in both groups with the corresponding mean score.
 	
 	\begin{researchbox}{Summary (RQ1 - select-well):}
 		The readability ratings of code snippets mined from Github are not very accurate as we take the mean of all ratings for all methods and assign it to each snippet. However, the score of 3.68 is 0.XX TODO larger than the mean score for all ratings in the old dataset. Therefore we conclude that well readable assumption (Assumption~\ref{well-readable-assumption}) holds.
@@ -1904,9 +1954,9 @@ cleveref=true,%
 		\label{fig:survey_time_all}
 	\end{figure}
 		
-	We evaluated whether the deviation in the ratings between the various RDHs has statistical significance. We therefore used the Mann-Whitney-U-Test comparing the ratings for all snippets for a RDH against the corresponding none snippets. You can find the results of this in Table \ref{tab:survey_statistical_evidence}.
+	We evaluated whether the deviation in the ratings between the various RDHs has statistical significance. We therefore used the Mann-Whitney-U-Test comparing the ratings for all snippets for a RDH against the corresponding none snippets. You can find the results of this in \autoref{tab:survey_statistical_evidence}.
 	
-	We analysed whether the difference in ratings between the different rdhs is statistically significant. To do this, we used the Mann-Whitney U test to compare the ratings for all snippets for an rdh with the corresponding none rdh snippets. The results can be found in table \ref{tab:survey_statistical_evidence}.
+	We analysed whether the difference in ratings between the different rdhs is statistically significant. To do this, we used the Mann-Whitney U test to compare the ratings for all snippets for an rdh with the corresponding none rdh snippets. The results can be found in \autoref{tab:survey_statistical_evidence}.
 		
 	Our results suggest that no modification (none rdh) besides converting to the AST and back makes no difference to the original methods. The difference could just as well be due to random variation with a probability of 92\%. If we compare the RDHs with the none methods, we can be sure that the scores of all methods except newlines many and rename are indeed statistically different from the scores of none. If we consider binary readability classification and split the data for none and Newlines Many into into two classes (not-readable: 1,2; readable: 3-5) we also get significance that the ratings for newlines many are statistically significantly different from none (TODO: Add p Values). This leaves only rename where we can not confirm statistical significance. Overall, this confirms that the heuristics actually reduce the readability of the given code.
 
@@ -1955,11 +2005,11 @@ cleveref=true,%
 	\end{table}
 		
 	\begin{researchbox}{Summary (RQ2 - generate-poor):}
-		All of the 7 heuristics but rename decrease readability by a significant extend compared to none. We estimate the readability decrease for a certain probability oaf a certain type as can be seen in Figure \ref{fig:survey_ratings_bar_all}. The poorly readable assumption (Assumption~\ref{poorly-readable-assumption}) holds. 
+		All of the 7 heuristics but rename decrease readability by a significant extend compared to none. We estimate the readability decrease for a certain probability oaf a certain type as can be seen in \autoref{fig:survey_ratings_bar_all}. The poorly readable assumption (Assumption~\ref{poorly-readable-assumption}) holds. 
 	\end{researchbox}
 
 \subsection{Model Training Results} \label{Model training results}
-	The results of the training, evaluation and fine-tuning can be found in the table \ref{tab:dataset_performance}.
+	The results of the training, evaluation and fine-tuning can be found in the \autoref{tab:dataset_performance}.
 		
 	\begin{table}[tb]
 		\centering
