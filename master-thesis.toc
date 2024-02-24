@@ -22,6 +22,6 @@
 \contentsline {section}{\numberline {5}Discussion}{33}{section.0.0.5}%
 \contentsline {section}{\numberline {6}Conclusions}{34}{section.0.0.6}%
 \contentsline {section}{\numberline {I}Pilot Survey Feedback}{40}{section.Alph0.1}%
-\contentsline {section}{\numberline {II}Readability Decreasing Heuristics Configuration File}{42}{section.Alph0.2}%
-\contentsline {section}{\numberline {III}Prolific Survey Texts}{43}{section.Alph0.3}%
+\contentsline {section}{\numberline {II}Readability Decreasing Heuristics Configuration File}{43}{section.Alph0.2}%
+\contentsline {section}{\numberline {III}Prolific Survey Texts}{44}{section.Alph0.3}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

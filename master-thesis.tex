@@ -648,7 +648,8 @@ cleveref=true,%
 
 % Num samples
 \newcommand{\numOriginal}{36077 }
-\newcommand{\numSamples}{69k } % 69276
+\newcommand{\numSamples}{69k }
+\newcommand{\numSamplesAccurate}{69276 }
 
 % RDH
 \newcommand{\RDH}{Readability Decreasing Heuristics}
@@ -1938,9 +1939,10 @@ cleveref=true,%
 	
 	The ratings for each rdh for all strata combined can be found in \autoref{fig:survey_ratings_violin_all} and \autoref{fig:survey_ratings_bar_all}. \autoref{fig:survey_ratings_violin_all} shows that the mean value of our original methods is 3.68, while for all7 it is 3.26. We label each method in both groups with the corresponding mean score.
 	
-	TODO: Add significance test for the following:
+
 	\begin{researchbox}{Summary (RQ1 - select-well):}
-		The readability ratings of code snippets mined from Github are not very accurate as we take the mean of all ratings for all methods and assign it to each snippet. However, the score of 3.68 is 0.23 larger than the mean score for all ratings in the old dataset (3.45). Therefore we conclude that well readable assumption (Assumption~\ref{well-readable-assumption}) holds.
+		TODO: Add significance test.
+		The readability ratings of code snippets mined from Github are not very accurate as we take the mean of all ratings for all methods and assign it to each snippet. However, the score of 3.68 is 0.23 larger than the mean score for all ratings in the old dataset (3.45). Therefore we reject the null hypothesis and conclude that well readable assumption (Assumption~\ref{well-readable-assumption}) holds.
 		%		and answer the research question \ref{select-well}: Yes, automatically selected code can be assumed to be well readable.
 	\end{researchbox}
 	
@@ -1948,13 +1950,13 @@ cleveref=true,%
 		\centering
 		\begin{subfigure}{\linewidth}
 			\includegraphics[width=\textwidth]{img/survey_ratings_violin_all.png}
-			\caption{Absolute survey ratings for each rdh and all strata}
+			\caption{Absolute survey ratings for each rdh and all strata.}
 			\label{fig:survey_ratings_violin_all}
 		\end{subfigure}
 		\hfill
 		\begin{subfigure}{\textwidth}
 			\includegraphics[width=\linewidth]{img/survey_ratings_bar_all.png}
-			\caption{Relative survey ratings for each rdh and all strata compared to original}
+			\caption{Relative survey ratings for each rdh and all strata compared to original.}
 			\label{fig:survey_ratings_bar_all}
 		\end{subfigure}
 		\caption{Survey ratings for each rdh and all strata.}
@@ -1963,7 +1965,7 @@ cleveref=true,%
 		
 	We analyzed whether the difference in ratings between the different rdhs is statistically significant. To do this, we used the Mann-Whitney U test to compare the ratings for all snippets for an rdh with the corresponding none rdh snippets. The results can be found in \autoref{tab:survey_statistical_evidence}.
 		
-	Our results suggest that no modification (none rdh) besides converting to the AST and back makes no difference to the original methods. The difference could just as well be due to random variation with a probability of 92\%. If we compare the rdhs with the none methods, we can be sure that the scores of all methods except newlines many and rename are indeed statistically different from the scores of none. If we consider binary readability classification and split the data for none and newlines many into into two classes (badly readable: 1,2; well readable: 3-5) we also get significance that the ratings for newlines many are statistically significantly different from none (TODO: Add p Values). This leaves only rename where we can not confirm statistical significance. Overall, this shows that the heuristics actually reduce the readability of the given code.
+	Our results suggest that no modification (none rdh) besides converting to the AST and back makes no difference to the original methods. The difference could just as well be due to random variation with a probability of 92~\%. If we compare the rdhs with the none methods, we can be sure that the scores of all methods except newlines many and rename are indeed statistically different from the scores of none. If we consider binary readability classification and split the data for none and newlines many into into two classes (badly readable: 1,2; well readable: 3-5) we also get significance that the ratings for newlines many are statistically significantly different from none (TODO: Add p Values). This leaves only rename where we can not confirm statistical significance. Overall, this shows that the heuristics actually reduce the readability of the given code.
 
 %	\begin{table}[h]
 %		\centering
@@ -1989,7 +1991,7 @@ cleveref=true,%
 
 	\begin{table}[tb]
 		\centering
-		\caption{Mann-Whitney U test results of none against each RDH.}
+		\caption{Mann-Whitney U test results of each rdh against none.}
 		\vspace{8pt}
 		\label{tab:survey_statistical_evidence}
 		\begin{tabular}{lS[table-format=1.2e-2]}
@@ -2010,7 +2012,7 @@ cleveref=true,%
 	\end{table}
 		
 	\begin{researchbox}{Summary (RQ2 - generate-poor):}
-		All of the 7 heuristics but rename decrease readability by a significant extend compared to none. We estimate the readability decrease for a certain probability of a certain type as can be seen in \autoref{fig:survey_ratings_bar_all}. The poorly readable assumption (Assumption~\ref{poorly-readable-assumption}) holds. 
+		All of the 7 heuristics but rename decrease readability by a significant extend compared to none. We estimate the readability decrease for a certain probability of a certain type as can be seen in \autoref{fig:survey_ratings_bar_all}. We reject the null hypothesis and conclude that the poorly readable assumption (Assumption~\ref{poorly-readable-assumption}) holds
 	\end{researchbox}
 
 \subsection{Model Training Results} \label{Model training results}
@@ -2035,9 +2037,9 @@ cleveref=true,%
 		\end{tabular}
 	\end{table}
 			
-	When we train the model on the new dataset and evaluate it with 10-fold cross-validation, we obtain an average accuracy of 91.8\%. However, if we evaluate the trained model on the old dataset, we get an accuracy of only 61.9\%. From this we can draw some conclusions:
+	When we train the model on the new dataset and evaluate it with 10-fold cross-validation, we obtain an average accuracy of 91.8~\%. However, if we evaluate the trained model on the old dataset, we get an accuracy of only 61.9~\%. From this we can draw some conclusions:
 	
-	The towards model works well for our new dataset. However, the readability determined with the all dataset differs from the readability with our approach. Otherwise, the values for all-krod and krod-all would be similar to the value for all-all. This indicates that our dataset is not suitable for a general classification of readability, but we may have found a subproblem. However, adding more features to reduce readability and well-designed data augmentation could overcome this limitation.
+	The towards model works well for our new dataset. However, the readability determined with the all dataset differs from the readability with the new dataset. Otherwise, the values for all-krod and krod-all would be similar to the value for all-all. This indicates that our dataset is not suitable for a general classification of readability, but we may have found a subproblem. However, adding more features to reduce readability and well-designed data augmentation could overcome this limitation.
 		
 	While the model trained on the new dataset is able to classify readability to a certain degree, the opposite is not the case, as 53.8~\%  is almost a random classifier. This suggests that fine-tuning a model trained on the new dataset using the entire dataset could lead to better results than the original towards model.
 	
@@ -2046,16 +2048,16 @@ cleveref=true,%
 	We tried to fine-tune with the old dataset by freezing different layers of the model trained with the new dataset. The best we could achieve was to freeze the input layers as well as the first convolution and pooling layer of all encoders. However, the performance of this fine-tuned model was still worse than the baseline model. This is in direct contrast to our earlier assumption that such fine-tuning could lead to better results. One explanation for this could be that the model is too small to be effective with the larger amount of data. Introducing more or bigger layers so that the model can store more features internally could lead to an improvement. However, this is not part of this work, in which we mainly focus on a new dataset (generation approach).
 	
 	\begin{researchbox}{Summary (RQ3 - new-data):}
-		An accuracy within the new dataset of 91.8\% surpasses all previous scores. However, the accuracy of 61.9\% when evaluating on the old dataset suggests, that the new training data is less valuable than the old one. We could neither improve this accuracy by applying fine-tuning. While it is possible that we successfully addressed a sub problem of readability, we are not able to improve existing readability models in general.
+		An accuracy within the new dataset of 91.8~\% surpasses all previous scores. However, the accuracy of 61.9~\% when evaluating on the old dataset suggests, that the new training data is less valuable than the old one. We could neither improve this accuracy by applying fine-tuning. While it is possible that we successfully addressed a sub problem of readability, we are not able to improve existing readability models in general.
 	\end{researchbox}
 	
-	We also trained the model with a random sample of 210 data points to gain insight into what a change in training size might do. As we can see, the model has similar metrics to the all-all model. If we now compare the accuracy of the new-new compared to the old-old model, we see that with a larger dataset an improvement of about 8\% is possible. Similar results are suggested by previous research on data augmentation, where an accuracy of 87.3\% was achieved \citeauthor{mi2021effectiveness}. This emphasizes the importance of finding new ways of generating data for readability classification. 
+	We also trained the model with a random sample of 210 data points to gain insight into what a change in training size might do. As we can see, the model has similar metrics to the all-all model. If we now compare the accuracy of the new-new compared to the old-old model, we see that with a larger dataset an improvement of about 8~\% is possible. Similar results are suggested by previous research on data augmentation, where an accuracy of 87.3~\% was achieved \citeauthor{mi2021effectiveness}. This emphasizes the importance of finding new ways of generating data for readability classification. 
 	
 \section{Discussion} \label{Discussion}
 
 	% Threats
 	% Mean assignment
-	The main drawback of our approach is that we rely on estimations to create the new dataset. The score labels of our code snippets are rough estimations and not exact values. Accurate ratings would require manual review of 63460 code snippets by human annotators and is therefore not feasible. However, for two class classification this does not matter.
+	The main drawback of our approach is that we rely on estimations to create the new dataset. The score labels of our code snippets are rough estimations and not exact values. Accurate ratings would require manual review of \numSamples code snippets by human annotators and is therefore not feasible. However, for two class classification this does not matter.
 	
 	% Study threats	
 	A thread related to the study could be the sampling approach used. While we argue that we avoided spending resources on labeling rdh data that is likely not different from the original methods or rather uninteresting, this might also introduce statistical errors to our survey results.
@@ -2069,7 +2071,7 @@ cleveref=true,%
 	
 	% Future work	
 	% New dataset style
-	The new approach to generating data sets has an advantage that is not yet used in this work: For the first time, it is possible to generate a dataset with one well readable and a second, less readable and functionally equivalent code snippet. This could be used to train various models, including transformers. Such a transformer could take the code as input and improve its readability. We suspect that such a tool could be of great benefit to programmers.
+	The new approach for generating data has an advantage that is not yet used in this work: For the first time, it is possible to generate a dataset with one well readable and a second, less readable and functionally equivalent code snippet. This could be used to train various models, including transformers. Such a transformer could take the code as input and improve its readability. We suspect that such a tool could be of great benefit to programmers.
 	
 	% Languages	
 	A current limitation of the new dataset is that it only works for Java code. A suggestion for future work is to overcome this limitation by extending the tool for other programming languages. This is not trivial, as one has to adapt the Readability Decreasing Heuristics to work with another language. Furthermore, a general tool that works for all languages will be difficult if not impossible.
@@ -2113,7 +2115,7 @@ cleveref=true,%
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=0.6\textwidth]{img/survey_Java_familiarity_pie.png} % TODO: Replace
-%		\caption{How clear was your task?}
+		\caption{TODO: Replace}
 		\label{fig:pilot-task-clear}
 	\end{figure}
 	
