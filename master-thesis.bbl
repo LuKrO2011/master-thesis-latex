@@ -56,50 +56,6 @@
       \field{pages}{235\bibrangedash 241}
       \range{pages}{7}
     \endentry
-    \entry{alawad2019empirical}{article}{}
-      \name{author}{4}{}{%
-        {{hash=8bbae314c96511a8fb933d2fbe2351fc}{%
-           family={Alawad},
-           familyi={A\bibinitperiod},
-           given={Duaa},
-           giveni={D\bibinitperiod}}}%
-        {{hash=3f8a1edc5f109e93cfa7330e0ed4757c}{%
-           family={Panta},
-           familyi={P\bibinitperiod},
-           given={Manisha},
-           giveni={M\bibinitperiod}}}%
-        {{hash=c36e6f18598602b1811f06f4b30bf939}{%
-           family={Zibran},
-           familyi={Z\bibinitperiod},
-           given={Minhaz},
-           giveni={M\bibinitperiod}}}%
-        {{hash=66d1013de36391f44501c344f83dfbc6}{%
-           family={Islam},
-           familyi={I\bibinitperiod},
-           given={Md\bibnamedelima Rakibul},
-           giveni={M\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
-      }
-      \strng{namehash}{9bbb1128b2a0c482888f99e17610cf05}
-      \strng{fullhash}{b1d706e43d2f376cee50ac18d7f8d387}
-      \strng{bibnamehash}{9bbb1128b2a0c482888f99e17610cf05}
-      \strng{authorbibnamehash}{9bbb1128b2a0c482888f99e17610cf05}
-      \strng{authornamehash}{9bbb1128b2a0c482888f99e17610cf05}
-      \strng{authorfullhash}{b1d706e43d2f376cee50ac18d7f8d387}
-      \field{sortinit}{A}
-      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{ArXiv preprint}
-      \field{title}{An empirical study of the relationships between code readability and software complexity}
-      \field{volume}{abs/1909.01760}
-      \field{year}{2019}
-      \verb{urlraw}
-      \verb https://arxiv.org/abs/1909.01760
-      \endverb
-      \verb{url}
-      \verb https://arxiv.org/abs/1909.01760
-      \endverb
-    \endentry
     \entry{allamanis2016convolutional}{inproceedings}{}
       \name{author}{3}{}{%
         {{hash=e1e5eb773f262866a97eef52c0456008}{%
@@ -553,53 +509,6 @@
       \verb https://arxiv.org/abs/1712.00409
       \endverb
     \endentry
-    \entry{johnson2019empirical}{inproceedings}{}
-      \name{author}{5}{}{%
-        {{hash=f17d99b4d2d6c85fa69f4f8bb94c19b9}{%
-           family={Johnson},
-           familyi={J\bibinitperiod},
-           given={John},
-           giveni={J\bibinitperiod}}}%
-        {{hash=8e4ca6a68981855d5f9f3d7627840989}{%
-           family={Lubo},
-           familyi={L\bibinitperiod},
-           given={Sergio},
-           giveni={S\bibinitperiod}}}%
-        {{hash=0fe19c31b28e2aee7be7fc11f371104c}{%
-           family={Yedla},
-           familyi={Y\bibinitperiod},
-           given={Nishitha},
-           giveni={N\bibinitperiod}}}%
-        {{hash=056bead87ad597782f77339cb91daa84}{%
-           family={Aponte},
-           familyi={A\bibinitperiod},
-           given={Jairo},
-           giveni={J\bibinitperiod}}}%
-        {{hash=1a8c09b13424f05fc3b80526b6b41a66}{%
-           family={Sharif},
-           familyi={S\bibinitperiod},
-           given={Bonita},
-           giveni={B\bibinitperiod}}}%
-      }
-      \list{organization}{1}{%
-        {IEEE}%
-      }
-      \strng{namehash}{9a14a8a809cc698dbf415b9ce8e46a5d}
-      \strng{fullhash}{51a7359313c081d676c410f906fa838f}
-      \strng{bibnamehash}{9a14a8a809cc698dbf415b9ce8e46a5d}
-      \strng{authorbibnamehash}{9a14a8a809cc698dbf415b9ce8e46a5d}
-      \strng{authornamehash}{9a14a8a809cc698dbf415b9ce8e46a5d}
-      \strng{authorfullhash}{51a7359313c081d676c410f906fa838f}
-      \field{sortinit}{J}
-      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{2019 IEEE International conference on software maintenance and evolution (ICSME)}
-      \field{title}{An empirical study assessing source code readability in comprehension}
-      \field{year}{2019}
-      \field{pages}{513\bibrangedash 523}
-      \range{pages}{11}
-    \endentry
     \entry{likert1932technique}{article}{}
       \name{author}{1}{}{%
         {{hash=85b07393f98f1590e08d998667417f9b}{%
@@ -660,40 +569,6 @@
       \field{year}{2022}
       \field{pages}{149}
       \range{pages}{1}
-    \endentry
-    \entry{mannan2018towards}{inproceedings}{}
-      \name{author}{3}{}{%
-        {{hash=14127b19468c77769a277d18723ec8dd}{%
-           family={Mannan},
-           familyi={M\bibinitperiod},
-           given={Umme\bibnamedelima Ayda},
-           giveni={U\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
-        {{hash=7991df34ab6f7cacecbbbffd7df908cf}{%
-           family={Ahmed},
-           familyi={A\bibinitperiod},
-           given={Iftekhar},
-           giveni={I\bibinitperiod}}}%
-        {{hash=e9b0ce2454cb7a6260507eec99cbb07f}{%
-           family={Sarma},
-           familyi={S\bibinitperiod},
-           given={Anita},
-           giveni={A\bibinitperiod}}}%
-      }
-      \strng{namehash}{01f7803573bed149a115d17748b3e043}
-      \strng{fullhash}{71640ef9cdfca5784a121b42bd51321a}
-      \strng{bibnamehash}{71640ef9cdfca5784a121b42bd51321a}
-      \strng{authorbibnamehash}{71640ef9cdfca5784a121b42bd51321a}
-      \strng{authornamehash}{01f7803573bed149a115d17748b3e043}
-      \strng{authorfullhash}{71640ef9cdfca5784a121b42bd51321a}
-      \field{sortinit}{M}
-      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{Proceedings of the 4th ACM SIGSOFT International Workshop on NLP for Software Engineering}
-      \field{title}{Towards understanding code readability and its impact on design quality}
-      \field{year}{2018}
-      \field{pages}{18\bibrangedash 21}
-      \range{pages}{4}
     \endentry
     \entry{martin2009clean}{book}{}
       \name{author}{1}{}{%
@@ -1371,33 +1246,6 @@
       \field{pages}{417\bibrangedash 427}
       \range{pages}{11}
     \endentry
-    \entry{sedano2016code}{inproceedings}{}
-      \name{author}{1}{}{%
-        {{hash=47ff7a8088ea2aab7468840a21e2b05b}{%
-           family={Sedano},
-           familyi={S\bibinitperiod},
-           given={Todd},
-           giveni={T\bibinitperiod}}}%
-      }
-      \list{organization}{1}{%
-        {IEEE}%
-      }
-      \strng{namehash}{47ff7a8088ea2aab7468840a21e2b05b}
-      \strng{fullhash}{47ff7a8088ea2aab7468840a21e2b05b}
-      \strng{bibnamehash}{47ff7a8088ea2aab7468840a21e2b05b}
-      \strng{authorbibnamehash}{47ff7a8088ea2aab7468840a21e2b05b}
-      \strng{authornamehash}{47ff7a8088ea2aab7468840a21e2b05b}
-      \strng{authorfullhash}{47ff7a8088ea2aab7468840a21e2b05b}
-      \field{sortinit}{S}
-      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{2016 IEEE 29th International conference on software engineering education and training (CSEET)}
-      \field{title}{Code readability testing, an empirical study}
-      \field{year}{2016}
-      \field{pages}{111\bibrangedash 117}
-      \range{pages}{7}
-    \endentry
     \entry{segedinac2024assessing}{article}{}
       \name{author}{5}{}{%
         {{hash=2315a6f577c8497ea61bef1ae6f2f842}{%
@@ -1610,60 +1458,6 @@
       \field{labeltitlesource}{title}
       \field{title}{Beautiful code: Leading programmers explain how they think}
       \field{year}{2007}
-    \endentry
-    \entry{xia2017measuring}{article}{}
-      \name{author}{6}{}{%
-        {{hash=389bc525f2088642cfd16749beb3312e}{%
-           family={Xia},
-           familyi={X\bibinitperiod},
-           given={Xin},
-           giveni={X\bibinitperiod}}}%
-        {{hash=02be7d0d2d03669907fe2b09091b4529}{%
-           family={Bao},
-           familyi={B\bibinitperiod},
-           given={Lingfeng},
-           giveni={L\bibinitperiod}}}%
-        {{hash=cac8ebdbf2f8a8f2b7f49f6e737c2649}{%
-           family={Lo},
-           familyi={L\bibinitperiod},
-           given={David},
-           giveni={D\bibinitperiod}}}%
-        {{hash=4ae2acd2b75c048ed13c08ebfc75e822}{%
-           family={Xing},
-           familyi={X\bibinitperiod},
-           given={Zhenchang},
-           giveni={Z\bibinitperiod}}}%
-        {{hash=37a79f9b3d67c262a89ed8c5521d654f}{%
-           family={Hassan},
-           familyi={H\bibinitperiod},
-           given={Ahmed\bibnamedelima E},
-           giveni={A\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
-        {{hash=50395496c46838f6984b813ae892840a}{%
-           family={Li},
-           familyi={L\bibinitperiod},
-           given={Shanping},
-           giveni={S\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {IEEE}%
-      }
-      \strng{namehash}{7426f68ea8cd4b799e2afa44b536c4f0}
-      \strng{fullhash}{2035e66dd62d9b79a0d9a7b61b9c9f80}
-      \strng{bibnamehash}{7426f68ea8cd4b799e2afa44b536c4f0}
-      \strng{authorbibnamehash}{7426f68ea8cd4b799e2afa44b536c4f0}
-      \strng{authornamehash}{7426f68ea8cd4b799e2afa44b536c4f0}
-      \strng{authorfullhash}{2035e66dd62d9b79a0d9a7b61b9c9f80}
-      \field{sortinit}{X}
-      \field{sortinithash}{1965c258adceecf23ce3d67b05113442}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{IEEE Transactions on Software Engineering}
-      \field{number}{10}
-      \field{title}{Measuring program comprehension: A large-scale field study with professionals}
-      \field{volume}{44}
-      \field{year}{2017}
-      \field{pages}{951\bibrangedash 976}
-      \range{pages}{26}
     \endentry
     \entry{yasunaga2020graph}{inproceedings}{}
       \name{author}{2}{}{%
