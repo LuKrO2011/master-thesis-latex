@@ -1,6 +1,6 @@
 \begin{Verbatim}[commandchars=\\\{\}]
 \PYG{k+kd}{private}
-\PYG{+w}{	}\PYG{k+kd}{static}
+\PYG{k+kd}{static}
 \PYG{k+kt}{void}
 \PYG{n+nf}{debug}\PYG{p}{(}\PYG{+w}{ }\PYG{n}{Process}
 \PYG{n}{v1}

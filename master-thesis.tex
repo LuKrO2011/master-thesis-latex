@@ -718,7 +718,8 @@ cleveref=true,%
 \section{Introduction} \label{Introduction}
 
 	% Motivation: Importance
-	In the realm of software development, the significance of code readability cannot be overstated. Together with understandability, it serves as the foundation for efficient collaboration, comprehension, and maintenance of software systems~\cite{posnett2011simpler, aggarwal2002integrated}. 
+	Code readability is of utmost significance in the domain of software development.
+	In the domain of software development, the significance of code readability cannot be overstated. Together with understandability, it serves as the foundation for efficient collaboration, comprehension, and maintenance of software systems~\cite{posnett2011simpler, aggarwal2002integrated}. 
 	Maintenance alone will consume over 70~\% of the total lifecycle cost of a software product and for maintenance, the most time-consuming act is reading code~\cite{buse2009learning, deimel1985uses, rugaber2000use, boehm2001defect}.
 	Therefore, it is important to ensure a high readability of code. In order to archive this, we need to measure readability.
 	% Motivation: Current state
@@ -726,16 +727,17 @@ cleveref=true,%
 	
 	% Main problem
 	%	However, these models do not capture what developers think of readability improvements~\cite{fakhoury2019improving}. This suggests that there is room for improvement in readability classification of source code. 
-	However, a major limitation of these models is not their architecture, but the amount of available data for Java code readability classification, which comprises 421 code snippets~\citeolddataset.
+	However, a major limitation of these models is not their architecture, but the amount of available data for Java code readability classification, which comprises 421 code snippets~\citeolddataset. The current training data originates from questionnaires, where humans have manually labeled the code snippets. This has two drawbacks: Firstly, manual labeling requires a lot of effort. Secondly, the dataset is too small for deep learning, as those require 
+	To address those drawbacks, we aim to automatically generate more training data.
 	
 	% Problem details
 	% Effects of more data
-	Deep learning-based models perform better the more training data they get~\cite{hestness2017deep}. Therefore, one approach in order to further improve existing models is to gather more training data.
+	Deep learning-based models perform better the more training data they get~\cite{hestness2017deep}. Therefore, one approach to further improve existing models is to gather more training data.
 	% Effort of studys
 	This requires, as it was done previously, a lot of effort and persons willing to rate code based on their readability.
 	
 	% Approach
-	The main idea of this work is to investigate whether it is possible to achieve higher accuracy in code readability classification using automated generated data. 
+	The main idea of this work is to investigate whether it is possible to achieve higher accuracy in code readability classification using automatically generated data. 
 	%	Instead of introducing a new model, we will try to achieve this with more training data. Therefore, we propose a novel approach to data generation for code readability classification. We will evaluate such a generated dataset using a survey and by comparing the accuracy of the model of \citeauthor{mi2022towards}~\cite{mi2022towards} trained on the old and the new data.
 	
 	% Contents
@@ -770,25 +772,27 @@ cleveref=true,%
 	%	In the last section we summarize our work, draw conclusions from it and propose future work.
 	
 	% Dataset generation
-	In a first step, GitHub repositories with known high code quality are downloaded and labeled as well readable. We select repositories using a similar approach as \citeauthor{allamanis2016convolutional}~\cite{allamanis2016convolutional} and then assume that they contain only well readable code.
-	In a second step, the code is manipulated so that it is subsequently less readable. This approach is similar to the approach of \citeauthor{loriot2022styler}~\cite{loriot2022styler}. After both steps, we have a new, automatically generated dataset for code readability classification.
+	In a first step, following the approach of \citeauthor{allamanis2016convolutional}~\cite{allamanis2016convolutional}, we download GitHub\curl{https://github.com/}{2024-02-29} repositories with high code quality.
+	Our criteria for high code quality are an elevated number of stars, forks, method comments the use of and compliance with a checkstyle\curl{https://checkstyle.sourceforge.io/}{2024-02-09} specification. For example, developers prefer high code quality and therefore star or fork repositories with high code quality more likely.
+	We select Java files from the repositories that meet our criteria and extract methods from the Java classes in these files and label them as well readable (Assumption \ref{well-readable-assumption}).
+	
+	% TODO Generell: In papern machen wir gern eine Grafik auf die erste Seite, die den Ansatz direkt erklärt. Du hast ja eh listing 1 und 2. Theoretisch könntest du die hier schon einbinden und eine Figure draus machen mit links "good code", rechts "manipulated code"
+	
+	In a second step, all selected Java files are manipulated so that its code is subsequently less readable. You can find an exemplary result of this in TODO.
+	We extract methods from the Java classes in these files and label them as badly readable (Assumption \ref{badly-readable-assumption}).
+	
+	After both steps, we have a new, automatically generated dataset for code readability classification.
 	
 	% Readabililty Decreasing Heuristics
-	This brings up the question, how to manipulate code so that it is less readable afterwards. We therefore introduce a tool called Readability Decreasing Heuristics. As the name suggests this is a collection of heuristics that, when applied to source code, lower the readability of it. For example such a heuristic is to replace spaces with newlines. Another example is to increase the indentation of a code block by a tab or multiple spaces. Moreover, with most changes it is also possible to do exactly the opposite (replacing newlines with spaces, decreasing indentation), which in most cases also decreases the readability of source code.
+	How can we manipulate code so that it is less readable afterwards? We introduce a tool called Readability Decreasing Heuristics. This is a collection of heuristics that, when applied to Java files, lower the readability of it. Such heuristics are replacing spaces with newlines or increasing the indentation of a code block by a tab or multiple spaces. Most changes also decrease readability when applied in reverse (replacing newlines with spaces, decreasing indentation).
 	
-	Code snippets in Java are syntactically the same, before and after applying Readability Decreasing Heuristics. Complexity does not change either. However, if various modifications are applied many times, those changes are capable of lowering the readability of source code, as the comparison of \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils} and \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified} suggests.
-	
-	% Assumptions
-	Note that we assume two things for the data generation approach:
-	\begin{enumerate}[label={Assumption \arabic*},ref={\arabic*},leftmargin=*]
-		\item \label{well-readable-assumption} \textbf{(well-readable-assumption)} The selected repositories contain mostly well readable code.
-		\item \label{poorly-readable-assumption} \textbf{(poorly-readable-assumption)} After applying Readability Decreasing Heuristics, the code is poorly readable.
-	\end{enumerate}
-	
+	Methods in Java are syntactically the same, before and after applying Readability Decreasing Heuristics. Functionality does not change either. However, if various modifications are applied many times, those changes are capable of lowering the readability of source code, as TODO suggests.
+	%	the comparison of \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils} and \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified} suggests.
+
 	% Study goals
-	We conduct a survey to confirm these assumptions (Assumption \ref{well-readable-assumption} and \ref{poorly-readable-assumption}).
+	To verify whether the well-readable-assumption (Assumption \ref{well-readable-assumption}) and the poorly-readable-assumption (Assumption \ref{poorly-readable-assumption}) hold we conducted a survey on prolific.
 	% Study details
-	We ask Java programmers to rate code snippets that were generated with the presented approach. Therefore, human annotators rated each code snippet with a readability score. The annotators are selected by prolific\curl{https://www.prolific.com/}{2023-09-30}. The readability rating is based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable). We apply the same rating as done previously~\citeolddataset, but, other than before, we will not use the rating for labeling the training data. Instead, we only use the ratings to validate some randomly selected code snippets to confirm our assumptions (Assumption \ref{well-readable-assumption} and \ref{poorly-readable-assumption}). All snippets are automatically labeled.
+	We ask Java programmers to rate methods that were mined and modified. Therefore, human annotators rated each code snippet with a readability score. The annotators are selected by prolific\curl{https://www.prolific.scom/}{2023-09-30}. The readability rating is based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable). We apply the same rating as done previously~\citeolddataset, but, other than before, we will not use the rating for labeling the training data. Instead, we only use the ratings to validate some randomly selected methods to confirm our assumptions (Assumption \ref{well-readable-assumption} and \ref{poorly-readable-assumption}). All snippets are automatically labeled.
 	
 	% Model comparison details
 	Besides the user study we will evaluate our approach by comparing performance of the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} when trained with the new and the old dataset.
@@ -799,12 +803,11 @@ cleveref=true,%
 	Our contributions are as follows:
 	\begin{itemize}
 		\item We combine and unify existing datasets~\citeolddataset
-		\item We propose a approach to mine well readable code snippets
+		\item We propose a approach to mine well readable methods
 		\item We create a tool to decrease the readability of Java class files
-		\item We propose a new dataset generation approach
-		\item We introduce a new readability classification dataset
-		\item We publish a re-implementation of the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards}
-		\item We evaluate parts of our new dataset and our generation approach with a user study
+		\item We propose a novel dataset generation approach and introduce a new readability classification dataset
+%		\item We publish a re-implementation of the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards}
+		\item We evaluate our generation approach with a user study
 		\item We evaluate our generation approach by comparing the model performance of the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} trained with and without the new dataset		
 	\end{itemize}
 	
@@ -918,6 +921,7 @@ cleveref=true,%
 %		Code readability is the human assessment of the effort required to read and understand code.
 %	\end{definition}
 
+	% TODO: Discuss with Lisa (and gordon?)
 	\textit{Code readability is the human assessment of the effort required to read and understand code.}
 
 	% TODO: Update citations
@@ -1152,22 +1156,22 @@ cleveref=true,%
 	In recent years code readability classification is dominated by machine learning, especially deep learning approaches. As the quality of the models increased, so did their accuracy (see \autoref{tab:rel-acc-scores}).
 	
 	% Related work: ML - Inception (82.2\% to 84.2\% acc)
-	\citeauthor{mi2018inception} introduced a deep learning model called IncepCRM for code readability classification. IncepCRM automatically learns multi-scale features from source code with minimal manual intervention~\cite{mi2018inception}.
+	IncepCRM was the first introduced deep learning model called for code readability classification. It automatically learns multi-scale features from source code with minimal manual intervention~\cite{mi2018inception}.
 	
 	% Related work: ML - CNN (83.8\% acc)
-	\citeauthor{mi2018improving} use Convolutional Neural Networks (ConvNets). Their proposed model, DeepCRM, employs three ConvNets with identical architectures, trained on differently preprocessed data~\cite{mi2018improving}.
+	In a follow up paper Convolutional Neural Networks (ConvNets) were introduced to code readability classification in a model called DeepCRM. Other than previously, DeepCRM employs three ConvNets with identical architectures and was trained on differently preprocessed data~\cite{mi2018improving}.
 		
 	% Related work: ML - GANs (84.8\% acc)
-	Another study addresses concerns regarding the classification of code readability by proposing an approach using Generative Adversarial Networks (GANs). The proposed method involves encoding source codes into integer matrices with multiple granularities and utilizing an EGAN (Enhanced GAN)~\cite{sharma2020egan}.
+	Another study proposes an approach using Generative Adversarial Networks (GANs). The proposed method involves encoding source codes into integer matrices with multiple granularities and utilizing an EGAN (Enhanced GAN)~\cite{sharma2020egan}. It was able to surpass the accuracy of previous readability classification models as shown in \autoref{tab:rel-acc-scores}.
 	
 	% Related work: ML - Towards (85.3\% acc)
-	\citeauthor{mi2022towards} address the limitation of the previous deep learning-based code readability models, which primarily focus on structural features. Their proposed method aims to enhance code readability classification by extracting features from visual, semantic, and structural aspects of source code. Using a hybrid neural network composed of BERT, CNN, and BiLSTM, the model processes RGB matrices, token sequences, and character matrices to capture various features~\cite{mi2022towards}.
+	The limitation of previous deep learning-based code readability models was to focus primarily on structural features. This was addressed by proposing a method that extracts features from visual, semantic, and structural aspects of source code. Using a hybrid neural network composed of BERT, CNN, and BiLSTM, the model processes RGB matrices, token sequences, and character matrices to capture various features~\cite{mi2022towards}.
 	
 	% Related work: ML - Code pairs (83.5\% acc)
-	\citeauthor{mi2022rank} introduced a novel approach to code readability classification by framing it as a learning-to-rank task. The proposed model employs siamese neural networks to rank code pairs based on their readability~\cite{mi2022rank}.
+	Up to this point, code readability classification was considered mainly as a task that is applied to a single code snippet at once. A new approach was introduced that frames the problem as a ranking task. The proposed model employs siamese neural networks to rank code pairs based on their readability~\cite{mi2022rank}.
 
 	% Related work: ML - AST + GNN (72.5\% three class, 88\% two class acc)
-	\citeauthor{mi2023graph} address the importance of code readability in software development and introduced a graph-based representation method for code readability classification. The proposed method involves parsing source code into a graph with abstract syntax tree (AST), combining control and data flow edges, and converting node information into vectors. The model, comprising Graph Convolutional Network (GCN), DMoNPooling, and K-dimensional Graph Neural Networks (k-GNNs) layers, extracts syntactic and semantic features~\cite{mi2023graph}.
+	All previous accuracy scores in two class classification were surpassed by the introduction of a graph-based representation method for code readability classification. The proposed method involves parsing source code into a graph with abstract syntax tree (AST), combining control and data flow edges, and converting node information into vectors. The model, comprising Graph Convolutional Network (GCN), DMoNPooling, and K-dimensional Graph Neural Networks (k-GNNs) layers, extracts syntactic and semantic features~\cite{mi2023graph}.
 
 	You can find an overview over the accuracy scores for the models mentioned in \autoref{tab:rel-acc-scores}.
 	\begin{table}[tb]
@@ -1175,20 +1179,20 @@ cleveref=true,%
 		\caption{Accuracy scores of two-class readability classification models.}
 		\vspace{8pt}
 		\label{tab:rel-acc-scores}
-		\begin{tabular}{lr}
+		\begin{tabular}{llr}
 			\toprule
-			Model & Accuracy \\
+			Model & Type & Accuracy \\
 			\midrule
-			Buse~\cite{buse2009learning} & 76.5 \% \\
-			Possnet~\cite{posnett2011simpler} & 71.7 \% \\
-			Dorn~\cite{dorn2012general} & 78.6 \% \\
-			Scallabrino~\cite{scalabrino2018comprehensive} & 81.8 \% \\
-			Mi\_IncepCRM~\cite{mi2018inception} & 84.2 \% \\
-			Mi\_DeepCRM~\cite{mi2018improving} & 83.8 \% \\
-			Sharma~\cite{sharma2020egan} & 84.8 \% \\
-			\textbf{Mi\_Towards~\cite{mi2022towards}} & \textbf{85.3} \% \\
-			Mi\_Ranking~\cite{mi2022rank} & 83.5 \% \\
-			Mi\_Graph~\cite{mi2023graph} & 88.0 \% \\
+			Buse~\cite{buse2009learning} & Conventional & 76.5 \% \\
+			Possnet~\cite{posnett2011simpler} & Conventional & 71.7 \% \\
+			Dorn~\cite{dorn2012general} & Conventional & 78.6 \% \\
+			Scallabrino~\cite{scalabrino2018comprehensive} & Conventional & 81.8 \% \\
+			Mi\_IncepCRM~\cite{mi2018inception} & Deep Learning & 84.2 \% \\
+			Mi\_DeepCRM~\cite{mi2018improving} & Deep Learning & 83.8 \% \\
+			Sharma~\cite{sharma2020egan} & Deep Learning & 84.8 \% \\
+			\textbf{Mi\_Towards~\cite{mi2022towards}} & \textbf{Deep Learning} & \textbf{85.3 \%} \\
+			Mi\_Ranking~\cite{mi2022rank} & Deep Learning & 83.5 \% \\
+			Mi\_Graph~\cite{mi2023graph} & Deep Learning & 88.0 \% \\
 			\bottomrule
 		\end{tabular}
 	\end{table}
@@ -1196,6 +1200,7 @@ cleveref=true,%
 	% Classic:~\cite{buse2009learning, posnett2011simpler, dorn2012general, scalabrino2018comprehensive, mi2018inception, mi2018improving, sharma2020egan, mi2022towards, mi2022rank, mi2023graph}
 	% Deep:
 	
+	Until now many deep learn architectures and components were introduced with the goal to surpass previous classification accuracy scores. Their common limitation is a dataset consisting of \numOriginal code snippets for training and evaluation.
 	The main contribution of this work is not a model that outperforms a state of the art model but rather a new dataset (generation approach). For evaluation we opted for the \textit{Mi\_Towards} model (hereinafter referred to as towards model) from \citeauthor{mi2022towards}~\cite{mi2022towards}. We did not choose the best performing one, \textit{Mi\_Graph}, as its main contribution is to use the AST representation of the code, while our dataset generation approach includes features that are not represented in the AST~\cite{mi2023graph}.
 			
 \subsection{Data Augmentation} \label{Data Augmentation}
@@ -1252,9 +1257,11 @@ cleveref=true,%
 		
 \subsection{Work on Existing Datasets} \label{Work on Existing Datasets}
 %	Later we will compare our new dataset and generation approach against existing datasets for readability classification.
-	Most of the related work (see \autoref{Background and Related Work}) uses a combination of the data of \citeauthor{buse2009learning}, \citeauthor{dorn2012general} and \citeauthor{scalabrino2018comprehensive}. The raw data from their surveys can be downloaded \curl{https://dibt.unimol.it/report/readability/}{2024-02-18}, but their data is not uniformly formatted, including ratings that are not Java code snippets, as well as the individual ratings rather than the mean of the ratings used for training machine learning models.
+	Most of the related work (see \autoref{Background and Related Work}) uses a combination of the data of \citeauthor{buse2009learning}, \citeauthor{dorn2012general} and \citeauthor{scalabrino2018comprehensive}. The raw data from their surveys can be downloaded \curl{https://dibt.unimol.it/report/readability/}{2024-02-18}, but their data is not uniformly formatted, including ratings that are not Java code snippets, as well as the individual ratings rather than the mean of the ratings used for training machine learning models. Other than our mined and modified code snippets theirs do not all have the scope of a method, but instead consist of a few lines of code.
 	
 	We converted and combined the three datasets into one: code-readability-merged. In recent years, Huggingface\curl{https://huggingface.co/}{2024-02-18} established as the pioneer in making models and datasets available. Therefore we decided to publish the merged dataset on Huggingface\curl{https://huggingface.co/datasets/se2p/code-readability-merged}{2024-02-18}.
+	
+	We refer to this dataset as the old one.
 	
 \subsection{Classification Considerations} \label{Classification Considerations}
 	
@@ -1277,7 +1284,7 @@ cleveref=true,%
 	However, we will both stick to the binary classification approach as well as to the towards model~\cite{mi2022towards} to make our results comparable to theirs.
 	
 \subsection{Dataset Generation Approach} \label{Dataset Generation Approach}
-	Other than previous datasets for readability classification, our dataset is generated using an automated approach. The aim is to mine and modify code from GitHub to obtain both well readable and badly readable code. This approach is novel to the best of our knowledge. You can find a visualization in \autoref{fig:dataset_generation}.
+	Other than previous datasets for readability classification, our dataset is generated using an automated approach. The aim is to mine and modify code from GitHub to obtain both well readable and badly readable methods. This approach is novel to the best of our knowledge. You can find a visualization in \autoref{fig:dataset_generation}.
 	
 	\begin{figure}[tb]
 		\centering
@@ -1285,6 +1292,10 @@ cleveref=true,%
 		\caption{The used dataset generation approach.}
 		\label{fig:dataset_generation}
 	\end{figure}
+	
+	While we refer to the merged data set (\autoref{Work on Existing Datasets}) as the old data set, the data set generated by our approach is referred to as the new data set.
+	
+	Since we ultimately extract methods from code, code snippets and methods are synonyms for our mine-and-modify approach. This is not the case with the old data set, as there a code snippet is not necessarily an entire method.
 	
 	The approach is divided into four parts. The first three steps are used to mine well readable Java code. In a final step, we will modify the well readable code to achieve our second goal, namely poorly readable source code.
 	
@@ -1302,7 +1313,7 @@ cleveref=true,%
 	% TODO: Why miteinbauen oder eher nicht?
 	The remaining ones are sorted by their star and fork count (equally weighted). The 100 best are cloned and their main branch is checked out.
 	
-	In a third step we run checkstyle\curl{https://checkstyle.sourceforge.io/}{2024-02-15} against the projects own checkstyle configuration to get all Java class files, that pass the own checkstyle test. A tool from Maximilian Jungwirth\curl{https://github.com/sphrilix}{TODO} was used for this purpose. From the Java classes that passed this filter we extract all methods that have a comment of any kind at the beginning of the method. This results in \numOriginal code snippets which we assume to be well readable.
+	In a third step we run checkstyle\curl{https://checkstyle.sourceforge.io/}{2024-02-15} against the projects own checkstyle configuration to get all Java class files, that pass the own checkstyle test. A tool from Maximilian Jungwirth\curl{https://github.com/sphrilix}{TODO} was used for this purpose. From the Java classes that passed this filter we extract all methods that have a comment of any kind at the beginning of the method. This results in \numOriginal methods which we assume to be well readable.
 	
 	The fourth and final step is to generate badly readable code from the well readable one. Therefore we use the proposed Readability Decreasing Heuristics (see Sub\autoref{Readability Decreasing Heursitcs}). Afterwards we again extract all methods with a comment at the beginning of the method.
 	Initially we planned to not require comments for the badly readable dataset part. However, it turns out that in this case all well readable methods have a comment while most of the badly readable do not have one. This lead to shortcut learning, whether a method has a comment or not instead of learning to distinguishing the methods by all other criteria as well.
@@ -1634,6 +1645,14 @@ cleveref=true,%
 	
 	
 \section{Evaluation} \label{Evaluation}
+
+	%	TODO: Bring into context
+	% Assumptions
+	Note that we assume two things for the data generation approach:
+	\begin{enumerate}[label={Assumption \arabic*},ref={\arabic*},leftmargin=*]
+		\item \label{well-readable-assumption} \textbf{(well-readable-assumption)} The selected repositories contain mostly well readable code.
+		\item \label{poorly-readable-assumption} \textbf{(poorly-readable-assumption)} After applying Readability Decreasing Heuristics, the code is poorly readable.
+	\end{enumerate}
 
 	% User study
 	We are conducting a user study to determine the quality of the new data set. In detail the aim of the user study is to answer the following key questions:
