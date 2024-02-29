@@ -1,0 +1,21 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/**}
+\PYG{c+cm}{* Logs the output of the specified process.}
+\PYG{c+cm}{*}
+\PYG{c+cm}{* @param p the process}
+\PYG{c+cm}{* @throws IOException if an I/O problem occurs}
+\PYG{c+cm}{*/}
+\PYG{k+kd}{private}\PYG{+w}{ }\PYG{k+kd}{static}\PYG{+w}{ }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{logProcessOutput}\PYG{p}{(}\PYG{n}{Process}\PYG{+w}{ }\PYG{n}{p}\PYG{p}{)}\PYG{+w}{ }\PYG{k+kd}{throws}\PYG{+w}{ }\PYG{n}{IOException}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{	}\PYG{k}{try}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{BufferedReader}\PYG{+w}{ }\PYG{n}{input}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{BufferedReader}\PYG{p}{(}\PYG{k}{new}\PYG{+w}{ }\PYG{n}{InputStreamReader}\PYG{p}{(}\PYG{n}{p}\PYG{p}{.}\PYG{n+na}{getInputStream}\PYG{p}{())))}
+\PYG{+w}{	}\PYG{p}{\PYGZob{}}
+\PYG{+w}{		}\PYG{n}{StrBuilder}\PYG{+w}{ }\PYG{n}{builder}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{StrBuilder}\PYG{p}{();}
+\PYG{+w}{		}\PYG{n}{String}\PYG{+w}{ }\PYG{n}{line}\PYG{p}{;}
+\PYG{+w}{		}\PYG{k}{while}\PYG{+w}{ }\PYG{p}{((}\PYG{n}{line}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{input}\PYG{p}{.}\PYG{n+na}{readLine}\PYG{p}{())}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{k+kc}{null}\PYG{p}{)}
+\PYG{+w}{		}\PYG{p}{\PYGZob{}}
+\PYG{+w}{			}\PYG{n}{builder}\PYG{p}{.}\PYG{n+na}{appendln}\PYG{p}{(}\PYG{n}{line}\PYG{p}{);}
+\PYG{+w}{		}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{		}\PYG{n}{logger}\PYG{p}{.}\PYG{n+na}{info}\PYG{p}{(}\PYG{n}{builder}\PYG{p}{.}\PYG{n+na}{toString}\PYG{p}{());}
+\PYG{+w}{	}\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

@@ -1206,19 +1206,27 @@ cleveref=true,%
 \subsection{Data Augmentation} \label{Data Augmentation}
 
 	% Related work: Existing data
-	All the mentioned models were trained with (a part of) the data from Buse, Dorn and Scalabrino consisting of a total of 421 Java code snippets. The data was generated with surveys. They therefore asked developers several questions, including how well readable the proposed source code is~\cite{buse2009learning, dorn2012general, scalabrino2018comprehensive}. We will refer to this dataset as \textit{old} dataset.
+	All the mentioned models were trained with (a part of) the data from Buse, Dorn and Scalabrino consisting of a total of 421 Java code snippets. The data was generated with surveys. They therefore asked developers several questions, including how well readable the proposed source code is~\cite{buse2009learning, dorn2012general, scalabrino2018comprehensive}. We will refer to this dataset as \textit{merged} dataset.
+	
+%	TODO
+%	Prinzipiell schöne Übersicht von hier bis 2.5
+%	Aber fehlt Einordnung: wie related das zu deinem Zeug? Z.B. be dem augmentation Paper kam meines Wissens ja raus, dass das die Modell-Ergebnisse ja tatsächlich verbessert.
+%	Man könnte also z.B. schreiben: wir machen auch augmentation, weil das gut funktioniert, aber verfolgen einen Ansatz der ohne Domänenwissen auskommt.
 	
 	The problem that there is little data in the area of code readability classification for machine learning models has been recognized.
 					
 	% Related work: Data Augmentation - GAN (87.38\% acc)
-	\citeauthor{mi2021effectiveness} address the challenge of acquiring a sufficient amount of labeled data for training deep learning models. Due to the time-consuming and expensive nature of obtaining manual labels, the researchers propose the use of data augmentation techniques to artificially expand the training set. They employ domain-specific transformations, such as manipulating comments, indentations, and names of classes/methods/variables, and explore the use of Auxiliary Classifier GANs to generate synthetic data~\cite{mi2021effectiveness}.
-	
+	A recent paper addressed the challenge of acquiring a larger amount of labeled data using augmentation. The researchers proposed this to artificially expand the training set instead of the time-consuming and expensive process of obtaining labels manually. They employ domain-specific transformations, such as manipulating comments, indentations, and names of classes/methods/variables, and explore the use of Auxiliary Classifier GANs to generate synthetic data. They advance to a classification accuracy of 87.3~\%~\cite{mi2021effectiveness}.
 	% Related work: Data Augmentation - GAN (68.0\% acc)
-	\citeauthor{mi2022enhanced} address the challenge of multi-class code readability classification. Due to a scarcity of labeled data, most prior research focused on binary classification. The authors propose an enhanced data augmentation approach, incorporating domain-specific data transformation and Generative Adversarial Networks (GANs)~\cite{mi2022enhanced}.
+%	Due to a scarcity of labeled data, most prior research focused on binary classification. This was due to supposedly due to a scarcity of labeled data, most prior research focused on binary classification.
+	Lately researchers successfully enhanced the data augmentation approach by incorporating domain-specific data transformation and Generative Adversarial Networks (GANs)~\cite{mi2022enhanced}.
+	The results of both show, that more data has a significant impact on the reached classification accuracy. However, they artificially augment data based on the \numOriginal code snippets of the merged data set. Therewith their augmented data is based on the small dataset. Our new dataset is not.
+	%	, which further delimits its potential.
 	
 	% Related work: Data Generation - GitHub commits
-	\citeauthor{vitale2023using} introduce a novel approach to automatically identify and suggest readability-improving actions for code snippets. The authors develop a methodology to identify readability-improving commits, creating a dataset of 122k commits from GitHub's revision history. They train a T5 model to emulate developers' actions in improving code readability, achieving a prediction accuracy between 21~\% and 28~\%. The empirical evaluation shows that 82-91~\% of the dataset commits aim to improve readability, and the model successfully mimics developers in 21~\% of cases~\cite{vitale2023using}.
-	
+	Recently researchers developed a methodology to identify readability-improving commits, creating a dataset of 122k commits from GitHub's revision history. This dataset was used to automatically identify and suggest readability-improving actions for code snippets. They trained a T5 model to emulate developers' actions in improving code readability, achieving a prediction accuracy between 21~\% and 28~\%. The empirical evaluation shows that 82-91~\% of the dataset commits aim to improve readability, and the model successfully mimics developers in 21~\% of cases~\cite{vitale2023using}. 
+	This shows the potential of a large dataset. However, the approach dataset and model results are hardly comparable with previous studies due to the usage of commits instead of code snippets. We, on the other hand, keep to use code snippets.
+		
 	
 \subsection{Diverse Perspectives} \label{Diverse Perspectives}
 
@@ -1250,30 +1258,40 @@ cleveref=true,%
 	\citeauthor{loriot2022styler} created a model that is able to fix Checkstyle\curl{https://checkstyle.org/}{2023-07-25} violations using Deep Learning. They inserted formatting violations based on a project specific format checker ruleset into code in a first step. They then used a LSTM neural network that learned how to undo those injections. Their approach is working on abstract token sequences. Their data is generated in a self-supervised manner~\cite{loriot2022styler}. A similar idea has been explored by \citeauthor{yasunaga2020graph}~\cite{yasunaga2020graph}. We will use the idea of intentional degradation of code for data generation.
 	
 	% Related work: Public code mining
-	Another concept we will employ is from \citeauthor{allamanis2016convolutional}. They cloned the top open source Java projects on GitHub\curl{https://github.com/}{2023-07-25} for training a Deep Learning model. Those top projects were selected by taking the sum of the z-scores of the number of watchers and forks of each project. As the projects have thousands of forks and stars and are widely used among software developers, they can be assumed to be of high quality~\cite{allamanis2016convolutional}.
+	Another concept we will employ is from \citeauthor{allamanis2016convolutional}. They cloned the top open source Java projects on GitHub\curl{https://github.com/}{2023-07-25} for training a Deep Learning model. Those top projects were selected by taking the sum of the z-scores of the number of watchers and forks of each project. The projects have thousands of forks and stars and are widely used among software developers and thus the authors assumed the code within to be of good quality~\cite{allamanis2016convolutional}. We will also use fork and star counts as criteria for well readable code (Assumption \ref{well-readable-assumption}).
 		
 \section{Mined and Modified Code for Dataset Generation} \label{Mined and Modified Code for Dataset Generation}
 	In the following subsections we will describe our approach.
 		
 \subsection{Work on Existing Datasets} \label{Work on Existing Datasets}
 %	Later we will compare our new dataset and generation approach against existing datasets for readability classification.
-	Most of the related work (see \autoref{Background and Related Work}) uses a combination of the data of \citeauthor{buse2009learning}, \citeauthor{dorn2012general} and \citeauthor{scalabrino2018comprehensive}. The raw data from their surveys can be downloaded \curl{https://dibt.unimol.it/report/readability/}{2024-02-18}, but their data is not uniformly formatted, including ratings that are not Java code snippets, as well as the individual ratings rather than the mean of the ratings used for training machine learning models. Other than our mined and modified code snippets theirs do not all have the scope of a method, but instead consist of a few lines of code.
+
+	Most of the related work (see \Cref{Background and Related Work}) uses a combination of the data of \citeauthor{buse2009learning}, \citeauthor{dorn2012general} and \citeauthor{scalabrino2018comprehensive}. The raw data from their surveys can be downloaded \curl{https://dibt.unimol.it/report/readability/}{2024-02-18}, but their data is not uniformly formatted, including ratings that are not Java code snippets, as well as the individual ratings rather than the mean of the ratings used for training machine learning models. Other than our mined and modified code snippets theirs do not all have the scope of a method, but instead consist of a few lines of code.
 	
 	We converted and combined the three datasets into one: code-readability-merged. In recent years, Huggingface\curl{https://huggingface.co/}{2024-02-18} established as the pioneer in making models and datasets available. Therefore we decided to publish the merged dataset on Huggingface\curl{https://huggingface.co/datasets/se2p/code-readability-merged}{2024-02-18}.
 	
-	We refer to this dataset as the old one.
+	We refer to this dataset as the \textit{merged} one.
 	
 \subsection{Classification Considerations} \label{Classification Considerations}
 	
-	When classifying the readability of code, the state of the art is to perform a binary classification into well readable and badly readable code~\cite{mi2018inception, mi2018improving, sharma2020egan, mi2022towards, mi2022rank}.  
+	When classifying the readability of code, the state of the art is to perform a binary classification into well readable and badly readable code~\cite{mi2018inception, mi2018improving, sharma2020egan, mi2022towards, mi2022rank}. 
+	
+% TODO
+%	Ich würde den Absatz hierzu etwas relativieren.
+%	Wenn ich das richtig im Kopf habe, dann geben die meisten Classifier Modelle ja einen kontinuierlichen Wert zwischen 0 und 1 aus, was im Prinzip genau dem entspricht, was du forderst.
+%	Im Wesentlichen wird nur ein Knoten dahinter geschaltet, der abhängig vom Wert vorher dann eine Gruppe selektiert (</>=0.5).
+%	Das, was du ansprichst, zielt ja eher darauf ab, dass für die Evaluierung die binäre Klassifizierung verwendet wird.
+%	Und der Grund dafür ist sicherlich, dass es einfacher ist, das dazustellen, und dass man bessere Ergebnisse bekommt (das wissen denk ich auch alle, dafür brauchts nicht probably eigene research) :-) 
+%	Ich würd also  nur schreiben:
+%	- die Daten werden üblicherweise auf ner 5-point Likert scale erhoben
+%	- am Schluss wird als binäre Klassifizierung evaluiert
+%	- die Frage ist, wie dazwischen (beim Modelltraining) mit den Daten umgegangen wird. Mi machen das folgendermaßen... 
 	
 	However, code readability classification is not a binary classification task per se. \citeauthor{mi2023graph} introduced a third, neutral class to address this problem~\cite{mi2023graph}. 
-	When rating code snippets, a Likert scale~\cite{likert1932technique} from 1 (very unreadable) to 5 (very readable) was used~\citeolddataset. So one could argue, that there are 5 classes rather than two or three.
-	However, the actual readability score of a code snippet lies somewhere in between. It can have any value from 1.0 to 5.0 and thus the range is continuous, not discrete. In particular, if you normalize by subtracting 1 and divide then by 4, we get a continuous value between 0.0 to 1.0. At this point it is a regression problem.
+	When rating code snippets, a Likert scale~\cite{likert1932technique} from 1 (very unreadable) to 5 (very readable) was used~\citeolddataset. 
+	While the amount of classes varies, one can encode the data internally as a single continuous value between 0 and 1 where a higher value means higher readability. The output of the model is well readable, if the value after the last layer is above 0.5 and badly readable otherwise.
 	
-	The question arises as to why research in the field of code readability mostly views the problem as a (binary) classification problem. The answer to this question is probably worthy of its own research and therefore not covered in this work.
-	
-	Our evaluation model is the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards}. Therefore, we want to show how they transformed the rating scores into a binary classification problem. First, the mean values of all scores are calculated. In a second step, the snippets are ranked according to their mean score. Then, the top 25~\% of the data is labeled as well readable and the bottom 25~\% is labeled as badly readable. The 50~\% of the data in between is not used at all~\cite{mi2022towards}.
+	Our evaluation model is the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} and follows this encoding. We want to show how they transformed the rating scores into a binary classification problem. First, the mean values of all scores are calculated. In a second step, the snippets are ranked according to their mean score. Then, the top 25~\% of the data is labeled as well readable and the bottom 25~\% is labeled as badly readable. The 50~\% of the data in between is not used at all~\cite{mi2022towards}.
 	
 	While this transformation is fine in principle, especially with the argument that the data in the middle is neither well readable nor badly readable, it has drawbacks that only 50~\% of the available data is used for model training and evaluation:
 	
@@ -1281,7 +1299,7 @@ cleveref=true,%
 	
 	Secondly, evaluation is performed with only those 210 snippets as well. Thus, the model was only evaluated on 50~\% of the available data. We suspect that this might be a thread to validity. It could be that the performance of the model is remarkably lower when the evaluation is performed with random, unseen data that also contains moderately readable code snippets.
 	
-	However, we will both stick to the binary classification approach as well as to the towards model~\cite{mi2022towards} to make our results comparable to theirs.
+	However, we will both continue to use the binary classification approach as well as to the towards model~\cite{mi2022towards} to make our results comparable to theirs.
 	
 \subsection{Dataset Generation Approach} \label{Dataset Generation Approach}
 	Other than previous datasets for readability classification, our dataset is generated using an automated approach. The aim is to mine and modify code from GitHub to obtain both well readable and badly readable methods. This approach is novel to the best of our knowledge. You can find a visualization in \autoref{fig:dataset_generation}.
@@ -1293,9 +1311,9 @@ cleveref=true,%
 		\label{fig:dataset_generation}
 	\end{figure}
 	
-	While we refer to the merged data set (\autoref{Work on Existing Datasets}) as the old data set, the data set generated by our approach is referred to as the new data set.
+	While we refer to the merged data set (\Cref{Work on Existing Datasets}) as the merged data set, the data set generated by our approach is referred to as the new data set.
 	
-	Since we ultimately extract methods from code, code snippets and methods are synonyms for our mine-and-modify approach. This is not the case with the old data set, as there a code snippet is not necessarily an entire method.
+	Since we ultimately extract methods from code, code snippets and methods are synonyms for our mine-and-modify approach. This is not the case with the merged data set, as there a code snippet is not necessarily an entire method.
 	
 	The approach is divided into four parts. The first three steps are used to mine well readable Java code. In a final step, we will modify the well readable code to achieve our second goal, namely poorly readable source code.
 	
@@ -1315,9 +1333,9 @@ cleveref=true,%
 	
 	In a third step we run checkstyle\curl{https://checkstyle.sourceforge.io/}{2024-02-15} against the projects own checkstyle configuration to get all Java class files, that pass the own checkstyle test. A tool from Maximilian Jungwirth\curl{https://github.com/sphrilix}{TODO} was used for this purpose. From the Java classes that passed this filter we extract all methods that have a comment of any kind at the beginning of the method. This results in \numOriginal methods which we assume to be well readable.
 	
-	The fourth and final step is to generate badly readable code from the well readable one. Therefore we use the proposed Readability Decreasing Heuristics (see Sub\autoref{Readability Decreasing Heursitcs}). Afterwards we again extract all methods with a comment at the beginning of the method.
+	The fourth and final step is to generate badly readable code from the well readable one. Therefore we use the proposed Readability Decreasing Heuristics (see \Cref{Readability Decreasing Heursitcs}). Afterwards we again extract all methods with a comment at the beginning of the method.
 	Initially we planned to not require comments for the badly readable dataset part. However, it turns out that in this case all well readable methods have a comment while most of the badly readable do not have one. This lead to shortcut learning, whether a method has a comment or not instead of learning to distinguishing the methods by all other criteria as well.
-	After removing code snippets that are identical for the original and the variant with reduced readability (see \autoref{Readability Decreasing Heursitcs}) and balancing the data set using random sampling, the result is a data set consisting of \numSamples code snippets.
+	After removing code snippets that are identical for the original and the variant with reduced readability (see \Cref{Readability Decreasing Heursitcs}) and balancing the data set using random sampling, the result is a data set consisting of \numSamples code snippets.
 	
 \subsection{Readability Decreasing Heuristics} \label{Readability Decreasing Heursitcs}
 	In this section we explain how we achieved to decrease the readability of code using Readability Decreasing Heuristics (RDH).
@@ -1337,7 +1355,7 @@ cleveref=true,%
 %		\label{fig:rdh}
 %	\end{figure}
 	
-	The individual methods are then extracted from the class files. As mentioned (see \autoref{Dataset Generation Approach}), we require a method comment for all methods. We therefore use the removeComment rdh after completing the method extraction.
+	The individual methods are then extracted from the class files. As mentioned (see \Cref{Dataset Generation Approach}), we require a method comment for all methods. We therefore use the removeComment rdh after completing the method extraction.
 	
 	The RDH tool works with a configuration file in which one can specify a probability for each heuristic that can be applied. We have chosen the probabilities so that the generated code snippets are still realistic in the sense that they could also be written by humans. You can find the configurations in \autoref{tab:rdh_configurations} and an exemplary file for the none rdh in appendix \ref{appendix:rdh-config-file}
 	
@@ -1578,7 +1596,7 @@ cleveref=true,%
 %	Besides the user study we will evaluate our suggestions by comparing machine learning models against each other.
 %	The comparisons are based on common metrics such as accuracy, F1-score and MCC~\cite{chicco2020advantages}. One can distinguish further between the following variants of comparing models:
 %	
-%	In one variant we compare models that have the same architecture (same layers, same weight initialization, same components, etc.) while they differ in the data they are trained on. For example, we can train a model with the old and new datasets, separately and combined. If done for multiple model architectures we can evaluate how the differences in training data influence the model performance. 
+%	In one variant we compare models that have the same architecture (same layers, same weight initialization, same components, etc.) while they differ in the data they are trained on. For example, we can train a model with the merged and new datasets, separately and combined. If done for multiple model architectures we can evaluate how the differences in training data influence the model performance. 
 %	
 %	Another variant would be to compare models with different architecture but the same training data. In this way, we can evaluate newly introduced components by measuring and comparing the performance of such models.
 %	
@@ -1634,7 +1652,7 @@ cleveref=true,%
 	% TODO: Publish code
 	Our code is publicly available on GitHub\curl{https://github.com/LuKrO2011}{TODO}.
 	
-	You can find an overview over all programs used to create the old merged dataset, the new dataset, the model and all our evaluation results in \autoref{fig:scripts_pipline}.
+	You can find an overview over all programs used to create the merged dataset, the new dataset, the model and all our evaluation results in \autoref{fig:scripts_pipline}.
 	
 	\begin{figure}[tb]
 		\centering
@@ -1676,10 +1694,10 @@ cleveref=true,%
 	%	We want to compare the modifications of the proposed heuristics for generating poorly readable code to each other. Therefore we will use the results of the user study (\autoref{user-study}).
 	
 	\begin{resq} \textbf{(new-data)} To what extent can the new data improve existing code readability classification models?\end{resq} \label{new-data}
-	It was shown that Deep Learning models get better the more training data is available~\cite{hestness2017deep}. This holds under the assumption that the quality of the data is the same or at least similar. We want to check if the quality of our new data is sufficient for improving the deep learning-based readability classifier of \citeauthor{mi2022towards}~\cite{mi2022towards}. Therefore we will train their proposed model with combinations of the old and the new dataset and compare the evaluation statistics.
+	It was shown that Deep Learning models get better the more training data is available~\cite{hestness2017deep}. This holds under the assumption that the quality of the data is the same or at least similar. We want to check if the quality of our new data is sufficient for improving the deep learning-based readability classifier of \citeauthor{mi2022towards}~\cite{mi2022towards}. Therefore we will train their proposed model with combinations of the merged and the new dataset and compare the evaluation statistics.
 
 \subsection{Survey} \label{Survey}
-	The results of our survey are divided into two parts: The results of the pilot survey (see \autoref{Pilot Survey}), which were used to improve the main survey pre-launch, and the results of the main survey (see \autoref{Prolific Survey}), which were used to answer our research questions (\hyperref[select-well]{RQ1} and \hyperref[generate-poor]{RQ2}) and to craft our dataset.
+	The results of our survey are divided into two parts: The results of the pilot survey (see \Cref{Pilot Survey}), which were used to improve the main survey pre-launch, and the results of the main survey (see \Cref{Prolific Survey}), which were used to answer our research questions (\hyperref[select-well]{RQ1} and \hyperref[generate-poor]{RQ2}) and to craft our dataset.
 	
 \subsubsection{Pilot Survey} \label{Pilot Survey}
 	
@@ -1866,7 +1884,7 @@ cleveref=true,%
 	The survey was conducted between 31 January and 7 February 2024. A total of 221 participants took part. Each of the 20 questionnaires was answered by 11 participants (similar to the survey of \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}). In one survey, one more participant was assigned by mistake. 
 	%	According to an online calculator\footnote{https://www.calculator.net/sample-size-calculator.html} 
 	We end up with a margin of error of 29.55\% at a confidence of 95\% for an individual snippet. However, we aggregate over strata and multiple snippets later to reduce the error of margin.
-	Each questionnaire consists of 20 code snippets. Consequently, 400 different code snippets are rated in total. The questionnaires were configured in a way that each participant could only take part in one of the questionnaires. You can find the texts for the survey in Appendix~\ref{appendix:prolific-survey-texts}. The questionnaires were crafted as described in \autoref{Construction of Questionnaires}.
+	Each questionnaire consists of 20 code snippets. Consequently, 400 different code snippets are rated in total. The questionnaires were configured in a way that each participant could only take part in one of the questionnaires. You can find the texts for the survey in Appendix~\ref{appendix:prolific-survey-texts}. The questionnaires were crafted as described in \Cref{Construction of Questionnaires}.
 		
 	\begin{figure}[tb]
 		\centering
@@ -1918,7 +1936,7 @@ cleveref=true,%
 \textit{2. Threats:}
 	We identified the following threats:
 	\begin{itemize}
-		\item \textbf{Ill-defined Target Population:} Ensuring a well-defined target population is critical to the survey's quality. To mitigate this threat, we define our target population. Additionally, we conduct a pre-survey evaluation (see \autoref{Pilot Survey}) to ensure the adequacy of our target population definition. Thereby, we enhance content and construct validity.
+		\item \textbf{Ill-defined Target Population:} Ensuring a well-defined target population is critical to the survey's quality. To mitigate this threat, we define our target population. Additionally, we conduct a pre-survey evaluation (see \Cref{Pilot Survey}) to ensure the adequacy of our target population definition. Thereby, we enhance content and construct validity.
 		
 		\item \textbf{Sampling Method:} Stratified Sampling is well-defined and proven in practice. The approach ensures that our sample represents all parts of the population under investigation. This is improving the survey's external validity.
 		
@@ -1958,10 +1976,20 @@ cleveref=true,%
 	
 	The ratings for each rdh for all strata combined can be found in \autoref{fig:survey_ratings_violin_all} and \autoref{fig:survey_ratings_bar_all}. \autoref{fig:survey_ratings_violin_all} shows that the mean value of our original methods is 3.68, while for all7 it is 3.26. We label each method in both groups with the corresponding mean score.
 	
+% TODO
+%Ich würde den Absatz hierzu etwas relativieren.
+%Wenn ich das richtig im Kopf habe, dann geben die meisten Classifier Modelle ja einen kontinuierlichen Wert zwischen 0 und 1 aus, was im Prinzip genau dem entspricht, was du forderst.
+%Im Wesentlichen wird nur ein Knoten dahinter geschaltet, der abhängig vom Wert vorher dann eine Gruppe selektiert (</>=0.5).
+%Das, was du ansprichst, zielt ja eher darauf ab, dass für die Evaluierung die binäre Klassifizierung verwendet wird.
+%Und der Grund dafür ist sicherlich, dass es einfacher ist, das dazustellen, und dass man bessere Ergebnisse bekommt (das wissen denk ich auch alle, dafür brauchts nicht probably eigene research) :-) 
+%Ich würd also  nur schreiben:
+%- die Daten werden üblicherweise auf ner 5-point Likert scale erhoben
+%- am Schluss wird als binäre Klassifizierung evaluiert
+%- die Frage ist, wie dazwischen (beim Modelltraining) mit den Daten umgegangen wird. Mi machen das folgendermaßen...
 
 	\begin{researchbox}{Summary (RQ1 - select-well):}
 		TODO: Add significance test.
-		The readability ratings of code snippets mined from Github are not very accurate as we take the mean of all ratings for all methods and assign it to each snippet. However, the score of 3.68 is 0.23 larger than the mean score for all ratings in the old dataset (3.45). Therefore we reject the null hypothesis and conclude that well readable assumption (Assumption~\ref{well-readable-assumption}) holds.
+		The readability ratings of code snippets mined from Github are not very accurate as we take the mean of all ratings for all methods and assign it to each snippet. However, the score of 3.68 is 0.23 larger than the mean score for all ratings in the merged dataset (3.45). Therefore we reject the null hypothesis and conclude that well readable assumption (Assumption~\ref{well-readable-assumption}) holds.
 		%		and answer the research question \ref{select-well}: Yes, automatically selected code can be assumed to be well readable.
 	\end{researchbox}
 	
@@ -2039,7 +2067,7 @@ cleveref=true,%
 		
 	\begin{table}[tb]
 		\centering
-		\caption{Performance of different dataset configurations for the same model. New-Old is training on the new dataset and fine tuning on the old one.}
+		\caption{Performance of different dataset configurations for the same model. New-Merged is training on the new dataset and fine tuning on the merged one.}
 		\vspace{8pt}
 		\label{tab:dataset_performance}
 		\begin{tabular}{llrrrrrr}
@@ -2047,30 +2075,30 @@ cleveref=true,%
 			Train & Eval & Acc & Prec & Rec & AUC & F1 & MCC \\
 			\midrule
 			New        	& New    	& 91.8 \% & 92.3 \% & 91.3 \% & 91.8 \% & 91.7 \% & 83.6 \% \\
-			New			& Old     	& 61.9 \% & 63.6 \% & 63.6 \% & 63.6 \% & 63.6 \% & 23.6 \% \\
-			Old        	& Old     	& 53.8 \% & 52.6 \% & 77.8 \% & 65.2 \% & 62.8 \% & 08.7 \% \\
-			Old        	& Old   	& 84.7 \% & 87.7 \% & 82.3 \% & 85.0 \% & 83.7 \% & 70.4 \% \\
-			New-Old 	& Old     	& 80.4 \% & 84.0 \% & 73.8 \% & 78.9 \% & 77.2 \% & 60.0 \% \\
+			New			& Merged     	& 61.9 \% & 63.6 \% & 63.6 \% & 63.6 \% & 63.6 \% & 23.6 \% \\
+			Merged        	& Merged     	& 53.8 \% & 52.6 \% & 77.8 \% & 65.2 \% & 62.8 \% & 08.7 \% \\
+			Merged        	& Merged   	& 84.7 \% & 87.7 \% & 82.3 \% & 85.0 \% & 83.7 \% & 70.4 \% \\
+			New-Merged 	& Merged     	& 80.4 \% & 84.0 \% & 73.8 \% & 78.9 \% & 77.2 \% & 60.0 \% \\
 			New210     	& New210  	& 80.9 \% & 82.7 \% & 77.6 \% & 80.2 \% & 78.9 \% & 60.9 \% \\
 			\bottomrule
 		\end{tabular}
 	\end{table}
 			
-	When we train the model on the new dataset and evaluate it with 10-fold cross-validation, we obtain an average accuracy of 91.8~\%. However, if we evaluate the trained model on the old dataset, we get an accuracy of only 61.9~\%. From this we can draw some conclusions:
+	When we train the model on the new dataset and evaluate it with 10-fold cross-validation, we obtain an average accuracy of 91.8~\%. However, if we evaluate the trained model on the merged dataset, we get an accuracy of only 61.9~\%. From this we can draw some conclusions:
 	
 	The towards model works well for our new dataset. However, the readability determined with the all dataset differs from the readability with the new dataset. Otherwise, the values for all-krod and krod-all would be similar to the value for all-all. This indicates that our dataset is not suitable for a general classification of readability, but we may have found a subproblem. However, adding more features to reduce readability and well-designed data augmentation could overcome this limitation.
 		
 	While the model trained on the new dataset is able to classify readability to a certain degree, the opposite is not the case, as 53.8~\%  is almost a random classifier. This suggests that fine-tuning a model trained on the new dataset using the entire dataset could lead to better results than the original towards model.
 	
-	To check whether our implementation of the model works correctly, we also included the old-old case in the comparison. Here we achieve a very similar accuracy to \citeauthor{mi2022towards} (84.7~\% vs 85.3~\%), which indicates that our implementation of the model works correctly.
+	To check whether our implementation of the model works correctly, we also included the merged-merged case in the comparison. Here we achieve a very similar accuracy to \citeauthor{mi2022towards} (84.7~\% vs 85.3~\%), which indicates that our implementation of the model works correctly.
 	
-	We tried to fine-tune with the old dataset by freezing different layers of the model trained with the new dataset. The best we could achieve was to freeze the input layers as well as the first convolution and pooling layer of all encoders. However, the performance of this fine-tuned model was still worse than the baseline model. This is in direct contrast to our earlier assumption that such fine-tuning could lead to better results. One explanation for this could be that the model is too small to be effective with the larger amount of data. Introducing more or bigger layers so that the model can store more features internally could lead to an improvement. However, this is not part of this work, in which we mainly focus on a new dataset (generation approach).
+	We tried to fine-tune with the merged dataset by freezing different layers of the model trained with the new dataset. The best we could achieve was to freeze the input layers as well as the first convolution and pooling layer of all encoders. However, the performance of this fine-tuned model was still worse than the baseline model. This is in direct contrast to our earlier assumption that such fine-tuning could lead to better results. One explanation for this could be that the model is too small to be effective with the larger amount of data. Introducing more or bigger layers so that the model can store more features internally could lead to an improvement. However, this is not part of this work, in which we mainly focus on a new dataset (generation approach).
 	
 	\begin{researchbox}{Summary (RQ3 - new-data):}
-		An accuracy within the new dataset of 91.8~\% surpasses all previous scores. However, the accuracy of 61.9~\% when evaluating on the old dataset suggests, that the new training data is less valuable than the old one. We could neither improve this accuracy by applying fine-tuning. While it is possible that we successfully addressed a sub problem of readability, we are not able to improve existing readability models in general.
+		An accuracy within the new dataset of 91.8~\% surpasses all previous scores. However, the accuracy of 61.9~\% when evaluating on the merged dataset suggests, that the new training data is less valuable than the merged one. We could neither improve this accuracy by applying fine-tuning. While it is possible that we successfully addressed a sub problem of readability, we are not able to improve existing readability models in general.
 	\end{researchbox}
 	
-	We also trained the model with a random sample of 210 data points to gain insight into what a change in training size might do. As we can see, the model has similar metrics to the all-all model. If we now compare the accuracy of the new-new compared to the old-old model, we see that with a larger dataset an improvement of about 8~\% is possible. Similar results are suggested by previous research on data augmentation, where an accuracy of 87.3~\% was achieved \citeauthor{mi2021effectiveness}. This emphasizes the importance of finding new ways of generating data for readability classification. 
+	We also trained the model with a random sample of 210 data points to gain insight into what a change in training size might do. As we can see, the model has similar metrics to the all-all model. If we now compare the accuracy of the new-new compared to the merged-merged model, we see that with a larger dataset an improvement of about 8~\% is possible. Similar results are suggested by previous research on data augmentation, where an accuracy of 87.3~\% was achieved \citeauthor{mi2021effectiveness}. This emphasizes the importance of finding new ways of generating data for readability classification. 
 	
 \section{Discussion} \label{Discussion}
 
@@ -2082,7 +2110,7 @@ cleveref=true,%
 	A thread related to the study could be the sampling approach used. While we argue that we avoided spending resources on labeling rdh data that is likely not different from the original methods or rather uninteresting, this might also introduce statistical errors to our survey results.
 	
 	% Model threats	
-	When comparing the model performance trained on the new and old data set, it should be noted that the old data set is small. Consequently, comparisons between classifiers trained on the old dataset may be unreliable~\cite{mi2022towards}.
+	When comparing the model performance trained on the new and merged data set, it should be noted that the merged data set is small. Consequently, comparisons between classifiers trained on the merged dataset may be unreliable~\cite{mi2022towards}.
 	
 \section{Conclusions} \label{Conclusions}
 	% Summary with Implications: So what?	
