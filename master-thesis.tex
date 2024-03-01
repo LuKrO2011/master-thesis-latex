@@ -672,7 +672,8 @@ cleveref=true,%
 \usepackage{tikz}
 \def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
 
-% Line breaks for txttt
+% Tables with line breaks within
+\usepackage{tabularx}
 
 % TODO: Check tenses (Present tense to describe the paper itself)
 % TODO: poorly readable vs unreadable
@@ -1400,17 +1401,111 @@ cleveref=true,%
 	
 	% What is available
 	Various modifications can be made between the two steps and during pretty-printing (see \autoref{tab:rdhs}).
-	These modifications are performed on the AST representation of the code to ensure that the functionality stays the same:
-	\begin{itemize}
-		\item \texttt{renameVariable}: Renaming a variable declaration and its usages (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
-		\item \texttt{renameField}: Renaming a field declaration and its usages (see \autoref{lst:java-class-file-rdh}, Line 6)
-		\item \texttt{renameMethod}: Renaming a method declaration and its usages (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
-		\item \texttt{add0}: Adding zero to numbers (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 3)
-		\item \texttt{insertBraces}: Inserting superfluous braces (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
-		\item \texttt{starImport}: Replacing specific imports with star-import (see \autoref{lst:java-class-file-rdh}, Line 1)
-		\item \texttt{inlineField}: Inlining the values of static fields into the code (see \autoref{lst:java-class-file-rdh}, Line 8)
-		\item \texttt{partiallyEvaluate}: Partially evaluate constants (see \autoref{lst:java-class-file-rdh}, Line 6)
-	\end{itemize}
+	These modifications are performed on the AST representation of the code to ensure that the functionality stays the same (see \autoref{tab:ast-rdhs}).
+	
+%	\begin{itemize}
+%		\item \texttt{renameVariable}: Renaming a variable declaration and its usages (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
+%		\item \texttt{renameField}: Renaming a field declaration and its usages (see \autoref{lst:java-class-file-rdh}, Line 6)
+%		\item \texttt{renameMethod}: Renaming a method declaration and its usages (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
+%		\item \texttt{add0}: Adding zero to numbers (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 3)
+%		\item \texttt{insertBraces}: Inserting superfluous braces (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
+%		\item \texttt{starImport}: Replacing specific imports with star-import (see \autoref{lst:java-class-file-rdh}, Line 1)
+%		\item \texttt{inlineField}: Inlining the values of static fields into the code (see \autoref{lst:java-class-file-rdh}, Line 8)
+%		\item \texttt{partiallyEvaluate}: Partially evaluate constants (see \autoref{lst:java-class-file-rdh}, Line 6)
+%	\end{itemize}
+	
+%	\begin{table}[tb]
+%		\centering
+%		\caption{The Readability Decreasing Heuristics that are performed on the AST.}
+%		\vspace{8pt}
+%		\label{tab:ast-rdhs}
+%		\begin{tabular}{|p{0.15\textwidth}|p{0.6\textwidth}|p{0.125\textwidth}|}
+%			\hline
+%			\textbf{RDH} & \textbf{Description} & \textbf{Example} \\
+%			\hline
+%			\texttt{rename Variable} & Renaming a variable declaration and its usages & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+%			\hline
+%			\texttt{rename Field} & Renaming a field declaration and its usages & \autoref{lst:java-class-file-rdh}, Line 6 \\
+%			\hline
+%			\texttt{rename Method} & Renaming a method declaration and its usages & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+%			\hline
+%			\texttt{add0} & Adding zero to numbers & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 3 \\
+%			\hline
+%			\texttt{insert Braces} & Inserting superfluous braces & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+%			\hline
+%			\texttt{star Import} & Replacing specific imports with star-import & \autoref{lst:java-class-file-rdh}, Line 1 \\
+%			\hline
+%			\texttt{inline Field} & Inlining the values of static fields into the code & \autoref{lst:java-class-file-rdh}, Line 8 \\
+%			\hline
+%			\texttt{partially Evaluate} & Partially evaluate constants & \autoref{lst:java-class-file-rdh}, Line 6 \\
+%			\hline
+%		\end{tabular}
+%	\end{table}
+	
+	\begin{table}[p]
+		\centering
+		\caption{All Readability Decreasing Heuristics with explanation and example.}
+		\label{tab:all-rdhs}
+		\begin{subtable}{\textwidth}
+			\centering
+			\caption{The Readability Decreasing Heuristics that are performed on the AST.}
+			\vspace{8pt}
+			\label{tab:ast-rdhs}
+			\begin{tabular}{|p{0.27\textwidth}|p{0.48\textwidth}|p{0.125\textwidth}|}
+				\hline
+				\textbf{RDH} & \textbf{Description} & \textbf{Example} \\
+				\hline
+				\texttt{renameVariable} & Renaming a variable declaration and its usages & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+				\hline
+				\texttt{renameField} & Renaming a field declaration and its usages & \autoref{lst:java-class-file-rdh}, Line 6 \\
+				\hline
+				\texttt{renameMethod} & Renaming a method declaration and its usages & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+				\hline
+				\texttt{add0} & Adding zero to numbers & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 3 \\
+				\hline
+				\texttt{insertBraces} & Inserting superfluous braces & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+				\hline
+				\texttt{starImport} & Replacing specific imports with star-import & \autoref{lst:java-class-file-rdh}, Line 1 \\
+				\hline
+				\texttt{inlineField} & Inlining the values of static fields into the code & \autoref{lst:java-class-file-rdh}, Line 8 \\
+				\hline
+				\texttt{partiallyEvaluate} & Partially evaluate constants & \autoref{lst:java-class-file-rdh}, Line 6 \\
+				\hline
+			\end{tabular}
+		\end{subtable}
+		
+		\vspace{8pt}
+		
+		\begin{subtable}{\textwidth}
+			\centering
+			\caption{The Readability Decreasing Heuristics that are performed while pretty-printing.}
+			\vspace{8pt}
+			\label{tab:code-rdhs}
+			\begin{tabular}{|p{0.27\textwidth}|p{0.48\textwidth}|p{0.125\textwidth}|}
+				\hline
+				\textbf{RDH} & \textbf{Description} & \textbf{Example} \\
+				\hline
+				\texttt{newline} & Replacing newlines with none or multiple ones & \autoref{lst:java-class-file-rdh}, Line 2-6 \\
+				\hline
+				\texttt{incTab} & Replace a tab indentation with none or multiple ones & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+				\hline
+				\texttt{decTab} & Replace a tab outdentation with one or more ones & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line TODO \\
+				\hline
+				\texttt{space} & Replacing a single space with multiple ones & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+				\hline
+				\texttt{newLineInsteadOf Space} & Replacing a space with a newline & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line TODO \\
+				\hline
+				\texttt{spaceInsteadOf Newline} & Replacing a newline with a space & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+				\hline
+				\texttt{incTabInsteadOf DecTab} & Replace a tab outdentation with an indentation & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 2 \\
+				\hline
+				\texttt{decTabInsteadOf IncTab} & Replace a tab indentation with an outdentation & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 2 \\
+				\hline
+			\end{tabular}
+		\end{subtable}
+		
+
+	\end{table}
 	
 	\begin{listing}[p]
 		\begin{sublisting}{\linewidth}
@@ -1492,17 +1587,72 @@ cleveref=true,%
 		\end{tabular}
 	\end{table}
 	
-	These modifications are performed on source code during pretty-printing as they cannot be displayed in the AST (see \autoref{tab:rdhs}):
-	\begin{itemize}
-		\item \texttt{newline}: Replacing newlines with none or multiple ones (see \autoref{lst:java-class-file-rdh}, Line 2-6)
-		\item \texttt{incTab}: Replace a tab indentation more with none or multiple ones (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
-		\item \texttt{decTab}: Replace a tab outdentation with one or more ones (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line TODO)
-		\item \texttt{space}: Replacing a single space with multiple ones (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
-		\item \texttt{newLineInsteadOfSpace}: Replacing a space with a newline (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line TODO)
-		\item \texttt{spaceInsteadOfNewline}: Replacing a newline with a space (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
-		\item \texttt{incTabInsteadOfDecTab}: Replace a tab outdentation with a indentation (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 2)
-		\item \texttt{decTabInsteadOfIncTab}: Replace a tab indentation with a outdentation (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 2)
-	\end{itemize}
+	These modifications are performed on source code during pretty-printing as they cannot be displayed in the AST: \autoref{tab:code-rdhs}.
+		
+%	\begin{center}
+%		\begin{tabularx}{\textwidth}{|X|X|X|}
+%			\hline
+%			\textbf{RDH} & \textbf{Description} & \textbf{Example} \\
+%			\hline
+%			\texttt{newline} & Replacing newlines with none or multiple ones & \autoref{lst:java-class-file-rdh}, Line 2-6 \\
+%			\hline
+%			\texttt{incTab} & Replace a tab indentation with none or multiple ones & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+%			\hline
+%			\texttt{decTab} & Replace a tab outdentation with one or more ones & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line TODO \\
+%			\hline
+%			\texttt{space} & Replacing a single space with multiple ones & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+%			\hline
+%			\texttt{newLine InsteadOf Space} & Replacing a space with a newline & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line TODO \\
+%			\hline
+%			\texttt{space InsteadOf Newline} & Replacing a newline with a space & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+%			\hline
+%			\texttt{incTab InsteadOf DecTab} & Replace a tab outdentation with an indentation & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 2 \\
+%			\hline
+%			\texttt{decTab InsteadOf IncTab} & Replace a tab indentation with an outdentation & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 2 \\
+%			\hline
+%		\end{tabularx}
+%	\end{center}
+	
+	
+%	\begin{table}[tb]
+%		\centering
+%		\caption{The Readability Decreasing Heuristics that are performed while pretty-printing}
+%		\vspace{8pt}
+%		\label{tab:code-rdhs}
+%		\begin{tabular}{|p{0.15\textwidth}|p{0.6\textwidth}|p{0.125\textwidth}|}
+%			\hline
+%			\textbf{RDH} & \textbf{Description} & \textbf{Example} \\
+%			\hline
+%			\texttt{newline} & Replacing newlines with none or multiple ones & \autoref{lst:java-class-file-rdh}, Line 2-6 \\
+%			\hline
+%			\texttt{incTab} & Replace a tab indentation with none or multiple ones & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+%			\hline
+%			\texttt{decTab} & Replace a tab outdentation with one or more ones & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line TODO \\
+%			\hline
+%			\texttt{space} & Replacing a single space with multiple ones & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+%			\hline
+%			\texttt{newLine InsteadOf Space} & Replacing a space with a newline & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line TODO \\
+%			\hline
+%			\texttt{space InsteadOf Newline} & Replacing a newline with a space & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+%			\hline
+%			\texttt{incTab InsteadOf DecTab} & Replace a tab outdentation with an indentation & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 2 \\
+%			\hline
+%			\texttt{decTab InsteadOf IncTab} & Replace a tab indentation with an outdentation & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 2 \\
+%			\hline
+%		\end{tabular}
+%	\end{table}
+
+	
+%	\begin{itemize}
+%		\item \texttt{newline}: Replacing newlines with none or multiple ones (see \autoref{lst:java-class-file-rdh}, Line 2-6)
+%		\item \texttt{incTab}: Replace a tab indentation more with none or multiple ones (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
+%		\item \texttt{decTab}: Replace a tab outdentation with one or more ones (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line TODO)
+%		\item \texttt{space}: Replacing a single space with multiple ones (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
+%		\item \texttt{newLineInsteadOfSpace}: Replacing a space with a newline (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line TODO)
+%		\item \texttt{spaceInsteadOfNewline}: Replacing a newline with a space (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
+%		\item \texttt{incTabInsteadOfDecTab}: Replace a tab outdentation with a indentation (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 2)
+%		\item \texttt{decTabInsteadOfIncTab}: Replace a tab indentation with a outdentation (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 2)
+%	\end{itemize}
 	The removal of spaces is not supported, as this would cause keywords or identifiers to merge.
 	Tab \textit{indentation} refers to the process of adding a tab ($\backslash t$) while \textit{outdentation} refers to the opposite, namely removing a tab ($\backslash t$). 
 %	For example, if the current tab count is 1 ($\backslash t \langle CODE \rangle$) (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils}, Line 7) a tab indentation results in a tab count of 2 ($\backslash t \backslash t \langle CODE \rangle $) (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils}, Line 8) and then a tab outdentation results in a tab count of 1 again ($ \backslash t \langle CODE \rangle$) (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils}, Line 9).
@@ -1742,8 +1892,7 @@ cleveref=true,%
 %		\end{tabular}
 %	\end{table}
 		
-	In a third step, we crafted the questionnaires from the strata. We decided to provide all 10 previously mentioned configurations for each original method, as we want to compare the original methods with their rdh variants. Since we have a survey capacity of 400 code snippets, we need to select 40 original code snippets (and then add all their rdh).	
-	
+	In a third step, we crafted the questionnaires from the strata. We decided to provide all 10 previously mentioned configurations for each original method, as we want to compare the original methods with their rdh variants. We have a survey capacity of 400 code snippets (see \Cref{Prolific Survey}). Therefore, the capacity for each rdh variant is $400/10 = 40$ code snippets. We start by selecting 40 original code snippets and then add all their rdh variants.
 	We opted for a random sample within the strata. However, we distributed the 40 snippets across the strata as shown in Table~\ref{tab:strata_info}.
 	
 %	\begin{table}[tb]
@@ -1785,8 +1934,9 @@ cleveref=true,%
 		\end{tabular}
 	\end{table}
 	
-	
 	This decision was made due to the relatively high frequency of methods that do not differ from their original methods (see \autoref{fig:sampling_not_different_overall}). Another reason for this decision is that particularly simple methods are rather uninteresting for the classification of readability, as they are often generated (e.g. by IDEs) and usually follow a straightforward pattern.
+	
+	%TODO: Add and link drawio "questionaire" graph
 	
 	\begin{figure}[tb]
 		\centering
@@ -1802,12 +1952,9 @@ cleveref=true,%
 	For this purpose, we created four permutation matrices with 10 snippets each. The number 10 was chosen because it is possible to distribute 10 snippets, each with 10 variants, across at least 10 survey questionnaires without violating our condition. By combining two 10-permutation matrices, we were able to create 10 survey questionnaires with 20 code snippets each. An implication of this approach is that each questionnaire contains each variant kind exactly twice. By doing this twice, we obtain the desired distribution of 20 questionnaires with 20 methods each. Our condition applies: There is only one variant of the same method in each questionnaire.
 		
 	Finally, the methods of each questionnaire were randomly shuffled within itself. This was done to minimize the impact of the position of a snippet or variant within a survey on the rating.
-	
-	% After survey conduction	
-	Once the survey was completed, we aggregated the ratings across all strats and all methods. We grouped the results into the 10 rdhs. In this way, we assess whether the rdhs work, which rdhs work best and how strong the impact of each rdh on readability is. In addition, we use the results of the survey to label our new dataset, which consists of the original and all7 rdh methods.
 
-	Each snippet of the well readable code (original) is labeled with the mean value of all ratings of the original variant across all survey results. Similarly, we label the all7 code snippets with their mean value. Note that in the binary classification with the underlying towards model, this results in the original methods being labeled well readable and the all7 rdh poorly readable.
-	
+% TODO: Explain how in the final dataset the labeles are assigned
+%	Each snippet of the well readable code (original) is labeled with the mean value of all ratings of the original variant across all survey results. Similarly, we label the all7 code snippets with their mean value. Note that in the binary classification with the underlying towards model, this results in the original methods being labeled well readable and the all7 rdh poorly readable.	
 	
 %	% We will conclude a user study to evaluate the newly generated data for readability classifier models.
 %	The goal of the user study is to answer the following key questions:
@@ -1866,8 +2013,24 @@ cleveref=true,%
 
 	Next we investigate whether it is possible to score a higher accuracy as the towards model in classifying code readability with our new dataset.
 	
-	Therefore we created our own implementation of the towards model using Keras\curl{https://keras.io/about/}{2024-02-20}. In contrast to the publicly available code of \citeauthor{mi2022towards}\curl{https://github.com/swy0601/Readability-Features}{2024-02-20}, our model includes (batch) encoders required for the model to be trained on new data and to perform the prediction task for new code snippets. In addition, our model supports fine-tuning by freezing certain layers as well as storing intermediate results, such as the encoded dataset. During evaluation, the model returns the evaluation statistics in form of a JSON file.
-		
+	Therefore we created our own implementation of the towards model~\cite{mi2022towards} of \citeauthor{mi2022towards} using Keras\curl{https://keras.io/about/}{2024-02-20}. The model consists of three layers. A code representation layer, a feature extraction layer and a code readability classification layer. You can find an overview of the model architecture in \autoref{fig:model_pipeline}.
+	
+	\begin{figure}[tb]
+		\centering
+		\includegraphics[width=\textwidth]{img/model_pipline.png}
+		\caption{The architecture of the towards model~\cite{mi2022towards} of \citeauthor{mi2022towards}.}
+		\label{fig:model_pipeline}
+	\end{figure}
+	
+	% Architecture
+	The input for the model is a labeled dataset consisting of code snippets and whether they are badly or well readable. In the code representation layer three different code representations are generated from each code snippet: A visual, a semantic and a structural representation. 
+	
+	For the visual representation the syntax of the code is highlighted. We assign each type of syntactic element, such as for example keywords, identifiers or commas, 
+	
+	% Different
+	In contrast to the publicly available code of \citeauthor{mi2022towards}\curl{https://github.com/swy0601/Readability-Features}{2024-02-20}, our model includes (batch) encoders required for the model to be trained on new data and to perform the prediction task for new code snippets. In addition, our model supports fine-tuning by freezing certain layers as well as storing intermediate results, such as the encoded dataset. During evaluation, the model returns the evaluation statistics in form of a JSON file.
+	
+	% Problems
 	During implementation, we encountered the following potential problem with the model:
 	The token length for the bert encoding (bert-base-cased\curl{https://huggingface.co/google-bert/bert-base-cased}{2024-02-20}) used in the model is 100. What is a token in a piece of code? In addition to special tokens that mark the beginning \textit{[CLS]} and the end \textit{[SEP]} of the input, each word is represented by a token. However, each special character (such as \textit{/(){},;=} and many more) is also represented by its own token. Java identifiers are split according to the convention of upper and lower case. Long words are in turn divided into several tokens.
 	
@@ -1885,7 +2048,7 @@ cleveref=true,%
 	\begin{figure}[tb]
 		\centering
 		\includegraphics[width=\textwidth]{img/scripts_pipeline.png}
-		\caption{Overview over the used scripts and their output.}
+		\caption{The used scripts and their output.}
 		\label{fig:scripts_pipline}
 	\end{figure}
 	
@@ -2106,6 +2269,9 @@ cleveref=true,%
 
 \subsubsection{Prolific Survey} \label{Prolific Survey}
 	In this section we summarize the results of the main study conducted via prolific.
+	
+% TODO: Add this to the following somewhere
+%	Once the survey was completed, we aggregated the ratings across all strats and all methods. We grouped the results into the 10 rdhs. In this way, we assess whether the rdhs work, which rdhs work best and how strong the impact of each rdh on readability is. In addition, we use the results of the survey to label our new dataset, which consists of the original and all7 rdh methods.
 	
 \textit{1. Experimental setup:}
 	The survey was conducted using Tien Duc Nguyen's Code Annotation Tool (see \autoref{fig:survey_tool}) along with the platform prolific\curl{https://app.prolific.com/}{2024-02-21} for the recruitment and payment of participants.
