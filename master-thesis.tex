@@ -668,6 +668,12 @@ cleveref=true,%
 \usepackage{graphicx}
 \usepackage{subcaption}
 
+% Checkmarks
+\usepackage{tikz}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+
+% Line breaks for txttt
+
 % TODO: Check tenses (Present tense to describe the paper itself)
 % TODO: poorly readable vs unreadable
 % TODO: Clearify code snippets vs methods
@@ -789,15 +795,19 @@ cleveref=true,%
 	Methods in Java are syntactically the same, before and after applying Readability Decreasing Heuristics. Functionality does not change either. However, if various modifications are applied many times, those changes are capable of lowering the readability of source code, as TODO suggests.
 	%	the comparison of \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils} and \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified} suggests.
 
-	% Study goals
-	To verify whether the well-readable-assumption (Assumption \ref{well-readable-assumption}) and the poorly-readable-assumption (Assumption \ref{poorly-readable-assumption}) hold we conducted a survey on prolific.
-	% Study details
-	We ask Java programmers to rate methods that were mined and modified. Therefore, human annotators rated each code snippet with a readability score. The annotators are selected by prolific\curl{https://www.prolific.scom/}{2023-09-30}. The readability rating is based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable). We apply the same rating as done previously~\citeolddataset, but, other than before, we will not use the rating for labeling the training data. Instead, we only use the ratings to validate some randomly selected methods to confirm our assumptions (Assumption \ref{well-readable-assumption} and \ref{poorly-readable-assumption}). All snippets are automatically labeled.
-	
-	% Model comparison details
-	Besides the user study we will evaluate our approach by comparing performance of the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} when trained with the new and the old dataset.
-	The comparisons are based on common metrics such as accuracy, F1-score and MCC~\cite{chicco2020advantages}.
-	% The towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} achieves an accuracy of 91.8\% when trained and evaluated on the new dataset. 
+%	% Study goals
+%	To verify whether the well-readable-assumption (Assumption \ref{well-readable-assumption}) and the poorly-readable-assumption (Assumption \ref{poorly-readable-assumption}) hold we conducted a survey on prolific.
+%	% Study details
+%	We ask Java programmers to rate methods that were mined and modified. Therefore, human annotators rated each code snippet with a readability score. The annotators are selected by prolific\curl{https://www.prolific.scom/}{2023-09-30}. The readability rating is based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable). We apply the same rating as done previously~\citeolddataset, but, other than before, we will not use the rating for labeling the training data. Instead, we only use the ratings to validate some randomly selected methods to confirm our assumptions (Assumption \ref{well-readable-assumption} and \ref{poorly-readable-assumption}). All snippets are automatically labeled.
+%	
+%	% Model comparison details
+%	Besides the user study we will evaluate our approach by comparing performance of the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} when trained with the new and the old dataset.
+%	The comparisons are based on common metrics such as accuracy, F1-score and MCC~\cite{chicco2020advantages}.
+%	% The towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} achieves an accuracy of 91.8\% when trained and evaluated on the new dataset. 
+
+	% Evaluation (short)
+	We conducted a user study to validate our assumptions (Assumption \ref{well-readable-assumption} and \ref{poorly-readable-assumption}) and to thereby verify our new dataset.
+	Additionally, we evaluate the performance improvement on the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} using the automatically generated dataset.
 		
 	% Contributions
 	Our contributions are as follows:
@@ -1038,112 +1048,153 @@ cleveref=true,%
 	%	For example, a developer can find a piece of code readable but still difficult to understand. Recent research gives evidence that there is no correlation between understandability and readability~\cite{scalabrino2017automatically}.	
 	
 %	\begin{listing}[!ht]
-%		\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
-%			/**
-%			* Logs the output of the specified process.
-%			*
-%			* @param p the process
-%			* @throws IOException if an I/O problem occurs
-%			*/
-%			private static void logProcessOutput(Process p) throws IOException
-%			{
-%				try (BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream())))
-%				{
-%					StrBuilder builder = new StrBuilder();
-%					String line;
-%					while ((line = input.readLine()) != null)
-%					{
-%						builder.appendln(line);
-%					}
-%					logger.info(builder.toString());
-%				}
-%			}
-%		\end{minted}
-%		\caption[An example for well readable code of the highly rated Cassandra GitHub repository]{An example for well readable code of the highly rated Cassandra GitHub repository \protect\footnotemark}
-%		\label{lst:cassandra-src-Java-org-apache-cassandra-utils}
-%	\end{listing}
+	%		\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
+		%			/**
+		%			* Logs the output of the specified process.
+		%			*
+		%			* @param p the process
+		%			* @throws IOException if an I/O problem occurs
+		%			*/
+		%			private static void logProcessOutput(Process p) throws IOException
+		%			{
+			%				try (BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream())))
+			%				{
+				%					StrBuilder builder = new StrBuilder();
+				%					String line;
+				%					while ((line = input.readLine()) != null)
+				%					{
+					%						builder.appendln(line);
+					%					}
+				%					logger.info(builder.toString());
+				%				}
+			%			}
+		%		\end{minted}
+	%		\caption[An example for well readable code of the highly rated Cassandra GitHub repository]{An example for well readable code of the highly rated Cassandra GitHub repository \protect\footnotemark}
+	%		\label{lst:cassandra-src-Java-org-apache-cassandra-utils}
+	%	\end{listing}
 %	\footnotetext{\url{https://github.com/apache/cassandra/blob/trunk/src/Java/org/apache/cassandra/utils/HeapUtils.Java}, accessed: 2023-07-25}
-	
-	\begin{listing}[tb]
-		\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
-			/**
-			* Logs the output of the specified process.
-			*
-			* @param p the process
-			* @throws IOException if an I/O problem occurs
-			*/
-			private static void logProcessOutput(Process p) throws IOException
-			{
-				try (BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream())))
-				{
-					StrBuilder builder = new StrBuilder();
-					String line;
-					while ((line = input.readLine()) != null)
-					{
-						builder.appendln(line);
-					}
-					logger.info(builder.toString());
-				}
-			}
-		\end{minted}
-		\caption[An example for well readable code of the highly rated Cassandra GitHub repository]{An example for well readable code of the highly rated Cassandra GitHub repository.}
-		\label{lst:cassandra-src-Java-org-apache-cassandra-utils}
-	\end{listing}
-	
-	\begin{listing}[tb]
-		\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
-			private 
-				static 
-			void 
-			debug( Process 
-			v1 
-			)       throws IOException
-			{
-				// Doo debug
-				try (BufferedReader   b 
-				= new 
-				BufferedReader(
-				new InputStreamReader(
-				v1.getInputStream()
-				)
-				)
-				)
-				{
-					StrBuilder b2=new StrBuilder();String v2;while (null!=(v2=input.readLine())){b2.appendln(v2);} // Doo stuff
-					m.info(  builder.toString()
-					);
-				}
-			}
-		\end{minted}
-		\caption{The same example as in Listing~\ref{lst:cassandra-src-Java-org-apache-cassandra-utils} but modified to be poorly readable.}
-		\label{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}
-	\end{listing}
-	
+
+%	\begin{listing}[tb]
+	%		\begin{sublisting}{\linewidth}
+		%			\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
+			%				/**
+			%				* Logs the output of the specified process.
+			%				*
+			%				* @param p the process
+			%				* @throws IOException if an I/O problem occurs
+			%				*/
+			%				private static void logProcessOutput(Process p) throws IOException
+			%				{
+				%					try (BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream())))
+				%					{
+					%						StrBuilder builder = new StrBuilder();
+					%						String line;
+					%						while ((line = input.readLine()) != null)
+					%						{
+						%							builder.appendln(line);
+						%						}
+					%						logger.info(builder.toString());
+					%					}
+				%				}
+			%			\end{minted}
+		%			\caption[An example of well-readable code from the highly-rated Cassandra GitHub repository]{An example of well-readable code from the highly-rated Cassandra GitHub repository.}
+		%			\label{lst:cassandra-src-Java-org-apache-cassandra-utils}
+		%		\end{sublisting}
+	%		
+	%		\begin{sublisting}{\linewidth}
+		%			\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
+			%				private 
+			%					static 
+			%				void 
+			%				debug( Process 
+			%				v1 
+			%				)       throws IOException
+			%				{
+				%					// Doo debug
+				%					try (BufferedReader   b 
+				%					= new 
+				%					BufferedReader(
+				%					new InputStreamReader(
+				%					v1.getInputStream()
+				%					)
+				%					)
+				%					)
+				%					{
+					%						StrBuilder b2=new StrBuilder();String v2;while (null!=(v2=input.readLine())){b2.appendln(v2);} // Doo stuff
+					%						m.info(  builder.toString()
+					%						);
+					%					}
+				%				}
+			%			\end{minted}
+		%			\caption{The same example as in Listing~\ref{lst:cassandra-src-Java-org-apache-cassandra-utils} but modified for poor readability.}
+		%			\label{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}
+		%		\end{sublisting}
+	%		\caption{Comparing code readability: well-readable code (Listing~\ref{lst:cassandra-src-Java-org-apache-cassandra-utils}) vs. poorly readable modification (Listing~\ref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}).}
+	%	\end{listing}
+
 %	
 %	\begin{listing}[!ht]
-%		\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
-%			/**
-%			* Prints a personalized greeting message based on the provided name.
-%			*
-%			* @param name The name of the person for whom the greeting is intended.
-%			*             If {@code null} or an empty string is provided, a generic greeting is displayed.
-%			*/
-%			public static void printGreeting(String name) {
-%				// Check if the name is provided
-%				if (name != null && !name.isEmpty()) {
-%					System.out.println("Hello, " + name + "! How are you today?");
-%				} else {
-%					System.out.println("Hello! How are you today?");
-%				}
-%			}
-%		\end{minted}
-%		\caption{A simple method that prints a greeting in Java}
-%		\label{lst:print-greeting}
-%	\end{listing}
-	
+	%		\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
+		%			/**
+		%			* Prints a personalized greeting message based on the provided name.
+		%			*
+		%			* @param name The name of the person for whom the greeting is intended.
+		%			*             If {@code null} or an empty string is provided, a generic greeting is displayed.
+		%			*/
+		%			public static void printGreeting(String name) {
+			%				// Check if the name is provided
+			%				if (name != null && !name.isEmpty()) {
+				%					System.out.println("Hello, " + name + "! How are you today?");
+				%				} else {
+				%					System.out.println("Hello! How are you today?");
+				%				}
+			%			}
+		%		\end{minted}
+	%		\caption{A simple method that prints a greeting in Java}
+	%		\label{lst:print-greeting}
+	%	\end{listing}
 
+\begin{listing}[tb]
+	\begin{sublisting}{\linewidth}
+		\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
+			/**
+			* This method determines the sign of a given number and prints a corresponding message.
+			*
+			* @param number The input number to be checked.
+			*/
+			public static void printSign(int number) {							
+				if (number > 0) {
+					System.out.println("Number is positive");
+				} else if (number < 0) {
+					System.out.println("Number is negative");
+				} else {
+					System.out.println("Number is zero");
+				}
+			}
+		\end{minted}
+		\caption{An example of a simple and well readable Java method.}
+		\label{lst:cassandra-src-Java-org-apache-cassandra-utils}
+	\end{sublisting}
+	\vspace{1pt}
 	
-	
+	\begin{sublisting}{\linewidth}
+		\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
+			public static void foo(int bar) {if ((bar>0)) {
+						System.out.println("Number is positive");
+							} else if (bar < (0 + 0)) {
+						System.out.println("Number is negative");
+				} else {
+					System.out.println("Number is zero");
+				}
+			}
+		\end{minted}
+		\caption{The same example as in Listing~\ref{lst:cassandra-src-Java-org-apache-cassandra-utils} but modified for poor readability.}
+		\label{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}
+	\end{sublisting}
+	\caption{Well readable (Listing~\ref{lst:cassandra-src-Java-org-apache-cassandra-utils}) vs. poorly readable (Listing~\ref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}) code.}
+\end{listing}
+
+
 %	\lstinputlisting[language=Java, firstline=8, lastline=26, caption={An example for highly readable code of the highly rated cassandra github repository},label={lst:cassandra-src-Java-org-apache-cassandra-utils}]{cassandra-src-Java-org-apache-cassandra-utils.Java}
 %	
 %	\lstinputlisting[language=Java, firstline=8, lastline=29, caption={The same example modified to be poorly readable},label={lst:cassandra-src-Java-org-apache-cassandra-utils-modified}]{cassandra-src-Java-org-apache-cassandra-utils-modified.Java}
@@ -1345,88 +1396,190 @@ cleveref=true,%
 	
 	The RDH tool initially converts the Java code of any well readable Java class file into an AST. In the end the AST is parsed back to Java code using an pretty printer. If nothing else is done, this results in the \texttt{none}. Note that the code produced by the tool in this way will be slightly different from the original input code, as the styling and formatting of the original code will be overwritten by the default formatting of the Java Pretty Printer of the spoon library\curl{https://spoon.gforge.inria.fr/}{2024-15-02}~\cite{pawlak2016spoon}.
 	
-	Various code changes can be made between the two steps and during printing.
-	The renaming is done while the code is in its AST representation to ensure that the declarations and usages of variables, fields and methods are all renamed to the same new identifier. 
-	The other transformations are performed when the AST is converted back to source code. This includes adding additional spaces, adding or removing newlines and changing the indentation of code in term of tabs.
+	%	Renaming is done while the code is in its AST representation to ensure that the declarations and usages of variables (\texttt{renameVariable}), fields (\texttt{renameField}) and methods (\texttt{renameMethod}) are all renamed to the same new identifier.
 	
-%	\begin{figure}[tb]
-%		\centering
-%		\includegraphics[width=0.75\textwidth]{img/rdh.png}
-%		\caption{The available Readability Decreasing Heuristics (RDH).}
-%		\label{fig:rdh}
-%	\end{figure}
+	% What is available
+	Various modifications can be made between the two steps and during pretty-printing (see \autoref{tab:rdhs}).
+	These modifications are performed on the AST representation of the code to ensure that the functionality stays the same:
+	\begin{itemize}
+		\item \texttt{renameVariable}: Renaming a variable declaration and its usages (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
+		\item \texttt{renameField}: Renaming a field declaration and its usages (see \autoref{lst:java-class-file-rdh}, Line 6)
+		\item \texttt{renameMethod}: Renaming a method declaration and its usages (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
+		\item \texttt{add0}: Adding zero to numbers (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 3)
+		\item \texttt{insertBraces}: Inserting superfluous braces (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
+		\item \texttt{starImport}: Replacing specific imports with star-import (see \autoref{lst:java-class-file-rdh}, Line 1)
+		\item \texttt{inlineField}: Inlining the values of static fields into the code (see \autoref{lst:java-class-file-rdh}, Line 8)
+		\item \texttt{partiallyEvaluate}: Partially evaluate constants (see \autoref{lst:java-class-file-rdh}, Line 6)
+	\end{itemize}
 	
-	The individual methods are then extracted from the class files. As mentioned (see \Cref{Dataset Generation Approach}), we require a method comment for all methods. We therefore use \texttt{removeComment} after completing the method extraction.
+	\begin{listing}[p]
+		\begin{sublisting}{\linewidth}
+			\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
+				import java.util.Random;
+				
+				public class TimeConverter {
+					public static final int MINUTES_PER_HOUR = 60;
+					public static final int HOURS_PER_DAY = 24;
+					public static final int MINUTES_PER_DAY = MINUTES_PER_HOUR * HOURS_PER_DAY;
+					public static final int SEED = 4242;
+					
+					public static void main(String[] args) {
+						Random random = new Random(SEED);
+						int days = random.nextInt(10);
+						int minutes = days * MINUTES_PER_DAY;
+						System.out.println(days + " days have " + minutes + " minutes");
+					}
+				}
+			\end{minted}
+			\caption{An example of a simple and well readable Java class file.}
+			\label{lst:java-class-file}
+		\end{sublisting}
+		\vspace{1pt}
+		
+		\begin{sublisting}{\linewidth}
+			\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
+				import java.util.*;
+				
+				
+				
+				public class TimeConverter {
+					public static final int f0 = 1440;
+					public static void main(String[] args) {
+						Random random = new Random(4242);
+						int days = random.nextInt(10);
+						int minutes = days * f0;
+						System.out.println(days + " days have " + minutes + " minutes");
+					}
+				}
+			\end{minted}
+			\caption{The same example as in Listing~\ref{lst:java-class-file} but modified for poorer readability.}
+			\label{lst:java-class-file-rdh}
+		\end{sublisting}
+		\caption{Well readable (Listing~\ref{lst:java-class-file}) vs. poorly readable (Listing~\ref{lst:java-class-file-rdh}) code.}
+	\end{listing}
 	
-	The RDH tool works with a configuration file in which one can specify a probability for each heuristic that can be applied. We have chosen the probabilities so that the generated code snippets are still realistic in the sense that they could also be written by humans. You can find the configurations in \autoref{tab:rdh_configurations} and an exemplary file for \texttt{none} in appendix \ref{appendix:rdh-config-file}
-	
-	Some of the heuristics were not included in the final version of the new dataset. You can find them in \autoref{tab:not-included-rdhs} together with the reason why they were not included.
-	
+	By default the new identifiers for the rename modifications (\texttt{renameVariable}, \texttt{renameField} and \texttt{renameMethod}) are generated in an iterating manner. For each class file we start with \textit{v0} for variables, \textit{f0} for fields and \textit{m0}. We increase the index of each (0 at the beginning) by 1 whenever a name is used.
+	We also added a mode that uses Code2Vec~\cite{alon2019code2vec} for the generation of identifiers for \texttt{renameMethod} instead. With that we can predict more realistic method names. Code2Vec generates multiple method name predictions at once. By picking not the best one but instead the one with the longest name we aim to decrease readability while choosing realistic method names.
+		
 	\begin{table}[tb]
 		\centering
-		\caption{Readability Decreasing Heuristics that are not included in the final version of the new dataset and why.}
+		\caption{Available Readability Decreasing Heuristics along with when they are executed (on AST or Code), their configuration type (a array of probabilities or a single one) and whether they are included in the final dataset. See Appendix \ref{appendix:rdh-config-file} for a concrete configuration.}
 		\vspace{8pt}
-		\label{tab:not-included-rdhs}
-		\begin{tabular}{ll}
+		\label{tab:rdhs}
+		\begin{tabular}{llllc}
 			\toprule
-			Heuristic & Reason \\
+			\# & Heuristic 						 & AST/Code 	& Config. Type 	& In Dataset \\
 			\midrule
-			\texttt{inlineMethod} & Makes methods too long \\
-			\texttt{add0} & Limited survey capacity \\
-			\texttt{insertBraces} & Limited survey capacity \\
-			\texttt{starImport} & No effect after comment extraction \\
-			\texttt{inlineField} & Limited survey capacity \\
-			\texttt{partiallyEvaluate} & Might increase readability \\
+			1  & \texttt{newline}                & Code			& Array 		& \checkmark \\
+			2  & \texttt{incTab}                 & Code			& Array 		& \checkmark \\
+			3  & \texttt{decTab}                 & Code			& Array 		& \checkmark \\
+			4  & \texttt{space}                  & Code			& Array 		& \checkmark \\
+			5  & \texttt{newLineInsteadOfSpace}  & Code			& Single 		& \checkmark \\
+			6  & \texttt{spaceInsteadOfNewline}  & Code			& Single 		& \checkmark \\
+			7  & \texttt{incTabInsteadOfDecTab}  & Code			& Single 		& \checkmark \\
+			8  & \texttt{decTabInsteadOfIncTab}  & Code			& Single 		& \checkmark \\
+			9  & \texttt{renameVariable}         & AST			& Single 		& \checkmark \\
+			10 & \texttt{renameField}            & AST			& Single 		& \checkmark \\
+			11 & \texttt{renameMethod}           & AST			& Single 		& \checkmark \\
+			12 & \texttt{inlineMethod}           & AST			& Single		& \\
+			13 & \texttt{removeComment}          & Code			& Single 		& \checkmark \\
+			14 & \texttt{add0}                   & AST			& Single		& \\
+			15 & \texttt{insertBraces}           & AST			& Single		& \\
+			16 & \texttt{starImport}             & AST			& Single		& \\
+			17 & \texttt{inlineField}            & AST			& Single		& \\
+			18 & \texttt{partiallyEvaluate}      & AST			& Single		& \\
 			\bottomrule
 		\end{tabular}
 	\end{table}
 	
-	We also added Code2Vec~\cite{alon2019code2vec} to the tool. This makes it possible to rename methods not only to iterating or arbitrary strings or numbers, but also to other realistic method names. The idea was to use worse method names predicted by Code2Vec and rename the methods to these. However, due to time and resource limitations regarding the survey, we did not pursue this approach.	However, there is a corresponding mode supported by the tool which can be used for further research.
+	These modifications are performed on source code during pretty-printing as they cannot be displayed in the AST (see \autoref{tab:rdhs}):
+	\begin{itemize}
+		\item \texttt{newline}: Replacing newlines with none or multiple ones (see \autoref{lst:java-class-file-rdh}, Line 2-6)
+		\item \texttt{incTab}: Replace a tab indentation more with none or multiple ones (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
+		\item \texttt{decTab}: Replace a tab outdentation with one or more ones (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line TODO)
+		\item \texttt{space}: Replacing a single space with multiple ones (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
+		\item \texttt{newLineInsteadOfSpace}: Replacing a space with a newline (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line TODO)
+		\item \texttt{spaceInsteadOfNewline}: Replacing a newline with a space (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
+		\item \texttt{incTabInsteadOfDecTab}: Replace a tab outdentation with a indentation (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 2)
+		\item \texttt{decTabInsteadOfIncTab}: Replace a tab indentation with a outdentation (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 2)
+	\end{itemize}
+	The removal of spaces is not supported, as this would cause keywords or identifiers to merge.
+	Tab \textit{indentation} refers to the process of adding a tab ($\backslash t$) while \textit{outdentation} refers to the opposite, namely removing a tab ($\backslash t$). 
+%	For example, if the current tab count is 1 ($\backslash t \langle CODE \rangle$) (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils}, Line 7) a tab indentation results in a tab count of 2 ($\backslash t \backslash t \langle CODE \rangle $) (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils}, Line 8) and then a tab outdentation results in a tab count of 1 again ($ \backslash t \langle CODE \rangle$) (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils}, Line 9).
+	For example:
+	\begin{enumerate}
+		\item The current tab count is 1 ($\backslash t \langle CODE \rangle$) (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils} Line 7)
+		\item In the next line, we perform a tab indentation
+		\item The current tab count is now 2 ($\backslash t \backslash t \langle CODE \rangle $) (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils}, Line 8)
+		\item In the next line, we perform a tab outdentation
+		\item The current tab count is now 1 ($\backslash t \langle CODE \rangle $) (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils}, Line 9)
+	\end{enumerate}
 	
-\subsection{Construction of Questionnaires} \label{Construction of Questionnaires}
-	We evaluated the generated data set and the new approach with a survey. To do this, we had to carefully select suitable code snippets from the dataset. An overview of the approach can be found in \autoref{fig:survey_pipeline}.
+%	\begin{sloppypar}
+%	These include adding spaces (\texttt{space}), replacing spaces with newlines (\texttt{spaceInsteadOfNewline}), adding or removing newlines (\texttt{newline}), replacing newlines with spaces (\texttt{newLineInsteadOfSpace}), and changing the indentation of code in term of tabs (\texttt{incTab}, \texttt{decTab}, \texttt{incTabInsteadOfDecTab}, \texttt{decTabInsteadOfIncTab}).
+%	\end{sloppypar}
+
+	% What did we exclude and why
+	For the final dataset we excluded some of the RDHs as we can see in \autoref{tab:rdhs}.
+	We excluded \texttt{inlineMethod} as it increased the length of methods drastically and made the methods too long.
+	While \texttt{starImport} might have an impact on the readability of class files it has none on methods as in Java the import statement are not within the methods in Java. As we end up with extracting methods for our dataset, \texttt{starImport} has no impact.
+	%	We did not include \texttt{partiallyEvaluate} as it might be that this modification increases readability instead of decreasing it.
+	We chose to not include \texttt{add0}, \texttt{insertBraces}, \texttt{inlineField} and \texttt{partiallyEvaluate} for the reason of a limited survey capacity.
+	For the same reason, we did not investigate the usage of Code2Vec for \texttt{renameMethod} either.
+
+	%	\begin{figure}[tb]
+	%		\centering
+	%		\includegraphics[width=0.75\textwidth]{img/rdh.png}
+	%		\caption{The available Readability Decreasing Heuristics (RDH).}
+	%		\label{fig:rdh}
+	%	\end{figure}
 	
-	% TODO: Tool name: REDEC = Redability Decreaser, HEER - Heuristic Erosion Enhancing Readability, THEOR - Tool for Heuristic Erosion of Readability
-	% TODO: 9 config files und 4 rdhs tauschen. Linien!
-	\begin{figure}[tb]
-		\centering
-		\includegraphics[width=0.9\textwidth]{img/survey_pipeline.png}
-		\caption{Steps performed to craft questionnaires from the new dataset.}
-		\label{fig:survey_pipeline}
-	\end{figure}
+	% Cofig: Array vs Single
+	The RDH tool works with a configuration file in which one can specify a probability for each heuristic that can be applied.
+	For heuristics of configuration type \textit{Array} (\texttt{newline}, \texttt{incTab}, \texttt{decTab} and \texttt{space}), a array of probabilities must be defined for the respective number of replacements. The probabilities of the array must sum up to 1.
+	For heuristics of configuration type \textit{Single} (others) a single probability must be defined (see \autoref{tab:rdhs}).
+	For example, \texttt{spaceInsteadOfNewline} can be configured with $0.05$ meaning that each space is replaced with a newline ($\backslash n$) with a probability of 5~\%.
+	\texttt{space} can be configured with $[0.0, 0.7, 0.2, 0.1]$ meaning that each space is replaced with
+	\begin{itemize}
+		\item no space with a probability of 0~\%
+		\item a single space with a probability of 70~\% (no change)
+		\item two spaces with a probability of 20~\%
+		\item three spaces with a probability of 10~\% 
+	\end{itemize}
 		
-	The first step was to find realistic configurations for the RDH tool. After an initial data set with the heuristics was created, a pilot study was conducted. Subsequently, heuristics with a low rating were adjusted to be weaker according to the results of the pilot survey. The result consisted of 9 different RDHs, which can be found in \autoref{tab:rdh_configurations}. Together with the original methods this resulted in 10 different configurations.
+	% Config: 
+	We have chosen the probabilities so that the generated code snippets are still realistic in the sense that they could also be written by humans. You can find the configurations in \autoref{tab:rdh_configurations} and an exemplary file for \texttt{none} in appendix \ref{appendix:rdh-config-file}.
 	
-%	\begin{table}[tb]
-%		\centering
-%		\caption{Chosen configurations and their probabilities for the Readability Decreasing Heuristics.}
-%		\vspace{8pt}
-%		\label{tab:rdh_configurations}
-%		\begin{tabular}{|l|l|l|}
-%			\hline
-%			\textbf{Configuration} & \textbf{Probabilities} \\
-%			\hline
-%			none & - \\
-%			\hline
-%			comments\_remove & removeComment: 0.1 \\
-%			\hline
-%			newline\_instead\_of\_space & newLineInsteadOfSpace: 0.15 \\
-%			\hline
-%			newlines\_few & \begin{tabular}[t]{@{}l@{}}removeNewline: 0.3 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
-%			\hline
-%			newlines\_many & \begin{tabular}[t]{@{}l@{}}add1Newline: 0.15 \\ add2Newlines: 0.05\end{tabular} \\
-%			\hline
-%			rename & \begin{tabular}[t]{@{}l@{}}renameVariable: 0.3 \\ renameField: 0.3 \\ renameMethod: 0.3\end{tabular} \\
-%			\hline
-%			spaces\_many & \begin{tabular}[t]{@{}l@{}}Add1Space: 0.2 \\ Add2Spaces: 0.1 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
-%			\hline
-%			tabs & \begin{tabular}[t]{@{}l@{}}remove1IncTab: 0.2 \\ add1IncTab: 0.1 \\ remove1DecTab: 0.1 \\ add1DecTab: 0.1 \\ incTabInsteadOfDecTab: 0.05 \\ decTabInsteadOfIncTab: 0.05\end{tabular} \\
-%			\hline
-%			all7 & all probabilites/7\\
-%			\hline
-%		\end{tabular}
-%
-%	\end{table}
+	%	\begin{table}[tb]
+		%		\centering
+		%		\caption{Chosen configurations and their probabilities for the Readability Decreasing Heuristics.}
+		%		\vspace{8pt}
+		%		\label{tab:rdh_configurations}
+		%		\begin{tabular}{|l|l|l|}
+			%			\hline
+			%			\textbf{Configuration} & \textbf{Probabilities} \\
+			%			\hline
+			%			none & - \\
+			%			\hline
+			%			comments\_remove & removeComment: 0.1 \\
+			%			\hline
+			%			newline\_instead\_of\_space & newLineInsteadOfSpace: 0.15 \\
+			%			\hline
+			%			newlines\_few & \begin{tabular}[t]{@{}l@{}}removeNewline: 0.3 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
+			%			\hline
+			%			newlines\_many & \begin{tabular}[t]{@{}l@{}}add1Newline: 0.15 \\ add2Newlines: 0.05\end{tabular} \\
+			%			\hline
+			%			rename & \begin{tabular}[t]{@{}l@{}}renameVariable: 0.3 \\ renameField: 0.3 \\ renameMethod: 0.3\end{tabular} \\
+			%			\hline
+			%			spaces\_many & \begin{tabular}[t]{@{}l@{}}Add1Space: 0.2 \\ Add2Spaces: 0.1 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
+			%			\hline
+			%			tabs & \begin{tabular}[t]{@{}l@{}}remove1IncTab: 0.2 \\ add1IncTab: 0.1 \\ remove1DecTab: 0.1 \\ add1DecTab: 0.1 \\ incTabInsteadOfDecTab: 0.05 \\ decTabInsteadOfIncTab: 0.05\end{tabular} \\
+			%			\hline
+			%			all7 & all probabilites/7\\
+			%			\hline
+			%		\end{tabular}
+		%
+		%	\end{table}
 	
 	\begin{table}[tb]
 		\centering
@@ -1455,31 +1608,103 @@ cleveref=true,%
 			\hline
 			all7 & all probabilites/7\\
 			\hline
-	\end{tabular}
-		
+		\end{tabular}
 	\end{table}
 	
-%	\begin{table}[h]
+	%	\begin{table}[h]
+		%		\centering
+		%		\caption{Chosen configurations and their probabilities for the Readability Decreasing Heuristics}
+		%		\vspace{8pt}
+		%		\label{tab:rdh_configurations}
+		%		\begin{tabular}{ll}
+			%			\toprule
+			%			\textbf{Configuration} & \textbf{Probabilities} \\
+			%			\midrule
+			%			none & - \\
+			%			comments\_remove & removeComment: 1.0 \\
+			%			newline\_instead\_of\_space & newLineInsteadOfSpace: 0.15 \\
+			%			newlines\_few & \begin{tabular}[t]{@{}l@{}}removeNewline: 0.3 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
+			%			newlines\_many & \begin{tabular}[t]{@{}l@{}}add1Newline: 0.15 \\ add2Newlines: 0.05\end{tabular} \\
+			%			rename & \begin{tabular}[t]{@{}l@{}}renameVariable: 0.3 \\ renameField: 0.3 \\ renameMethod: 0.3\end{tabular} \\
+			%			spaces\_many & \begin{tabular}[t]{@{}l@{}}Add1Space: 0.2 \\ Add2Spaces: 0.1 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
+			%			tabs & \begin{tabular}[t]{@{}l@{}}remove1IncTab: 0.2 \\ add1IncTab: 0.1 \\ remove1DecTab: 0.1 \\ add1DecTab: 0.1 \\ incTabInsteadOfDecTab: 0.05 \\ decTabInsteadOfIncTab: 0.05\end{tabular} \\
+			%			all7 & all probabilities/7 \\
+			%			\bottomrule
+			%		\end{tabular}
+		%	\end{table}
+	
+	% Config Examples
+
+	
+%	Some of the heuristics were not included in the final version of the new dataset. You can find them in \autoref{tab:not-included-rdhs} together with the reason why they were not included.
+%	\begin{table}[tb]
 %		\centering
-%		\caption{Chosen configurations and their probabilities for the Readability Decreasing Heuristics}
+%		\caption{Readability Decreasing Heuristics that are not included in the final version of the new dataset and why.}
 %		\vspace{8pt}
-%		\label{tab:rdh_configurations}
+%		\label{tab:not-included-rdhs}
 %		\begin{tabular}{ll}
 %			\toprule
-%			\textbf{Configuration} & \textbf{Probabilities} \\
+%			Heuristic & Reason \\
 %			\midrule
-%			none & - \\
-%			comments\_remove & removeComment: 1.0 \\
-%			newline\_instead\_of\_space & newLineInsteadOfSpace: 0.15 \\
-%			newlines\_few & \begin{tabular}[t]{@{}l@{}}removeNewline: 0.3 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
-%			newlines\_many & \begin{tabular}[t]{@{}l@{}}add1Newline: 0.15 \\ add2Newlines: 0.05\end{tabular} \\
-%			rename & \begin{tabular}[t]{@{}l@{}}renameVariable: 0.3 \\ renameField: 0.3 \\ renameMethod: 0.3\end{tabular} \\
-%			spaces\_many & \begin{tabular}[t]{@{}l@{}}Add1Space: 0.2 \\ Add2Spaces: 0.1 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
-%			tabs & \begin{tabular}[t]{@{}l@{}}remove1IncTab: 0.2 \\ add1IncTab: 0.1 \\ remove1DecTab: 0.1 \\ add1DecTab: 0.1 \\ incTabInsteadOfDecTab: 0.05 \\ decTabInsteadOfIncTab: 0.05\end{tabular} \\
-%			all7 & all probabilities/7 \\
+%			\texttt{inlineMethod} & Makes methods too long \\
+%			\texttt{add0} & Limited survey capacity \\
+%			\texttt{insertBraces} & Limited survey capacity \\
+%			\texttt{starImport} & No effect after comment extraction \\
+%			\texttt{inlineField} & Limited survey capacity \\
+%			\texttt{partiallyEvaluate} & Might increase readability \\
 %			\bottomrule
 %		\end{tabular}
 %	\end{table}
+
+%	\begin{table}[tb]
+%		\centering
+%		\caption{Available Readability Decreasing Heuristics. For heuristics $1-4$ (\texttt{newline}, \texttt{incTab}, \texttt{decTab} and \texttt{space}), several probabilities can be defined for the respective number of replacements (see Appendix \ref{appendix:rdh-config-file}).}
+%		\vspace{8pt}
+%		\label{tab:rdhs}
+%		\begin{tabular}{lllc}
+%			\toprule
+%			\# & Heuristic 						 & On AST/Code & n Final Dataset \\
+%			\midrule
+%			1  & \texttt{newline}                & Code			& \checkmark \\
+%			2  & \texttt{incTab}                 & Code			& \checkmark \\
+%			3  & \texttt{decTab}                 & Code			& \checkmark \\
+%			4  & \texttt{space}                  & Code			& \checkmark \\
+%			5  & \texttt{newLineInsteadOfSpace}  & Code			& \checkmark \\
+%			6  & \texttt{spaceInsteadOfNewline}  & Code			& \checkmark \\
+%			7  & \texttt{incTabInsteadOfDecTab}  & Code			& \checkmark \\
+%			8  & \texttt{decTabInsteadOfIncTab}  & Code			& \checkmark \\
+%			9  & \texttt{renameVariable}         & AST			& \checkmark \\
+%			10 & \texttt{renameField}            & AST			& \checkmark \\
+%			11 & \texttt{renameMethod}           & AST			& \checkmark \\
+%			12 & \texttt{inlineMethod}           & AST			& \\
+%			13 & \texttt{removeComment}          & Code			& \checkmark \\
+%			14 & \texttt{add0}                   & AST			& \\
+%			15 & \texttt{insertBraces}           & AST			& \\
+%			16 & \texttt{starImport}             & AST			& \\
+%			17 & \texttt{inlineField}            & AST			& \\
+%			18 & \texttt{partiallyEvaluate}      & AST			& \\
+%			\bottomrule
+%		\end{tabular}
+%	\end{table}
+	
+	% Method extraction
+	The individual methods are then extracted from the class files. As mentioned (see \Cref{Dataset Generation Approach}), we require a method comment for all methods. We therefore use \texttt{removeComment} after completing the method extraction.
+	
+\subsection{Construction of Questionnaires} \label{Construction of Questionnaires}
+	We evaluated the generated data set and the new approach with a survey. To do this, we had to carefully select suitable code snippets from the dataset. An overview of the approach can be found in \autoref{fig:survey_pipeline}.
+	
+	% TODO: Tool name: REDEC = Redability Decreaser, HEER - Heuristic Erosion Enhancing Readability, THEOR - Tool for Heuristic Erosion of Readability
+	% TODO: 9 config files und 4 rdhs tauschen. Linien!
+	\begin{figure}[tb]
+		\centering
+		\includegraphics[width=0.9\textwidth]{img/survey_pipeline.png}
+		\caption{Steps performed to craft questionnaires from the new dataset.}
+		\label{fig:survey_pipeline}
+	\end{figure}
+		
+	The first step was to find realistic configurations for the RDH tool. After an initial data set with the heuristics was created, a pilot study was conducted. Subsequently, heuristics with a low rating were adjusted to be weaker according to the results of the pilot survey. The result consisted of 9 different RDHs, which can be found in \autoref{tab:rdh_configurations}. Together with the original methods this resulted in 10 different configurations.
+	
+
 	
 	
 	The configurations are based on probabilities for different heuristics. A heuristic is applied with the specified probability to each occurrence of the object to which it refers. For example, when \texttt{removeComment} is applied with a probability of 10~\% to each comment that occurs within the code snippet. The exact scope of changes is therefore uncertain. It can happen (especially with short methods such as getters and setters) that a method is not changed at all. For example, if a method only has a single comment and we use \texttt{removeComment}, the probability that the method will not be changed is 90~\%.
@@ -2220,8 +2445,8 @@ cleveref=true,%
 			- 0.0  # Probability for no tab
 			- 1.0  # Probability for one tab
 			space:
-			- 0.0  # Probability for no space
-			- 1.0  # Probability for one space. Must be 1.0
+			- 0.0  # Probability for no space; Must be 0.0
+			- 1.0  # Probability for one space
 			newLineInsteadOfSpace: 0
 			spaceInsteadOfNewline: 0
 			incTabInsteadOfDecTab: 0

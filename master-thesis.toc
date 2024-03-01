@@ -2,26 +2,26 @@
 \contentsline {section}{\numberline {1}Introduction}{2}{section.0.0.1}%
 \contentsline {section}{\numberline {2}Background and Related Work}{4}{section.0.0.2}%
 \contentsline {subsection}{\numberline {2.1}Code Readability}{4}{subsection.0.0.2.1}%
-\contentsline {subsection}{\numberline {2.2}Conventional Calculation Approaches}{6}{subsection.0.0.2.2}%
+\contentsline {subsection}{\numberline {2.2}Conventional Calculation Approaches}{5}{subsection.0.0.2.2}%
 \contentsline {subsection}{\numberline {2.3}Deep Learning Based Approaches}{6}{subsection.0.0.2.3}%
-\contentsline {subsection}{\numberline {2.4}Data Augmentation}{9}{subsection.0.0.2.4}%
-\contentsline {subsection}{\numberline {2.5}Diverse Perspectives}{10}{subsection.0.0.2.5}%
-\contentsline {subsection}{\numberline {2.6}Data Generation}{11}{subsection.0.0.2.6}%
-\contentsline {section}{\numberline {3}Mined and Modified Code for Dataset Generation}{11}{section.0.0.3}%
-\contentsline {subsection}{\numberline {3.1}Work on Existing Datasets}{11}{subsection.0.0.3.1}%
-\contentsline {subsection}{\numberline {3.2}Classification Considerations}{12}{subsection.0.0.3.2}%
-\contentsline {subsection}{\numberline {3.3}Dataset Generation Approach}{13}{subsection.0.0.3.3}%
-\contentsline {subsection}{\numberline {3.4}Readability Decreasing Heuristics}{15}{subsection.0.0.3.4}%
-\contentsline {subsection}{\numberline {3.5}Construction of Questionnaires}{16}{subsection.0.0.3.5}%
-\contentsline {subsection}{\numberline {3.6}Readability Classification Model}{20}{subsection.0.0.3.6}%
-\contentsline {section}{\numberline {4}Evaluation}{22}{section.0.0.4}%
-\contentsline {subsection}{\numberline {4.1}Survey}{24}{subsection.0.0.4.1}%
-\contentsline {subsubsection}{\nonumberline Pilot Survey}{24}{subsubsection*.15}%
-\contentsline {subsubsection}{\nonumberline Prolific Survey}{26}{subsubsection*.19}%
-\contentsline {subsection}{\numberline {4.2}Model Training Results}{32}{subsection.0.0.4.2}%
-\contentsline {section}{\numberline {5}Discussion}{34}{section.0.0.5}%
-\contentsline {section}{\numberline {6}Conclusions}{34}{section.0.0.6}%
-\contentsline {section}{\numberline {I}Pilot Survey Feedback}{41}{section.Alph0.1}%
-\contentsline {section}{\numberline {II}Readability Decreasing Heuristics Configuration File}{44}{section.Alph0.2}%
-\contentsline {section}{\numberline {III}Prolific Survey Texts}{45}{section.Alph0.3}%
+\contentsline {subsection}{\numberline {2.4}Data Augmentation}{8}{subsection.0.0.2.4}%
+\contentsline {subsection}{\numberline {2.5}Diverse Perspectives}{9}{subsection.0.0.2.5}%
+\contentsline {subsection}{\numberline {2.6}Data Generation}{10}{subsection.0.0.2.6}%
+\contentsline {section}{\numberline {3}Mined and Modified Code for Dataset Generation}{10}{section.0.0.3}%
+\contentsline {subsection}{\numberline {3.1}Work on Existing Datasets}{10}{subsection.0.0.3.1}%
+\contentsline {subsection}{\numberline {3.2}Classification Considerations}{11}{subsection.0.0.3.2}%
+\contentsline {subsection}{\numberline {3.3}Dataset Generation Approach}{12}{subsection.0.0.3.3}%
+\contentsline {subsection}{\numberline {3.4}Readability Decreasing Heuristics}{14}{subsection.0.0.3.4}%
+\contentsline {subsection}{\numberline {3.5}Construction of Questionnaires}{18}{subsection.0.0.3.5}%
+\contentsline {subsection}{\numberline {3.6}Readability Classification Model}{22}{subsection.0.0.3.6}%
+\contentsline {section}{\numberline {4}Evaluation}{24}{section.0.0.4}%
+\contentsline {subsection}{\numberline {4.1}Survey}{26}{subsection.0.0.4.1}%
+\contentsline {subsubsection}{\nonumberline Pilot Survey}{26}{subsubsection*.15}%
+\contentsline {subsubsection}{\nonumberline Prolific Survey}{28}{subsubsection*.19}%
+\contentsline {subsection}{\numberline {4.2}Model Training Results}{34}{subsection.0.0.4.2}%
+\contentsline {section}{\numberline {5}Discussion}{36}{section.0.0.5}%
+\contentsline {section}{\numberline {6}Conclusions}{36}{section.0.0.6}%
+\contentsline {section}{\numberline {I}Pilot Survey Feedback}{43}{section.Alph0.1}%
+\contentsline {section}{\numberline {II}Readability Decreasing Heuristics Configuration File}{46}{section.Alph0.2}%
+\contentsline {section}{\numberline {III}Prolific Survey Texts}{47}{section.Alph0.3}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

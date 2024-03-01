@@ -9,8 +9,8 @@
 \PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{0.0}\PYG{+w}{  }\PYG{c+c1}{\PYGZsh{} Probability for no tab}
 \PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{1.0}\PYG{+w}{  }\PYG{c+c1}{\PYGZsh{} Probability for one tab}
 \PYG{n+nt}{space}\PYG{p}{:}
-\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{0.0}\PYG{+w}{  }\PYG{c+c1}{\PYGZsh{} Probability for no space}
-\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{1.0}\PYG{+w}{  }\PYG{c+c1}{\PYGZsh{} Probability for one space. Must be 1.0}
+\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{0.0}\PYG{+w}{  }\PYG{c+c1}{\PYGZsh{} Probability for no space; Must be 0.0}
+\PYG{p+pIndicator}{\PYGZhy{}}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{1.0}\PYG{+w}{  }\PYG{c+c1}{\PYGZsh{} Probability for one space}
 \PYG{n+nt}{newLineInsteadOfSpace}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{0}
 \PYG{n+nt}{spaceInsteadOfNewline}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{0}
 \PYG{n+nt}{incTabInsteadOfDecTab}\PYG{p}{:}\PYG{+w}{ }\PYG{l+lScalar+lScalarPlain}{0}

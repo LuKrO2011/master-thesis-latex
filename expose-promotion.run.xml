@@ -41,13 +41,13 @@
   >
 ]>
 <requests version="1.0">
-  <internal package="biblatex" priority="9" active="1">
+  <internal package="biblatex" priority="9" active="0">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>master-thesis.bcf</file>
+      <file>expose-promotion.bcf</file>
     </provides>
     <requires type="dynamic">
-      <file>master-thesis.bbl</file>
+      <file>expose-promotion.bbl</file>
     </requires>
     <requires type="static">
       <file>blx-dm.def</file>
@@ -64,26 +64,26 @@
       <file>ngerman.lbx</file>
     </requires>
   </internal>
-  <external package="biblatex" priority="5" active="1">
+  <external package="biblatex" priority="5" active="0">
     <generic>biber</generic>
     <cmdline>
       <binary>biber</binary>
-      <infile>master-thesis</infile>
+      <infile>expose-promotion</infile>
     </cmdline>
     <input>
-      <file>master-thesis.bcf</file>
+      <file>expose-promotion.bcf</file>
     </input>
     <output>
-      <file>master-thesis.bbl</file>
+      <file>expose-promotion.bbl</file>
     </output>
     <provides type="dynamic">
-      <file>master-thesis.bbl</file>
+      <file>expose-promotion.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>master-thesis.bcf</file>
+      <file>expose-promotion.bcf</file>
     </requires>
     <requires type="editable">
-      <file>master-thesis.bib</file>
+      <file>expose-promotion.bib</file>
     </requires>
   </external>
 </requests>
