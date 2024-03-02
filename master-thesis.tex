@@ -817,9 +817,9 @@ cleveref=true,%
 	%	the comparison of \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils} and \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified} suggests.
 
 %	% Study goals
-%	To verify whether the well-readable-assumption (Assumption \ref{well-readable-assumption}) and the poorly-readable-assumption (Assumption \ref{poorly-readable-assumption}) hold we conducted a survey on prolific.
+%	To verify whether the well-readable-assumption (Assumption \ref{well-readable-assumption}) and the poorly-readable-assumption (Assumption \ref{poorly-readable-assumption}) hold we conducted a survey on Prolific.
 %	% Study details
-%	We ask Java programmers to rate methods that were mined and modified. Therefore, human annotators rated each code snippet with a readability score. The annotators are selected by prolific\curl{https://www.prolific.scom/}{2023-09-30}. The readability rating is based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable). We apply the same rating as done previously~\citeolddataset, but, other than before, we will not use the rating for labeling the training data. Instead, we only use the ratings to validate some randomly selected methods to confirm our assumptions (Assumption \ref{well-readable-assumption} and \ref{poorly-readable-assumption}). All snippets are automatically labeled.
+%	We ask Java programmers to rate methods that were mined and modified. Therefore, human annotators rated each code snippet with a readability score. The annotators are selected by Prolific\curl{https://www.prolific.scom/}{2023-09-30}. The readability rating is based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable). We apply the same rating as done previously~\citeolddataset, but, other than before, we will not use the rating for labeling the training data. Instead, we only use the ratings to validate some randomly selected methods to confirm our assumptions (Assumption \ref{well-readable-assumption} and \ref{poorly-readable-assumption}). All snippets are automatically labeled.
 %	
 %	% Model comparison details
 %	Besides the user study we will evaluate our approach by comparing performance of the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} when trained with the new and the old dataset.
@@ -1692,7 +1692,7 @@ cleveref=true,%
 	% What did we exclude and why
 	For the final dataset we excluded some of the RDHs as we can see in \autoref{tab:rdhs}.
 	We excluded \texttt{inlineMethod} as it increased the length of methods drastically and made the methods too long.
-	While \texttt{starImport} might have an impact on the readability of class files it has none on methods as in Java the import statement are not within the methods in Java. As we end up with extracting methods for our dataset, \texttt{starImport} has no impact.
+	While \texttt{starImport} might have an impact on the readability of class files it has none on methods as in Java the import statement are not within the methods in Java. As we finally extract methods for our dataset, \texttt{starImport} has no impact.
 	%	We did not include \texttt{partiallyEvaluate} as it might be that this modification increases readability instead of decreasing it.
 	We chose to not include \texttt{add0}, \texttt{insertBraces}, \texttt{inlineField} and \texttt{partiallyEvaluate} for the reason of a limited survey capacity.
 	For the same reason, we did not investigate the usage of Code2Vec for \texttt{renameMethod} either.
@@ -1984,7 +1984,7 @@ cleveref=true,%
 %		\item Does the poorly-readable-assumption (assumption \ref{poorly-readable-assumption}) hold?
 %	\end{enumerate}
 %	
-%	We will achieve this by showing programmers code snippets that were generated with the presented approach. Therefore, human annotators give each code snippet a rating of its readability. The annotators are selected by prolific\curl{https://www.prolific.com/}{2023-09-30}. Particular attention is paid to a high proportion of people from industry. The readability rating is based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very 
+%	We will achieve this by showing programmers code snippets that were generated with the presented approach. Therefore, human annotators give each code snippet a rating of its readability. The annotators are selected by Prolific\curl{https://www.prolific.com/}{2023-09-30}. Particular attention is paid to a high proportion of people from industry. The readability rating is based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very 
 %) to five (i.e., very readable). We apply the same rating as done previously~\cite{buse2009learning, dorn2012general, scalabrino2018comprehensive}, but, other than before, we will not use the rating for labeling the training data. Instead, we will only use the ratings to validate a few randomly selected code snippets out of many that are automatically labeled.
 %	
 %	\subsubsection{Comparing models}\label{compare-models}
@@ -2006,7 +2006,7 @@ cleveref=true,%
 %	\begin{resq} \textbf{(mined-well)} Can automatically selected code be assumed to be well readable?\end{resq} \label{mined-well}
 %	In our new approach for generating training data, we assume that the code from repositories is readable under certain conditions (assumption~\ref{well-readable-assumption}). We want to check whether that holds. To answer this question we will use the results of the user study (\autoref{user-study}).
 %	
-%	\begin{resq} \textbf{(generate-poor)} Can poorly readable code be generated from well readable code?\end{resq} \label{generate-poor}
+%	\begin{resq} \textbf{(modify-poor)} Can poorly readable code be generated from well readable code?\end{resq} \label{modify-poor}
 %	It is not sufficient to have only well readable code for training a classifier. We also need poorly readable code. Therefore, we will try to generate such code from the well readable code. We will investigate whether this is possible in principle, and we will propose an automated approach for archiving this: Readability Decreasing Heuristics.
 %	
 %	As the name already suggests, the applied transformations on the source code are only heuristics. To answer, whether the generated code is poorly readable (assumption~\ref{poorly-readable-assumption}) we wildy (\autoref{user-study}).
@@ -2222,7 +2222,7 @@ cleveref=true,%
 	\begin{resq} \textbf{(mined-well)} Can automatically mined code be assumed to be well readable?\end{resq} \label{mined-well}
 	In our new approach for generating training data, we assume that the code from repositories is well readable under certain conditions (Assumption~\ref{well-readable-assumption}). We want to check whether that holds. To answer this question we will use the results of the user study.
 	
-	\begin{resq} \textbf{(generate-poor)} Can poorly readable code be generated from well readable code?\end{resq} \label{generate-poor}
+	\begin{resq} \textbf{(modify-poor)} Can poorly readable code be generated from well readable code?\end{resq} \label{modify-poor}
 	It is not sufficient to have only well readable code for training a classifier. We also need poorly readable code. Therefore, we will try to generate such code from the well readable code. We will investigate whether this is possible in principle, and
 	whether the proposed RDH tool (see \autoref{Readability Decreasing Heursitcs}) is able to achieve this.
 	
@@ -2235,7 +2235,7 @@ cleveref=true,%
 	It was shown that Deep Learning models get better the more training data is available~\cite{hestness2017deep}. This holds under the assumption that the quality of the data is the same or at least similar. We want to check if the quality of our new data is sufficient for improving the deep learning-based readability classifier of \citeauthor{mi2022towards}~\cite{mi2022towards}. Therefore we will train their proposed model with combinations of the merged and the mined-and-modified dataset and compare the evaluation statistics.
 
 \subsection{Survey} \label{Survey}
-	The results of our survey are divided into two parts: The results of the pilot survey (see \Cref{Pilot Survey}), which were used to improve the main survey pre-launch, and the results of the main survey (see \Cref{Prolific Survey}), which were used to answer our research questions (\hyperref[mined-well]{RQ1} and \hyperref[generate-poor]{RQ2}) and to craft our dataset.
+	The results of our survey are divided into two parts: The results of the pilot survey (see \Cref{Pilot Survey}), which were used to improve the main survey pre-launch, and the results of the main survey (see \Cref{Prolific Survey}), which were used to answer our research questions (\hyperref[mined-well]{RQ1} and \hyperref[modify-poor]{RQ2}) and to craft our dataset.
 	
 \subsubsection{Pilot Survey} \label{Pilot Survey}
 	
@@ -2256,7 +2256,7 @@ cleveref=true,%
 	The participants answers can be found in appendix \ref{appendix:pilot-survey-feedback}.
 	
 	% Usage
-	The feedback of the pilot survey was used in the following ways to prepare the prolific study:
+	The feedback of the pilot survey was used in the following ways to prepare the Prolific study:
 	\begin{itemize}
 		\item To adjust the survey texts and questions
 		\item To estimate how long completion of one questionnaire will take
@@ -2279,7 +2279,7 @@ cleveref=true,%
 	\textbf{Completion Time:} 
 	In \autoref{fig:survey_times} we find the time it took the participants to complete the pilot survey and thus to rate 20 code snippets according to their readability. 
 	The fastest participant completed the survey in 7 minutes and 35 seconds, while the slowest participant took 18 minutes. 
-	Both the average value and the mean value are around 12 minutes. The boxplot also shows (see \autoref{fig:survey_times}) that the times are close together and there are no outliers in the time taken.
+	Both the average value and the mean value are around 12 minutes. The boxplot (see \autoref{fig:survey_times}) shows that the times are close together and there are no outliers in the time taken.
 	We suspect that the participants in the pilot survey put more effort into completing the survey as we know them personally. 
 	Other participants may not make as much effort, so we set the time estimation for a questionnaire below average at 10 minutes.
 		
@@ -2295,7 +2295,7 @@ cleveref=true,%
 %		\begin{subfigure}{0.49\textwidth}
 %			\centering
 %			\includegraphics[width=\linewidth]{img/survey_time_box.png}
-%			\caption{Time required by the participants to complete the prolific survey.}
+%			\caption{Time required by the participants to complete the Prolific survey.}
 %			\label{fig:survey_time_box}
 %		\end{subfigure}
 %		\caption{Time required to complete the surveys.}
@@ -2423,19 +2423,20 @@ cleveref=true,%
 	We adjusted the RDH configurations. The rating for the last places (see \autoref{tab:pilot_survey_results}), such as \textit{1.2} for \textit{Stratum 1 - all}, suggest that these code snippets were particularly poorly readable. Due to this, we re-examined the configurations of all RDHs and found that some of them are configured too strongly. This not only impairs their readability, but also makes them look as if they were not written by human hands.
 	Thus, we took another close look at the RDH configurations and found that some of them are over-configured. This not only affects their readability, but also makes them look as if they were not written by human hands. We have therefore reduced the probabilities for these RDHs.
 	
-	Once the aforementioned adjustments had been made and the feedback on the survey instrument had been implemented, the actual study was carried out.
+	We adjusted the RDH configurations and the survey tool according to the feedback. Then the Prolific study was launched.
 
 \subsubsection{Prolific Survey} \label{Prolific Survey}
-	In this section we summarize the results of the main study conducted via prolific.
+	In this section we summarize the results of the main study conducted via Prolific.
 	
 % TODO: Add this to the following somewhere
 %	Once the survey was completed, we aggregated the ratings across all strats and all methods. We grouped the results into the 10 rdhs. In this way, we assess whether the rdhs work, which rdhs work best and how strong the impact of each rdh on readability is. In addition, we use the results of the survey to label the mined-and-modified dataset, which consists of the original and all7 rdh methods.
 	
 \textit{1. Experimental setup:}
-	The survey was conducted using Tien Duc Nguyen's Code Annotation Tool (see \autoref{fig:survey_tool}) along with the platform prolific\curl{https://app.prolific.com/}{2024-02-21} for the recruitment and payment of participants.
+	The survey was conducted using Tien Duc Nguyen's Code Annotation Tool (see \autoref{fig:survey_tool}) along with the platform Prolific\curl{https://app.prolific.com/}{2024-02-21} for the recruitment and payment of participants.
 	The survey was conducted between 31 January and 7 February 2024. A total of 221 participants took part. Each of the 20 questionnaires was answered by 11 participants (similar to the survey of \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}). In one survey, one more participant was assigned by mistake. 
+	We estimated the time to complete one questionnaire at 10 minutes (see \autoref{Pilot Survey}). Prolific set the maximum time allowed at 44 minutes. Participants who took longer received a time-out.
 	%	According to an online calculator\footnote{https://www.calculator.net/sample-size-calculator.html} 
-	We end up with a margin of error of 29.55\% at a confidence of 95\% for an individual snippet. However, we aggregate over strata and multiple snippets later to reduce the error of margin.
+	This results in a margin of error of 29.55\% at a confidence of 95\% for an individual snippet. However, we aggregate over strata and multiple snippets later to reduce the margin of error.
 	Each questionnaire consists of 20 code snippets. Consequently, 400 different code snippets are rated in total. The questionnaires were configured in a way that each participant could only take part in one of the questionnaires. You can find the texts for the survey in Appendix~\ref{appendix:prolific-survey-texts}. The questionnaires were crafted as described in \Cref{Construction of Questionnaires}.
 		
 	\begin{figure}[tb]
@@ -2446,25 +2447,26 @@ cleveref=true,%
 	\end{figure}
 
 	% Target population
-	The target population consists of Java programmers selected by prolific. They may be students or work in industry. They can come from any country. Overall, there were no requirements other than familiarity with Java (see also \autoref{tab:prolific-audience}).
+	The target population consists of Java programmers selected by Prolific. They may be students or work in industry. They can come from any country. Overall, there were no requirements other than familiarity with Java.
+%	(see also \autoref{tab:prolific-audience}).
 	
-	\begin{table}[tb]
-		\centering
-		\caption{Target population for the prolific survey.}
-		\vspace{8pt}
-		\label{tab:prolific-audience}
-		\begin{tabular}{ll}
-			\toprule
-			Type & Target Population \\
-			\midrule
-			Target Audience      & Java programmers \\
-			Unit of Observation  & Java programmers \\
-			Unit of Analysis     & Java programmers \\
-			Search Unit          & Selected by Prolific (Programming Languages: Java)\\
-			Source of Sampling   & Prolific \\
-			\bottomrule
-		\end{tabular}
-	\end{table}
+%	\begin{table}[tb]
+%		\centering
+%		\caption{Target population for the Prolific survey.}
+%		\vspace{8pt}
+%		\label{tab:prolific-audience}
+%		\begin{tabular}{ll}
+%			\toprule
+%			Type & Target Population \\
+%			\midrule
+%			Target Audience      & Java programmers \\
+%			Unit of Observation  & Java programmers \\
+%			Unit of Analysis     & Java programmers \\
+%			Search Unit          & Selected by Prolific (Programming Languages: Java)\\
+%			Source of Sampling   & Prolific \\
+%			\bottomrule
+%		\end{tabular}
+%	\end{table}
 	
 	% Internal/Research Questions
 	The internal research questions are as follows:
@@ -2476,29 +2478,29 @@ cleveref=true,%
 	The results for these questions are equally important, and thus none of them is prioritized over the other.
 	To answer them, the assumptions	are considered as hypotheses along with the following associated null hypotheses:
 	\begin{itemize}
-		\item For Assumption~\ref{well-readable-assumption}: The mined code (original) is better readable than the code from previous studies.
+		\item For Assumption~\ref{well-readable-assumption}: The mined code (original) is on average not better readable than the code from previous studies.
 		\item For Assumption~\ref{poorly-readable-assumption}: The readability of code does not significantly deteriorate compared to the original code snippet.
 	\end{itemize}
 	
 	% Questionnaire Attributes
 	The survey neither contained demographic questions nor filter questions. Besides the readability questions, each user was asked the following dependent question: "How would you describe your familiarity with Java?". The user could answer within a five point Likert scale: expert (5), advanced (4), intermediate (3), beginner (2), novice (1).
 	
-	The expenditure for this survey was about €500.				
-	
 \textit{2. Threats:}
 	We identified the following threats:
 	\begin{itemize}
-		\item \textbf{Ill-defined Target Population:} Ensuring a well-defined target population is critical to the survey's quality. To mitigate this threat, we define our target population. Additionally, we conduct a pre-survey evaluation (see \Cref{Pilot Survey}) to ensure the adequacy of our target population definition. Thereby, we enhance content and construct validity.
+		\item \textbf{Ill-defined Target Population:} Ensuring a well-defined target population is critical to the survey's quality. To mitigate this threat, we define our target population.
 		
 		\item \textbf{Sampling Method:} Stratified Sampling is well-defined and proven in practice. The approach ensures that our sample represents all parts of the population under investigation. This is improving the survey's external validity.
 		
 		\item \textbf{Insufficient Responses for Drawing Conclusions:} To prevent drawing conclusions from an insufficient number of responses, we scale our survey to an appropriate size. This guarantees that we collect a substantial volume of responses, allowing for robust statistical analysis.
 		
-		\item \textbf{Piece-work Effect:} Survey participants are paid for taking part and completing a questionnaire. However, they receive the same amount of money regardless of their speed. Therefore, they receive more pay per minute if they hurry. This could have an impact on the accuracy with which they scored the code snippets. A comparison between the time required by a participant for a pilot questionnaire and a prolific questionnaire (see \autoref{fig:survey_times}) supports this suggestion. Especially the ratings of participants requiring less than 3 minutes (see \autoref{fig:survey_time_less_than_180}) to complete a questionnaire could have a negative impact on validity. 
+		\item \textbf{Piece-work Effect:} Survey participants are paid for taking part and completing a questionnaire. However, they receive the same amount of money regardless of their speed. Therefore, they receive more pay per minute if they hurry. This could have an impact on the accuracy with which they scored the code snippets. A comparison between the time required by a participant for a pilot questionnaire and a Prolific questionnaire (see \autoref{fig:survey_times}) supports this suggestion. Especially the ratings of participants requiring less than 3 minutes (see \autoref{fig:survey_time_less_than_180}) to complete a questionnaire could have a negative impact on validity. 
 	\end{itemize}
 	
 \textit{3. Results:}
-	An overview of the time required by the participants can be found in the \autoref{fig:survey_times} and \autoref{fig:survey_time_histogramm}. 
+	An overview of the time required by the participants can be found in the \autoref{fig:survey_times} and \autoref{fig:survey_time_histogramm}.
+	The fastest participant completed the survey in 1 minute and 39 seconds, while the slowest participant took about 38 minutes. 
+	The average time is 9 minutes and 45 seconds. The median time is 8 minutes and 30 seconds. The boxplot (see \autoref{fig:survey_times}) shows that the times are not as close together as for the pilot survey. There are a couple of outliers.
 		
 	\begin{figure}[tb]
 		\centering
@@ -2513,20 +2515,28 @@ cleveref=true,%
 			\caption{Participants per questionnaire requiring less than 3 minutes.}
 			\label{fig:survey_time_less_than_180}
 		\end{subfigure}
-		\caption{Time analysis of participants completing the prolific survey.}
+		\caption{Time analysis of participants completing the Prolific survey.}
 		\label{fig:survey_time_prolific}
 	\end{figure}
 	
-	The participants' familiarity with Java is shown in \autoref{fig:survey_Java_familiarity_pie}.
+	The participants' familiarity with Java is shown in \autoref{fig:survey_Java_familiarity_pie}. According to their own estimation, 44.8~\% of the participants are experts with Java. Another 44.8~\% of the participants are either advanced or intermediate. This high level of familiarity with Java suggests that the quality of the evaluations received is also high.
 	
 	\begin{figure}[tb]
 		\centering
 		\includegraphics[width=0.75\textwidth]{img/survey_Java_familiarity_pie.png}
-		\caption{Familiarity of prolific survey participants with Java.}
+		\caption{Familiarity of Prolific survey participants with Java.}
 		\label{fig:survey_Java_familiarity_pie}
 	\end{figure}
 	
-	The ratings for each rdh for all strata combined can be found in \autoref{fig:survey_ratings_violin_all} and \autoref{fig:survey_ratings_bar_all}. \autoref{fig:survey_ratings_violin_all} shows that the mean value of our original methods is 3.68, while for all7 it is 3.26. We label each method in both groups with the corresponding mean score.
+	The ratings for each RDH for all strata combined can be found in \autoref{fig:survey_ratings_violin_all} and \autoref{fig:survey_ratings_bar_all}. 	
+	In line with our expectation, we see that the ratings for \texttt{none} and \texttt{methods} are almost the same. There is no significant difference between the two, as a Mann-Whitney U test confirmed. The probability that the difference between \texttt{none} and \texttt{methods} is due to random variation is 92~\%. 
+	Therefore, we are sure that other differences are actually caused by the RDHs and not by the pretty-printer.
+
+	\autoref{fig:survey_ratings_violin_all} shows that the mean value of our original methods is 3.68. The mean score of all rated code snippets in the merged dataset is 3.45. The difference of 0.23 is significant.
+	% TODO: Add significance test.
+	
+%	while for all7 it is 3.26	
+%	We label each method in both groups with the corresponding mean score.
 	
 % TODO
 %Ich würde den Absatz hierzu etwas relativieren.
@@ -2540,8 +2550,8 @@ cleveref=true,%
 %- die Frage ist, wie dazwischen (beim Modelltraining) mit den Daten umgegangen wird. Mi machen das folgendermaßen...
 
 	\begin{researchbox}{Summary (RQ1 - mined-well):}
-		TODO: Add significance test.
-		The readability ratings of code snippets mined from Github are not very accurate as we take the mean of all ratings for all methods and assign it to each snippet. However, the score of 3.68 is 0.23 larger than the mean score for all ratings in the merged dataset (3.45). Therefore we reject the null hypothesis and conclude that well readable assumption (Assumption~\ref{well-readable-assumption}) holds.
+		%		The readability ratings of code snippets mined from Github are not very accurate as we take the mean of all ratings for all methods and assign it to each snippet.
+		The mean score for the \texttt{original} methods of the mined-and-modified dataset (3.68) is significantly larger than the mean score for all ratings in the merged dataset (3.45). Therefore we reject the null hypothesis and conclude that well readable assumption (Assumption~\ref{well-readable-assumption}) holds.
 		%		and answer the research question \ref{mined-well}: Yes, automatically selected code can be assumed to be well readable.
 	\end{researchbox}
 	
@@ -2561,17 +2571,20 @@ cleveref=true,%
 		\caption{Survey ratings for each rdh and all strata.}
 		\label{fig:survey_time_all}
 	\end{figure}
-		
-	We analyzed whether the difference in ratings between the different rdhs is statistically significant. To do this, we used the Mann-Whitney U test to compare the ratings for all snippets for an rdh with the corresponding \texttt{none} snippets. The results can be found in \autoref{tab:survey_statistical_evidence}.
-		
-	Our results suggest that no modification (\texttt{none}) besides converting to the AST and back makes no difference to the original methods. The difference could just as well be due to random variation with a probability of 92~\%. If we compare the rdhs with the \texttt{none} methods, we can be sure that the scores of all methods except newlines many and rename are indeed statistically different from the scores of \texttt{none}. If we consider binary readability classification and split the data for \texttt{none} and \texttt{newlines many} into two classes (poorly readable: 1,2; well readable: 3-5) we also get significance that the ratings for newlines many are statistically significantly different from \texttt{none} (TODO: Add p Values). This leaves only rename where we can not confirm statistical significance. Overall, this shows that the heuristics actually reduce the readability of the given code.
+	
+	We analyzed whether the difference in ratings between the different RDHs is statistically significant. To do this, we used the Mann-Whitney U test to compare the ratings for all snippets for an RDH with the corresponding \texttt{none} snippets. The results can be found in \autoref{tab:survey_statistical_evidence}.
+	If we compare the RDHs with the \texttt{none} methods, we can be sure that the scores of all methods except newlines many and rename are indeed statistically different from the scores of \texttt{none}. 
+	
+	If we consider binary readability classification and split the data into two classes (poorly readable: 1,2; well readable: 3-5) all but \texttt{none} and \texttt{rename} are statistically different from each other. This includes \texttt{newlines many} (TODO: Add p Values) for which we could not confirm statistical difference without binary classification.
+
+	Besides \texttt{none}, this leaves only \texttt{rename} where we can not confirm statistical significance. Overall, we showed that the heuristics actually reduce the readability of source code.
 
 %	\begin{table}[h]
 %		\centering
 %		\caption{Mann-Whitney U test results of none against each RDH}
 %		\vspace{8pt}
 %		\label{tab:survey_statistical_evidence}
-%		\begin{tabular}{lS[table-format=1.2e-2]}
+%		\begin{tabular}{lS[table-format=1.2e-2]}\dfrac{Zähler}{Nenner}
 %			\toprule
 %			\textbf{Condition} & \textbf{$p$} \\
 %			\midrule
@@ -2610,10 +2623,11 @@ cleveref=true,%
 		\end{tabular}
 	\end{table}
 		
-	\begin{researchbox}{Summary (RQ2 - generate-poor):}
-		All of the 7 heuristics but rename decrease readability by a significant extend compared to \texttt{none}. We estimate the readability decrease for a certain probability of a certain type as can be seen in \autoref{fig:survey_ratings_bar_all}. We reject the null hypothesis and conclude that the poorly readable assumption (Assumption~\ref{poorly-readable-assumption}) holds
+	\begin{researchbox}{Summary (RQ2 - modify-poor):}
+		All of the 7 heuristics but \texttt{rename} decrease readability by a significant extend compared to \texttt{none}. We estimate the readability decrease for a certain probability of a certain type as can be seen in \autoref{fig:survey_ratings_bar_all}. We reject the null hypothesis and conclude that the poorly readable assumption (Assumption~\ref{poorly-readable-assumption}) holds
 	\end{researchbox}
 
+% TODO: Continue here
 \subsection{Model Training Results} \label{Model training results}
 	The results of the training, evaluation and fine-tuning can be found in the \autoref{tab:dataset_performance}.
 		
