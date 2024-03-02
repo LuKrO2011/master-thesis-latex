@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{o}{[}\PYG{n}{CLS}\PYG{o}{]}\PYG{+w}{ }\PYG{o}{/}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{o}{*}
+\PYG{o}{*}\PYG{+w}{ }\PYG{n}{This}\PYG{+w}{ }\PYG{n}{method}\PYG{+w}{ }\PYG{n}{determines}\PYG{+w}{ }\PYG{n}{the}\PYG{+w}{ }\PYG{n}{sign}\PYG{+w}{ }\PYG{n}{of}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{n}{given}\PYG{+w}{ }\PYG{n}{number}\PYG{+w}{ }\PYG{n}{and}\PYG{+w}{ }\PYG{n}{prints}\PYG{+w}{ }\PYG{n}{a}\PYG{+w}{ }\PYG{n}{corresponding}\PYG{+w}{ }\PYG{n}{message}\PYG{+w}{ }\PYG{p}{.}
+\PYG{o}{*}
+\PYG{o}{*}\PYG{+w}{ }\PYG{err}{@}\PYG{+w}{ }\PYG{n}{para}\PYG{+w}{ }\PYG{n}{m}\PYG{+w}{ }\PYG{n}{number}\PYG{+w}{ }\PYG{n}{The}\PYG{+w}{ }\PYG{n}{input}\PYG{+w}{ }\PYG{n}{number}\PYG{+w}{ }\PYG{n}{to}\PYG{+w}{ }\PYG{n}{be}\PYG{+w}{ }\PYG{n}{checked}\PYG{+w}{ }\PYG{p}{.}
+\PYG{o}{*}\PYG{+w}{ }\PYG{o}{/}
+\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kd}{static}\PYG{+w}{ }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n}{print}\PYG{+w}{ }\PYG{n}{S}\PYG{+w}{ }\PYG{n+nf}{ign}\PYG{+w}{ }\PYG{p}{(}\PYG{+w}{ }\PYG{n}{in}\PYG{+w}{ }\PYG{n}{t}\PYG{+w}{ }\PYG{n}{number}\PYG{+w}{ }\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{+w}{ }\PYG{n}{number}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{+w}{ }\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{n}{System}\PYG{+w}{ }\PYG{p}{.}\PYG{+w}{ }\PYG{n}{out}\PYG{+w}{ }\PYG{p}{.}\PYG{+w}{ }\PYG{n}{print}\PYG{+w}{ }\PYG{n+nf}{ln}\PYG{+w}{ }\PYG{p}{(}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} Number is positive \PYGZdq{}}\PYG{+w}{ }\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k}{else}\PYG{+w}{ }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{+w}{ }\PYG{n}{number}\PYG{+w}{ }\PYG{o}{\PYGZlt{}}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{+w}{ }\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{n}{System}\PYG{+w}{ }\PYG{p}{.}\PYG{+w}{ }\PYG{n}{out}\PYG{+w}{ }\PYG{p}{.}\PYG{+w}{ }\PYG{n}{print}\PYG{+w}{ }\PYG{n+nf}{ln}\PYG{+w}{ }\PYG{p}{(}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{} Number is negative \PYGZdq{}}\PYG{+w}{ }\PYG{p}{)}\PYG{+w}{ }\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}\PYG{+w}{ }\PYG{k}{else}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{n}{System}\PYG{+w}{ }\PYG{p}{.}\PYG{+w}{ }\PYG{n}{out}\PYG{+w}{ }\PYG{p}{.}\PYG{+w}{ }\PYG{n}{print}\PYG{+w}{ }\PYG{o}{[}\PYG{n}{SEP}\PYG{o}{]}
+\end{Verbatim}
