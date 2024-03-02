@@ -14,14 +14,15 @@
 \contentsline {subsection}{\numberline {3.4}Readability Decreasing Heuristics}{14}{subsection.0.0.3.4}%
 \contentsline {subsection}{\numberline {3.5}Construction of Questionnaires}{18}{subsection.0.0.3.5}%
 \contentsline {subsection}{\numberline {3.6}Readability Classification Model}{22}{subsection.0.0.3.6}%
-\contentsline {section}{\numberline {4}Evaluation}{24}{section.0.0.4}%
-\contentsline {subsection}{\numberline {4.1}Survey}{26}{subsection.0.0.4.1}%
-\contentsline {subsubsection}{\nonumberline Pilot Survey}{26}{subsubsection*.17}%
-\contentsline {subsubsection}{\nonumberline Prolific Survey}{28}{subsubsection*.21}%
-\contentsline {subsection}{\numberline {4.2}Model Training Results}{33}{subsection.0.0.4.2}%
-\contentsline {section}{\numberline {5}Discussion}{36}{section.0.0.5}%
-\contentsline {section}{\numberline {6}Conclusions}{37}{section.0.0.6}%
-\contentsline {section}{\numberline {I}Pilot Survey Feedback}{43}{section.Alph0.1}%
-\contentsline {section}{\numberline {II}Readability Decreasing Heuristics Configuration File}{46}{section.Alph0.2}%
-\contentsline {section}{\numberline {III}Prolific Survey Texts}{47}{section.Alph0.3}%
+\contentsline {section}{\numberline {4}Evaluation}{26}{section.0.0.4}%
+\contentsline {subsection}{\numberline {4.1}Survey}{28}{subsection.0.0.4.1}%
+\contentsline {subsubsection}{\nonumberline Pilot Survey}{28}{subsubsection*.20}%
+\contentsline {subsubsection}{\nonumberline Prolific Survey}{31}{subsubsection*.24}%
+\contentsline {subsection}{\numberline {4.2}Model Training Results}{36}{subsection.0.0.4.2}%
+\contentsline {section}{\numberline {5}Discussion}{38}{section.0.0.5}%
+\contentsline {section}{\numberline {6}Conclusions}{38}{section.0.0.6}%
+\contentsline {section}{\numberline {I}Pilot Survey Feedback}{45}{section.Alph0.1}%
+\contentsline {section}{\numberline {II}Readability Decreasing Heuristics Configuration File}{48}{section.Alph0.2}%
+\contentsline {section}{\numberline {III}Prolific Survey Texts}{49}{section.Alph0.3}%
+\contentsline {section}{\numberline {IV}Towards Model - Visual Encoding Colors}{50}{section.Alph0.4}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

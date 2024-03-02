@@ -559,6 +559,13 @@ cleveref=true,%
 	publisher={John Wiley \& Sons}
 }
 
+@article{devlin2018bert,
+	title={Bert: Pre-training of deep bidirectional transformers for language understanding},
+	author={Devlin, Jacob and Chang, Ming-Wei and Lee, Kenton and Toutanova, Kristina},
+	journal={arXiv preprint arXiv:1810.04805},
+	year={2018}
+}
+
 \end{filecontents}
 \addbibresource{\jobname.bib}
 
@@ -674,6 +681,18 @@ cleveref=true,%
 
 % Tables with line breaks within
 \usepackage{tabularx}
+
+% Colors for the Visual Towards component
+\definecolor{BackgroundColor}{HTML}{ffffff}
+\definecolor{CommentColor}{HTML}{006200}
+\definecolor{KeywordColor}{HTML}{fa0200}
+\definecolor{PunctuationColor}{HTML}{fefa01}
+\definecolor{OperatorColor}{HTML}{fefa01}
+\definecolor{WhitespaceColor}{HTML}{ffffff}
+\definecolor{IdentifierColor}{HTML}{01ffff}
+\definecolor{LiteralColor}{HTML}{01ffff}
+\definecolor{UnknownColor}{HTML}{ffffff}
+\definecolor{GenericsColor}{HTML}{fefa01}
 
 % TODO: Check tenses (Present tense to describe the paper itself)
 % TODO: poorly readable vs unreadable
@@ -2025,14 +2044,118 @@ cleveref=true,%
 	% Architecture
 	The input for the model is a labeled dataset consisting of code snippets and whether they are badly or well readable. In the code representation layer three different code representations are generated from each code snippet: A visual, a semantic and a structural representation. 
 	
-	For the visual representation the syntax of the code is highlighted. We assign each type of syntactic element, such as for example keywords, identifiers or commas, 
+	% Architecture: Visual embedding
+	For the visual representation the syntax of the code is highlighted. Therefore \citeauthor{mi2022towards} assigned each type of syntactic element a color (see \autoref{tab:model-colors}). Instead of highlighting the words in the respective color, as done by an IDE, the words are replaced by color blocks instead (see \autoref{fig:visual_encoding}). \citeauthor{mi2022towards} used Eclipse\curl{https://www.eclipse.org/}{2024-03-02} to highlight the code snippets and then took screenshots to obtain a RGB Matrix~\cite{mi2022towards}.
+		
+	\begin{table}[h]
+		\centering
+		\caption{The color encoding used by the visual component of the towards model~\cite{mi2022towards}.}
+		\vspace{8pt}
+		\label{tab:model-colors}
+		\begin{tabular}{lcc}
+			\toprule
+			Element & Color & Hex Code \\
+			\midrule
+			Comment & \cellcolor{CommentColor} & \texttt{\#006200} \\
+			Keyword & \cellcolor{KeywordColor} & \texttt{\#fa0200} \\
+			Identifier & \cellcolor{IdentifierColor} & \texttt{\#01ffff} \\
+			Literal & \cellcolor{LiteralColor} & \texttt{\#01ffff} \\
+			Punctuation & \cellcolor{PunctuationColor} & \texttt{\#fefa01} \\
+			Operator & \cellcolor{OperatorColor} & \texttt{\#fefa01} \\
+			Generics & \cellcolor{GenericsColor} & \texttt{\#fefa01} \\
+			Whitespace & \cellcolor{WhitespaceColor} & \texttt{\#ffffff} \\
+			%			Unknown & \cellcolor{UnknownColor} & \texttt{\#ffffff} \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
 	
-	% Different
+%	\begin{listing}
+%		\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
+%    		/**
+%			* Quits the application without any questions.
+%			*/
+%			public void quit() {
+%				getConnectController().quitGame(true);
+%				if (!windowed) {
+%					gd.setFullScreenWindow(null);
+%				}
+%				System.exit(0);
+%		\end{minted}
+%		\label{lst:rdh-config-file}
+%	\end{listing}
+%	
+%	\begin{figure}
+%		\centering
+%		\includegraphics[width=\textwidth]{img/visual_encoding.png}
+%		\caption{An example for a visual encoding of a code snippet.}
+%		\label{fig:visual_encoding}
+%	\end{figure}
+	
+	\begin{figure}
+%		\begin{subfigure}{0.48\linewidth}
+%			\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
+%				// A method for counting
+%				public void getNumber(){
+%					int count = 0;
+%					while(count < 10){
+%						count++;
+%					}
+%				}
+%			\end{minted}
+%			\caption{An exemplary Java code snippet.}
+%			\label{lst:java_code}
+%		\end{subfigure}
+		\begin{subfigure}{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth, height=117pt]{img/visual_encoding_code.png}
+			\caption{An exemplary Java code snippet.}
+			\label{lst:java_code}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{img/visual_encoding.png}
+			\caption{The visual encoding of the code snippet in \autoref{lst:java_code}.}
+			\label{fig:visual_encoding}
+		\end{subfigure}
+		\caption{A code snippet and its visual encoding.}
+		\label{fig:visual_encoding_combined}
+	\end{figure}
+	%	TODO: The color definitions do not match. Bug in our tool!
+	
+	% Architecture: Segment embedding
+	For the semantic representation we split the code into tokens (e.g., keywords and operators) and use BERT~\cite{devlin2018bert} to embed each token as a vector~\cite{mi2022towards}.
+	
+	% Architecture: Structural embedding
+	For the structural representation we split the code into characters and convert each into its corresponding ASCII value to obtain a ASCII matrix~\cite{mi2022towards}.
+	
+	% Architecture: Feature extraction (CNNs)
+	The model itself takes the three representations as input. We perform feature extraction on the RGB matrix and the ASCII matrix using a CNN for each. Each of the CNNs consists of multiple convolution and max pooling layers and a single flatten layer~\cite{mi2022towards}. 
+	
+	% Architecture: Feature extraction BiLSTM
+	On the token embedding the model performs feature extraction using a BERT embedding layer, convolution layers, a max pooling layer and a BiLSTM~\cite{mi2022towards}.
+	
+	% Architecture: Classification
+	After extracting the feature from the three individual representations the output is merged and used as a input for the final step: code readability classification. In this step the model consists of multiple fully-connected layers and a dropout layer. The output is a single value, namely the readability score. If the score is above a certain limit, we classify the input as well readable, otherwise it is poorly readable~\cite{mi2022towards}.	
+	
+	% Different: Model
+	We implemented this model as described by \citeauthor{mi2022towards}~\cite{mi2022towards} with a few adjustments:
 	In contrast to the publicly available code of \citeauthor{mi2022towards}\curl{https://github.com/swy0601/Readability-Features}{2024-02-20}, our model includes (batch) encoders required for the model to be trained on new data and to perform the prediction task for new code snippets. In addition, our model supports fine-tuning by freezing certain layers as well as storing intermediate results, such as the encoded dataset. During evaluation, the model returns the evaluation statistics in form of a JSON file.
+	
+	% Different: Image encoding
+	A larger adjustment was made when it comes to image encoding. To automate the generation of visual encodings we propose a different approach leading to a similar result. You can find an overview of our approach in \autoref{fig:visual_encoding_pipline}.
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=\textwidth]{img/visual_encoding_pipline.png}
+		\caption{The steps to automatically, visually encode code.}
+		\label{fig:visual_encoding_pipline}
+	\end{figure}
+	
+	In a first step we use Imgkit\curl{https://pypi.org/project/imgkit/}{2024-03-02} to convert the code to HTML. Thereby, a HTML class is assigned to each type of syntactic element. Next, we apply syntax highlighting using a CSS style sheet (see Appendix \ref{appendix:model-visual-colors}). In a third step we use pygments\curl{https://pygments.org/}{2024-03-02} to convert the HTML with the applied CSS to an image. We use pillow\curl{https://pypi.org/project/pillow/}{2024-03-02} to remove blur and adjust the padding of the image. Finally, the image is loaded using opencv-python\curl{https://pypi.org/project/opencv-python/}{2024-03-02} which allows us to convert the image to an RGB tensor that is suitable as a model input.	
 	
 	% Problems
 	During implementation, we encountered the following potential problem with the model:
-	The token length for the bert encoding (bert-base-cased\curl{https://huggingface.co/google-bert/bert-base-cased}{2024-02-20}) used in the model is 100. What is a token in a piece of code? In addition to special tokens that mark the beginning \textit{[CLS]} and the end \textit{[SEP]} of the input, each word is represented by a token. However, each special character (such as \textit{/(){},;=} and many more) is also represented by its own token. Java identifiers are split according to the convention of upper and lower case. Long words are in turn divided into several tokens.
+	The token length for the BERT encoding (bert-base-cased\curl{https://huggingface.co/google-bert/bert-base-cased}{2024-02-20}) used in the model is 100. What is a token in a piece of code? In addition to special tokens that mark the beginning \textit{[CLS]} and the end \textit{[SEP]} of the input, each word is represented by a token. However, each special character (such as \textit{/(){},;=} and many more) is also represented by its own token. Java identifiers are split according to the convention of upper and lower case. Long words are in turn divided into several tokens.
 	
 	Consider the method from \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils}. With a token limit of 100, the last encoded token is the last closing parenthesis in line 9. Everything from line 10 onwards is not encoded, which means that the information is lost for the semantic part of the model. To put it in other words: The model of \citeauthor{mi2022towards} only considers the first few lines of code snippets in its semantic component.
 	
@@ -2667,5 +2790,66 @@ cleveref=true,%
 	\textbf{Introduction Page 3:}
 	
 	This survey should take about 10 minutes to complete. Now you are ready to go! 
+
+\pagebreak
+	\section{Towards Model - Visual Encoding Colors}\label{appendix:model-visual-colors}	
+	The following CSS was used to generate the background colors for the visual encoding. 
+	You can find an overview over all tokens on the pygments homepage\curl{https://pygments.org/docs/tokens/}{2024-03-02}.
+%	of the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards}
+
+%/* Global Styles */
+%* {
+%	color: #fff;
+%	background-color: #fff;
+%	font-size: 2px;
+%	padding: 0;
+%	margin: 0;
+%}
+
+	\begin{figure}[h!]
+		\begin{minted}[linenos, frame=lines, framesep=2mm]{CSS}
+			/* Comment Styles */
+			.c, .ch, .cm, .cp, .cpf, .c1, .cs {
+				background-color: #006200;
+				color: #006200;
+			}
+			/* Keyword Styles */
+			.k, .kc, .kd, .kn, .kp, .kr, .kt {
+				background-color: #fa0200;
+				color: #fa0200;
+			}
+			/* Parentheses, Semicolon, Braces Styles */
+			.p, .o, .ow {
+				background-color: #fefa01;
+				color: #fefa01;
+			}
+			/* Whitespace Styles */
+			.w {
+				background-color: #fff;
+				color: #fff;
+			}
+			/* Names/Identifiers Styles */
+			.n, .na, .nb, .nc, .no, .nd, .ni, .ne, .nf, .nl, .nn, .nt, .nv {
+				background-color: #01ffff;
+				color: #01ffff;
+			}
+			/* Literals Styles */
+			.m, .mb, .mf, .mh, .mi, .mo, .s, .sa, .sb, .sc, .dl, .sd, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss, .b, .bp, .f, .fm, .v, .vc, .vg, .vi, .vm, .i, .il {
+				background-color: #01ffff;
+				color: #01ffff;
+			}
+			/* Error Styles */
+			.err {
+				background-color: #fff;
+				color: #fff;
+			}
+			/* Generics Styles */
+			.g, .gd, .ge, .ges, .gr, .gh, .gi, .go, .gp, .gs, .gu, .gt {
+				background-color: #fefa01;
+				color: #fefa01;
+			}
+		\end{minted}
+		\label{lst:model-visual-css}
+	\end{figure}
 	
 \end{document}
