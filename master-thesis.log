@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  2 MAR 2024 18:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  3 MAR 2024 08:00
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2045,13 +2045,20 @@ LaTeX Warning: Float too large for page by 18.6119pt on input line 2573.
 
 [35 <./img/survey_Java_familiarity_pie.png (PNG copy)>] [36 <./img/survey_ratin
 gs_violin_all.png (PNG copy)> <./img/survey_ratings_bar_all.png (PNG copy)>]
-Overfull \hbox (4.80266pt too wide) in paragraph at lines 2639--2651
+Overfull \hbox (17.99313pt too wide) in paragraph at lines 2637--2638
+[]\T1/LibertinusSerif-TLF/b/n/10.95 (-20) Implementation eval-u-ation: \T1/Libe
+rtinusSerif-TLF/m/n/10.95 (-20) We in-vest-ig-ate whether our re-implementation
+
+ []
+
+
+Overfull \hbox (4.80266pt too wide) in paragraph at lines 2647--2659
  [][] 
  []
 
 [37] [38] [39] [40] [41]
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/sc' will be
-(Font)              scaled to size 10.95pt on input line 2715.
+(Font)              scaled to size 10.95pt on input line 2723.
  [42
 
 
@@ -2061,7 +2068,7 @@ LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/sc' will be
 File: img/survey_Java_familiarity_pie.png Graphic file (type png)
 <use img/survey_Java_familiarity_pie.png>
 Package pdftex.def Info: img/survey_Java_familiarity_pie.png  used on input lin
-e 2730.
+e 2738.
 (pdftex.def)             Requested size: 210.00214pt x 157.50209pt.
  [46] [47] [48]
 \openout4 = `master-thesis.pyg'.
@@ -2328,9 +2335,9 @@ Package logreq Info: Writing requests to 'master-thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 52097 strings out of 475551
- 1130393 string characters out of 5772369
- 2127145 words of memory out of 5000000
+ 52100 strings out of 475551
+ 1130414 string characters out of 5772369
+ 2127144 words of memory out of 5000000
  72041 multiletter control sequences out of 15000+600000
  706513 words of font info for 303 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
@@ -2352,9 +2359,9 @@ fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/p
 ublic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts
 /cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pf
 b><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on master-thesis.pdf (53 pages, 1506295 bytes).
+Output written on master-thesis.pdf (53 pages, 1508107 bytes).
 PDF statistics:
- 1075 PDF objects out of 1200 (max. 8388607)
- 194 named destinations out of 1000 (max. 500000)
+ 1080 PDF objects out of 1200 (max. 8388607)
+ 197 named destinations out of 1000 (max. 500000)
  87325 words of extra memory for PDF output out of 89155 (max. 10000000)
 
