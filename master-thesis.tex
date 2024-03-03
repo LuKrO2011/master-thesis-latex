@@ -2442,7 +2442,7 @@ cleveref=true,%
 	\begin{figure}[tb]
 		\centering
 		\includegraphics[width=\textwidth]{img/survey_tool.png}
-		\caption{Tool for rating a code snippet from the perspective of a survey participant.}
+		\caption{Tien Duc Nguyen's tool for rating a code snippet from the perspective of a survey participant.}
 		\label{fig:survey_tool}
 	\end{figure}
 
@@ -2490,11 +2490,14 @@ cleveref=true,%
 	\begin{itemize}
 		\item \textbf{Ill-defined Target Population:} Ensuring a well-defined target population is critical to the survey's quality. To mitigate this threat, we define our target population.
 		
-		\item \textbf{Sampling Method:} Stratified Sampling is well-defined and proven in practice. The approach ensures that our sample represents all parts of the population under investigation. This is improving the survey's external validity.
+		\item \textbf{Sampling Method:} We have a larger proportion of code snippets from strata 1 and 3 (see \autoref{Construction of Questionnaires}). While we argue that we avoided spending resources on labeling RDH data that is likely not different from the original methods or rather uninteresting, this might also introduce statistical errors to our survey results.
+		However, stratified sampling is well-defined and proven in practice. The approach ensures that our sample represents all parts of the population under investigation.
+%		This is improving the survey's external validity.
 		
 		\item \textbf{Insufficient Responses for Drawing Conclusions:} To prevent drawing conclusions from an insufficient number of responses, we scale our survey to an appropriate size. This guarantees that we collect a substantial volume of responses, allowing for robust statistical analysis.
 		
 		\item \textbf{Piece-work Effect:} Survey participants are paid for taking part and completing a questionnaire. However, they receive the same amount of money regardless of their speed. Therefore, they receive more pay per minute if they hurry. This could have an impact on the accuracy with which they scored the code snippets. A comparison between the time required by a participant for a pilot questionnaire and a Prolific questionnaire (see \autoref{fig:survey_times}) supports this suggestion. Especially the ratings of participants requiring less than 3 minutes (see \autoref{fig:survey_time_less_than_180}) to complete a questionnaire could have a negative impact on validity. 
+		
 	\end{itemize}
 	
 \textit{3. Results:}
@@ -2706,20 +2709,23 @@ cleveref=true,%
 		We did not outperform the model trained only on the merged dataset.
 	\end{researchbox}
 	
-	% TODO: Continue here
-	We also trained the model with a random sample of 210 data points to gain insight into what a change in training size might do. As we can see, the model has similar metrics to the all-all model. If we now compare the accuracy of the new-new compared to the merged-merged model, we see that with a larger dataset an improvement of about 8~\% is possible. Similar results are suggested by previous research on data augmentation, where an accuracy of 87.3~\% was achieved \citeauthor{mi2021effectiveness}. This emphasizes the importance of finding new ways of generating data for readability classification. 
+	% TODO: Talk with Lisa about 210 ds
+	%	We also trained the model with a random sample of 210 data points to gain insight into what a change in training size might do. As we can see, the model has similar metrics to the all-all model. If we now compare the accuracy of the new-new compared to the merged-merged model, we see that with a larger dataset an improvement of about 8~\% is possible. Similar results are suggested by previous research on data augmentation, where an accuracy of 87.3~\% was achieved \citeauthor{mi2021effectiveness}. This emphasizes the importance of finding new ways of generating data for readability classification. 
 	
 \section{Discussion} \label{Discussion}
+
+	% Zusammenhang: Studie und Model Eval
+	Our survey (see \autoref{Pilot Survey}) showed that mined-and-modified dataset captures readability. The model training results (see \autoref{Model training results}) showed that the mined-and-modified dataset capture different aspects of readability than the merged dataset. 
+	
+	% Different aspects of readability
+	The question arises what the different aspects are and whether it is possible to extend the proposed RDHs (see \autoref{Readability Decreasing Heursitcs}) so that the same aspects are captured. By achieving this we suggest that we could also achieve better evaluation results on the merged dataset than previous models.
 
 	% Threats
 	% Mean assignment
 	The main drawback of our approach is that we rely on estimations to create the mined-and-modified dataset. The score labels of our code snippets are rough estimations and not exact values. Accurate ratings would require manual review of \numSamples code snippets by human annotators and is therefore not feasible. However, for two class classification this does not matter.
 	
-	% Study threats	
-	A thread related to the study could be the sampling approach used. While we argue that we avoided spending resources on labeling rdh data that is likely not different from the original methods or rather uninteresting, this might also introduce statistical errors to our survey results.
-	
 	% Model threats	
-	When comparing the model performance trained on the new and merged data set, it should be noted that the merged data set is small. Consequently, comparisons between classifiers trained on the merged dataset may be unreliable~\cite{mi2022towards}.
+	When comparing the model performance trained on the mined-and-modified and merged dataset, it should be noted that the merged data set is small. Consequently, comparisons between classifiers trained on the merged dataset may be unreliable~\cite{mi2022towards}.
 	
 \section{Conclusions} \label{Conclusions}
 	% Summary with Implications: So what?	
