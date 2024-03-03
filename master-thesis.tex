@@ -2601,9 +2601,10 @@ cleveref=true,%
 %		\end{tabular}
 %	\end{table}
 
+	% TODO: Besserer name für none
 	\begin{table}[tb]
 		\centering
-		\caption{Mann-Whitney U test results of each rdh against \texttt{none}.}
+		\caption{Mann-Whitney U test results of each rdh against \texttt{none}. When \textbf{$p$} is smaller than \num{5e-2} we conclude that the difference is significant.}
 		\vspace{8pt}
 		\label{tab:survey_statistical_evidence}
 		\begin{tabular}{lS[table-format=1.2e-2]}
@@ -2632,46 +2633,80 @@ cleveref=true,%
 	
 	% TODO: Make it "how well"
 	\begin{enumerate}
-		\item \textbf{Internal evaluation:} We investigate whether the towards model captures the structure of the mined-and-modified dataset and the difference between \texttt{original} and \texttt{all7} methods, which are modified with our RDHs.
-		\item \textbf{Cross evaluation:} We investigate whether the mined-and-modified dataset is suited for predicting readability. We therefore train the model on the mined-and-modified dataset and evaluate it on the merged dataset.
-		\item \textbf{Implementation evaluation:} We investigate whether our re-implementation of the towards, with the changes as described in \autoref{Readability Classification Model}, is able to achieve similar accuracy as the original one~\cite{mi2022towards}.
+		\item \textbf{Model evaluation:}
+		To confirm that our implementation of the model scores similar accuracy as the original one of \citeauthor{mi2022towards}~\cite{mi2022towards}, we trained and evaluated the model on the merged dataset (merged-merged).
+		
+		\item \textbf{Internal evaluation:} 
+		To investigate how effectively the model captures the readability aspects of the mined-and-modified dataset, we train and evaluate it on this dataset (mam-mam). By doing so, we examine also how effectively the model captures the differences between the \texttt{original} and \texttt{all7} methods which are modified with our RDHs.
+		
+		\item \textbf{Cross evaluation:} 
+		To assess how effective the mined-and-modified dataset is for predicting readability, we train the model on this dataset and then evaluate its performance on the merged dataset (mam-merged). For advanced insights, we also train the model on the merged dataset and evaluate it on the merged dataset (merged-merged) and on the mined-and-modified dataset (merged-mam).
+		
+		\item \textbf{Fine-tuning:} 
+		To assess what accuracy we can score in predicting readability, we investigate training on the mined-and-modified dataset and fine-tuning and evaluating on the merged dataset (mam-merged-merged).		
+		
+		% TODO: Others
 	\end{enumerate}
 	
-	We therefore used different combinations of training and evaluation datasets with the towards mode. The results can be found in \autoref{tab:dataset_performance}.
+	We therefore used different combinations of training and evaluation datasets with the towards mode. The results can be found in \autoref{tab:dataset_performance}. We used 10-fold cross-validation for evaluation.
 		
 	\begin{table}[tb]
 		\centering
-		\caption{Performance of different dataset configurations for the same model. New-Merged is training on the mined-and-modified dataset and fine tuning on the merged one.}
+		\caption{Performance of different dataset configurations for the same model. \textit{mam} stands for the mined-and-modified dataset. 
+%			mam-merged is training on the mined-and-modified dataset and fine tuning on the merged one.
+		}
 		\vspace{8pt}
 		\label{tab:dataset_performance}
 		\begin{tabular}{llrrrrrr}
 			\toprule
 			Train & Eval & Acc & Prec & Rec & AUC & F1 & MCC \\
 			\midrule
-			New        	& New    	& 91.8 \% & 92.3 \% & 91.3 \% & 91.8 \% & 91.7 \% & 83.6 \% \\
-			New			& Merged    & 61.9 \% & 63.6 \% & 63.6 \% & 63.6 \% & 63.6 \% & 23.6 \% \\
-			Merged      & Merged    & 53.8 \% & 52.6 \% & 77.8 \% & 65.2 \% & 62.8 \% & 08.7 \% \\
-			Merged      & Merged   	& 84.7 \% & 87.7 \% & 82.3 \% & 85.0 \% & 83.7 \% & 70.4 \% \\
-			New-Merged 	& Merged    & 80.4 \% & 84.0 \% & 73.8 \% & 78.9 \% & 77.2 \% & 60.0 \% \\
-			New210     	& New210  	& 80.9 \% & 82.7 \% & 77.6 \% & 80.2 \% & 78.9 \% & 60.9 \% \\
+			merged      & merged   	& 84.7 \% & 87.7 \% & 82.3 \% & 85.0 \% & 83.7 \% & 70.4 \% \\
+			mam        	& mam    	& 91.8 \% & 92.3 \% & 91.3 \% & 91.8 \% & 91.7 \% & 83.6 \% \\
+			mam			& merged    & 61.9 \% & 63.6 \% & 63.6 \% & 63.6 \% & 63.6 \% & 23.6 \% \\
+			merged      & mam	    & 53.8 \% & 52.6 \% & 77.8 \% & 65.2 \% & 62.8 \% & 08.7 \% \\
+			mam-merged 	& merged    & 80.4 \% & 84.0 \% & 73.8 \% & 78.9 \% & 77.2 \% & 60.0 \% \\
+%			mam     	& mam  		& 80.9 \% & 82.7 \% & 77.6 \% & 80.2 \% & 78.9 \% & 60.9 \% \\
 			\bottomrule
 		\end{tabular}
 	\end{table}
-			
-	When we train the model on the mined-and-modified dataset and evaluate it with 10-fold cross-validation, we obtain an average accuracy of 91.8~\%. However, if we evaluate the trained model on the merged dataset, we get an accuracy of only 61.9~\%. From this we can draw some conclusions:
 	
-	The towards model architecture is well suited to learn the structure of the mined-and-modified dataset. In particular it learns the differences between \texttt{original} and \texttt{all7} methods and thus it learns how to predict if a code snippet has been modified using RDHs. However, the readability determined with the merged dataset differs from the readability with the mined-and-modified dataset. Otherwise, the values for all-krod and krod-all would be similar to the value for all-all. This indicates that our dataset is not suitable for a general classification of readability, but we may have found a subproblem. However, adding more features to reduce readability and well-designed data augmentation could overcome this limitation.
-		
-	While the model trained on the mined-and-modified dataset is able to classify readability to a certain degree, the opposite is not the case, as 53.8~\%  is almost a random classifier. This suggests that fine-tuning a model trained on the mined-and-modified dataset using the entire dataset could lead to better results than the original towards model.
+	\textbf{Implementation evaluation.}
+	When we train and evaluate the model on the merged dataset, we obtain an accuracy of 84.7~\%. This is very similar to the results of \citeauthor{mi2022towards} (84.7~\% vs 85.3~\%). The deviation of 0.6~\% accuracy might be due to randomness of the splits for 10-fold cross-validation. We can confirm the results of the paper~\cite{mi2022towards}.
 	
-	To check whether our implementation of the model works correctly, we also included the merged-merged case in the comparison. Here we achieve a very similar accuracy to \citeauthor{mi2022towards} (84.7~\% vs 85.3~\%), which indicates that our implementation of the model works correctly.
+	\textbf{Internal evaluation.}
+	When we train the model on the mined-and-modified dataset and evaluate it, we obtain an average accuracy of 91.8~\%. 
+	The towards model architecture is well suited to learn the structure of the mined-and-modified dataset. In particular it learns the differences between \texttt{original} and \texttt{all7} methods and thus it learns how to predict if a code snippet has been modified using RDHs. 
+
+	\textbf{Cross evaluation.}
+	When we train the model on the mined-and-modified dataset and evaluate it on the merged dataset (mam-merged), we get an accuracy of 61.9~\%. This is 22.8~\% worse than the accuracy we get when we train and evaluate the model on the merged dataset (merged-merged). When we train the model on the merged dataset and evaluate it on the mined-and-modified one (merged-mam), we get an accuracy of 53.8~\%, which is close to the approximate accuracy of 50.0~\% of a random classifier.
+	If the scores for mam-merged, merged-merged and merged-mam would be similar, we would conclude that both datasets, the merged and the mined-and-modified one, address readability in general. Given, that this is not the case and knowing for both datasets that they at least address some aspects of readability we conclude that we address different aspects of readability.
 	
-	We tried to fine-tune with the merged dataset by freezing different layers of the model trained with the mined-and-modified dataset. The best we could achieve was to freeze the input layers as well as the first convolution and pooling layer of all encoders. However, the performance of this fine-tuned model was still worse than the baseline model. This is in direct contrast to our earlier assumption that such fine-tuning could lead to better results. One explanation for this could be that the model is too small to be effective with the larger amount of data. Introducing more or bigger layers so that the model can store more features internally could lead to an improvement. However, this is not part of this work, in which we mainly focus on a new dataset (generation approach).
+	%	Furthermore, the accuracy of mam-merged is 8.1~\% better than merged-mam. 
+	%	This indicates that the mined-and-modified dataset includes aspects of readability that the merged dataset does not have.
+	%	This indicates that our dataset is not suitable for a general classification of readability, but we may have found a subproblem. However, adding more features to reduce readability and well-designed data augmentation could overcome this limitation.
+	%	We conclude, that the aspects of readability learned with the merged dataset differ from those of the mined-and-modified dataset.
+	%	Otherwise, the values for merged-mam and krod-all would be similar to the value for all-all. This indicates that our dataset is not suitable for a general classification of readability, but we may have found a subproblem. However, adding more features to reduce readability and well-designed data augmentation could overcome this limitation.
 	
+	%	While the model trained on the mined-and-modified dataset is able to classify readability to a certain degree, the opposite is not the case, as 53.8~\%  is almost a random classifier. This suggests that fine-tuning a model trained on the mined-and-modified dataset using the entire dataset could lead to better results than the original towards model.
+	
+	\textbf{Fine-tuning.}
+	%	We tried to overcome possible limitations by training the model on the merged-and-modified dataset and fine-tune it on the merged dataset.
+	We tried to fine-tune the merged dataset by freezing different layers of the model trained with the mined-and-modified dataset. During evaluation we achieved the best results when freezing the input layers as well as the first convolution and pooling layer of all encoders. 
+	However, when evaluated on the merged dataset, the performance is still worse than the merged-merged variant.
+%	This is in direct contrast to our earlier assumption that such fine-tuning could lead to better results.
+	One explanation for this could be that the model is too small to be effective with the larger amount of data. Introducing more or bigger layers so that the model can store more features internally could lead to an improvement. However, this is not part of this work, in which we mainly focus on a new dataset (generation approach).
+	
+	% TODO: Talk with lisa about 91.8~\%
 	\begin{researchbox}{Summary (RQ3 - new-data):}
-		An accuracy within the mined-and-modified dataset of 91.8~\% surpasses all previous scores. However, the accuracy of 61.9~\% when evaluating on the merged dataset suggests, that the new training data is less valuable than the merged one. We could neither improve this accuracy by applying fine-tuning. While it is possible that we successfully addressed a sub problem of readability, we are not able to improve existing readability models in general.
+		When trained and evaluated on the mined-and-modified dataset we achieve an accuracy of 91.8~\%.
+		When evaluated on the merged dataset, the model trained with the mined-and-modified dataset achieves an accuracy of 61.9~\%. When we train the model with merged dataset 84.7~\% is achieved.
+		We concluded that the mined-and-modified dataset captures different aspects of readability. 
+%		We improved the results by training with the mined-and-modified dataset and fine-tuning with the merged dataset to 80.4~\%. 
+		We did not outperform the model trained only on the merged dataset.
 	\end{researchbox}
 	
+	% TODO: Continue here
 	We also trained the model with a random sample of 210 data points to gain insight into what a change in training size might do. As we can see, the model has similar metrics to the all-all model. If we now compare the accuracy of the new-new compared to the merged-merged model, we see that with a larger dataset an improvement of about 8~\% is possible. Similar results are suggested by previous research on data augmentation, where an accuracy of 87.3~\% was achieved \citeauthor{mi2021effectiveness}. This emphasizes the importance of finding new ways of generating data for readability classification. 
 	
 \section{Discussion} \label{Discussion}
