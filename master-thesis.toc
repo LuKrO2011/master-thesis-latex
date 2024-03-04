@@ -1,28 +1,28 @@
 \babel@toc {UKenglish}{}\relax 
 \contentsline {section}{\numberline {1}Introduction}{2}{section.0.0.1}%
-\contentsline {section}{\numberline {2}Background and Related Work}{4}{section.0.0.2}%
-\contentsline {subsection}{\numberline {2.1}Code Readability}{4}{subsection.0.0.2.1}%
+\contentsline {section}{\numberline {2}Background and Related Work}{5}{section.0.0.2}%
+\contentsline {subsection}{\numberline {2.1}Code Readability}{5}{subsection.0.0.2.1}%
 \contentsline {subsection}{\numberline {2.2}Conventional Calculation Approaches}{6}{subsection.0.0.2.2}%
-\contentsline {subsection}{\numberline {2.3}Deep Learning Based Approaches}{6}{subsection.0.0.2.3}%
+\contentsline {subsection}{\numberline {2.3}Deep Learning Based Approaches}{7}{subsection.0.0.2.3}%
 \contentsline {subsection}{\numberline {2.4}Data Augmentation}{8}{subsection.0.0.2.4}%
 \contentsline {subsection}{\numberline {2.5}Diverse Perspectives}{9}{subsection.0.0.2.5}%
 \contentsline {subsection}{\numberline {2.6}Data Generation}{10}{subsection.0.0.2.6}%
-\contentsline {section}{\numberline {3}Mined and Modified Code for Dataset Generation}{10}{section.0.0.3}%
-\contentsline {subsection}{\numberline {3.1}Work on Existing Datasets}{10}{subsection.0.0.3.1}%
+\contentsline {section}{\numberline {3}Mined and Modified Code for Dataset Generation}{11}{section.0.0.3}%
+\contentsline {subsection}{\numberline {3.1}Work on Existing Datasets}{11}{subsection.0.0.3.1}%
 \contentsline {subsection}{\numberline {3.2}Classification Considerations}{11}{subsection.0.0.3.2}%
 \contentsline {subsection}{\numberline {3.3}Dataset Generation Approach}{12}{subsection.0.0.3.3}%
 \contentsline {subsection}{\numberline {3.4}Readability Decreasing Heuristics\xspace }{14}{subsection.0.0.3.4}%
-\contentsline {subsection}{\numberline {3.5}Construction of Questionnaires}{18}{subsection.0.0.3.5}%
-\contentsline {subsection}{\numberline {3.6}Readability Classification Model}{22}{subsection.0.0.3.6}%
+\contentsline {subsection}{\numberline {3.5}Construction of Questionnaires}{19}{subsection.0.0.3.5}%
+\contentsline {subsection}{\numberline {3.6}Readability Classification Model}{23}{subsection.0.0.3.6}%
 \contentsline {section}{\numberline {4}Evaluation}{27}{section.0.0.4}%
 \contentsline {subsection}{\numberline {4.1}Survey}{28}{subsection.0.0.4.1}%
-\contentsline {subsubsection}{\nonumberline Pilot Survey}{28}{subsubsection*.20}%
-\contentsline {subsubsection}{\nonumberline Prolific Survey}{30}{subsubsection*.24}%
-\contentsline {subsection}{\numberline {4.2}Model Training Results}{37}{subsection.0.0.4.2}%
-\contentsline {section}{\numberline {5}Discussion}{39}{section.0.0.5}%
-\contentsline {section}{\numberline {6}Conclusions}{40}{section.0.0.6}%
-\contentsline {section}{\numberline {I}Pilot Survey Feedback}{46}{section.Alph0.1}%
-\contentsline {section}{\numberline {II}Readability Decreasing Heuristics\xspace Configuration File}{48}{section.Alph0.2}%
-\contentsline {section}{\numberline {III}Prolific Survey Texts}{49}{section.Alph0.3}%
-\contentsline {section}{\numberline {IV}Towards Model - Visual Encoding Colors}{50}{section.Alph0.4}%
+\contentsline {subsubsection}{\nonumberline Pilot Survey}{29}{subsubsection*.20}%
+\contentsline {subsubsection}{\nonumberline Prolific Survey}{32}{subsubsection*.24}%
+\contentsline {subsection}{\numberline {4.2}Model Training Results}{36}{subsection.0.0.4.2}%
+\contentsline {section}{\numberline {5}Discussion}{40}{section.0.0.5}%
+\contentsline {section}{\numberline {6}Conclusions}{41}{section.0.0.6}%
+\contentsline {section}{\numberline {I}Pilot Survey Feedback}{47}{section.Alph0.1}%
+\contentsline {section}{\numberline {II}Readability Decreasing Heuristics\xspace Configuration File}{49}{section.Alph0.2}%
+\contentsline {section}{\numberline {III}Prolific Survey Texts}{50}{section.Alph0.3}%
+\contentsline {section}{\numberline {IV}Towards Model - Visual Encoding Colors}{51}{section.Alph0.4}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

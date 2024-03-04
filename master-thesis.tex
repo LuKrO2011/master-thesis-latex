@@ -890,24 +890,25 @@ cleveref=false,%
 	Additionally, we evaluate the performance of the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} using the mined-and-modified dataset.
 		
 	% Contributions
-	% TODO: Contributions should be "can be false". Formal properties, cool output, cool features. Use forward references if suitable to prove the claims
 	Our contributions are as follows:
 	\begin{itemize}
-		\item We combine and unify existing datasets~\citeolddataset
-		\item We propose a approach to mine well readable methods
-		\item We create a tool to decrease the readability of Java class files (\rdh)
-		\item We propose a novel dataset generation approach and introduce a new readability classification dataset, namely the mined-and-modified dataset
-%		\item We publish a re-implementation of the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards}
-		\item We evaluate our generation approach with a user study
-		\item We evaluate our generation approach by comparing the model performance of the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} trained with and without the mined-and-modified dataset	
+		\item Although existing datasets~\citeolddataset have different structure we combine and unify them into one merged dataset (see \Cref{Work on Existing Datasets}).
+		\item We argue that only part of the available data was used for training and evaluating the readability classification model of \citeauthor{mi2022towards}~\cite{mi2022towards} (see \Cref{Classification Considerations}).
+		\item We develop an approach for mining not any but well readable Java methods (see \Cref{Dataset Generation Approach}).
+		\item We achieve automated dataset generation for code readability and introduce a new dataset, namely the mined-and-modified dataset (see \Cref{Dataset Generation Approach}).
+		\item We managed to create a tool that can automatically decrease the readability of Java class files (see \Cref{Readability Decreasing Heursitcs}).
+		\item There is an enormous amount of possible combinations to sample methods for a user study. We show a representative and resource-effective sample approach (\Cref{Construction of Questionnaires}).
+		\item We demonstrate that the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} is limited (see \Cref{Readability Classification Model}).
+		\item We show that our generation approach is working using a user study (see \Cref{Survey}).
+		\item We show that our dataset can be used to train code readability classification models by training and evaluating the performance of the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} with and without the mined-and-modified dataset (see \Cref{Model training results}).
 	\end{itemize}
 	
 	% Implications
 %	The survey confirms both, the well-readable-assumption (\Cref{well-readable-assumption}) and the poorly-readable-assumption (\Cref{poorly-readable-assumption}).
 %	Although our approach for creating a dataset works in principle, we are not able to address the same aspects of code readability as the merged dataset does with the proposed heuristics. Thus, our dataset probably only addresses a partial problem of code readability.
 
-	The survey confirms both assumptions (\Cref{well-readable-assumption} and \Cref{poorly-readable-assumption}).
-	Our approach for creating a dataset works in principle. However, the mined-and-modified dataset does not capture the same aspects of code readability as the merged dataset. 
+	The survey confirms both assumptions (\Cref{well-readable-assumption} and \Cref{poorly-readable-assumption}) (see \Cref{Survey}).
+	Our approach for creating a dataset works in principle. However, the model training results show (see \Cref{Model training results}) that the mined-and-modified dataset does not capture the same aspects of code readability as the merged dataset. 
 		
 \section{Background and Related Work} \label{Background and Related Work}
 	In the following subsections you find an overview of the background and related work on code readability and our approach to dataset creation.
