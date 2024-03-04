@@ -1338,7 +1338,7 @@ cleveref=true,%
 \subsection{Work on Existing Datasets} \label{Work on Existing Datasets}
 %	Later we will compare the mined-and-modified dataset and its generation approach against existing datasets for readability classification.
 
-	Most of the related work (see \Cref{Background and Related Work}) uses a combination of the data of \citeauthor{buse2009learning}, \citeauthor{dorn2012general} and \citeauthor{scalabrino2018comprehensive}. The raw data from their surveys can be downloaded \curl{https://dibt.unimol.it/report/readability/}{2024-02-18}, but their data is not uniformly formatted, including ratings that are not Java code snippets, as well as the individual ratings rather than the mean of the ratings used for training machine learning models. Other than our mined and modified code snippets theirs do not all have the scope of a method, but instead consist of a few lines of code.
+	Most of the related work (see \Cref{Background and Related Work}) uses a combination of the data of \citeauthor{buse2009learning}, \citeauthor{dorn2012general} and \citeauthor{scalabrino2018comprehensive}. The raw data from their surveys can be downloaded \curl{https://dibt.unimol.it/report/readability/}{2024-02-18}, but their data is not uniformly formatted, including ratings that are not Java code snippets, as well as the individual ratings rather than the mean of the ratings used for training machine learning models. Other than our mined-and-modified code snippets theirs do not all have the scope of a method, but instead consist of a few lines of code.
 	
 	We converted and combined the three datasets into one: code-readability-merged. In recent years, Huggingface\curl{https://huggingface.co/}{2024-02-18} established as the pioneer in making models and datasets available. Therefore we decided to publish the merged dataset on Huggingface\curl{https://huggingface.co/datasets/se2p/code-readability-merged}{2024-02-18}.
 	
@@ -2715,14 +2715,21 @@ cleveref=true,%
 \section{Discussion} \label{Discussion}
 
 	% Zusammenhang: Studie und Model Eval
-	Our survey (see \autoref{Pilot Survey}) showed that mined-and-modified dataset captures readability. The model training results (see \autoref{Model training results}) showed that the mined-and-modified dataset capture different aspects of readability than the merged dataset. 
-	
+	Our survey (see \autoref{Pilot Survey}) showed that mined-and-modified dataset captures readability. The model training results (see \autoref{Model training results}) showed that the mined-and-modified dataset captures different aspects of readability than the merged dataset. 	
 	% Different aspects of readability
 	The question arises what the different aspects are and whether it is possible to extend the proposed RDHs (see \autoref{Readability Decreasing Heursitcs}) so that the same aspects are captured. By achieving this we suggest that we could also achieve better evaluation results on the merged dataset than previous models.
+	
+	% Model Restrictions
+	We fine-tuned the model with the merged dataset after training with the mined-and-modified dataset and evaluated it on the merged dataset (see \autoref{Model training results}). We expected the classification accuracy of the resulting model to exceed that of the model trained on the merged dataset only.
+	Our expectations were not met. This could be because the towards model structure was designed for a much smaller data set and therefore cannot capture all the features of the mined-and-modified dataset while allowing for fine-tuning.
 
 	% Threats
+	% Merging existing datasets	
+	When merging existing data sets \citeolddataset into a single dataset, we set the mean value of the ratings as the actual readability score of a data sample. As only a limited number of people participated in each survey, this may introduce errors due to statistical deviations.
+	Furthermore, the surveys were conducted under different conditions, e.g. different raters, different number of raters per snippet, different rater biases, different code scopes. When merging the data sets, we do not take these inequalities into account. This could lead to a bias in the merged dataset. However, previous approaches did this similarly.
+	
 	% Mean assignment
-	The main drawback of our approach is that we rely on estimations to create the mined-and-modified dataset. The score labels of our code snippets are rough estimations and not exact values. Accurate ratings would require manual review of \numSamples code snippets by human annotators and is therefore not feasible. However, for two class classification this does not matter.
+	A drawback of our approach is that we rely on estimations to create the mined-and-modified dataset. The score labels of our code snippets are rough estimations and not exact values. Accurate ratings would require manual review of \numSamples code snippets by human annotators and is therefore not feasible. However, for two class classification this does not matter.
 	
 	% Model threats	
 	When comparing the model performance trained on the mined-and-modified and merged dataset, it should be noted that the merged data set is small. Consequently, comparisons between classifiers trained on the merged dataset may be unreliable~\cite{mi2022towards}.
