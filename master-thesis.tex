@@ -24,7 +24,7 @@ selnolig=true,%
 widowcontrol=false,%
 microtype=true,%
 % biblatex=true,%
-cleveref=true,%
+cleveref=false,%
 ]{se2packages}
 
 % Own change (from Lisa)
@@ -694,8 +694,15 @@ cleveref=true,%
 \definecolor{UnknownColor}{HTML}{ffffff}
 \definecolor{GenericsColor}{HTML}{fefa01}
 
-% TODO: Check tenses (Present tense to describe the paper itself)
-% TODO: poorly readable vs unreadable
+% Cleverref with full link
+\usepackage[nameinlink]{cleveref}
+
+% Reference Assumptions
+\crefname{assumption}{assumption}{assumptions}
+
+
+% TODO: Check tenses (Present tense to describe the paper itself) again?
+% TODO: poorly readable vs unreadable? Currently poorly readable
 % TODO: Links über die ganzen wörter (e.g. appendix)
 % TODO: Clearify code snippets vs methods
 \begin{document}
@@ -801,12 +808,12 @@ cleveref=true,%
 	% Dataset generation
 	In a first step, following the approach of \citeauthor{allamanis2016convolutional}~\cite{allamanis2016convolutional}, we download GitHub\curl{https://github.com/}{2024-02-29} repositories with high code quality.
 	Our criteria for high code quality are an elevated number of stars, forks, method comments the use of and compliance with a checkstyle\curl{https://checkstyle.sourceforge.io/}{2024-02-09} specification. For example, developers prefer high code quality and therefore star or fork repositories with high code quality more likely.
-	We select Java files from the repositories that meet our criteria and extract methods from the Java classes in these files and label them as well readable (Assumption \ref{well-readable-assumption}).
+	We select Java files from the repositories that meet our criteria and extract methods from the Java classes in these files and label them as well readable (\Cref{well-readable-assumption}).
 	
 	% TODO Generell: In papern machen wir gern eine Grafik auf die erste Seite, die den Ansatz direkt erklärt. Du hast ja eh listing 1 und 2. Theoretisch könntest du die hier schon einbinden und eine Figure draus machen mit links "good code", rechts "manipulated code"
 	
 	In a second step, all selected Java files are manipulated so that its code is subsequently less readable. You can find an exemplary result of this in TODO.
-	We extract methods from the Java classes in these files and label them as poorly readable (Assumption \ref{poorly-readable-assumption}).
+	We extract methods from the Java classes in these files and label them as poorly readable (\Cref{poorly-readable-assumption}).
 	
 	After both steps, we have a new, automatically generated dataset for code readability classification. We call it minded-and-modified dataset.
 	
@@ -817,9 +824,9 @@ cleveref=true,%
 	%	the comparison of \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils} and \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified} suggests.
 
 %	% Study goals
-%	To verify whether the well-readable-assumption (Assumption \ref{well-readable-assumption}) and the poorly-readable-assumption (Assumption \ref{poorly-readable-assumption}) hold we conducted a survey on Prolific.
+%	To verify whether the well-readable-assumption (\Cref{well-readable-assumption}) and the poorly-readable-assumption (\Cref{poorly-readable-assumption}) hold we conducted a survey on Prolific.
 %	% Study details
-%	We ask Java programmers to rate methods that were mined and modified. Therefore, human annotators rated each code snippet with a readability score. The annotators are selected by Prolific\curl{https://www.prolific.scom/}{2023-09-30}. The readability rating is based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable). We apply the same rating as done previously~\citeolddataset, but, other than before, we will not use the rating for labeling the training data. Instead, we only use the ratings to validate some randomly selected methods to confirm our assumptions (Assumption \ref{well-readable-assumption} and \ref{poorly-readable-assumption}). All snippets are automatically labeled.
+%	We ask Java programmers to rate methods that were mined and modified. Therefore, human annotators rated each code snippet with a readability score. The annotators are selected by Prolific\curl{https://www.prolific.scom/}{2023-09-30}. The readability rating is based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable). We apply the same rating as done previously~\citeolddataset, but, other than before, we will not use the rating for labeling the training data. Instead, we only use the ratings to validate some randomly selected methods to confirm our assumptions (\Cref{well-readable-assumption} and \ref{poorly-readable-assumption}). All snippets are automatically labeled.
 %	
 %	% Model comparison details
 %	Besides the user study we will evaluate our approach by comparing performance of the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} when trained with the new and the old dataset.
@@ -827,7 +834,7 @@ cleveref=true,%
 %	% The towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} achieves an accuracy of 91.8\% when trained and evaluated on the new dataset. 
 
 	% Evaluation (short)
-	We conducted a user study to validate our assumptions (Assumption \ref{well-readable-assumption} and \ref{poorly-readable-assumption}) and to thereby verify the mined-and-modified dataset.
+	We conducted a user study to validate our assumptions (\Cref{well-readable-assumption} and \Cref{poorly-readable-assumption}) and to thereby verify the mined-and-modified dataset.
 	Additionally, we evaluate the performance improvement on the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} using the automatically generated dataset.
 		
 	% Contributions
@@ -843,7 +850,7 @@ cleveref=true,%
 	\end{itemize}
 	
 	% Implications
-	The survey confirms both, the well-readable-assumption (Assumption \ref{well-readable-assumption}) and the poorly-readable-assumption (Assumption \ref{poorly-readable-assumption}). Although our approach for creating a dataset works in principle, we are not able to address enough aspects of code readability with the proposed heuristics. Thus, our dataset probably only addresses a partial problem of code readability.
+	The survey confirms both, the well-readable-assumption (\Cref{well-readable-assumption}) and the poorly-readable-assumption (\Cref{poorly-readable-assumption}). Although our approach for creating a dataset works in principle, we are not able to address enough aspects of code readability with the proposed heuristics. Thus, our dataset probably only addresses a partial problem of code readability.
 		
 \section{Background and Related Work} \label{Background and Related Work}
 	In the following subsections you find an overview of the background and related work on code readability and our approach to dataset creation.
@@ -1062,7 +1069,7 @@ cleveref=true,%
 	
 	%	% Old:
 	%	To improve readability classification, we need to capture what readability is. We define readability as a subjective impression of the difficulty of code while trying to understand it~\cite{posnett2011simpler, buse2009learning}. Readability of code is a perceived barrier that needs to be overcome before it is possible to work with the code. The more readable code is, the lower the barrier~\cite{posnett2011simpler}.
-	%	To give an example for high vs low readability, consider the code of listing~\ref{lst:cassandra-src-Java-org-apache-cassandra-utils} from GitHub\curl{https://github.com/apache/cassandra/blob/trunk/src/Java/org/apache/cassandra/utils/HeapUtils.Java}{2023-25-07} and compare it to the code with the same functionality of listing~\ref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}. You will notice that the first piece of code is more readable than the second one.
+	%	To give an example for high vs low readability, consider the code of \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils} from GitHub\curl{https://github.com/apache/cassandra/blob/trunk/src/Java/org/apache/cassandra/utils/HeapUtils.Java}{2023-25-07} and compare it to the code with the same functionality of \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}. You will notice that the first piece of code is more readable than the second one.
 	%	
 		
 	%	There is another related term: understandability. Readability is the syntactic aspect of processing code, while understandability is the semantic aspect~\cite{posnett2011simpler}.
@@ -1147,10 +1154,10 @@ cleveref=true,%
 					%					}
 				%				}
 			%			\end{minted}
-		%			\caption{The same example as in Listing~\ref{lst:cassandra-src-Java-org-apache-cassandra-utils} but modified for poor readability.}
+		%			\caption{The same example as in \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils} but modified for poor readability.}
 		%			\label{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}
 		%		\end{sublisting}
-	%		\caption{Comparing code readability: well-readable code (Listing~\ref{lst:cassandra-src-Java-org-apache-cassandra-utils}) vs. poorly readable modification (Listing~\ref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}).}
+	%		\caption{Comparing code readability: well-readable code (\autoref{lst:cassandra-src-Java-org-apache-cassandra-utils}) vs. poorly readable modification (\autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}).}
 	%	\end{listing}
 
 %	
@@ -1209,11 +1216,12 @@ cleveref=true,%
 				}
 			}
 		\end{minted}
-		\caption{The same example as in Listing~\ref{lst:cassandra-src-Java-org-apache-cassandra-utils} but modified for poor readability.}
+		\caption{The same example as in \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils} but modified for poor readability.}
 		\label{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}
 	\end{sublisting}
-	\caption{Well readable (Listing~\ref{lst:cassandra-src-Java-org-apache-cassandra-utils}) vs. poorly readable (Listing~\ref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}) code.}
+	\caption{Well readable (\autoref{lst:cassandra-src-Java-org-apache-cassandra-utils}) vs. poorly readable (\autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}) code.}
 \end{listing}
+
 
 
 %	\lstinputlisting[language=Java, firstline=8, lastline=26, caption={An example for highly readable code of the highly rated cassandra github repository},label={lst:cassandra-src-Java-org-apache-cassandra-utils}]{cassandra-src-Java-org-apache-cassandra-utils.Java}
@@ -1330,7 +1338,7 @@ cleveref=true,%
 	\citeauthor{loriot2022styler} created a model that is able to fix Checkstyle\curl{https://checkstyle.org/}{2023-07-25} violations using Deep Learning. They inserted formatting violations based on a project specific format checker ruleset into code in a first step. They then used a LSTM neural network that learned how to undo those injections. Their approach is working on abstract token sequences. Their data is generated in a self-supervised manner~\cite{loriot2022styler}. A similar idea has been explored by \citeauthor{yasunaga2020graph}~\cite{yasunaga2020graph}. We will use the idea of intentional degradation of code for data generation.
 	
 	% Related work: Public code mining
-	Another concept we will employ is from \citeauthor{allamanis2016convolutional}. They cloned the top open source Java projects on GitHub\curl{https://github.com/}{2023-07-25} for training a Deep Learning model. Those top projects were selected by taking the sum of the z-scores of the number of watchers and forks of each project. The projects have thousands of forks and stars and are widely used among software developers and thus the authors assumed the code within to be of good quality~\cite{allamanis2016convolutional}. We will also use fork and star counts as criteria for well readable code (Assumption \ref{well-readable-assumption}).
+	Another concept we will employ is from \citeauthor{allamanis2016convolutional}. They cloned the top open source Java projects on GitHub\curl{https://github.com/}{2023-07-25} for training a Deep Learning model. Those top projects were selected by taking the sum of the z-scores of the number of watchers and forks of each project. The projects have thousands of forks and stars and are widely used among software developers and thus the authors assumed the code within to be of good quality~\cite{allamanis2016convolutional}. We will also use fork and star counts as criteria for well readable code (\Cref{well-readable-assumption}).
 		
 \section{Mined and Modified Code for Dataset Generation} \label{Mined and Modified Code for Dataset Generation}
 	In the following subsections we will describe our approach.
@@ -1567,10 +1575,10 @@ cleveref=true,%
 					}
 				}
 			\end{minted}
-			\caption{The same example as in Listing~\ref{lst:java-class-file} but modified for poorer readability.}
+			\caption{The same example as in \autoref{lst:java-class-file} but modified for poorer readability.}
 			\label{lst:java-class-file-rdh}
 		\end{sublisting}
-		\caption{Well readable (Listing~\ref{lst:java-class-file}) vs. poorly readable (Listing~\ref{lst:java-class-file-rdh}) code.}
+		\caption{Well readable (\autoref{lst:java-class-file}) vs. poorly readable (\autoref{lst:java-class-file-rdh}) code.}
 	\end{listing}
 	
 	By default the new identifiers for the rename modifications (\texttt{renameVariable}, \texttt{renameField} and \texttt{renameMethod}) are generated in an iterating manner. For each class file we start with \textit{v0} for variables, \textit{f0} for fields and \textit{m0}. We increase the index of each (0 at the beginning) by 1 whenever a name is used.
@@ -1578,7 +1586,7 @@ cleveref=true,%
 		
 	\begin{table}[tb]
 		\centering
-		\caption{Available Readability Decreasing Heuristics along with when they are executed (on AST or Code), their configuration type (a array of probabilities or a single one) and whether they are included in the final dataset. See Appendix \ref{appendix:rdh-config-file} for a concrete configuration.}
+		\caption{Available Readability Decreasing Heuristics along with when they are executed (on AST or Code), their configuration type (a array of probabilities or a single one) and whether they are included in the final dataset. See \Cref{appendix:rdh-config-file} for a concrete configuration.}
 		\vspace{8pt}
 		\label{tab:rdhs}
 		\begin{tabular}{llllc}
@@ -1718,7 +1726,7 @@ cleveref=true,%
 	\end{itemize}
 		
 	% Config: 
-	We have chosen the probabilities so that the generated code snippets are still realistic in the sense that they could also be written by humans. You can find the configurations in \autoref{tab:rdh_configurations} and an exemplary file for \texttt{none} in appendix \ref{appendix:rdh-config-file}.
+	We have chosen the probabilities so that the generated code snippets are still realistic in the sense that they could also be written by humans. You can find the configurations in \autoref{tab:rdh_configurations} and an exemplary file for \texttt{none} in \Cref{appendix:rdh-config-file}.
 	
 	%	\begin{table}[tb]
 		%		\centering
@@ -1828,7 +1836,7 @@ cleveref=true,%
 
 %	\begin{table}[tb]
 %		\centering
-%		\caption{Available Readability Decreasing Heuristics. For heuristics $1-4$ (\texttt{newline}, \texttt{incTab}, \texttt{decTab} and \texttt{space}), several probabilities can be defined for the respective number of replacements (see Appendix \ref{appendix:rdh-config-file}).}
+%		\caption{Available Readability Decreasing Heuristics. For heuristics $1-4$ (\texttt{newline}, \texttt{incTab}, \texttt{decTab} and \texttt{space}), several probabilities can be defined for the respective number of replacements (see \Cref{appendix:rdh-config-file}).}
 %		\vspace{8pt}
 %		\label{tab:rdhs}
 %		\begin{tabular}{lllc}
@@ -1980,8 +1988,8 @@ cleveref=true,%
 %	The goal of the user study is to answer the following key questions:
 %	
 %	\begin{enumerate}
-%		\item Does the well-readable-assumption (assumption \ref{well-readable-assumption}) hold?
-%		\item Does the poorly-readable-assumption (assumption \ref{poorly-readable-assumption}) hold?
+%		\item Does the well-readable-assumption (\Cref{well-readable-assumption}) hold?
+%		\item Does the poorly-readable-assumption (\Cref{poorly-readable-assumption}) hold?
 %	\end{enumerate}
 %	
 %	We will achieve this by showing programmers code snippets that were generated with the presented approach. Therefore, human annotators give each code snippet a rating of its readability. The annotators are selected by Prolific\curl{https://www.prolific.com/}{2023-09-30}. Particular attention is paid to a high proportion of people from industry. The readability rating is based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very 
@@ -2004,12 +2012,12 @@ cleveref=true,%
 %	%	Until now, the data for readability classification was generated manually. Therefore, human annotators ranked code snippets by their readability level based on a five-point Likert scale~\cite{likert1932technique} ranging from one (i.e., very unreadable) to five (i.e., very readable)~\cite{buse2009learning, dorn2012general, scalabrino2018comprehensive}. Our new data will be generated in an automatic approach, where no manual labeling of code is necessary. We want to compare the quality of this data to the data used for previous models.
 %	
 %	\begin{resq} \textbf{(mined-well)} Can automatically selected code be assumed to be well readable?\end{resq} \label{mined-well}
-%	In our new approach for generating training data, we assume that the code from repositories is readable under certain conditions (assumption~\ref{well-readable-assumption}). We want to check whether that holds. To answer this question we will use the results of the user study (\autoref{user-study}).
+%	In our new approach for generating training data, we assume that the code from repositories is readable under certain conditions (\Cref{well-readable-assumption}). We want to check whether that holds. To answer this question we will use the results of the user study (\autoref{user-study}).
 %	
 %	\begin{resq} \textbf{(modify-poor)} Can poorly readable code be generated from well readable code?\end{resq} \label{modify-poor}
 %	It is not sufficient to have only well readable code for training a classifier. We also need poorly readable code. Therefore, we will try to generate such code from the well readable code. We will investigate whether this is possible in principle, and we will propose an automated approach for archiving this: Readability Decreasing Heuristics.
 %	
-%	As the name already suggests, the applied transformations on the source code are only heuristics. To answer, whether the generated code is poorly readable (assumption~\ref{poorly-readable-assumption}) we wildy (\autoref{user-study}).
+%	As the name already suggests, the applied transformations on the source code are only heuristics. To answer, whether the generated code is poorly readable (\Cref{poorly-readable-assumption}) we wildy (\autoref{user-study}).
 %	
 %	\begin{resq} \textbf{(best-heuristics)} Which heuristics are best to generate poorly readable code from well readable code?\end{resq} \label{best-heuristic}
 %	We want to compare the modifications of the proposed heuristics for generating poorly readable code to each other. Therefore we will train the same classifier model with poorly readable code generated by different Readability Decreasing Heuristics. We will then evaluate the model variations against each other (\autoref{compare-models}) to answer the research question.
@@ -2152,7 +2160,7 @@ cleveref=true,%
 		\label{fig:visual_encoding_pipline}
 	\end{figure}
 	
-	In a first step we use Imgkit\curl{https://pypi.org/project/imgkit/}{2024-03-02} to convert the code to HTML. Thereby, a HTML class is assigned to each type of syntactic element. Next, we apply syntax highlighting using a CSS style sheet (see Appendix \ref{appendix:model-visual-colors}). In a third step we use pygments\curl{https://pygments.org/}{2024-03-02} to convert the HTML with the applied CSS to an image. We use pillow\curl{https://pypi.org/project/pillow/}{2024-03-02} to remove blur and adjust the padding of the image. Finally, the image is loaded using opencv-python\curl{https://pypi.org/project/opencv-python/}{2024-03-02} which allows us to convert the image to an RGB tensor that is suitable as a model input.	
+	In a first step we use Imgkit\curl{https://pypi.org/project/imgkit/}{2024-03-02} to convert the code to HTML. Thereby, a HTML class is assigned to each type of syntactic element. Next, we apply syntax highlighting using a CSS style sheet (see \Cref{appendix:model-visual-colors}). In a third step we use pygments\curl{https://pygments.org/}{2024-03-02} to convert the HTML with the applied CSS to an image. We use pillow\curl{https://pypi.org/project/pillow/}{2024-03-02} to remove blur and adjust the padding of the image. Finally, the image is loaded using opencv-python\curl{https://pypi.org/project/opencv-python/}{2024-03-02} which allows us to convert the image to an RGB tensor that is suitable as a model input.	
 	
 	% Problems
 	During implementation, we encountered the following potential problem with the model:
@@ -2205,28 +2213,28 @@ cleveref=true,%
 	% User study
 	We are conducting a user study to determine the quality of the new data set. In detail the aim of the user study is to answer the following key questions:
 	\begin{enumerate}
-		\item Does the well-readable-assumption (Assumption \ref{well-readable-assumption}) hold?
-		\item Does the poorly-readable-assumption (Assumption \ref{poorly-readable-assumption}) hold?
+		\item Does the well-readable-assumption (\Cref{well-readable-assumption}) hold?
+		\item Does the poorly-readable-assumption (\Cref{poorly-readable-assumption}) hold?
 	\end{enumerate}
 	
 	% Assumptions
 	Our assumptions are as follows:
 	\begin{enumerate}[label={Assumption \arabic*},ref={\arabic*},leftmargin=*]
-		\item \label{well-readable-assumption} \textbf{(well-readable-assumption)} The selected repositories contain mostly well readable code.
-		\item \label{poorly-readable-assumption} \textbf{(poorly-readable-assumption)} After applying Readability Decreasing Heuristics, the code is poorly readable.
+		\item \label[assumption]{well-readable-assumption} \textbf{(well-readable-assumption)} The selected repositories contain mostly well readable code.
+		\item \label[assumption]{poorly-readable-assumption} \textbf{(poorly-readable-assumption)} After applying Readability Decreasing Heuristics, the code is poorly readable.
 	\end{enumerate}
 	
 	% RQs
 	Therefore, we come up with the following research questions:
 	
 	\begin{resq} \textbf{(mined-well)} Can automatically mined code be assumed to be well readable?\end{resq} \label{mined-well}
-	In our new approach for generating training data, we assume that the code from repositories is well readable under certain conditions (Assumption~\ref{well-readable-assumption}). We want to check whether that holds. To answer this question we will use the results of the user study.
+	In our new approach for generating training data, we assume that the code from repositories is well readable under certain conditions (\Cref{well-readable-assumption}). We want to check whether that holds. To answer this question we will use the results of the user study.
 	
 	\begin{resq} \textbf{(modify-poor)} Can poorly readable code be generated from well readable code?\end{resq} \label{modify-poor}
 	It is not sufficient to have only well readable code for training a classifier. We also need poorly readable code. Therefore, we will try to generate such code from the well readable code. We will investigate whether this is possible in principle, and
 	whether the proposed RDH tool (see \autoref{Readability Decreasing Heursitcs}) is able to achieve this.
 	
-	As the name already suggests, the applied transformations on the source code are only heuristics. To answer, whether the generated code is poorly readable (Assumption~\ref{poorly-readable-assumption}) we will utilize the results of the user study.
+	As the name already suggests, the applied transformations on the source code are only heuristics. To answer, whether the generated code is poorly readable (\Cref{poorly-readable-assumption}) we will utilize the results of the user study.
 	
 	%	\begin{resq} \textbf{(best-heuristics)} Which heuristics are best to generate poorly readable code from well readable code?\end{resq} \label{best-heuristic}
 	%	We want to compare the modifications of the proposed heuristics for generating poorly readable code to each other. Therefore we will use the results of the user study (\autoref{user-study}).
@@ -2241,7 +2249,7 @@ cleveref=true,%
 	
 	% Experimental setup
 	\textit{1. Experimental setup:}
-	We manually sampled 20 code snippets across all strata but mainly from statum 1, due to reasons mentioned in \autoref{Construction of Questionnaires}. From January 6 to 14, 2024, ten people took part in the survey. Eight of them were students and two of them worked in industry. All of them had knowledge of computer science. They were were not paid. Additionally to rating 20 code snippets the participants were also asked to answer additional questions to provide feedback about the survey:
+	We manually sampled 20 code snippets across all strata but mainly from statum 1, due to reasons mentioned in \Cref{Construction of Questionnaires}. From January 6 to 14, 2024, ten people took part in the survey. Eight of them were students and two of them worked in industry. All of them had knowledge of computer science. They were were not paid. Additionally to rating 20 code snippets the participants were also asked to answer additional questions to provide feedback about the survey:
 	
 	% Questions
 %	They were asked the following additional questions:
@@ -2253,7 +2261,7 @@ cleveref=true,%
 		\item \textit{Long answer:} What improvements would you make to the survey? If none, leave blank.
 		\item \textit{Long answer:}  you have any other feedback? If none, leave blank.
 	\end{enumerate}
-	The participants answers can be found in appendix \ref{appendix:pilot-survey-feedback}.
+	The participants answers can be found in \Cref{appendix:pilot-survey-feedback}.
 	
 	% Usage
 	The feedback of the pilot survey was used in the following ways to prepare the Prolific study:
@@ -2310,7 +2318,7 @@ cleveref=true,%
 	\end{figure}
 		
 	\textbf{Participant Feedback:}
-	All feedback of the participants regarding the pilot survey is listed in Appendix~\ref{appendix:pilot-survey-feedback}.
+	All feedback of the participants regarding the pilot survey is listed in \Cref{appendix:pilot-survey-feedback}.
 	Most of the problems that occurred were due to the survey tool (e.g.: "I also felt that I should use the drop-down menu at the top left.").
 	%	Zusammengefasst:
 	%	Feature Request: "You're done! Thank you for your participation!" - message at the end
@@ -2434,10 +2442,10 @@ cleveref=true,%
 \textit{1. Experimental setup:}
 	The survey was conducted using Tien Duc Nguyen's Code Annotation Tool (see \autoref{fig:survey_tool}) along with the platform Prolific\curl{https://app.prolific.com/}{2024-02-21} for the recruitment and payment of participants.
 	The survey was conducted between 31 January and 7 February 2024. A total of 221 participants took part. Each of the 20 questionnaires was answered by 11 participants (similar to the survey of \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}). In one survey, one more participant was assigned by mistake. 
-	We estimated the time to complete one questionnaire at 10 minutes (see \autoref{Pilot Survey}). Prolific set the maximum time allowed at 44 minutes. Participants who took longer received a time-out.
+	We estimated the time to complete one questionnaire at 10 minutes (see \Cref{Pilot Survey}). Prolific set the maximum time allowed at 44 minutes. Participants who took longer received a time-out.
 	%	According to an online calculator\footnote{https://www.calculator.net/sample-size-calculator.html} 
 	This results in a margin of error of 29.55\% at a confidence of 95\% for an individual snippet. However, we aggregate over strata and multiple snippets later to reduce the margin of error.
-	Each questionnaire consists of 20 code snippets. Consequently, 400 different code snippets are rated in total. The questionnaires were configured in a way that each participant could only take part in one of the questionnaires. You can find the texts for the survey in Appendix~\ref{appendix:prolific-survey-texts}. The questionnaires were crafted as described in \Cref{Construction of Questionnaires}.
+	Each questionnaire consists of 20 code snippets. Consequently, 400 different code snippets are rated in total. The questionnaires were configured in a way that each participant could only take part in one of the questionnaires. You can find the texts for the survey in \Cref{appendix:prolific-survey-texts}. The questionnaires were crafted as described in \Cref{Construction of Questionnaires}.
 		
 	\begin{figure}[tb]
 		\centering
@@ -2471,15 +2479,15 @@ cleveref=true,%
 	% Internal/Research Questions
 	The internal research questions are as follows:
 	\begin{itemize}
-		\item Does the well-readable-assumption (Assumption \ref{well-readable-assumption}) hold?
-		\item Does the poorly-readable-assumption (Assumption \ref{poorly-readable-assumption}) hold?
+		\item Does the well-readable-assumption (\Cref{well-readable-assumption}) hold?
+		\item Does the poorly-readable-assumption (\Cref{poorly-readable-assumption}) hold?
 	\end{itemize}
 	
 	The results for these questions are equally important, and thus none of them is prioritized over the other.
 	To answer them, the assumptions	are considered as hypotheses along with the following associated null hypotheses:
 	\begin{itemize}
-		\item For Assumption~\ref{well-readable-assumption}: The mined code (original) is on average not better readable than the code from previous studies.
-		\item For Assumption~\ref{poorly-readable-assumption}: The readability of code does not significantly deteriorate compared to the original code snippet.
+		\item For \Cref{well-readable-assumption}: The mined code (original) is on average not better readable than the code from previous studies.
+		\item For \Cref{poorly-readable-assumption}: The readability of code does not significantly deteriorate compared to the original code snippet.
 	\end{itemize}
 	
 	% Questionnaire Attributes
@@ -2490,7 +2498,7 @@ cleveref=true,%
 	\begin{itemize}
 		\item \textbf{Ill-defined Target Population:} Ensuring a well-defined target population is critical to the survey's quality. To mitigate this threat, we define our target population.
 		
-		\item \textbf{Sampling Method:} We have a larger proportion of code snippets from strata 1 and 3 (see \autoref{Construction of Questionnaires}). While we argue that we avoided spending resources on labeling RDH data that is likely not different from the original methods or rather uninteresting, this might also introduce statistical errors to our survey results.
+		\item \textbf{Sampling Method:} We have a larger proportion of code snippets from strata 1 and 3 (see \Cref{Construction of Questionnaires}). While we argue that we avoided spending resources on labeling RDH data that is likely not different from the original methods or rather uninteresting, this might also introduce statistical errors to our survey results.
 		However, stratified sampling is well-defined and proven in practice. The approach ensures that our sample represents all parts of the population under investigation.
 %		This is improving the survey's external validity.
 		
@@ -2554,7 +2562,7 @@ cleveref=true,%
 
 	\begin{researchbox}{Summary (RQ1 - mined-well):}
 		%		The readability ratings of code snippets mined from Github are not very accurate as we take the mean of all ratings for all methods and assign it to each snippet.
-		The mean score for the \texttt{original} methods of the mined-and-modified dataset (3.68) is significantly larger than the mean score for all ratings in the merged dataset (3.45). Therefore we reject the null hypothesis and conclude that well readable assumption (Assumption~\ref{well-readable-assumption}) holds.
+		The mean score for the \texttt{original} methods of the mined-and-modified dataset (3.68) is significantly larger than the mean score for all ratings in the merged dataset (3.45). Therefore we reject the null hypothesis and conclude that well readable assumption (\Cref{well-readable-assumption}) holds.
 		%		and answer the research question \ref{mined-well}: Yes, automatically selected code can be assumed to be well readable.
 	\end{researchbox}
 	
@@ -2628,7 +2636,7 @@ cleveref=true,%
 	\end{table}
 		
 	\begin{researchbox}{Summary (RQ2 - modify-poor):}
-		All of the 7 heuristics but \texttt{rename} decrease readability by a significant extend compared to \texttt{none}. We estimate the readability decrease for a certain probability of a certain type as can be seen in \autoref{fig:survey_ratings_bar_all}. We reject the null hypothesis and conclude that the poorly readable assumption (Assumption~\ref{poorly-readable-assumption}) holds
+		All of the 7 heuristics but \texttt{rename} decrease readability by a significant extend compared to \texttt{none}. We estimate the readability decrease for a certain probability of a certain type as can be seen in \autoref{fig:survey_ratings_bar_all}. We reject the null hypothesis and conclude that the poorly readable assumption (\Cref{poorly-readable-assumption}) holds
 	\end{researchbox}
 
 \subsection{Model Training Results} \label{Model training results}
@@ -2715,12 +2723,12 @@ cleveref=true,%
 \section{Discussion} \label{Discussion}
 
 	% Zusammenhang: Studie und Model Eval
-	Our survey (see \autoref{Pilot Survey}) showed that mined-and-modified dataset captures readability. The model training results (see \autoref{Model training results}) showed that the mined-and-modified dataset captures different aspects of readability than the merged dataset. 	
+	Our survey (see \Cref{Pilot Survey}) showed that mined-and-modified dataset captures readability. The model training results (see \Cref{Model training results}) showed that the mined-and-modified dataset captures different aspects of readability than the merged dataset. 	
 	% Different aspects of readability
-	The question arises what the different aspects are and whether it is possible to extend the proposed RDHs (see \autoref{Readability Decreasing Heursitcs}) so that the same aspects are captured. By achieving this we suggest that we could also achieve better evaluation results on the merged dataset than previous models.
+	The question arises what the different aspects are and whether it is possible to extend the proposed RDHs (see \Cref{Readability Decreasing Heursitcs}) so that the same aspects are captured. By achieving this we suggest that we could also achieve better evaluation results on the merged dataset than previous models.
 	
 	% Model Restrictions
-	We fine-tuned the model with the merged dataset after training with the mined-and-modified dataset and evaluated it on the merged dataset (see \autoref{Model training results}). We expected the classification accuracy of the resulting model to exceed that of the model trained on the merged dataset only.
+	We fine-tuned the model with the merged dataset after training with the mined-and-modified dataset and evaluated it on the merged dataset (see \Cref{Model training results}). We expected the classification accuracy of the resulting model to exceed that of the model trained on the merged dataset only.
 	Our expectations were not met. This could be because the towards model structure was designed for a much smaller data set and therefore cannot capture all the features of the mined-and-modified dataset while allowing for fine-tuning.
 
 	% Threats
