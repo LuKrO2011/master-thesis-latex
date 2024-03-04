@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.8.1)  4 MAR 2024 08:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.8.1)  4 MAR 2024 08:48
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2058,17 +2058,18 @@ LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/sc' will be
 
 {C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts_cb
 34qf.enc}] [43] [44] [45]
-File: img/survey_Java_familiarity_pie.png Graphic file (type png)
-<use img/survey_Java_familiarity_pie.png>
-Package pdftex.def Info: img/survey_Java_familiarity_pie.png  used on input lin
+<img/pilot_survey_task_clearness.png, id=702, 642.4pt x 481.8pt>
+File: img/pilot_survey_task_clearness.png Graphic file (type png)
+<use img/pilot_survey_task_clearness.png>
+Package pdftex.def Info: img/pilot_survey_task_clearness.png  used on input lin
 e 2786.
 (pdftex.def)             Requested size: 210.00214pt x 157.50209pt.
- [46] [47] [48]
+ [46 <./img/pilot_survey_task_clearness.png (PNG copy)>] [47]
 \openout4 = `master-thesis.pyg'.
 
 
 (_minted-master-thesis/BF88FE821251D63579C9F6661BB5ED68C7566544A189DF3F09EC89E1
-F6504A73.pygtex) [49] [50]
+F6504A73.pygtex) [48] [49]
 \openout4 = `master-thesis.pyg'.
 
 
@@ -2077,7 +2078,7 @@ EDBF62EF.pygtex)
 \tf@thm=\write9
 \openout9 = `master-thesis.thm'.
 
- [51] (master-thesis.aux)
+ [50] (master-thesis.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-06-30>
@@ -2304,7 +2305,7 @@ img/survey_time_less_than_180.png
 img/survey_Java_familiarity_pie.png
 img/survey_ratings_violin_all.png
 img/survey_ratings_bar_all.png
-img/survey_Java_familiarity_pie.png
+img/pilot_survey_task_clearness.png
 _minted-master-thesis/BF88FE821251D63579C9F6661BB5ED68C7566544A189DF3F09EC89E1F
 6504A73.pygtex
 _minted-master-thesis/71941D47B65971F30F322243CD1D926BE111B8B0B61706E15C39CA1EE
@@ -2328,10 +2329,10 @@ Package logreq Info: Writing requests to 'master-thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 52119 strings out of 475550
- 1130681 string characters out of 5772349
- 2127205 words of memory out of 5000000
- 72045 multiletter control sequences out of 15000+600000
+ 52127 strings out of 475550
+ 1131038 string characters out of 5772349
+ 2127258 words of memory out of 5000000
+ 72054 multiletter control sequences out of 15000+600000
  707853 words of font info for 313 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  122i,21n,131p,10970b,2479s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2352,9 +2353,9 @@ fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/p
 ublic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts
 /cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pf
 b><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on master-thesis.pdf (53 pages, 1511084 bytes).
+Output written on master-thesis.pdf (52 pages, 1522252 bytes).
 PDF statistics:
- 1089 PDF objects out of 1200 (max. 8388607)
- 198 named destinations out of 1000 (max. 500000)
- 87325 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 1086 PDF objects out of 1200 (max. 8388607)
+ 197 named destinations out of 1000 (max. 500000)
+ 87330 words of extra memory for PDF output out of 89155 (max. 10000000)
 
