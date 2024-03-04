@@ -12,15 +12,15 @@
 \contentsline {subsection}{\numberline {3.2}Classification Considerations}{11}{subsection.0.0.3.2}%
 \contentsline {subsection}{\numberline {3.3}Dataset Generation Approach}{12}{subsection.0.0.3.3}%
 \contentsline {subsection}{\numberline {3.4}Readability Decreasing Heuristics\xspace }{14}{subsection.0.0.3.4}%
-\contentsline {subsection}{\numberline {3.5}Construction of Questionnaires}{19}{subsection.0.0.3.5}%
-\contentsline {subsection}{\numberline {3.6}Readability Classification Model}{22}{subsection.0.0.3.6}%
-\contentsline {section}{\numberline {4}Evaluation}{27}{section.0.0.4}%
-\contentsline {subsection}{\numberline {4.1}Survey}{28}{subsection.0.0.4.1}%
-\contentsline {subsubsection}{\nonumberline Pilot Survey}{28}{subsubsection*.20}%
-\contentsline {subsubsection}{\nonumberline Prolific Survey}{32}{subsubsection*.24}%
-\contentsline {subsection}{\numberline {4.2}Model Training Results}{37}{subsection.0.0.4.2}%
+\contentsline {subsection}{\numberline {3.5}Construction of Questionnaires}{20}{subsection.0.0.3.5}%
+\contentsline {subsection}{\numberline {3.6}Readability Classification Model}{23}{subsection.0.0.3.6}%
+\contentsline {section}{\numberline {4}Evaluation}{28}{section.0.0.4}%
+\contentsline {subsection}{\numberline {4.1}Survey}{29}{subsection.0.0.4.1}%
+\contentsline {subsubsection}{\nonumberline Pilot Survey}{29}{subsubsection*.21}%
+\contentsline {subsubsection}{\nonumberline Prolific Survey}{31}{subsubsection*.25}%
+\contentsline {subsection}{\numberline {4.2}Model Training Results}{38}{subsection.0.0.4.2}%
 \contentsline {section}{\numberline {5}Discussion}{40}{section.0.0.5}%
-\contentsline {section}{\numberline {6}Conclusions}{40}{section.0.0.6}%
+\contentsline {section}{\numberline {6}Conclusions}{41}{section.0.0.6}%
 \contentsline {section}{\numberline {I}Pilot Survey Feedback}{47}{section.Alph0.1}%
 \contentsline {section}{\numberline {II}Readability Decreasing Heuristics\xspace Configuration File}{49}{section.Alph0.2}%
 \contentsline {section}{\numberline {III}Prolific Survey Texts}{50}{section.Alph0.3}%

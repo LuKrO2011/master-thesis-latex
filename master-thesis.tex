@@ -1358,68 +1358,94 @@ cleveref=false,%
 		\centering
 		\caption{All \RDHs with explanation and example.}
 		\label{tab:all-rdhs}
-		\begin{subtable}{\textwidth}
-			\centering
-			\caption{The \RDHs that are performed on the AST.}
-			\vspace{8pt}
-			\label{tab:ast-rdhs}
-			\begin{tabular}{|p{0.27\textwidth}|p{0.48\textwidth}|p{0.125\textwidth}|}
-				\hline
-				\textbf{\rdh} & \textbf{Description} & \textbf{Example} \\
-				\hline
-				\texttt{renameVariable} & Renaming a variable declaration and its usages & \autoref{lst:example-method-badly}, Line 1 \\
-				\hline
-				\texttt{renameField} & Renaming a field declaration and its usages & \autoref{lst:java-class-file-rdh}, Line 6 \\
-				\hline
-				\texttt{renameMethod} & Renaming a method declaration and its usages & \autoref{lst:example-method-badly}, Line 1 \\
-				\hline
-				\texttt{add0} & Adding zero to numbers & \autoref{lst:example-method-badly}, Line 3 \\
-				\hline
-				\texttt{insertBraces} & Inserting superfluous braces & \autoref{lst:example-method-badly}, Line 1 \\
-				\hline
-				\texttt{starImport} & Replacing specific imports with star-import & \autoref{lst:java-class-file-rdh}, Line 1 \\
-				\hline
-				\texttt{inlineField} & Inlining the values of static fields into the code & \autoref{lst:java-class-file-rdh}, Line 8 \\
-				\hline
-				\texttt{partiallyEvaluate} & Partially evaluate constants & \autoref{lst:java-class-file-rdh}, Line 6 \\
-				\hline
-			\end{tabular}
-		\end{subtable}
-		
-		\vspace{8pt}
-		
-		\begin{subtable}{\textwidth}
-			\centering
-			\caption{The \RDHs that are performed while pretty-printing.}
-			\vspace{8pt}
-			\label{tab:code-rdhs}
-			\begin{tabular}{|p{0.27\textwidth}|p{0.48\textwidth}|p{0.125\textwidth}|}
-				\hline
-				\textbf{\rdh} & \textbf{Description} & \textbf{Example} \\
-				\hline
-				\texttt{newline} & Replacing newlines with none or multiple ones & \autoref{lst:java-class-file-rdh}, Line 2-6 \\
-				\hline
-				\texttt{incTab} & Replace a tab indentation with none or multiple ones & \autoref{lst:example-method-badly}, Line 1 \\
-				\hline
-				\texttt{decTab} & Replace a tab outdentation with one or more ones & \autoref{lst:example-method-badly}, Line TODO \\
-				\hline
-				\texttt{space} & Replacing a single space with multiple ones & \autoref{lst:example-method-badly}, Line 1 \\
-				\hline
-				\texttt{newLineInsteadOf Space} & Replacing a space with a newline & \autoref{lst:example-method-badly}, Line TODO \\
-				\hline
-				\texttt{spaceInsteadOf Newline} & Replacing a newline with a space & \autoref{lst:example-method-badly}, Line 1 \\
-				\hline
-				\texttt{incTabInsteadOf DecTab} & Replace a tab outdentation with an indentation & \autoref{lst:example-method-badly}, Line 2 \\
-				\hline
-				\texttt{decTabInsteadOf IncTab} & Replace a tab indentation with an outdentation & \autoref{lst:example-method-badly}, Line 2 \\
-				\hline
-			\end{tabular}
-		\end{subtable}
-		
-
+		\begin{tabular}{|p{0.03\textwidth}|p{0.24\textwidth}|p{0.43\textwidth}|p{0.125\textwidth}|}
+			\hline
+			\textbf{\#} & \textbf{\rdhs} & \textbf{Description} & \textbf{Example} \\
+			\hline
+			1 & \texttt{newline} & Replacing newlines with none or multiple ones & \autoref{lst:java-method-poor}, Lines 5-6 \\
+			\hline
+			2 & \texttt{incTab} & Replace a tab indentation with none or multiple ones & \autoref{lst:java-method-poor}, Line 5 \\
+			\hline
+			3 & \texttt{decTab} & Replace a tab outdentation with one or more ones & \autoref{lst:java-method-poor}, Line 7 \\
+			\hline
+			4 & \texttt{space} & Replacing a single space with multiple ones & \autoref{lst:java-method-poor}, Line 1 \\
+			\hline
+			5 & \texttt{newLine InsteadOf Space} & Replacing a space with a newline & \autoref{lst:java-method-poor}, Line 3-4 \\
+			\hline
+			6 & \texttt{spaceInsteadOf Newline} & Replacing a newline with a space & \autoref{lst:java-method-poor}, Line 2 \\
+			\hline
+			7 & \texttt{incTabInsteadOf DecTab} & Replace a tab outdentation with an indentation & \autoref{lst:java-method-poor}, Line 9 \\
+			\hline
+			8 & \texttt{decTabInsteadOf IncTab} & Replace a tab indentation with an outdentation & \autoref{lst:java-method-poor}, Line 8 \\
+			\hline
+			9 & \texttt{renameVariable} & Renaming a variable declaration and its usages & \autoref{lst:java-method-poor}, Line 1+ \\
+			\hline
+			10 & \texttt{renameField} & Renaming a field declaration and its usages & \autoref{lst:java-class-file-poor}, Line 4 \\
+			\hline
+			11 & \texttt{renameMethod} & Renaming a method declaration and its usages & \autoref{lst:java-method-poor}, Line 1 \\
+			\hline
+			12 & \texttt{inlineMethod} & Inline a method into its usages &  \\
+			\hline
+			13 & \texttt{removeComment} & Removing a comment & \autoref{lst:java-method-poor}, Line 1 \\
+			\hline
+			14 & \texttt{add0} & Adding zero to numbers & \autoref{lst:java-method-poor}, Line 2 \\
+			\hline
+			15 & \texttt{insertBraces} & Inserting superfluous braces & \autoref{lst:java-method-poor}, Lines 3-4 \\
+			\hline
+			16 & \texttt{starImport} & Replacing specific imports with star-import & \autoref{lst:java-class-file-poor}, Line 1 \\
+			\hline
+			17 & \texttt{inlineField} & Inlining the values of static fields into the code & \autoref{lst:java-class-file-poor}, Line 7 \\
+			\hline
+			18 & \texttt{partially Evaluate} & Partially evaluate constants & \autoref{lst:java-class-file-poor}, Line 4 \\
+			\hline
+		\end{tabular}
 	\end{table}
+
 	
-	\begin{listing}[p]
+	\begin{listing}[tb]
+		\begin{sublisting}{\linewidth}
+			\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
+				/**
+				* Prints the sign of the given number.
+				*
+				* @param number The input number to print the sign for.
+				*/
+				public static void checkNumberSign(int number) {
+					if (number > 0) {
+						System.out.println("Number is positive");
+					} else if (number < 0) {
+						System.out.println("Number is negative");
+					} else {
+						System.out.println("Number is zero");
+					}
+				}
+			\end{minted}
+			\caption{An example of a simple and well readable Java method.}
+			\label{lst:java-method-well}
+		\end{sublisting}
+		\vspace{1pt}
+		
+		\begin{sublisting}{\linewidth}
+			\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
+				public static void m0(int  v0) {
+					if (v0 > (0+0)) { System.out.println("Number is positive");
+					} else if ((v0 <
+					0)) {
+					System.out.println("Number is negative");
+					
+						} else {
+				System.out.println("Number is zero");
+						} }
+			\end{minted}
+			\caption{The same example as in \autoref{lst:java-method-well} but modified for poorer readability.}
+			\label{lst:java-method-poor}
+		\end{sublisting}
+		\caption{Well readable (\autoref{lst:java-method-well}) vs. poorly readable (\autoref{lst:java-method-poor}) Java methods.}
+		\label{lst:java-method}
+	\end{listing}
+	
+	
+	\begin{listing}[tb]
 		\begin{sublisting}{\linewidth}
 			\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
 				import java.util.Random;
@@ -1430,16 +1456,15 @@ cleveref=false,%
 					public static final int MINUTES_PER_DAY = MINUTES_PER_HOUR * HOURS_PER_DAY;
 					public static final int SEED = 4242;
 					
-					public static void main(String[] args) {
+					public int randomDaysMinutes() {
 						Random random = new Random(SEED);
 						int days = random.nextInt(10);
-						int minutes = days * MINUTES_PER_DAY;
-						System.out.println(days + " days have " + minutes + " minutes");
+						return days * MINUTES_PER_DAY;
 					}
 				}
 			\end{minted}
 			\caption{An example of a simple and well readable Java class file.}
-			\label{lst:java-class-file}
+			\label{lst:java-class-file-well}
 		\end{sublisting}
 		\vspace{1pt}
 		
@@ -1447,23 +1472,23 @@ cleveref=false,%
 			\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
 				import java.util.*;
 				
-				
-				
 				public class TimeConverter {
 					public static final int f0 = 1440;
-					public static void main(String[] args) {
+					
+					public int randomDaysMinutes() {
 						Random random = new Random(4242);
 						int days = random.nextInt(10);
-						int minutes = days * f0;
-						System.out.println(days + " days have " + minutes + " minutes");
+						return days * f0;
 					}
 				}
 			\end{minted}
-			\caption{The same example as in \autoref{lst:java-class-file} but modified for poorer readability.}
-			\label{lst:java-class-file-rdh}
+			\caption{The same example as in \autoref{lst:java-class-file-well} but modified for poorer readability.}
+			\label{lst:java-class-file-poor}
 		\end{sublisting}
-		\caption{Well readable (\autoref{lst:java-class-file}) vs. poorly readable (\autoref{lst:java-class-file-rdh}) code.}
+		\caption{Well readable (\autoref{lst:java-class-file-well}) vs. poorly readable (\autoref{lst:java-class-file-poor}) Java class files.}
+		\label{lst:java-class-file}
 	\end{listing}
+	
 	
 	By default the new identifiers for the rename modifications (\texttt{renameVariable}, \texttt{renameField} and \texttt{renameMethod}) are generated in an iterating manner. For each class file we start with \textit{v0} for variables, \textit{f0} for fields and \textit{m0}. We increase the index of each (0 at the beginning) by 1 whenever a name is used.
 	We also added a mode that uses Code2Vec~\cite{alon2019code2vec} for the generation of identifiers for \texttt{renameMethod} instead. With that we can predict more realistic method names. Code2Vec generates multiple method name predictions at once. By picking not the best one but instead the one with the longest name we aim to decrease readability while choosing realistic method names.
