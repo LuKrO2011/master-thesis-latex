@@ -830,42 +830,40 @@ cleveref=false,%
 		\begin{sublisting}{\linewidth}
 			\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
 				/**
-				* This method determines the sign of a given number and prints a corresponding message.
+				* Calculates the factorial of a given number.
 				*
-				* @param number The input number to be checked.
+				* @param number The number to calculate the factorial of.
+					* @return The factorial of the input number.
 				*/
-				public static void printSign(int number) {							
-					if (number > 0) {
-						System.out.println("Number is positive");
-					} else if (number < 0) {
-						System.out.println("Number is negative");
-					} else {
-						System.out.println("Number is zero");
+				public int calculateFactorial(int number) {
+					int factorial = 1;
+					for (int i = 1; i <= number; i++) {
+						factorial *= i;
 					}
+					return factorial;
 				}
 			\end{minted}
 			\caption{An example of a simple and well readable Java method.}
-			\label{lst:cassandra-src-Java-org-apache-cassandra-utils}
+			\label{lst:example-method-well}
 		\end{sublisting}
 		\vspace{1pt}
 		
 		\begin{sublisting}{\linewidth}
 			\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
-				public static void foo(int bar) {if ((bar>0)) {
-						System.out.println("Number is positive");
-					} else if (bar < (0 + 0)) {
-						System.out.println("Number is negative");
-					} else {
-						System.out.println("Number is zero");
-					}
+				public int foo(int x) {
+					int y = 1;
+					for (int z=1; z<=x; z++) {
+					y *= z;}
+					return y;
 				}
 			\end{minted}
-			\caption{The same example as in \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils} but modified for poor readability.}
-			\label{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}
+			\caption{The same example as in \autoref{lst:example-method-well} but modified for poor readability.}
+			\label{lst:example-method-badly}
 		\end{sublisting}
-		\caption{Well readable (\autoref{lst:cassandra-src-Java-org-apache-cassandra-utils}) vs. poorly readable (\autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}) code.}
+		\caption{Well readable (\autoref{lst:example-method-well}) vs. poorly readable (\autoref{lst:example-method-badly}) code.}
 		\label{lst:example-method}
 	\end{listing}
+	
 	
 	After both steps, we have a new, automatically generated dataset for code readability classification. We call it minded-and-modified dataset.
 	
@@ -873,7 +871,7 @@ cleveref=false,%
 	How can we manipulate code so that it is less readable afterwards? We introduce a tool called \RDHa. It uses a collection of heuristics (\RDHs) that, when applied to Java files, lower the readability of it. Such heuristics are replacing spaces with newlines or increasing the indentation of a code block by a tab or multiple spaces. Most changes also decrease readability when applied in reverse (replacing newlines with spaces, decreasing indentation).
 	
 	Methods in Java are syntactically the same, before and after applying \RDHsa. Functionality does not change either. However, if various modifications are applied many times, those changes are capable of lowering the readability of source code, as \autoref{lst:example-method} suggests.
-	%	the comparison of \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils} and \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified} suggests.
+	%	the comparison of \autoref{lst:example-method-well} and \autoref{lst:example-method-badly} suggests.
 
 %	% Study goals
 %	To verify whether the well-readable-assumption (\Cref{well-readable-assumption}) and the poorly-readable-assumption (\Cref{poorly-readable-assumption}) hold we conducted a survey on Prolific.
@@ -1124,7 +1122,7 @@ cleveref=false,%
 	
 	%	% Old:
 	%	To improve readability classification, we need to capture what readability is. We define readability as a subjective impression of the difficulty of code while trying to understand it~\cite{posnett2011simpler, buse2009learning}. Readability of code is a perceived barrier that needs to be overcome before it is possible to work with the code. The more readable code is, the lower the barrier~\cite{posnett2011simpler}.
-	%	To give an example for high vs low readability, consider the code of \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils} from GitHub\curl{https://github.com/apache/cassandra/blob/trunk/src/Java/org/apache/cassandra/utils/HeapUtils.Java}{2023-25-07} and compare it to the code with the same functionality of \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}. You will notice that the first piece of code is more readable than the second one.
+	%	To give an example for high vs low readability, consider the code of \autoref{lst:example-method-well} from GitHub\curl{https://github.com/apache/cassandra/blob/trunk/src/Java/org/apache/cassandra/utils/HeapUtils.Java}{2023-25-07} and compare it to the code with the same functionality of \autoref{lst:example-method-badly}. You will notice that the first piece of code is more readable than the second one.
 	%	
 		
 	%	There is another related term: understandability. Readability is the syntactic aspect of processing code, while understandability is the semantic aspect~\cite{posnett2011simpler}.
@@ -1318,11 +1316,11 @@ cleveref=false,%
 	These modifications are performed on the AST representation of the code to ensure that the functionality stays the same (see \autoref{tab:ast-rdhs}).
 	
 %	\begin{itemize}
-%		\item \texttt{renameVariable}: Renaming a variable declaration and its usages (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
+%		\item \texttt{renameVariable}: Renaming a variable declaration and its usages (see \autoref{lst:example-method-badly}, Line 1)
 %		\item \texttt{renameField}: Renaming a field declaration and its usages (see \autoref{lst:java-class-file-rdh}, Line 6)
-%		\item \texttt{renameMethod}: Renaming a method declaration and its usages (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
-%		\item \texttt{add0}: Adding zero to numbers (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 3)
-%		\item \texttt{insertBraces}: Inserting superfluous braces (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
+%		\item \texttt{renameMethod}: Renaming a method declaration and its usages (see \autoref{lst:example-method-badly}, Line 1)
+%		\item \texttt{add0}: Adding zero to numbers (see \autoref{lst:example-method-badly}, Line 3)
+%		\item \texttt{insertBraces}: Inserting superfluous braces (see \autoref{lst:example-method-badly}, Line 1)
 %		\item \texttt{starImport}: Replacing specific imports with star-import (see \autoref{lst:java-class-file-rdh}, Line 1)
 %		\item \texttt{inlineField}: Inlining the values of static fields into the code (see \autoref{lst:java-class-file-rdh}, Line 8)
 %		\item \texttt{partiallyEvaluate}: Partially evaluate constants (see \autoref{lst:java-class-file-rdh}, Line 6)
@@ -1337,15 +1335,15 @@ cleveref=false,%
 %			\hline
 %			\textbf{\rdh} & \textbf{Description} & \textbf{Example} \\
 %			\hline
-%			\texttt{rename Variable} & Renaming a variable declaration and its usages & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+%			\texttt{rename Variable} & Renaming a variable declaration and its usages & \autoref{lst:example-method-badly}, Line 1 \\
 %			\hline
 %			\texttt{rename Field} & Renaming a field declaration and its usages & \autoref{lst:java-class-file-rdh}, Line 6 \\
 %			\hline
-%			\texttt{rename Method} & Renaming a method declaration and its usages & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+%			\texttt{rename Method} & Renaming a method declaration and its usages & \autoref{lst:example-method-badly}, Line 1 \\
 %			\hline
-%			\texttt{add0} & Adding zero to numbers & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 3 \\
+%			\texttt{add0} & Adding zero to numbers & \autoref{lst:example-method-badly}, Line 3 \\
 %			\hline
-%			\texttt{insert Braces} & Inserting superfluous braces & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+%			\texttt{insert Braces} & Inserting superfluous braces & \autoref{lst:example-method-badly}, Line 1 \\
 %			\hline
 %			\texttt{star Import} & Replacing specific imports with star-import & \autoref{lst:java-class-file-rdh}, Line 1 \\
 %			\hline
@@ -1369,15 +1367,15 @@ cleveref=false,%
 				\hline
 				\textbf{\rdh} & \textbf{Description} & \textbf{Example} \\
 				\hline
-				\texttt{renameVariable} & Renaming a variable declaration and its usages & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+				\texttt{renameVariable} & Renaming a variable declaration and its usages & \autoref{lst:example-method-badly}, Line 1 \\
 				\hline
 				\texttt{renameField} & Renaming a field declaration and its usages & \autoref{lst:java-class-file-rdh}, Line 6 \\
 				\hline
-				\texttt{renameMethod} & Renaming a method declaration and its usages & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+				\texttt{renameMethod} & Renaming a method declaration and its usages & \autoref{lst:example-method-badly}, Line 1 \\
 				\hline
-				\texttt{add0} & Adding zero to numbers & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 3 \\
+				\texttt{add0} & Adding zero to numbers & \autoref{lst:example-method-badly}, Line 3 \\
 				\hline
-				\texttt{insertBraces} & Inserting superfluous braces & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+				\texttt{insertBraces} & Inserting superfluous braces & \autoref{lst:example-method-badly}, Line 1 \\
 				\hline
 				\texttt{starImport} & Replacing specific imports with star-import & \autoref{lst:java-class-file-rdh}, Line 1 \\
 				\hline
@@ -1401,19 +1399,19 @@ cleveref=false,%
 				\hline
 				\texttt{newline} & Replacing newlines with none or multiple ones & \autoref{lst:java-class-file-rdh}, Line 2-6 \\
 				\hline
-				\texttt{incTab} & Replace a tab indentation with none or multiple ones & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+				\texttt{incTab} & Replace a tab indentation with none or multiple ones & \autoref{lst:example-method-badly}, Line 1 \\
 				\hline
-				\texttt{decTab} & Replace a tab outdentation with one or more ones & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line TODO \\
+				\texttt{decTab} & Replace a tab outdentation with one or more ones & \autoref{lst:example-method-badly}, Line TODO \\
 				\hline
-				\texttt{space} & Replacing a single space with multiple ones & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+				\texttt{space} & Replacing a single space with multiple ones & \autoref{lst:example-method-badly}, Line 1 \\
 				\hline
-				\texttt{newLineInsteadOf Space} & Replacing a space with a newline & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line TODO \\
+				\texttt{newLineInsteadOf Space} & Replacing a space with a newline & \autoref{lst:example-method-badly}, Line TODO \\
 				\hline
-				\texttt{spaceInsteadOf Newline} & Replacing a newline with a space & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+				\texttt{spaceInsteadOf Newline} & Replacing a newline with a space & \autoref{lst:example-method-badly}, Line 1 \\
 				\hline
-				\texttt{incTabInsteadOf DecTab} & Replace a tab outdentation with an indentation & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 2 \\
+				\texttt{incTabInsteadOf DecTab} & Replace a tab outdentation with an indentation & \autoref{lst:example-method-badly}, Line 2 \\
 				\hline
-				\texttt{decTabInsteadOf IncTab} & Replace a tab indentation with an outdentation & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 2 \\
+				\texttt{decTabInsteadOf IncTab} & Replace a tab indentation with an outdentation & \autoref{lst:example-method-badly}, Line 2 \\
 				\hline
 			\end{tabular}
 		\end{subtable}
@@ -1510,19 +1508,19 @@ cleveref=false,%
 %			\hline
 %			\texttt{newline} & Replacing newlines with none or multiple ones & \autoref{lst:java-class-file-rdh}, Line 2-6 \\
 %			\hline
-%			\texttt{incTab} & Replace a tab indentation with none or multiple ones & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+%			\texttt{incTab} & Replace a tab indentation with none or multiple ones & \autoref{lst:example-method-badly}, Line 1 \\
 %			\hline
-%			\texttt{decTab} & Replace a tab outdentation with one or more ones & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line TODO \\
+%			\texttt{decTab} & Replace a tab outdentation with one or more ones & \autoref{lst:example-method-badly}, Line TODO \\
 %			\hline
-%			\texttt{space} & Replacing a single space with multiple ones & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+%			\texttt{space} & Replacing a single space with multiple ones & \autoref{lst:example-method-badly}, Line 1 \\
 %			\hline
-%			\texttt{newLine InsteadOf Space} & Replacing a space with a newline & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line TODO \\
+%			\texttt{newLine InsteadOf Space} & Replacing a space with a newline & \autoref{lst:example-method-badly}, Line TODO \\
 %			\hline
-%			\texttt{space InsteadOf Newline} & Replacing a newline with a space & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+%			\texttt{space InsteadOf Newline} & Replacing a newline with a space & \autoref{lst:example-method-badly}, Line 1 \\
 %			\hline
-%			\texttt{incTab InsteadOf DecTab} & Replace a tab outdentation with an indentation & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 2 \\
+%			\texttt{incTab InsteadOf DecTab} & Replace a tab outdentation with an indentation & \autoref{lst:example-method-badly}, Line 2 \\
 %			\hline
-%			\texttt{decTab InsteadOf IncTab} & Replace a tab indentation with an outdentation & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 2 \\
+%			\texttt{decTab InsteadOf IncTab} & Replace a tab indentation with an outdentation & \autoref{lst:example-method-badly}, Line 2 \\
 %			\hline
 %		\end{tabularx}
 %	\end{center}
@@ -1539,19 +1537,19 @@ cleveref=false,%
 %			\hline
 %			\texttt{newline} & Replacing newlines with none or multiple ones & \autoref{lst:java-class-file-rdh}, Line 2-6 \\
 %			\hline
-%			\texttt{incTab} & Replace a tab indentation with none or multiple ones & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+%			\texttt{incTab} & Replace a tab indentation with none or multiple ones & \autoref{lst:example-method-badly}, Line 1 \\
 %			\hline
-%			\texttt{decTab} & Replace a tab outdentation with one or more ones & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line TODO \\
+%			\texttt{decTab} & Replace a tab outdentation with one or more ones & \autoref{lst:example-method-badly}, Line TODO \\
 %			\hline
-%			\texttt{space} & Replacing a single space with multiple ones & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+%			\texttt{space} & Replacing a single space with multiple ones & \autoref{lst:example-method-badly}, Line 1 \\
 %			\hline
-%			\texttt{newLine InsteadOf Space} & Replacing a space with a newline & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line TODO \\
+%			\texttt{newLine InsteadOf Space} & Replacing a space with a newline & \autoref{lst:example-method-badly}, Line TODO \\
 %			\hline
-%			\texttt{space InsteadOf Newline} & Replacing a newline with a space & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1 \\
+%			\texttt{space InsteadOf Newline} & Replacing a newline with a space & \autoref{lst:example-method-badly}, Line 1 \\
 %			\hline
-%			\texttt{incTab InsteadOf DecTab} & Replace a tab outdentation with an indentation & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 2 \\
+%			\texttt{incTab InsteadOf DecTab} & Replace a tab outdentation with an indentation & \autoref{lst:example-method-badly}, Line 2 \\
 %			\hline
-%			\texttt{decTab InsteadOf IncTab} & Replace a tab indentation with an outdentation & \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 2 \\
+%			\texttt{decTab InsteadOf IncTab} & Replace a tab indentation with an outdentation & \autoref{lst:example-method-badly}, Line 2 \\
 %			\hline
 %		\end{tabular}
 %	\end{table}
@@ -1559,24 +1557,24 @@ cleveref=false,%
 	
 %	\begin{itemize}
 %		\item \texttt{newline}: Replacing newlines with none or multiple ones (see \autoref{lst:java-class-file-rdh}, Line 2-6)
-%		\item \texttt{incTab}: Replace a tab indentation more with none or multiple ones (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
-%		\item \texttt{decTab}: Replace a tab outdentation with one or more ones (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line TODO)
-%		\item \texttt{space}: Replacing a single space with multiple ones (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
-%		\item \texttt{newLineInsteadOfSpace}: Replacing a space with a newline (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line TODO)
-%		\item \texttt{spaceInsteadOfNewline}: Replacing a newline with a space (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 1)
-%		\item \texttt{incTabInsteadOfDecTab}: Replace a tab outdentation with a indentation (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 2)
-%		\item \texttt{decTabInsteadOfIncTab}: Replace a tab indentation with a outdentation (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}, Line 2)
+%		\item \texttt{incTab}: Replace a tab indentation more with none or multiple ones (see \autoref{lst:example-method-badly}, Line 1)
+%		\item \texttt{decTab}: Replace a tab outdentation with one or more ones (see \autoref{lst:example-method-badly}, Line TODO)
+%		\item \texttt{space}: Replacing a single space with multiple ones (see \autoref{lst:example-method-badly}, Line 1)
+%		\item \texttt{newLineInsteadOfSpace}: Replacing a space with a newline (see \autoref{lst:example-method-badly}, Line TODO)
+%		\item \texttt{spaceInsteadOfNewline}: Replacing a newline with a space (see \autoref{lst:example-method-badly}, Line 1)
+%		\item \texttt{incTabInsteadOfDecTab}: Replace a tab outdentation with a indentation (see \autoref{lst:example-method-badly}, Line 2)
+%		\item \texttt{decTabInsteadOfIncTab}: Replace a tab indentation with a outdentation (see \autoref{lst:example-method-badly}, Line 2)
 %	\end{itemize}
 	The removal of spaces is not supported, as this would cause keywords or identifiers to merge.
 	Tab \textit{indentation} refers to the process of adding a tab ($\backslash t$) while \textit{outdentation} refers to the opposite, namely removing a tab ($\backslash t$). 
-%	For example, if the current tab count is 1 ($\backslash t \langle CODE \rangle$) (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils}, Line 7) a tab indentation results in a tab count of 2 ($\backslash t \backslash t \langle CODE \rangle $) (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils}, Line 8) and then a tab outdentation results in a tab count of 1 again ($ \backslash t \langle CODE \rangle$) (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils}, Line 9).
+%	For example, if the current tab count is 1 ($\backslash t \langle CODE \rangle$) (see \autoref{lst:example-method-well}, Line 7) a tab indentation results in a tab count of 2 ($\backslash t \backslash t \langle CODE \rangle $) (see \autoref{lst:example-method-well}, Line 8) and then a tab outdentation results in a tab count of 1 again ($ \backslash t \langle CODE \rangle$) (see \autoref{lst:example-method-well}, Line 9).
 	For example:
 	\begin{enumerate}
-		\item The current tab count is 1 ($\backslash t \langle CODE \rangle$) (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils} Line 7)
+		\item The current tab count is 1 ($\backslash t \langle CODE \rangle$) (see \autoref{lst:example-method-well} Line 7)
 		\item In the next line, we perform a tab indentation
-		\item The current tab count is now 2 ($\backslash t \backslash t \langle CODE \rangle $) (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils}, Line 8)
+		\item The current tab count is now 2 ($\backslash t \backslash t \langle CODE \rangle $) (see \autoref{lst:example-method-well}, Line 8)
 		\item In the next line, we perform a tab outdentation
-		\item The current tab count is now 1 ($\backslash t \langle CODE \rangle $) (see \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils}, Line 9)
+		\item The current tab count is now 1 ($\backslash t \langle CODE \rangle $) (see \autoref{lst:example-method-well}, Line 9)
 	\end{enumerate}
 	
 %	\begin{sloppypar}
@@ -2062,7 +2060,7 @@ cleveref=false,%
 		\label{lst:print-greeting}
 	\end{listing}
 	
-	Consider the method from \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils}. With a token limit of 100, the last encoded token is the last closing parenthesis in line 9. Everything from line 10 onwards is not encoded, which means that the information is lost for the semantic part of the model. To put it in other words: The model of \citeauthor{mi2022towards} only considers the first few lines of code snippets in its semantic component.
+	Consider the method from \autoref{lst:example-method-well}. With a token limit of 100, the last encoded token is the last closing parenthesis in line 9. Everything from line 10 onwards is not encoded, which means that the information is lost for the semantic part of the model. To put it in other words: The model of \citeauthor{mi2022towards} only considers the first few lines of code snippets in its semantic component.
 	
 	The visual and structural encoders have similar limitations, but to a much smaller extent. The structural encoder encodes the first 50 lines of each code snippet and the visual encoder encodes the first 43 lines. While the constraints for these two encoders seem to be long enough to fully capture most code snippets, the semantic encoder seems to be too limited to do so.
 
