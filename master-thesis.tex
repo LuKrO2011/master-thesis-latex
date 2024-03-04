@@ -701,10 +701,10 @@ cleveref=false,%
 \crefname{assumption}{assumption}{assumptions}
 
 
+% Poorly readable vs unreadable? Currently poorly readable
+% TODO: While proof reading:
 % TODO: Check tenses (Present tense to describe the paper itself) again?
-% TODO: poorly readable vs unreadable? Currently poorly readable
-% TODO: Links über die ganzen wörter (e.g. appendix)
-% TODO: Clearify code snippets vs methods
+% TODO: Clearify code snippets vs methods. Done?
 \begin{document}
 	
 	\frontmatter
@@ -753,7 +753,8 @@ cleveref=false,%
 
 	% Motivation: Importance
 	Code readability is of utmost significance in the domain of software development.
-	In the domain of software development, the significance of code readability cannot be overstated. Together with understandability, it serves as the foundation for efficient collaboration, comprehension, and maintenance of software systems~\cite{posnett2011simpler, aggarwal2002integrated}. 
+%	In the domain of software development, the significance of code readability cannot be overstated. 
+	Together with understandability, it serves as the foundation for efficient collaboration, comprehension, and maintenance of software systems~\cite{posnett2011simpler, aggarwal2002integrated}. 
 	Maintenance alone will consume over 70~\% of the total lifecycle cost of a software product and for maintenance, the most time-consuming act is reading code~\cite{buse2009learning, deimel1985uses, rugaber2000use, boehm2001defect}.
 	Therefore, it is important to ensure a high readability of code. In order to archive this, we need to measure readability.
 	% Motivation: Current state
@@ -761,14 +762,15 @@ cleveref=false,%
 	
 	% Main problem
 	%	However, these models do not capture what developers think of readability improvements~\cite{fakhoury2019improving}. This suggests that there is room for improvement in readability classification of source code. 
-	However, a major limitation of these models is not their architecture, but the amount of available data for Java code readability classification, which comprises 421 code snippets~\citeolddataset. The current training data originates from questionnaires, where humans have manually labeled the code snippets. This has two drawbacks: Firstly, manual labeling requires a lot of effort. Secondly, the dataset is too small for deep learning, as those require 
-	To address those drawbacks, we aim to automatically generate more training data.
+	However, a major limitation of these models is not their architecture, but the amount of available data for Java code readability classification, which comprises 421 code snippets~\citeolddataset. The current training data originates from questionnaires, where humans manually labeled the code snippets. This has two drawbacks: Firstly, manual labeling requires a lot of effort.
+	Secondly, the dataset is too small for deep learning, as this requires a large amount of data~\cite{hestness2017deep}.
+	To address these drawbacks, we aim to automatically generate more training data.
 	
 	% Problem details
 	% Effects of more data
-	Deep learning-based models perform better the more training data they get~\cite{hestness2017deep}. Therefore, one approach to further improve existing models is to gather more training data.
+	%	Deep learning-based models perform better the more training data they get~\cite{hestness2017deep}. Therefore, one approach to further improve existing models is to gather more training data.
 	% Effort of studys
-	This requires, as it was done previously, a lot of effort and persons willing to rate code based on their readability.
+	%	This requires, as it was done previously, a lot of effort and persons willing to rate code based on their readability.
 	
 	% Approach
 	The main idea of this work is to investigate whether it is possible to achieve higher accuracy in code readability classification using automatically generated data. 
@@ -808,12 +810,51 @@ cleveref=false,%
 	% Dataset generation
 	In a first step, following the approach of \citeauthor{allamanis2016convolutional}~\cite{allamanis2016convolutional}, we download GitHub\curl{https://github.com/}{2024-02-29} repositories with high code quality.
 	Our criteria for high code quality are an elevated number of stars, forks, method comments the use of and compliance with a checkstyle\curl{https://checkstyle.sourceforge.io/}{2024-02-09} specification. For example, developers prefer high code quality and therefore star or fork repositories with high code quality more likely.
-	We select Java files from the repositories that meet our criteria and extract methods from the Java classes in these files and label them as well readable (\Cref{well-readable-assumption}).
+	We select Java files from the repositories that meet our criteria, extract methods from the Java classes in these files and label them as well readable (\Cref{well-readable-assumption}).
 	
-	% TODO Generell: In papern machen wir gern eine Grafik auf die erste Seite, die den Ansatz direkt erklärt. Du hast ja eh listing 1 und 2. Theoretisch könntest du die hier schon einbinden und eine Figure draus machen mit links "good code", rechts "manipulated code"
-	
-	In a second step, all selected Java files are manipulated so that its code is subsequently less readable. You can find an exemplary result of this in TODO.
+	In a second step, all selected Java files are manipulated so that its code is subsequently less readable. You can find an exemplary result of this in \autoref{lst:rdh-example-method}.
 	We extract methods from the Java classes in these files and label them as poorly readable (\Cref{poorly-readable-assumption}).
+	
+	\begin{listing}[tb]
+		\begin{sublisting}{\linewidth}
+			\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
+				/**
+				* This method determines the sign of a given number and prints a corresponding message.
+				*
+				* @param number The input number to be checked.
+				*/
+				public static void printSign(int number) {							
+					if (number > 0) {
+						System.out.println("Number is positive");
+					} else if (number < 0) {
+						System.out.println("Number is negative");
+					} else {
+						System.out.println("Number is zero");
+					}
+				}
+			\end{minted}
+			\caption{An example of a simple and well readable Java method.}
+			\label{lst:cassandra-src-Java-org-apache-cassandra-utils}
+		\end{sublisting}
+		\vspace{1pt}
+		
+		\begin{sublisting}{\linewidth}
+			\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
+				public static void foo(int bar) {if ((bar>0)) {
+						System.out.println("Number is positive");
+					} else if (bar < (0 + 0)) {
+						System.out.println("Number is negative");
+					} else {
+						System.out.println("Number is zero");
+					}
+				}
+			\end{minted}
+			\caption{The same example as in \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils} but modified for poor readability.}
+			\label{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}
+		\end{sublisting}
+		\caption{Well readable (\autoref{lst:cassandra-src-Java-org-apache-cassandra-utils}) vs. poorly readable (\autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}) code.}
+		\label{lst:rdh-example-method}
+	\end{listing}
 	
 	After both steps, we have a new, automatically generated dataset for code readability classification. We call it minded-and-modified dataset.
 	
@@ -1075,158 +1116,6 @@ cleveref=false,%
 	%	There is another related term: understandability. Readability is the syntactic aspect of processing code, while understandability is the semantic aspect~\cite{posnett2011simpler}.
 	%	For example, a developer can find a piece of code readable but still difficult to understand. Recent research gives evidence that there is no correlation between understandability and readability~\cite{scalabrino2017automatically}.	
 	
-%	\begin{listing}[!ht]
-	%		\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
-		%			/**
-		%			* Logs the output of the specified process.
-		%			*
-		%			* @param p the process
-		%			* @throws IOException if an I/O problem occurs
-		%			*/
-		%			private static void logProcessOutput(Process p) throws IOException
-		%			{
-			%				try (BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream())))
-			%				{
-				%					StrBuilder builder = new StrBuilder();
-				%					String line;
-				%					while ((line = input.readLine()) != null)
-				%					{
-					%						builder.appendln(line);
-					%					}
-				%					logger.info(builder.toString());
-				%				}
-			%			}
-		%		\end{minted}
-	%		\caption[An example for well readable code of the highly rated Cassandra GitHub repository]{An example for well readable code of the highly rated Cassandra GitHub repository \protect\footnotemark}
-	%		\label{lst:cassandra-src-Java-org-apache-cassandra-utils}
-	%	\end{listing}
-%	\footnotetext{\url{https://github.com/apache/cassandra/blob/trunk/src/Java/org/apache/cassandra/utils/HeapUtils.Java}, accessed: 2023-07-25}
-
-%	\begin{listing}[tb]
-	%		\begin{sublisting}{\linewidth}
-		%			\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
-			%				/**
-			%				* Logs the output of the specified process.
-			%				*
-			%				* @param p the process
-			%				* @throws IOException if an I/O problem occurs
-			%				*/
-			%				private static void logProcessOutput(Process p) throws IOException
-			%				{
-				%					try (BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream())))
-				%					{
-					%						StrBuilder builder = new StrBuilder();
-					%						String line;
-					%						while ((line = input.readLine()) != null)
-					%						{
-						%							builder.appendln(line);
-						%						}
-					%						logger.info(builder.toString());
-					%					}
-				%				}
-			%			\end{minted}
-		%			\caption[An example of well-readable code from the highly-rated Cassandra GitHub repository]{An example of well-readable code from the highly-rated Cassandra GitHub repository.}
-		%			\label{lst:cassandra-src-Java-org-apache-cassandra-utils}
-		%		\end{sublisting}
-	%		
-	%		\begin{sublisting}{\linewidth}
-		%			\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
-			%				private 
-			%					static 
-			%				void 
-			%				debug( Process 
-			%				v1 
-			%				)       throws IOException
-			%				{
-				%					// Doo debug
-				%					try (BufferedReader   b 
-				%					= new 
-				%					BufferedReader(
-				%					new InputStreamReader(
-				%					v1.getInputStream()
-				%					)
-				%					)
-				%					)
-				%					{
-					%						StrBuilder b2=new StrBuilder();String v2;while (null!=(v2=input.readLine())){b2.appendln(v2);} // Doo stuff
-					%						m.info(  builder.toString()
-					%						);
-					%					}
-				%				}
-			%			\end{minted}
-		%			\caption{The same example as in \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils} but modified for poor readability.}
-		%			\label{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}
-		%		\end{sublisting}
-	%		\caption{Comparing code readability: well-readable code (\autoref{lst:cassandra-src-Java-org-apache-cassandra-utils}) vs. poorly readable modification (\autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}).}
-	%	\end{listing}
-
-%	
-%	\begin{listing}[!ht]
-	%		\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
-		%			/**
-		%			* Prints a personalized greeting message based on the provided name.
-		%			*
-		%			* @param name The name of the person for whom the greeting is intended.
-		%			*             If {@code null} or an empty string is provided, a generic greeting is displayed.
-		%			*/
-		%			public static void printGreeting(String name) {
-			%				// Check if the name is provided
-			%				if (name != null && !name.isEmpty()) {
-				%					System.out.println("Hello, " + name + "! How are you today?");
-				%				} else {
-				%					System.out.println("Hello! How are you today?");
-				%				}
-			%			}
-		%		\end{minted}
-	%		\caption{A simple method that prints a greeting in Java}
-	%		\label{lst:print-greeting}
-	%	\end{listing}
-
-\begin{listing}[tb]
-	\begin{sublisting}{\linewidth}
-		\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
-			/**
-			* This method determines the sign of a given number and prints a corresponding message.
-			*
-			* @param number The input number to be checked.
-			*/
-			public static void printSign(int number) {							
-				if (number > 0) {
-					System.out.println("Number is positive");
-				} else if (number < 0) {
-					System.out.println("Number is negative");
-				} else {
-					System.out.println("Number is zero");
-				}
-			}
-		\end{minted}
-		\caption{An example of a simple and well readable Java method.}
-		\label{lst:cassandra-src-Java-org-apache-cassandra-utils}
-	\end{sublisting}
-	\vspace{1pt}
-	
-	\begin{sublisting}{\linewidth}
-		\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
-			public static void foo(int bar) {if ((bar>0)) {
-						System.out.println("Number is positive");
-							} else if (bar < (0 + 0)) {
-						System.out.println("Number is negative");
-				} else {
-					System.out.println("Number is zero");
-				}
-			}
-		\end{minted}
-		\caption{The same example as in \autoref{lst:cassandra-src-Java-org-apache-cassandra-utils} but modified for poor readability.}
-		\label{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}
-	\end{sublisting}
-	\caption{Well readable (\autoref{lst:cassandra-src-Java-org-apache-cassandra-utils}) vs. poorly readable (\autoref{lst:cassandra-src-Java-org-apache-cassandra-utils-modified}) code.}
-\end{listing}
-
-
-
-%	\lstinputlisting[language=Java, firstline=8, lastline=26, caption={An example for highly readable code of the highly rated cassandra github repository},label={lst:cassandra-src-Java-org-apache-cassandra-utils}]{cassandra-src-Java-org-apache-cassandra-utils.Java}
-%	
-%	\lstinputlisting[language=Java, firstline=8, lastline=29, caption={The same example modified to be poorly readable},label={lst:cassandra-src-Java-org-apache-cassandra-utils-modified}]{cassandra-src-Java-org-apache-cassandra-utils-modified.Java}
 	
 \subsection{Conventional Calculation Approaches} \label{Classical Calculation Approaches}
 	A first estimation for source code readability was the percentage of comment lines over total code lines~\cite{aggarwal2002integrated}. Then researchers proposed several more complex metrics and models for assessing code readability~\cite{buse2009learning, posnett2011simpler, dorn2012general, scalabrino2018comprehensive}.
