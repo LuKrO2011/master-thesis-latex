@@ -666,6 +666,10 @@ cleveref=false,%
 \newcommand{\RDHa}{\RDH (\rdh)\xspace} % With abbrevation
 \newcommand{\RDHsa}{\RDHs (\rdhs)\xspace} % With abbrevation
 
+% Config names
+\newcommand{\none}{just-pretty-print\xspace} % None
+\newcommand{\nonet}{\texttt{\none}\xspace} % None
+
 % Research question summary boxes
 \usepackage{tcolorbox}
 \newenvironment{researchbox}[1]{\begin{tcolorbox}[colback=blue!10!white,colframe=blue!50!black,title=#1]}{\end{tcolorbox}}
@@ -706,9 +710,6 @@ cleveref=false,%
 \crefname{assumption}{assumption}{assumptions}
 
 % TODO: Add figures as pdf or high quality, without internal captions (python)
-% TODO: Adjust code snippets to show all RDHs
-% TODO: Besserer name für none
-% TODO: Replace intro example with HelloWorld (Shorter?) and add example for RDHs later!
 % Poorly readable vs unreadable? Currently poorly readable
 
 % TODO: While proof reading:
@@ -1307,7 +1308,7 @@ cleveref=false,%
 	The \rdh are a set of code manipulation heuristics that are applied to Java files. One part is performed on the abstract syntax tree (AST) representation of the Java files using the spoon library\curl{https://spoon.gforge.inria.fr/}{2024-15-02}~\cite{pawlak2016spoon}. Another part is executed when pretty-printing the AST back into Java files. This part cannot be displayed in the AST and is therefore executed at source code level immediately after the reverse transformation.
 	%	From now on, we will use the abbreviation \textit{\rdh} or \textit{\rdh tool} when referring to the entire program. If a specific manipulation or a configuration of the \rdh tool is meant, we will use \textit{[name] \rdh} or \textit{[name]} instead.
 	
-	The \rdh tool initially converts the Java code of any well readable Java class file into an AST. In the end the AST is parsed back to Java code using an pretty printer. If nothing else is done, this results in the \texttt{none}. Note that the code produced by the tool in this way will be slightly different from the original input code, as the styling and formatting of the original code will be overwritten by the default formatting of the Java Pretty Printer of the spoon library\curl{https://spoon.gforge.inria.fr/}{2024-15-02}~\cite{pawlak2016spoon}.
+	The \rdh tool initially converts the Java code of any well readable Java class file into an AST. In the end the AST is parsed back to Java code using an pretty printer. If nothing else is done, this results in \nonet. Note that the code produced by the tool in this way will be slightly different from the original input code, as the styling and formatting of the original code will be overwritten by the default formatting of the Java Pretty Printer of the spoon library\curl{https://spoon.gforge.inria.fr/}{2024-15-02}~\cite{pawlak2016spoon}.
 	
 	%	Renaming is done while the code is in its AST representation to ensure that the declarations and usages of variables (\texttt{renameVariable}), fields (\texttt{renameField}) and methods (\texttt{renameMethod}) are all renamed to the same new identifier.
 	
@@ -1635,7 +1636,7 @@ cleveref=false,%
 	\end{itemize}
 		
 	% Config: 
-	We have chosen the probabilities so that the generated code snippets are still realistic in the sense that they could also be written by humans. You can find the configurations in \autoref{tab:rdh_configurations} and an exemplary file for \texttt{none} in \Cref{appendix:rdh-config-file}.
+	We have chosen the probabilities so that the generated code snippets are still realistic in the sense that they could also be written by humans. You can find the configurations in \autoref{tab:rdh_configurations} and an exemplary file for \nonet in \Cref{appendix:rdh-config-file}.
 	
 	%	\begin{table}[tb]
 		%		\centering
@@ -2434,7 +2435,7 @@ cleveref=false,%
 	\end{figure}
 	
 	The ratings for each \rdh for all strata combined can be found in \autoref{fig:survey_ratings_violin_all} and \autoref{fig:survey_ratings_bar_all}. 	
-	In line with our expectation, we see that the ratings for \texttt{none} and \texttt{methods} are almost the same. There is no significant difference between the two, as a Mann-Whitney U test confirmed. The probability that the difference between \texttt{none} and \texttt{methods} is due to random variation is 92~\%. 
+	In line with our expectation, we see that the ratings for \nonet and \texttt{methods} are almost the same. There is no significant difference between the two, as a Mann-Whitney U test confirmed. The probability that the difference between \nonet and \texttt{methods} is due to random variation is 92~\%. 
 	Therefore, we are sure that other differences are actually caused by the \\rdhs and not by the pretty-printer.
 
 	\autoref{fig:survey_ratings_violin_all} shows that the mean value of our original methods is 3.68. The mean score of all rated code snippets in the merged dataset is 3.45. The difference of 0.23 is significant.
@@ -2466,12 +2467,12 @@ cleveref=false,%
 		\label{fig:survey_time_all}
 	\end{figure}
 	
-	We analyzed whether the difference in ratings between the different \\rdhs is statistically significant. To do this, we used the Mann-Whitney U test to compare the ratings for all snippets for an \rdh with the corresponding \texttt{none} snippets. The results can be found in \autoref{tab:survey_statistical_evidence}.
-	If we compare the \\rdhs with the \texttt{none} methods, we can be sure that the scores of all methods except newlines many and rename are indeed statistically different from the scores of \texttt{none}. 
+	We analyzed whether the difference in ratings between the different \\rdhs is statistically significant. To do this, we used the Mann-Whitney U test to compare the ratings for all snippets for an \rdh with the corresponding \nonet snippets. The results can be found in \autoref{tab:survey_statistical_evidence}.
+	If we compare the \\rdhs with the \nonet methods, we can be sure that the scores of all methods except newlines many and rename are indeed statistically different from the scores of \nonet. 
 	
-	If we consider binary readability classification and split the data into two classes (poorly readable: 1,2; well readable: 3-5) all but \texttt{none} and \texttt{rename} are statistically different from each other. This includes \texttt{newlines many} (TODO: Add p Values) for which we could not confirm statistical difference without binary classification.
+	If we consider binary readability classification and split the data into two classes (poorly readable: 1,2; well readable: 3-5) all but \nonet and \texttt{rename} are statistically different from each other. This includes \texttt{newlines many} (TODO: Add p Values) for which we could not confirm statistical difference without binary classification.
 
-	Besides \texttt{none}, this leaves only \texttt{rename} where we can not confirm statistical significance. Overall, we showed that the heuristics actually reduce the readability of source code.
+	Besides \nonet, this leaves only \texttt{rename} where we can not confirm statistical significance. Overall, we showed that the heuristics actually reduce the readability of source code.
 
 %	\begin{table}[h]
 %		\centering
@@ -2497,28 +2498,28 @@ cleveref=false,%
 
 	\begin{table}[tb]
 		\centering
-		\caption{Mann-Whitney U test results of each \rdh against \texttt{none}. When \textbf{$p$} is smaller than \num{5e-2} we conclude that the difference is significant.}
+		\caption{Mann-Whitney U test results of each \rdh against \nonet. When \textbf{$p$} is smaller than \num{5e-2} (not bold) we conclude that the difference is significant.}
 		\vspace{8pt}
 		\label{tab:survey_statistical_evidence}
 		\begin{tabular}{lS[table-format=1.2e-2]}
 			\toprule
-			Comparison & \textbf{$p$} \\
+			Comparison against & \textbf{$p$} \\
 			\midrule
-			\textbf{None - Methods} & \num{9.22e-1} \\
-			None - Newlines Few & \num{5.23e-6} \\
-			None - Spaces Many & \num{4.07e-2} \\
-			\textbf{None - Newlines Many} & \num{3.00e-1} \\
-			None - Comments Remove & \num{3.64e-3} \\
-			\textbf{None - Rename} & \num{9.90e-2} \\
-			None - Newline Instead Of Space & \num{4.57e-6} \\
-			None - Tabs & \num{3.06e-8} \\
-			None - All7 & \num{1.80e-7} \\
+			\textbf{methods} & \num{9.22e-1} \\
+			newlines\_few & \num{5.23e-6} \\
+			spaces\_many & \num{4.07e-2} \\
+			\textbf{newlines\_many} & \num{3.00e-1} \\
+			comments\_remove & \num{3.64e-3} \\
+			\textbf{rename} & \num{9.90e-2} \\
+			newline\_instead\_of\_space & \num{4.57e-6} \\
+			tabs & \num{3.06e-8} \\
+			all7 & \num{1.80e-7} \\
 			\bottomrule
 		\end{tabular}
 	\end{table}
 		
 	\begin{researchbox}{Summary (RQ2 - modify-poor):}
-		All of the 7 heuristics but \texttt{rename} decrease readability by a significant extend compared to \texttt{none}. We estimate the readability decrease for a certain probability of a certain type as can be seen in \autoref{fig:survey_ratings_bar_all}. We reject the null hypothesis and conclude that the poorly readable assumption (\Cref{poorly-readable-assumption}) holds
+		All of the 7 heuristics but \texttt{rename} decrease readability by a significant extend compared to \nonet. We estimate the readability decrease for a certain probability of a certain type as can be seen in \autoref{fig:survey_ratings_bar_all}. We reject the null hypothesis and conclude that the poorly readable assumption (\Cref{poorly-readable-assumption}) holds
 	\end{researchbox}
 
 \subsection{Model Training Results} \label{Model training results}
