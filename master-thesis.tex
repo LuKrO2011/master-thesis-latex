@@ -705,11 +705,16 @@ cleveref=false,%
 % Reference Assumptions
 \crefname{assumption}{assumption}{assumptions}
 
-
+% TODO: Add figures as pdf or high quality, without internal captions (python)
+% TODO: Adjust code snippets to show all RDHs
+% TODO: Besserer name für none
 % Poorly readable vs unreadable? Currently poorly readable
+
 % TODO: While proof reading:
 % TODO: Check tenses (Present tense to describe the paper itself) again?
 % TODO: Clearify code snippets vs methods. Done?
+% TODO: Check if RECED, RDH, mined-and-modified and merged dataset make sense and are consistent 
+% TODO: Find where to add this:	Once the survey was completed, we aggregated the ratings across all strats and all methods. We grouped the results into the 10 \rdhs. In this way, we assess whether the \rdhs work, which \rdhs work best and how strong the impact of each \rdh on readability is. In addition, we use the results of the survey to label the mined-and-modified dataset, which consists of the original and all7 \rdh methods.
 \begin{document}
 	
 	\frontmatter
@@ -907,7 +912,6 @@ cleveref=false,%
 	
 \subsection{Code Readability} \label{Code Readability}
 		
-	% TODO: Add to introduction?
 	% Importance	
 	%	In the domain of software development, the importance of code readability cannot be emphasized enough. Alongside understandability, it forms the basis for effective collaboration, comprehension, and maintenance of software systems~\cite{posnett2011simpler, aggarwal2002integrated}.
 	%	
@@ -1009,10 +1013,8 @@ cleveref=false,%
 %		Code readability is the human assessment of the effort required to read and understand code.
 %	\end{definition}
 
-	% TODO: Discuss with Lisa (and gordon?)
 	\textit{Code readability is the human assessment of the effort required to read and understand code.}
 
-	% TODO: Update citations
 	In the last years, researchers have proposed several metrics and models for assessing code readability with an accuracy of up to 81.8~\%~\citeclassicmodels. In recent years, deep learning-based models are able to achieve an accuracy of to 88.0~\%~\citedeepmodels on available datasets. 
 %	By using data augmentation the score can be improved even further to 87.3\%~\cite{mi2021effectiveness}.
 %	However, these models do not capture what developers think of readability improvements~\cite{fakhoury2019improving}. This suggests that there is room for improvement in readability classification of source code.
@@ -1186,11 +1188,6 @@ cleveref=false,%
 	% Related work: Existing data
 	All the mentioned models were trained with (a part of) the data from Buse, Dorn and Scalabrino consisting of a total of 421 Java code snippets. The data was generated with surveys. They therefore asked developers several questions, including how well readable the proposed source code is~\cite{buse2009learning, dorn2012general, scalabrino2018comprehensive}. We will refer to this dataset as \textit{merged} dataset.
 	
-%	TODO
-%	Prinzipiell schöne Übersicht von hier bis 2.5
-%	Aber fehlt Einordnung: wie related das zu deinem Zeug? Z.B. be dem augmentation Paper kam meines Wissens ja raus, dass das die Modell-Ergebnisse ja tatsächlich verbessert.
-%	Man könnte also z.B. schreiben: wir machen auch augmentation, weil das gut funktioniert, aber verfolgen einen Ansatz der ohne Domänenwissen auskommt.
-	
 	The problem that there is little data in the area of code readability classification for machine learning models has been recognized.
 					
 	% Related work: Data Augmentation - GAN (87.38\% acc)
@@ -1254,22 +1251,11 @@ cleveref=false,%
 	
 	When classifying the readability of code, the state of the art is to perform a binary classification into well readable and poorly readable code~\cite{mi2018inception, mi2018improving, sharma2020egan, mi2022towards, mi2022rank}. 
 	
-% TODO
-%	Ich würde den Absatz hierzu etwas relativieren.
-%	Wenn ich das richtig im Kopf habe, dann geben die meisten Classifier Modelle ja einen kontinuierlichen Wert zwischen 0 und 1 aus, was im Prinzip genau dem entspricht, was du forderst.
-%	Im Wesentlichen wird nur ein Knoten dahinter geschaltet, der abhängig vom Wert vorher dann eine Gruppe selektiert (</>=0.5).
-%	Das, was du ansprichst, zielt ja eher darauf ab, dass für die Evaluierung die binäre Klassifizierung verwendet wird.
-%	Und der Grund dafür ist sicherlich, dass es einfacher ist, das dazustellen, und dass man bessere Ergebnisse bekommt (das wissen denk ich auch alle, dafür brauchts nicht probably eigene research) :-) 
-%	Ich würd also  nur schreiben:
-%	- die Daten werden üblicherweise auf ner 5-point Likert scale erhoben
-%	- am Schluss wird als binäre Klassifizierung evaluiert
-%	- die Frage ist, wie dazwischen (beim Modelltraining) mit den Daten umgegangen wird. Mi machen das folgendermaßen... 
-	
 	However, code readability classification is not a binary classification task per se. \citeauthor{mi2023graph} introduced a third, neutral class to address this problem~\cite{mi2023graph}. 
 	When rating code snippets, a Likert scale~\cite{likert1932technique} from 1 (very unreadable) to 5 (very readable) was used~\citeolddataset. 
 	While the amount of classes varies, one can encode the data internally as a single-value representation between 0 and 1 where a higher value means higher readability. The output of the model is well readable if the value after the last layer is above 0.5 and poorly readable otherwise.
 	
-	Our evaluation model is the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} and uses the single-value representation. We want to show how they transformed the rating scores into a binary classification problem. First, the mean values of all scores are calculated. In a second step, the snippets are ranked according to their mean score. Then, the top 25~\% of the data is labeled as well readable (1.0) and the bottom 25~\% is labeled as poorly readable (0.0). The 50~\% of the data in between is not used at all~\cite{mi2022towards}.
+	Our evaluation model is the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards}. They transformed the rating scores into binary classification using a single-value representation as follows: First, the mean values of all scores are calculated. In a second step, the snippets are ranked according to their mean score. Then, the top 25~\% of the data is labeled as well readable (1.0) and the bottom 25~\% is labeled as poorly readable (0.0). The 50~\% of the data in between is not used at all~\cite{mi2022towards}.
 	
 	While this transformation is fine in principle, especially with the argument that the data in the middle is neither well readable nor poorly readable, it has drawbacks that only 50~\% of the available data is used for model training and evaluation:
 	
@@ -1282,11 +1268,10 @@ cleveref=false,%
 \subsection{Dataset Generation Approach} \label{Dataset Generation Approach}
 	In contrast to previous datasets for readability classification, our dataset is generated using an automated approach. The aim is to mine and modify code from GitHub to obtain both well readable and poorly readable methods. This approach is novel to the best of our knowledge. You can find a visualization in \autoref{fig:dataset_generation}.
 	
-	% TODO: Add figures as pdf or high quality
 	\begin{figure}[tb]
 		\centering
 		\includegraphics[width=0.9\textwidth]{img/dataset_generation.png}
-		\caption{The used dataset generation approach.} % TODO: Replace baldy with poorly
+		\caption{The used dataset generation approach.}
 		\label{fig:dataset_generation}
 	\end{figure}
 	
@@ -1769,8 +1754,6 @@ cleveref=false,%
 \subsection{Construction of Questionnaires} \label{Construction of Questionnaires}
 	We evaluated the generated data set and the new approach with a survey. To do this, we had to carefully select suitable code snippets from the dataset. An overview of the approach can be found in \autoref{fig:survey_pipeline}.
 	
-	% TODO: Tool name: REDEC = Redability Decreaser, HEER - Heuristic Erosion Enhancing Readability, THEOR - Tool for Heuristic Erosion of Readability
-	% TODO: 9 config files und 4 \\rdhs tauschen. Linien!
 	\begin{figure}[tb]
 		\centering
 		\includegraphics[width=0.9\textwidth]{img/survey_pipeline.png}
@@ -1779,10 +1762,7 @@ cleveref=false,%
 	\end{figure}
 		
 	The first step was to find realistic configurations for the \rdh tool. After an initial data set with the heuristics was created, a pilot study was conducted. Subsequently, heuristics with a low rating were adjusted to be weaker according to the results of the pilot survey. The result consisted of 9 different \\rdhs, which can be found in \autoref{tab:rdh_configurations}. Together with the original methods this resulted in 10 different configurations.
-	
-
-	
-	
+		
 	The configurations are based on probabilities for different heuristics. A heuristic is applied with the specified probability to each occurrence of the object to which it refers. For example, when \texttt{removeComment} is applied with a probability of 10~\% to each comment that occurs within the code snippet. The exact scope of changes is therefore uncertain. It can happen (especially with short methods such as getters and setters) that a method is not changed at all. For example, if a method only has a single comment and we use \texttt{removeComment}, the probability that the method will not be changed is 90~\%.
 	
 	In a second step, we applied stratified sampling~\cite{thompson2012sampling} to distinguish between very simple methods such as getter and setter and more complex methods. In order to be able to compare the original methods with their modified variants, we only carried out the random sampling for the original methods and compared the \rdh methods with these in a later step.
@@ -1791,8 +1771,6 @@ cleveref=false,%
 	Finally, using the fastcluster implementation~\cite{mullner2013fastcluster} of Ward's hierarchical clustering we were able to cluster the methods into an arbitrary amount of clusters.	
 		
 	By comparing the merge distances in each step (see \autoref{fig:strata_merge_distances}), we found that a cluster size of 4 makes the most sense: the merge distance of 5 to 4 is small, so we should still perform this merge, but the merge distance of 4 to 3 is large, so it is better not to perform this merge. Also, 4 is the size with the last possibility for a small merge distance. Each of the clusters is one stratum of our stratified sampling. We manually assigned a name to each of the 4 strata (see \autoref{tab:strata_info}).
-	
-	% TODO: Continue here
 	
 	\begin{figure}[tb]
 		\centering
@@ -1863,7 +1841,6 @@ cleveref=false,%
 	This decision was made due to the relatively high frequency of methods that do not differ from their original methods (see \autoref{fig:sampling_not_different_overall}). Another reason for this decision is that particularly simple methods are rather uninteresting for the classification of readability, as they are often generated (e.g. by IDEs) and usually follow a straightforward pattern.
 	
 	%TODO: Add and link drawio "questionaire" graph
-	
 	\begin{figure}[tb]
 		\centering
 		\includegraphics[width=\textwidth]{img/sampling_not_different_overall.png}
@@ -1879,7 +1856,6 @@ cleveref=false,%
 		
 	Finally, the methods of each questionnaire were randomly shuffled within itself. This was done to minimize the impact of the position of a snippet or variant within a survey on the rating.
 
-% TODO: Explain how in the final dataset the labeles are assigned
 %	Each snippet of the well readable code (original) is labeled with the mean value of all ratings of the original variant across all survey results. Similarly, we label the all7 code snippets with their mean value. Note that in the binary classification with the underlying towards model, this results in the original methods being labeled well readable and the all7 \rdh poorly readable.	
 	
 %	% We will conclude a user study to evaluate the newly generated data for readability classifier models.
@@ -2027,7 +2003,6 @@ cleveref=false,%
 		\caption{A code snippet and its visual encoding.}
 		\label{fig:visual_encoding_combined}
 	\end{figure}
-	%	TODO: The color definitions do not match. Bug in our tool!
 	
 	% Architecture: Segment embedding
 	For the semantic representation we split the code into tokens (e.g., keywords and operators) and use BERT~\cite{devlin2018bert} to embed each token as a vector~\cite{mi2022towards}.
@@ -2105,9 +2080,7 @@ cleveref=false,%
 	
 \section{Evaluation} \label{Evaluation}
 	We tested the mined-and-modified dataset in two ways. On the one hand, we conducted a user study. On the other hand, we evaluated the impact of using the dataset for the towards model. In detail, we answer the following questions with both experiments:
-	
-	% TODO: Reorder assumptions and questions?
-	
+		
 	% User study
 	We are conducting a user study to determine the quality of the new data set. In detail the aim of the user study is to answer the following key questions:
 	\begin{enumerate}
@@ -2333,10 +2306,7 @@ cleveref=false,%
 
 \subsubsection{Prolific Survey} \label{Prolific Survey}
 	In this section we summarize the results of the main study conducted via Prolific.
-	
-% TODO: Add this to the following somewhere
-%	Once the survey was completed, we aggregated the ratings across all strats and all methods. We grouped the results into the 10 \\rdhs. In this way, we assess whether the \\rdhs work, which \\rdhs work best and how strong the impact of each \rdh on readability is. In addition, we use the results of the survey to label the mined-and-modified dataset, which consists of the original and all7 \rdh methods.
-	
+		
 \textit{1. Experimental setup:}
 	The survey was conducted using Tien Duc Nguyen's Code Annotation Tool (see \autoref{fig:survey_tool}) along with the platform Prolific\curl{https://app.prolific.com/}{2024-02-21} for the recruitment and payment of participants.
 	The survey was conducted between 31 January and 7 February 2024. A total of 221 participants took part. Each of the 20 questionnaires was answered by 11 participants (similar to the survey of \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}). In one survey, one more participant was assigned by mistake. 
@@ -2446,17 +2416,6 @@ cleveref=false,%
 	
 %	while for all7 it is 3.26	
 %	We label each method in both groups with the corresponding mean score.
-	
-% TODO
-%Ich würde den Absatz hierzu etwas relativieren.
-%Wenn ich das richtig im Kopf habe, dann geben die meisten Classifier Modelle ja einen kontinuierlichen Wert zwischen 0 und 1 aus, was im Prinzip genau dem entspricht, was du forderst.
-%Im Wesentlichen wird nur ein Knoten dahinter geschaltet, der abhängig vom Wert vorher dann eine Gruppe selektiert (</>=0.5).
-%Das, was du ansprichst, zielt ja eher darauf ab, dass für die Evaluierung die binäre Klassifizierung verwendet wird.
-%Und der Grund dafür ist sicherlich, dass es einfacher ist, das dazustellen, und dass man bessere Ergebnisse bekommt (das wissen denk ich auch alle, dafür brauchts nicht probably eigene research) :-) 
-%Ich würd also  nur schreiben:
-%- die Daten werden üblicherweise auf ner 5-point Likert scale erhoben
-%- am Schluss wird als binäre Klassifizierung evaluiert
-%- die Frage ist, wie dazwischen (beim Modelltraining) mit den Daten umgegangen wird. Mi machen das folgendermaßen...
 
 	\begin{researchbox}{Summary (RQ1 - mined-well):}
 		%		The readability ratings of code snippets mined from Github are not very accurate as we take the mean of all ratings for all methods and assign it to each snippet.
@@ -2510,7 +2469,6 @@ cleveref=false,%
 %		\end{tabular}
 %	\end{table}
 
-	% TODO: Besserer name für none
 	\begin{table}[tb]
 		\centering
 		\caption{Mann-Whitney U test results of each \rdh against \texttt{none}. When \textbf{$p$} is smaller than \num{5e-2} we conclude that the difference is significant.}
@@ -2540,13 +2498,12 @@ cleveref=false,%
 \subsection{Model Training Results} \label{Model training results}
 	We aim to investigate the following things:
 	
-	% TODO: Make it "how well"
 	\begin{enumerate}
 		\item \textbf{Model evaluation:}
 		To confirm that our implementation of the model scores similar accuracy as the original one of \citeauthor{mi2022towards}~\cite{mi2022towards}, we trained and evaluated the model on the merged dataset (merged-merged).
 		
 		\item \textbf{Internal evaluation:} 
-		To investigate how effectively the model captures the readability aspects of the mined-and-modified dataset, we train and evaluate it on this dataset (mam-mam). By doing so, we examine also how effectively the model captures the differences between the \texttt{original} and \texttt{all7} methods which are modified with our \\rdhs.
+		To investigate how effective the model captures the readability aspects of the mined-and-modified dataset, we train and evaluate it on this dataset (mam-mam). By doing so, we examine also how effectively the model captures the differences between the \texttt{original} and \texttt{all7} methods which are modified with our \\rdhs.
 		
 		\item \textbf{Cross evaluation:} 
 		To assess how effective the mined-and-modified dataset is for predicting readability, we train the model on this dataset and then evaluate its performance on the merged dataset (mam-merged). For advanced insights, we also train the model on the merged dataset and evaluate it on the merged dataset (merged-merged) and on the mined-and-modified dataset (merged-mam).
@@ -2554,7 +2511,6 @@ cleveref=false,%
 		\item \textbf{Fine-tuning:} 
 		To assess what accuracy we can score in predicting readability, we investigate training on the mined-and-modified dataset and fine-tuning and evaluating on the merged dataset (mam-merged-merged).		
 		
-		% TODO: Others
 	\end{enumerate}
 	
 	We therefore used different combinations of training and evaluation datasets with the towards mode. The results can be found in \autoref{tab:dataset_performance}. We used 10-fold cross-validation for evaluation.
@@ -2606,7 +2562,6 @@ cleveref=false,%
 %	This is in direct contrast to our earlier assumption that such fine-tuning could lead to better results.
 	One explanation for this could be that the model is too small to be effective with the larger amount of data. Introducing more or bigger layers so that the model can store more features internally could lead to an improvement. However, this is not part of this work, in which we mainly focus on a new dataset (generation approach).
 	
-	% TODO: Talk with lisa about 91.8~\%
 	\begin{researchbox}{Summary (RQ3 - new-data):}
 		When trained and evaluated on the mined-and-modified dataset we achieve an accuracy of 91.8~\%.
 		When evaluated on the merged dataset, the model trained with the mined-and-modified dataset achieves an accuracy of 61.9~\%. When we train the model with merged dataset 84.7~\% is achieved.
@@ -2615,7 +2570,6 @@ cleveref=false,%
 		We did not outperform the model trained only on the merged dataset.
 	\end{researchbox}
 	
-	% TODO: Talk with Lisa about 210 ds
 	%	We also trained the model with a random sample of 210 data points to gain insight into what a change in training size might do. As we can see, the model has similar metrics to the all-all model. If we now compare the accuracy of the new-new compared to the merged-merged model, we see that with a larger dataset an improvement of about 8~\% is possible. Similar results are suggested by previous research on data augmentation, where an accuracy of 87.3~\% was achieved \citeauthor{mi2021effectiveness}. This emphasizes the importance of finding new ways of generating data for readability classification. 
 	
 \section{Discussion} \label{Discussion}
