@@ -801,7 +801,7 @@ cleveref=false,%
 	%	In the next section (\ref{Background and Related Work}) we will look at related work. The explanation of source code readability is presented in \autoref{Code Readability}. A presentation of classical computational approaches is presented in \autoref{Conventional Calculation Approaches}, followed by an overview of deep learning-based approaches in \autoref{Deep Learning Based Approaches}. Furthermore, in \autoref{Data Augmentation}, we provide insights into relevant studies dealing with data augmentation for code readability. Then, in \autoref{Diverse Perspectives}, we provide a summary of recent advances in the field of code readability. Finally, in \autoref{Data Generation}, we turn to studies related to our proposed data generation approach.
 	%	
 	%	% Main	
-	%	We will then describe our presented approach to dataset generation in detail in \autoref{Mined and Modified Code for Dataset Generation}. In \autoref{Work on Existing Datasets}, we present our work on existing datasets, followed by some considerations on classifying readability versus regression in \autoref{Classification Considerations}. Next, in \autoref{Dataset Generation Approach}, we present our approach to generating datasets in detail, which requires the use of readability reduction heuristics (see \autoref{Readability Decreasing Heursitcs}). Finally, \autoref{Construction of Questionnaires} explains how we evaluated our new dataset using a survey, and \autoref{Readability Classification Model} compares the new data with existing ones.
+	%	We will then describe our presented approach to dataset generation in detail in \autoref{Mined and Modified Code for Dataset Generation}. In \autoref{Work on Existing Datasets}, we present our work on existing datasets, followed by some considerations on classifying readability versus regression in \autoref{Classification Considerations}. Next, in \autoref{Dataset Generation Approach}, we present our approach to generating datasets in detail, which requires the use of readability reduction heuristics (see \autoref{Readability Decreasing Modifications}). Finally, \autoref{Construction of Questionnaires} explains how we evaluated our new dataset using a survey, and \autoref{Readability Classification Model} compares the new data with existing ones.
 	%	
 	%	% Evaluation
 	%	Finally, we will present the results of the evaluation of our new dataset in the \autoref{Evaluation}. This section is divided into the presentation of the results of the survey \ref{Survey}, the trained model \ref{Model Training Results} and finally the research questions we proposed \ref{Research Question Results}.
@@ -902,7 +902,7 @@ cleveref=false,%
 		\item Although existing datasets~\citeolddataset have different structure we combine and unify them into one merged dataset (\Cref{Work on Existing Datasets}).
 		\item We argue that only part of the available data was used for training and evaluating the readability classification model of \citeauthor{mi2022towards}~\cite{mi2022towards} (\Cref{Classification Considerations}).
 		\item We develop an approach for mining well readable Java methods and thereby achieve automated dataset generation for code readability. This allows us to introduce a new dataset (\Cref{Dataset Generation Approach}).
-		\item We managed to create a tool that can automatically decrease the readability of Java class files (\Cref{Readability Decreasing Heursitcs}).
+		\item We managed to create a tool that can automatically decrease the readability of Java class files (\Cref{Readability Decreasing Modifications}).
 		\item There is an enormous amount of possible combinations to sample methods for a user study. We show a representative and resource-effective sample approach (\Cref{Construction of Questionnaires}).
 		\item We demonstrate that the model of \citeauthor{mi2022towards}~\cite{mi2022towards} is limited (\Cref{Readability Classification Model}).
 		\item We show that our generation approach is working (\Cref{Survey}).
@@ -1280,7 +1280,7 @@ cleveref=false,%
 	
 	\begin{figure}[tb]
 		\centering
-		\includegraphics[width=0.9\textwidth]{img/dataset_generation.png}
+		\includegraphics[width=0.9\textwidth]{img/dataset_generation.pdf}
 		\caption{The used dataset generation approach.}
 		\label{fig:dataset_generation}
 	\end{figure}
@@ -1306,11 +1306,11 @@ cleveref=false,%
 	
 	In a third step we run checkstyle\curl{https://checkstyle.sourceforge.io/}{2024-02-15} against the projects own checkstyle configuration to get all Java class files, that pass the own checkstyle test. A tool from Maximilian Jungwirth\curl{https://github.com/sphrilix}{TODO} was used for this purpose. From the Java classes that passed this filter we extract all methods that have a comment of any kind at the beginning of the method. This results in \numOriginal methods which we assume to be well readable.
 	
-	The fourth and final step is to generate poorly readable code from the well readable one. Therefore we use the proposed \RDHs (see \Cref{Readability Decreasing Heursitcs}). Afterwards we again extract all methods with a comment at the beginning of the method.
+	The fourth and final step is to generate poorly readable code from the well readable one. Therefore we use the proposed \RDHs (see \Cref{Readability Decreasing Modifications}). Afterwards we again extract all methods with a comment at the beginning of the method.
 	Initially we planned to not require comments for the poorly readable dataset part. However, it turns out that in this case all well readable methods have a comment while most of the poorly readable do not have one. This lead to shortcut learning, whether a method has a comment or not instead of learning to distinguishing the methods by all other criteria as well.
-	After removing code snippets that are identical for the original and the variant with reduced readability (see \Cref{Readability Decreasing Heursitcs}) and balancing the dataset using random sampling, the result is a dataset consisting of \numSamplesAccurate code snippets.
+	After removing code snippets that are identical for the original and the variant with reduced readability (see \Cref{Readability Decreasing Modifications}) and balancing the dataset using random sampling, the result is a dataset consisting of \numSamplesAccurate code snippets.
 	
-\subsection{\RDHs} \label{Readability Decreasing Heursitcs}
+\subsection{\RDHs} \label{Readability Decreasing Modifications}
 	In this section we explain how we achieved to decrease the readability of code using the \RDHa.
 	\rdh uses a set of code modification heuristics that are applied to Java files. We call these \RDHsa.
 	One part is performed on the Abstract Syntax Tree (AST) representation of the Java files using the spoon library\curl{https://spoon.gforge.inria.fr/}{2024-15-02}~\cite{pawlak2016spoon}. Another part is executed when pretty-printing the AST back into Java files. This part cannot be displayed in the AST and is therefore executed at source code level immediately after the reverse transformation.
@@ -1794,7 +1794,7 @@ cleveref=false,%
 	
 	\begin{figure}[tb]
 		\centering
-		\includegraphics[width=0.9\textwidth]{img/survey_pipeline.png}
+		\includegraphics[width=0.9\textwidth]{img/survey_pipeline.pdf}
 		\caption{Steps performed to craft questionnaires from the mined-and-modified dataset.}
 		\label{fig:survey_pipeline}
 	\end{figure}
@@ -1957,7 +1957,7 @@ cleveref=false,%
 	
 	\begin{figure}[tb]
 		\centering
-		\includegraphics[width=\textwidth]{img/model_pipline.png}
+		\includegraphics[width=\textwidth]{img/model_pipline.pdf}
 		\caption{The architecture of the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards}.}
 		\label{fig:model_pipeline}
 	\end{figure}
@@ -2066,7 +2066,7 @@ cleveref=false,%
 	
 	\begin{figure}
 		\centering
-		\includegraphics[width=\textwidth]{img/visual_encoding_pipline.png}
+		\includegraphics[width=\textwidth]{img/visual_encoding_pipline.pdf}
 		\caption{The steps to automatically, visually encode code.}
 		\label{fig:visual_encoding_pipline}
 	\end{figure}
@@ -2167,7 +2167,7 @@ cleveref=false,%
 	
 	\begin{resq} \textbf{(modify-poor)} Can poorly readable code be generated from well readable code?\end{resq} \label{modify-poor}
 	It is not sufficient to have only well readable code for training a classifier. We also need poorly readable code. Therefore, we will try to generate such code from the well readable code. We will investigate whether this is possible in principle, and
-	whether \rdh (see \Cref{Readability Decreasing Heursitcs}) is able to achieve this.
+	whether \rdh (see \Cref{Readability Decreasing Modifications}) is able to achieve this.
 	
 	The modifications \rdh applies on the source code are heuristics. To answer, whether the generated code is actually poorly readable (\Cref{poorly-readable-assumption}) we will utilize the results of the user study.
 	
@@ -2642,7 +2642,7 @@ cleveref=false,%
 	% Zusammenhang: Studie und Model Eval
 	Our survey (see \Cref{Pilot Survey}) showed that mined-and-modified dataset captures readability. The model training results (see \Cref{Model training results}) showed that the mined-and-modified dataset captures different aspects of readability than the merged dataset. 	
 	% Different aspects of readability
-	The question arises what the different aspects are and whether it is possible to extend the proposed \rdhs (see \Cref{Readability Decreasing Heursitcs}) so that the same aspects are captured. By achieving this we suggest that we could also achieve better evaluation results on the merged dataset than previous models.
+	The question arises what the different aspects are and whether it is possible to extend the proposed \rdhs (see \Cref{Readability Decreasing Modifications}) so that the same aspects are captured. By achieving this we suggest that we could also achieve better evaluation results on the merged dataset than previous models.
 	
 	% Model Restrictions
 	We fine-tuned the model with the merged dataset after training with the mined-and-modified dataset and evaluated it on the merged dataset (see \Cref{Model training results}). We expected the classification accuracy of the resulting model to exceed that of the model trained on the merged dataset only.
@@ -2686,7 +2686,7 @@ cleveref=false,%
 	Another way to improve existing code readability classifiers could be to develop a different structure for some layers of the models. We suggest increasing the size and depth of the layers so that the mined-and-modified dataset can be made useful. Alternatively, a completely different model architecture could be developed. 
 	
 	% More heuristics
-	The modifications described in this work (see \Cref{Readability Decreasing Heursitcs}) are only part of the possible modifications that could be developed. Additional modifications could further improve the diversity of poorly readable code. This could increase the number of internal features that a model can learn, which in turn could increase the accuracy of the model.
+	The modifications described in this work (see \Cref{Readability Decreasing Modifications}) are only part of the possible modifications that could be developed. Additional modifications could further improve the diversity of poorly readable code. This could increase the number of internal features that a model can learn, which in turn could increase the accuracy of the model.
 	
 	% Summary
 	In summary, there are many opportunities to further investigate and thus most likely improve the classification of code readability. Our new dataset and the generation approach can serve as a foundation for this.

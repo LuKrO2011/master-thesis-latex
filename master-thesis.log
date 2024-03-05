@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.8.1)  5 MAR 2024 15:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  5 MAR 2024 20:25
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -6,7 +6,7 @@ entering extended mode
 (master-thesis.tex
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-06-30>
-(C:\Program Files\MiKTeX\tex/latex/se2thesis\se2thesis.cls
+(C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/se2thesis\se2thesis.cls
 Document Class: se2thesis 2023-07-04 v3.1.0 A thesis class for the Chair of Sof
 tware Engineering II
 (C:\Program Files\MiKTeX\tex/latex/graphics\graphicx.sty
@@ -205,7 +205,7 @@ Package typearea Info: These are the values describing the layout:
 (typearea)              \baselineskip   = 13.6pt
 (typearea)              on input line 175.
 
-(C:\Program Files\MiKTeX\tex/latex/se2thesis\se2colors.sty
+(C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/se2thesis\se2colors.sty
 Package: se2colors 2023-07-04 v3.1.0 A colour support package for the se2thesis
  bundle
 
@@ -228,7 +228,7 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
 ))
-(C:\Program Files\MiKTeX\tex/latex/se2thesis\se2fonts.sty
+(C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/se2thesis\se2fonts.sty
 Package: se2fonts 2023-07-04 v3.1.0 A font-selection support package for the se
 2thesis bundle
 
@@ -663,7 +663,7 @@ Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 \c@blind@pangramcount=\count299
 \c@blind@pangrammax=\count300
 )
-(C:\Program Files\MiKTeX\tex/latex/se2thesis\se2packages.sty
+(C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/se2thesis\se2packages.sty
 Package: se2packages 2023-07-04 v3.1.0 Supporting packages for the se2thesis bu
 ndle
 
@@ -718,7 +718,7 @@ Package seiipackages Info: se2packages loads the siunitx packagenow.
 
 
 (C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/siunitx\siunitx.sty
-Package: siunitx 2023-07-26 v3.2.9 A comprehensive (SI) units package
+Package: siunitx 2023-06-12 v3.2.6 A comprehensive (SI) units package
 \l__siunitx_angle_tmp_dim=\dimen264
 \l__siunitx_angle_marker_box=\box70
 \l__siunitx_angle_unit_box=\box71
@@ -1604,7 +1604,8 @@ G,.JBIG2,.JB2,.eps]
 (C:\Program Files\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-(C:\Program Files\MiKTeX\tex/latex/se2thesis\se2translations-english.trsl
+(C:\Users\lukas\AppData\Roaming\MiKTeX\tex/latex/se2thesis\se2translations-engl
+ish.trsl
 File: se2translations-english.trsl (english translation file `se2translations')
  2023/07/04
 )
@@ -1874,12 +1875,15 @@ code-[]readability-[]merged$[]\T1/LibertinusSerif-TLF/m/n/9 (+20) , ac-cessed:
  []
 
 [11]
-<img/dataset_generation.png, id=315, 643.40375pt x 543.02875pt>
-File: img/dataset_generation.png Graphic file (type png)
-<use img/dataset_generation.png>
-Package pdftex.def Info: img/dataset_generation.png  used on input line 1283.
-(pdftex.def)             Requested size: 314.99786pt x 265.86269pt.
- [12] [13 <./img/dataset_generation.png>]
+
+pdfTeX warning: pdflatex.exe (file ./img/dataset_generation.pdf): PDF inclusion
+: found PDF version <1.7>, but at most version <1.5> allowed
+<img/dataset_generation.pdf, id=315, 464.69609pt x 394.3533pt>
+File: img/dataset_generation.pdf Graphic file (type pdf)
+<use img/dataset_generation.pdf>
+Package pdftex.def Info: img/dataset_generation.pdf  used on input line 1283.
+(pdftex.def)             Requested size: 314.99786pt x 267.31425pt.
+[12] [13 <./img/dataset_generation.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 1344--1344
 []|\T1/cmtt/m/n/10.95 newLine
  []
@@ -1930,11 +1934,14 @@ D56AF294.pygtex)
 
 (_minted-master-thesis/F9F0292A32172789F271073EF33DD323E868895F15A189C361FB063C
 D56AF294.pygtex) [15] [16] [17] [18]
-<img/survey_pipeline.png, id=424, 643.40375pt x 402.50375pt>
-File: img/survey_pipeline.png Graphic file (type png)
-<use img/survey_pipeline.png>
-Package pdftex.def Info: img/survey_pipeline.png  used on input line 1797.
-(pdftex.def)             Requested size: 314.99786pt x 197.06273pt.
+
+pdfTeX warning: pdflatex.exe (file ./img/survey_pipeline.pdf): PDF inclusion: f
+ound PDF version <1.7>, but at most version <1.5> allowed
+<img/survey_pipeline.pdf, id=432, 465.65968pt x 293.1753pt>
+File: img/survey_pipeline.pdf Graphic file (type pdf)
+<use img/survey_pipeline.pdf>
+Package pdftex.def Info: img/survey_pipeline.pdf  used on input line 1797.
+(pdftex.def)             Requested size: 314.99786pt x 198.31871pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 1807--1807
   [][][][][][]$\T1/cmtt/m/n/9 https : / / scikit-[]learn . org / stable / modul
@@ -1942,7 +1949,7 @@ es / generated / sklearn . metrics .
  []
 
 [19] [20]
-<img/strata_merge_distances.png, id=449, 803.0pt x 602.25pt>
+<img/strata_merge_distances.png, id=457, 803.0pt x 602.25pt>
 File: img/strata_merge_distances.png Graphic file (type png)
 <use img/strata_merge_distances.png>
 Package pdftex.def Info: img/strata_merge_distances.png  used on input line 181
@@ -1953,30 +1960,32 @@ Overfull \hbox (5.02187pt too wide) in paragraph at lines 1865--1877
  [][] 
  []
 
-<img/sampling_not_different_overall.png, id=453, 642.4pt x 481.8pt>
+<img/sampling_not_different_overall.png, id=461, 642.4pt x 481.8pt>
 File: img/sampling_not_different_overall.png Graphic file (type png)
 <use img/sampling_not_different_overall.png>
 Package pdftex.def Info: img/sampling_not_different_overall.png  used on input 
 line 1884.
 (pdftex.def)             Requested size: 350.0pt x 262.50595pt.
-[21 <./img/survey_pipeline.png>] [22 <./img/strata_merge_distances.png (PNG cop
+[21 <./img/survey_pipeline.pdf>] [22 <./img/strata_merge_distances.png (PNG cop
 y)>]
-<img/model_pipline.png, id=470, 3376.615pt x 1449.415pt>
-File: img/model_pipline.png Graphic file (type png)
-<use img/model_pipline.png>
-Package pdftex.def Info: img/model_pipline.png  used on input line 1960.
-(pdftex.def)             Requested size: 350.0pt x 150.23578pt.
 
+pdfTeX warning: pdflatex.exe (file ./img/model_pipline.pdf): PDF inclusion: fou
+nd PDF version <1.7>, but at most version <1.5> allowed
+<img/model_pipline.pdf, id=486, 609.23605pt x 264.99pt>
+File: img/model_pipline.pdf Graphic file (type pdf)
+<use img/model_pipline.pdf>
+Package pdftex.def Info: img/model_pipline.pdf  used on input line 1960.
+(pdftex.def)             Requested size: 350.0pt x 152.23463pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<img/visual_encoding_code.png, id=480, 455.20062pt x 247.42438pt>
+<img/visual_encoding_code.png, id=496, 455.20062pt x 247.42438pt>
 File: img/visual_encoding_code.png Graphic file (type png)
 <use img/visual_encoding_code.png>
 Package pdftex.def Info: img/visual_encoding_code.png  used on input line 2031.
 
 (pdftex.def)             Requested size: 167.9985pt x 91.31528pt.
-<img/visual_encoding.png, id=481, 204.765pt x 118.4425pt>
+<img/visual_encoding.png, id=497, 204.765pt x 118.4425pt>
 File: img/visual_encoding.png Graphic file (type png)
 <use img/visual_encoding.png>
 Package pdftex.def Info: img/visual_encoding.png  used on input line 2037.
@@ -1986,14 +1995,17 @@ LaTeX Warning: Citation 'devlin2018bert' on page 23 undefined on input line 204
 6.
 
 [23] [24 <./img/sampling_not_different_overall.png (PNG copy)>]
-<img/visual_encoding_pipline.png, id=507, 3055.415pt x 646.415pt>
-File: img/visual_encoding_pipline.png Graphic file (type png)
-<use img/visual_encoding_pipline.png>
-Package pdftex.def Info: img/visual_encoding_pipline.png  used on input line 20
+
+pdfTeX warning: pdflatex.exe (file ./img/visual_encoding_pipline.pdf): PDF incl
+usion: found PDF version <1.7>, but at most version <1.5> allowed
+<img/visual_encoding_pipline.pdf, id=523, 551.1792pt x 120.45pt>
+File: img/visual_encoding_pipline.pdf Graphic file (type pdf)
+<use img/visual_encoding_pipline.pdf>
+Package pdftex.def Info: img/visual_encoding_pipline.pdf  used on input line 20
 69.
-(pdftex.def)             Requested size: 350.0pt x 74.04518pt.
- [25 <./img/model_pipline.png>] [26 <./img/visual_encoding_code.png> <./img/vis
-ual_encoding.png (PNG copy)> <./img/visual_encoding_pipline.png>]
+(pdftex.def)             Requested size: 350.0pt x 76.48856pt.
+[25 <./img/model_pipline.pdf>] [26 <./img/visual_encoding_code.png> <./img/visu
+al_encoding.png (PNG copy)> <./img/visual_encoding_pipline.pdf>]
 \openout4 = `master-thesis.pyg'.
 
 
@@ -2008,33 +2020,33 @@ Package hyperref Info: bookmark level for unknown resq defaults to 0 on input l
 ine 2165.
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/b/it' will be
 (Font)              scaled to size 10.95pt on input line 2165.
- [27{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbt
-s_opzo24.enc}] [28] [29]
-<img/survey_times.png, id=580, 642.4pt x 481.8pt>
+ [27] [28] [29{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus
+-type1/lbts_opzo24.enc}]
+<img/survey_times.png, id=612, 642.4pt x 481.8pt>
 File: img/survey_times.png Graphic file (type png)
 <use img/survey_times.png>
 Package pdftex.def Info: img/survey_times.png  used on input line 2251.
 (pdftex.def)             Requested size: 314.99786pt x 236.25314pt.
  [30] [31 <./img/survey_times.png (PNG copy)>] [32]
-<img/survey_tool.png, id=614, 389.95688pt x 346.29375pt>
+<img/survey_tool.png, id=646, 389.95688pt x 346.29375pt>
 File: img/survey_tool.png Graphic file (type png)
 <use img/survey_tool.png>
 Package pdftex.def Info: img/survey_tool.png  used on input line 2384.
 (pdftex.def)             Requested size: 350.0pt x 310.82132pt.
  [33 <./img/survey_tool.png>] [34]
-<img/survey_time_histogramm.png, id=635, 481.8pt x 361.35pt>
+<img/survey_time_histogramm.png, id=667, 481.8pt x 361.35pt>
 File: img/survey_time_histogramm.png Graphic file (type png)
 <use img/survey_time_histogramm.png>
 Package pdftex.def Info: img/survey_time_histogramm.png  used on input line 245
 1.
 (pdftex.def)             Requested size: 171.50192pt x 128.62476pt.
-<img/survey_time_less_than_180.png, id=636, 642.4pt x 481.8pt>
+<img/survey_time_less_than_180.png, id=668, 642.4pt x 481.8pt>
 File: img/survey_time_less_than_180.png Graphic file (type png)
 <use img/survey_time_less_than_180.png>
 Package pdftex.def Info: img/survey_time_less_than_180.png  used on input line 
 2457.
 (pdftex.def)             Requested size: 171.50192pt x 128.62476pt.
-<img/survey_Java_familiarity_pie.png, id=638, 642.4pt x 481.8pt>
+<img/survey_Java_familiarity_pie.png, id=670, 642.4pt x 481.8pt>
 File: img/survey_Java_familiarity_pie.png Graphic file (type png)
 <use img/survey_Java_familiarity_pie.png>
 Package pdftex.def Info: img/survey_Java_familiarity_pie.png  used on input lin
@@ -2042,13 +2054,13 @@ e 2469.
 (pdftex.def)             Requested size: 262.5pt x 196.87762pt.
  [35 <./img/survey_time_histogramm.png> <./img/survey_time_less_than_180.png (P
 NG copy)>]
-<img/survey_ratings_violin_all.png, id=651, 642.4pt x 481.8pt>
+<img/survey_ratings_violin_all.png, id=683, 642.4pt x 481.8pt>
 File: img/survey_ratings_violin_all.png Graphic file (type png)
 <use img/survey_ratings_violin_all.png>
 Package pdftex.def Info: img/survey_ratings_violin_all.png  used on input line 
 2493.
 (pdftex.def)             Requested size: 350.0pt x 262.50595pt.
-<img/survey_ratings_bar_all.png, id=652, 642.4pt x 481.8pt>
+<img/survey_ratings_bar_all.png, id=684, 642.4pt x 481.8pt>
 File: img/survey_ratings_bar_all.png Graphic file (type png)
 <use img/survey_ratings_bar_all.png>
 Package pdftex.def Info: img/survey_ratings_bar_all.png  used on input line 249
@@ -2074,7 +2086,7 @@ LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/sc' will be
 
 {C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts_cb
 34qf.enc}] [44] [45] [46]
-<img/pilot_survey_task_clearness.png, id=733, 642.4pt x 481.8pt>
+<img/pilot_survey_task_clearness.png, id=765, 642.4pt x 481.8pt>
 File: img/pilot_survey_task_clearness.png Graphic file (type png)
 <use img/pilot_survey_task_clearness.png>
 Package pdftex.def Info: img/pilot_survey_task_clearness.png  used on input lin
@@ -2186,7 +2198,7 @@ csquotes.sty    2022-09-14 v5.2n context-sensitive quotations (JAW)
 csquotes.def    2022-09-14 v5.2n csquotes generic definitions (JAW)
 csquotes.cfg    
 booktabs.sty    2020/01/12 v1.61803398 Publication quality tables
- siunitx.sty    2023-07-26 v3.2.9 A comprehensive (SI) units package
+ siunitx.sty    2023-06-12 v3.2.6 A comprehensive (SI) units package
  amstext.sty    2021/08/26 v2.01 AMS text
   amsgen.sty    1999/11/30 v2.0 generic functions
    array.sty    2022/09/04 v2.5g Tabular extension package (FMi)
@@ -2300,7 +2312,7 @@ _minted-master-thesis/37826F652A84CCB7B33A9F630DA2612BE868895F15A189C361FB063CD
 _minted-master-thesis/1565F2D312078CBA1FA57FEAB6408A07E868895F15A189C361FB063CD
 56AF294.pygtex
 ts1libertinusserif-tlf.fd
-img/dataset_generation.png
+img/dataset_generation.pdf
 _minted-master-thesis/9AEAD767320FC88D0689A98ADA4C4F52E868895F15A189C361FB063CD
 56AF294.pygtex
 _minted-master-thesis/8135176527F5BB98EDB0252ABEB67CC8E868895F15A189C361FB063CD
@@ -2309,13 +2321,13 @@ _minted-master-thesis/804EF91AC05B6D974A649609A8D7EB14E868895F15A189C361FB063CD
 56AF294.pygtex
 _minted-master-thesis/F9F0292A32172789F271073EF33DD323E868895F15A189C361FB063CD
 56AF294.pygtex
-img/survey_pipeline.png
+img/survey_pipeline.pdf
 img/strata_merge_distances.png
 img/sampling_not_different_overall.png
-img/model_pipline.png
+img/model_pipline.pdf
 img/visual_encoding_code.png
 img/visual_encoding.png
-img/visual_encoding_pipline.png
+img/visual_encoding_pipline.pdf
 _minted-master-thesis/9AEAD767320FC88D0689A98ADA4C4F52E868895F15A189C361FB063CD
 56AF294.pygtex
 _minted-master-thesis/EACAA8633D5958E51CCF3DCA8F8A04ADE868895F15A189C361FB063CD
@@ -2334,9 +2346,6 @@ _minted-master-thesis/71941D47B65971F30F322243CD1D926BE111B8B0B61706E15C39CA1EE
 DBF62EF.pygtex
  ***********
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `master-thesis.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 runsystem(del master-thesis.pyg)...executed.
@@ -2346,10 +2355,10 @@ Package logreq Info: Writing requests to 'master-thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 52205 strings out of 475550
- 1134196 string characters out of 5772349
+ 52202 strings out of 475551
+ 1134544 string characters out of 5772369
  2132820 words of memory out of 5000000
- 72110 multiletter control sequences out of 15000+600000
+ 72106 multiletter control sequences out of 15000+600000
  709147 words of font info for 321 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  122i,21n,131p,10970b,2479s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2370,9 +2379,9 @@ fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/p
 ublic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts
 /cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pf
 b><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on master-thesis.pdf (53 pages, 1532915 bytes).
+Output written on master-thesis.pdf (53 pages, 1386313 bytes).
 PDF statistics:
- 1121 PDF objects out of 1200 (max. 8388607)
+ 1153 PDF objects out of 1200 (max. 8388607)
  199 named destinations out of 1000 (max. 500000)
  87330 words of extra memory for PDF output out of 89155 (max. 10000000)
 
