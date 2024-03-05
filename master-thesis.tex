@@ -712,6 +712,7 @@ cleveref=false,%
 
 % TODO: Check times for background and realted work (states/stated, writes/wrote)
 % TODO: Add figures as pdf or high quality, without internal captions (python)
+% TODO: Remove "Heuristics", replace with "Modifications" - use \def
 % Poorly readable vs unreadable? Currently poorly readable
 
 % TODO: While proof reading:
@@ -770,7 +771,7 @@ cleveref=false,%
 %	In the domain of software development, the significance of code readability cannot be overstated. 
 	Together with understandability, it serves as the foundation for efficient collaboration, comprehension, and maintenance of software systems~\cite{posnett2011simpler, aggarwal2002integrated}. 
 	Maintenance alone will consume over 70~\% of the total lifecycle cost of a software product and for maintenance, the most time-consuming act is reading code~\cite{buse2009learning, deimel1985uses, rugaber2000use, boehm2001defect}.
-	Therefore, it is important to ensure a high readability of code. In order to archive this, we need to measure readability.
+	Therefore, it is important to ensure a high readability of code. To archive this, we need to measure readability.
 	% Motivation: Current state
 	In the last years, researchers have proposed several metrics and models for assessing code readability with an accuracy of up to 81.8~\%~\citeclassicmodels. In recent years, deep learning-based models are able to achieve an accuracy of up to 88.0~\%~\citedeepmodels.
 	
@@ -926,7 +927,7 @@ cleveref=false,%
 	%	In the field of software development, a major focus continues to be on code readability and its profound impact on these aspects, as confirmed by numerous studies~\cite{deimel1985uses, rugaber2000use, boehm2001defect, aggarwal2002integrated, posnett2011simpler, buse2009learning, tashtoush2013impact, sedano2016code, xia2017measuring, mannan2018towards, scalabrino2018comprehensive, alawad2019empirical, johnson2019empirical, mi2023graph}.
 
 	
-%	Therefore, it is important to ensure a high readability of code. In order to archive this, we need to define and measure code readability.
+%	Therefore, it is important to ensure a high readability of code. To archive this, we need to define and measure code readability.
 	When talking about \textit{code readability classification} we need to define what we mean by this term. Therefore, we start with an overview over definitions of code readability.
 	
 %	However, there are various definitions in the literature:
@@ -1316,6 +1317,8 @@ cleveref=false,%
 	
 	% What is available
 	Various modifications can be made between the two steps and during pretty-printing. We can find a description of each modification in \autoref{tab:rdh-description} and examples of the modifications in \autoref{lst:java-method} and \autoref{lst:java-class-file}.
+	
+	\rdh applies such a modification to each occurrence of the object it refers to with a specified probability. Due to the use of probabilities it can happen that no modification is applied. For example, we execute \rdh and set only \texttt{removeComment} to a probability of 10~\%. Then the tool removes each comment of the given Java class files with a probability of 10~\%. The exact amount of removed comments is uncertain. It can happen (especially for short methods within the class files) that a method is not changed at all. For example, if a method only has a single comment and we use \texttt{removeComment}, the probability that the method is not changed (besides the changes of \nonet) is 90~\%.
 		
 	\begin{table}[p]
 		\centering
@@ -1626,7 +1629,7 @@ cleveref=false,%
 	%	\end{figure}
 	
 	% Cofig: Array vs Single
-	The \rdh tool works with a configuration file in which one can specify a probability for each heuristic that can be applied.
+	The \rdh tool works with a configuration file in which one can specify a probability for each available heuristic.
 	For heuristics of configuration type \textit{Array} (\texttt{newline}, \texttt{incTab}, \texttt{decTab} and \texttt{space}), a array of probabilities must be defined for the respective number of replacements. The probabilities of the array must sum up to 1.
 	For heuristics of configuration type \textit{Single} (others) a single probability must be defined (see \autoref{tab:rdh-characteristics}).
 	For example, \texttt{spaceInsteadOfNewline} can be configured with $0.05$ meaning that each space is replaced with a newline ($\backslash n$) with a probability of 5~\%.
@@ -1674,7 +1677,7 @@ cleveref=false,%
 	
 	\begin{table}[tb]
 		\centering
-		\caption{Chosen configurations and their probabilities for the \RDHs.}
+		\caption{Chosen configurations and their probabilities for the \RDHs. For better readability, we write \textit{addX} and \textit{removeX} instead of the array configurations. For example, we write \textit{Add1Space:~20~\%} and \textit{Add2Spaces:~10~\%}, but the configuration is \textit{space:~[0.0, 0.7, 0.2, 0.1]}.}
 		\vspace{8pt}
 		\label{tab:rdh_configurations}
 		\begin{tabular}{|l|l|l|}
@@ -1782,7 +1785,7 @@ cleveref=false,%
 	The individual methods are then extracted from the class files. As mentioned (see \Cref{Dataset Generation Approach}), we require a method comment for all methods. We therefore use \texttt{removeComment} after completing the method extraction.
 	
 \subsection{Construction of Questionnaires} \label{Construction of Questionnaires}
-	We evaluated the generated dataset and the new approach with a survey. To do this, we had to carefully select suitable code snippets from the dataset. An overview of the approach can be found in \autoref{fig:survey_pipeline}.
+	We evaluated the generated dataset and the new approach with a survey. Therefore, we build configurations and sampled code snippets from the dataset. An overview of the approach can be found in \autoref{fig:survey_pipeline}.
 	
 	\begin{figure}[tb]
 		\centering
@@ -1791,13 +1794,12 @@ cleveref=false,%
 		\label{fig:survey_pipeline}
 	\end{figure}
 		
-	The first step was to find realistic configurations for the \rdh tool. After an initial dataset with the heuristics was created, a pilot study was conducted. Subsequently, heuristics with a low rating were adjusted to be weaker according to the results of the pilot survey. The result consisted of 9 different \rdhs, which can be found in \autoref{tab:rdh_configurations}. Together with the original methods this resulted in 10 different configurations.
-		
-	The configurations are based on probabilities for different heuristics. A heuristic is applied with the specified probability to each occurrence of the object to which it refers. For example, when \texttt{removeComment} is applied with a probability of 10~\% to each comment that occurs within the code snippet. The exact scope of changes is therefore uncertain. It can happen (especially with short methods such as getters and setters) that a method is not changed at all. For example, if a method only has a single comment and we use \texttt{removeComment}, the probability that the method will not be changed is 90~\%.
+	The first step was to find realistic configurations for the \rdh tool. After an initial dataset with the heuristics was created, a pilot study was conducted and the heuristics were adjusted based on the feedback. The final 9 configurations can be found in \autoref{tab:rdh_configurations}. Together with the original methods this resulted in 10 groups.
 	
-	In a second step, we applied stratified sampling~\cite{thompson2012sampling} to distinguish between very simple methods such as getter and setter and more complex methods. In order to be able to compare the original methods with their modified variants, we only carried out the random sampling for the original methods and compared the \rdh methods with these in a later step.
+	In a second step, we applied stratified sampling~\cite{thompson2012sampling} to distinguish between very simple methods such as getter and setter and more complex methods. 
+	Since we want to compare the original methods with their modified variants later, we performed the sampling for the original methods and added the \rdh methods in a later step.
 	
-	Thus, we first calculated features for the original code snippets. This was done using the tool of \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}. A 110-dimensional feature vector was calculated for each original code snippet. Next we computed the cosine similarity metrix between all feature vectors using scikit\curl{https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html}{2024-02-20}. 
+	For the stratified sampling, we first calculated features for the original code snippets. This was done using the tool of \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}. We calculated a 110-dimensional feature vector for each original code snippet. Next we computed the cosine similarity metrix between all feature vectors using scikit\curl{https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html}{2024-02-20}. 
 	Finally, using the fastcluster implementation~\cite{mullner2013fastcluster} of Ward's hierarchical clustering we were able to cluster the methods into an arbitrary amount of clusters.	
 		
 	By comparing the merge distances in each step (see \autoref{fig:strata_merge_distances}), we found that a cluster size of 4 makes the most sense: the merge distance of 5 to 4 is small, so we should still perform this merge, but the merge distance of 4 to 3 is large, so it is better not to perform this merge. Also, 4 is the size with the last possibility for a small merge distance. Each of the clusters is one stratum of our stratified sampling. We manually assigned a name to each of the 4 strata (see \autoref{tab:strata_info}).
@@ -1827,7 +1829,8 @@ cleveref=false,%
 %	\end{table}
 		
 	In a third step, we crafted the questionnaires from the strata. We decided to provide all 10 previously mentioned configurations for each original method, as we want to compare the original methods with their \rdh variants. We have a survey capacity of 400 code snippets (see \Cref{Prolific Survey}). Therefore, the capacity for each \rdh variant is $400/10 = 40$ code snippets. We start by selecting 40 original code snippets and then add all their \rdh variants.
-	We opted for a random sample within the strata. However, we distributed the 40 snippets across the strata as shown in Table~\ref{tab:strata_info}.
+	We opted for a random sample within the strata. However, we distributed the 40 snippets across the strata as shown in \Cref{tab:strata_info}:
+	We sampled 4 methods each from Stratum~0 and Stratum~2 and 16 methods each from Stratum~1 and Stratum~3.
 	
 %	\begin{table}[tb]
 %		\centering
@@ -1851,7 +1854,7 @@ cleveref=false,%
 	
 	\begin{table}[tb]
 		\centering
-		\caption{Computed strata, manually assigned names based on the methods within and distribution for survey creation.} 
+		\caption{Computed strata, manually assigned names and distribution for survey creation.} 
 		\vspace{8pt}
 		\label{tab:strata_info}
 		\begin{tabular}{llrr}
@@ -1868,23 +1871,23 @@ cleveref=false,%
 		\end{tabular}
 	\end{table}
 	
-	This decision was made due to the relatively high frequency of methods that do not differ from their original methods (see \autoref{fig:sampling_not_different_overall}). Another reason for this decision is that particularly simple methods are rather uninteresting for the classification of readability, as they are often generated (e.g. by IDEs) and usually follow a straightforward pattern.
+	This decision was made due to the relatively high frequency of methods that do not differ from their original methods in Stratum 0 and Stratum 2 (see \autoref{fig:sampling_not_different_overall}). Another reason for this decision is that particularly simple methods are rather uninteresting for the classification of readability, as they are often generated (e.g. by IDEs) and usually follow a straightforward pattern.
 	
 	%TODO: Add and link drawio "questionaire" graph
 	\begin{figure}[tb]
 		\centering
 		\includegraphics[width=\textwidth]{img/sampling_not_different_overall.png}
-		\caption{Frequency of the case that a \rdh-method is not different from its original method.} 
+		\caption{Frequency of the case that a \rdh variant is not different from its original method.} 
 		\label{fig:sampling_not_different_overall}
 	\end{figure}
 		
 	After selecting the 40 original methods, we next selected all $9*40$ \rdh variants that belong to the original methods. This was mostly done automatically based on the names of the original methods and the names of the \rdh variant methods. However, if the method was renamed at an earlier stage due to the method renaming heuristic, the new method did no longer match the original method, in which case we had to match them manually.
 		
-	Once we collected all 400 methods, we distributed them across the 20 questionnaires, each with 20 methods. In order not to manipulate the raters, we decided that a variant of each method could only appear once in each questionnaire. For example, if the original method is in questionnaire 1, the removeComment variant (or another variant of the same method) must not be included in the same questionnaire.
+	Once we collected all 400 methods, we distributed them across the 20 questionnaires, each with 20 methods. To not manipulate the raters, we decided that a variant of each method must only appear once in each questionnaire. For example, if the original method is in one questionnaire, the \texttt{removeComment} variant (or another variant of the same method) must not be included in the same questionnaire.
 		
-	For this purpose, we created four permutation matrices with 10 snippets each. The number 10 was chosen because it is possible to distribute 10 snippets, each with 10 variants, across at least 10 survey questionnaires without violating our condition. By combining two 10-permutation matrices, we were able to create 10 survey questionnaires with 20 code snippets each. An implication of this approach is that each questionnaire contains each variant kind exactly twice. By doing this twice, we obtain the desired distribution of 20 questionnaires with 20 methods each. Our condition applies: There is only one variant of the same method in each questionnaire.
+	For this purpose, we created four permutation matrices with 10 snippets each. The number 10 was chosen because it is possible to distribute 10 snippets, each with 10 variants, across at least 10 survey questionnaires without violating our condition. By combining two 10-permutation matrices, we achieved to create 10 survey questionnaires with 20 code snippets each. An implication of this approach is that each questionnaire contains each kind of variant exactly twice. By doing this twice, we obtain the desired distribution of 20 questionnaires with 20 methods each. Our condition applies: There is only one variant of the same method in each questionnaire.
 		
-	Finally, the methods of each questionnaire were randomly shuffled within itself. This was done to minimize the impact of the position of a snippet or variant within a survey on the rating.
+	Finally, the methods of each questionnaire were randomly shuffled within itself. We did this to minimize the impact of the position of a snippet or variant within a survey on the rating.
 
 %	Each snippet of the well readable code (original) is labeled with the mean value of all ratings of the original variant across all survey results. Similarly, we label the all7 code snippets with their mean value. Note that in the binary classification with the underlying towards model, this results in the original methods being labeled well readable and the all7 \rdh poorly readable.	
 	
@@ -1943,19 +1946,19 @@ cleveref=false,%
 	
 \subsection{Readability Classification Model} \label{Readability Classification Model}
 
-	Next we investigate whether it is possible to score a higher accuracy as the towards model in classifying code readability with the mined-and-modified dataset.
+	Next we describe our approach for investigating whether it is possible to score a higher accuracy as the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} in classifying code readability with the mined-and-modified dataset.
 	
-	Therefore we created our own implementation of the towards model~\cite{mi2022towards} of \citeauthor{mi2022towards} using Keras\curl{https://keras.io/about/}{2024-02-20}. The model consists of three layers. A code representation layer, a feature extraction layer and a code readability classification layer. You can find an overview of the model architecture in \autoref{fig:model_pipeline}.
+	We created our own implementation of the model using Keras\curl{https://keras.io/about/}{2024-02-20}. The model consists of three layers. A code representation layer, a feature extraction layer and a code readability classification layer. You can find an overview of the model architecture in \autoref{fig:model_pipeline}.
 	
 	\begin{figure}[tb]
 		\centering
 		\includegraphics[width=\textwidth]{img/model_pipline.png}
-		\caption{The architecture of the towards model~\cite{mi2022towards} of \citeauthor{mi2022towards}.}
+		\caption{The architecture of the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards}.}
 		\label{fig:model_pipeline}
 	\end{figure}
 	
 	% Architecture
-	The input for the model is a labeled dataset consisting of code snippets and whether they are badly or well readable. In the code representation layer three different code representations are generated from each code snippet: A visual, a semantic and a structural representation. 
+	The input for the model is a labeled dataset consisting of code snippets and whether they are well or poorly readable. In the code representation layer three different code representations are generated from each code snippet: A visual, a semantic and a structural representation. 
 	
 	% Architecture: Visual embedding
 	For the visual representation the syntax of the code is highlighted. Therefore \citeauthor{mi2022towards} assigned each type of syntactic element a color (see \autoref{tab:model-colors}). Instead of highlighting the words in the respective color, as done by an IDE, the words are replaced by color blocks instead (see \autoref{fig:visual_encoding}). \citeauthor{mi2022towards} used Eclipse\curl{https://www.eclipse.org/}{2024-03-02} to highlight the code snippets and then took screenshots to obtain a RGB Matrix~\cite{mi2022towards}.
@@ -1965,7 +1968,7 @@ cleveref=false,%
 		\caption{The color encoding used by the visual component of the towards model~\cite{mi2022towards}.}
 		\vspace{8pt}
 		\label{tab:model-colors}
-		\begin{tabular}{lcc}
+		\begin{tabular}{lll}
 			\toprule
 			Element & Color & Hex Code \\
 			\midrule
@@ -2047,14 +2050,14 @@ cleveref=false,%
 	On the token embedding the model performs feature extraction using a BERT embedding layer, convolution layers, a max pooling layer and a BiLSTM~\cite{mi2022towards}.
 	
 	% Architecture: Classification
-	After extracting the feature from the three individual representations the output is merged and used as a input for the final step: code readability classification. In this step the model consists of multiple fully-connected layers and a dropout layer. The output is a single value, namely the readability score. If the score is above a certain limit, we classify the input as well readable, otherwise it is poorly readable~\cite{mi2022towards}.	
+	After extracting the features from the three individual representations the output is merged and used as a input for the final step: code readability classification. In this step the model consists of multiple fully-connected layers and a dropout layer. The output is a single value, namely the readability score. If the score is above a certain limit, we classify the input as well readable, otherwise it is poorly readable~\cite{mi2022towards}.	
 	
 	% Different: Model
 	We implemented this model as described by \citeauthor{mi2022towards}~\cite{mi2022towards} with a few adjustments:
 	In contrast to the publicly available code of \citeauthor{mi2022towards}\curl{https://github.com/swy0601/Readability-Features}{2024-02-20}, our model includes (batch) encoders required for the model to be trained on new data and to perform the prediction task for new code snippets. In addition, our model supports fine-tuning by freezing certain layers as well as storing intermediate results, such as the encoded dataset. During evaluation, the model returns the evaluation statistics in form of a JSON file.
 	
 	% Different: Image encoding
-	A larger adjustment was made when it comes to image encoding. To automate the generation of visual encodings we propose a different approach leading to a similar result. You can find an overview of our approach in \autoref{fig:visual_encoding_pipline}.
+	We made a further adjustment to the image encoding. To automate the generation of visual encodings we propose a different approach leading to a similar result. You can find an overview of our approach in \autoref{fig:visual_encoding_pipline}.
 	
 	\begin{figure}
 		\centering
@@ -2070,28 +2073,54 @@ cleveref=false,%
 	The token length for the BERT encoding (BERT-base-cased\curl{https://huggingface.co/google-bert/bert-base-cased}{2024-02-20}) used in the model is 100. What implications does this have? To answer this question, we first take a look at what a token comprises. In addition to special tokens that mark the beginning \textit{[CLS]} and the end \textit{[SEP]} of the input, each word represent a token. Furthermore, each special character (such as a slash~(\textbf{/}), parentheses~(\textbf{(},~\textbf{)},~\textbf{\{},~\textbf{\}}), a comma~(\textbf{,}), a semicolon~(\textbf{;}), arithmetic signs~(\textbf{=},~\textbf{<},~\textbf{>}) and many more) is also represented by its own token. Java identifiers are split into several tokens according to the convention of upper and lower case. If a identifier is not present in the model's vocabulary, the tokenizer splits it further into sub-identifiers or characters that are in the vocabulary. 
 	For example in \autoref{lst:print-greeting}, Line 6, the word "int" is split into the tokens "in" and "t" as "int" is not part of the vocabulary of BERT-base-cased.
 
-	\begin{listing}[tb]
-		\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
-			[CLS] / * *
-			* This method determines the sign of a given number and prints a corresponding message .
-			*
-			* @ para m number The input number to be checked .
-			* /
-			public static void print S ign ( in t number ) {
-			if ( number > 0 ) {
-			System . out . print ln ( " Number is positive " ) ;
-			} else if ( number < 0 ) {
-			System . out . print ln ( " Number is negative " ) ;
-			} else {
-			System . out . print [SEP]
-		\end{minted}
-		\caption{The Java method from \autoref{lst:java-method-well} encoded and decoded using BERT-base-cased with a limit of 100 tokens. Space characters separate the tokens. Newlines are preserved for readability.}
+	\begin{listing}[p]
+		\begin{sublisting}{\linewidth}
+			\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
+				/**
+				* This method determines the sign of a given number and prints a corresponding message.
+				*
+				* @param number The input number to be checked.
+				*/
+				public static void checkNumberSign(int number) {
+					if (number > 0) {
+						System.out.println("Number is positive");
+					} else if (number < 0) {
+						System.out.println("Number is negative");
+					} else {
+						System.out.println("Number is zero");
+					}
+				}
+			\end{minted}
+			\caption{An example of a simple and well readable Java method.}
+			\label{lst:print-greeting-a}
+		\end{sublisting}
+		\vspace{1pt}
+		
+		\begin{sublisting}{\linewidth}
+			\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
+				[CLS] / * *
+				* This method determines the sign of a given number and prints a corresponding message .
+				*
+				* @ para m number The input number to be checked .
+				* /
+				public static void print S ign ( in t number ) {
+				if ( number > 0 ) {
+				System . out . print ln ( " Number is positive " ) ;
+				} else if ( number < 0 ) {
+				System . out . print ln ( " Number is negative " ) ;
+				} else {
+				System . out . print [SEP]
+			\end{minted}
+			\caption{The encoded-and-decoded variant of \autoref{lst:print-greeting-a} using BERT-base-cased with a limit of 100 tokens. Space characters separate the tokens. Newlines are preserved for readability.}
+			\label{lst:print-greeting-b}
+		\end{sublisting}
+		\caption{A Java method and its encoded-and-decoded variant.}
 		\label{lst:print-greeting}
 	\end{listing}
 	
-	Consider the method from \autoref{lst:example-method-well}. With a token limit of 100, the last encoded token is the last closing parenthesis in line 9. Everything from line 10 onwards is not encoded, which means that the information is lost for the semantic part of the model. To put it in other words: The model of \citeauthor{mi2022towards} only considers the first few lines of code snippets in its semantic component.
+	Consider the method from \autoref{lst:print-greeting-a}. With a token limit of 100, the last encoded token is the last \textit{print} in Line 12. Everything that comes after this is not encoded, which means that the information is lost for the semantic part of the model. To put it in other words: The model of \citeauthor{mi2022towards} only considers the first few lines of code snippets in its semantic component.
 	
-	The visual and structural encoders have similar limitations, but to a much smaller extent. The structural encoder encodes the first 50 lines of each code snippet and the visual encoder encodes the first 43 lines. While the constraints for these two encoders seem to be long enough to fully capture most code snippets, the semantic encoder seems to be too limited to do so.
+	The visual and structural encoders have similar limitations, but to a much smaller extent. The structural encoder encodes the first 50 lines of each code snippet and the visual encoder encodes the first 43 lines. While the constraints for these two encoders seem to be long enough to fully capture most code snippets, the semantic encoder seems to be too limited to do so in many cases.
 
 	Although we want to note these limitations, we will keep them to allow a fair comparison of the datasets.
 	
@@ -2109,10 +2138,10 @@ cleveref=false,%
 %	
 	
 \section{Evaluation} \label{Evaluation}
-	We tested the mined-and-modified dataset in two ways. On the one hand, we conducted a user study. On the other hand, we evaluated the impact of using the dataset for the towards model. In detail, we answer the following questions with both experiments:
+	We tested the mined-and-modified dataset in two ways. On the one hand, we conducted a user study. On the other hand, we evaluated the impact of using the dataset for the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards}. In detail, we answer the following questions with both experiments:
 		
-	% User study
-	We are conducting a user study to determine the quality of the new dataset. In detail the aim of the user study is to answer the following key questions:
+%	% User study
+%	We are conducting a user study to determine the quality of the new dataset. In detail the aim of the user study is to answer the following key questions:
 	\begin{enumerate}
 		\item Does the well-readable-assumption (\Cref{well-readable-assumption}) hold?
 		\item Does the poorly-readable-assumption (\Cref{poorly-readable-assumption}) hold?
@@ -2133,24 +2162,24 @@ cleveref=false,%
 	
 	\begin{resq} \textbf{(modify-poor)} Can poorly readable code be generated from well readable code?\end{resq} \label{modify-poor}
 	It is not sufficient to have only well readable code for training a classifier. We also need poorly readable code. Therefore, we will try to generate such code from the well readable code. We will investigate whether this is possible in principle, and
-	whether the proposed \rdh tool (see \autoref{Readability Decreasing Heursitcs}) is able to achieve this.
+	whether \rdh (see \Cref{Readability Decreasing Heursitcs}) is able to achieve this.
 	
-	As the name already suggests, the applied transformations on the source code are only heuristics. To answer, whether the generated code is poorly readable (\Cref{poorly-readable-assumption}) we will utilize the results of the user study.
+	The modifications \rdh applies on the source code are heuristics. To answer, whether the generated code is actually poorly readable (\Cref{poorly-readable-assumption}) we will utilize the results of the user study.
 	
 	%	\begin{resq} \textbf{(best-heuristics)} Which heuristics are best to generate poorly readable code from well readable code?\end{resq} \label{best-heuristic}
 	%	We want to compare the modifications of the proposed heuristics for generating poorly readable code to each other. Therefore we will use the results of the user study (\autoref{user-study}).
 	
 	\begin{resq} \textbf{(new-data)} To what extent can the new data improve existing code readability classification models?\end{resq} \label{new-data}
-	It was shown that Deep Learning models get better the more training data is available~\cite{hestness2017deep}. This holds under the assumption that the quality of the data is the same or at least similar. We want to check if the quality of our new data is sufficient for improving the deep learning-based readability classifier of \citeauthor{mi2022towards}~\cite{mi2022towards}. Therefore we will train their proposed model with combinations of the merged and the mined-and-modified dataset and compare the evaluation statistics.
+	It was shown that Deep Learning models get better the more training data is available~\cite{hestness2017deep}. This holds under the assumption that the quality of the data is the same or at least similar. We want to check if the quality of our new data is sufficient for improving the deep learning-based readability classifier of \citeauthor{mi2022towards}~\cite{mi2022towards}. Therefore we will train their proposed model with combinations of the merged and the mined-and-modified dataset and compare the results.
 
 \subsection{Survey} \label{Survey}
-	The results of our survey are divided into two parts: The results of the pilot survey (see \Cref{Pilot Survey}), which were used to improve the main survey pre-launch, and the results of the main survey (see \Cref{Prolific Survey}), which were used to answer our research questions (\hyperref[mined-well]{RQ1} and \hyperref[modify-poor]{RQ2}) and to craft our dataset.
+	The results of our survey are divided into two parts: The results of the pilot survey, which were used to improve the main survey pre-launch, and the results of the main survey, which were used to answer our research questions (\hyperref[mined-well]{RQ1} and \hyperref[modify-poor]{RQ2}) and to craft our dataset.
 	
 \subsubsection{Pilot Survey} \label{Pilot Survey}
 	
 	% Experimental setup
 	\textit{1. Experimental setup:}
-	We manually sampled 20 code snippets across all strata but mainly from statum 1, due to reasons mentioned in \Cref{Construction of Questionnaires}. From January 6 to 14, 2024, ten people took part in the survey. Eight of them were students and two of them worked in industry. All of them had knowledge of computer science. They were were not paid. Additionally to rating 20 code snippets the participants were also asked to answer additional questions to provide feedback about the survey:
+	We manually sampled 20 code snippets across all strata but mainly from Stratum 1, due to reasons mentioned in \Cref{Construction of Questionnaires}. From January 6 to 14, 2024, ten people took part in the survey. Eight of them were students and two of them worked in industry. All of them had knowledge of computer science. They were not paid. Additionally to rating 20 code snippets the participants were also asked to answer additional questions to provide feedback about the survey:
 	
 	% Questions
 %	They were asked the following additional questions:
@@ -2160,26 +2189,27 @@ cleveref=false,%
 		\item \textit{Long answer:} What problems were with the task? If there were none, leave blank.
 		\item \textit{Long answer:} What problems were there with the survey tool? If there were none, leave blank.
 		\item \textit{Long answer:} What improvements would you make to the survey? If none, leave blank.
-		\item \textit{Long answer:}  you have any other feedback? If none, leave blank.
+		\item \textit{Long answer:} Do you have any other feedback? If none, leave blank.
 	\end{enumerate}
-	The participants answers can be found in \Cref{appendix:pilot-survey-feedback}.
+	
+%	The participants answers can be found in \Cref{appendix:pilot-survey-feedback}.
 	
 	% Usage
-	The feedback of the pilot survey was used in the following ways to prepare the Prolific study:
-	\begin{itemize}
-		\item To adjust the survey texts and questions
-		\item To estimate how long completion of one questionnaire will take
-		\item To adjust the \rdh settings
-		\item To discover problems with the survey tool
-		\item To discover fundamental problems with the dataset
-	\end{itemize}
+%	The feedback of the pilot survey was used in the following ways to prepare the Prolific study:
+%	\begin{itemize}
+%		\item To adjust the survey texts and questions
+%		\item To estimate how long completion of one questionnaire will take
+%		\item To adjust the \rdh settings
+%		\item To discover problems with the survey tool
+%		\item To discover fundamental problems with the dataset
+%	\end{itemize}
 	
 	% Threats
 	\textit{2. Threats:}
 	The results do not generalize. We did not sample the Java snippets for rating in a specific, (semi-) automated way, so there is a selection bias. The participants came from a private environment. This leads to a possible selection bias.
 %	The survey participants were not selected among Java programmers randomly. 
-	We adjusted the surveys instructions, explanations and questions afterwards, which might influence the ratings of the participants.
-	However, we did not use the results from this survey to evaluate our dataset or the generation approach, as the intention of the survey was rather to prepare for the main survey. 
+	We adjusted the survey instructions, explanations and questions afterwards, which might influence the ratings of the participants.
+	However, we did not use the results from this survey to evaluate our dataset or the generation approach, as the intention of the pilot survey was rather to prepare for the main survey. 
 	
 	% Results
 	\textit{3. Results:}
@@ -2188,7 +2218,7 @@ cleveref=false,%
 	\textbf{Completion Time:} 
 	In \autoref{fig:survey_times} we find the time it took the participants to complete the pilot survey and thus to rate 20 code snippets according to their readability. 
 	The fastest participant completed the survey in 7 minutes and 35 seconds, while the slowest participant took 18 minutes. 
-	Both the average value and the mean value are around 12 minutes. The boxplot (see \autoref{fig:survey_times}) shows that the times are close together and there are no outliers in the time taken.
+	Both, the average value and the mean value, are around 12 minutes. The boxplot (see \autoref{fig:survey_times}) shows that the times are close together and there are no outliers in the time taken.
 	We suspect that the participants in the pilot survey put more effort into completing the survey as we know them personally. 
 	Other participants may not make as much effort, so we set the time estimation for a questionnaire below average at 10 minutes.
 		
@@ -2328,14 +2358,13 @@ cleveref=false,%
 	\end{table}
 	
 	\textbf{Snippet Ratings:}
-	The evaluation of the last places of \autoref{tab:pilot_survey_results}, such as \textit{1.2} for \textit{stratum 1 - all}, suggests that these code snippets were particularly poorly readable. The assumption arose that they could be so poorly legible that it can no longer be assumed that they were written by a human.
 	We adjusted the \rdh configurations. The rating for the last places (see \autoref{tab:pilot_survey_results}), such as \textit{1.2} for \textit{Stratum 1 - all}, suggest that these code snippets were particularly poorly readable. Due to this, we re-examined the configurations of all \rdhs and found that some of them are configured too strongly. This not only impairs their readability, but also makes them look as if they were not written by human hands.
-	Thus, we took another close look at the \rdh configurations and found that some of them are over-configured. This not only affects their readability, but also makes them look as if they were not written by human hands. We have therefore reduced the probabilities for these \rdhs.
+	Thus, we took another close look at the \rdh configurations and found that some of them are over-configured. This not only affects their readability, but also makes them look as if they were not written by human hands. We have therefore reduced the probabilities for these configurations.
 	
-	We adjusted the \rdh configurations and the survey tool according to the feedback. Then the Prolific study was launched.
+	After adjusting the \rdh configurations and the survey tool according to the feedback, the Prolific Survey was launched.
 
 \subsubsection{Prolific Survey} \label{Prolific Survey}
-	In this section we summarize the results of the main study conducted via Prolific.
+	In this section we summarize the results of the main survey conducted via Prolific\curl{https://app.prolific.com/}{2024-02-21}.
 		
 \textit{1. Experimental setup:}
 	The survey was conducted using Tien Duc Nguyen's Code Annotation Tool (see \autoref{fig:survey_tool}) along with the platform Prolific\curl{https://app.prolific.com/}{2024-02-21} for the recruitment and payment of participants.
@@ -2389,18 +2418,18 @@ cleveref=false,%
 	\end{itemize}
 	
 	% Questionnaire Attributes
-	The survey neither contained demographic questions nor filter questions. Besides the readability questions, each user was asked the following dependent question: "How would you describe your familiarity with Java?". The user could answer within a five point Likert scale: expert (5), advanced (4), intermediate (3), beginner (2), novice (1).
+	The survey neither contained demographic questions nor filter questions. Besides the readability questions, each participant was asked the following dependent question: "How would you describe your familiarity with Java?". The participant could answer within a five point Likert scale: expert (5), advanced (4), intermediate (3), beginner (2), novice (1).
 	
 \textit{2. Threats:}
 	We identified the following threats:
 	\begin{itemize}
 		\item \textbf{Ill-defined Target Population:} Ensuring a well-defined target population is critical to the survey's quality. To mitigate this threat, we define our target population.
 		
-		\item \textbf{Sampling Method:} We have a larger proportion of code snippets from strata 1 and 3 (see \Cref{Construction of Questionnaires}). While we argue that we avoided spending resources on labeling \rdh data that is likely not different from the original methods or rather uninteresting, this might also introduce statistical errors to our survey results.
+		\item \textbf{Sampling Method:} We have a larger proportion of code snippets from Stratum 1 and Stratum 3 (see \Cref{Construction of Questionnaires}). While we argue that we avoided spending resources on labeling data that is likely not different from the original methods or rather uninteresting, this might also introduce statistical errors to our survey results.
 		However, stratified sampling is well-defined and proven in practice. The approach ensures that our sample represents all parts of the population under investigation.
 %		This is improving the survey's external validity.
 		
-		\item \textbf{Insufficient Responses for Drawing Conclusions:} To prevent drawing conclusions from an insufficient number of responses, we scale our survey to an appropriate size. This guarantees that we collect a substantial volume of responses, allowing for robust statistical analysis.
+		\item \textbf{Insufficient Responses:} To prevent drawing conclusions from an insufficient number of responses, we scale our survey to an appropriate size. This guarantees that we collect a substantial volume of responses, allowing for robust statistical analysis.
 		
 		\item \textbf{Piece-work Effect:} Survey participants are paid for taking part and completing a questionnaire. However, they receive the same amount of money regardless of their speed. Therefore, they receive more pay per minute if they hurry. This could have an impact on the accuracy with which they scored the code snippets. A comparison between the time required by a participant for a pilot questionnaire and a Prolific questionnaire (see \autoref{fig:survey_times}) supports this suggestion. Especially the ratings of participants requiring less than 3 minutes (see \autoref{fig:survey_time_less_than_180}) to complete a questionnaire could have a negative impact on validity. 
 		
@@ -2437,7 +2466,7 @@ cleveref=false,%
 		\label{fig:survey_Java_familiarity_pie}
 	\end{figure}
 	
-	The ratings for each \rdh for all strata combined can be found in \autoref{fig:survey_ratings_violin_all} and \autoref{fig:survey_ratings_bar_all}. 	
+	The ratings for each \rdh configuration for all strata combined can be found in \autoref{fig:survey_ratings_violin_all} and \autoref{fig:survey_ratings_bar_all}. 	
 	In line with our expectation, we see that the ratings for \nonet and \texttt{methods} are almost the same. There is no significant difference between the two, as a Mann-Whitney U test confirmed. The probability that the difference between \nonet and \texttt{methods} is due to random variation is 92~\%. 
 	Therefore, we are sure that other differences are actually caused by the \rdhs and not by the pretty-printer.
 
@@ -2457,23 +2486,23 @@ cleveref=false,%
 		\centering
 		\begin{subfigure}{\linewidth}
 			\includegraphics[width=\textwidth]{img/survey_ratings_violin_all.png}
-			\caption{Absolute survey ratings for each \rdh and all strata.}
+			\caption{Absolute survey ratings for each \rdh configuration and all strata.}
 			\label{fig:survey_ratings_violin_all}
 		\end{subfigure}
 		\hfill
 		\begin{subfigure}{\textwidth}
 			\includegraphics[width=\linewidth]{img/survey_ratings_bar_all.png}
-			\caption{Relative survey ratings for each \rdh and all strata compared to original.}
+			\caption{Relative survey ratings for each \rdh configuration and all strata compared to all original methods.}
 			\label{fig:survey_ratings_bar_all}
 		\end{subfigure}
 		\caption{Survey ratings for each \rdh and all strata.}
 		\label{fig:survey_time_all}
 	\end{figure}
 	
-	We analyzed whether the difference in ratings between the different \rdhs is statistically significant. To do this, we used the Mann-Whitney U test to compare the ratings for all snippets for an \rdh with the corresponding \nonet snippets. The results can be found in \autoref{tab:survey_statistical_evidence}.
-	If we compare the \rdhs with the \nonet methods, we can be sure that the scores of all methods except newlines many and rename are indeed statistically different from the scores of \nonet. 
+	We analyzed whether the difference in ratings between the different \rdhs is statistically significant. To do this, we used the Mann-Whitney U test to compare the ratings for all snippets for a \rdh configuration with the corresponding \nonet snippets. The results can be found in \autoref{tab:survey_statistical_evidence}.
+	If we compare the \rdhs with the \nonet methods, we can be sure that the scores of all methods except \texttt{newlines\_many} and \texttt{rename} are indeed statistically different from the scores of \nonet. 
 	
-	If we consider binary readability classification and split the data into two classes (poorly readable: 1,2; well readable: 3-5) all but \nonet and \texttt{rename} are statistically different from each other. This includes \texttt{newlines many} (TODO: Add p Values) for which we could not confirm statistical difference without binary classification.
+	If we consider binary readability classification and split the data into two classes (poorly readable: 1,2; well readable: 3-5) all but \nonet and \texttt{rename} are statistically different from each other. This includes \texttt{newlines\_many} (TODO: Add p Values) for which we could not confirm statistical difference without binary classification.
 
 	Besides \nonet, this leaves only \texttt{rename} where we can not confirm statistical significance. Overall, we showed that the heuristics actually reduce the readability of source code.
 
@@ -2501,22 +2530,22 @@ cleveref=false,%
 
 	\begin{table}[tb]
 		\centering
-		\caption{Mann-Whitney U test results of each \rdh against \nonet. When \textbf{$p$} is smaller than \num{5e-2} (not bold) we conclude that the difference is significant.}
+		\caption{Mann-Whitney U test results of each \rdh configuration against \nonet. When \textbf{$p$} is smaller than $5~\%=\num{5e-2}$ (bold) we conclude that the difference is significant.}
 		\vspace{8pt}
 		\label{tab:survey_statistical_evidence}
 		\begin{tabular}{lS[table-format=1.2e-2]}
 			\toprule
 			Comparison against & \textbf{$p$} \\
 			\midrule
-			\textbf{methods} & \num{9.22e-1} \\
-			newlines\_few & \num{5.23e-6} \\
-			spaces\_many & \num{4.07e-2} \\
-			\textbf{newlines\_many} & \num{3.00e-1} \\
-			comments\_remove & \num{3.64e-3} \\
-			\textbf{rename} & \num{9.90e-2} \\
-			newline\_instead\_of\_space & \num{4.57e-6} \\
-			tabs & \num{3.06e-8} \\
-			all7 & \num{1.80e-7} \\
+			methods & \num{9.22e-1} \\
+			\textbf{newlines\_few} & \num{5.23e-6} \\
+			\textbf{spaces\_many} & \num{4.07e-2} \\
+			newlines\_many & \num{3.00e-1} \\
+			\textbf{comments\_remove} & \num{3.64e-3} \\
+			rename & \num{9.90e-2} \\
+			\textbf{newline\_instead\_of\_space} & \num{4.57e-6} \\
+			\textbf{tabs} & \num{3.06e-8} \\
+			\textbf{all7} & \num{1.80e-7} \\
 			\bottomrule
 		\end{tabular}
 	\end{table}
@@ -2526,6 +2555,7 @@ cleveref=false,%
 	\end{researchbox}
 
 \subsection{Model Training Results} \label{Model training results}
+	We use the notation \textit{(train-evaluate)} to describe on which dataset the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} was trained and evaluated. \textit{mam} stands for our new mined-and-modified dataset.
 	We aim to investigate the following things:
 	
 	\begin{enumerate}
@@ -2536,14 +2566,14 @@ cleveref=false,%
 		To investigate how effective the model captures the readability aspects of the mined-and-modified dataset, we train and evaluate it on this dataset (mam-mam). By doing so, we examine also how effectively the model captures the differences between the \texttt{original} and \texttt{all7} methods which are modified with our \rdhs.
 		
 		\item \textbf{Cross evaluation:} 
-		To assess how effective the mined-and-modified dataset is for predicting readability, we train the model on this dataset and then evaluate its performance on the merged dataset (mam-merged). For advanced insights, we also train the model on the merged dataset and evaluate it on the merged dataset (merged-merged) and on the mined-and-modified dataset (merged-mam).
+		To assess how effective the mined-and-modified dataset is for predicting readability, we train the model on the mined-and-modified dataset and then evaluate its performance on the merged dataset (mam-merged). For advanced insights, we also train the model on the merged dataset and evaluate it on the merged dataset (merged-merged) and on the mined-and-modified dataset (merged-mam).
 		
 		\item \textbf{Fine-tuning:} 
 		To assess what accuracy we can score in predicting readability, we investigate training on the mined-and-modified dataset and fine-tuning and evaluating on the merged dataset (mam-merged-merged).		
 		
 	\end{enumerate}
 	
-	We therefore used different combinations of training and evaluation datasets with the towards mode. The results can be found in \autoref{tab:dataset_performance}. We used 10-fold cross-validation for evaluation.
+	We therefore used different combinations of training and evaluation datasets with the towards model. The results can be found in \autoref{tab:dataset_performance}. We used 10-fold cross-validation for evaluation.
 		
 	\begin{table}[tb]
 		\centering
@@ -2571,7 +2601,7 @@ cleveref=false,%
 	
 	\textbf{Internal evaluation.}
 	When we train the model on the mined-and-modified dataset and evaluate it, we obtain an average accuracy of 91.8~\%. 
-	The towards model architecture is well suited to learn the structure of the mined-and-modified dataset. In particular it learns the differences between \texttt{original} and \texttt{all7} methods and thus it learns how to predict if a code snippet has been modified using \rdhs. 
+	The towards model architecture is well suited to learn the structure of the mined-and-modified dataset. In particular it learns the differences between \texttt{original} and \texttt{all7} methods and thus it learns how to predict if a code snippet has been modified using our \rdhs. 
 
 	\textbf{Cross evaluation.}
 	When we train the model on the mined-and-modified dataset and evaluate it on the merged dataset (mam-merged), we get an accuracy of 61.9~\%. This is 22.8~\% worse than the accuracy we get when we train and evaluate the model on the merged dataset (merged-merged). When we train the model on the merged dataset and evaluate it on the mined-and-modified one (merged-mam), we get an accuracy of 53.8~\%, which is close to the approximate accuracy of 50.0~\% of a random classifier.
@@ -2594,7 +2624,7 @@ cleveref=false,%
 	
 	\begin{researchbox}{Summary (RQ3 - new-data):}
 		When trained and evaluated on the mined-and-modified dataset we achieve an accuracy of 91.8~\%.
-		When evaluated on the merged dataset, the model trained with the mined-and-modified dataset achieves an accuracy of 61.9~\%. When we train the model with merged dataset 84.7~\% is achieved.
+		When evaluated on the merged dataset, the model trained with the mined-and-modified dataset achieves an accuracy of 61.9~\%. For comparison: When we train the model with merged dataset 84.7~\% is achieved.
 		We concluded that the mined-and-modified dataset captures different aspects of readability. 
 %		We improved the results by training with the mined-and-modified dataset and fine-tuning with the merged dataset to 80.4~\%. 
 		We did not outperform the model trained only on the merged dataset.
@@ -2622,7 +2652,7 @@ cleveref=false,%
 	A drawback of our approach is that we rely on estimations to create the mined-and-modified dataset. The score labels of our code snippets are rough estimations and not exact values. Accurate ratings would require manual review of \numSamples code snippets by human annotators and is therefore not feasible. However, for two class classification this does not matter.
 	
 	% Model threats	
-	When comparing the model performance trained on the mined-and-modified and merged dataset, it should be noted that the merged dataset is small. Consequently, comparisons between classifiers trained on the merged dataset may be unreliable~\cite{mi2022towards}.
+	When comparing the model performance trained on the mined-and-modified and merged dataset, it should be noted that the merged dataset is small. Consequently, comparisons to classifiers trained on the merged dataset may be unreliable~\cite{mi2022towards}.
 	
 \section{Conclusions} \label{Conclusions}
 	% Summary with Implications: So what?	
@@ -2633,28 +2663,28 @@ cleveref=false,%
 	The new approach for generating data has an advantage that is not yet used in this work: For the first time, it is possible to generate a dataset with one well readable and a second, less readable and functionally equivalent code snippet. This could be used to train various models, including transformers. Such a transformer could take the code as input and improve its readability. We suspect that such a tool could be of great benefit to programmers.
 	
 	% Languages	
-	A current limitation of the mined-and-modified dataset is that it only works for Java code. A suggestion for future work is to overcome this limitation by extending the tool for other programming languages. This is not trivial, as one has to adapt the \RDHs to work with another language. Furthermore, a general tool that works for all languages will be difficult if not impossible.
+	A current limitation of the mined-and-modified dataset is that it only works for Java code. A suggestion for future work is to overcome this limitation by extending the tool for other programming languages. This is not trivial, as one has to adapt the \RDH to work with another language. Furthermore, a general tool that works for all languages is difficult if not impossible.
 	
 	% More surveys	
 	%	To further improve the readability estimates for both the good and poorly readable code, further surveys could be conducted. By splitting the code snippets into more granular clusters and obtaining a more accurate average by asking more people about the readability of the code within the same cluster, one can increase the accuracy of the label estimation. Such an improvement can then in turn improve the predictions of the model as it learns from this data.
 	
 	% Syntax Tree	
-	As \citeauthor{mi2023graph} suggested, another useful representation for code readability studies could be the syntax tree representation of code~\cite{mi2023graph}. One could try to improve the performance of the towards model by adding another representation encoding extractor for Java code that automatically extracts the abstract syntax tree of the code.
+	As \citeauthor{mi2023graph} suggested, another useful representation for code readability studies could be the syntax tree representation of code~\cite{mi2023graph}. One could try to improve the performance of the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} by adding another representation encoding extractor for Java code that automatically extracts the abstract syntax tree of the code.
 	
 	% Method name fitting
 	An important aspect of the readability of code is the naming. For the scope of methods, the method names are the most important part. Therefore, the towards model could be improved by adding a component that explicitly takes into account how well a method name matches its body. This component might be similar to Code2vec~\cite{alon2019code2vec}.
 	
 	% Other encodings
-	Further research could also consist of finding and evaluating other encodings that represents the code in a different way.
+	Further research could also consist of finding and evaluating other encodings that represent the code in a different way.
 	
 	% Other model structure
-	Another way to improve existing code readability classifiers, such as the towards model, could be to develop a different structure for some layers of the model. We suggest increasing the size and depth of the layers so that the mined-and-modified dataset can be made useful. Alternatively, a completely different model architecture could be developed. 
+	Another way to improve existing code readability classifiers could be to develop a different structure for some layers of the models. We suggest increasing the size and depth of the layers so that the mined-and-modified dataset can be made useful. Alternatively, a completely different model architecture could be developed. 
 	
 	% More heuristics
-	The heuristics described in this work are only part of the possible heuristics that could be developed. Additional heuristics could further improve the diversity of poorly readable code. This could increase the number of internal features that a model can learn, which in turn could increase the accuracy of the model.
+	The modifications described in this work (see \Cref{Readability Decreasing Heursitcs}) are only part of the possible modifications that could be developed. Additional modifications could further improve the diversity of poorly readable code. This could increase the number of internal features that a model can learn, which in turn could increase the accuracy of the model.
 	
 	% Summary
-	In summary, there are many opportunities to further investigate and thus most likely improve the classification of code readability. Our new dataset and the generation approach could be useful here.
+	In summary, there are many opportunities to further investigate and thus most likely improve the classification of code readability. Our new dataset and the generation approach can serve as a foundation for this.
 	
 \backmatter
 
