@@ -654,7 +654,7 @@ cleveref=false,%
 \newcommand{\citeolddataset}{\cite{buse2009learning, dorn2012general, scalabrino2018comprehensive}\xspace}
 
 % Num samples
-\newcommand{\numOriginal}{36077\xspace}
+\newcommand{\numOriginal}{39312\xspace}
 \newcommand{\numSamples}{69k\xspace}
 \newcommand{\numSamplesAccurate}{69276\xspace}
 \newcommand{\numMerged}{421\xspace}
@@ -717,6 +717,7 @@ cleveref=false,%
 \crefname{assumption}{assumption}{assumptions}
 
 % TODO: Add figures as pdf or high quality, without internal captions (python)
+% TODO: Add reference and description to count (stata table) in text
 % Poorly readable vs unreadable? Currently poorly readable
 
 % TODO: While proof reading:
@@ -1858,19 +1859,19 @@ cleveref=false,%
 	
 	\begin{table}[tb]
 		\centering
-		\caption{Computed strata, manually assigned names and distribution for survey creation.} 
+		\caption{Computed strata, manually assigned names, the number of methods in each stratum (Elem. Count) and the percentage and count of sampled methods for the survey.}
 		\vspace{8pt}
 		\label{tab:strata_info}
-		\begin{tabular}{llrr}
+		\begin{tabular}{llrrr}
 			\toprule
-			Stratum & Method Type & Percentage & Count \\
+			Stratum & Method Type & Elem. Count & Percentage & Count \\
 			\midrule
-			Stratum 0 & Simple methods & 10 \% & 4 \\
-			Stratum 1 & Complex methods & 40 \% & 16 \\
-			Stratum 2 & Magic number methods & 10 \% & 4 \\
-			Stratum 3 & Medium complex methods & 40 \% & 16 \\
+			Stratum 0 & Simple methods & 19016 & 10\% & 4 \\
+			Stratum 1 & Complex methods & 4280 & 40\% & 16 \\
+			Stratum 2 & Magic number methods & 78 & 10\% & 4 \\
+			Stratum 3 & Medium complex methods & 15938 & 40\% & 16 \\
 			\midrule
-			\textbf{Total} & \textbf{} & \textbf{100 \%} & \textbf{40} \\
+			\textbf{Total} & & \textbf{\numOriginal} & \textbf{100\%} & \textbf{40} \\
 			\bottomrule
 		\end{tabular}
 	\end{table}
