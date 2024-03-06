@@ -679,7 +679,8 @@ cleveref=false,%
 
 % Research question summary boxes
 \usepackage{tcolorbox}
-\newenvironment{researchbox}[1]{\begin{tcolorbox}[colback=blue!10!white,colframe=blue!50!black,title=#1]}{\end{tcolorbox}}
+\definecolor{researchboxcolor}{HTML}{1f77b4}
+\newenvironment{researchbox}[1]{\begin{tcolorbox}[colback=researchboxcolor!10!white,colframe=researchboxcolor!50!black,title=#1]}{\end{tcolorbox}}
 
 % Formatting x10^ numers
 \usepackage{siunitx}
@@ -716,7 +717,6 @@ cleveref=false,%
 % Reference Assumptions
 \crefname{assumption}{assumption}{assumptions}
 
-% TODO: Add figures as pdf or high quality, without internal captions (python)
 % TODO: Add reference and description to count (stata table) in text
 % Poorly readable vs unreadable? Currently poorly readable
 
@@ -2481,11 +2481,11 @@ cleveref=false,%
 %	while for all7 it is 3.26	
 %	We label each method in both groups with the corresponding mean score.
 
-	\begin{researchbox}{Summary (RQ1 - mined-well):}
+	\begin{summary}{RQ1 - mined-well}
 		%		The readability ratings of code snippets mined from Github are not very accurate as we take the mean of all ratings for all methods and assign it to each snippet.
 		The mean score for the \texttt{original} methods of the mined-and-modified dataset (3.68) is significantly larger than the mean score for all ratings in the merged dataset (3.45). Therefore we reject the null hypothesis and conclude that well readable assumption (\Cref{well-readable-assumption}) holds.
 		%		and answer the research question \ref{mined-well}: Yes, automatically selected code can be assumed to be well readable.
-	\end{researchbox}
+	\end{summary}
 	
 	\begin{figure}[p]
 		\centering
@@ -2555,9 +2555,9 @@ cleveref=false,%
 		\end{tabular}
 	\end{table}
 		
-	\begin{researchbox}{Summary (RQ2 - modify-poor):}
-		All of the 7 configurations but \texttt{rename} decrease readability by a significant extend compared to \nonet. We estimate the readability decrease for a certain probability of a certain type as can be seen in \autoref{fig:survey_ratings_bar_all}. We reject the null hypothesis and conclude that the poorly readable assumption (\Cref{poorly-readable-assumption}) holds
-	\end{researchbox}
+	\begin{summary}{RQ2 - modify-poor}
+		All of the 7 configurations but \texttt{rename} decrease readability by a significant extend compared to \nonet. We estimate the readability decrease for a certain probability of a certain type as can be seen in \autoref{fig:survey_ratings_bar_all}. We reject the null hypothesis and conclude that the poorly readable assumption (\Cref{poorly-readable-assumption}) holds.
+	\end{summary}
 
 \subsection{Model Training Results} \label{Model training results}
 	We use the notation \textit{(train-evaluate)} to describe on which dataset the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} was trained and evaluated. \textit{mam} stands for our new mined-and-modified dataset.
@@ -2627,13 +2627,13 @@ cleveref=false,%
 %	This is in direct contrast to our earlier assumption that such fine-tuning could lead to better results.
 	One explanation for this could be that the model is too small to be effective with the larger amount of data. Introducing more or bigger layers so that the model can store more features internally could lead to an improvement. However, this is not part of this work, in which we mainly focus on a new dataset (generation approach).
 	
-	\begin{researchbox}{Summary (RQ3 - new-data):}
+	\begin{summary}{RQ3 - new-data}
 		When trained and evaluated on the mined-and-modified dataset we achieve an accuracy of 91.8~\%.
 		When evaluated on the merged dataset, the model trained with the mined-and-modified dataset achieves an accuracy of 61.9~\%. For comparison: When we train the model with merged dataset 84.7~\% is achieved.
 		We concluded that the mined-and-modified dataset captures different aspects of readability. 
-%		We improved the results by training with the mined-and-modified dataset and fine-tuning with the merged dataset to 80.4~\%. 
+		%		We improved the results by training with the mined-and-modified dataset and fine-tuning with the merged dataset to 80.4~\%. 
 		We did not outperform the model trained only on the merged dataset.
-	\end{researchbox}
+	\end{summary}
 	
 	%	We also trained the model with a random sample of 210 data points to gain insight into what a change in training size might do. As we can see, the model has similar metrics to the all-all model. If we now compare the accuracy of the new-new compared to the merged-merged model, we see that with a larger dataset an improvement of about 8~\% is possible. Similar results are suggested by previous research on data augmentation, where an accuracy of 87.3~\% was achieved \citeauthor{mi2021effectiveness}. This emphasizes the importance of finding new ways of generating data for readability classification. 
 	
