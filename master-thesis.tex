@@ -958,8 +958,9 @@ cleveref=false,%
 	%	read it at an optimal speed, and find it interesting.” 
 	%	\cite{dubay2004principles}
 	
-	% Definiton
-	\citeauthor{buse2009learning} provides one of the first definitions~\cite{buse2009learning}: "We define readability as a human judgment of how easy a text is to understand."
+	% Definiton	
+	\citeauthor{buse2009learning} provides one of the first definitions~\cite{buse2009learning}:
+	\textquote{We define readability as a human judgment of how easy a text is to understand.}
 
 	% Definition
 	\citeauthor{tashtoush2013impact} combines numerous other aspects from various definitions. According to them code readability can be measured by looking at the following aspects~\cite{tashtoush2013impact}:
@@ -970,18 +971,18 @@ cleveref=false,%
 		\item Average number of right answers to a series of questions about a program in a given length of time
 	\end{itemize}
 	
-	% Definition
-	Recent definitions of code readability are shorter, trying to focus on the key aspects. \citeauthor{oliveira2020evaluating} defines readability as "what makes a program easier or harder to read and apprehend by developers"~\cite{oliveira2020evaluating}.
+	% Definition	
+	Recent definitions of code readability are shorter, trying to focus on the key aspects. \citeauthor{oliveira2020evaluating} defines readability as
+	\blockcquote{oliveira2020evaluating}{what makes a program easier or harder to read and apprehend by developers}.
 			
 	% Definition
-	Also \citeauthor{mi2021effectiveness} summarizes code readability as "a human judgment of how easy a piece of
-	source code is to understand"~\cite{mi2021effectiveness}. This comes close to the definition of \citeauthor{buse2009learning}~\cite{buse2009learning}.
+	Also \citeauthor{mi2021effectiveness} summarizes code readability as \blockcquote{mi2021effectiveness}{a human judgment of how easy a piece of source code is to understand}. This comes close to the definition of \citeauthor{buse2009learning}~\cite{buse2009learning}.
 	
 	% Related terms	
 	There are various related terms to readability: Understandability, usability, reusability, complexity, and maintainability~\cite{tashtoush2013impact}. Among those especially complexity and understandability are closely related to readability.
 	
-	Readability is not the same as complexity. Complexity is an “essential” property of software that arises
-	from system requirements, while readability is an “accidental” property that is not determined by the problem statement~\cite{buse2009learning, brooks1987no}.
+	Readability is not the same as complexity. Complexity is an \textquote{essential} property of software that arises
+	from system requirements, while readability is an \textquote{accidental} property that is not determined by the problem statement~\cite{buse2009learning, brooks1987no}.
 	
 	Readability is neither the same as understandability, as the key aspects of understandability are~\cite{scalabrino2018comprehensive, martin2009clean, wilson2007beautiful, beck2007implementation}:
 	\begin{itemize}
@@ -994,7 +995,8 @@ cleveref=false,%
 	
 	\citeauthor{posnett2011simpler} states that readability is the syntactic aspect of processing code, while understandability is the semantic aspect~\cite{posnett2011simpler}.
 	
-	Based on \citeauthor{posnett2011simpler}, \citeauthor{scalabrino2018comprehensive} writes~\cite{scalabrino2018comprehensive}: "Readability measures the effort of the developer to access the information contained in the code, while understandability measures the complexity of such information".
+	Based on \citeauthor{posnett2011simpler}, \citeauthor{scalabrino2018comprehensive} writes~\cite{scalabrino2018comprehensive}:
+	\textquote{Readability measures the effort of the developer to access the information contained in the code, while understandability measures the complexity of such information}.
 	
 	%	Readability is a human judgment of how easy a program source code is to read and comprehend~\cite{buse2008metric, sedano2016code}. It is concerned with the syntactic aspects of code, such as the use of meaningful variable names, consistent formatting, and clear commenting.
 	%	
@@ -1290,7 +1292,7 @@ cleveref=false,%
 	
 	Our approach is divided into four parts. The first three steps are used to mine well readable Java code. In a final step, we will modify the well readable code to achieve our second goal, namely poorly readable source code.
 	
-	We start by querying the GitHub REST API\curl{https://docs.github.com/en/rest}{2024-02-15} for repositories that use checkstyle (query string: "checkstyle filename:pom.xml"). The repository informations (including the URL) are stored together with the main branches.
+	We start by querying the GitHub REST API\curl{https://docs.github.com/en/rest}{2024-02-15} for repositories that use checkstyle (query string: \textquote{checkstyle filename:pom.xm}). The repository informations (including the URL) are stored together with the main branches.
 	We remove all repositories that do not fulfill these criteria:
 	\begin{itemize}
 		\item The repository is not a fork of another repository
@@ -2076,7 +2078,7 @@ cleveref=false,%
 	% Problems
 	During implementation, we encountered the following potential problem with the model:
 	The token length for the BERT encoding (BERT-base-cased\curl{https://huggingface.co/google-bert/bert-base-cased}{2024-02-20}) used in the model is 100. What implications does this have? To answer this question, we first take a look at what a token comprises. In addition to special tokens that mark the beginning \textit{[CLS]} and the end \textit{[SEP]} of the input, each word represent a token. Furthermore, each special character (such as a slash~(\textbf{/}), parentheses~(\textbf{(},~\textbf{)},~\textbf{\{},~\textbf{\}}), a comma~(\textbf{,}), a semicolon~(\textbf{;}), arithmetic signs~(\textbf{=},~\textbf{<},~\textbf{>}) and many more) is also represented by its own token. Java identifiers are split into several tokens according to the convention of upper and lower case. If a identifier is not present in the model's vocabulary, the tokenizer splits it further into sub-identifiers or characters that are in the vocabulary. 
-	For example in \autoref{lst:print-greeting}, Line 6, the word "int" is split into the tokens "in" and "t" as "int" is not part of the vocabulary of BERT-base-cased.
+	For example in \autoref{lst:print-greeting}, Line 6, the word \textquote{int} is split into the tokens \textquote{in} and \textquote{t} as \textquote{int} is not part of the vocabulary of BERT-base-cased.
 
 	\begin{listing}[p]
 		\begin{sublisting}{\linewidth}
@@ -2255,13 +2257,13 @@ cleveref=false,%
 		
 	\textbf{Participant Feedback:}
 	All feedback of the participants regarding the pilot survey is listed in \Cref{appendix:pilot-survey-feedback}.
-	Most of the problems that occurred were due to the survey tool (e.g.: "I also felt that I should use the drop-down menu at the top left.").
+	Most of the problems that occurred were due to the survey tool (e.g.: \textquote{I also felt that I should use the drop-down menu at the top left.}).
 	%	Zusammengefasst:
 	%	Feature Request: "You're done! Thank you for your participation!" - message at the end
 	%	Feature Request: Hide comment fields
 	%	Feature Request: Predefine code parser (per survey/snippet) and hide selection during survey for participants
 	%	Feature Request: Possibility to show a hint or the task description again during the survey
-	Some of the feedback was regarding fully qualified class names, such as "Java.io.InputStream". We found that the Pretty Printer of the \rdh tool specified each imported method or class with its fully specified classifier. For example, instead of "InputStream", "Java.io.InputStream" was written in the code snippets of the \rdhs. This gave the participants the feeling that the code was not written by a human and drastically reduced readability. Therefore we adapted the \rdh tool to print the shorter name.
+	Some of the feedback was regarding fully qualified class names, such as \textquote{Java.io.InputStream}. We found that the Pretty Printer of the \rdh tool specified each imported method or class with its fully specified classifier. For example, instead of \textquote{InputStream}, \textquote{Java.io.InputStream} was written in the code snippets of the \rdhs. This gave the participants the feeling that the code was not written by a human and drastically reduced readability. Therefore we adapted the \rdh tool to print the shorter name.
 	%	A potential drawback is that it can no longer be assumed that the generated code will compile and behave exactly like the original. However, the compilation-property is lost anyway during method extraction.
 	
 		%	\begin{table}[htbp]
@@ -2423,7 +2425,7 @@ cleveref=false,%
 	\end{itemize}
 	
 	% Questionnaire Attributes
-	The survey neither contained demographic questions nor filter questions. Besides the readability questions, each participant was asked the following dependent question: "How would you describe your familiarity with Java?". The participant could answer within a five point Likert scale: expert (5), advanced (4), intermediate (3), beginner (2), novice (1).
+	The survey neither contained demographic questions nor filter questions. Besides the readability questions, each participant was asked the following dependent question: \textquote{How would you describe your familiarity with Java?}. The participant could answer within a five point Likert scale: expert (5), advanced (4), intermediate (3), beginner (2), novice (1).
 	
 \textit{2. Threats:}
 	We identified the following threats:
@@ -2690,6 +2692,8 @@ cleveref=false,%
 	
 	% Summary
 	In summary, there are many opportunities to further investigate and thus most likely improve the classification of code readability. Our new dataset and the generation approach can serve as a foundation for this.
+	
+\authorshipDeclaration
 	
 \backmatter
 

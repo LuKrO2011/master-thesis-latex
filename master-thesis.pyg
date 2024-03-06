@@ -1,0 +1,11 @@
+				import java.util.*;
+				
+				public class TimeConverter {
+					public static final int f0 = 1440;
+					
+					public int randomDaysMinutes() {
+						Random random = new Random(4242);
+						int days = random.nextInt(10);
+						return days * f0;
+					}
+				}
