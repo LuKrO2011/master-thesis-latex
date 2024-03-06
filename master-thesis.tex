@@ -717,6 +717,9 @@ cleveref=false,%
 % Reference Assumptions
 \crefname{assumption}{assumption}{assumptions}
 
+% Fixing captions
+\usepackage{hvfloat}
+
 % TODO: Add reference and description to count (stata table) in text
 % Poorly readable vs unreadable? Currently poorly readable
 
@@ -854,9 +857,7 @@ cleveref=false,%
 			\end{minted}
 			\caption{An example of a simple and well readable Java method.}
 			\label{lst:example-method-well}
-		\end{sublisting}
-		\vspace{1pt}
-		
+		\end{sublisting}		
 		\begin{sublisting}{\linewidth}
 			\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
 				public int foo(int x) {
@@ -1167,7 +1168,6 @@ cleveref=false,%
 	\begin{table}[tb]
 		\centering
 		\caption{Accuracy scores of two-class readability classification models.}
-		\vspace{8pt}
 		\label{tab:rel-acc-scores}
 		\begin{tabular}{llr}
 			\toprule
@@ -1396,7 +1396,6 @@ cleveref=false,%
 			\caption{An example of a simple and well readable Java method.}
 			\label{lst:java-method-well}
 		\end{sublisting}
-		\vspace{1pt}
 		
 		\begin{sublisting}{\linewidth}
 			\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
@@ -1418,7 +1417,7 @@ cleveref=false,%
 	\end{listing}
 	
 	
-	\begin{listing}[tb]
+	\begin{listing}[p]
 		\begin{sublisting}{\linewidth}
 			\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
 				import java.util.Random;
@@ -1439,7 +1438,6 @@ cleveref=false,%
 			\caption{An example of a simple and well readable Java class file.}
 			\label{lst:java-class-file-well}
 		\end{sublisting}
-		\vspace{1pt}
 		
 		\begin{sublisting}{\linewidth}
 			\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
@@ -1469,7 +1467,6 @@ cleveref=false,%
 	\begin{table}[tb]
 		\centering
 		\caption{Available \RDHs along with when they are executed (on AST or Code), their configuration type (a array of probabilities or a single one) and whether they are included in the final dataset. See \Cref{appendix:rdh-config-file} for a concrete configuration example.}
-		\vspace{8pt}
 		\label{tab:rdh-characteristics}
 		\begin{tabular}{llllc}
 			\toprule
@@ -1685,7 +1682,6 @@ cleveref=false,%
 	\begin{table}[tb]
 		\centering
 		\caption{Chosen configurations and their probabilities for the \RDHs. For better readability, we write \textit{addX} and \textit{removeX} instead of the array configurations. For example, we write \textit{Add1Space:~20~\%} and \textit{Add2Spaces:~10~\%}, but the configuration is \textit{space:~[0.0, 0.7, 0.2, 0.1]}.}
-		\vspace{8pt}
 		\label{tab:rdh_configurations}
 		\begin{tabular}{|l|l|l|}
 			\hline
@@ -1862,7 +1858,6 @@ cleveref=false,%
 	\begin{table}[tb]
 		\centering
 		\caption{Computed strata, manually assigned names, the number of methods in each stratum (Elem. Count) and the percentage and count of sampled methods for the survey.}
-		\vspace{8pt}
 		\label{tab:strata_info}
 		\begin{tabular}{llrrr}
 			\toprule
@@ -1970,10 +1965,9 @@ cleveref=false,%
 	% Architecture: Visual embedding
 	For the visual representation the syntax of the code is highlighted. Therefore \citeauthor{mi2022towards} assigned each type of syntactic element a color (see \autoref{tab:model-colors}). Instead of highlighting the words in the respective color, as done by an IDE, the words are replaced by color blocks instead (see \autoref{fig:visual_encoding}). \citeauthor{mi2022towards} used Eclipse\curl{https://www.eclipse.org/}{2024-03-02} to highlight the code snippets and then took screenshots to obtain a RGB Matrix~\cite{mi2022towards}.
 		
-	\begin{table}[h]
+	\begin{table}[tb]
 		\centering
 		\caption{The color encoding used by the visual component of the towards model~\cite{mi2022towards}.}
-		\vspace{8pt}
 		\label{tab:model-colors}
 		\begin{tabular}{lll}
 			\toprule
@@ -2101,7 +2095,6 @@ cleveref=false,%
 			\caption{An example of a simple and well readable Java method.}
 			\label{lst:print-greeting-a}
 		\end{sublisting}
-		\vspace{1pt}
 		
 		\begin{sublisting}{\linewidth}
 			\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
@@ -2334,7 +2327,6 @@ cleveref=false,%
 	\begin{table}[tb]
 		\centering
 		\caption{Mean score ratings for the pilot survey.}
-		\vspace{8pt}
 		\label{tab:pilot_survey_results}
 		\begin{tabular}{llr}
 			\toprule
@@ -2492,13 +2484,13 @@ cleveref=false,%
 	\begin{figure}[p]
 		\centering
 		\begin{subfigure}{\linewidth}
-			\includegraphics[width=\textwidth]{img/survey_ratings_violin_all.pdf}
+			\includegraphics[width=0.9\textwidth]{img/survey_ratings_violin_all.pdf}
 			\caption{Absolute survey ratings for each \rdh configuration and all strata.}
 			\label{fig:survey_ratings_violin_all}
 		\end{subfigure}
 		\hfill
 		\begin{subfigure}{\textwidth}
-			\includegraphics[width=\linewidth]{img/survey_ratings_bar_all.pdf}
+			\includegraphics[width=0.9\linewidth]{img/survey_ratings_bar_all.pdf}
 			\caption{Relative survey ratings for each \rdh configuration and all strata compared to all original methods.}
 			\label{fig:survey_ratings_bar_all}
 		\end{subfigure}
@@ -2538,7 +2530,6 @@ cleveref=false,%
 	\begin{table}[tb]
 		\centering
 		\caption{Mann-Whitney U test results of each \rdh configuration against \nonet. When \textbf{$p$} is smaller than $5~\%=\num{5e-2}$ (bold) we conclude that the difference is significant.}
-		\vspace{8pt}
 		\label{tab:survey_statistical_evidence}
 		\begin{tabular}{lS[table-format=1.2e-2]}
 			\toprule
@@ -2587,7 +2578,6 @@ cleveref=false,%
 		\caption{Performance of different dataset configurations for the same model. \textit{mam} stands for the mined-and-modified dataset. 
 %			mam-merged is training on the mined-and-modified dataset and fine tuning on the merged one.
 		}
-		\vspace{8pt}
 		\label{tab:dataset_performance}
 		\begin{tabular}{llrrrrrr}
 			\toprule
