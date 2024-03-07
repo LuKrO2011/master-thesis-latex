@@ -781,7 +781,7 @@ cleveref=false,%
 	% Main problem
 	%	However, these models do not capture what developers think of readability improvements~\cite{fakhoury2019improving}. This suggests that there is room for improvement in readability classification of source code. 
 	However, a major limitation of these models is not their architecture, but the amount of available data for Java code readability classification, which comprises 421 code snippets~\citeolddataset. The current training data originates from questionnaires, where humans manually labeled the code snippets. This has two drawbacks: Firstly, manual labeling requires a lot of effort.
-	Secondly, the dataset is too small for deep learning, as this requires a large amount of data~\cite{hestness2017deep}.
+	Secondly, the dataset is very small for deep learning, as this requires a large amount of data~\cite{hestness2017deep}.
 	To address these drawbacks, we aim to automatically generate more training data.
 	
 	% Problem details
@@ -791,7 +791,7 @@ cleveref=false,%
 	%	This requires, as it was done previously, a lot of effort and persons willing to rate code based on their readability.
 	
 	% Approach
-	The main idea of this work is to investigate whether it is possible to achieve higher accuracy in code readability classification using automatically generated data. 
+	The idea of this work is to investigate whether it is possible to achieve higher accuracy in code readability classification using automatically generated data. 
 	%	Instead of introducing a new model, we will try to achieve this with more training data. Therefore, we propose a novel approach to data generation for code readability classification. We will evaluate such a generated dataset using a survey and by comparing the accuracy of the model of \citeauthor{mi2022towards}~\cite{mi2022towards} trained on the old and the new data.
 	
 	% Contents
@@ -830,7 +830,7 @@ cleveref=false,%
 	Our criteria for high code quality are an elevated number of stars, forks, method comments the use of and compliance with a checkstyle\curl{https://checkstyle.sourceforge.io/}{2024-02-09} specification. For example, a consequence of using checkstyle is that the readability of the code is increased. Therefore it is reasonable to assume that repositories that use checkstyle are more readable (see \Cref{Dataset Generation Approach}).
 	We select Java files from the repositories that meet our criteria, extract methods from the Java classes in these files and label them as well readable (\Cref{well-readable-assumption}).
 	
-	In a second step, all selected Java files are manipulated so that its code is subsequently less readable. You can find an exemplary result of this in \autoref{lst:example-method}.
+	In a second step, all selected Java files are manipulated so that the code is subsequently less readable. You can find an exemplary result of this in \autoref{lst:example-method}.
 	We extract methods from the Java classes in these files and label them as poorly readable (\Cref{poorly-readable-assumption}).
 	
 	\begin{listing}[tb]
@@ -874,7 +874,7 @@ cleveref=false,%
 	% Readabililty Decreasing Modifications
 	But how can we manipulate code so that it is less readable afterwards? We introduce a tool called \RDHa. It uses a collection of heuristics that reduce the readability of Java files. Such heuristics are replacing spaces with newlines or increasing the indentation of a code block by a tab or multiple spaces. Most changes also decrease readability when applied in reverse (replacing newlines with spaces, decreasing indentation).
 	
-	Methods in Java are syntactically the same, before and after applying \rdh. Functionality does not change either. However, if various modifications are applied many times, those modifications are capable of lowering the readability of source code, as \autoref{lst:example-method} shows.
+	The Java code is syntactically the same, before and after applying \rdh. Functionality does not change either. However, if various modifications are applied many times, those modifications are capable of lowering the readability of source code, as \autoref{lst:example-method} shows.
 	%	the comparison of \autoref{lst:example-method-well} and \autoref{lst:example-method-badly} suggests.
 
 %	% Study goals
@@ -1323,41 +1323,41 @@ cleveref=false,%
 			\hline
 			\textbf{\#} & \textbf{Modification} & \textbf{Description} & \textbf{Example} \\
 			\hline
-			1 & \texttt{newline} & Replacing newlines with none or multiple ones & \autoref{lst:java-method-poor}, Lines 5-6 \\
+			1 & \texttt{newline} & Replace a newline with none or multiple ones & \autoref{lst:java-method-poor}, Lines 5-6 \\
 			\hline
 			2 & \texttt{incTab} & Replace a tab indentation with none or multiple ones & \autoref{lst:java-method-poor}, Line 5 \\
 			\hline
-			3 & \texttt{decTab} & Replace a tab outdentation with one or more ones & \autoref{lst:java-method-poor}, Line 7 \\
+			3 & \texttt{decTab} & Replace a tab outdentation with none or more ones & \autoref{lst:java-method-poor}, Line 7 \\
 			\hline
-			4 & \texttt{space} & Replacing a single space with multiple ones & \autoref{lst:java-method-poor}, Line 1 \\
+			4 & \texttt{space} & Replace a single space with multiple ones & \autoref{lst:java-method-poor}, Line 1 \\
 			\hline
-			5 & \texttt{newLine InsteadOf Space} & Replacing a space with a newline & \autoref{lst:java-method-poor}, Line 3-4 \\
+			5 & \texttt{newLine InsteadOf Space} & Replace a space with a newline & \autoref{lst:java-method-poor}, Line 3-4 \\
 			\hline
-			6 & \texttt{spaceInsteadOf Newline} & Replacing a newline with a space & \autoref{lst:java-method-poor}, Line 2 \\
+			6 & \texttt{spaceInsteadOf Newline} & Replace a newline with a space & \autoref{lst:java-method-poor}, Line 2 \\
 			\hline
-			7 & \texttt{incTabInsteadOf DecTab} & Replace a tab outdentation with an indentation & \autoref{lst:java-method-poor}, Line 9 \\
+			7 & \texttt{incTabInsteadOf DecTab} & Replace a tab outdentation with a tab indentation & \autoref{lst:java-method-poor}, Line 9 \\
 			\hline
-			8 & \texttt{decTabInsteadOf IncTab} & Replace a tab indentation with an outdentation & \autoref{lst:java-method-poor}, Line 8 \\
+			8 & \texttt{decTabInsteadOf IncTab} & Replace a tab indentation with a tab outdentation & \autoref{lst:java-method-poor}, Line 8 \\
 			\hline
-			9 & \texttt{renameVariable} & Renaming a variable declaration and its usages & \autoref{lst:java-method-poor}, Line 1-3 \\
+			9 & \texttt{renameVariable} & Rename a variable declaration and its usages & \autoref{lst:java-method-poor}, Line 1-3 \\
 			\hline
-			10 & \texttt{renameField} & Renaming a field declaration and its usages & \autoref{lst:java-class-file-poor}, Line 4 \\
+			10 & \texttt{renameField} & Rename a field declaration and its usages & \autoref{lst:java-class-file-poor}, Line 4 \\
 			\hline
-			11 & \texttt{renameMethod} & Renaming a method declaration and its usages & \autoref{lst:java-method-poor}, Line 1 \\
+			11 & \texttt{renameMethod} & Rename a method declaration and its usages & \autoref{lst:java-method-poor}, Line 1 \\
 			\hline
-			12 & \texttt{inlineMethod} & Inline a method into its usages & \autoref{lst:java-class-file-poor}, Line 7-8 \\
+			12 & \texttt{inlineMethod} & Replace a method call with the called code & \autoref{lst:java-class-file-poor}, Line 7-8 \\
 			\hline
-			13 & \texttt{removeComment} & Removing a comment & \autoref{lst:java-method-poor}, Line 1 \\
+			13 & \texttt{removeComment} & Remove a comment & \autoref{lst:java-method-poor}, Line 1 \\
 			\hline
-			14 & \texttt{add0} & Adding zero to numbers & \autoref{lst:java-method-poor}, Line 2 \\
+			14 & \texttt{add0} & Add a zero to a number & \autoref{lst:java-method-poor}, Line 2 \\
 			\hline
-			15 & \texttt{insertBraces} & Inserting superfluous braces & \autoref{lst:java-method-poor}, Lines 3-4 \\
+			15 & \texttt{insertBraces} & Insert superfluous braces & \autoref{lst:java-method-poor}, Lines 3-4 \\
 			\hline
-			16 & \texttt{starImport} & Replacing specific imports with star-import & \autoref{lst:java-class-file-poor}, Line 1 \\
+			16 & \texttt{starImport} & Replace a specific imports with a star-import & \autoref{lst:java-class-file-poor}, Line 1 \\
 			\hline
-			17 & \texttt{inlineField} & Inlining the values of static fields into the code & \autoref{lst:java-class-file-poor}, Line 7 \\
+			17 & \texttt{inlineField} & Replace a static field with its value & \autoref{lst:java-class-file-poor}, Line 7 \\
 			\hline
-			18 & \texttt{partially Evaluate} & Partially evaluate constants & \autoref{lst:java-class-file-poor}, Line 4 \\
+			18 & \texttt{partially Evaluate} & Partially evaluate a constant & \autoref{lst:java-class-file-poor}, Line 4 \\
 			\hline
 		\end{tabular}
 	\end{table}
@@ -1667,13 +1667,13 @@ cleveref=false,%
 			%			\hline
 			%			newline\_instead\_of\_space & newLineInsteadOfSpace: 0.15 \\
 			%			\hline
-			%			newlines\_few & \begin{tabular}[t]{@{}l@{}}removeNewline: 0.3 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
+			%			newlines-few & \begin{tabular}[t]{@{}l@{}}removeNewline: 0.3 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
 			%			\hline
-			%			newlines\_many & \begin{tabular}[t]{@{}l@{}}add1Newline: 0.15 \\ add2Newlines: 0.05\end{tabular} \\
+			%			newlines-many & \begin{tabular}[t]{@{}l@{}}add1Newline: 0.15 \\ add2Newlines: 0.05\end{tabular} \\
 			%			\hline
 			%			rename & \begin{tabular}[t]{@{}l@{}}renameVariable: 0.3 \\ renameField: 0.3 \\ renameMethod: 0.3\end{tabular} \\
 			%			\hline
-			%			spaces\_many & \begin{tabular}[t]{@{}l@{}}Add1Space: 0.2 \\ Add2Spaces: 0.1 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
+			%			spaces-many & \begin{tabular}[t]{@{}l@{}}Add1Space: 0.2 \\ Add2Spaces: 0.1 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
 			%			\hline
 			%			tabs & \begin{tabular}[t]{@{}l@{}}remove1IncTab: 0.2 \\ add1IncTab: 0.1 \\ remove1DecTab: 0.1 \\ add1DecTab: 0.1 \\ incTabInsteadOfDecTab: 0.05 \\ decTabInsteadOfIncTab: 0.05\end{tabular} \\
 			%			\hline
@@ -1697,13 +1697,13 @@ cleveref=false,%
 			\hline
 			newline\_instead\_of\_space & newLineInsteadOfSpace: 15 \% \\
 			\hline
-			newlines\_few & \begin{tabular}[t]{@{}l@{}}removeNewline: 30 \% \\ spaceInsteadOfNewline: 5 \%\end{tabular} \\
+			newlines-few & \begin{tabular}[t]{@{}l@{}}removeNewline: 30 \% \\ spaceInsteadOfNewline: 5 \%\end{tabular} \\
 			\hline
-			newlines\_many & \begin{tabular}[t]{@{}l@{}}add1Newline: 15 \% \\ add2Newlines: 5 \%\end{tabular} \\
+			newlines-many & \begin{tabular}[t]{@{}l@{}}add1Newline: 15 \% \\ add2Newlines: 5 \%\end{tabular} \\
 			\hline
 			rename & \begin{tabular}[t]{@{}l@{}}renameVariable: 30 \% \\ renameField: 30 \% \\ renameMethod: 30 \%\end{tabular} \\
 			\hline
-			spaces\_many & \begin{tabular}[t]{@{}l@{}}Add1Space: 20 \% \\ Add2Spaces: 10 \% \\ spaceInsteadOfNewline: 5 \%\end{tabular} \\
+			spaces-many & \begin{tabular}[t]{@{}l@{}}Add1Space: 20 \% \\ Add2Spaces: 10 \% \\ spaceInsteadOfNewline: 5 \%\end{tabular} \\
 			\hline
 			tabs & \begin{tabular}[t]{@{}l@{}}remove1IncTab: 20 \% \\ add1IncTab: 10 \% \\ remove1DecTab: 10 \% \\ add1DecTab: 10 \% \\ incTabInsteadOfDecTab: 5 \% \\ decTabInsteadOfIncTab: 5 \%\end{tabular} \\
 			\hline
@@ -1724,10 +1724,10 @@ cleveref=false,%
 			%			none & - \\
 			%			comments\_remove & removeComment: 1.0 \\
 			%			newline\_instead\_of\_space & newLineInsteadOfSpace: 0.15 \\
-			%			newlines\_few & \begin{tabular}[t]{@{}l@{}}removeNewline: 0.3 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
-			%			newlines\_many & \begin{tabular}[t]{@{}l@{}}add1Newline: 0.15 \\ add2Newlines: 0.05\end{tabular} \\
+			%			newlines-few & \begin{tabular}[t]{@{}l@{}}removeNewline: 0.3 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
+			%			newlines-many & \begin{tabular}[t]{@{}l@{}}add1Newline: 0.15 \\ add2Newlines: 0.05\end{tabular} \\
 			%			rename & \begin{tabular}[t]{@{}l@{}}renameVariable: 0.3 \\ renameField: 0.3 \\ renameMethod: 0.3\end{tabular} \\
-			%			spaces\_many & \begin{tabular}[t]{@{}l@{}}Add1Space: 0.2 \\ Add2Spaces: 0.1 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
+			%			spaces-many & \begin{tabular}[t]{@{}l@{}}Add1Space: 0.2 \\ Add2Spaces: 0.1 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
 			%			tabs & \begin{tabular}[t]{@{}l@{}}remove1IncTab: 0.2 \\ add1IncTab: 0.1 \\ remove1DecTab: 0.1 \\ add1DecTab: 0.1 \\ incTabInsteadOfDecTab: 0.05 \\ decTabInsteadOfIncTab: 0.05\end{tabular} \\
 			%			all7 & all probabilities/7 \\
 			%			\bottomrule
@@ -1792,7 +1792,8 @@ cleveref=false,%
 	After we applied \rdh to the Java files, we extract the methods. We require a method comment for all methods (see \Cref{Dataset Generation Approach}). We therefore use \texttt{removeComment} after completing the method extraction.
 	
 \subsection{Construction of Questionnaires} \label{Construction of Questionnaires}
-	We evaluated the generated dataset and the new approach with a survey. Therefore, we build configurations and sampled code snippets from the dataset. An overview of the approach can be found in \autoref{fig:survey_pipeline}.
+	We evaluate the generated dataset and the new approach with a survey (see \Cref{Survey}). However, we cannot evaluate all mined and modified methods, as the original methods consist of \numOriginal samples and there is an infinite number of possible configurations for \rdh that can be applied to each method.
+	Therefore, we applied stratified sampling, created specific configurations and selected the methods for our survey on this basis. An overview of the approach can be found in \autoref{fig:survey_pipeline}.
 	
 	\begin{figure}[tb]
 		\centering
@@ -1801,12 +1802,14 @@ cleveref=false,%
 		\label{fig:survey_pipeline}
 	\end{figure}
 	
-	\textbf{Stratified sampling:} Our first goal was to distinguish between very simple methods such as Getters and Setters and more complex method. We therefore applied stratified sampling~\cite{thompson2012sampling} to distinguish between very simple methods such as Getters and Setters and more complex methods. Since we want to compare the original methods with their modified variants later, we performed the sampling for the original methods and added the \rdh methods in a later step.
-	
-	For the stratified sampling, we first calculated features for the original code snippets. This was done using the tool of \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}. We calculated a 110-dimensional feature vector for each original code snippet. Next we computed the cosine similarity metrix between all feature vectors using scikit\curl{https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html}{2024-02-20}. 
-	Finally, using the fastcluster implementation~\cite{mullner2013fastcluster} of Ward's hierarchical clustering we were able to cluster the methods into an arbitrary amount of clusters.	
+	\textbf{Stratified sampling:} 
+	First, we want to categorize the methods to make it easier to decide which methods to select. We also want to avoid over-representing very simple methods, such Getters and Setters. Therefore, our first step is to apply stratified sampling~\cite{thompson2012sampling}. This allows us to divide the methods into different groups, so called strata, based on their properties.
+	Since we want to compare the original methods with their modified variants later, we performed the sampling only for the original methods and added the \rdh methods in a later step.
+
+	We first calculated features for the original code snippets. This was done using the tool of \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}. We calculated a 110-dimensional feature vector for each original code snippet. Next we computed the cosine similarity metrix between all feature vectors using scikit\curl{https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html}{2024-02-20}. 
+	Finally, using the fastcluster implementation~\cite{mullner2013fastcluster} of Ward's hierarchical clustering we were able to cluster the methods into an arbitrary amount of strata.	
 		
-	By comparing the merge distances in each step (see \autoref{fig:strata_merge_distances}), we found that a cluster size of 4 makes the most sense: the merge distance of 5 to 4 is small, so we should still perform this merge, but the merge distance of 4 to 3 is large, so it is better not to perform this merge. Also, 4 is the size with the last possibility for a small merge distance. Each of the clusters is one stratum of our stratified sampling. 	
+	By comparing the merge distances in each step (see \autoref{fig:strata_merge_distances}), we found that a strata size of 4 makes the most sense: the merge distance of 5 to 4 is small, so we should still perform this merge, but the merge distance of 4 to 3 is large, so it is better not to perform this merge. Also, 4 is the size with the last possibility for a small merge distance.
 	
 	We identified the type of methods within each of the 4 strata as described in \autoref{tab:strata_info}. We also added the amount of methods within each stratum. Stratum 0 comprises simple methods, such as Getters and Setters. Stratum 1 consists of the most complex methods across all strata. Stratum 2 is characterized by methods containing numeric values with unexplained meaning, commonly referred to as magic numbers. Compared to the other strata, Stratum 2 has a smaller scope of 78 methods. Stratum 3 houses methods of moderate complexity, surpassing the simplicity of Getter and Setters in Stratum 0 but falling short of the intricacy observed in Stratum 1 methods. Layer 3 contains methods of medium complexity that exceed the simplicity of the Getters and Setters in Stratum 0, but do not come close to the complexity of the methods in Stratum 1. Overall, we have succeeded in splitting the methods according to their complexity, ranging from simple (Stratum 0) to medium (Stratum 3) to complex (Stratum 1), while Stratum 2 is a by-product.
 	
@@ -1817,7 +1820,7 @@ cleveref=false,%
 		\label{fig:strata_merge_distances}
 	\end{figure}
 	
-	\textbf{Configuration selection:} The next step was to find realistic configurations for the \rdh tool. We selected first configurations by manually checking individual outputs of \rdh. Then we conducted a pilot study and adjusted the \mods based on the feedback.
+	\textbf{Configuration selection:} The next step was to find realistic configurations for the \rdh tool. We selected the first configurations by manually checking individual outputs of \rdh. Then we conducted a pilot study and adjusted the configurations based on the feedback.
 	The final 9 configurations can be found in \autoref{tab:rdh_configurations}. Together with the original methods this resulted in 10 groups.
 	
 %	\begin{table}[tb]
@@ -2273,25 +2276,25 @@ cleveref=false,%
 			%			\toprule
 			%			\textbf{Stratum} & \textbf{\rdh} & \textbf{File} & \textbf{Score} \\
 			%			\midrule
-			%			stratum\_0 & spaces\_few & \seqsplit{hadoop\_FilePosition.Java\_bufferFullyRead.Java} & 3 \\
-			%			stratum\_0 & tabs\_few & \seqsplit{hadoop\_DataNodeFaultInjector.Java\_delayWriteToDisk.Java} & 4,3 \\
+			%			stratum\_0 & spaces-few & \seqsplit{hadoop\_FilePosition.Java\_bufferFullyRead.Java} & 3 \\
+			%			stratum\_0 & tabs-few & \seqsplit{hadoop\_DataNodeFaultInjector.Java\_delayWriteToDisk.Java} & 4,3 \\
 			%			stratum\_1 & all & \seqsplit{hudi\_HoodieMultiTableStreamer.Java\_populateTableExecutionContextList.Java} & 1,2 \\
 			%			stratum\_1 & all\_weak & \seqsplit{flink\_SSLUtils.Java\_createInternalNettySSLContext.Java} & 1,3 \\
-			%			stratum\_1 & newlines\_few & \seqsplit{hudi\_Pipelines.Java\_hoodieStreamWrite.Java} & 1,7 \\
-			%			stratum\_1 & spaces\_many & \seqsplit{hadoop\_ActiveAuditManagerS3A.Java\_createExecutionInterceptors.Java} & 2,1 \\
-			%			stratum\_1 & tabs\_few & \seqsplit{hbase\_ZKMainServer.Java\_main.Java} & 2,2 \\
-			%			stratum\_1 & tabs\_many & \seqsplit{flink\_HiveParserSemanticAnalyzer.Java\_findCTEFromName.Java} & 2,2 \\
+			%			stratum\_1 & newlines-few & \seqsplit{hudi\_Pipelines.Java\_hoodieStreamWrite.Java} & 1,7 \\
+			%			stratum\_1 & spaces-many & \seqsplit{hadoop\_ActiveAuditManagerS3A.Java\_createExecutionInterceptors.Java} & 2,1 \\
+			%			stratum\_1 & tabs-few & \seqsplit{hbase\_ZKMainServer.Java\_main.Java} & 2,2 \\
+			%			stratum\_1 & tabs-many & \seqsplit{flink\_HiveParserSemanticAnalyzer.Java\_findCTEFromName.Java} & 2,2 \\
 			%			stratum\_1 & misc & \seqsplit{hbase\_Encryption.Java\_decryptWithSubjectKey.Java} & 2,4 \\
-			%			stratum\_1 & spaces\_few & \seqsplit{hbase\_HBaseZKTestingUtility.Java\_startMiniZKCluster.Java} & 2,6 \\
-			%			stratum\_1 & newlines\_many & \seqsplit{pulsar\_LoadSimulationController.Java\_writeProducerOptions.Java} & 2,9 \\
-			%			stratum\_1 & all\_weak\_3 & \seqsplit{hadoop\_SingleFilePerBlockCache.Java\_getIntList.Java} & 3 \\
+			%			stratum\_1 & spaces-few & \seqsplit{hbase\_HBaseZKTestingUtility.Java\_startMiniZKCluster.Java} & 2,6 \\
+			%			stratum\_1 & newlines-many & \seqsplit{pulsar\_LoadSimulationController.Java\_writeProducerOptions.Java} & 2,9 \\
+			%			stratum\_1 & all-weak-r & \seqsplit{hadoop\_SingleFilePerBlockCache.Java\_getIntList.Java} & 3 \\
 			%			stratum\_1 & comments\_remove & \seqsplit{flink\_MemorySegment.Java\_get.Java} & 3,1 \\
 			%			stratum\_1 & methods & \seqsplit{flink\_HiveParserSemanticAnalyzer.Java\_processPTFSource.Java} & 3,7 \\
-			%			stratum\_2 & newlines\_few & \seqsplit{zxing\_ModulusPoly.Java\_isZero.Java} & 2,4 \\
+			%			stratum\_2 & newlines-few & \seqsplit{zxing\_ModulusPoly.Java\_isZero.Java} & 2,4 \\
 			%			stratum\_2 & methods & \seqsplit{hibernate-validator\_PESELValidator.Java\_year.Java} & 3,7 \\
-			%			stratum\_2 & tabs\_few & \seqsplit{framework\_WindowMoveListener.Java\_getTicketNumber.Java} & 3,8 \\
-			%			stratum\_3 & tabs\_many & \seqsplit{hadoop\_S3AInputPolicy.Java\_getPolicy.Java} & 1,7 \\
-			%			stratum\_3 & newlines\_many & \seqsplit{hadoop\_CompressionCodec.Java\_createInputStreamWithCodecPool.Java} & 3,3 \\
+			%			stratum\_2 & tabs-few & \seqsplit{framework\_WindowMoveListener.Java\_getTicketNumber.Java} & 3,8 \\
+			%			stratum\_3 & tabs-many & \seqsplit{hadoop\_S3AInputPolicy.Java\_getPolicy.Java} & 1,7 \\
+			%			stratum\_3 & newlines-many & \seqsplit{hadoop\_CompressionCodec.Java\_createInputStreamWithCodecPool.Java} & 3,3 \\
 			%			stratum\_3 & methods & \seqsplit{hbase\_PreviousBlockCompressionRatePredicator.Java\_updateLatestBlockSizes.Java} & 4,6 \\
 			%			\bottomrule
 			%		\end{tabular}
@@ -2309,23 +2312,23 @@ cleveref=false,%
 			%			\textbf{Stratum} & \textbf{Feature} & \textbf{File} & \textbf{Score} \\
 			%			\midrule
 			%			stratum\_3 & methods & \seqsplit{hbase\_PreviousBlockCompressionRatePredicator.Java\_updateLatestBlockSizes.Java} & 4,6 \\
-			%			stratum\_0 & tabs\_few & \seqsplit{hadoop\_DataNodeFaultInjector.Java\_delayWriteToDisk.Java} & 4,3 \\
-			%			stratum\_2 & tabs\_few & \seqsplit{framework\_WindowMoveListener.Java\_getTicketNumber.Java} & 3,8 \\
+			%			stratum\_0 & tabs-few & \seqsplit{hadoop\_DataNodeFaultInjector.Java\_delayWriteToDisk.Java} & 4,3 \\
+			%			stratum\_2 & tabs-few & \seqsplit{framework\_WindowMoveListener.Java\_getTicketNumber.Java} & 3,8 \\
 			%			stratum\_1 & methods & \seqsplit{flink\_HiveParserSemanticAnalyzer.Java\_processPTFSource.Java} & 3,7 \\
 			%			stratum\_2 & methods & \seqsplit{hibernate-validator\_PESELValidator.Java\_year.Java} & 3,7 \\
-			%			stratum\_3 & newlines\_many & \seqsplit{hadoop\_CompressionCodec.Java\_createInputStreamWithCodecPool.Java} & 3,3 \\
+			%			stratum\_3 & newlines-many & \seqsplit{hadoop\_CompressionCodec.Java\_createInputStreamWithCodecPool.Java} & 3,3 \\
 			%			stratum\_1 & comments\_remove & \seqsplit{flink\_MemorySegment.Java\_get.Java} & 3,1 \\
-			%			stratum\_0 & spaces\_few & \seqsplit{hadoop\_FilePosition.Java\_bufferFullyRead.Java} & 3,0 \\
-			%			stratum\_1 & all\_weak\_3 & \seqsplit{hadoop\_SingleFilePerBlockCache.Java\_getIntList.Java} & 3,0 \\
-			%			stratum\_1 & newlines\_many & \seqsplit{pulsar\_LoadSimulationController.Java\_writeProducerOptions.Java} & 2,9 \\
-			%			stratum\_1 & spaces\_few & \seqsplit{hbase\_HBaseZKTestingUtility.Java\_startMiniZKCluster.Java} & 2,6 \\
+			%			stratum\_0 & spaces-few & \seqsplit{hadoop\_FilePosition.Java\_bufferFullyRead.Java} & 3,0 \\
+			%			stratum\_1 & all-weak-r & \seqsplit{hadoop\_SingleFilePerBlockCache.Java\_getIntList.Java} & 3,0 \\
+			%			stratum\_1 & newlines-many & \seqsplit{pulsar\_LoadSimulationController.Java\_writeProducerOptions.Java} & 2,9 \\
+			%			stratum\_1 & spaces-few & \seqsplit{hbase\_HBaseZKTestingUtility.Java\_startMiniZKCluster.Java} & 2,6 \\
 			%			stratum\_1 & misc & \seqsplit{hbase\_Encryption.Java\_decryptWithSubjectKey.Java} & 2,4 \\
-			%			stratum\_2 & newlines\_few & \seqsplit{zxing\_ModulusPoly.Java\_isZero.Java} & 2,4 \\
-			%			stratum\_1 & tabs\_few & \seqsplit{hbase\_ZKMainServer.Java\_main.Java} & 2,2 \\
-			%			stratum\_1 & tabs\_many & \seqsplit{flink\_HiveParserSemanticAnalyzer.Java\_findCTEFromName.Java} & 2,2 \\
-			%			stratum\_1 & spaces\_many & \seqsplit{hadoop\_ActiveAuditManagerS3A.Java\_createExecutionInterceptors.Java} & 2,1 \\
-			%			stratum\_1 & newlines\_few & \seqsplit{hudi\_Pipelines.Java\_hoodieStreamWrite.Java} & 1,7 \\
-			%			stratum\_3 & tabs\_many & \seqsplit{hadoop\_S3AInputPolicy.Java\_getPolicy.Java} & 1,7 \\
+			%			stratum\_2 & newlines-few & \seqsplit{zxing\_ModulusPoly.Java\_isZero.Java} & 2,4 \\
+			%			stratum\_1 & tabs-few & \seqsplit{hbase\_ZKMainServer.Java\_main.Java} & 2,2 \\
+			%			stratum\_1 & tabs-many & \seqsplit{flink\_HiveParserSemanticAnalyzer.Java\_findCTEFromName.Java} & 2,2 \\
+			%			stratum\_1 & spaces-many & \seqsplit{hadoop\_ActiveAuditManagerS3A.Java\_createExecutionInterceptors.Java} & 2,1 \\
+			%			stratum\_1 & newlines-few & \seqsplit{hudi\_Pipelines.Java\_hoodieStreamWrite.Java} & 1,7 \\
+			%			stratum\_3 & tabs-many & \seqsplit{hadoop\_S3AInputPolicy.Java\_getPolicy.Java} & 1,7 \\
 			%			stratum\_1 & all\_weak & \seqsplit{flink\_SSLUtils.Java\_createInternalNettySSLContext.Java} & 1,3 \\
 			%			stratum\_1 & all & \seqsplit{hudi\_HoodieMultiTableStreamer.Java\_populateTableExecutionContextList.Java} & 1,2 \\
 			%			\bottomrule
@@ -2338,26 +2341,26 @@ cleveref=false,%
 		\label{tab:pilot_survey_results}
 		\begin{tabular}{llr}
 			\toprule
-			Stratum & \rdh & Score \\
+			Stratum & \rdh configuration & Score \\
 			\midrule
 			Stratum 3 & methods & 4.6 \\
-			Stratum 0 & tabs\_few & 4.3 \\
-			Stratum 2 & tabs\_few & 3.8 \\
+			Stratum 0 & tabs-few & 4.3 \\
+			Stratum 2 & tabs-few & 3.8 \\
 			Stratum 1 & methods & 3.7 \\
 			Stratum 2 & methods & 3.7 \\
-			Stratum 3 & newlines\_many & 3.3 \\
+			Stratum 3 & newlines-many & 3.3 \\
 			Stratum 1 & comments\_remove & 3.1 \\
-			Stratum 0 & spaces\_few & 3.0 \\
-			Stratum 1 & all\_weak\_3 & 3.0 \\
-			Stratum 1 & newlines\_many & 2.9 \\
-			Stratum 1 & spaces\_few & 2.6 \\
+			Stratum 0 & spaces-few & 3.0 \\
+			Stratum 1 & all3 & 3.0 \\
+			Stratum 1 & newlines-many & 2.9 \\
+			Stratum 1 & spaces-few & 2.6 \\
 			Stratum 1 & misc & 2.4 \\
-			Stratum 2 & newlines\_few & 2.4 \\
-			Stratum 1 & tabs\_few & 2.2 \\
-			Stratum 1 & tabs\_many & 2.2 \\
-			Stratum 1 & spaces\_many & 2.1 \\
-			Stratum 1 & newlines\_few & 1.7 \\
-			Stratum 3 & tabs\_many & 1.7 \\
+			Stratum 2 & newlines-few & 2.4 \\
+			Stratum 1 & tabs-few & 2.2 \\
+			Stratum 1 & tabs-many & 2.2 \\
+			Stratum 1 & spaces-many & 2.1 \\
+			Stratum 1 & newlines-few & 1.7 \\
+			Stratum 3 & tabs-many & 1.7 \\
 			Stratum 1 & all\_weak & 1.3 \\
 			Stratum 1 & all & 1.2 \\
 			\bottomrule
@@ -2368,7 +2371,7 @@ cleveref=false,%
 	We adjusted the \rdh configurations. The rating for the last places (see \autoref{tab:pilot_survey_results}), such as \textit{1.2} for \textit{Stratum 1 - all}, suggest that these code snippets were particularly poorly readable. 
 	Thus, we re-examined the \rdh configurations and found that some of them are over-configured. This not only affects their readability, but also makes them look as if they were not written by human hands. We have therefore reduced the probabilities for these configurations.
 	
-	After adjusting the \rdh configurations and the survey tool according to the feedback, the Prolific Survey was launched.
+	After adjusting the \rdh configurations and the survey tool according to the feedback, the Prolific survey was launched.
 
 \subsubsection{Prolific Survey} \label{Prolific Survey}
 	In this section we summarize the results of the main survey conducted via Prolific\curl{https://app.prolific.com/}{2024-02-21}.
@@ -2446,6 +2449,9 @@ cleveref=false,%
 	An overview of the time required by the participants can be found in the \autoref{fig:survey_times} and \autoref{fig:survey_time_histogramm}.
 	The fastest participant completed the survey in 1 minute and 39 seconds, while the slowest participant took about 38 minutes. 
 	The average time is 9 minutes and 45 seconds. The median time is 8 minutes and 30 seconds. The boxplot (see \autoref{fig:survey_times}) shows that the times are not as close together as for the pilot survey. There are a couple of outliers.
+	
+	We pay particular attention to the number of participants who took less than 3 minutes to complete a questionnaire (see \autoref{fig:survey_time_less_than_180}), as we assume that this is hardly possible without randomly selecting answers. In almost all questionnaires, the number of participants who took less than 3 minutes is either 0 or 1, while there is only one questionnaire where two participants took less than 3 minutes.
+	Overall, there are only a few participants who took less than 3 minutes. We therefore assume that most participants completed the survey with reasonable effort and provided us with good data.
 		
 	\begin{figure}[tb]
 		\centering
@@ -2473,10 +2479,15 @@ cleveref=false,%
 		\caption{Familiarity of Prolific survey participants with Java.}
 		\label{fig:survey_Java_familiarity_pie}
 	\end{figure}
+		
+	The ratings for each \rdh configuration for all strata together can be found in \autoref{fig:survey_ratings_violin_all} and \autoref{fig:survey_ratings_bar_all}.
+	\autoref{fig:survey_ratings_violin_all}  visualizes the distribution of ratings for each score from 1 to 5. The mean value and mode of the ratings for each variant are also shown. To facilitate comparison with the original methods, the mean value of the ratings of the original methods across all variants is marked with a red dashed line. The original method and the just-pretty-print method are the most frequently rated with a score of 4 and their mean values of 3.69 and 3.67 are comparatively the highest.
 	
-	The ratings for each \rdh configuration for all strata combined can be found in \autoref{fig:survey_ratings_violin_all} and \autoref{fig:survey_ratings_bar_all}. 	
-	In line with our expectation, we see that the ratings for \nonet and \texttt{methods} are almost the same. There is no significant difference between the two, as a Mann-Whitney U test confirmed. The probability that the difference between \nonet and \texttt{methods} is due to random variation is 92~\%. 
+	In line with our expectation, we see that the ratings for \nonet and \texttt{methods} only differ by a very small amount of 0.02. A Mann-Whitney U test showed that the probability, that the difference between \nonet and \texttt{methods} is due to random variation, is 92~\%.
+%	There is no significant difference between the two, as a Mann-Whitney U test confirmed. The probability that the difference between \nonet and \texttt{methods} is due to random variation is 92~\%. 
 	Therefore, we are sure that other differences are actually caused by the \RDMs and not by the pretty-printer.
+	
+	\autoref{fig:survey_ratings_bar_all} shows the differences in mean values more precise. \rdh reduced the readability for the configurations all7, commentsRemove, newlinesInsteadOfSpace, newlinesFew and tabs the most. The tool also reduced readability for newlinesMany, rename and spacesMany, but not as much.
 
 	\autoref{fig:survey_ratings_violin_all} shows that the mean value of our original methods is 3.69. The mean score of all rated code snippets in the merged dataset is 3.46. Although the difference of 0.23 might seem subtle, it holds statistical significance:
 	We performed a Mann-Whitney U test for the mean rating values of the 40 original code snippets of the mined-and-modified dataset against the \numMerged mean rating values of the merged dataset. The resulting $p$ value is $0.012=1.2~\%$, which is below the $5~\%$ threshold, and confirms statistical significance.
@@ -2507,10 +2518,13 @@ cleveref=false,%
 		\label{fig:survey_time_all}
 	\end{figure}
 	
-	To answer our second research question, we analyzed whether the difference in ratings between the different \rdh configurations is statistically significant. To do this, we used the Mann-Whitney U test to compare the ratings for all snippets for a \rdh configuration with the corresponding \nonet snippets. The results can be found in \autoref{tab:survey_statistical_evidence}.
-	We can be sure that the scores of all methods except \texttt{newlines\_many} and \texttt{rename} are indeed statistically different from the scores of \nonet. 
+	% TODO:?
+	We did a statistical evaluation to find out whether the values could be random deviations or whether they are statistically significant (see \autoref{tab:survey_statistical_evidence}).
 	
-	If we consider binary readability classification and split the data into two classes (poorly readable: 1,2; well readable: 3-5) all but \texttt{rename} are statistically different from \nonet. This includes \texttt{newlines\_many} ($p=0.035=3.5~\% < 5~\%$) for which we could not confirm statistical difference without binary classification.
+	To answer our second research question, we analyzed whether the difference in ratings between the different \rdh configurations is statistically significant. To do this, we used the Mann-Whitney U test to compare the ratings for all snippets for a \rdh configuration with the corresponding \nonet snippets. The results can be found in \autoref{tab:survey_statistical_evidence}.
+	We can be sure that the scores of all methods except \texttt{newlines-many} and \texttt{rename} are indeed statistically different from the scores of \nonet. 
+	
+	If we consider binary readability classification and split the data into two classes (poorly readable: 1,2; well readable: 3-5) all but \texttt{rename} are statistically different from \nonet. This includes \texttt{newlines-many} ($p=0.035=3.5~\% < 5~\%$) for which we could not confirm statistical difference without binary classification.
 
 	Besides \nonet, this leaves only \texttt{rename} where we can not confirm statistical significance. Overall, we showed that \rdh actually reduces the readability of source code.
 
@@ -2545,9 +2559,9 @@ cleveref=false,%
 			Comparison against & \textbf{$p$} \\
 			\midrule
 			methods & \num{9.22e-1} \\
-			\textbf{newlines\_few} & \num{5.23e-6} \\
-			\textbf{spaces\_many} & \num{4.07e-2} \\
-			newlines\_many & \num{3.00e-1} \\
+			\textbf{newlines-few} & \num{5.23e-6} \\
+			\textbf{spaces-many} & \num{4.07e-2} \\
+			newlines-many & \num{3.00e-1} \\
 			\textbf{comments\_remove} & \num{3.64e-3} \\
 			rename & \num{9.90e-2} \\
 			\textbf{newline\_instead\_of\_space} & \num{4.57e-6} \\
