@@ -343,6 +343,43 @@
       \field{pages}{5\bibrangedash 14}
       \range{pages}{10}
     \endentry
+    \entry{devlin2018bert}{article}{}
+      \name{author}{4}{}{%
+        {{hash=13202969e372bc82318f9629cbdd199b}{%
+           family={Devlin},
+           familyi={D\bibinitperiod},
+           given={Jacob},
+           giveni={J\bibinitperiod}}}%
+        {{hash=a45784fe7163b45f11d166564f5d24b6}{%
+           family={Chang},
+           familyi={C\bibinitperiod},
+           given={Ming-Wei},
+           giveni={M\bibinithyphendelim W\bibinitperiod}}}%
+        {{hash=8dde73b4194f5bc4230c4808f3fc1534}{%
+           family={Lee},
+           familyi={L\bibinitperiod},
+           given={Kenton},
+           giveni={K\bibinitperiod}}}%
+        {{hash=b92aa283415413bb8d2a1548716d0c7d}{%
+           family={Toutanova},
+           familyi={T\bibinitperiod},
+           given={Kristina},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{ad8e2e2a80d28ade21e86852b804fc9b}
+      \strng{fullhash}{e8bccd48302a14eeba57d9dce2f49ef4}
+      \strng{bibnamehash}{ad8e2e2a80d28ade21e86852b804fc9b}
+      \strng{authorbibnamehash}{ad8e2e2a80d28ade21e86852b804fc9b}
+      \strng{authornamehash}{ad8e2e2a80d28ade21e86852b804fc9b}
+      \strng{authorfullhash}{e8bccd48302a14eeba57d9dce2f49ef4}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:1810.04805}
+      \field{title}{Bert: Pre-training of deep bidirectional transformers for language understanding}
+      \field{year}{2018}
+    \endentry
     \entry{dorn2012general}{inproceedings}{}
       \name{author}{1}{}{%
         {{hash=b538dcefa5d57bedc82e1f2dd9a0c3d0}{%
@@ -1014,7 +1051,7 @@
       \field{labeltitlesource}{title}
       \field{journaltitle}{Software: Practice and Experience}
       \field{number}{9}
-      \field{title}{Spoon: A library for implementing analyses and transformations of java source code}
+      \field{title}{Spoon: A library for implementing analyses and transformations of Java source code}
       \field{volume}{46}
       \field{year}{2016}
       \field{pages}{1155\bibrangedash 1179}
@@ -1466,7 +1503,6 @@
       \endverb
     \endentry
   \enddatalist
-  \missing{devlin2018bert}
 \endrefsection
 \endinput
 

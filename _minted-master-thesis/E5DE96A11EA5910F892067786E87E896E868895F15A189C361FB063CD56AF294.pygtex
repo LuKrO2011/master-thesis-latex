@@ -7,9 +7,13 @@
 \PYG{+w}{	}\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kd}{static}\PYG{+w}{ }\PYG{k+kd}{final}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{MINUTES\PYGZus{}PER\PYGZus{}DAY}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{MINUTES\PYGZus{}PER\PYGZus{}HOUR}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{HOURS\PYGZus{}PER\PYGZus{}DAY}\PYG{p}{;}
 \PYG{+w}{	}\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kd}{static}\PYG{+w}{ }\PYG{k+kd}{final}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{SEED}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{4242}\PYG{p}{;}
 
-\PYG{+w}{	}\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n+nf}{randomDaysMinutes}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{	}\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n+nf}{getRandomDays}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{max}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
 \PYG{+w}{		}\PYG{n}{Random}\PYG{+w}{ }\PYG{n}{random}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Random}\PYG{p}{(}\PYG{n}{SEED}\PYG{p}{);}
-\PYG{+w}{		}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{days}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{random}\PYG{p}{.}\PYG{n+na}{nextInt}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{);}
+\PYG{+w}{		}\PYG{k}{return}\PYG{+w}{ }\PYG{n}{random}\PYG{p}{.}\PYG{n+na}{nextInt}\PYG{p}{(}\PYG{n}{max}\PYG{p}{);}
+\PYG{+w}{	}\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{	}\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n+nf}{randomDaysInMinutes}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{		}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{days}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{getRandomDays}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{);}
 \PYG{+w}{		}\PYG{k}{return}\PYG{+w}{ }\PYG{n}{days}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{n}{MINUTES\PYGZus{}PER\PYGZus{}DAY}\PYG{p}{;}
 \PYG{+w}{	}\PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{}}
