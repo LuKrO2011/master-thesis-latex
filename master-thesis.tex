@@ -1576,7 +1576,7 @@ cleveref=false,%
 %	\end{center}
 	
 	
-%	\begin{table}[tb]
+%	table}[tb]
 %		\centering
 %		\caption{The \RDMs that are performed while pretty-printing}
 %		\vspace{8pt}
@@ -1663,9 +1663,9 @@ cleveref=false,%
 			%			\hline
 			%			none & - \\
 			%			\hline
-			%			comments\_remove & removeComment: 0.1 \\
+			%			comments-remove & removeComment: 0.1 \\
 			%			\hline
-			%			newline\_instead\_of\_space & newLineInsteadOfSpace: 0.15 \\
+			%			newline-instead-of-space & newLineInsteadOfSpace: 0.15 \\
 			%			\hline
 			%			newlines-few & \begin{tabular}[t]{@{}l@{}}removeNewline: 0.3 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
 			%			\hline
@@ -1691,11 +1691,11 @@ cleveref=false,%
 			\hline
 			\textbf{Configuration} & \textbf{Probabilities} \\
 			\hline
-			none & - \\
+			just-pretty-print & - \\
 			\hline
-			comments\_remove & removeComment: 10 \% \\
+			comments-remove & removeComment: 10 \% \\
 			\hline
-			newline\_instead\_of\_space & newLineInsteadOfSpace: 15 \% \\
+			newline-instead-of-space & newLineInsteadOfSpace: 15 \% \\
 			\hline
 			newlines-few & \begin{tabular}[t]{@{}l@{}}removeNewline: 30 \% \\ spaceInsteadOfNewline: 5 \%\end{tabular} \\
 			\hline
@@ -1722,8 +1722,8 @@ cleveref=false,%
 			%			\textbf{Configuration} & \textbf{Probabilities} \\
 			%			\midrule
 			%			none & - \\
-			%			comments\_remove & removeComment: 1.0 \\
-			%			newline\_instead\_of\_space & newLineInsteadOfSpace: 0.15 \\
+			%			comments-remove & removeComment: 1.0 \\
+			%			newline-instead-of-space & newLineInsteadOfSpace: 0.15 \\
 			%			newlines-few & \begin{tabular}[t]{@{}l@{}}removeNewline: 0.3 \\ spaceInsteadOfNewline: 0.05\end{tabular} \\
 			%			newlines-many & \begin{tabular}[t]{@{}l@{}}add1Newline: 0.15 \\ add2Newlines: 0.05\end{tabular} \\
 			%			rename & \begin{tabular}[t]{@{}l@{}}renameVariable: 0.3 \\ renameField: 0.3 \\ renameMethod: 0.3\end{tabular} \\
@@ -2279,7 +2279,7 @@ cleveref=false,%
 			%			stratum\_0 & spaces-few & \seqsplit{hadoop\_FilePosition.Java\_bufferFullyRead.Java} & 3 \\
 			%			stratum\_0 & tabs-few & \seqsplit{hadoop\_DataNodeFaultInjector.Java\_delayWriteToDisk.Java} & 4,3 \\
 			%			stratum\_1 & all & \seqsplit{hudi\_HoodieMultiTableStreamer.Java\_populateTableExecutionContextList.Java} & 1,2 \\
-			%			stratum\_1 & all\_weak & \seqsplit{flink\_SSLUtils.Java\_createInternalNettySSLContext.Java} & 1,3 \\
+			%			stratum\_1 & all2 & \seqsplit{flink\_SSLUtils.Java\_createInternalNettySSLContext.Java} & 1,3 \\
 			%			stratum\_1 & newlines-few & \seqsplit{hudi\_Pipelines.Java\_hoodieStreamWrite.Java} & 1,7 \\
 			%			stratum\_1 & spaces-many & \seqsplit{hadoop\_ActiveAuditManagerS3A.Java\_createExecutionInterceptors.Java} & 2,1 \\
 			%			stratum\_1 & tabs-few & \seqsplit{hbase\_ZKMainServer.Java\_main.Java} & 2,2 \\
@@ -2288,7 +2288,7 @@ cleveref=false,%
 			%			stratum\_1 & spaces-few & \seqsplit{hbase\_HBaseZKTestingUtility.Java\_startMiniZKCluster.Java} & 2,6 \\
 			%			stratum\_1 & newlines-many & \seqsplit{pulsar\_LoadSimulationController.Java\_writeProducerOptions.Java} & 2,9 \\
 			%			stratum\_1 & all-weak-r & \seqsplit{hadoop\_SingleFilePerBlockCache.Java\_getIntList.Java} & 3 \\
-			%			stratum\_1 & comments\_remove & \seqsplit{flink\_MemorySegment.Java\_get.Java} & 3,1 \\
+			%			stratum\_1 & comments-remove & \seqsplit{flink\_MemorySegment.Java\_get.Java} & 3,1 \\
 			%			stratum\_1 & methods & \seqsplit{flink\_HiveParserSemanticAnalyzer.Java\_processPTFSource.Java} & 3,7 \\
 			%			stratum\_2 & newlines-few & \seqsplit{zxing\_ModulusPoly.Java\_isZero.Java} & 2,4 \\
 			%			stratum\_2 & methods & \seqsplit{hibernate-validator\_PESELValidator.Java\_year.Java} & 3,7 \\
@@ -2317,7 +2317,7 @@ cleveref=false,%
 			%			stratum\_1 & methods & \seqsplit{flink\_HiveParserSemanticAnalyzer.Java\_processPTFSource.Java} & 3,7 \\
 			%			stratum\_2 & methods & \seqsplit{hibernate-validator\_PESELValidator.Java\_year.Java} & 3,7 \\
 			%			stratum\_3 & newlines-many & \seqsplit{hadoop\_CompressionCodec.Java\_createInputStreamWithCodecPool.Java} & 3,3 \\
-			%			stratum\_1 & comments\_remove & \seqsplit{flink\_MemorySegment.Java\_get.Java} & 3,1 \\
+			%			stratum\_1 & comments-remove & \seqsplit{flink\_MemorySegment.Java\_get.Java} & 3,1 \\
 			%			stratum\_0 & spaces-few & \seqsplit{hadoop\_FilePosition.Java\_bufferFullyRead.Java} & 3,0 \\
 			%			stratum\_1 & all-weak-r & \seqsplit{hadoop\_SingleFilePerBlockCache.Java\_getIntList.Java} & 3,0 \\
 			%			stratum\_1 & newlines-many & \seqsplit{pulsar\_LoadSimulationController.Java\_writeProducerOptions.Java} & 2,9 \\
@@ -2329,7 +2329,7 @@ cleveref=false,%
 			%			stratum\_1 & spaces-many & \seqsplit{hadoop\_ActiveAuditManagerS3A.Java\_createExecutionInterceptors.Java} & 2,1 \\
 			%			stratum\_1 & newlines-few & \seqsplit{hudi\_Pipelines.Java\_hoodieStreamWrite.Java} & 1,7 \\
 			%			stratum\_3 & tabs-many & \seqsplit{hadoop\_S3AInputPolicy.Java\_getPolicy.Java} & 1,7 \\
-			%			stratum\_1 & all\_weak & \seqsplit{flink\_SSLUtils.Java\_createInternalNettySSLContext.Java} & 1,3 \\
+			%			stratum\_1 & all2 & \seqsplit{flink\_SSLUtils.Java\_createInternalNettySSLContext.Java} & 1,3 \\
 			%			stratum\_1 & all & \seqsplit{hudi\_HoodieMultiTableStreamer.Java\_populateTableExecutionContextList.Java} & 1,2 \\
 			%			\bottomrule
 			%		\end{tabular}
@@ -2337,21 +2337,23 @@ cleveref=false,%
 	
 	\begin{table}[tb]
 		\centering
-		\caption{Mean score ratings for the pilot survey.}
+		\caption{Mean score ratings for the pilot survey. 
+%			\texttt{all2} and \texttt{all4} consist similar to \texttt{all7} of all configurations but with $/2$ and $/4$ for all probabilities.
+		}
 		\label{tab:pilot_survey_results}
 		\begin{tabular}{llr}
 			\toprule
 			Stratum & \rdh configuration & Score \\
 			\midrule
-			Stratum 3 & methods & 4.6 \\
+			Stratum 3 & original & 4.6 \\
 			Stratum 0 & tabs-few & 4.3 \\
 			Stratum 2 & tabs-few & 3.8 \\
-			Stratum 1 & methods & 3.7 \\
-			Stratum 2 & methods & 3.7 \\
+			Stratum 1 & original & 3.7 \\
+			Stratum 2 & original & 3.7 \\
 			Stratum 3 & newlines-many & 3.3 \\
-			Stratum 1 & comments\_remove & 3.1 \\
+			Stratum 1 & comments-remove & 3.1 \\
 			Stratum 0 & spaces-few & 3.0 \\
-			Stratum 1 & all3 & 3.0 \\
+			Stratum 1 & all4 & 3.0 \\
 			Stratum 1 & newlines-many & 2.9 \\
 			Stratum 1 & spaces-few & 2.6 \\
 			Stratum 1 & misc & 2.4 \\
@@ -2361,7 +2363,7 @@ cleveref=false,%
 			Stratum 1 & spaces-many & 2.1 \\
 			Stratum 1 & newlines-few & 1.7 \\
 			Stratum 3 & tabs-many & 1.7 \\
-			Stratum 1 & all\_weak & 1.3 \\
+			Stratum 1 & all2 & 1.3 \\
 			Stratum 1 & all & 1.2 \\
 			\bottomrule
 		\end{tabular}
@@ -2483,11 +2485,13 @@ cleveref=false,%
 	The ratings for each \rdh configuration for all strata together can be found in \autoref{fig:survey_ratings_violin_all} and \autoref{fig:survey_ratings_bar_all}.
 	\autoref{fig:survey_ratings_violin_all}  visualizes the distribution of ratings for each score from 1 to 5. The mean value and mode of the ratings for each variant are also shown. To facilitate comparison with the original methods, the mean value of the ratings of the original methods across all variants is marked with a red dashed line. The original method and the just-pretty-print method are the most frequently rated with a score of 4 and their mean values of 3.69 and 3.67 are comparatively the highest.
 	
-	In line with our expectation, we see that the ratings for \nonet and \texttt{methods} only differ by a very small amount of 0.02. A Mann-Whitney U test showed that the probability, that the difference between \nonet and \texttt{methods} is due to random variation, is 92~\%.
-%	There is no significant difference between the two, as a Mann-Whitney U test confirmed. The probability that the difference between \nonet and \texttt{methods} is due to random variation is 92~\%. 
+	In line with our expectation, we see that the ratings for \nonet and \texttt{original} only differ by a very small amount of 0.02. A Mann-Whitney U test showed that the probability, that the difference between \nonet and \texttt{original} is due to random variation, is 92~\%.
+%	There is no significant difference between the two, as a Mann-Whitney U test confirmed. The probability that the difference between \nonet and \texttt{original} is due to random variation is 92~\%. 
 	Therefore, we are sure that other differences are actually caused by the \RDMs and not by the pretty-printer.
 	
-	\autoref{fig:survey_ratings_bar_all} shows the differences in mean values more precise. \rdh reduced the readability for the configurations all7, commentsRemove, newlinesInsteadOfSpace, newlinesFew and tabs the most. The tool also reduced readability for newlinesMany, rename and spacesMany, but not as much.
+	\begin{sloppypar}
+	\autoref{fig:survey_ratings_bar_all} shows the differences in mean values more precise. \rdh reduced the readability for the configurations \texttt{all7}, \texttt{comments-remove}, \texttt{newlines-instead-of-space}, \texttt{newlines-few} and \texttt{tabs} the most. The tool also reduced readability for \texttt{newlines-many}, \texttt{rename} and \texttt{spaces-many}, but not as much.
+	\end{sloppypar}
 
 	\autoref{fig:survey_ratings_violin_all} shows that the mean value of our original methods is 3.69. The mean score of all rated code snippets in the merged dataset is 3.46. Although the difference of 0.23 might seem subtle, it holds statistical significance:
 	We performed a Mann-Whitney U test for the mean rating values of the 40 original code snippets of the mined-and-modified dataset against the \numMerged mean rating values of the merged dataset. The resulting $p$ value is $0.012=1.2~\%$, which is below the $5~\%$ threshold, and confirms statistical significance.
@@ -2504,13 +2508,13 @@ cleveref=false,%
 	\begin{figure}[p]
 		\centering
 		\begin{subfigure}{\linewidth}
-			\includegraphics[width=0.9\textwidth]{img/survey_ratings_violin_all.pdf}
+			\includegraphics[width=0.9\textwidth]{img/survey_ratings_violin_all_m.pdf}
 			\caption{Absolute survey ratings for each \rdh configuration and all strata.}
 			\label{fig:survey_ratings_violin_all}
 		\end{subfigure}
 		\hfill
 		\begin{subfigure}{\textwidth}
-			\includegraphics[width=0.9\linewidth]{img/survey_ratings_bar_all.pdf}
+			\includegraphics[width=0.9\linewidth]{img/survey_ratings_bar_all_m.pdf}
 			\caption{Relative survey ratings for each \rdh configuration and all strata compared to all original methods.}
 			\label{fig:survey_ratings_bar_all}
 		\end{subfigure}
@@ -2562,9 +2566,9 @@ cleveref=false,%
 			\textbf{newlines-few} & \num{5.23e-6} \\
 			\textbf{spaces-many} & \num{4.07e-2} \\
 			newlines-many & \num{3.00e-1} \\
-			\textbf{comments\_remove} & \num{3.64e-3} \\
+			\textbf{comments-remove} & \num{3.64e-3} \\
 			rename & \num{9.90e-2} \\
-			\textbf{newline\_instead\_of\_space} & \num{4.57e-6} \\
+			\textbf{newline-instead-of-space} & \num{4.57e-6} \\
 			\textbf{tabs} & \num{3.06e-8} \\
 			\textbf{all7} & \num{1.80e-7} \\
 			\bottomrule
