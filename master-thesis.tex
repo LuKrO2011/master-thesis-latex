@@ -742,14 +742,14 @@ cleveref=false,%
 		% Basic Intro
 		Deep learning-based models are achieving increasingly superior accuracy in classifying the readability of code.
 		% Background
-		Recent research focuses mostly on different model architectures to further improve code readability classification. The models use (parts of) the same labeled dataset, consisting of 421 code snippets.
+		Recent research focuses mostly on different model architectures to further improve code readability classification. All models use (parts of) the same labeled dataset, consisting of 421 code snippets.
 		% Problem
 		However, it is known that deep learning-based approaches improve with a large amount of data.
 		Consequently, a larger labeled dataset could greatly advance the research field of code readability classification.
 		% Main result/approach/method
 		In this work, we investigate the use of a new dataset consisting of \numSamples code snippets together with its novel generation approach.
 		% Main results	
-		The generation approach involves the mining and modification of code snippets from public GitHub repositories. The generated dataset is evaluated using a survey with 200 participants and by training a state of the art code readability classification model both with and without the new dataset.
+		The generation approach involves the mining and modification of code snippets from public GitHub repositories. The generated dataset is evaluated using a survey with 200 participants and by training and evaluating a state of the art code readability classification model both with and without the new dataset.
 		% Context of results
 		In the future, our dataset might increase the accuracy of all readability classification models.
 		
@@ -829,7 +829,7 @@ cleveref=false,%
 	In a first step
 %	, following the approach of \citeauthor{allamanis2016convolutional}~\cite{allamanis2016convolutional},
 	we mine GitHub\curl{https://github.com/}{2024-02-29} repositories with high code quality.
-	Our criteria for high code quality are an elevated number of stars, forks, method comments the use of and compliance with a checkstyle\curl{https://checkstyle.sourceforge.io/}{2024-02-09} specification. For example, a consequence of using checkstyle is that the readability of the code is increased. Therefore it is reasonable to assume that repositories that use checkstyle are more readable (see \Cref{Dataset Generation Approach}).
+	Our criteria for high code quality are an elevated number of stars and forks, the use of method comments and the compliance with a checkstyle\curl{https://checkstyle.sourceforge.io/}{2024-02-09} specification. For example, a consequence of using checkstyle is that the readability of the code is increased. Therefore it is reasonable to assume that repositories that use checkstyle are more readable than repositories (see \Cref{Dataset Generation Approach}).
 	We select Java files from the repositories that meet our criteria, extract methods from the Java classes in these files and label them as well readable (\Cref{well-readable-assumption}).
 	
 	In a second step, all selected Java files are modified so that the code is subsequently less readable. You can find an exemplary result of this in \autoref{lst:example-method}.
