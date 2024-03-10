@@ -887,7 +887,7 @@ cleveref=false,%
 %	% Model comparison details
 %	Besides the user study we will evaluate our approach by comparing performance of the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} when trained with the new and the old dataset.
 %	The comparisons are based on common metrics such as accuracy, F1-score and MCC~\cite{chicco2020advantages}.
-%	% The towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} achieves an accuracy of 91.8\% when trained and evaluated on the new dataset. 
+%	% The towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} achieves an accuracy of 92.2\% when trained and evaluated on the new dataset. 
 
 	% Assumptions (short)
 	We conducted a user study to validate the assumptions that the mined methods from the selected Java class files are well readable (\Cref{well-readable-assumption}) and that \rdh can modify the code to be poorly readable (\Cref{poorly-readable-assumption}). We thereby verify the generation approach of our new, mined-and-modified dataset.
@@ -2618,11 +2618,16 @@ cleveref=false,%
 			\toprule
 			Train & Eval & Acc & Prec & Rec & AUC & F1 & MCC \\
 			\midrule
+			% Done
 			merged      & merged   	& 84.7 \% & 87.7 \% & 82.3 \% & 85.0 \% & 83.7 \% & 70.4 \% \\
-			mam        	& mam    	& 91.8 \% & 92.3 \% & 91.3 \% & 91.8 \% & 91.7 \% & 83.6 \% \\
+			% Done
+			mam        	& mam    	& 92.2 \% & 92.3 \% & 92.0 \% & 92.2 \% & 92.2 \% & 84.4 \% \\
+			% TODO
 			mam			& merged    & 61.9 \% & 63.6 \% & 63.6 \% & 63.6 \% & 63.6 \% & 23.6 \% \\
+			% TODO
 			merged      & mam	    & 53.8 \% & 52.6 \% & 77.8 \% & 65.2 \% & 62.8 \% & 08.7 \% \\
-			finetune	& merged    & 80.4 \% & 84.0 \% & 73.8 \% & 78.9 \% & 77.2 \% & 60.0 \% \\
+			% Done
+			finetune	& merged    & 83.3 \% & 84.3 \% & 79.1 \% & 81.7 \% & 81.1 \% & 63.7 \% \\
 %			mam     	& mam  		& 80.9 \% & 82.7 \% & 77.6 \% & 80.2 \% & 78.9 \% & 60.9 \% \\
 			\bottomrule
 		\end{tabular}
@@ -2632,7 +2637,7 @@ cleveref=false,%
 	When we train and evaluate the model on the merged dataset, we obtain an accuracy of 84.7~\%. This is very similar to the results of \citeauthor{mi2022towards} (84.7~\% vs 85.3~\%). The deviation of 0.6~\% accuracy might be due to randomness of the splits for 10-fold cross-validation. We can confirm the results of the paper~\cite{mi2022towards}.
 	
 	\textbf{Internal evaluation:}
-	When we train and evaluate the model on the mined-and-modified dataset, we obtain an average accuracy of 91.8~\%.
+	When we train and evaluate the model on the mined-and-modified dataset, we obtain an average accuracy of 92.2~\%.
 	The towards model architecture is well suited to learn the structure of the mined-and-modified dataset. In particular it learns the differences between \texttt{original} and \texttt{all7} methods and thus learns how to predict whether \rdh modified a code snippet. 
 
 	\textbf{Cross evaluation:}
@@ -2655,7 +2660,7 @@ cleveref=false,%
 	One explanation for this could be that the model is too small to be effective with the larger amount of data. Introducing more or bigger layers so that the model can store more features internally could lead to an improvement. However, this is not part of this work, in which we mainly focus on a new dataset.
 	
 	\begin{summary}{\hyperref[new-data]{RQ3 - new-data}}
-		When trained and evaluated on the mined-and-modified dataset, the model achieves an accuracy of 91.8~\%.
+		When trained and evaluated on the mined-and-modified dataset, the model achieves an accuracy of 92.2~\%.
 		When evaluated on the merged dataset, the model trained with the mined-and-modified dataset achieves an accuracy of 61.9~\%. For comparison: When trained with merged dataset, the model achieves 84.7~\%.
 		We conclude that the mined-and-modified dataset captures different aspects of readability. 
 		%		We improved the results by training with the mined-and-modified dataset and fine-tuning with the merged dataset to 80.4~\%. 
