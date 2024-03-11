@@ -2452,29 +2452,27 @@ cleveref=false,%
 	
 \textit{2. Threats:}
 	We identified the following threats:
-	\begin{itemize}
-		\item \textbf{Ill-defined Target Population:} Ensuring a well-defined target population is critical to the survey's quality. To mitigate this threat, we define our target population.
-		
-		\item \textbf{Sampling Method:} We have a larger proportion of code snippets from Stratum 1 and Stratum 3 (see \Cref{Construction of Questionnaires}). While we argue that we avoided spending resources on labeling data that is likely not different from the original methods or rather uninteresting, this might also introduce statistical errors to our survey results.
-		However, stratified sampling is well-defined and proven in practice. The approach ensures that our sample represents all parts of the population under investigation.
+
+	\textbf{Ill-defined Target Population:} Ensuring a well-defined target population is critical to the survey's quality. To mitigate this threat, we define our target population.
+	
+	\textbf{Sampling Method:} We have a larger proportion of code snippets from Stratum 1 and Stratum 3 (see \Cref{Construction of Questionnaires}). While we argue that we avoided spending resources on labeling data that is likely not different from the original methods or rather uninteresting, this might also introduce statistical errors to our survey results.
+	However, stratified sampling is well-defined and proven in practice. The approach ensures that our sample represents all parts of the population under investigation.
 %		This is improving the survey's external validity.
-		
-		\item \textbf{Insufficient Responses:} To prevent drawing conclusions from an insufficient number of responses, we scale our survey to an appropriate size. This guarantees that we collect a substantial volume of responses, allowing for robust statistical analysis.
-		
-		\item \textbf{Piece-work Effect:} Survey participants are paid for taking part and completing a questionnaire. However, they receive the same amount of money regardless of their speed. Therefore, they receive more pay per minute if they hurry. This could have an impact on the accuracy with which they scored the code snippets. A comparison between the time required by a participant for a pilot questionnaire and a Prolific questionnaire (see \autoref{fig:survey_times}) supports this suggestion. Especially the ratings of participants requiring less than 3 minutes (see \autoref{fig:survey_time_less_than_180}) to complete a questionnaire could have a negative impact on validity. 
-		
-	\end{itemize}
+	
+	\textbf{Insufficient Responses:} To prevent drawing conclusions from an insufficient number of responses, we scale our survey to an appropriate size. This guarantees that we collect a substantial volume of responses, allowing for robust statistical analysis.
+	
+	\textbf{Piece-work Effect:} Survey participants are paid for taking part and completing a questionnaire. However, they receive the same amount of money regardless of their speed. Therefore, they receive more pay per minute if they hurry. This could have an impact on the accuracy with which they scored the code snippets. A comparison between the time required by a participant for a pilot questionnaire and a Prolific questionnaire (see \autoref{fig:survey_times}) supports this suggestion. Especially the ratings of participants requiring less than 3 minutes (see \autoref{fig:survey_time_less_than_180}) to complete a questionnaire could have a negative impact on validity. 
 	
 \textit{3. Results:}
 	We analyze the results of the Prolific survey with regard to three aspects: the time it took to complete the survey, the participants' familiarity with Java and the ratings with regard to the \rdh configurations.
 
 	\textbf{Completion time:}
 	You can find an overview of the time that the participants required in \autoref{fig:survey_times} and \autoref{fig:survey_time_histogramm}.
-	The fastest participant completed the survey in 1 minute and 39 seconds, while the slowest participant took about 38 minutes. 
-	The average time is 9 minutes and 45 seconds. The median time is 8 minutes and 30 seconds. The boxplot (see \autoref{fig:survey_times}) shows that the times are not as close together as for the pilot survey. There are a couple of outliers.
+	The fastest participant completed the survey in 1 minute and 39 seconds, while the slowest participant needed about 38 minutes. 
+	The average time is 9 minutes and 45 seconds. The median time is 8 minutes and 30 seconds. The boxplot (see \autoref{fig:survey_times}) shows that the completion times are not as close together as they are in the pilot survey. There are a couple of outliers.
 	
 	We pay particular attention to the number of participants who took less than 3 minutes to complete a questionnaire (see \autoref{fig:survey_time_less_than_180}), as we assume that this is hardly possible without randomly selecting answers. In almost all questionnaires, the number of participants who took less than 3 minutes is either 0 or 1, while there is only one questionnaire where two participants took less than 3 minutes.
-	Overall, there are only a few participants who took less than 3 minutes. We therefore assume that most participants completed the survey with reasonable effort.
+	Overall, there are only a few participants who took less than 3 minutes. Therefore, we assume that most participants completed the survey with reasonable effort.
 		
 	\begin{figure}[tb]
 		\centering
@@ -2495,7 +2493,7 @@ cleveref=false,%
 	
 	\textbf{Familiarity with Java:}
 %	The participants' familiarity with Java is shown in \autoref{fig:survey_Java_familiarity_pie}. According to their own estimation, 44.8~\% of the participants are experts with Java. Another 44.8~\% of the participants are either advanced or intermediate. This high level of familiarity with Java suggests that the quality of the evaluations received is also high.
-	\autoref{fig:survey_Java_familiarity_pie} shows the participants' familiarity with Java. According to their own estimation, most participants (43.3~\%) are intermediate with Java. 29.0~\% of the participants are either advanced or experts. This high level of familiarity with Java suggests that the quality of the evaluations received is high.
+	\autoref{fig:survey_Java_familiarity_pie} shows the participants' familiarity with Java. According to their own estimation, most participants (43.3~\%) have intermediate Java knowledge. 29.0~\% of the participants are either advanced or experts with Java. This high level of familiarity with Java suggests that the quality of the evaluations received is high.
 	
 	\begin{figure}[tb]
 		\centering
@@ -2609,13 +2607,13 @@ cleveref=false,%
 		To confirm that our implementation of the model scores similar accuracy as the original one of \citeauthor{mi2022towards}~\cite{mi2022towards}, we train and evaluate the model on the merged dataset (merged-merged).
 		
 		\item \textbf{Internal evaluation:} 
-		To investigate how effective the model captures the readability aspects of the mined-and-modified dataset, we train and evaluate it on this dataset (mam-mam). By doing so, we examine also how effectively the model captures the differences between the \texttt{original} and \texttt{all7} methods which are modified with \rdh.
+		To investigate how effective the model captures the readability aspects of the mined-and-modified dataset, we train and evaluate it on this dataset (mam-mam). By doing so, we also examine how effectively the model captures the differences between the \texttt{original} and \texttt{all7} methods which are modified with \rdh.
 		
 		\item \textbf{Cross evaluation:} 
 		To assess how effective the mined-and-modified dataset is for predicting readability, we train the model on the mined-and-modified dataset and then evaluate its performance on the merged dataset (mam-merged). For advanced insights, we also train the model on the merged dataset and evaluate it on the merged dataset (merged-merged) and on the mined-and-modified dataset (merged-mam).
 		
 		\item \textbf{Fine-tuning:} 
-		To assess what accuracy we can score in predicting readability, we investigate training on the mined-and-modified dataset and fine-tuning and evaluating on the merged dataset (finetune-merged).		
+		To assess what accuracy we can score in predicting readability we investigate training on the mined-and-modified dataset and fine-tuning and evaluating on the merged dataset (finetune-merged).		
 		
 	\end{enumerate}
 	
@@ -2653,8 +2651,8 @@ cleveref=false,%
 	The towards model architecture is well suited to learn the structure of the mined-and-modified dataset. In particular it learns the differences between \texttt{original} and \texttt{all7} methods and thus learns how to predict whether \rdh modified a code snippet. 
 
 	\textbf{Cross evaluation:}
-	When we train the model on the mined-and-modified dataset and evaluate it on the merged dataset (mam-merged), we get an accuracy of 61.9~\%. This is 22.8~\% worse than the accuracy we get when we train and evaluate the model on the merged dataset (merged-merged). When we train the model on the merged dataset and evaluate it on the mined-and-modified one (merged-mam), we get an accuracy of 53.8~\%, which is close to the approximate accuracy of 50.0~\% of a random classifier.
-	If the scores for mam-merged, merged-merged and merged-mam would be similar, we would conclude that both datasets, the merged and the mined-and-modified one, address readability in general. Given, that this is not the case and knowing for both datasets that they at least address some aspects of readability we conclude that we address different aspects of readability.
+	When we train the model on the mined-and-modified dataset and evaluate it on the merged dataset (mam-merged), we get an accuracy of 61.9~\%. This is 22.8~\% worse than the accuracy we get when we train and evaluate the model on the merged dataset (merged-merged). When we train the model on the merged dataset and evaluate it on the mined-and-modified one (merged-mam), we get an accuracy of 56.8~\%, which is close to the approximate accuracy of 50.0~\% of a random classifier.
+	If the scores for mam-merged, merged-merged and merged-mam would be similar, we would conclude that both datasets, the merged and the mined-and-modified one, address readability in general. Given that this is not the case and knowing for both datasets that they at least address some aspects of readability we conclude that we address different aspects of readability.
 	
 	%	Furthermore, the accuracy of mam-merged is 8.1~\% better than merged-mam. 
 	%	This indicates that the mined-and-modified dataset includes aspects of readability that the merged dataset does not have.
@@ -2676,7 +2674,7 @@ cleveref=false,%
 		When evaluated on the merged dataset, the model trained with the mined-and-modified dataset achieves an accuracy of 61.9~\%. For comparison: When trained with merged dataset, the model achieves 84.7~\%.
 		We conclude that the mined-and-modified dataset captures different aspects of readability. 
 		%		We improved the results by training with the mined-and-modified dataset and fine-tuning with the merged dataset to 80.4~\%. 
-		We do not outperform the model trained only on the merged dataset.
+		We do not outperform the model trained on the merged dataset only.
 	\end{summary}
 	
 	%	We also trained the model with a random sample of 210 data points to gain insight into what a change in training size might do. As we can see, the model has similar metrics to the all-all model. If we now compare the accuracy of the new-new compared to the merged-merged model, we see that with a larger dataset an improvement of about 8~\% is possible. Similar results are suggested by previous research on data augmentation, where an accuracy of 87.3~\% was achieved \citeauthor{mi2021effectiveness}. This emphasizes the importance of finding new ways of generating data for readability classification. 
@@ -2684,7 +2682,7 @@ cleveref=false,%
 \section{Discussion} \label{Discussion}
 
 	% Zusammenhang: Studie und Model Eval
-	Our survey (see \Cref{Pilot Survey}) shows that the mined-and-modified dataset captures readability. The model training results (see \Cref{Model training results}) show that the mined-and-modified dataset captures different aspects of readability than the merged dataset. 	
+	Our survey (see \Cref{Pilot Survey}) shows that the mined-and-modified dataset captures readability. The model training results (see \Cref{Model training results}) show that the mined-and-modified dataset captures different aspects of readability compared to the merged dataset. 	
 	% Different aspects of readability
 	The question arises what the different aspects are and whether it is possible to extend \rdh (see \Cref{REDEC}) so that the same aspects are captured. By achieving this, we suggest that we could also achieve better evaluation results on the merged dataset than previous models.
 	
@@ -2712,7 +2710,7 @@ cleveref=false,%
 	
 \section{Conclusions} \label{Conclusions}
 	% Summary with Implications: So what?	
-	Recent research in the field of code readability classification mainly focused on various deep learning model architectures to further improve accuracy. Little attention is paid to the fact that only 421 labeled code snippets are available to train these models. We introduced a novel approach to generate data, with which we created a dataset of \numSamples code snippets (see \Cref{Mined and Modified Code for Dataset Generation}). Although our results show that the  mined-and-modified dataset does not capture the same aspects of readability as the merged one (see \Cref{Evaluation}), it still captures readability and could accordingly help to improve the classification of code in future research.
+	Recent research in the field of code readability classification mainly focused on various deep learning model architectures to further improve accuracy. Little attention is paid to the fact that only 421 labeled code snippets are available to train these models. We introduced a novel approach to generate data with which we created a dataset of \numSamples code snippets (see \Cref{Mined and Modified Code for Dataset Generation}). Although our results show that the  mined-and-modified dataset does not capture the same aspects of readability as the merged one (see \Cref{Evaluation}), it still captures readability and could accordingly help to improve the classification of code in future research.
 	
 	% Future work	
 	% New dataset style
