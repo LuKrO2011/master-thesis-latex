@@ -20,11 +20,11 @@
 \contentsline {subsubsection}{\nonumberline Prolific Survey}{32}{subsubsection*.25}%
 \contentsline {subsection}{\numberline {4.2}Model Training Results}{39}{subsection.0.0.4.2}%
 \contentsline {section}{\numberline {5}Discussion}{41}{section.0.0.5}%
-\contentsline {section}{\numberline {6}Conclusions}{42}{section.0.0.6}%
+\contentsline {section}{\numberline {6}Conclusions}{43}{section.0.0.6}%
 \babel@toc {ngerman}{}\relax 
 \babel@toc {UKenglish}{}\relax 
-\contentsline {section}{\numberline {I}Pilot Survey Feedback}{49}{section.Alph0.1}%
-\contentsline {section}{\numberline {II}Readability Decreasing Modificatations\xspace Configuration File}{51}{section.Alph0.2}%
-\contentsline {section}{\numberline {III}Prolific Survey Texts}{52}{section.Alph0.3}%
-\contentsline {section}{\numberline {IV}Towards Model - Visual Encoding Colors}{53}{section.Alph0.4}%
+\contentsline {section}{\numberline {I}Pilot Survey Feedback}{50}{section.Alph0.1}%
+\contentsline {section}{\numberline {II}Readability Decreasing Modificatations\xspace Configuration File}{52}{section.Alph0.2}%
+\contentsline {section}{\numberline {III}Prolific Survey Texts}{53}{section.Alph0.3}%
+\contentsline {section}{\numberline {IV}Towards Model - Visual Encoding Colors}{54}{section.Alph0.4}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
