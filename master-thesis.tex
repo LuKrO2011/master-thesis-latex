@@ -1821,7 +1821,7 @@ cleveref=false,%
 	We first calculate the handcrafted features for the original code snippets. We therefore use a tool of \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}. We calculate a 110-dimensional feature vector for each original code snippet. Nextn we compute the cosine similarity matrix between all feature vectors using scikit\curl{https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html}{2024-02-20}. 
 	Finally, using the fastcluster implementation~\cite{mullner2013fastcluster} of Ward's hierarchical clustering we cluster the methods into an arbitrary amount of strata.
 		
-	A comparison of the merge distances in each step (see \autoref{fig:strata_merge_distances}) shows that a layer size of 4 makes the most sense: the merge distance of 5 to 4 is small, so we should still perform this merge, but the merge distance of 4 to 3 is large, so it is better not to perform this merge. Also, 4 is the size with the last possibility for a small merge distance.
+	A comparison of the merge distances in each step (see \autoref{fig:strata_merge_distances}) shows that a layer size of 4 makes the most sense: the merge distance of 5 to 4 is small, so we should still perform this merge, but the merge distance of 4 to 3 is large, so it is better not to perform this merge. Additionally, 4 is the size with the last possibility for a small merge distance.
 	
 	We identify the type of methods within each of the 4 strata as described in \autoref{tab:strata_info}. We also add the amount of methods within each stratum. 
 	Stratum 0 comprises simple methods, such as Getters and Setters. Stratum 1 consists of the most complex methods across all strata. 
@@ -1900,7 +1900,7 @@ cleveref=false,%
 	\textbf{Survey crafting:} Finally, we craft the questionnaires from the strata. We decide to provide all 10 configurations for each original method as we want to compare the original methods with their \rdh variants. We have a survey capacity of 400 code snippets (see \Cref{Prolific Survey}). Therefore, the capacity for each \rdh variant is $400/10 = 40$ code snippets. We start by selecting 40 original code snippets and then add all their \rdh variants.
 	We opt for a random sample within the strata. However, we distribute the 40 snippets across the strata as shown in \Cref{tab:strata_info}:
 	We sample 4 methods each from Stratum~0 and Stratum~2 and 16 methods each from Stratum~1 and Stratum~3.
-	We choose this approach due to the relatively high frequency of methods that do not differ from their original methods in Stratum 0 and Stratum 2 (see \autoref{fig:sampling_not_different_overall}). Another reason is that particularly simple methods are rather uninteresting for the classification of readability, as they are often generated (e.g. by IDEs) and usually follow a straightforward pattern.
+	The reason for choosing this approach is the relatively high frequency of methods that do not differ from their original methods in Stratum 0 and Stratum 2 (see \autoref{fig:sampling_not_different_overall}). Additionally, particularly simple methods are rather uninteresting for the classification of readability, as they are often generated (e.g. by IDEs) and usually follow a straightforward pattern.
 	
 	%TODO: Add and link drawio "questionaire" graph
 	\begin{figure}[tb]
@@ -1910,7 +1910,7 @@ cleveref=false,%
 		\label{fig:sampling_not_different_overall}
 	\end{figure}
 		
-	After selecting the 40 original methods, we next select all $9*40$ (\#configurations $*$ \#variant-capacity) \rdh variants that belong to the original methods. We do this automatically based on the names of the original methods and the names of the \rdh variant methods. If \rdh renamed the method at an earlier stage due to the method renaming \mod, the new method does no longer match the original method, in which case we match them manually.
+	After selecting the 40 original methods, we select all $9*40$ (\#configurations $*$ \#variant-capacity) \rdh variants that belong to the original methods next. We automatically do this based on the names of the original methods and the names of the \rdh variant methods. If \rdh renamed the method at an earlier stage due to the method renaming \mod, the new method does no longer match the original method, in which case we match them manually.
 		
 	Once we collected all 400 methods, we distribute them across the 20 questionnaires, each with 20 methods. To not manipulate the raters, we decide that a variant of each method must only appear once in each questionnaire. For example, if the original method is in one questionnaire, the \texttt{removeComment} variant (or another variant of the same method) must not be included in the same questionnaire.
 		
@@ -1975,7 +1975,7 @@ cleveref=false,%
 	
 \subsection{Readability Classification Model} \label{Readability Classification Model}
 
-	Next we describe our approach for investigating whether it is possible to score a higher accuracy as the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} in classifying code readability with the mined-and-modified dataset.
+	In this section we describe our approach for investigating whether it is possible to score a higher accuracy as the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} in classifying code readability with the mined-and-modified dataset.
 	
 	We created our own implementation of the model using Keras\curl{https://keras.io/about/}{2024-02-20}. The model consists of three layers. A code representation layer, a feature extraction layer and a code readability classification layer. You can find an overview of the model architecture in \autoref{fig:model_pipeline}.
 	
@@ -1987,7 +1987,7 @@ cleveref=false,%
 	\end{figure}
 	
 	% Architecture
-	The input for the model is a labeled dataset consisting of code snippets and whether they are well or poorly readable. In the code representation layer, three different code representations are generated from each code snippet: A visual, a semantic and a structural representation. 
+	The input for the model is a labeled dataset consisting of code snippets and their readability classes (poorly or well readable). In the code representation layer, three different code representations are generated from each code snippet: A visual, a semantic and a structural representation. 
 	
 	% Architecture: Visual embedding
 	For the visual representation the syntax of the code is highlighted. Therefore \citeauthor{mi2022towards} assigned each type of syntactic element a color (see \autoref{tab:model-colors}). Instead of highlighting the words in the respective color, as done by an IDE, the words are replaced by color blocks instead (see \autoref{fig:visual_encoding}). \citeauthor{mi2022towards} used Eclipse\curl{https://www.eclipse.org/}{2024-03-02} to highlight the code snippets and then took screenshots to obtain a RGB Matrix~\cite{mi2022towards}.
@@ -2099,7 +2099,7 @@ cleveref=false,%
 	
 	% Problems
 	During implementation, we encountered the following potential problem with the model:
-	The token length for the BERT encoding (BERT-base-cased\curl{https://huggingface.co/google-bert/bert-base-cased}{2024-02-20}) used in the model is 100. What implications does this have? To answer this question, we first take a look at what a token comprises. In addition to special tokens that mark the beginning \textit{[CLS]} and the end \textit{[SEP]} of the input, each word represents a token. Furthermore, each special character is also represented by its own token. 
+	The token length for the BERT encoding (BERT-base-cased\curl{https://huggingface.co/google-bert/bert-base-cased}{2024-02-20}) used in the model is 100. What implications does this have? To answer this question we take a look at what a token comprises first. In addition to special tokens that mark the beginning \textit{[CLS]} and the end \textit{[SEP]} of the input, each word represents a token. Furthermore, each special character is also represented by its own token. 
 	Special characters are slashes~(\textbf{/}), parentheses~(\textbf{(},~\textbf{)},~\textbf{\{},~\textbf{\}}), commas~(\textbf{,}), semicolons~(\textbf{;}), arithmetic signs~(\textbf{=},~\textbf{<},~\textbf{>}) and many more.
 	Java identifiers are split into several tokens according to the convention of upper and lower case. If an identifier is not present in the model's vocabulary, the tokenizer splits it further into sub-identifiers or characters that are in the vocabulary. 
 	For example in \autoref{lst:print-greeting}, Line 6, the word \textquote{int} is split into the tokens \textquote{in} and \textquote{t} as \textquote{int} is not part of the vocabulary of BERT-base-cased.
@@ -2150,9 +2150,9 @@ cleveref=false,%
 	
 	Consider the method from \autoref{lst:print-greeting-a}. With a token limit of 100, the last encoded token is the last \textit{print} in Line 12. Everything that comes after this is not encoded, which means that the information is lost for the semantic part of the model. Summarized, the model of \citeauthor{mi2022towards} only considers the first few lines of code snippets in its semantic component.
 	
-	The visual and structural encoders have similar limitations, but to a much smaller extent. The structural encoder encodes the first 50 lines of each code snippet and the visual encoder encodes the first 43 lines. While the constraints for these two encoders seem to be long enough to fully capture most code snippets, the semantic encoder seems to be too limited to do so in many cases.
+	The visual and structural encoders have similar limitations but to a much smaller extent. The structural encoder encodes the first 50 lines of each code snippet and the visual encoder encodes the first 43 lines. While the constraints for these two encoders seem to be long enough to fully capture most code snippets, the semantic encoder seems to be too limited to do so in many cases.
 
-	Although we want to note these limitations, we keep them to allow a fair comparison of the datasets.
+	Although we want to point out these limitations, we retain them in order to enable a fair comparison of the datasets.
 	
 	% TODO: Publish code
 	Our code is publicly available on GitHub\curl{https://github.com/LuKrO2011}{TODO}.
@@ -2168,7 +2168,7 @@ cleveref=false,%
 %	
 	
 \section{Evaluation} \label{Evaluation}
-	We tested the mined-and-modified dataset in two ways. On the one hand, we conducted a user study. On the other hand, we evaluated the impact of using the dataset for the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards}. In detail, we answer the following questions with both experiments:
+	We tested the mined-and-modified dataset in two ways. On the one hand we conducted a user study. On the other hand we evaluated the impact of using the dataset for the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards}. In detail we answer the following questions with both experiments:
 		
 %	% User study
 %	We are conducting a user study to determine the quality of the new dataset. In detail the aim of the user study is to answer the following key questions:
@@ -2193,7 +2193,7 @@ cleveref=false,%
 	\begin{resq} \label[rq]{modified-poor} \textbf{(modified-poor)} Can poorly readable code be generated from well readable code?\end{resq} 
 	It is not sufficient to have only well readable code for training a classifier. We also need poorly readable code. Therefore, we try to generate such code from the well readable code. We investigate whether this is possible in principle, and	whether \rdh (see \Cref{REDEC}) is able to achieve this.
 	
-	The modifications \rdh applies on the source code are heuristics. To answer, whether the generated code is actually poorly readable (\Cref{poorly-readable-assumption}) we utilize the results of the user study.
+	The modifications \rdh applies on the source code are heuristics. To answer whether the generated code is actually poorly readable (\Cref{poorly-readable-assumption}) we utilize the results of the user study.
 	
 	%	\begin{resq} \textbf{(best-heuristics)} Which heuristics are best to generate poorly readable code from well readable code?\end{resq} \label{best-heuristic}
 	%	We want to compare the modifications of the proposed heuristics for generating poorly readable code to each other. Therefore we will use the results of the user study (\autoref{user-study}).
@@ -2208,7 +2208,7 @@ cleveref=false,%
 	
 	% Experimental setup
 	\textit{1. Experimental setup:}
-	We manually sampled 20 code snippets across all strata but mainly from Stratum 1 and Stratum 3, due to reasons mentioned in \Cref{Construction of Questionnaires}. From January 6 to 14, 2024, ten people took part in the survey. Eight of them were students and two of them worked in industry. All of them had knowledge of computer science. They were not paid for participating in the survey. Additionally to rating 20 code snippets the participants were also asked to answer additional questions to provide feedback about the survey:
+	We manually sampled 20 code snippets across all strata but mainly from Stratum 1 and Stratum 3 due to reasons mentioned in \Cref{Construction of Questionnaires}. From January 6 to 14 in 2024, ten people took part in the survey. Eight of them were students and two of them worked in the industry. All of them had knowledge of computer science. They were not paid for participating in the survey. Additionally to rating 20 code snippets the participants were also asked to answer further questions to provide feedback about the survey:
 	
 	% Questions
 %	They were asked the following additional questions:
@@ -2235,10 +2235,10 @@ cleveref=false,%
 	
 	% Threats
 	\textit{2. Threats:}
-	The results do not generalize. We did not sample the Java snippets for rating in a specific, (semi-) automated way, so there is a selection bias. The participants came from a private environment. This leads to a possible selection bias.
+	The results do not generalize. We did not sample the Java snippets for rating in a specific or automated way, so there is a selection bias. The participants came from a private environment. This leads to a possible selection bias.
 %	The survey participants were not selected among Java programmers randomly. 
 	We adjusted the survey instructions, explanations and questions afterwards, which might influence the ratings of the participants.
-	However, we did not use the results from this survey to evaluate our dataset or the generation approach, as the intention of the pilot survey was rather to prepare for the main survey. 
+	However, we did not use the results from this survey to evaluate our dataset or the generation approach as the intention of the pilot survey was rather to prepare for the main survey. 
 	
 	% Results
 	\textit{3. Results:}
@@ -2285,7 +2285,7 @@ cleveref=false,%
 	%	Feature Request: Hide comment fields
 	%	Feature Request: Predefine code parser (per survey/snippet) and hide selection during survey for participants
 	%	Feature Request: Possibility to show a hint or the task description again during the survey
-	Some of the feedback was regarding fully qualified class names, such as \textquote{Java.io.InputStream}. We found that the Pretty Printer of the \rdh tool specified each imported method or class with its fully specified classifier. For example, instead of \textquote{InputStream}, \textquote{Java.io.InputStream} was written in the \rdh code snippets. This gave the participants the feeling that the code was not written by a human and drastically reduced readability. Therefore we adapted the \rdh tool to print the shorter name.
+	Some of the feedback was regarding fully qualified class names, such as \textquote{Java.io.InputStream}. We noticed that the Pretty Printer of the \rdh tool specified each imported method or class with its fully specified classifier. For example, instead of \textquote{InputStream}, \textquote{Java.io.InputStream} was written in the \rdh code snippets. This gave the participants the feeling that the code was not written by a human and drastically reduced readability. Therefore we adapted the \rdh tool to print the shorter name.
 	%	A potential drawback is that it can no longer be assumed that the generated code will compile and behave exactly like the original. However, the compilation-property is lost anyway during method extraction.
 	
 		%	\begin{table}[htbp]
@@ -2398,7 +2398,7 @@ cleveref=false,%
 		
 \textit{1. Experimental setup:}
 	We conducted the survey using Tien Duc Nguyen's Code Annotation Tool (see \autoref{fig:survey_tool}) along with the platform Prolific\curl{https://app.prolific.com/}{2024-02-21} for the recruitment and payment of participants.
-	The survey was conducted between 31 January and 7 February 2024. A total of 221 participants took part. 11 participants  answered each of the 20 questionnaires (similar to the survey of \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}). In one survey, we assigned one more participant by mistake. 
+	The survey was conducted between January 31 and February 7 in 2024. A total of 221 participants took part. 11 participants  answered each of the 20 questionnaires (similar to the survey of \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}). In one survey, we assigned one more participant by mistake. 
 	We estimated the time to complete one questionnaire at 10 minutes (see \Cref{Pilot Survey}). Prolific set the maximum time allowed at 44 minutes. Participants who took longer received a time-out.
 	%	According to an online calculator\footnote{https://www.calculator.net/sample-size-calculator.html} 
 	This results in a margin of error of 29.55\% at a confidence of 95\% for an individual snippet. However, we aggregate over strata and multiple snippets later to reduce the margin of error.

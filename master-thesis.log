@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  11 MAR 2024 15:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  11 MAR 2024 15:58
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2121,32 +2121,32 @@ LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/b/it' will be
 (Font)              scaled to size 10.95pt on input line 2190.
  [28{C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbt
 s_opzo24.enc}] [29] [30]
-<img/survey_times.pdf, id=714, 224.48242pt x 200.0455pt>
+<img/survey_times.pdf, id=713, 224.48242pt x 200.0455pt>
 File: img/survey_times.pdf Graphic file (type pdf)
 <use img/survey_times.pdf>
 Package pdftex.def Info: img/survey_times.pdf  used on input line 2275.
 (pdftex.def)             Requested size: 175.0pt x 155.95854pt.
  [31] [32 <./img/survey_times.pdf>]
-<img/survey_tool.png, id=778, 389.95688pt x 346.29375pt>
+<img/survey_tool.png, id=777, 389.95688pt x 346.29375pt>
 File: img/survey_tool.png Graphic file (type png)
 <use img/survey_tool.png>
 Package pdftex.def Info: img/survey_tool.png  used on input line 2409.
 (pdftex.def)             Requested size: 350.0pt x 310.82132pt.
 
 [33] [34 <./img/survey_tool.png>] [35]
-<img/survey_time_histogramm.pdf, id=805, 328.25134pt x 215.46246pt>
+<img/survey_time_histogramm.pdf, id=804, 328.25134pt x 215.46246pt>
 File: img/survey_time_histogramm.pdf Graphic file (type pdf)
 <use img/survey_time_histogramm.pdf>
 Package pdftex.def Info: img/survey_time_histogramm.pdf  used on input line 248
 2.
 (pdftex.def)             Requested size: 171.50192pt x 112.57043pt.
-<img/survey_time_less_than_180.pdf, id=806, 322.6523pt x 215.46246pt>
+<img/survey_time_less_than_180.pdf, id=805, 322.6523pt x 215.46246pt>
 File: img/survey_time_less_than_180.pdf Graphic file (type pdf)
 <use img/survey_time_less_than_180.pdf>
 Package pdftex.def Info: img/survey_time_less_than_180.pdf  used on input line 
 2488.
 (pdftex.def)             Requested size: 171.50192pt x 114.52989pt.
-<img/survey_java_familiarity_bar.pdf, id=808, 504.46591pt x 148.81253pt>
+<img/survey_java_familiarity_bar.pdf, id=807, 504.46591pt x 148.81253pt>
 File: img/survey_java_familiarity_bar.pdf Graphic file (type pdf)
 <use img/survey_java_familiarity_bar.pdf>
 Package pdftex.def Info: img/survey_java_familiarity_bar.pdf  used on input lin
@@ -2154,13 +2154,13 @@ e 2502.
 (pdftex.def)             Requested size: 350.0pt x 103.25069pt.
  [36 <./img/survey_time_histogramm.pdf> <./img/survey_time_less_than_180.pdf> <
 ./img/survey_java_familiarity_bar.pdf>]
-<img/survey_ratings_violin_all_m.pdf, id=921, 434.78058pt x 337.9639pt>
+<img/survey_ratings_violin_all_m.pdf, id=920, 434.78058pt x 337.9639pt>
 File: img/survey_ratings_violin_all_m.pdf Graphic file (type pdf)
 <use img/survey_ratings_violin_all_m.pdf>
 Package pdftex.def Info: img/survey_ratings_violin_all_m.pdf  used on input lin
 e 2529.
 (pdftex.def)             Requested size: 314.99786pt x 244.87056pt.
-<img/survey_ratings_bar_all_m.pdf, id=922, 449.38202pt x 342.3004pt>
+<img/survey_ratings_bar_all_m.pdf, id=921, 449.38202pt x 342.3004pt>
 File: img/survey_ratings_bar_all_m.pdf Graphic file (type pdf)
 <use img/survey_ratings_bar_all_m.pdf>
 Package pdftex.def Info: img/survey_ratings_bar_all_m.pdf  used on input line 2
@@ -2192,7 +2192,7 @@ LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/sc' will be
 
 {C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts_cb
 34qf.enc}] [47] [48] [49]
-<img/pilot_survey_task_clearness.pdf, id=1104, 210.64949pt x 215.57225pt>
+<img/pilot_survey_task_clearness.pdf, id=1103, 210.64949pt x 215.57225pt>
 File: img/pilot_survey_task_clearness.pdf Graphic file (type pdf)
 <use img/pilot_survey_task_clearness.pdf>
 Package pdftex.def Info: img/pilot_survey_task_clearness.pdf  used on input lin
@@ -2479,11 +2479,11 @@ Package logreq Info: Writing requests to 'master-thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 53233 strings out of 475551
- 1154666 string characters out of 5772369
+ 53230 strings out of 475551
+ 1154564 string characters out of 5772369
  2163220 words of memory out of 5000000
  73067 multiletter control sequences out of 15000+600000
- 710076 words of font info for 327 fonts, out of 8000000 for 9000
+ 709699 words of font info for 325 fonts, out of 8000000 for 9000
  1143 hyphenation exceptions out of 8191
  122i,21n,131p,10970b,2804s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\lukas\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt
@@ -2503,9 +2503,9 @@ fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/p
 ublic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts
 /cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pf
 b><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on master-thesis.pdf (56 pages, 1284881 bytes).
+Output written on master-thesis.pdf (56 pages, 1284709 bytes).
 PDF statistics:
- 1524 PDF objects out of 1728 (max. 8388607)
+ 1523 PDF objects out of 1728 (max. 8388607)
  207 named destinations out of 1000 (max. 500000)
  87330 words of extra memory for PDF output out of 89155 (max. 10000000)
 
