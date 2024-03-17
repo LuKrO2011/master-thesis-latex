@@ -1020,12 +1020,16 @@ cleveref=false,%
 		\item Human judgment/assessment
 		\item Effort of the process of reading (differentiation to understandability)
 	\end{itemize}
-	Considering these aspects, our definition is:
+	
+	Considering these aspect, he definition of \citeauthor{oliveira2020evaluating} captures the meaning of code readability best. Therefore, we use their definition:
+	
+	\textit{Code readability is} \blockcquote{oliveira2020evaluating}{\textit{what makes a program easier or harder to read and apprehend by developers}}.
+	
+%	Considering these aspects, our definition is:
 %	\begin{definition}[Code readability]
 %		Code readability is the human assessment of the effort required to read and understand code.
 %	\end{definition}
-
-	\textit{Code readability is the human assessment of the effort required to read and understand code.}
+%	\textit{Code readability is the human assessment of the effort required to read and understand code.}
 
 	Researchers proposed several metrics and conventional models for assessing code readability with an accuracy of up to 81.8~\%~\citeclassicmodels. In recent years, deep learning-based models are able to achieve an accuracy of up to 88.0~\%~\citedeepmodels on available datasets. 
 %	By using data augmentation the score can be improved even further to 87.3\%~\cite{mi2021effectiveness}.
@@ -2667,11 +2671,12 @@ cleveref=false,%
 	One explanation for this could be that the model is too small to be effective with the larger amount of data. Introducing more or bigger layers so that the model can store more features internally could lead to an improvement. However, this is not part of this work, in which we mainly focus on a new dataset.
 	
 	\begin{summary}{\hyperref[new-data]{RQ3 - new-data}}
-		When trained and evaluated on the mined-and-modified dataset, the model achieves an accuracy of 92.2~\%.
-		When evaluated on the merged dataset, the model trained with the mined-and-modified dataset achieves an accuracy of 61.9~\%. For comparison: When trained with merged dataset, the model achieves 84.7~\%.
-		We conclude that the mined-and-modified dataset captures different aspects of readability. 
-		%		We improved the results by training with the mined-and-modified dataset and fine-tuning with the merged dataset to 80.4~\%. 
-		We do not outperform the model trained on the merged dataset only.
+%		When trained and evaluated on the mined-and-modified dataset, the model achieves an accuracy of 92.2~\%.
+%		When evaluated on the merged dataset, the model trained with the mined-and-modified dataset achieves an accuracy of 61.9~\%. For comparison: When trained with merged dataset, the model achieves 84.7~\%.
+%		We conclude that the mined-and-modified dataset captures different aspects of readability. 
+%		We do not outperform the model trained on the merged dataset only.
+		When trained with the mined-and-modified dataset and evaluated on the merged dataset, the model achieves an accuracy of 61.9~\%. For comparison: When trained and evaluated using the merged dataset, the model achieves an accuracy of 84.7~\%.
+		We conclude that the mined-and-modified dataset does not improve existing code readability classification models.
 	\end{summary}
 	
 	%	We also trained the model with a random sample of 210 data points to gain insight into what a change in training size might do. As we can see, the model has similar metrics to the all-all model. If we now compare the accuracy of the new-new compared to the merged-merged model, we see that with a larger dataset an improvement of about 8~\% is possible. Similar results are suggested by previous research on data augmentation, where an accuracy of 87.3~\% was achieved \citeauthor{mi2021effectiveness}. This emphasizes the importance of finding new ways of generating data for readability classification. 
