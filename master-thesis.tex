@@ -565,6 +565,14 @@ cleveref=false,%
 	journal={arXiv preprint arXiv:1810.04805},
 	year={2018}
 }
+@book{miller2010abstract,
+	title = {Abstract {Syntax} {Tree}},
+	isbn = {978-613-3-77312-7},
+	url = {https://books.google.de/books?id=5ns7YgEACAAJ},
+	publisher = {VDM Publishing},
+	author = {Miller, F.P. and Vandome, A.F. and John, M.B.},
+	year = {2010},
+}
 
 \end{filecontents}
 \addbibresource{\jobname.bib}
@@ -1261,6 +1269,14 @@ cleveref=false,%
 	
 	% Related work: Public code mining
 	Another concept we employ is from \citeauthor{allamanis2016convolutional}. They cloned the top open source Java projects on GitHub\curl{https://github.com/}{2023-07-25} for training a Deep Learning model. They selected the top projects by taking the sum of the z-scores of the number of watchers and forks of each project. The projects have thousands of forks and stars and are widely used among software developers, thus the authors assumed the code within to be of good quality~\cite{allamanis2016convolutional}. We also use fork and star counts as criteria for well readable code (\Cref{well-readable-assumption}).
+	
+\subsection{Abstract Syntax Tree} \label{Abstract Syntax Tree}
+	When decreasing the readability of code (\Cref{REDEC}), we make use of the Abstract Syntax Tree (AST).
+	An AST is a hierarchical structure and represents the syntactic structure of source code. It is composed of nodes and edges. Each node represents a language construct, such as expressions, statements, or declarations, while edges denote the relationships between the nodes.
+		
+	An AST abstracts away specific syntactic details, focusing on the relationships between the nodes. ASTs are widely used in compilers, static analysis tools, and refactoring engines to perform tasks such as semantic analysis, optimization and code transformation~\cite{miller2010abstract}. The latter is our use case.
+	
+	We transform source code into the AST, make certain modifications to the AST (\Cref{tab:rdh-characteristics}) and then transform the AST back into the code representation. Compared to performing the modifications on the code, this has certain advantages, which are further detailed in \Cref{REDEC}.
 		
 \section{Mined and Modified Code for Dataset Generation} \label{Mined and Modified Code for Dataset Generation}
 %	In the following subsections we describe our approach.
