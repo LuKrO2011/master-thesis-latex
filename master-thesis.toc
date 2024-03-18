@@ -17,8 +17,8 @@
 \contentsline {subsection}{\numberline {3.6}Readability Classification Model}{25}{subsection.0.0.3.6}%
 \contentsline {section}{\numberline {4}Evaluation}{30}{section.0.0.4}%
 \contentsline {subsection}{\numberline {4.1}Survey}{31}{subsection.0.0.4.1}%
-\contentsline {subsubsection}{\nonumberline Pilot Survey}{31}{subsubsection*.21}%
-\contentsline {subsubsection}{\nonumberline Prolific Survey}{34}{subsubsection*.25}%
+\contentsline {subsubsection}{\nonumberline Pilot Survey}{31}{subsubsection*.22}%
+\contentsline {subsubsection}{\nonumberline Prolific Survey}{34}{subsubsection*.26}%
 \contentsline {subsection}{\numberline {4.2}Model Training Results}{40}{subsection.0.0.4.2}%
 \contentsline {section}{\numberline {5}Discussion}{42}{section.0.0.5}%
 \contentsline {section}{\numberline {6}Conclusions}{43}{section.0.0.6}%
