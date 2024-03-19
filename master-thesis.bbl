@@ -941,6 +941,47 @@
       \field{pages}{1391\bibrangedash 1409}
       \range{pages}{19}
     \endentry
+    \entry{miller2010abstract}{book}{}
+      \name{author}{3}{}{%
+        {{hash=b2587fcba26a31209f491780ea788e6e}{%
+           family={Miller},
+           familyi={M\bibinitperiod},
+           given={F.P.},
+           giveni={F\bibinitperiod}}}%
+        {{hash=4bf435792a6e14201633419183fdc928}{%
+           family={Vandome},
+           familyi={V\bibinitperiod},
+           given={A.F.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=8d9826b887f47f225b9a6eaf86525eab}{%
+           family={John},
+           familyi={J\bibinitperiod},
+           given={M.B.},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {VDM Publishing}%
+      }
+      \strng{namehash}{ce87709fb3e9a4c8f161c022630375e7}
+      \strng{fullhash}{11224b0ae902d8b369f6da8c1c01d344}
+      \strng{bibnamehash}{11224b0ae902d8b369f6da8c1c01d344}
+      \strng{authorbibnamehash}{11224b0ae902d8b369f6da8c1c01d344}
+      \strng{authornamehash}{ce87709fb3e9a4c8f161c022630375e7}
+      \strng{authorfullhash}{11224b0ae902d8b369f6da8c1c01d344}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-613-3-77312-7}
+      \field{title}{Abstract {Syntax} {Tree}}
+      \field{year}{2010}
+      \verb{urlraw}
+      \verb https://books.google.de/books?id=5ns7YgEACAAJ
+      \endverb
+      \verb{url}
+      \verb https://books.google.de/books?id=5ns7YgEACAAJ
+      \endverb
+    \endentry
     \entry{mullner2013fastcluster}{article}{}
       \name{author}{1}{}{%
         {{hash=5fd9119c4acc671b33ea7436d665baa6}{%

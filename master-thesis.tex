@@ -635,11 +635,11 @@ cleveref=false,%
 }
 \usepackage{etoolbox}
 \newcommand{\curl}[2]{%
-	\ifcsdef{urlfootnote:#1}{%
-		\textsuperscript{\ref{url:#1}}%
-	}{%
+%	\ifcsdef{urlfootnote:#1}{%
+%		\textsuperscript{\ref{url:#1}}%
+%	}{%
 		\onecurl{#1}{#2}%
-	}%
+%	}%
 }
 
 % Indentation of "Assumption 1" etc. in enumerate
@@ -801,8 +801,8 @@ cleveref=false,%
 	\tableofcontents
 
 \pagebreak
-\section{Introduction} \label{Introduction}
 
+\section{Introduction} \label{Introduction}
 	% Motivation: Importance
 	Code readability is of utmost significance in the domain of software development.
 %	In the domain of software development, the significance of code readability cannot be overstated. 
@@ -863,7 +863,7 @@ cleveref=false,%
 	As a first step
 %	, following the approach of \citeauthor{allamanis2016convolutional}~\cite{allamanis2016convolutional},
 	we mine GitHub\curl{https://github.com/}{2024-02-29} repositories with high code quality.
-	Our criteria for high code quality are an elevated number of stars and forks, the use of method comments and the compliance with a checkstyle\curl{https://checkstyle.sourceforge.io/}{2024-02-09} specification. For example, a consequence of using checkstyle is that the readability of the code is increased. Therefore it is reasonable to assume that repositories that use checkstyle are more readable than repositories (\Cref{Dataset Generation Approach}).
+	Our criteria for high code quality are an elevated number of stars and forks, the use of method comments and the compliance with a checkstyle\curl{https://checkstyle.sourceforge.io/}{2024-02-09} specification. For example, a consequence of using checkstyle is that the readability of the code is increased. Therefore it is reasonable to assume that repositories that use checkstyle are more readable than other repositories (\Cref{Dataset Generation Approach}).
 	We select Java files from the repositories that meet our criteria, extract methods from the Java classes in these files and label them as well readable (\Cref{well-readable-assumption}).
 	
 	As a second step, all selected Java files are modified so that the code is subsequently less readable. You can find an exemplary result of this in \autoref{lst:example-method}.
@@ -1055,7 +1055,7 @@ cleveref=false,%
 		\item Effort of the process of reading (differentiation to understandability)
 	\end{itemize}
 	
-	Considering these aspect, he definition of \citeauthor{oliveira2020evaluating} captures the meaning of code readability best. Therefore, we use their definition:
+	Considering these aspect, the definition of \citeauthor{oliveira2020evaluating} captures the meaning of code readability best. Therefore, we use their definition:
 	
 	\textit{Code readability is} \blockcquote{oliveira2020evaluating}{\textit{what makes a program easier or harder to read and apprehend by developers}}.
 	
@@ -1222,7 +1222,7 @@ cleveref=false,%
 	Another study proposed an approach using Generative Adversarial Networks (GANs). The proposed method involves encoding source codes into integer matrices with multiple granularities and utilizing an EGAN (Enhanced GAN)~\cite{sharma2020egan}. It was able to surpass the accuracy of previous readability classification models as shown in \autoref{tab:rel-acc-scores}.
 	
 	% Related work: ML - Towards (85.3\% acc)
-	Up to this point, the limitation of deep learning-based code readability models was to focus on structural features primarily. This was addressed by proposing a method that extracts features from visual, semantic, and structural aspects of source code. Using a hybrid neural network composed of BERT, CNN, and BiLSTM, the proposed model processes RGB matrices, token sequences, and character matrices to capture various features of source code~\cite{mi2022towards}.
+	Up to this point, the limitation of deep learning-based code readability models was to focus on structural features primarily. \citeauthor{mi2022towards} addressed this by proposing a model, \textit{Mi\_Towards}, that extracts features from visual, semantic, and structural aspects of source code. Using a hybrid neural network composed of BERT, CNN, and BiLSTM, the proposed model processes RGB matrices, token sequences, and character matrices to capture various features of source code~\cite{mi2022towards}.
 	
 	% Related work: ML - Code pairs (83.5\% acc)
 	Previously code readability classification was considered mainly as a task that is applied to a single code snippet at once. A new approach was introduced which frames the problem as a ranking task. The proposed model employs siamese neural networks to rank code pairs based on their readability~\cite{mi2022rank}.
@@ -1302,12 +1302,12 @@ cleveref=false,%
 		
 	An AST abstracts away specific syntactic details, focusing on the relationships between the nodes. ASTs are widely used in compilers, static analysis tools, and refactoring engines to perform tasks such as semantic analysis, optimization and code transformation~\cite{miller2010abstract}. The latter is our use case.
 	
-	We transform source code into the AST, make certain modifications to the AST (\Cref{tab:rdh-characteristics}) and then transform the AST back into the code representation. Compared to performing the modifications on the code, this has certain advantages, which are further detailed in \Cref{REDEC}.
+	We transform source code into the AST, make certain modifications to the AST (\Cref{tab:rdh-characteristics}) and then transform the AST back into the code representation. The conversion back is done with a so-called Pretty Printer. Compared to performing the modifications on the code, this has certain advantages, which are further detailed in \Cref{REDEC}.
 	
 \subsection{Stratified Sampling} \label{Stratified Sampling}	
 	In statistical analysis, we often encounter situations in which the population can be divided into subgroups. Each group represents a particular characteristic. Stratified sampling is a technique used to ensure that each of these subgroups is adequately represented in the sample~\cite{thompson2012sampling}.
 	
-	In preparation for the user study (\Cref{Survey}), we use stratified sampling when creating the questionnaires. For this purpose, all code snippets are divided into homogeneous groups, so called strata, which are based on similarities with regard to certain code properties. Such properties are method length, line length or average identifier length. Within each stratum, a sample is then randomly selected to ensure that the sample is representative of the population. This method allows us to evaluate our approach to data generation more accurately. We further detail the usage of stratified sampling in \Cref{Construction of Questionnaires}.
+	In preparation for the user study (\Cref{Survey}), we use stratified sampling when creating the questionnaires. For this purpose, all code snippets are divided into homogeneous groups, so called strata, which are based on similarities with regard to certain code properties. Such properties are method length, line length or average identifier length. Within each stratum, the samples are then randomly selected to ensure that the sample is representative of the population. This method allows us to evaluate our approach to data generation more accurately. We explain the usage of stratified sampling in more detail in \Cref{Construction of Questionnaires}.
 	
 \section{Mined and Modified Code for Dataset Generation} \label{Mined and Modified Code for Dataset Generation}
 %	In the following subsections we describe our approach.
@@ -1362,11 +1362,11 @@ cleveref=false,%
 	% TODO: Why miteinbauen oder eher nicht?
 	We sort the remaining repositories by their star and fork count (equally weighted). Then we clone the 100 best and check out their main branch.
 	
-	In a third step we run checkstyle\curl{https://checkstyle.sourceforge.io/}{2024-02-15} against the projects own checkstyle configuration to get all Java class files, that pass the own checkstyle test. We therefore used a tool from Maximilian Jungwirth\curl{https://github.com/sphrilix}{TODO} which is based on \textit{Styler}\curl{https://github.com/ASSERT-KTH/styler}{2024-03-11}~\cite{loriot2022styler}.
-	From the Java classes that passed checkstyle we extract all methods that have a comment of any kind at the beginning of the method. This results in \numOriginal methods which we assume to be well readable.
+	In a third step, we run checkstyle\curl{https://checkstyle.sourceforge.io/}{2024-02-15} against the project's own checkstyle configuration to obtain all Java class files that pass the own checkstyle test. For this we use a tool from Maximilian Jungwirth\curl{https://github.com/sphrilix}{TODO} which is based on \textit{Styler}\curl{https://github.com/ASSERT-KTH/styler}{2024-03-11}~\cite{loriot2022styler}.
+	From the Java class files that passed checkstyle, we extract all methods that have a comment of any kind at the beginning of the method. This results in \numOriginal methods which we assume to be well readable.
 	
-	The fourth step is to generate poorly readable code from the well readable one. Therefore we use the proposed \rdh tool (\Cref{REDEC}). Afterwards we extract again all methods with a comment at the beginning of the method.
-	Initially we planned to not require comments for the poorly readable dataset part. However, it turns out that in this case all well readable methods have a comment while most of the poorly readable do not have one. This leads to shortcut learning, whether a method has a comment or not, instead of learning to distinguish the methods by all other criteria as well.
+	The fourth step is to generate poorly readable code from the well readable one. To do this, we use the proposed \rdh tool (\Cref{REDEC}). We then extract all methods starting with a comment.
+	Originally, we planned to not require comments for the poorly readable dataset part. However, it turns out that in this case, all well readable methods have a comment, while most of the poorly readable do not have one. This leads to shortcut learning, whether a method has a comment or not, instead of learning to distinguish the methods by all other criteria as well.
 	
 	Finally, we take the mined well readable methods and the the modified poorly readable methods and combine them into the mined-and-modifed dataset. We remove code snippets that are identical for the original and the modified variant (\Cref{REDEC}) and balance the dataset using random sampling.
 	We label each well readable method and each poorly readable method with the corresponding mean rating scores obtained through a later user study (\Cref{Prolific Survey}).
@@ -1867,7 +1867,7 @@ cleveref=false,%
 	\end{figure}
 	
 	\textbf{Stratified sampling:} 
-	First, we want to categorize the methods to make it easier to decide which methods to select. We also want to avoid over-representing very simple methods, such as Getters and Setters. Therefore, our first step is to apply stratified sampling~\cite{thompson2012sampling}. This allows us to divide the methods into different groups, so called strata, based on handcrafted features (\Cref{Conventional Calculation Approaches}).
+	We want to categorize the methods to make it easier to decide which methods to select. We also want to avoid over-representing very simple methods, such as Getters and Setters. Therefore, our first step is to apply stratified sampling~\cite{thompson2012sampling}. This allows us to divide the methods into different groups, so called strata, based on handcrafted features (\Cref{Conventional Calculation Approaches}).
 	Since we want to compare the original methods with their modified variants later, we perform the sampling only for the original methods and add the \rdh methods in a later step.
 
 	We first calculate the handcrafted features for the original code snippets. We therefore use a tool of \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}. We calculate a 110-dimensional feature vector for each original code snippet. Next we compute the cosine similarity matrix between all feature vectors using scikit\curl{https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html}{2024-02-20}. 
@@ -2567,7 +2567,7 @@ cleveref=false,%
 	Therefore, we are sure that not the pretty-printer but the modifications caused the differences in readability.
 	
 	\begin{sloppypar}
-	The violins of \autoref{fig:survey_ratings_violin_all} illustrate the distribution of the ratings in detail. Note that the evaluators were only able to rate the discrete values 1 to 5. The values of the violins in between are only for better visualization. The figure shows that for \texttt{original} and \texttt{just-pretty-print} most of the ratings are 3, 4 or 5. In addition, the violins of \texttt{merged} and \texttt{all7} look similar, with the latter having more 2 ratings. The violins of \texttt{newlines-many}, \texttt{rename} and \texttt{spaces-many} show more better and less worse ratings than the ones of \texttt{comments-remove}, \texttt{newlines-instead-of-space}, \texttt{newlines-few} and \texttt{tabs}.
+	The violins of \autoref{fig:survey_ratings_violin_all} illustrate the distribution of the ratings in detail. Note that the evaluators were only able to rate the discrete values 1 to 5. The deflections of the violins in between are for better visualization. The figure shows that for \texttt{original} and \texttt{just-pretty-print} most of the ratings are 3, 4 or 5. In addition, the violins of \texttt{merged} and \texttt{all7} look similar, with the latter having more 2 ratings. The violins of \texttt{newlines-many}, \texttt{rename} and \texttt{spaces-many} show more better (3, 4 and 5) and less worse (1 and 2) ratings than the ones of \texttt{comments-remove}, \texttt{newlines-instead-of-space}, \texttt{newlines-few} and \texttt{tabs}.
 	\end{sloppypar}
 		
 	\autoref{fig:survey_ratings_violin_all} also shows that the mean value of the original methods is 3.69 and the mean value of the merged dataset is 3.34. The difference of 0.35 has statistical significance:
@@ -2636,7 +2636,7 @@ cleveref=false,%
 
 	\begin{table}[tb]
 		\centering
-		\caption{Mann-Whitney U test results of each \rdh configuration against \nonet. When \textbf{$p$} is smaller than $5~\%=\num{5e-2}$ (bold) we conclude that the difference is significant.}
+		\caption{Mann-Whitney U test results of each \rdh configuration against \nonet. When \textbf{$p$} is smaller than $5~\%=\num{5e-2}$ (\textbf{bold}) we conclude that the difference is significant.}
 		\label{tab:survey_statistical_evidence}
 		\begin{tabular}{lS[table-format=1.2e-2]}
 			\toprule
