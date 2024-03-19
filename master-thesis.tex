@@ -1303,7 +1303,12 @@ cleveref=false,%
 	An AST abstracts away specific syntactic details, focusing on the relationships between the nodes. ASTs are widely used in compilers, static analysis tools, and refactoring engines to perform tasks such as semantic analysis, optimization and code transformation~\cite{miller2010abstract}. The latter is our use case.
 	
 	We transform source code into the AST, make certain modifications to the AST (\Cref{tab:rdh-characteristics}) and then transform the AST back into the code representation. Compared to performing the modifications on the code, this has certain advantages, which are further detailed in \Cref{REDEC}.
-		
+	
+\subsection{Stratified Sampling} \label{Stratified Sampling}	
+	In statistical analysis, we often encounter situations in which the population can be divided into subgroups. Each group represents a particular characteristic. Stratified sampling is a technique used to ensure that each of these subgroups is adequately represented in the sample~\cite{thompson2012sampling}.
+	
+	In preparation for the user study (\Cref{Survey}), we use stratified sampling when creating the questionnaires. For this purpose, all code snippets are divided into homogeneous groups, so called strata, which are based on similarities with regard to certain code properties. Such properties are method length, line length or average identifier length. Within each stratum, a sample is then randomly selected to ensure that the sample is representative of the population. This method allows us to evaluate our approach to data generation more accurately. We further detail the usage of stratified sampling in \Cref{Construction of Questionnaires}.
+	
 \section{Mined and Modified Code for Dataset Generation} \label{Mined and Modified Code for Dataset Generation}
 %	In the following subsections we describe our approach.
 	The following subsections are about our approach.
@@ -1508,7 +1513,7 @@ cleveref=false,%
 
 	%	From now on, we will use the abbreviation \textit{\rdh} or \textit{\rdh tool} when referring to the entire program. If a specific manipulation or a configuration of the \rdh tool is meant, we will use \textit{[name] \rdh} or \textit{[name]} instead.
 	
-	\rdh initially converts the Java code of a well readable Java class file into an AST using the spoon library\curl{https://spoon.gforge.inria.fr/}{2024-15-02}~\cite{pawlak2016spoon}. In the end \rdh parses the AST back to Java code using the Pretty Printer of the spoon library\curl{https://spoon.gforge.inria.fr/}{2024-15-02}~\cite{pawlak2016spoon}. If nothing else is done, this results in \nonet. Note that the code of \nonet is slightly different from the original code, as the Pretty Printer overwrites the styling and formatting of the original code by its default formatting.
+	\rdh initially converts the Java code of a well readable Java class file into an Abstract Syntax Tree (AST, \Cref{Abstract Syntax Tree}) using the spoon library\curl{https://spoon.gforge.inria.fr/}{2024-15-02}~\cite{pawlak2016spoon}. In the end \rdh parses the AST back to Java code using the Pretty Printer of the spoon library\curl{https://spoon.gforge.inria.fr/}{2024-15-02}~\cite{pawlak2016spoon}. If nothing else is done, this results in \nonet. Note that the code of \nonet is slightly different from the original code, as the Pretty Printer overwrites the styling and formatting of the original code by its default formatting.
 	
 	%	Renaming is done while the code is in its AST representation to ensure that the declarations and usages of variables (\texttt{renameVariable}), fields (\texttt{renameField}) and methods (\texttt{renameMethod}) are all renamed to the same new identifier.
 	
@@ -1852,7 +1857,7 @@ cleveref=false,%
 	
 \subsection{Construction of Questionnaires} \label{Construction of Questionnaires}
 	We evaluate the generated dataset and the new approach with a survey (\Cref{Survey}). However, we cannot evaluate all mined and modified methods as the original methods consist of \numOriginal samples and there is an infinite number of possible configurations for \rdh that can be applied to each method.
-	Therefore, we apply stratified sampling~\cite{thompson2012sampling}, create specific configurations and select the methods for our survey on this basis. You can find an overview of the approach in \autoref{fig:survey_pipeline}.
+	Therefore, we apply stratified sampling (\Cref{Stratified Sampling})~\cite{thompson2012sampling}, create specific configurations and select the methods for our survey on this basis. You can find an overview of the approach in \autoref{fig:survey_pipeline}.
 	
 	\begin{figure}[tb]
 		\centering
