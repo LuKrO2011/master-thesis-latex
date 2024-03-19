@@ -2551,10 +2551,14 @@ cleveref=false,%
 		
 	\textbf{Ratings:}
 	You can find the ratings for each \rdh configuration for all strata in \autoref{fig:survey_time_all}. We added the ratings of the merged dataset for comparison. \autoref{fig:survey_ratings_violin_all} visualizes the distribution of ratings for each score from 1 to 5. It also shows the mean value and mode of the ratings for each variant. To facilitate comparison with the original methods, the mean value of the ratings of the original methods across all variants is marked with a red dashed line. The original method and the just-pretty-print method are the most frequently rated with a score of 4 and their mean values of 3.69 and 3.67 are comparatively the highest.
-	
+		
 	In line with our expectation, we see that the ratings for \nonet and \texttt{original} only differ by a very small amount of 0.02. A Mann-Whitney U test shows that the probability, that the difference between \nonet and \texttt{original} is due to random variation, is 92~\%.
 %	There is no significant difference between the two, as a Mann-Whitney U test confirmed. The probability that the difference between \nonet and \texttt{original} is due to random variation is 92~\%. 
 	Therefore, we are sure that not the pretty-printer but the modifications caused the differences in readability.
+	
+	\begin{sloppypar}
+	The violins of \autoref{fig:survey_ratings_violin_all} illustrate the distribution of the ratings in detail. Note that the evaluators were only able to rate the discrete values 1 to 5. The values of the violins in between are only for better visualization. The figure shows that for \texttt{original} and \texttt{just-pretty-print} most of the ratings are 3, 4 or 5. In addition, the violins of \texttt{merged} and \texttt{all7} look similar, with the latter having more 2 ratings. The violins of \texttt{newlines-many}, \texttt{rename} and \texttt{spaces-many} show more better and less worse ratings than the ones of \texttt{comments-remove}, \texttt{newlines-instead-of-space}, \texttt{newlines-few} and \texttt{tabs}.
+	\end{sloppypar}
 		
 	\autoref{fig:survey_ratings_violin_all} also shows that the mean value of the original methods is 3.69 and the mean value of the merged dataset is 3.34. The difference of 0.35 has statistical significance:
 	We perform a Mann-Whitney U test for the rating values of the 40 original code snippets of the mined-and-modified dataset against all rating values of the merged dataset. The resulting $p$ value is \num{1.11e-09}, which is far below the $5~\%=\num{5e-2}$ threshold and confirms statistical significance.

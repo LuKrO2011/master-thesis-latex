@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  18 MAR 2024 18:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.24)  19 MAR 2024 10:35
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -2165,24 +2165,24 @@ e 2547.
 (pdftex.def)             Requested size: 350.0pt x 103.25069pt.
  [37 <./img/survey_time_histogramm.pdf> <./img/survey_time_less_than_180.pdf> <
 ./img/survey_java_familiarity_bar.pdf>]
-<img/survey_ratings_violin_all_m.pdf, id=936, 434.78058pt x 337.9639pt>
+<img/survey_ratings_violin_all_m.pdf, id=937, 434.78058pt x 337.9639pt>
 File: img/survey_ratings_violin_all_m.pdf Graphic file (type pdf)
 <use img/survey_ratings_violin_all_m.pdf>
 Package pdftex.def Info: img/survey_ratings_violin_all_m.pdf  used on input lin
-e 2574.
+e 2578.
 (pdftex.def)             Requested size: 314.99786pt x 244.87056pt.
-<img/survey_ratings_bar_all_m.pdf, id=937, 449.38202pt x 342.3004pt>
+<img/survey_ratings_bar_all_m.pdf, id=938, 449.38202pt x 342.3004pt>
 File: img/survey_ratings_bar_all_m.pdf Graphic file (type pdf)
 <use img/survey_ratings_bar_all_m.pdf>
 Package pdftex.def Info: img/survey_ratings_bar_all_m.pdf  used on input line 2
-580.
+584.
 (pdftex.def)             Requested size: 314.99786pt x 239.9377pt.
 
 
-LaTeX Warning: Float too large for page by 34.00826pt on input line 2586.
+LaTeX Warning: Float too large for page by 34.00826pt on input line 2590.
 
 
-Underfull \hbox (badness 2165) in paragraph at lines 2589--2590
+Underfull \hbox (badness 2165) in paragraph at lines 2593--2594
 \T1/LibertinusSerif-TLF/m/n/10.95 (+20) re-duces the read-ab-il-ity for the con
 -fig-ur-a-tions \T1/cmtt/m/n/10.95 all7\T1/LibertinusSerif-TLF/m/n/10.95 (+20) 
 , \T1/cmtt/m/n/10.95 comments-remove\T1/LibertinusSerif-TLF/m/n/10.95 (+20) ,
@@ -2194,7 +2194,7 @@ m.pdf>] [40] [41] [42] [43] [44] [45] [46
 
 ]
 LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/sc' will be
-(Font)              scaled to size 10.95pt on input line 2792.
+(Font)              scaled to size 10.95pt on input line 2796.
  [47
 
 
@@ -2203,11 +2203,11 @@ LaTeX Font Info:    Font shape `T1/LibertinusSerif-TLF/m/sc' will be
 
 {C:/Users/lukas/AppData/Roaming/MiKTeX/fonts/enc/dvips/libertinus-type1/lbts_cb
 34qf.enc}] [48] [49] [50]
-<img/pilot_survey_task_clearness.pdf, id=1119, 210.64949pt x 215.57225pt>
+<img/pilot_survey_task_clearness.pdf, id=1120, 210.64949pt x 215.57225pt>
 File: img/pilot_survey_task_clearness.pdf Graphic file (type pdf)
 <use img/pilot_survey_task_clearness.pdf>
 Package pdftex.def Info: img/pilot_survey_task_clearness.pdf  used on input lin
-e 2806.
+e 2810.
 (pdftex.def)             Requested size: 167.9985pt x 171.92842pt.
 
 [51 <./img/pilot_survey_task_clearness.pdf>] [52]
@@ -2522,9 +2522,9 @@ fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/p
 ublic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts
 /cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pf
 b><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on master-thesis.pdf (58 pages, 1290902 bytes).
+Output written on master-thesis.pdf (58 pages, 1291667 bytes).
 PDF statistics:
- 1543 PDF objects out of 1728 (max. 8388607)
+ 1544 PDF objects out of 1728 (max. 8388607)
  211 named destinations out of 1000 (max. 500000)
  87338 words of extra memory for PDF output out of 89155 (max. 10000000)
 
