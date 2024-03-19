@@ -1870,10 +1870,15 @@ cleveref=false,%
 	First, we want to categorize the methods to make it easier to decide which methods to select. We also want to avoid over-representing very simple methods, such as Getters and Setters. Therefore, our first step is to apply stratified sampling~\cite{thompson2012sampling}. This allows us to divide the methods into different groups, so called strata, based on handcrafted features (\Cref{Conventional Calculation Approaches}).
 	Since we want to compare the original methods with their modified variants later, we perform the sampling only for the original methods and add the \rdh methods in a later step.
 
-	We first calculate the handcrafted features for the original code snippets. We therefore use a tool of \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}. We calculate a 110-dimensional feature vector for each original code snippet. Nextn we compute the cosine similarity matrix between all feature vectors using scikit\curl{https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html}{2024-02-20}. 
+	We first calculate the handcrafted features for the original code snippets. We therefore use a tool of \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}. We calculate a 110-dimensional feature vector for each original code snippet. Next we compute the cosine similarity matrix between all feature vectors using scikit\curl{https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html}{2024-02-20}. 
 	Finally, using the fastcluster implementation~\cite{mullner2013fastcluster} of Ward's hierarchical clustering we cluster the methods into an arbitrary amount of strata.
-		
-	A comparison of the merge distances in each step (\autoref{fig:strata_merge_distances}) shows that a layer size of 4 makes the most sense: the merge distance of 5 to 4 is small, so we should still perform this merge, but the merge distance of 4 to 3 is large, so it is better not to perform this merge. Additionally, 4 is the size with the last possibility for a small merge distance.
+	
+	In each clustering step $x$, the two strata with the smallest cosine distance between their feature vectors are merged into one. This distance is the merged distance of the step, $MD_x$.
+	For further investigation, we also calculate the difference of the merge distance to the merged distance of the previous step $x-1$:
+	$\text{Difference to previous} = MD_x - MD_{x-1}$. For each step, you can find the merge distance together with the difference to the previous step in \autoref{fig:strata_merge_distances}.
+	
+	The graph shows that a layer size of 4 makes the most sense: the merge distance of 5 to 4 is small, so we should still perform this merge, but the merge distance of 4 to 3 is large, so it is better not to perform this merge.
+	Additionally, 4 is the size with the last possibility for a small merge distance. 
 	
 	We identify the type of methods within each of the 4 strata as described in \autoref{tab:strata_info}. We also add the amount of methods within each stratum. 
 	Stratum 0 comprises simple methods, such as Getters and Setters. Stratum 1 consists of the most complex methods across all strata. 
@@ -1884,7 +1889,7 @@ cleveref=false,%
 	\begin{figure}[tb]
 		\centering
 		\includegraphics[width=\textwidth]{img/strata_merge_distances.pdf}
-		\caption{Merge distances and local derivation for number of strata. The local derivation for the optimal number of strata highlighted in red.} 
+		\caption{Merge distances and difference to previous merge distance. The optimal difference to previous merge distance is highlighted in red.} 
 		\label{fig:strata_merge_distances}
 	\end{figure}
 	
