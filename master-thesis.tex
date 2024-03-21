@@ -573,7 +573,39 @@ cleveref=false,%
 	author = {Miller, F.P. and Vandome, A.F. and John, M.B.},
 	year = {2010},
 }
-
+@article{pradel2018deepbugs,
+	title={Deepbugs: A learning approach to name-based bug detection},
+	author={Pradel, Michael and Sen, Koushik},
+	journal={Proceedings of the ACM on Programming Languages},
+	volume={2},
+	number={OOPSLA},
+	pages={1--25},
+	year={2018},
+	publisher={ACM New York, NY, USA}
+}
+@article{allamanis2021self,
+	title={Self-supervised bug detection and repair},
+	author={Allamanis, Miltiadis and Jackson-Flux, Henry and Brockschmidt, Marc},
+	journal={Advances in Neural Information Processing Systems},
+	volume={34},
+	pages={27865--27876},
+	year={2021}
+}
+@inproceedings{dolan2016lava,
+	title={Lava: Large-scale automated vulnerability addition},
+	author={Dolan-Gavitt, Brendan and Hulin, Patrick and Kirda, Engin and Leek, Tim and Mambretti, Andrea and Robertson, Wil and Ulrich, Frederick and Whelan, Ryan},
+	booktitle={2016 IEEE symposium on security and privacy (SP)},
+	pages={110--121},
+	year={2016},
+	organization={IEEE}
+}
+@inproceedings{pewny2016evilcoder,
+	title={EvilCoder: automated bug insertion},
+	author={Pewny, Jannik and Holz, Thorsten},
+	booktitle={Proceedings of the 32nd Annual Conference on Computer Security Applications},
+	pages={214--225},
+	year={2016}
+}
 \end{filecontents}
 \addbibresource{\jobname.bib}
 
@@ -1290,16 +1322,35 @@ cleveref=false,%
 	
 \subsection{Data Generation} \label{Data Generation}
 
-	In addition to related work on models and datasets, there is also related work which uses some of the ideas that we employ in our proposed approach for data generation.
-	
-	% Related work: \rdh
-	\citeauthor{loriot2022styler} created a model that is able to fix Checkstyle\curl{https://checkstyle.org/}{2023-07-25} violations using Deep Learning.
-	In a first step, they inserted formatting violations into the code based on a project specific format
-	checker ruleset.
-	They then used a LSTM neural network that learned how to undo those injections. Their approach is working on abstract token sequences. They generated the data in a self-supervised manner~\cite{loriot2022styler}. \citeauthor{yasunaga2020graph} explored a similar idea~\cite{yasunaga2020graph}. We use the idea of intentional degradation of code for data generation.
+	In addition to related work on models and datasets, there is also related work which uses some of the ideas that we employ in our proposed approach for data generation. 
 	
 	% Related work: Public code mining
-	Another concept we employ is from \citeauthor{allamanis2016convolutional}. They cloned the top open source Java projects on GitHub\curl{https://github.com/}{2023-07-25} for training a Deep Learning model. They selected the top projects by taking the sum of the z-scores of the number of watchers and forks of each project. The projects have thousands of forks and stars and are widely used among software developers, thus the authors assumed the code within to be of good quality~\cite{allamanis2016convolutional}. We also use fork and star counts as criteria for well readable code (\Cref{well-readable-assumption}).
+	One concept we employ is from \citeauthor{allamanis2016convolutional}. They cloned the top open source Java projects on GitHub\curl{https://github.com/}{2023-07-25} for training a Deep Learning model. They selected the top projects by taking the sum of the z-scores of the number of watchers and forks of each project. The projects have thousands of forks and stars and are widely used among software developers, thus the authors assumed the code within to be of good quality~\cite{allamanis2016convolutional}. We also use fork and star counts as criteria for well readable code (\Cref{well-readable-assumption}).
+	
+	% Related work: Vulnerability/Bug/Formatting violation insertion
+	Another concept we employ is the intentionally degradation of source code to create a dataset.
+	
+	% Related work: Vulnerability insertion
+	In the field of vulnerability detection of source code, \citeauthor{dolan2016lava} introduced a technique to automate the insertion of bugs into program source code. The generated dataset was used for vulnerability discovery tool evaluation~\cite{dolan2016lava}. 
+	
+%	% Related work: Vulnerability insertion
+%	\citeauthor{dolan2016lava} introduced a technique designed to automate the insertion of bugs into program source code. The generated dataset is used for vulnerability discovery tool evaluation~\cite{dolan2016lava}.
+%	
+%	% Related work: Vulnerability insertion
+%	\citeauthor{pewny2016evilcoder} introduced a system to introduce vulnerable source code to suited locations so that the code becomes exploitable~\cite{pewny2016evilcoder}.
+	
+	% Related work: Bug insertion
+	\citeauthor{pradel2018deepbugs} apply a similar approach for the purpose of bug detection through a deep learning classifier. They generate training data through insertion of bugs into existing code. This process involves simple program transformations that introduce likely incorrect code examples, enabling the training of a classifier to distinguish between correct and incorrect code~\cite{pradel2018deepbugs}. \citeauthor{yasunaga2020graph} did similarly corrupt working programs into broken ones. They also suggest to pre-train models effectively before fine-tuning them on a manually labeled, target task~\cite{yasunaga2020graph}. We will employ the idea of pre and fine-tuning as well. \citeauthor{allamanis2021self} enhanced their approach by generating the dataset as a by product of co-training two models. One model is a detector that learns to detect and repair bugs in the code. The second model is a selector, that learns to create buggy code that is hard to detect~\cite{allamanis2021self}.
+		
+	% Related work: \rdh
+	\citeauthor{loriot2022styler} took the idea and shifted the are to formatting. This topic comes closest to our topic of code readability. They created a model that is able to fix Checkstyle\curl{https://checkstyle.org/}{2023-07-25} violations using Deep Learning.
+	In a first step, they inserted formatting violations into the code based on a project specific format checker ruleset.
+	They then used a LSTM neural network that learned how to undo those injections. Their approach is working on abstract token sequences. Again, they generated the data in a self-supervised manner~\cite{loriot2022styler}. 
+	
+	While the approach of intentional denigrating of source code to create a dataset was applied to the fields of vulnerability detection, bug detection and code formatting, we are the first to apply it to the field of code readability.
+	
+	% TODO: Add co-training idea to future work
+
 	
 \subsection{Abstract Syntax Tree} \label{Abstract Syntax Tree}
 	When decreasing the readability of code (\Cref{REDEC}), we make use of the Abstract Syntax Tree (AST).
