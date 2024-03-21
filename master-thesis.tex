@@ -2312,7 +2312,7 @@ cleveref=false,%
 \subsubsection{Pilot Survey} \label{Pilot Survey}
 	
 	% Experimental setup
-	\textit{1. Experimental setup:}
+	\textbf{1. Experimental setup:}
 	We manually sampled 20 code snippets across all strata but mainly from Stratum 1 and Stratum 3 due to reasons mentioned in \Cref{Construction of Questionnaires}. From January 6 to 14 in 2024, ten people took part in the survey. Eight of them were students and two of them worked in the industry. All of them had knowledge of computer science. They were not paid for participating in the survey. Additionally to rating 20 code snippets the participants were also asked to answer further questions to provide feedback about the survey:
 	
 	% Questions
@@ -2339,17 +2339,27 @@ cleveref=false,%
 %	\end{itemize}
 	
 	% Threats
-	\textit{2. Threats:}
-	The results do not generalize. We did not sample the Java snippets for rating in a specific or automated way, so there is a selection bias. The participants came from a private environment. This leads to a possible selection bias.
-%	The survey participants were not selected among Java programmers randomly. 
-	We adjusted the survey instructions, explanations and questions afterwards, which might influence the ratings of the participants.
-	However, we did not use the results from this survey to evaluate our dataset or the generation approach as the intention of the pilot survey was rather to prepare for the main survey. 
+	\textbf{2. Threats:}
+	The threats regarding the pilot survey are as follows:
+	
+	\textit{External Validity:}
+	We did not sample the Java snippets for rating in a specific or automated way, so there is a selection bias. Participants coming from a private environment further exacerbate this bias. Due to both, the results do not generalize.
+	
+	\textit{Internal Validity:}	
+	Ten people took part in the pilot survey. Due to the small number of participants, it is not possible to draw reliable conclusions about the strata or \rdh configurations. 	
+	However, the results are sufficient to provide an indication.
+	
+	\textit{Construct Validity:}
+	We adjusted the survey instructions, explanations and questions after conduction of the survey, which might influence the ratings of the participants.
+	
+	None of the mentioned threats has any impact as we do not use the results of this survey for the evaluation of our dataset generation approach.
+	The intention of the pilot survey was rather to prepare for the main survey.
 	
 	% Results
-	\textit{3. Results:}
+	\textbf{3. Results:}
 	We analyze the results of the pilot survey with regard to three aspects: the time it took to complete the survey, the feedback from the participants and the ratings of the selected code snippets.
 	
-	\textbf{Completion Time:} 
+	\textit{Completion Time:} 
 	You can find the time it took the participants to complete the pilot survey and thus to rate 20 code snippets according to their readability in \autoref{fig:survey_times}.
 	The fastest participant completed the survey in 7 minutes and 35 seconds, while the slowest participant took 18 minutes. 
 	Both, the average value and the mean value, are around 12 minutes. The boxplot (\autoref{fig:survey_times}) shows that the times are close together and there are no outliers in the time taken.
@@ -2382,7 +2392,7 @@ cleveref=false,%
 		\label{fig:survey_times}
 	\end{figure}
 		
-	\textbf{Participant Feedback:}
+	\textit{Participant Feedback:}
 	All feedback of the participants regarding the pilot survey is listed in \Cref{appendix:pilot-survey-feedback}.
 	Most of the problems that occurred were due to the survey tool (e.g.: \textquote{I also felt that I should use the drop-down menu at the top left.}).
 	%	Zusammengefasst:
@@ -2492,7 +2502,7 @@ cleveref=false,%
 		\end{tabular}
 	\end{table}
 	
-	\textbf{Ratings:}
+	\textit{Ratings:}
 	We adjusted the \rdh configurations. The rating for the last places (\autoref{tab:pilot_survey_results}), such as \textit{1.2} for \textit{Stratum 1 - all}, suggest that these code snippets were particularly poorly readable. 
 	Thus, we re-examined the \rdh configurations and found that some of them are over-configured. This not only affects their readability, but also makes them look as if they were not written by human hands. Therefore, we reduced the probabilities for these configurations.
 	
@@ -2501,7 +2511,7 @@ cleveref=false,%
 \subsubsection{Prolific Survey} \label{Prolific Survey}
 	In this section we summarize the results of the main survey conducted via Prolific\curl{https://app.prolific.com/}{2024-02-21}.
 		
-\textit{1. Experimental setup:}
+\textbf{1. Experimental setup:}
 	We conducted the survey using Tien Duc Nguyen's Code Annotation Tool (\autoref{fig:survey_tool}) along with the platform Prolific\curl{https://app.prolific.com/}{2024-02-21} for the recruitment and payment of participants.
 	The survey was conducted between January 31 and February 7 in 2024. A total of 221 participants took part. 11 participants  answered each of the 20 questionnaires (similar to the survey of \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}). In one survey, we assigned one more participant by mistake. 
 	We estimated the time to complete one questionnaire at 10 minutes (\Cref{Pilot Survey}). Prolific set the maximum time allowed at 44 minutes. Participants who took longer received a time-out.
@@ -2555,23 +2565,25 @@ cleveref=false,%
 	% Questionnaire Attributes
 	The survey neither contained demographic questions nor filter questions. Besides the readability questions, we asked each participant the following dependent question: \textquote{How would you describe your familiarity with Java?}. The participant could answer within a five point Likert scale: expert (5), advanced (4), intermediate (3), beginner (2), novice (1).
 	
-\textit{2. Threats:}
+\textbf{2. Threats:}
 	We identified the following threats:
-
-	\textbf{Ill-defined Target Population:} Ensuring a well-defined target population is critical to the survey's quality. To mitigate this threat, we define our target population.
 	
-	\textbf{Sampling Method:} We have a larger proportion of code snippets from Stratum 1 and Stratum 3 (\Cref{Construction of Questionnaires}). While we argue that we avoided spending resources on labeling data that is likely not different from the original methods or rather uninteresting, this might also introduce statistical errors to our survey results.
+	\textit{External Validity:}
+	Due to our questionnaire construction approach (\Cref{Construction of Questionnaires}), we have a larger proportion of code snippets from Stratum 1 and Stratum 3 (\Cref{Construction of Questionnaires}). While we argue that we avoided spending resources on labeling data that is likely not different from the original methods or rather uninteresting, this might also introduce statistical errors to our survey results.
 	However, stratified sampling is well-defined and proven in practice. The approach ensures that our sample represents all parts of the population under investigation.
-%		This is improving the survey's external validity.
 	
-	\textbf{Insufficient Responses:} To prevent drawing conclusions from an insufficient number of responses, we scale our survey to an appropriate size. This guarantees that we collect a substantial volume of responses, allowing for robust statistical analysis.
+	\textit{Internal Validity:}	
+	To prevent drawing conclusions from an insufficient number of responses, we scale our survey to an appropriate size. This guarantees that we collect a substantial volume of responses, allowing for robust statistical analysis.
 	
-	\textbf{Piece-work Effect:} Survey participants are paid for taking part and completing a questionnaire. However, they receive the same amount of money regardless of their speed. Therefore, they receive more pay per minute if they hurry. This could have an impact on the accuracy with which they scored the code snippets. A comparison between the time required by a participant for a pilot questionnaire and a Prolific questionnaire (\autoref{fig:survey_times}) supports this suggestion. Especially the ratings of participants requiring less than 3 minutes (\autoref{fig:survey_time_less_than_180}) to complete a questionnaire could have a negative impact on validity. 
+	Survey participants are paid for taking part and completing a questionnaire. However, they receive the same amount of money regardless of their speed. Therefore, they receive more pay per minute if they hurry. This could have an impact on the accuracy with which they scored the code snippets. A comparison between the time required by a participant for a pilot questionnaire and a Prolific questionnaire (\autoref{fig:survey_times}) supports this suggestion. Especially the ratings of participants requiring less than 3 minutes (\autoref{fig:survey_time_less_than_180}) to complete a questionnaire could have a negative impact on validity. 
 	
-\textit{3. Results:}
+	\textit{Construct Validity:}
+	Ensuring a well-defined target population is critical to the survey's quality. To mitigate the threat of an ill-defined target population, we define our target population.
+	
+\textbf{3. Results:}
 	We analyze the results of the Prolific survey with regard to three aspects: the time it took to complete the survey, the participants' familiarity with Java and the ratings with regard to the \rdh configurations.
 
-	\textbf{Completion time:}
+	\textit{Completion time:}
 	You can find an overview of the time that the participants required in \autoref{fig:survey_times} and \autoref{fig:survey_time_histogramm}.
 	The fastest participant completed the survey in 1 minute and 39 seconds, while the slowest participant needed about 38 minutes. 
 	The average time is 9 minutes and 45 seconds. The median time is 8 minutes and 30 seconds. The boxplot (\autoref{fig:survey_times}) shows that the completion times are not as close together as they are in the pilot survey. There are a couple of outliers.
@@ -2596,7 +2608,7 @@ cleveref=false,%
 		\label{fig:survey_time_prolific}
 	\end{figure}
 	
-	\textbf{Familiarity with Java:}
+	\textit{Familiarity with Java:}
 %	The participants' familiarity with Java is shown in \autoref{fig:survey_Java_familiarity_pie}. According to their own estimation, 44.8~\% of the participants are experts with Java. Another 44.8~\% of the participants are either advanced or intermediate. This high level of familiarity with Java suggests that the quality of the evaluations received is also high.
 	\autoref{fig:survey_Java_familiarity_pie} shows the participants' familiarity with Java. According to their own estimation, most participants (43.3~\%) have intermediate Java knowledge. 29.0~\% of the participants are either advanced or experts with Java. This high level of familiarity with Java suggests that the quality of the evaluations received is high.
 	
@@ -2607,7 +2619,7 @@ cleveref=false,%
 		\label{fig:survey_Java_familiarity_pie}
 	\end{figure}
 		
-	\textbf{Ratings:}
+	\textit{Ratings:}
 	You can find the ratings for each \rdh configuration for all strata in \autoref{fig:survey_time_all}. We added the ratings of the merged dataset for comparison. \autoref{fig:survey_ratings_violin_all} visualizes the distribution of ratings for each score from 1 to 5. It also shows the mean value and mode of the ratings for each variant. To facilitate comparison with the original methods, the mean value of the ratings of the original methods across all variants is marked with a red dashed line. The original method and the just-pretty-print method are the most frequently rated with a score of 4 and their mean values of 3.69 and 3.67 are comparatively the highest.
 		
 	In line with our expectation, we see that the ratings for \nonet and \texttt{original} only differ by a very small amount of 0.02. A Mann-Whitney U test shows that the probability, that the difference between \nonet and \texttt{original} is due to random variation, is 92~\%.
@@ -2707,6 +2719,7 @@ cleveref=false,%
 		All of the 7 configurations but \texttt{rename} decrease readability by a significant extend compared to \nonet. We estimate the readability decrease for a certain probability of a certain type as can be seen in \autoref{fig:survey_ratings_bar_all}. We reject the null hypothesis and conclude that the poorly readable assumption (\Cref{poorly-readable-assumption}) holds.
 	\end{summary}
 
+% TODO: Add "Threats to Validity"?
 \subsection{Model Training Results} \label{Model training results}
 	We use the notation \textit{(train-evaluate)} to describe on which dataset the towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} is trained and evaluated. \textit{mam} stands for our new mined-and-modified dataset. We use 10-fold cross-validation for evaluation.
 	We aim to investigate the following things:
