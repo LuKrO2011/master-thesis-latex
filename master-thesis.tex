@@ -1362,7 +1362,7 @@ cleveref=false,%
 	% TODO: Why miteinbauen oder eher nicht?
 	We sort the remaining repositories by their star and fork count (equally weighted). Then we clone the 100 best and check out their main branch.
 	
-	In a third step, we run checkstyle\curl{https://checkstyle.sourceforge.io/}{2024-02-15} against the project's own checkstyle configuration to obtain all Java class files that pass the own checkstyle test. For this we use a tool from Maximilian Jungwirth\curl{https://github.com/sphrilix}{TODO} which is based on \textit{Styler}\curl{https://github.com/ASSERT-KTH/styler}{2024-03-11}~\cite{loriot2022styler}.
+	In a third step, we run checkstyle\curl{https://checkstyle.sourceforge.io/}{2024-02-15} against the project's own checkstyle configuration to obtain all Java class files that pass the own checkstyle test. For this we use a tool from Maximilian Jungwirth\curl{https://github.com/sphrilix/styler2.0}{2024-03-21} which is based on \textit{Styler}\curl{https://github.com/ASSERT-KTH/styler}{2024-03-11}~\cite{loriot2022styler}.
 	From the Java class files that passed checkstyle, we extract all methods that have a comment of any kind at the beginning of the method. This results in \numOriginal methods which we assume to be well readable.
 	
 	The fourth step is to generate poorly readable code from the well readable one. To do this, we use the proposed \rdh tool (\Cref{REDEC}). We then extract all methods starting with a comment.
@@ -2211,8 +2211,7 @@ cleveref=false,%
 
 	Although we want to point out these limitations, we retain them in order to enable a fair comparison of the datasets.
 	
-	% TODO: Publish code
-	Our code is publicly available on GitHub\curl{https://github.com/LuKrO2011}{TODO}.
+	Our code is publicly available on GitHub\curl{https://github.com/LuKrO2011/master-thesis}{2024-03-21}.
 	
 %	You can find an overview over all programs used to create the merged dataset, the mined-and-modified dataset, the model and all our evaluation results in \autoref{fig:scripts_pipline}.
 	
@@ -2578,7 +2577,7 @@ cleveref=false,%
 
 	\begin{summary}{\hyperref[mined-well]{RQ 1 - mined-well}}
 		%		The readability ratings of code snippets mined from Github are not very accurate as we take the mean of all ratings for all methods and assign it to each snippet.
-		The mean score for the \texttt{original} methods of the mined-and-modified dataset (3.69) is significantly larger than the mean score for all ratings in the merged dataset (3.34). Therefore we reject the null hypothesis and conclude that well readable assumption (\Cref{well-readable-assumption}) holds.
+		The mean score for the \texttt{original} methods of the mined-and-modified dataset (3.69) is significantly larger than the mean score for all ratings in the merged dataset (3.34). Therefore we reject the null hypothesis and conclude that the well readable assumption (\Cref{well-readable-assumption}) holds.
 		%		and answer the research question \ref{mined-well}: Yes, automatically selected code can be assumed to be well readable.
 	\end{summary}
 	
@@ -2733,7 +2732,7 @@ cleveref=false,%
 %		We conclude that the mined-and-modified dataset captures different aspects of readability. 
 %		We do not outperform the model trained on the merged dataset only.
 		When trained with the mined-and-modified dataset and evaluated on the merged dataset, the model achieves an accuracy of 61.9~\%. For comparison: When trained and evaluated using the merged dataset, the model achieves an accuracy of 84.7~\%.
-		We conclude that the mined-and-modified dataset does not improve existing code readability classification models.
+		We conclude that the mined-and-modified dataset does not improve code readability classification using the towards model.
 	\end{summary}
 	
 	%	We also trained the model with a random sample of 210 data points to gain insight into what a change in training size might do. As we can see, the model has similar metrics to the all-all model. If we now compare the accuracy of the new-new compared to the merged-merged model, we see that with a larger dataset an improvement of about 8~\% is possible. Similar results are suggested by previous research on data augmentation, where an accuracy of 87.3~\% was achieved \citeauthor{mi2021effectiveness}. This emphasizes the importance of finding new ways of generating data for readability classification. 
