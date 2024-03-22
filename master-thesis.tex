@@ -6,7 +6,7 @@
 class=scrreprt,
 chapterprefix=false,%
 open=right,%
-twoside=false,%
+twoside=true,%
 paper=a4,%
 logofile={Logo\_zentral\_farbig\_EN.png},%
 thesistype=master,%
@@ -812,6 +812,7 @@ cleveref=false,%
 		% Problem
 		However, deep learning-based approaches improve with a large amount of data.
 		Therefore, a larger labeled dataset could greatly advance the research field of code readability classification.
+		
 		% Main result/approach/method
 		In this work, we investigate the use of a new dataset consisting of \numSamples code snippets together with its novel generation approach.
 		% Main results	
@@ -824,8 +825,6 @@ cleveref=false,%
 	\mainmatter
 	
 	\tableofcontents
-
-\pagebreak
 
 \chapter{Introduction} \label{Introduction}
 	% Motivation: Importance
@@ -1363,7 +1362,7 @@ cleveref=false,%
 	
 \section{Classification Considerations} \label{Classification Considerations}
 	
-	When classifying the readability of code, the state of the art is to perform a binary classification into well readable and poorly readable code~\cite{mi2018inception, mi2018improving, sharma2020egan, mi2022towards, mi2022rank}. 
+	State of the art is to perform a binary classification into well readable and poorly readable code~\cite{mi2018inception, mi2018improving, sharma2020egan, mi2022towards, mi2022rank}. 
 	
 	However, code readability classification is not a binary classification task per se. \citeauthor{mi2023graph} introduced a third, neutral class to address this problem~\cite{mi2023graph}. 
 	When rating code snippets, previous studies used a Likert scale~\cite{likert1932technique} from 1 (very unreadable) to 5 (very readable)~\citeolddataset. 
@@ -2298,7 +2297,7 @@ cleveref=false,%
 	Previous research shows that Deep Learning models get better the more training data is available~\cite{hestness2017deep}. This holds under the assumption that the quality of the data is the same or at least similar. We want to check if the quality of our new data is sufficient for improving the deep learning-based readability classifier of \citeauthor{mi2022towards}~\cite{mi2022towards}. Therefore we train their proposed model with combinations of the merged and the mined-and-modified dataset and compare the results.
 
 \section{Survey} \label{Survey}
-	The results of our survey are divided into two parts: The results of the pilot survey, which were used to improve the main survey pre-launch, and the results of the main survey, which were used to answer our research questions (\Cref{mined-well} and \Cref{modified-poor}) and to craft our dataset.
+	This section is divided into two parts: The pilot survey, which was used to improve the main survey pre-launch, and the main survey, which was used to answer our research questions and to craft our dataset.
 	
 \subsection{Pilot Survey} \label{Pilot Survey}
 	
@@ -2519,6 +2518,7 @@ cleveref=false,%
 
 	% Target population
 	The target population consists of Java programmers selected by Prolific. They may be students or work in industry. They can come from any country. Overall, there were no requirements other than familiarity with Java.
+	
 %	(see also \autoref{tab:prolific-audience}).
 	
 %	\begin{table}[tb]
@@ -2819,7 +2819,7 @@ cleveref=false,%
 	% Model threats	
 	When comparing the model performance trained on the mined-and-modified and merged dataset, it should be noted that the merged dataset is small. Consequently, comparisons to classifiers trained on the merged dataset may be unreliable~\cite{mi2022towards}.
 	
-\chapter{Conclusions} \label{Conclusions}
+\chapter{Conclusions and Future Work} \label{Conclusions}
 	% Summary with Implications: So what?	
 	Recent research in the field of code readability classification mainly focused on various deep learning model architectures to further improve accuracy. Little attention is paid to the fact that only 421 labeled code snippets are available to train these models. We introduced a novel approach to generate data with which we created a dataset of \numSamples code snippets (\Cref{Mined and Modified Code for Dataset Generation}). Although our results show that the mined-and-modified dataset does not capture the same aspects of readability as the merged one (\Cref{Evaluation}), it still captures readability and could accordingly help to improve the classification of code in future research.
 	
@@ -2863,7 +2863,8 @@ cleveref=false,%
 %	\renewcommand{\thesection}{\Roman{section}}
 %	\renewcommand{\thesubsection}{\fnsymbol{subsection}}
 	
-\pagebreak
+%\pagebreak
+
 \chapter{Pilot Survey Feedback}\label{appendix:pilot-survey-feedback}
 
 	\textbf{How clear was your task?} (1 = Very Unclear, 5 = Very Clear)
@@ -2904,6 +2905,8 @@ cleveref=false,%
 		\item I would leave out the buttons described above. I was missing a scrollbar at the bottom of the code-window. A conclusion page with a message like "Thank you for your participation", "You're Done!" or other further information was missing, too.
 	\end{itemize}
 	
+	\pagebreak
+	
 	\textbf{Do you have any other feedback? If none, leave blank.}
 	\begin{itemize}
 		\item There were drop downs for the programming language, but choosing another language did not change anything. It was a bit confusing that (almost?) all code snippets had very long imports within the code, which made them poorly readable.
@@ -2911,7 +2914,7 @@ cleveref=false,%
 		\item GOOD LUCK
 	\end{itemize}
 	
-\pagebreak
+
 \chapter{\RDMs Configuration File}\label{appendix:rdh-config-file}
 	\begin{listing}[h!]
 		\begin{minted}[linenos, frame=lines, framesep=2mm]{YAML}
@@ -2945,7 +2948,7 @@ cleveref=false,%
 		\label{lst:rdh-config-file}
 	\end{listing}
 	
-\pagebreak
+
 \chapter{Prolific Survey Texts}\label{appendix:prolific-survey-texts}
 	\textbf{On Prolific:}
 	
@@ -2984,8 +2987,8 @@ cleveref=false,%
 	
 	This survey should take about 10 minutes to complete. Now you are ready to go! 
 
-\pagebreak
-	\chapter{Towards Model - Visual Encoding Colors}\label{appendix:model-visual-colors}	
+
+\chapter{Towards Model - Visual Encoding Colors}\label{appendix:model-visual-colors}	
 	The following CSS was used to generate the background colors for the visual encoding. 
 	You can find an overview over all tokens on the pygments homepage\curl{https://pygments.org/docs/tokens/}{2024-03-02}.
 
