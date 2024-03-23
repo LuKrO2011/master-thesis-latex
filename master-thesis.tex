@@ -814,7 +814,7 @@ cleveref=false,%
 		Therefore, a larger labeled dataset could greatly advance the research field of code readability classification.
 		
 		% Main result/approach/method
-		In this work, we investigate the use of a new dataset consisting of \numSamples code snippets together with its novel generation approach.
+		We investigate the use of a new dataset consisting of \numSamples code snippets with its novel generation approach.
 		% Main results	
 		The generation approach involves the mining and modification of code snippets from public GitHub repositories. We validate the generated dataset using a survey with 200 participants and by training and evaluating a state-of-the-art code readability classification model both with and without the new dataset.
 		% Context of results
@@ -838,7 +838,7 @@ cleveref=false,%
 	
 	% Main problem
 	%	However, these models do not capture what developers think of readability improvements~\cite{fakhoury2019improving}. This suggests that there is room for improvement in readability classification of source code. 
-	However, a major limitation of these models is not their architecture, but the amount of available data for Java code readability classification, which comprises 421 code snippets~\citeolddataset. The current training data originates from questionnaires where humans manually labeled the code snippets. This has two drawbacks: Firstly, manual labeling requires a lot of effort.
+	A major limitation of these models is not their architecture, but the amount of data for Java code readability classification, which comprises 421 code snippets~\citeolddataset. The current training data originates from questionnaires where humans manually labeled the code snippets. This has two drawbacks: Firstly, manual labeling requires a lot of effort.
 	Secondly, the dataset is very small for deep learning, as this requires a large amount of data~\cite{hestness2017deep}.
 	To address these drawbacks, we aim to automatically generate more training data.
 	
@@ -890,7 +890,7 @@ cleveref=false,%
 	Our criteria for high code quality are an elevated number of stars and forks, the use of method comments, and compliance with a checkstyle\curl{https://checkstyle.sourceforge.io/}{2024-02-09} specification. For example, a consequence of using checkstyle is that the readability of the code is increased. Therefore it is reasonable to assume that repositories that use checkstyle are more readable than other repositories (\Cref{Dataset Generation Approach}).
 	We select Java files from the repositories that meet our criteria, extract methods from the Java classes in these files, and label them as well readable (\Cref{well-readable-assumption}).
 	
-	As a second step, all selected Java files are modified so that the code is subsequently less readable. For an exemplary result, see \autoref{lst:example-method}.
+	As a second step, we modify all selected Java files so that the code is subsequently less readable. For an exemplary result, see \autoref{lst:example-method}.
 	We extract methods from these Java files and label them as poorly readable (\Cref{poorly-readable-assumption}).
 	
 	\begin{listing}[tb]
@@ -963,7 +963,7 @@ cleveref=false,%
 		\item We show a representative and resource-effective sample approach since there is an enormous amount of possible combinations to sample methods for a user study (\Cref{Construction of Questionnaires}).
 		\item We demonstrate limitations of the model of \citeauthor{mi2022towards}~\cite{mi2022towards} (\Cref{Readability Classification Model}).
 %		\item We show the effectiveness of our generation approach through a survey (\Cref{Survey}).
-		\item We show through a survey (\Cref{Survey}) that the well readable assumption (\Cref{well-readable-assumption}) and the poorly readable assumption (\Cref{poorly-readable-assumption}) hold.
+		\item We show through a survey (\Cref{Survey}) that the well readable assumption (\Cref{well-readable-assumption}) and poorly readable assumption (\Cref{poorly-readable-assumption}) hold.
 		\item We show that the mined-and-modified dataset can be used for code readability classification models by training and evaluating the model of \citeauthor{mi2022towards}~\cite{mi2022towards} with and without the mined-and-modified dataset (\Cref{Model training results}).
 	\end{itemize}
 	
@@ -972,7 +972,7 @@ cleveref=false,%
 %	Although our approach for creating a dataset works in principle, we are not able to address the same aspects of code readability as the merged dataset does with the proposed heuristics. Thus, our dataset probably only addresses a partial problem of code readability.
 	
 %	The survey confirms both assumptions (\Cref{well-readable-assumption} and \Cref{poorly-readable-assumption}) (\Cref{Survey}).
-	Our automated approach for creating a readability classification dataset is effective. The mined-and-modified dataset contains well readable (\Cref{well-readable-assumption}) and the poorly readable (\Cref{poorly-readable-assumption}) methods.
+	Our automated approach for creating a readability classification dataset is effective. The mined-and-modified dataset, consisting of \numSamples samples, contains well readable (\Cref{well-readable-assumption}) and the poorly readable (\Cref{poorly-readable-assumption}) methods.
 	We infer from the model training results (\Cref{Model training results}) that the mined-and-modified dataset captures different aspects of code readability as previous datasets~\citeolddataset.
 	Our code is publicly available on GitHub: 
 %	\begin{center}
@@ -980,7 +980,7 @@ cleveref=false,%
 %	\end{center}
 			
 \chapter{Background and Related Work} \label{Background and Related Work}
-	In the following sections, you can find an overview of the background and related work on code readability and our approach for dataset creation.
+	In the following sections, we describe the background and related work on code readability and our approach for dataset generation.
 	
 \section{Code Readability} \label{Code Readability}
 		
@@ -996,7 +996,11 @@ cleveref=false,%
 
 	
 %	Therefore, it is important to ensure a high readability of code. To archive this, we need to define and measure code readability.
-	When talking about \textit{code readability classification} we need to clarify what this term means. Therefore, we start with an overview of definitions of code readability.
+When talking about \textit{code readability classification} we need to clarify what this term means.
+% Definiton	
+\citeauthor{buse2009learning} provide the earliest definition~\cite{buse2009learning}:
+\textquote{We define readability as a human judgment of how easy a text is to understand.}
+%	Therefore, we start with an overview of definitions of code readability.
 	
 %	However, there are various definitions in the literature:
 	
@@ -1021,9 +1025,7 @@ cleveref=false,%
 	%	read it at an optimal speed, and find it interesting.” 
 	%	\cite{dubay2004principles}
 	
-	% Definiton	
-	\citeauthor{buse2009learning} provide the earliest definition~\cite{buse2009learning}:
-	\textquote{We define readability as a human judgment of how easy a text is to understand.}
+
 
 	% Definition
 	\citeauthor{tashtoush2013impact} combine numerous other aspects from various definitions. According to them, code readability can be measured by looking at the following aspects~\cite{tashtoush2013impact}:
@@ -1243,13 +1245,13 @@ cleveref=false,%
 	IncepCRM was the first introduced deep learning model for code readability classification. It automatically learns multi-scale features from source code with minimal manual intervention~\cite{mi2018inception}.
 	
 	% Related work: ML - CNN (83.8\% acc)
-	In a follow-up paper Convolutional Neural Networks (ConvNets) were introduced to code readability classification in a model called DeepCRM. Unlike previously, DeepCRM employs three ConvNets with identical architectures and was trained on differently preprocessed data~\cite{mi2018improving}.
+	In a follow-up paper Convolutional Neural Networks (ConvNets) were introduced to code readability classification in a model called DeepCRM. Unlike previously, DeepCRM employs three ConvNets with identical architectures~\cite{mi2018improving}.
 		
 	% Related work: ML - GANs (84.8\% acc)
 	Another study proposed an approach using Generative Adversarial Networks (GANs). The proposed method involves encoding source codes into integer matrices with multiple granularities and utilizing an EGAN (Enhanced GAN)~\cite{sharma2020egan}. It was able to surpass the accuracy of previous readability classification models as shown in \autoref{tab:rel-acc-scores}.
 	
 	% Related work: ML - Towards (85.3\% acc)
-	Up to this point, the limitation of deep learning-based code readability models was to focus on structural features primarily. \citeauthor{mi2022towards} addressed this by proposing a model, \textit{Mi\_Towards}, that extracts features from visual, semantic, and structural aspects of source code. Using a hybrid neural network composed of BERT, CNN, and BiLSTM, the proposed model processes RGB matrices, token sequences, and character matrices to capture various features of source code~\cite{mi2022towards}.
+	The limitation of deep learning-based code readability models was to focus on structural features. \citeauthor{mi2022towards} addressed this by proposing a model, \textit{Mi\_Towards}, that extracts features from visual, semantic, and structural aspects of source code. Using a hybrid neural network composed of BERT, CNN, and BiLSTM, the proposed model processes RGB matrices, token sequences, and character matrices to capture various features of source code~\cite{mi2022towards}.
 	
 	% Related work: ML - Code pairs (83.5\% acc)
 	Previously, code readability classification was considered mainly as a task that is applied to a single code snippet at once. A new approach was introduced which frames the problem as a ranking task. The proposed model employs siamese neural networks to rank code pairs based on their readability~\cite{mi2022rank}.
@@ -1264,7 +1266,7 @@ cleveref=false,%
 	% Deep:
 	
 	Until now researchers introduced many deep learning architectures and components to various classification models to surpass previous accuracy scores. The common limitation of all models is a dataset consisting of \numMerged code snippets. % for training and evaluation.
-	Therefore, the main contribution of this work is not a model that outperforms a state-of-the-art model but rather a new dataset. For evaluation, we opted for the \textit{Mi\_Towards} model (hereinafter referred to as Towards model) from \citeauthor{mi2022towards}~\cite{mi2022towards}. We did not choose the best performing one, \textit{Mi\_Graph}~\cite{mi2023graph}, as its main contribution is to use the AST representation of the code, while our dataset generation approach includes features that are not represented in the AST (\Cref{REDEC}).
+	Therefore, the main contribution of this work is not a model that outperforms a state-of-the-art model but a new dataset. For evaluation, we opted for the \textit{Mi\_Towards} model (hereinafter referred to as Towards model) from \citeauthor{mi2022towards}~\cite{mi2022towards}. We did not choose the best performing one, \textit{Mi\_Graph}~\cite{mi2023graph}, as its main contribution is to use the AST representation of the code, while our dataset generation approach includes features that are not represented in the AST (\Cref{REDEC}).
 			
 \section{Data Augmentation} \label{Data Augmentation}
 
@@ -1277,21 +1279,21 @@ cleveref=false,%
 	A recently published paper addresses the challenge of acquiring a larger amount of labeled data, using augmentation. The researchers proposed to artificially expand the training set instead of the time-consuming and expensive process of obtaining labels manually. They employ domain-specific transformations, such as manipulating comments, indentations, and names of classes/methods/variables, and explore the use of Auxiliary Classifier GANs to generate synthetic data. They advance to a classification accuracy of 87.3~\%~\cite{mi2021effectiveness}.
 	% Related work: Data Augmentation - GAN (68.0\% acc)
 %	Due to a scarcity of labeled data, most prior research focused on binary classification. This was due to supposedly due to a scarcity of labeled data, most prior research focused on binary classification.
-	Lately, researchers successfully enhanced data augmentation by incorporating domain-specific data transformation and Generative Adversarial Networks~\cite{mi2022enhanced}.
+	Lately, researchers successfully enhanced data augmentation by incorporating domain-specific data transformation and GANs~\cite{mi2022enhanced}.
 	The results of both show, that more data has a significant impact on the reached classification accuracy. However, they artificially augment using the \numMerged code snippets of the merged dataset. Therewith, their augmented data is based on these \numMerged code snippets. Our new mined-and-modified dataset does not have this limitation.
 	%	, which further delimits its potential.
 	
 	% Related work: Data Generation - GitHub commits
-	Recently researchers developed a methodology to identify readability-improving commits, creating a dataset of 122k commits from GitHub's revision history. They used this dataset to automatically identify and suggest readability-improving actions for code snippets. They trained a T5 model to emulate developers' actions in improving code readability, achieving a prediction accuracy between 21~\% and 28~\%. The empirical evaluation shows that 82-91~\% of the dataset commits aim to improve readability, and the model successfully mimics developers in 21~\% of cases~\cite{vitale2023using}.
-	This shows the potential of a large dataset, but the used dataset and model results are hardly comparable with previous studies due to the usage of commits instead of code snippets. We, however, continue to use code snippets.
+	Researchers developed a methodology to identify readability-improving commits, creating a dataset of 122k commits from GitHub's revision history. They used this dataset to automatically identify and suggest readability-improving actions for code snippets. They trained a T5 model to emulate developers' actions in improving code readability, achieving a prediction accuracy between 21~\% and 28~\%. The empirical evaluation shows that 82-91~\% of the dataset commits aim to improve readability, and the model successfully mimics developers in 21~\% of cases~\cite{vitale2023using}.
+	This shows the potential of a large dataset, but the used dataset and model results are hardly comparable with previous studies due to the usage of commits instead of code snippets. We continue to use code snippets.
 		
 	
 \section{Diverse Perspectives} \label{Diverse Perspectives}
 
-	There is also other important research in the field of readability classification that does not directly affect this work but could have implications for future works.
+	Other important research in the field of readability classification does not directly affect this work but could have implications for future works.
 	
 	% Related work: Commit analysis - GitHub commits
-	\citeauthor{fakhoury2019improving} showed that previous models do not capture what developers think of readability improvements. Therefore, they analyzed 548 GitHub commits manually. They suggest considering other metrics, such as incoming method calls or method name fitting~\cite{fakhoury2019improving}.	
+	\citeauthor{fakhoury2019improving} showed that models do not capture what developers think of readability improvements. Therefore, they analyzed 548 GitHub commits manually. They suggest considering other metrics, such as incoming method calls or method name fitting~\cite{fakhoury2019improving}.	
 	
 	% Related work: Data Augmentation
 	\citeauthor{oliveira2020evaluating} conducted a systematic literature review of 54 relevant studies on code readability and legibility, examining how different factors impact comprehension. The authors analyzed tasks and response variables used in studies comparing programming constructs, coding idioms, naming conventions, and formatting guidelines~\cite{oliveira2020evaluating}.
@@ -1324,13 +1326,13 @@ cleveref=false,%
 	In the field of vulnerability detection in source code, \citeauthor{dolan2016lava} introduced a technique for automatically inserting bugs into source code. The generated dataset was used for the evaluation of vulnerability detection tools~\cite{dolan2016lava}. 
 
 	% Related work: Bug insertion
-	\citeauthor{pradel2018deepbugs} applied a similar approach to general bug detection using a deep learning classifier. They generate training data by inserting bugs into existing code. This process involves simple program transformations that are likely to introduce incorrect code. They then train a classifier to distinguish between correct and incorrect code~\cite{pradel2018deepbugs}.
-	\citeauthor{yasunaga2020graph} did similarly convert working programs into broken ones. They also pre-trained models on the automatically generated dataset before fine-tuning them using a manually labeled one~\cite{yasunaga2020graph}. We also use the idea of pre-training and fine-tuning. 
+	\citeauthor{pradel2018deepbugs} applied a similar approach to general bug detection using a deep learning classifier. They generate training data by inserting bugs into existing code. This process involves simple program transformations that are likely to introduce incorrect code. They train a classifier to distinguish between correct and incorrect code~\cite{pradel2018deepbugs}.
+	\citeauthor{yasunaga2020graph} did convert working programs into broken ones. They pre-trained models on the automatically generated dataset before fine-tuning them using a manually labeled one~\cite{yasunaga2020graph}. We also use the idea of pre-training and fine-tuning. 
 	\citeauthor{allamanis2021self} has further improved this approach by generating the dataset as a by-product of co-training two models: One model is a detector that learns to detect and repair bugs in the code. The second model is a selector that learns to create buggy code that is hard to detect~\cite{allamanis2021self}.
 		
 	% Related work: \rdh
 	\citeauthor{loriot2022styler} used the idea and shifted the area to code formatting. This topic comes closest to our topic of code readability. They created a model that is able to fix checkstyle violations using deep learning.
-	In the first step, they inserted formatting violations into the code based on a project-specific format-checking rule set.
+	In the first step, they inserted formatting violations into the code based on a project-specific format-checking ruleset.
 	They then used an LSTM neural network that learned how to undo these insertions. 
 	
 	All of the mentioned approaches have in common that they generate a dataset in an automated way by using the idea of deliberate denigration of source code. This approach has already been successfully used in the areas of vulnerability detection, error detection, and code formatting. We are the first to apply it to the area of code readability classification.
@@ -1339,7 +1341,7 @@ cleveref=false,%
 	When decreasing the readability of code (\Cref{REDEC}), we make use of the Abstract Syntax Tree (AST).
 	An AST is a hierarchical structure and represents the syntactic structure of source code. It is composed of nodes and edges. Each node represents a language construct, such as expressions, statements, or declarations, while edges denote the relationships between the nodes.
 		
-	An AST abstracts away specific syntactic details, focusing on the relationships between the nodes. ASTs are widely used in compilers, static analysis tools, and refactoring engines to perform tasks such as semantic analysis, optimization, and code transformation~\cite{miller2010abstract}. The latter is our use case.
+	An AST is an abstraction that removes specific syntactic details, focusing on the relationships between nodes. ASTs are widely used in compilers, static analysis tools, and refactoring engines to perform tasks such as semantic analysis, optimization, and code transformation~\cite{miller2010abstract}. The latter is our use case.
 	
 	We transform source code into the AST, make certain modifications to the AST (\Cref{tab:rdh-characteristics}), and then transform the AST back into the code representation. The conversion back is done with a so-called Pretty Printer. Compared to performing the modifications on the code, this has certain advantages, which are further detailed in \Cref{REDEC}.
 	
