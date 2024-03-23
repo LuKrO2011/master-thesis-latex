@@ -1718,7 +1718,8 @@ When talking about \textit{code readability classification} we need to clarify w
 %		\item \texttt{incTabInsteadOfDecTab}: Replace a tab outdentation with a indentation (\autoref{lst:example-method-badly}, Line 2)
 %		\item \texttt{decTabInsteadOfIncTab}: Replace a tab indentation with a outdentation (\autoref{lst:example-method-badly}, Line 2)
 %	\end{itemize}
-	\rdh does not support the removal of spaces, as this might cause keywords or identifiers to merge.
+	\rdh does not support the removal of spaces, as this can cause keywords and/or identifiers to merge, which can result in the code no longer compiling.
+	For example, consider the space between \textit{int} and \textit{number} in Line 6 in \Cref{lst:example-method}. If we remove the space, the result is \textit{intnumber}. Since the syntax is violated, the code no longer compiles.
 	
 %	\begin{sloppypar}
 %	These include adding spaces (\texttt{space}), replacing spaces with newlines (\texttt{spaceInsteadOfNewline}), adding or removing newlines (\texttt{newline}), replacing newlines with spaces (\texttt{newLineInsteadOfSpace}), and changing the indentation of code in term of tabs (\texttt{incTab}, \texttt{decTab}, \texttt{incTabInsteadOfDecTab}, \texttt{decTabInsteadOfIncTab}).
@@ -2728,20 +2729,17 @@ When talking about \textit{code readability classification} we need to clarify w
 	We use the notation \textit{(train-evaluate)} to describe on which dataset the Towards model~\cite{mi2022towards} is trained and evaluated. \textit{mam} stands for our new mined-and-modified dataset. We use 10-fold cross-validation for evaluation.
 	We aim to investigate the following things:
 	
-	\begin{enumerate}
-		\item \textbf{Model evaluation:}
-		To confirm that our implementation of the model scores similar accuracy as the original one of \citeauthor{mi2022towards}~\cite{mi2022towards}, we train and evaluate the model on the merged dataset (merged-merged).
-		
-		\item \textbf{Internal evaluation:} 
-		To investigate how the model captures the readability aspects of the mam dataset, we train and evaluate it on this dataset (mam-mam). We examine how effectively the model captures the differences between the \texttt{original} and \texttt{all7} methods which are modified with \rdh.
-		
-		\item \textbf{Cross evaluation:} 
-		To assess how effective the mam dataset is for predicting readability, we train the model on the mam dataset and then evaluate its performance on the merged dataset (mam-merged). We train the model on the merged dataset and evaluate it on the merged dataset (merged-merged) and on the mined-and-modified dataset (merged-mam).
-		
-		\item \textbf{Fine-tuning:} 
-		To assess the accuracy we can score in predicting readability we investigate training on the mined-and-modified dataset and fine-tuning and evaluating on the merged dataset (finetune-merged).		
-		
-	\end{enumerate}
+	\textbf{Model evaluation:}
+	To confirm that our implementation of the model scores similar accuracy as the original one of \citeauthor{mi2022towards}~\cite{mi2022towards}, we train and evaluate the model on the merged dataset (merged-merged).
+	
+	\textbf{Internal evaluation:} 
+	To investigate how the model captures the readability aspects of the mined-and-modified dataset, we train and evaluate it on this dataset (mam-mam). We examine how effectively the model captures the differences between the \texttt{original} and \texttt{all7} methods which are modified with \rdh.
+	
+	\textbf{Cross evaluation:} 
+	To assess how effective the mined-and-modified dataset is for predicting readability, we train the model on the mined-and-modified dataset and then evaluate its performance on the merged dataset (mam-merged). We train the model on the merged dataset and evaluate it on the merged dataset (merged-merged) and on the mined-and-modified dataset (merged-mam).
+	
+	\textbf{Fine-tuning:} 
+	To assess the accuracy we can score in predicting readability we investigate training on the mined-and-modified dataset and fine-tuning and evaluating on the merged dataset (finetune-merged).		
 	
 	\autoref{tab:dataset_performance} specifies on which dataset we train (\textit{Train}) and on which dataset we evaluate (\textit{Eval}) the Towards model. The table shows the results for each combination using the following evaluation metrics: Accuracy (\textit{Acc}), Precision (\textit{Prec}), Recall (\textit{Rec}), Area under the Curve (\textit{AUC}), F1-Score (\textit{F1}) and the Matthews Correlation Coefficient (\textit{MCC})~\cite{chicco2020advantages}. We delve into important intricacies below.
 		
