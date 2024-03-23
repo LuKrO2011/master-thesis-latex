@@ -2282,12 +2282,9 @@ cleveref=false,%
 	
 	% Assumptions
 	Our assumptions are as follows:
-	\begin{assumptionsbox}
-		content...
-	\end{assumptionsbox}
 	\begin{enumerate}[label={Assumption \arabic*},ref={\arabic*},leftmargin=*]
 		\item \label[assumption]{well-readable-assumption} \textbf{(well-readable-assumption)} The selected repositories contain mostly well readable code.
-		\item \label[assumption]{poorly-readable-assumption} \textbf{(poorly-readable-assumption)} After applying \RDMs, the code is poorly readable.
+		\item \label[assumption]{poorly-readable-assumption} \textbf{(poorly-readable-assumption)} After applying \rdh, the code is poorly readable.
 	\end{enumerate}
 	
 	% RQs
@@ -2361,7 +2358,7 @@ cleveref=false,%
 	We analyze the results of the pilot survey regarding three aspects: the time it took to complete the survey, the feedback from the participants, and the ratings of the selected code snippets.
 	
 	\textit{Completion Time:} 
-	You can find the time it took the participants to complete the pilot survey and thus to rate 20 code snippets according to their readability in \autoref{fig:survey_times}.
+	\autoref{fig:survey_times} shows the time it took the participants to complete the pilot survey and thus to rate 20 code snippets according to their readability.
 	The fastest participant completed the survey in 7 minutes and 35 seconds, while the slowest participant took 18 minutes. 
 	Both, the average value and the mean value, are around 12 minutes. The boxplot (\autoref{fig:survey_times}) shows that the times are close together and there are no outliers in the time taken.
 	We suspect that the participants in the pilot survey put more effort into completing the survey as we know them personally. 
@@ -2514,10 +2511,12 @@ cleveref=false,%
 		
 \textbf{1. Experimental setup:}
 	We conducted the survey using Tien Duc Nguyen's Code Annotation Tool (\autoref{fig:survey_tool}) along with the platform Prolific for the recruitment and payment of participants.
-	The survey was conducted between January 31 and February 7, 2024. A total of 221 participants took part. 11 participants answered each of the 20 questionnaires (similar to the survey of \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}). In one survey, we assigned one more participant by mistake. 
-	We estimated the time to complete one questionnaire at 10 minutes (\Cref{Pilot Survey}). Prolific set the maximum time allowed at 44 minutes. Participants who took longer received a time-out.
+	The survey was conducted between January 31 and February 7, 2024. A total of 221 participants took part. 11 participants answered each of the 20 questionnaires (similar to the survey of \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}). In one survey, we assigned one more participant by mistake. We include his results in the evaluation. We estimated the time to complete one questionnaire at 10 minutes (\Cref{Pilot Survey}). Prolific set the maximum time allowed at 44 minutes. Participants who took longer received a time-out.
 	%	According to an online calculator\footnote{https://www.calculator.net/sample-size-calculator.html} 
-	This results in a margin of error of 29.55\% at a confidence of 95\% for an individual snippet. However, we aggregate over strata and multiple snippets later to reduce the margin of error.
+	This results in a margin of error of 29.55\% at a confidence of 95\% for an individual snippet.
+%	The margin of error is a statistic that indicates the amount of sampling error. The smaller the margin of error, the more certain it is that a survey result corresponds to the actual value. 
+	A margin of error of 29.55\% means that the actual readability value of a code snippet varies by up to 29.55\% in both directions from the evaluation result.
+	However, we aggregate over strata and multiple snippets later to reduce the margin of error.
 	Each questionnaire consists of 20 code snippets. Consequently, 400 different code snippets are rated in total. The questionnaires were configured in a way that each participant could only take part in one of the questionnaires. You can find the texts for the survey in \Cref{appendix:prolific-survey-texts}. We crafted the questionnaires as described in \Cref{Construction of Questionnaires}.
 		
 	\begin{figure}[tb]
@@ -2576,8 +2575,7 @@ cleveref=false,%
 	
 	\textit{Internal Validity:}	
 	To prevent concluding from an insufficient number of responses, we scale our survey to an appropriate size. This guarantees that we collect a substantial volume of responses, allowing for robust statistical analysis.
-	
-	Survey participants are paid for taking part and completing a questionnaire. However, they receive the same amount of money regardless of their speed. Therefore, they receive more pay per minute if they hurry. This could have an impact on the accuracy with which they scored the code snippets. A comparison between the time required by a participant for a pilot questionnaire and a Prolific questionnaire (\autoref{fig:survey_times}) supports this suggestion. Especially the ratings of participants requiring less than 3 minutes (\autoref{fig:survey_time_less_than_180}) to complete a questionnaire could have a negative impact on validity. 
+	Survey participants are paid for taking part and completing a questionnaire. However, they receive the same amount of money regardless of their speed. Therefore, they receive more pay per minute if they hurry. This could have an impact on the accuracy with which they scored the code snippets. A comparison between the time required by a participant for a pilot questionnaire and a Prolific questionnaire (\autoref{fig:survey_times}) supports this argument. Especially the ratings of participants requiring less than 3 minutes (\autoref{fig:survey_time_less_than_180}) to complete a questionnaire could have a negative impact on validity. 
 	
 	\textit{Construct Validity:}
 	Ensuring a well-defined target population is critical to the survey's quality. To mitigate the threat of an ill-defined target population, we define our target population.
@@ -2622,9 +2620,9 @@ cleveref=false,%
 	\end{figure}
 		
 	\textit{Ratings:}
-	You can find the ratings for each \rdh configuration for all strata in \autoref{fig:survey_time_all}. We added the ratings of the merged dataset for comparison. \autoref{fig:survey_ratings_violin_all} visualizes the distribution of ratings for each score from 1 to 5. It also shows the mean value and mode of the ratings for each variant. To facilitate comparison with the original methods, the mean value of the ratings of the original methods across all variants is marked with a red dashed line. The original method and the just-pretty-print method are the most frequently rated with a score of 4 and their mean values of 3.69 and 3.67 are comparatively the highest.
+	You can find the ratings for each \rdh configuration for all strata in \autoref{fig:survey_time_all}. We added the ratings of the merged dataset for comparison. \autoref{fig:survey_ratings_violin_all} visualizes the distribution of ratings for each score from 1 to 5. It also shows the mean value and mode of the ratings for each variant. To facilitate comparison with the original methods, the mean value of the ratings of the original methods across all variants is marked with a red dashed line. The original method and the \texttt{just-pretty-print} method are the most frequently rated with a score of 4 and their mean values of 3.69 and 3.67 are comparatively the highest.
 		
-	In line with our expectation, we see that the ratings for \nonet and \texttt{original} only differ by a very small amount of 0.02. A Mann-Whitney U test shows that the probability, that the difference between \nonet and \texttt{original} is due to random variation, is 92~\%.
+	In line with our expectation, we see that the ratings for \nonet and \texttt{original} only differ by a very small amount of 0.02. A Mann-Whitney-U-Test shows that the probability, that the difference between \nonet and \texttt{original} is due to random variation, is 92~\%.
 %	There is no significant difference between the two, as a Mann-Whitney U test confirmed. The probability that the difference between \nonet and \texttt{original} is due to random variation is 92~\%. 
 	Therefore, we are sure that not the Pretty Printer but the modifications caused the differences in readability.
 	
@@ -2633,7 +2631,7 @@ cleveref=false,%
 	\end{sloppypar}
 		
 	\autoref{fig:survey_ratings_violin_all} also shows that the mean value of the original methods is 3.69 and the mean value of the merged dataset is 3.34. The difference of 0.35 has statistical significance:
-	We perform a Mann-Whitney U test for the rating values of the 40 original code snippets of the mined-and-modified dataset against all rating values of the merged dataset. The resulting $p$ value is \num{1.11e-09}, which is far below the $5~\%=\num{5e-2}$ threshold and confirms statistical significance.
+	We perform a Mann-Whitney-U-Test for the rating values of the 40 original code snippets of the mined-and-modified dataset against all rating values of the merged dataset. The resulting $p$ value is \num{1.11e-09}, which is far below the $5~\%=\num{5e-2}$ threshold and confirms statistical significance.
 	
 %	while for all7 it is 3.26	
 %	We label each method in both groups with the corresponding mean score.
@@ -2664,7 +2662,7 @@ cleveref=false,%
 	\begin{sloppypar}
 	\autoref{fig:survey_ratings_bar_all} shows the differences in mean values more precisely. \rdh reduces the readability for the configurations \texttt{all7}, \texttt{comments-remove}, \texttt{newlines-instead-of-space}, \texttt{newlines-few} and \texttt{tabs} the most. The tool also reduces readability for \texttt{newlines-many}, \texttt{rename}, and \texttt{spaces-many}, but not as much. 
 	\end{sloppypar}
-	To find out whether the deviations are statistically significant we utilize the Mann-Whitney U test once more. We compare the ratings for all snippets for a \rdh configuration with the corresponding \nonet snippets. \autoref{tab:survey_statistical_evidence} shows the results.
+	To find out whether the deviations are statistically significant we utilize the Mann-Whitney-U-Test once more. We compare the ratings for all snippets for a \rdh configuration with the corresponding \nonet snippets. \autoref{tab:survey_statistical_evidence} shows the results.
 	%	We do a statistical evaluation to find out whether the values could be random deviations or whether they are statistically significant (\autoref{tab:survey_statistical_evidence}).
 	%	To answer our second research question, we analyzed whether the difference in ratings between the different \rdh configurations is statistically significant. 
 	%	To do this, we used the Mann-Whitney U test to compare the ratings for all snippets for a \rdh configuration with the corresponding \nonet snippets. The results can be found in \autoref{tab:survey_statistical_evidence}.
@@ -2698,7 +2696,7 @@ cleveref=false,%
 
 	\begin{table}[tb]
 		\centering
-		\caption{Mann-Whitney U test results of each \rdh configuration against \nonet. When \textbf{$p$} is smaller than $5~\%=\num{5e-2}$ (\textbf{bold}) we conclude that the difference is significant.}
+		\caption{Mann-Whitney-U-Test results of each \rdh configuration against \nonet. When \textbf{$p$} is smaller than $5~\%=\num{5e-2}$ (\textbf{bold}) we conclude that the difference is significant.}
 		\label{tab:survey_statistical_evidence}
 		\begin{tabular}{lS[table-format=1.2e-2]}
 			\toprule
@@ -2788,7 +2786,7 @@ cleveref=false,%
 	We tried to fine-tune the merged dataset by freezing different layers of the model trained with the mined-and-modified dataset. During evaluation, we achieved the best results when freezing the input layers as well as the first convolution and pooling layer of all encoders. 
 	However, when evaluated on the merged dataset, the performance is still worse than the merged-merged variant.
 %	This is in direct contrast to our earlier assumption that such fine-tuning could lead to better results.
-	One explanation for this could be that the model is too small to be effective with the larger amount of data. Introducing more or bigger layers so that the model can store more features internally could lead to an improvement. However, this is not part of this work, in which we mainly focus on a new dataset.
+	Our explanation for this is that the model is too small to be effective with the larger amount of data. Introducing more or bigger layers so that the model can store more features internally could lead to an improvement. However, this is not part of this work, in which we mainly focus on a new dataset.
 	
 	\begin{summary}{\hyperref[new-data]{RQ3 - new-data}}
 %		When trained and evaluated on the mined-and-modified dataset, the model achieves an accuracy of 92.2~\%.
@@ -2806,7 +2804,7 @@ cleveref=false,%
 	% Zusammenhang: Studie und Model Eval
 	Our survey (\Cref{Pilot Survey}) shows that the mined-and-modified dataset captures readability. The model training results (\Cref{Model training results}) show that the mined-and-modified dataset captures different aspects of readability compared to the merged dataset. 	
 	% Different aspects of readability
-	The question arises as to what the different aspects are and whether it is possible to extend \rdh (\Cref{REDEC}) so that the same aspects are captured. By achieving this, we suggest that we could also achieve better evaluation results on the merged dataset than previous models.
+	The question arises as to what the different aspects are and whether it is possible to extend \rdh (\Cref{REDEC}) so that the same aspects are captured. By achieving this, we assume that we could also achieve better evaluation results on the merged dataset than previous models.
 	
 	% Model Restrictions
 	We fine-tune the model with the merged dataset after training with the mined-and-modified dataset and evaluate it on the merged dataset (\Cref{Model training results}). We expect the classification accuracy of the resulting model to exceed that of the model trained on the merged dataset only.
@@ -2825,7 +2823,7 @@ cleveref=false,%
 	% Shortcut learning
 	The probabilities for \texttt{removeComments} for the survey and the model training dataset differ (\Cref{Dataset Generation Approach} and \Cref{REDEC}). When conducting the survey, we argued that realistic methods do not require comments. Therefore, we set the probability for \texttt{removeComments} to 100~\%. However, when applying the model training, this led to shortcut learning of whether a method has a comment or not, instead of learning to distinguish based on all applied modifications. Therefore, we adopted \rdh so that \texttt{removeComments} is not applied to the Java files. Instead, we applied it separately after the method extraction with a probability of 10~\%.
 	Thus, the configurations \texttt{commentsRemove} and \texttt{all7} of the survey results (\Cref{Survey}) do not exactly match the configurations of the model training (\Cref{Model training results}).
-	However, we hardly rely on the survey results to train the model, and therefore we argue that this is a rather minor thread.
+	However, we hardly rely on the survey results to train the model, and therefore we argue that this is a rather minor threat.
 	
 	% Model threats	
 	When comparing the model performance trained on the mined-and-modified and merged dataset, it should be noted that the merged dataset is small. Consequently, comparisons to classifiers trained on the merged dataset may be unreliable~\cite{mi2022towards}.
@@ -2854,7 +2852,8 @@ cleveref=false,%
 	Further research could consist of finding and evaluating other encodings that represent the code differently.
 	
 	% Other model structure
-	Another way to improve existing code readability classifiers could be to develop a different structure for some layers of the models. We suggest increasing the size and depth of the layers so that the mined-and-modified dataset can be made useful. Alternatively, a completely different model architecture could be developed. 
+	Another way to improve existing code readability classifiers could be to develop a different structure for some layers of the models. We suggest increasing the size and depth of the layers so that the mined-and-modified dataset can be made useful.
+%	Alternatively, a completely different model architecture could be developed. 
 	
 	% More heuristics
 	The modifications described in this work (\Cref{REDEC}) are only part of the possible modifications that can be developed. Additional modifications could further improve the diversity of poorly readable code. This could increase the number of internal features that a model can learn, which in turn could increase the accuracy of the model.
@@ -2890,7 +2889,8 @@ cleveref=false,%
 	\begin{itemize}
 		\item Did at first not know where to rate the code.
 		\item I was confused about the textfield for the comments because I only remembered that we should rate the code snippets, not that we have to make comments. Since I was not able to navigate back to the task description, I did not know what to do with them.
-		\item Für einen Anfänger mit sehr wenig Java Erfahrung ist meiner Meinung nach der Code zu kompliziert.
+%		\item Für einen Anfänger mit sehr wenig Java Erfahrung ist meiner Meinung nach der Code zu kompliziert.
+		\item Translated from German: In my opinion, the code is too complicated for a beginner with very little Java experience.
 		\item In the first place, I didn't really understand what readability meant. But after slide 3 or 4, I understood what this was about.
 		\item I found it difficult to categorize the first examples because you don't know what's still to come. For example, what the least readable code is.
 	\end{itemize}
@@ -2901,7 +2901,7 @@ cleveref=false,%
 		\item First, I needed to figure out how this tool works and that the rating is done with the stars below. I thought I should write my rating as a comment in the comment field below. After number 20, I didn't know whether I could close the survey or not.
 		\item I also thought that I should use the drop-down menu on the upper left.
 		\item It is sometimes necessary to swipe horizontally to see all of the code, which is a bit inconvenient.
-		\item Für einen Anfänger ist das Tool meiner Meinung nach nicht geeignet. Der Code ist zu verschachtelt und teilweise unverständlich.
+		\item Translated from German: In my opinion, the tool is not suitable for beginners. The code is too convoluted and sometimes incomprehensible.
 		\item After finishing the task, at least a message should be shown.
 		\item I didn't understand what the button at the top left meant, where you could select the programming language. There were too many fonts to choose. I also wasn't sure whether to write a comment or not. It wasn't described at the beginning.
 	\end{itemize}
