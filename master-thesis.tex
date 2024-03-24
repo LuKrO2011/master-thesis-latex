@@ -670,6 +670,8 @@ cleveref=false,%
 % Remove all end-of-counter dots (e.g. dot after 1 for chapter 1) 
 \renewcommand{\autodot}{}
 
+% Split up table of contents
+\usepackage{titletoc}
 
 % Footnotes
 \newcounter{urlfootnote}
@@ -837,7 +839,12 @@ cleveref=false,%
 	
 	\mainmatter
 	
+%	\addtocontents{toc}{\protect\newpage} % Insert page break
+%	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}} % Limit depth to section level
+%	\addtocontents{toc}{\protect\contentsline{section}{\protect\numberline{4.4}Your Section Title}{}} % Insert section 4.4 into TOC
+%	\addtocontents{toc}{\protect\setcounter{tocdepth}{2}} % Reset depth to default
 	\tableofcontents
+	
 
 \chapter{Introduction} \label{Introduction}
 	% Motivation: Importance
@@ -2285,7 +2292,7 @@ When talking about \textit{code readability classification} we need to clarify w
 %		\label{fig:scripts_pipline}
 %	\end{figure}
 %	
-	
+
 \chapter{Evaluation} \label{Evaluation}
 
 \section{Research Questions}
@@ -2747,6 +2754,7 @@ When talking about \textit{code readability classification} we need to clarify w
 		All of the 7 configurations but \texttt{rename} decrease readability by a significant extent compared to \nonet. We estimate the readability decrease for a certain probability of a certain type as can be seen in \autoref{fig:survey_ratings_bar_all}. We reject the null hypothesis and conclude that the poorly readable assumption (\Cref{poorly-readable-assumption}) holds.
 	\end{summary}
 
+\addtocontents{toc}{\protect\newpage} % Move 4.4 to second page in table of contents
 
 \section{Model Training} \label{Model training results}
 	In the following, we describe our setup and the results of the model training.
