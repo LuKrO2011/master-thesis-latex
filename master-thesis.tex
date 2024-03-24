@@ -2097,7 +2097,7 @@ When talking about \textit{code readability classification} we need to clarify w
 
 	In this section, we describe our approach for investigating whether it is possible to score a higher accuracy as the Towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} in classifying code readability with the mined-and-modified dataset.
 	
-	We created our own implementation of the model using Keras\curl{https://keras.io/about/}{2024-02-20}. The model consists of three encodings. A code representation encoding, a feature extraction encoding, and a code readability classification encoding. You can find an overview of the model architecture in \autoref{fig:model_pipeline}.
+	We created our own implementation of the model using Keras\curl{https://keras.io/about/}{2024-02-20}. The model uses three encodings. A code representation encoding, a feature extraction encoding, and a code readability classification encoding. You can find an overview of the model architecture in \autoref{fig:model_pipeline}.
 	
 	\begin{figure}[tb]
 		\centering
@@ -2362,9 +2362,12 @@ When talking about \textit{code readability classification} we need to clarify w
 	\textit{Internal Validity:}	
 	Ten people took part in the pilot survey. Due to the small number of participants, it is not possible to draw reliable conclusions about the strata or \rdh configurations. 	
 	However, the results are sufficient to provide an indication.
+	%	We adjusted the survey instructions, explanations, and questions after the conduction of the survey, which might influence the ratings of the participants.
 	
 	\textit{Construct Validity:}
-	We adjusted the survey instructions, explanations, and questions after the conduction of the survey, which might influence the ratings of the participants.
+	%	We adjusted the survey instructions, explanations, and questions after the conduction of the survey, which might influence the ratings of the participants.
+	%	We do not define readability for the raters, as there are various definitions which slightly defer from each other (\Cref{Code Readability}). Instead we intuitive
+	The accuracy of the participants' ratings for the code snippets is uncertain. We see no incentive for participants to intentionally provide incorrect ratings. We come to the conclusion to measure readability.
 	
 	None of the mentioned threats has any impact as we do not use the results of this survey for the evaluation of our dataset generation approach.
 	The intention of the pilot survey was rather to prepare for the main survey.
@@ -2588,14 +2591,15 @@ When talking about \textit{code readability classification} we need to clarify w
 	\textit{External Validity:}
 	Due to our questionnaire construction approach (\Cref{Construction of Questionnaires}), we have a larger proportion of code snippets from Stratum 1 and Stratum 3 (\Cref{Construction of Questionnaires}). While we argue that we avoided spending resources on labeling data that is likely not different from the original methods or rather uninteresting, this might also introduce statistical errors to our survey results.
 	However, stratified sampling is well-defined and proven in practice. The approach ensures that our sample represents all parts of the population under investigation.
+	Ensuring a well-defined target population is critical to the survey's quality.
+	To mitigate the threat of an inadequately defined target population, we define it explicitly.
 	
 	\textit{Internal Validity:}	
 	To prevent concluding from an insufficient number of responses, we scale our survey to an appropriate size. This guarantees that we collect a substantial volume of responses, allowing for robust statistical analysis.
 	Survey participants are paid for taking part and completing a questionnaire. However, they receive the same amount of money regardless of their speed. Therefore, they receive more pay per minute if they hurry. This could have an impact on the accuracy with which they scored the code snippets. A comparison between the time required by a participant for a pilot questionnaire and a Prolific questionnaire (\autoref{fig:survey_times}) supports this argument. Especially the ratings of participants requiring less than 3 minutes (\autoref{fig:survey_time_less_than_180}) to complete a questionnaire could have a negative impact on validity. 
 	
 	\textit{Construct Validity:}
-	Ensuring a well-defined target population is critical to the survey's quality.
-	To mitigate the threat of an inadequately defined target population, we define it explicitly.
+	The accuracy of the participants' ratings for the code snippets is uncertain. Apart from the already mentioned aspect that participants might hurry, we see no incentive for participants to deliberately give false ratings. We come to the conclusion to measure readability.
 	
 \textbf{3. Results:}
 	We analyze the results of the Prolific survey regarding three aspects: the time it took to complete the survey, the participants' familiarity with Java, and the ratings about the \rdh configurations.
@@ -2772,7 +2776,6 @@ When talking about \textit{code readability classification} we need to clarify w
 			mam			& merged    & 61.9 \% & 66.7 \% & 54.5 \% & 60.6 \% & 60.0 \% & 24.8 \% \\
 			merged      & mam	    & 56.8 \% & 54.7 \% & 78.7 \% & 66.7 \% & 64.6 \% & 15.2 \% \\
 			finetune	& merged    & 83.3 \% & 84.3 \% & 79.1 \% & 81.7 \% & 81.1 \% & 63.7 \% \\
-%			mam     	& mam  		& 80.9 \% & 82.7 \% & 77.6 \% & 80.2 \% & 78.9 \% & 60.9 \% \\
 %			mmm			& mmm  		& 74.5 \% & 76.6 \% & 71.5 \% & 74.0 \% & 73.2 \% & 49.2 \% \\
 %			strong5		& strong5	& 93.4 \% & 90.8 \% & 96.6 \% & 93.7 \% & 93.6 \% & 86.9 \% \\
 %			strong5		& merged	& 33.3 \% & 20.0 \% & 09.1 \% & 14.5 \% & 12.5 \% & -36.2 \% \\
@@ -2886,7 +2889,7 @@ When talking about \textit{code readability classification} we need to clarify w
 	An important aspect of the readability of code is the naming. For the scope of methods, the method names are the most important part. Therefore, the Towards model could be improved by adding a component that explicitly takes into account how well a method name matches its body. This component might be similar to Code2vec~\cite{alon2019code2vec}.
 	
 	% Other encodings and model structure
-	Further research could consist of finding and evaluating other encodings that represent the code differently or developing a different structure for some layers of the models.
+	Further research could consist of finding and evaluating other encodings that represent the code readability or developing a different structure for some layers of the models.
 	We suggest increasing the size and depth of the layers so that the mined-and-modified dataset can be made useful.
 	
 	% More heuristics
