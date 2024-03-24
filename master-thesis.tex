@@ -656,7 +656,11 @@ cleveref=false,%
 %\counterwithout{chapter}{section}
 %\counterwithin{chapter}{part}
 %\renewcommand{\thesection}{\arabic{section}}
-%\renewcommand{\thechapter}{\arabic{chapter}.0}
+%\renewcommand{\thechapter}{\arabic{chapter}}
+
+% Remove all end-of-counter dots (e.g. dot after 1 for chapter 1) 
+\renewcommand{\autodot}{}
+
 
 % Footnotes
 \newcounter{urlfootnote}
@@ -2808,6 +2812,8 @@ When talking about \textit{code readability classification} we need to clarify w
 	
 \chapter{Discussion} \label{Discussion}
 
+	% TODO: Inter-rater-agreement for readability (see dorn)
+
 	% Zusammenhang: Studie und Model Eval
 	Our survey (\Cref{Pilot Survey}) shows that the mined-and-modified dataset captures readability. The model training results (\Cref{Model training results}) show that the mined-and-modified dataset captures different aspects of readability compared to the merged dataset. 	
 	% Different aspects of readability
@@ -2817,7 +2823,6 @@ When talking about \textit{code readability classification} we need to clarify w
 	We fine-tune the model with the merged dataset after training with the mined-and-modified dataset and evaluate it on the merged dataset (\Cref{Model training results}). We expect the classification accuracy of the resulting model to exceed that of the model trained on the merged dataset only.
 	Our expectations are not met. This could be because the Towards model structure is designed for a much smaller dataset and therefore cannot capture all the features of the mined-and-modified dataset while allowing for fine-tuning.
 
-	% Threats
 	% Merging existing datasets	
 	When merging existing datasets \citeolddataset into a single dataset (\Cref{Work on Existing Datasets}), we set the readability score of a code snippet as the mean value of all its ratings. As only a limited number of people participated in each survey, this may introduce errors due to statistical deviations.
 	Furthermore, the surveys were conducted under different conditions, e.g. different raters, different numbers of raters per snippet, different rater biases, and different code scopes. When merging the datasets, we do not take these inequalities into account. This could lead to a bias in the merged dataset. However, previous approaches did this similarly.
@@ -2827,13 +2832,26 @@ When talking about \textit{code readability classification} we need to clarify w
 %	 and the elimination of manual, labor-intensive labeling. 
 	This comes with a drawback: The score labels of the methods of the mined-and-modified dataset are estimations and not exact values (\Cref{Dataset Generation Approach}). However, accurate ratings would require human annotators to manually review \numSamples code snippets which is not feasible. In addition, with two-class classification, we need to distinguish between well and poorly readable code, which we can do without exact labels.
 	
+	% Initial configurations
+	We determined the configuration for the REDEC tool empirically. This was necessary because we first have to define configurations in order to obtain results. We used the pilot survey to get an indication of which configurations should be adjusted, but they are still empirically determined. We were able to prove significance for most configurations, but for the \texttt{rename} configuration we probably have to intensify the configuration to do so.
+	
+	% Realistic code snippets
+	We tried to choose the configurations so that the modified code snippets are realistic, but this was done on an empirical basis. One goal was to exceed the classification accuracy with our dataset through fine-tuning, and for this goal it is only a secondary aspect that the snippets are realistic. We decided not to ask for realism in our study and use the resources elsewhere. If we want to extend our approach to create a general-purpose readability dataset, we should consider the realism of the snippets as a primary goal. In this case, we should extend our evaluation to also answer the question to what extent our configurations change the realism of code snippets.
+	
 	% Shortcut learning
 	The probabilities for \texttt{removeComments} for the survey and the model training dataset differ (\Cref{Dataset Generation Approach} and \Cref{REDEC}). When conducting the survey, we argued that realistic methods do not require comments. Therefore, we set the probability for \texttt{removeComments} to 100~\%. However, when applying the model training, this led to shortcut learning of whether a method has a comment or not, instead of learning to distinguish based on all applied modifications. Therefore, we adopted \rdh so that \texttt{removeComments} is not applied to the Java files. Instead, we applied it separately after the method extraction with a probability of 10~\%.
 	Thus, the configurations \texttt{commentsRemove} and \texttt{all7} of the survey results (\Cref{Survey}) do not exactly match the configurations of the model training (\Cref{Model training results}).
 	We hardly rely on the survey results to train the model. We argue that this is a rather minor threat.
 	
-	% Model threats	
-	When comparing the model performance trained on the mined-and-modified and merged dataset, it should be noted that the merged dataset is small. Consequently, comparisons to classifiers trained on the merged dataset may be unreliable~\cite{mi2022towards}.
+	% Other heurisitc shortcuts
+	By modifying code, REDEC introduces certain patterns for poorly readability. For example, \texttt{comments-remove} removes a comment. This allows the classifier to decide that a method without a comment is poorly readable. \texttt{rename} introduces the pattern \textit{v/m/f + number}, which the classifier can use to infer poor readability. Patterns from changes that alter line breaks, spaces and tabs are more complex to infer, but we suggest that they are present. One could argue that the individual patterns are shortcuts that the classifier can learn to determine readability. However, combining these patterns with a certain probability requires the model to learn all patterns in order to achieve high accuracy. We suggest that the model overcomes shortcuts and learns code features instead. These features determine the readability of code, as our survey results showed.
+	
+	% Small merged dataset
+	When comparing the model performance trained on the mined-and-modified and merged dataset, it should be noted that the merged dataset is small. Consequently, comparisons to classifiers trained on the merged dataset may be unreliable.
+	
+	% Usage with other models uncertain? or future work?
+	We use a state-of-the-art model to evaluate the mined-and-modified dataset. We chose the Towards model due to its high accuracy and as it uses different encodings to represent the code snippets~\cite{mi2022towards}. Evaluation on just this single model does not allow generalization to all readability classification models. We can only make assumptions. For further and more general evaluation of our dataset it is necessary to consider other state-of-the-art models or other encodings as well.
+
 	
 \chapter{Conclusions and Future Work} \label{Conclusions}
 	% Summary with Implications: So what?	
@@ -2841,7 +2859,7 @@ When talking about \textit{code readability classification} we need to clarify w
 	
 	% Future work	
 	% New dataset style
-	The new approach for generating data has an advantage that is not yet used in this work: For the first time, it is possible to generate a dataset with one well readable and a second, less readable, and functionally equivalent code snippet. This could be used to train various models, including Transformers. Such a Transformer could take the code as input and improve its readability. We suspect that such a tool could be of great benefit to programmers.
+	The new approach for generating data has an advantage that is not yet used in this work: For the first time, it is possible to generate a dataset with one well readable and a second, less readable, and functionally equivalent code snippet. This could be used to train various models, including Transformers. Such a Transformer could take the code as input and improve its readability. We suspect that such a tool could be of great benefit to programmers.	
 	
 	% Languages	
 	A current limitation of the mined-and-modified dataset is that it only works for Java code. We suggest to overcome this limitation by extending the tool to other programming languages. This is a complex task, as one has to adapt the \RDH to work with another language. Furthermore, a general tool that works for all languages is difficult if not impossible.
@@ -2864,6 +2882,14 @@ When talking about \textit{code readability classification} we need to clarify w
 	
 	% More heuristics
 	The modifications described in this work (\Cref{REDEC}) are part of the possible modifications that can be developed. Additional modifications could further improve the diversity of poorly readable code. This could increase the number of internal features that a model can learn, which in turn could increase the accuracy of the model.
+	
+	% Rename
+	REDEC supports two ways of renaming identifiers: an iterative method and the use of Code2Vec for method names. In the iterative approach, the names are shortened in many cases (e.g. \textit{v0} or \textit{m0}). We remove the meaning encoded in the name of the identifier, which should make it less readable. However, short method names tend to increase readability which contradicts our objective. The Code2Vec approach only supports method names and is therefore very limited. Since both approaches have drawbacks, this suggests that another way of determining the target identifier must be developed.
+	
+	% Implications for software development (costs)
+	% TODO: Here or chapter before?
+	With our new dataset, we generated a large amount of data to train readability deep learning classifiers. When integrated into an IDE, this gives developers feedback on the readability of their code~\cite{choi2020metric}, allowing them to measure and improve the readability of their code. The code becomes more readable, which enables efficient collaboration, comprehension and maintenance~\cite{posnett2011simpler, aggarwal2002integrated}.
+	In addition, readability is the most time-consuming act in software maintenance and consumes over 70~\% of the total lifecycle cost of a software product~\cite{buse2009learning, deimel1985uses, rugaber2000use, boehm2001defect}. Our dataset can contribute to reducing software costs in the future.
 	
 	% Summary
 	In summary, there are many opportunities to further investigate and thus most likely improve the classification of code readability. Our new dataset and the generation approach serve as a foundation for this.
