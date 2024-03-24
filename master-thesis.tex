@@ -2287,6 +2287,8 @@ When talking about \textit{code readability classification} we need to clarify w
 %	
 	
 \chapter{Evaluation} \label{Evaluation}
+
+\section{Research Questions}
 	We tested the mined-and-modified dataset in two ways. We conducted a user study and evaluated the impact of using the dataset for the Towards model of \citeauthor{mi2022towards}~\cite{mi2022towards}. In detail, we answer the following questions with both experiments:
 		
 %	% User study
@@ -2320,13 +2322,15 @@ When talking about \textit{code readability classification} we need to clarify w
 	\begin{resq} \label[rq]{new-data} \textbf{(new-data)} To what extent can the new data improve existing code readability classification models?\end{resq} 
 	Previous research shows that Deep Learning models get better the more training data is available~\cite{hestness2017deep}. This applies under the assumption that the quality of the data is the same or at least similar. We want to check if the quality of our new data is sufficient for improving the deep learning-based readability classifier of \citeauthor{mi2022towards}~\cite{mi2022towards}. We train their proposed model with combinations of the merged and the mined-and-modified dataset and compare the results.
 
-\section{Survey} \label{Survey}
-	This section is divided into two parts: The pilot survey, which was used to improve the main survey pre-launch, and the main survey, which was used to answer our research questions and to craft our dataset.
+%\section{Survey} \label{Survey}
+%	This section is divided into two parts: The pilot survey, which was used to improve the main survey pre-launch, and the main survey, which was used to answer our research questions and to craft our dataset.
 	
-\subsection{Pilot Survey} \label{Pilot Survey}
+\section{Pilot Survey} \label{Pilot Survey}
+	In the following, we describe our setup, possible threats to validity and the results of the pilot survey.
 	
 	% Experimental setup
-	\textbf{1. Experimental setup:}
+\subsection{Experimental setup}
+%	\textbf{1. Experimental setup:}
 	We manually sampled 20 code snippets across all strata but mainly from Stratum 1 and Stratum 3 due to reasons mentioned in \Cref{Construction of Questionnaires}. From January 6 to 14, 2024 ten people took part in the survey. Eight of them were students and two of them worked in the industry. All of them have computer science knowledge. They were not paid for participating in the survey. Additionally to rating 20 code snippets, the participants were also asked to answer further questions to provide feedback about the survey:
 	
 	% Questions
@@ -2353,18 +2357,19 @@ When talking about \textit{code readability classification} we need to clarify w
 %	\end{itemize}
 	
 	% Threats
-	\textbf{2. Threats to Validity:}
+\subsection{Threats to Validity}
+%	\textbf{2. Threats to Validity:}
 	The threats regarding the pilot survey are as follows:
 	
-	\textit{External Validity:}
+	\textbf{External Validity:}
 	We did not sample the Java snippets for rating in a specific or automated way, so there is a selection bias. Participants coming from a private environment further exacerbate this bias. Due to both, the results do not generalize.
 	
-	\textit{Internal Validity:}	
+	\textbf{Internal Validity:}	
 	Ten people took part in the pilot survey. Due to the small number of participants, it is not possible to draw reliable conclusions about the strata or \rdh configurations. 	
 	However, the results are sufficient to provide an indication.
 	%	We adjusted the survey instructions, explanations, and questions after the conduction of the survey, which might influence the ratings of the participants.
 	
-	\textit{Construct Validity:}
+	\textbf{Construct Validity:}
 	%	We adjusted the survey instructions, explanations, and questions after the conduction of the survey, which might influence the ratings of the participants.
 	%	We do not define readability for the raters, as there are various definitions which slightly defer from each other (\Cref{Code Readability}). Instead we intuitive
 	The accuracy of the participants' ratings for the code snippets is uncertain. We see no incentive for participants to intentionally provide incorrect ratings. We come to the conclusion to measure readability.
@@ -2373,10 +2378,11 @@ When talking about \textit{code readability classification} we need to clarify w
 	The intention of the pilot survey was rather to prepare for the main survey.
 	
 	% Results
-	\textbf{3. Results:}
+\subsection{Results}
+%	\textbf{3. Results:}
 	We analyze the results of the pilot survey regarding three aspects: the time it took to complete the survey, the feedback from the participants, and the ratings of the selected code snippets.
 	
-	\textit{Completion Time:} 
+	\textbf{Completion Time:} 
 	\autoref{fig:survey_times} shows the time it took the participants to complete the pilot survey and thus to rate 20 code snippets according to their readability.
 	The fastest participant completed the survey in 7 minutes and 35 seconds, while the slowest participant took 18 minutes. 
 	Both, the average value and the mean value, are around 12 minutes. The boxplot (\autoref{fig:survey_times}) shows that the times are close together and there are no outliers in the time taken.
@@ -2409,7 +2415,7 @@ When talking about \textit{code readability classification} we need to clarify w
 		\label{fig:survey_times}
 	\end{figure}
 		
-	\textit{Participant Feedback:}
+	\textbf{Participant Feedback:}
 	All feedback from the participants regarding the pilot survey is listed in \Cref{appendix:pilot-survey-feedback}.
 	Most of the problems that occurred were due to the survey tool (e.g.: \textquote{I also felt that I should use the drop-down menu at the top left.}).
 	%	Zusammengefasst:
@@ -2519,16 +2525,16 @@ When talking about \textit{code readability classification} we need to clarify w
 		\end{tabular}
 	\end{table}
 	
-	\textit{Ratings:}
+	\textbf{Ratings:}
 	We adjusted the \rdh configurations. The rating for the last places (\autoref{tab:pilot_survey_results}), such as \textit{1.2} for \textit{Stratum 1 - all}, suggest that these code snippets were particularly poorly readable. 
 	Thus, we re-examined the \rdh configurations and found that some of them are over-configured. This not only affects their readability but also makes them look as if they were not written by human hands. Therefore, we reduced the probabilities for these configurations.
 	
 	After adjusting the \rdh configurations and the survey tool according to the feedback, we launched the Prolific survey.
 
-\subsection{Prolific Survey} \label{Prolific Survey}
+\section{Prolific Survey} \label{Prolific Survey}
 	In this section, we summarize the results of the main survey conducted via Prolific\curl{https://app.prolific.com/}{2024-02-21}.
 		
-\textbf{1. Experimental setup:}
+\subsection{Experimental setup}
 	We conducted the survey using Tien Duc Nguyen's Code Annotation Tool (\autoref{fig:survey_tool}) along with the platform Prolific for the recruitment and payment of participants.
 	The survey was conducted between January 31 and February 7, 2024. A total of 221 participants took part. 11 participants answered each of the 20 questionnaires (similar to the survey of \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}). In one survey, we assigned one more participant by mistake. We include his results in the evaluation. We estimated the time to complete one questionnaire at 10 minutes (\Cref{Pilot Survey}). Prolific set the maximum time allowed at 44 minutes. Participants who took longer received a time-out.
 	%	According to an online calculator\footnote{https://www.calculator.net/sample-size-calculator.html} 
@@ -2585,26 +2591,26 @@ When talking about \textit{code readability classification} we need to clarify w
 	% Questionnaire Attributes
 	The survey neither contained demographic questions nor filter questions. Besides the readability questions, we asked each participant the following dependent question: \textquote{How would you describe your familiarity with Java?}. The participant could answer within a five-point Likert scale: expert (5), advanced (4), intermediate (3), beginner (2), novice (1).
 	
-\textbf{2. Threats to Validity:}
+\subsection{Threats to Validity}
 	We identified the following threats:
 	
-	\textit{External Validity:}
+	\textbf{External Validity:}
 	Due to our questionnaire construction approach (\Cref{Construction of Questionnaires}), we have a larger proportion of code snippets from Stratum 1 and Stratum 3 (\Cref{Construction of Questionnaires}). While we argue that we avoided spending resources on labeling data that is likely not different from the original methods or rather uninteresting, this might also introduce statistical errors to our survey results.
 	However, stratified sampling is well-defined and proven in practice. The approach ensures that our sample represents all parts of the population under investigation.
 	Ensuring a well-defined target population is critical to the survey's quality.
 	To mitigate the threat of an inadequately defined target population, we define it explicitly.
 	
-	\textit{Internal Validity:}	
+	\textbf{Internal Validity:}	
 	To prevent concluding from an insufficient number of responses, we scale our survey to an appropriate size. This guarantees that we collect a substantial volume of responses, allowing for robust statistical analysis.
 	Survey participants are paid for taking part and completing a questionnaire. However, they receive the same amount of money regardless of their speed. Therefore, they receive more pay per minute if they hurry. This could have an impact on the accuracy with which they scored the code snippets. A comparison between the time required by a participant for a pilot questionnaire and a Prolific questionnaire (\autoref{fig:survey_times}) supports this argument. Especially the ratings of participants requiring less than 3 minutes (\autoref{fig:survey_time_less_than_180}) to complete a questionnaire could have a negative impact on validity. 
 	
-	\textit{Construct Validity:}
+	\textbf{Construct Validity:}
 	The accuracy of the participants' ratings for the code snippets is uncertain. Apart from the already mentioned aspect that participants might hurry, we see no incentive for participants to deliberately give false ratings. We come to the conclusion to measure readability.
 	
-\textbf{3. Results:}
+\subsection{Results}
 	We analyze the results of the Prolific survey regarding three aspects: the time it took to complete the survey, the participants' familiarity with Java, and the ratings about the \rdh configurations.
 
-	\textit{Completion time:}
+	\textbf{Completion time:}
 	You can find an overview of the time that the participants required in \autoref{fig:survey_times} and \autoref{fig:survey_time_histogramm}.
 	The fastest participant completed the survey in 1 minute and 39 seconds, while the slowest participant needed about 38 minutes. 
 	The average time is 9 minutes and 45 seconds. The median time is 8 minutes and 30 seconds. The boxplot (\autoref{fig:survey_times}) shows that the completion times are not as close together as they are in the pilot survey. There are a couple of outliers.
@@ -2629,7 +2635,7 @@ When talking about \textit{code readability classification} we need to clarify w
 		\label{fig:survey_time_prolific}
 	\end{figure}
 	
-	\textit{Familiarity with Java:}
+	\textbf{Familiarity with Java:}
 %	The participants' familiarity with Java is shown in \autoref{fig:survey_Java_familiarity_pie}. According to their own estimation, 44.8~\% of the participants are experts with Java. Another 44.8~\% of the participants are either advanced or intermediate. This high level of familiarity with Java suggests that the quality of the evaluations received is also high.
 	\autoref{fig:survey_Java_familiarity_pie} shows the participants' familiarity with Java. According to their estimation, most participants (43.3~\%) have intermediate Java knowledge. 
 	29.0~\% of the participants stated that they are either advanced or experts in Java. This high level of familiarity with Java suggests that the quality of the evaluations received is high.
@@ -2641,7 +2647,7 @@ When talking about \textit{code readability classification} we need to clarify w
 		\label{fig:survey_Java_familiarity_pie}
 	\end{figure}
 		
-	\textit{Ratings:}
+	\textbf{Ratings:}
 	You can find the ratings for each \rdh configuration for all strata in \autoref{fig:survey_time_all}. We added the ratings of the merged dataset for comparison. \autoref{fig:survey_ratings_violin_all} visualizes the distribution of ratings for each score from 1 to 5. It also shows the mean value and mode of the ratings for each variant. To facilitate comparison with the original methods, the mean value of the ratings of the original methods across all variants is marked with a red dashed line. The original method and the \texttt{just-pretty-print} method are the most frequently rated with a score of 4 and their mean values of 3.69 and 3.67 are comparatively the highest.
 		
 	In line with our expectation, we see that the ratings for \nonet and \texttt{original} only differ by a negligible amount of 0.02. A Mann-Whitney-U-Test shows that the probability, that the difference between \nonet and \texttt{original} is due to random variation, is 92~\%.
@@ -2741,25 +2747,30 @@ When talking about \textit{code readability classification} we need to clarify w
 		All of the 7 configurations but \texttt{rename} decrease readability by a significant extent compared to \nonet. We estimate the readability decrease for a certain probability of a certain type as can be seen in \autoref{fig:survey_ratings_bar_all}. We reject the null hypothesis and conclude that the poorly readable assumption (\Cref{poorly-readable-assumption}) holds.
 	\end{summary}
 
-% TODO: Add "Threats to Validity"?
-\section{Model Training Results} \label{Model training results}
+
+\section{Model Training} \label{Model training results}
+	In the following, we describe our setup and the results of the model training.
+
+\subsection{Experimental Setup}
 	We use the notation \texttt{(train-evaluate)} to describe on which dataset the Towards model~\cite{mi2022towards} is trained and evaluated. 
 %	\textit{mam} stands for our new mined-and-modified dataset. We use 10-fold cross-validation for evaluation.
 	We aim to investigate the following things:
 	
-	\textbf{Model evaluation:}
+	\textbf{1. Model evaluation:}
 	To confirm that our implementation of the model scores similar accuracy as the original one of \citeauthor{mi2022towards}~\cite{mi2022towards}, we train and evaluate the model on the merged dataset (\texttt{merged-merged}).
 	
-	\textbf{Internal evaluation:} 
+	\textbf{2. Internal evaluation:} 
 	To investigate how the model captures the readability aspects of the mined-and-modified (short: \texttt{mam}) dataset, we train and evaluate it on this dataset (\texttt{mam-mam}). We examine how effectively the model captures the differences between the \texttt{original} and \texttt{all7} methods which are modified with \rdh.
 	
-	\textbf{Cross evaluation:} 
+	\textbf{3. Cross evaluation:} 
 	To assess how effective the mined-and-modified dataset is for predicting readability, we train the model on the mined-and-modified dataset and then evaluate its performance on the merged dataset (\texttt{mam-merged}). We train the model on the merged dataset and evaluate it on the merged dataset (merged-merged) and on the mined-and-modified dataset (\texttt{merged-mam}).
 	
-	\textbf{Fine-tuning:} 
-	To assess the accuracy we can score in predicting readability we investigate training on the mined-and-modified dataset and fine-tuning and evaluating on the merged dataset (\texttt{finetune-merged}).		
+	\textbf{4. Fine-tuning:} 
+	To assess the accuracy we can score in predicting readability we investigate training on the mined-and-modified dataset and fine-tuning and evaluating on the merged dataset (\texttt{finetune-merged}).
 	
-	\autoref{tab:dataset_performance} specifies on which dataset we train (\texttt{Train}) and on which dataset we evaluate (\texttt{Eval}) the Towards model. The table shows the results for each combination using the following evaluation metrics: Accuracy (\texttt{Acc}), Precision (\texttt{Prec}), Recall (\texttt{Rec}), Area under the Curve (\texttt{AUC}), F1-Score (\texttt{F1}) and the Matthews Correlation Coefficient (\texttt{MCC})~\cite{chicco2020advantages}. We delve into important intricacies below.
+\subsection{Results}		
+	\autoref{tab:dataset_performance} specifies on which dataset we train (\texttt{Train}) and on which dataset we evaluate (\texttt{Eval}) the Towards model. The table shows the results for each combination using the following evaluation metrics: Accuracy (\texttt{Acc}), Precision (\texttt{Prec}), Recall (\texttt{Rec}), Area under the Curve (\texttt{AUC}), F1-Score (\texttt{F1}) and the Matthews Correlation Coefficient (\texttt{MCC})~\cite{chicco2020advantages}. 
+%	We delve into important intricacies below.
 		
 	\begin{table}[tb]
 		\centering
@@ -2786,16 +2797,16 @@ When talking about \textit{code readability classification} we need to clarify w
 		\end{tabular}
 	\end{table}
 
-	\textbf{Model evaluation:}
+	\textbf{1. Model evaluation:}
 	We train and evaluate the model on the merged dataset (\texttt{merged-merged}) and obtain an accuracy of 84.7~\% . This is similar to the results of \citeauthor{mi2022towards} (84.7~\% vs 85.3~\%). The deviation of 0.6~\% accuracy might be due to the randomness of the splits for 10-fold cross-validation. We can confirm the results of the paper~\cite{mi2022towards}.
 	
-	\textbf{Internal evaluation:}
+	\textbf{2. Internal evaluation:}
 	We train and evaluate the model on the mined-and-modified dataset (\texttt{mam-mam}) and obtain an average accuracy of 92.2~\%.
 	The Towards model architecture is well suited for learning the structure of the mined-and-modified dataset. It learns the differences between \texttt{original} and \texttt{all7} methods and learns how to predict whether \rdh modified a code snippet. 
 
-	\textbf{Cross evaluation:}
+	\textbf{3. Cross evaluation:}
 	We train the model on the mined-and-modified dataset and evaluate it on the merged dataset (\texttt{mam-merged}) and obtain an accuracy of 61.9~\%. This is 22.8~\% worse than the accuracy we get when we train and evaluate the model on the merged dataset (\texttt{merged-merged}). When we train the model on the merged dataset and evaluate it on the mined-and-modified one (\texttt{merged-mam}), we get an accuracy of 56.8~\%, which is close to the approximate accuracy of 50.0~\% of a random classifier.
-	If the scores for \texttt{mam-merged}, \texttt{merged-merged}, and\texttt{ merged-mam} would be similar, we would conclude that both datasets, the merged and the mined-and-modified one, address readability in general. Since this is not the case and we know for both datasets that they address aspects of readability we conclude that we address different aspects of readability.
+	If the scores for \texttt{mam-merged}, \texttt{merged-merged}, and\texttt{merged-mam} would be similar, we would conclude that both datasets, the merged and the mined-and-modified one, address readability in general. Since this is not the case and we know for both datasets that they address aspects of readability we conclude that we address different aspects of readability.
 	
 	%	Furthermore, the accuracy of mam-merged is 8.1~\% better than merged-mam. 
 	%	This indicates that the mined-and-modified dataset includes aspects of readability that the merged dataset does not have.
@@ -2806,7 +2817,7 @@ When talking about \textit{code readability classification} we need to clarify w
 	%	While the model trained on the mined-and-modified dataset is able to classify readability to a certain degree, the opposite is not the case, as 53.8~\%  is almost a random classifier. This suggests that fine-tuning a model trained on the mined-and-modified dataset using the entire dataset could lead to better results than the original Towards model.
 	
 	\begin{sloppypar}
-	\textbf{Fine-tuning:}
+	\textbf{4. Fine-tuning:}
 	%	We tried to overcome possible limitations by training the model on the merged-and-modified dataset and fine-tune it on the merged dataset.
 	We tried to fine-tune the merged dataset by freezing different layers of the model trained with the mined-and-modified dataset (\texttt{finetune-merged}). During evaluation, we achieved the best results when freezing the input layers as well as the first convolution and pooling layer of all encoders. 
 	However, when evaluated on the merged dataset, the performance is still worse than the merged-merged variant.
