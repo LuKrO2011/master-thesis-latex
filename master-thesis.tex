@@ -808,8 +808,6 @@ cleveref=false,%
 		Lukas Krodinger
 	\end{acknowledgements}
 	
-	\pagebreak
-	
 	\begin{abstract}
 		
 		% Structure:
@@ -910,9 +908,6 @@ cleveref=false,%
 	Our criteria for high code quality are an elevated number of stars and forks, the use of method comments, and compliance with a checkstyle\curl{https://checkstyle.sourceforge.io/}{2024-02-09} specification. For example, a consequence of using checkstyle is that the readability of the code is increased. Therefore it is reasonable to assume that repositories that use checkstyle are more readable than other repositories (\Cref{Dataset Generation Approach}).
 	We select Java files from the repositories that meet our criteria, extract methods from the Java classes in these files, and label them as well readable (\Cref{well-readable-assumption}).
 	
-	As a second step, we modify all selected Java files so that the code is subsequently less readable. For an exemplary result, see \autoref{lst:example-method}.
-	We extract methods from these Java files and label them as poorly readable (\Cref{poorly-readable-assumption}).
-	
 	\begin{listing}[tb]
 		\begin{sublisting}{\linewidth}
 			\begin{minted}[linenos, frame=lines, framesep=2mm]{Java}
@@ -949,6 +944,8 @@ cleveref=false,%
 		\label{lst:example-method}
 	\end{listing}
 	
+	As a second step, we modify all selected Java files so that the code is subsequently less readable. For an exemplary result, see \autoref{lst:example-method}.
+	We extract methods from these Java files and label them as poorly readable (\Cref{poorly-readable-assumption}).
 	After both steps, the result is a new automatically generated dataset for code readability classification, referred to as the mined-and-modified dataset.
 	
 	% Readabililty Decreasing Modifications
@@ -982,8 +979,8 @@ cleveref=false,%
 		\item We succeeded in creating a tool that can automatically decrease the readability of Java class files (\Cref{REDEC}): \rdh.
 		\item We show a representative and resource-effective sample approach since there is an enormous amount of possible combinations to sample methods for a user study (\Cref{Construction of Questionnaires}).
 		\item We demonstrate limitations of the model of \citeauthor{mi2022towards}~\cite{mi2022towards} (\Cref{Readability Classification Model}).
-%		\item We show the effectiveness of our generation approach through a survey (\Cref{Survey}).
-		\item We show through a survey (\Cref{Survey}) that the well readable assumption (\Cref{well-readable-assumption}) and poorly readable assumption (\Cref{poorly-readable-assumption}) hold.
+%		\item We show the effectiveness of our generation approach through a survey (\Cref{Prolific Survey}).
+		\item We show through a survey (\Cref{Prolific Survey}) that the well readable assumption (\Cref{well-readable-assumption}) and poorly readable assumption (\Cref{poorly-readable-assumption}) hold.
 		\item We show that the mined-and-modified dataset can be used for code readability classification models by training and evaluating the model of \citeauthor{mi2022towards}~\cite{mi2022towards} with and without the mined-and-modified dataset (\Cref{Model training results}).
 	\end{itemize}
 	
@@ -991,13 +988,13 @@ cleveref=false,%
 %	The survey confirms both, the well-readable-assumption (\Cref{well-readable-assumption}) and the poorly-readable-assumption (\Cref{poorly-readable-assumption}).
 %	Although our approach for creating a dataset works in principle, we are not able to address the same aspects of code readability as the merged dataset does with the proposed heuristics. Thus, our dataset probably only addresses a partial problem of code readability.
 	
-%	The survey confirms both assumptions (\Cref{well-readable-assumption} and \Cref{poorly-readable-assumption}) (\Cref{Survey}).
+%	The survey confirms both assumptions (\Cref{well-readable-assumption} and \Cref{poorly-readable-assumption}) (\Cref{Prolific Survey}).
 	Our automated approach for creating a readability classification dataset is effective. The mined-and-modified dataset, consisting of \numSamples samples, contains well readable (\Cref{well-readable-assumption}) and the poorly readable (\Cref{poorly-readable-assumption}) methods.
 	We infer from the model training results (\Cref{Model training results}) that the mined-and-modified dataset captures different aspects of code readability as previous datasets~\citeolddataset.
-	Our code is publicly available on GitHub: 
-%	\begin{center}
+	Our code is publicly available on GitHub:
+	\begin{center}
 		\textcolor{blue}{\url{https://github.com/LuKrO2011/master-thesis}}.
-%	\end{center}
+	\end{center}
 			
 \chapter{Background and Related Work} \label{Background and Related Work}
 	In the following sections, we describe the background and related work on code readability and our approach for dataset generation.
@@ -1368,7 +1365,7 @@ When talking about \textit{code readability classification} we need to clarify w
 \section{Stratified Sampling} \label{Stratified Sampling}	
 	In statistical analysis, we encounter situations in which the population can be divided into subgroups. Each group represents a characteristic. Stratified sampling is a technique used to ensure that each of these subgroups is adequately represented in the sample~\cite{thompson2012sampling}.
 	
-	In preparation for the user study (\Cref{Survey}), we used stratified sampling when creating the questionnaires. For this purpose, all code snippets are divided into homogeneous groups, so-called strata, which are based on similarities with regard to certain code properties. Such properties are method length, line length, or average identifier length. Within each stratum, the samples are then randomly selected to ensure that the sample is representative of the population. This method allows us to evaluate our approach to data generation more accurately. We explain the usage of stratified sampling in more detail in \Cref{Construction of Questionnaires}.
+	In preparation for the user study (\Cref{Prolific Survey}), we used stratified sampling when creating the questionnaires. For this purpose, all code snippets are divided into homogeneous groups, so-called strata, which are based on similarities with regard to certain code properties. Such properties are method length, line length, or average identifier length. Within each stratum, the samples are then randomly selected to ensure that the sample is representative of the population. This method allows us to evaluate our approach to data generation more accurately. We explain the usage of stratified sampling in more detail in \Cref{Construction of Questionnaires}.
 	
 \chapter{Mined and Modified Code for Dataset Generation} \label{Mined and Modified Code for Dataset Generation}
 %	In the following subsections we describe our approach.
@@ -1776,7 +1773,7 @@ When talking about \textit{code readability classification} we need to clarify w
 	% Config: 
 	We select the probabilities for the generated code snippets so that they are still realistic, i.e. that they could be written by humans. This is done empirically by examining exemplary outputs of REDEC with different configurations. You can find the resulting configurations in \autoref{tab:rdh_configurations} and an exemplary file for \nonet in \Cref{appendix:rdh-config-file}.
 	\texttt{all7} is the average of the other 7 configurations: The probabilities of the other 7 configurations are added to one configuration and each probability is divided by 7.
-	There is a special case regarding \texttt{removeComment}: \texttt{comments-remove} and \texttt{all7} use \texttt{removeComment} at 100~\% for the user survey (\Cref{Survey}). The reason for this is that a method without comments is realistic. For training and evaluation of the deep-learning model, the probability was set to 10~\% (for both affected configurations, \texttt{all7} and \texttt{removeComment}) to avoid shortcut learning (\Cref{Model training results}).
+	There is a special case regarding \texttt{removeComment}: \texttt{comments-remove} and \texttt{all7} use \texttt{removeComment} at 100~\% for the user survey (\Cref{Prolific Survey}). The reason for this is that a method without comments is realistic. For training and evaluation of the deep-learning model, the probability was set to 10~\% (for both affected configurations, \texttt{all7} and \texttt{removeComment}) to avoid shortcut learning (\Cref{Model training results}).
 	
 	%	\begin{table}[tb]
 		%		\centering
@@ -1918,7 +1915,7 @@ When talking about \textit{code readability classification} we need to clarify w
 	After applying \rdh to the Java files, we extract the methods. We require a method comment for all methods (\Cref{Dataset Generation Approach}). We therefore use \texttt{removeComment} after completing the method extraction.
 	
 \section{Construction of Questionnaires} \label{Construction of Questionnaires}
-	We evaluate the generated dataset and the new approach with a survey (\Cref{Survey}). However, we cannot evaluate all mined-and-modified methods as the original methods consist of \numOriginal samples and there is an infinite number of possible configurations for \rdh that can be applied to each method.
+	We evaluate the generated dataset and the new approach with a survey (\Cref{Prolific Survey}). However, we cannot evaluate all mined-and-modified methods as the original methods consist of \numOriginal samples and there is an infinite number of possible configurations for \rdh that can be applied to each method.
 	Therefore, we apply stratified sampling (\Cref{Stratified Sampling})~\cite{thompson2012sampling}, create specific configurations, and select the methods for our survey based on the resulting strata. You can find an overview of the approach in \autoref{fig:survey_pipeline}.
 	
 	\begin{figure}[tb]
@@ -2858,7 +2855,7 @@ When talking about \textit{code readability classification} we need to clarify w
 	Our expectations are not met. This could be because the Towards model structure is designed for a much smaller dataset and therefore cannot capture all the features of the mined-and-modified dataset while allowing for fine-tuning.
 
 	% Merging existing datasets	
-	When merging existing datasets \citeolddataset into a single dataset (\Cref{Work on Existing Datasets}), we set the readability score of a code snippet as the mean value of all its ratings. As only a limited number of people participated in each survey, this may introduce errors due to statistical deviations.
+	When merging existing datasets into a single dataset (\Cref{Work on Existing Datasets}), we set the readability score of a code snippet as the mean value of all its ratings. As only a limited number of people participated in each survey, this may introduce errors due to statistical deviations.
 	Furthermore, the surveys were conducted under different conditions, e.g. different raters, different numbers of raters per snippet, different rater biases, and different code scopes. When merging the datasets, we do not take these inequalities into account. This could lead to a bias in the merged dataset. However, previous approaches did this similarly.
 	
 	% Mean assignment
@@ -2867,21 +2864,20 @@ When talking about \textit{code readability classification} we need to clarify w
 	This comes with a drawback: The score labels of the methods of the mined-and-modified dataset are estimations and not exact values (\Cref{Dataset Generation Approach}). However, accurate ratings would require human annotators to manually review \numSamples code snippets which is not feasible. In addition, with two-class classification, we need to distinguish between well and poorly readable code, which we can do without exact labels.
 	
 	% Initial configurations
-	We determined the configuration for the REDEC tool empirically~(\Cref{REDEC}). This was necessary because we first have to define configurations in order to obtain results.
-%	We used the pilot survey to get an indication of which configurations should be adjusted, but they are empirically determined.
-	We proved significance for most configurations, but for the \texttt{rename} configuration we suggest to intensify the configuration.
-	
+%	We determined the configuration for the REDEC tool empirically~(\Cref{REDEC}). This was necessary because we first have to define configurations in order to obtain results.
+%	We proved significance for most configurations, but for the \texttt{rename} configuration we suggest to intensify the configuration.
+
 	% Realistic code snippets
-	We tried to choose the configurations for REDEC so that the modified code snippets are realistic, but whether they actually are has not been investigated~(\Cref{REDEC}). One goal was to exceed the classification accuracy with our dataset through fine-tuning, and for this goal it is a secondary aspect that the snippets are realistic. We decided not to ask for realism in our study due to resource limitations. 
+	We tried to choose the configurations for REDEC so that the modified code snippets are realistic, but we did not investigate whether they are~(\Cref{REDEC}). One goal was to exceed the classification accuracy with our dataset through fine-tuning, and for this goal it is a secondary aspect that the snippets are realistic. We decided not to ask for realism in our study due to resource limitations. 
 	If we use the dataset beyond training of a model, we must investigate to what extent our modifications change the realism of code snippets.
 	
 	% Shortcut learning
 	The probabilities for \texttt{removeComments} for the survey and the model training dataset differ (\Cref{Dataset Generation Approach} and \Cref{REDEC}). When conducting the survey, we argued that realistic methods do not require comments. Therefore, we set the probability for \texttt{removeComments} to 100~\%. However, when applying the model training, this led to shortcut learning of whether a method has a comment or not, instead of learning to distinguish based on all applied modifications. Therefore, we adopted \rdh so that \texttt{removeComments} is not applied to the Java files. Instead, we applied it separately after the method extraction with a probability of 10~\%.
-	Thus, the configurations \texttt{commentsRemove} and \texttt{all7} of the survey results (\Cref{Survey}) do not exactly match the configurations of the model training (\Cref{Model training results}).
+	Thus, the configurations \texttt{commentsRemove} and \texttt{all7} of the survey results (\Cref{Prolific Survey}) do not exactly match the configurations of the model training (\Cref{Model training results}).
 	We hardly rely on the survey results to train the model. We argue that this is a rather minor threat.
 	
 	% Other heurisitc shortcuts
-	By modifying code, REDEC introduces certain patterns for poorly readability (\Cref{REDEC}). For example, \texttt{comments-remove} removes a comment. This allows the classifier to decide that a method without a comment is poorly readable. \texttt{rename} introduces the pattern \textit{v/m/f + number}, which the classifier can use to infer poor readability. Patterns from changes that alter line breaks, spaces and tabs are more complex to infer, but we suggest that they are present. One could argue that the individual patterns are shortcuts that the classifier can learn to determine readability. However, combining these patterns with a certain probability requires the model to learn all patterns. We suggest that the model overcomes shortcuts and learns code features instead. These features determine the readability of code, as our survey results showed (\Cref{Prolific Survey}).
+	By modifying code, REDEC introduces certain patterns for poor readability (\Cref{REDEC}). For example, \texttt{comments-remove} removes a comment. This allows the classifier to decide that a method without a comment is poorly readable. Patterns from changes that alter line breaks, spaces and tabs are more complex to infer, but we suggest that they are present. One could argue that the individual patterns are shortcuts that the classifier can learn to determine readability. However, combining these patterns with a certain probability requires the model to learn all patterns. We suggest that the model overcomes shortcuts and learns code features instead. These features determine the readability of code, as our survey results showed (\Cref{Prolific Survey}).
 	
 	% Small merged dataset
 	When comparing the model performance trained on the mined-and-modified and merged dataset, it should be noted that the merged dataset is small~(\Cref{Work on Existing Datasets}). Consequently, comparisons to classifiers trained on the merged dataset may be unreliable.
