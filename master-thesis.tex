@@ -2639,34 +2639,43 @@ When talking about \textit{code readability classification} we need to clarify w
 		\label{fig:survey_time_prolific}
 	\end{figure}
 	
-	\textbf{Familiarity with Java:}
-%	The participants' familiarity with Java is shown in \autoref{fig:survey_Java_familiarity_pie}. According to their own estimation, 44.8~\% of the participants are experts with Java. Another 44.8~\% of the participants are either advanced or intermediate. This high level of familiarity with Java suggests that the quality of the evaluations received is also high.
-	\autoref{fig:survey_Java_familiarity_pie} shows the participants' familiarity with Java. According to their estimation, most participants (43.3~\%) have intermediate Java knowledge. 
-	29.0~\% of the participants stated that they are either advanced or experts in Java. This high level of familiarity with Java suggests that the quality of the evaluations received is high.
-		
 	\begin{figure}[p]
 		\centering
 		\begin{subfigure}{\linewidth}
 			\centering
 			\includegraphics[width=\textwidth]{img/survey_java_familiarity_bar.pdf}
-			\caption{Familiarity of Prolific survey participants with Java.}
+			\caption{Distribution of participants among Java familiarity-groups.}
 			\label{fig:survey_Java_familiarity_pie}
 		\end{subfigure}
 		\hfill
 		\begin{subfigure}{\textwidth}
 			\includegraphics[width=\textwidth]{img/java_knowledge_time.pdf}
-			\caption{Normalized and aggregated deviation from average rating per snippet.}
+			\caption{Time required to complete a questionnaire per familiarity-group.}
 			\label{fig:java_knowledge_time}
 		\end{subfigure}
 		\hfill
 		\begin{subfigure}{\textwidth}
 			\includegraphics[width=\textwidth]{img/java_knowledge_ratings.pdf}
-			\caption{Relative survey ratings for each \rdh configuration and all strata compared to all original methods.}
+			\caption{Normalized and aggregated deviation of average ratings per familiarity-group.}
 			\label{fig:java_knowledge_ratings}
 		\end{subfigure}
-		\caption{Familiarity with Java overall (\Cref{fig:survey_Java_familiarity_pie}), against time required (\Cref{fig:java_knowledge_time}) and against rating deviations (\Cref{fig:java_knowledge_time})}
+		\caption{Familiarity of Prolific survey participants with Java overall (\Cref{fig:survey_Java_familiarity_pie}), against time required (\Cref{fig:java_knowledge_time}) and against rating deviation (\Cref{fig:java_knowledge_time})}
 		\label{fig:java_familiarity}
 	\end{figure}
+
+	\textbf{Familiarity with Java:}
+	\autoref{fig:survey_Java_familiarity_pie} shows the participants' familiarity with Java according to their estimation. The participants are therefore grouped into five familiarity-groups according to their answer options: \texttt{Novice}, \texttt{Beginner}, \texttt{Intermediate}, \texttt{Advanced} and \texttt{Expert}.
+	According to their estimation, most participants (43.3~\%) have intermediate Java knowledge.
+	29.0~\% of the participants stated that they are either advanced or experts in Java. This high level of familiarity with Java suggests that the quality of the evaluations received is high.
+	
+	\autoref{fig:java_knowledge_time} shows the participants' time required of each Java familiarity-group to complete a questionnaire. While the median is similar for all groups, the distribution varies. In the \textit{Novice} group the completion times are most dense, followed by the \textit{Beginner} and the \textit{Expert} group. \textit{Novice} and \textit{Beginner} raters might not fully grasp what the presented code does and therefore be faster in completing the task as they don't go that much into detail. Some of the \textit{Experts} on the other hand might read the given code snippets faster than others and therefore require less time.
+	While there are no outliers for \textit{Novice} and \textit{Beginner} there are outliers for \textit{Intermediate}, \textit{Advanced} and \textit{Expert}. The reasoning is the same.
+	
+	\autoref{fig:java_knowledge_ratings} shows the participants' rating deviations from the mean values of code snippets per Java familiarity-group. The rating deviation is normalized by summarizing the deviations for each rater for each group and then divided by the number of participants within each group. We can see that the deviations of all groups are very similar.
+	We performed a statistical test, one-way ANOVA, and obtained a p-value of $0.40$. This is not smaller than $5\%=0.05$. The deviations are not significant.
+	The similarity indicates that the quality of ratings of all familiarity-groups can be considered as equal. This is the case even though the time requirement distribution is not that equal (\autoref{fig:java_knowledge_time}).
+	
+	By analyzing various aspects of the Java familiarity-groups in \autoref{fig:java_familiarity} we suggest that the overall quality of the evaluations received is high.
 		
 	\textbf{Ratings:}
 	You can find the ratings for each \rdh configuration for all strata in \autoref{fig:survey_time_all}. We added the ratings of the merged dataset for comparison. \autoref{fig:survey_ratings_violin_all} visualizes the distribution of ratings for each score from 1 to 5. It also shows the mean value and mode of the ratings for each variant. To facilitate comparison with the original methods, the mean value of the ratings of the original methods across all variants is marked with a red dashed line. The original method and the \texttt{just-pretty-print} method are the most frequently rated with a score of 4 and their mean values of 3.69 and 3.67 are comparatively the highest.
