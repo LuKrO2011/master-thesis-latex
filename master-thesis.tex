@@ -836,7 +836,7 @@ cleveref=false,%
 		Therefore, a larger labeled dataset could greatly advance the research field of code readability classification.
 		
 		% Main result/approach/method
-		We investigate the using new dataset consisting of \numSamples code snippets with its novel generation approach.
+		We investigate using a new dataset consisting of \numSamples code snippets with its novel generation approach.
 		% Main results	
 		The generation approach involves mining and modifying code snippets from public GitHub repositories. We validate the generated dataset using a survey with 200 participants and by training and evaluating a state-of-the-art code readability classification model both with and without the new dataset.
 		% Context of results
@@ -867,7 +867,7 @@ cleveref=false,%
 	
 	% Dataset generation
 	As a first step, we mine GitHub\curl{https://github.com/}{2024-02-29} repositories with high code quality.
-	Our criteria for high code quality are an elevated number of stars and forks, the use of method comments, and compliance with a checkstyle\curl{https://checkstyle.sourceforge.io/}{2024-02-09} specification. For example, a consequence of using checkstyle is that the readability of the code is increased. Therefore, it is reasonable to assume that  checkstyle repositories are more readable than others (\Cref{Dataset Generation Approach}).
+	Our criteria for high code quality are an elevated number of stars and forks, the use of method comments, and compliance with a checkstyle\curl{https://checkstyle.sourceforge.io/}{2024-02-09} specification. For example, a consequence of using checkstyle is that the formatting of the code is better. Therefore, it is reasonable to assume that  checkstyle repositories are more readable than others (\Cref{Dataset Generation Approach}).
 	We select Java files from the repositories that meet our criteria, extract methods from the Java classes in these files, and label them as well readable (\Cref{well-readable-assumption}).
 	
 	\begin{listing}[tb]
@@ -911,9 +911,9 @@ cleveref=false,%
 	After both steps, the result is a new automatically generated dataset for code readability classification, called the mined-and-modified dataset.
 	
 	% Readability Decreasing Modifications
-	How can we modify code so that it is less readable afterward? We introduce a tool called \RDHa. It uses a collection of heuristics that reduce the readability of Java files. Such heuristics are replacing spaces with newlines or increasing the indentation of a code block by a tab or multiple spaces. Most changes also decrease readability when applied in reverse (like replacing newlines with spaces or decreasing indentation).
+	How can we modify code so that it is less readable afterward? We introduce a tool called \RDHa. It uses a collection of heuristics that reduce the readability of Java files. Such heuristics are replacing spaces with newlines or increasing the indentation of a code block by a tab or multiple spaces. Most modifications also decrease readability when applied in reverse (like replacing newlines with spaces or decreasing indentation).
 	
-	The Java code is syntactically the same before and after applying \rdh. Functionality does not change either. However, if we use various modifications many times, those modifications can lower the readability of source code, as \autoref{lst:example-method} shows.
+	The Java code is syntactically and functionally the same before and after applying \rdh. However, if we use various modifications many times, those modifications can lower the readability of source code, as \autoref{lst:example-method} shows.
 
 	% Assumptions (short)
 	We conducted a user study to validate the assumptions that the mined methods from the selected Java class files are well readable (\Cref{well-readable-assumption}) and, that \rdh can modify the code to be poorly readable (\Cref{poorly-readable-assumption}).
@@ -925,7 +925,7 @@ cleveref=false,%
 	\begin{itemize}
 		\item Although existing datasets~\citeolddataset have different structures, we combine and unify them into one merged dataset (\Cref{Work on Existing Datasets}).
 		\item We reason that \citeauthor{mi2022towards} used only part of the available data for training and evaluating their readability classification model~\cite{mi2022towards} (\Cref{Classification Considerations}).
-		\item We develop an approach for mining well readable Java methods, thereby achieving automated dataset generation for code readability. This approach allows us to introduce the new mined-and-modified dataset (\Cref{Dataset Generation Approach}).
+		\item We develop an approach for mining well readable Java methods, thereby achieving automated dataset generation for code readability. With this approach, we introduce the new mined-and-modified dataset (\Cref{Dataset Generation Approach}).
 		\item We succeeded in creating a tool that can automatically decrease the readability of Java class files (\Cref{REDEC}): \rdh.
 		\item We show a representative and resource-effective sample approach since many possible combinations of sample methods exist for a user study (\Cref{Construction of Questionnaires}).
 		\item We demonstrate limitations of the model of \citeauthor{mi2022towards}~\cite{mi2022towards} (\Cref{Readability Classification Model}).
@@ -933,9 +933,9 @@ cleveref=false,%
 		\item We show that the mined-and-modified dataset can be used for code readability classification models by training and evaluating the model of \citeauthor{mi2022towards}~\cite{mi2022towards} with and without the mined-and-modified dataset (\Cref{Model training results}).
 	\end{itemize}
 	
-	Our automated approach for creating a readability classification dataset is effective. The mined-and-modified dataset, consisting of \numSamples samples, contains well readable (\Cref{well-readable-assumption}) and the poorly readable (\Cref{poorly-readable-assumption}) methods.
-	We infer from the model training results (\Cref{Model training results}) that the mined-and-modified dataset captures different aspects of code readability as previous datasets~\citeolddataset.
-	Our code is publicly available on GitHub:
+	Our automated approach for creating a readability classification dataset is effective. The mined-and-modified dataset, consisting of \numSamples samples, contains well readable and the poorly readable methods.
+	We infer from the model training results that the mined-and-modified dataset captures different aspects of code readability as previous datasets~\citeolddataset.
+	Our code is publicly available:
 	\begin{center}
 		\textcolor{blue}{\url{https://github.com/LuKrO2011/master-thesis}}.
 	\end{center}
@@ -999,8 +999,8 @@ cleveref=false,%
 	
 	\textit{Code readability is} \blockcquote{oliveira2020evaluating}{\textit{what makes a program easier or harder to read and apprehend by developers}}.
 
-	Researchers proposed several metrics and conventional models for assessing code readability with an accuracy of up to 81.8~\%~\citeclassicmodels. In recent years, deep learning-based models achieved an accuracy of up to 88.0~\%~\citedeepmodels on available datasets. 
-	Examining these works more closely in the following, we delve into their intricacies.	
+%	Researchers proposed several metrics and conventional models for assessing code readability with an accuracy of up to 81.8~\%~\citeclassicmodels. In recent years, deep learning-based models achieved an accuracy of up to 88.0~\%~\citedeepmodels on available datasets. 
+%	Examining these works more closely in the following, we delve into their intricacies.	
 	
 \section{Conventional Calculation Approaches} \label{Conventional Calculation Approaches}
 	A first estimation for source code readability was the percentage of comment lines over total code lines~\cite{aggarwal2002integrated}. Then, researchers proposed several more complex metrics and models for assessing code readability~\cite{buse2009learning, posnett2011simpler, dorn2012general, scalabrino2018comprehensive}.
@@ -1010,7 +1010,7 @@ cleveref=false,%
 	\citeauthor{scalabrino2018comprehensive} were able to achieve up to 81.8~\% accuracy in code readability classification using handcrafted features~\cite{scalabrino2018comprehensive}.
 	
 \section{Deep Learning Based Approaches} \label{Deep Learning Based Approaches}
-	Machine learning, especially deep learning, has recently dominated code readability classification. As the quality of the models increased, so did their accuracy (\autoref{tab:rel-acc-scores}).
+	Machine learning, especially deep learning, has recently dominated code readability classification. As the quality of the models increased, so did their accuracy. \autoref{tab:rel-acc-scores} shows an overview of the accuracy scores.
 	
 	\begin{table}[tb]
 		\centering
@@ -1058,15 +1058,15 @@ cleveref=false,%
 \section{Data Augmentation} \label{Data Augmentation}
 
 	% Related work: Existing data
-	Researchers trained all the mentioned models with (parts of) the data from \citeauthor{buse2009learning}~\cite{buse2009learning}, \citeauthor{dorn2012general}~\cite{dorn2012general} and \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}, consisting of a total of \numMerged Java code snippets. They generated the data with surveys. Therefore, they asked developers several questions, including how readable the proposed source code is~\cite{buse2009learning, dorn2012general, scalabrino2018comprehensive}. We refer to the combination of their datasets as \textit{merged} dataset.
+	Researchers trained all mentioned models with (parts of) the data from \citeauthor{buse2009learning}~\cite{buse2009learning}, \citeauthor{dorn2012general}~\cite{dorn2012general} and \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}, consisting of a total of \numMerged Java code snippets. They generated the data with surveys. Therefore, they asked developers several questions, including how readable the proposed source code is~\cite{buse2009learning, dorn2012general, scalabrino2018comprehensive}. We refer to the combination of their datasets as \textit{merged} dataset.
 	
-	Some researchers recognized the problem of needing more data code readability classification for machine learning models.
+	Some researchers recognized the problem of needing more data for code readability classification to train machine learning models.
 					
 	% Related work: Data Augmentation - GAN (87.38\% acc)
 	A recently published paper addresses the challenge of acquiring a larger amount of labeled data using augmentation. The researchers proposed to artificially expand the training set instead of the time-consuming and expensive process of obtaining labels manually. They employ domain-specific transformations, such as manipulating comments, indentations, and names of classes/methods/variables, and explore using Auxiliary Classifier GANs to generate synthetic data. They advance to a classification accuracy of 87.3~\%~\cite{mi2021effectiveness}.
 	% Related work: Data Augmentation - GAN (68.0\% acc)
 	Lately, researchers successfully enhanced data augmentation by incorporating domain-specific data transformation and GANs~\cite{mi2022enhanced}.
-	The results of both show that more data significantly impacts the accuracy of the classification. However, they artificially augment using the \numMerged code snippets of the merged dataset. In addition to that, they base their augmented data on these \numMerged code snippets. Our new mined-and-modified dataset does not have this limitation.
+	The results of both show that more data significantly impacts the accuracy of the classification. However, they artificially augment using the \numMerged code snippets of the merged dataset. Thus, they base their augmented data on these \numMerged code snippets. Our new mined-and-modified dataset does not have this limitation.
 	
 	% Related work: Data Generation - GitHub commits
 	Researchers developed a methodology to identify readability-improving commits, creating a dataset of 122k commits from GitHub's revision history. They used this dataset to identify and suggest readability-improving actions for code snippets automatically. They trained a T5 model to emulate developers' actions in improving code readability, achieving a prediction accuracy between 21~\% and 28~\%. The empirical evaluation shows that 82-91~\% of the dataset commits aim to improve readability, and the model successfully mimics developers in 21~\% of cases~\cite{vitale2023using}.
@@ -1112,7 +1112,7 @@ cleveref=false,%
 
 	% Related work: Bug insertion
 	\citeauthor{pradel2018deepbugs} applied a similar approach to general bug detection using a deep learning classifier. They generate training data by inserting bugs into existing code. This process involves simple program transformations that are likely to introduce incorrect code. They train a classifier to distinguish between correct and incorrect code~\cite{pradel2018deepbugs}.
-	\citeauthor{yasunaga2020graph} did convert working programs into broken ones. They pre-trained models on the automatically generated dataset before fine-tuning them using a manually labeled one~\cite{yasunaga2020graph}. We also use the idea of pre-training and fine-tuning. 
+	\citeauthor{yasunaga2020graph} did similarly convert working programs into broken ones. They pre-trained models on the automatically generated dataset before fine-tuning them using a manually labeled one~\cite{yasunaga2020graph}. We also use the idea of pre-training and fine-tuning. 
 	\citeauthor{allamanis2021self} has further improved this approach by generating the dataset as a by-product of co-training two models: One model is a detector that learns to detect and repair bugs in the code. The second model is a selector that learns to create buggy code that is hard to detect~\cite{allamanis2021self}.
 		
 	% Related work: \rdh
@@ -1120,20 +1120,20 @@ cleveref=false,%
     In the first step, they inserted formatting violations into the code based on a project-specific format-checking ruleset.
     They then used an LSTM neural network that learned how to undo these insertions. 
 	
-	All of the mentioned approaches have in common that they generate a dataset in an automated way by using the deliberate denigration of source code. Researchers used this approach successfully in vulnerability detection, error detection, and code formatting. We are the first to apply it to code readability classification.
+	All of the mentioned approaches have in common that they generate a dataset in an automated way by using the deliberate denigration of source code. Researchers used this approach successfully in vulnerability detection, error detection, and code formatting. We apply it to code readability classification.
 	
 \section{Abstract Syntax Tree} \label{Abstract Syntax Tree}
 	When decreasing the readability of code (\Cref{REDEC}), we make use of the Abstract Syntax Tree (AST).
-	An AST is a hierarchical structure representing the syntactic structure of source code. It is composed of nodes and edges. It is composed of nodes and edges. Each node represents a language construct, such as expressions, statements, or declarations, while edges denote the relationships between the nodes.
+	An AST is a hierarchical structure representing the syntactic structure of source code. It is composed of nodes and edges. Each node represents a language construct, such as expressions, statements, or declarations, while edges denote the relationships between the nodes.
 		
 	An AST is an abstraction that removes specific syntactic details, focusing on the relationships between nodes. ASTs are widely used in compilers, static analysis tools, and refactoring engines to perform tasks such as semantic analysis, optimization, and code transformation~\cite{miller2010abstract}. The latter is our use case.
 	
 	We transform source code into the AST, modify the AST (\Cref{tab:rdh-characteristics}), and then transform the AST back into the code representation. We do this conversion back with a so-called Pretty Printer. Compared to performing the modifications on the code, this has certain advantages, which are further detailed in \Cref{REDEC}.
 	
 \section{Stratified Sampling} \label{Stratified Sampling}	
-	In statistical analysis, we encounter situations where we can divide the population into subgroups. Each group represents a characteristic. Stratified sampling is a technique used to ensure that each of these subgroups is adequately represented in the sample~\cite{thompson2012sampling}.
+	In statistical analysis, we encounter situations where we can divide the population into subgroups. Each group represents a characteristic. Stratified sampling is a technique used to ensure that each of these subgroups is adequately represented in a sample, for example, for survey conduction~\cite{thompson2012sampling}.
 	
-	We used stratified sampling when creating the questionnaires to prepare for the user study (\Cref{Prolific Survey}). For this purpose, we divide all code snippets into homogeneous groups, so-called strata, which are based on similarities in specific code properties. Such properties are method length, line length, or average identifier length. Within each stratum, we select the samples randomly to ensure that the sample is representative of the population. This method allows us to evaluate our approach to data generation more accurately. We explain the usage of stratified sampling in more detail in \Cref{Construction of Questionnaires}.
+	We used stratified sampling when creating the questionnaires to prepare for a user study (\Cref{Prolific Survey}). For this purpose, we divide all code snippets into homogeneous groups, so-called strata, which are based on similarities in specific code properties. Such properties are method length, line length, or average identifier length. Within each stratum, we select the samples randomly to ensure that the sample is representative of the population. This method allows us to evaluate our approach to data generation more accurately. We explain the usage of stratified sampling in more detail in \Cref{Construction of Questionnaires}.
 	
 \chapter{Mined and Modified Code for Dataset Generation} \label{Mined and Modified Code for Dataset Generation}
 	The following sections describe our approach.
@@ -1147,7 +1147,7 @@ cleveref=false,%
 \section{Classification Considerations} \label{Classification Considerations}
 	It is state of the art to perform a binary classification into well readable and poorly readable code~\cite{mi2018inception, mi2018improving, sharma2020egan, mi2022towards, mi2022rank}. 
 	
-	However, code readability classification is not a binary classification task per se. \citeauthor{mi2023graph} introduced a third, neutral class to address this problem~\cite{mi2023graph}. 
+	Code readability classification is not a binary classification task per se. \citeauthor{mi2023graph} introduced a third, neutral class to address this problem~\cite{mi2023graph}. 
     When rating code snippets, previous studies used a Likert scale~\cite{likert1932technique} from 1 (very unreadable) to 5 (very readable)~\citeolddataset. 
     While the amount of classes varies, one can encode the data internally as a single-value representation between 0 and 1, where a higher value means higher readability. The model output is well readable if the value after the last layer is above 0.5 and poorly readable otherwise.
 	
@@ -1157,13 +1157,13 @@ cleveref=false,%
 	
 	They reduce the available data from 421 to 210 Java code snippets. Note that the small amount of available data is a bottleneck in readability classification. So this is a considerable loss.
 	
-	They evaluated their model using those 210 snippets which corresponds to 50~\% of the available data. We suspect that this might be a threat to validity. It could be that the model performs remarkably worse when with evaluating random, unseen data containing moderately readable code snippets.
+	They evaluated their model using those 210 snippets which corresponds to 50~\% of the available data. We suspect that this might be a threat to validity. It could be that the model performs remarkably worse when evaluated with random, unseen data containing moderately readable code snippets.
 	
-	However, we continue to use the binary classification approach and to evaluate using the 210 code snippets to make our results comparable with the results of \citeauthor{mi2022towards}~\cite{mi2022towards}.
+	We continue to use the binary classification approach and, for evaluation, the 210 code snippets to make our results comparable with the results of \citeauthor{mi2022towards}~\cite{mi2022towards}.
 	
 \section{Dataset Generation Approach} \label{Dataset Generation Approach}
 	We refer to the dataset generated by our approach as the \textit{mined-and-modified} dataset.
-	Since we extract methods from code, \textit{code snippets} and \textit{methods} are synonyms for our mine-and-modify approach. This does not apply to the merged dataset, as a code snippet is not necessarily an entire method.
+	Since we extract methods from code, \textit{code snippets} and \textit{methods} are synonyms for our mine-and-modify approach. For the merged dataset, a code snippet is not necessarily an entire method.
 
 	In contrast to previous datasets for readability classification, we generate our dataset using an automated approach. The aim is to mine and modify code from GitHub to obtain both, well readable and poorly readable methods. This approach is novel to the best of our knowledge. 
 	
@@ -1181,7 +1181,7 @@ cleveref=false,%
 	Additionally, we delete repositories whose language is not Java and those lacking a minimum of 20 stars and forks.
 	We sort the remaining repositories by their star and fork count (equally weighted). Then we clone the 100 best and check out their main branch.
 	
-	We run checkstyle using the project's checkstyle configuration to obtain all Java class files that pass that test. For this we use a tool from Maximilian Jungwirth\curl{https://github.com/sphrilix/styler2.0}{2024-03-21} which is based on \textit{Styler}\curl{https://github.com/ASSERT-KTH/styler}{2024-03-11}~\cite{loriot2022styler}.
+	We run checkstyle using the project's checkstyle configuration to obtain all Java class files that pass that test. For this we use a tool from Maximilian Jungwirth\curl{https://github.com/sphrilix/styler2.0}{2024-03-21} which is based on Styler\curl{https://github.com/ASSERT-KTH/styler}{2024-03-11}~\cite{loriot2022styler}.
 	From the Java class files that passed checkstyle, we extract all methods that have a comment of any kind at the beginning of the method. This results in \numOriginal methods, which we assume to be well readable.
 	
 	We generate poorly readable code from the well readable one. We use the proposed \rdh tool (\Cref{REDEC}) to do this. We extract all methods starting with a comment.
@@ -1335,6 +1335,8 @@ cleveref=false,%
 	% What is available
 	We can use various modifications between the two steps and during pretty-printing. You can find a description of each modification in \autoref{tab:rdh-description} and examples of the modifications in \autoref{lst:java-method} and \autoref{lst:java-class-file}.
 	
+	\pagebreak
+	
 	In \autoref{tab:rdh-description} tab \textit{indentation} refers to the process of adding a tab ($\backslash t$) while \textit{outdentation} refers to the opposite, namely removing a tab ($\backslash t$). 
 	For example:
 	\begin{enumerate}
@@ -1352,7 +1354,7 @@ cleveref=false,%
 	
 	\begin{table}[tb]
 		\centering
-		\caption{Available \RDMs along with their execution type (on AST or Code), their configuration type (an array of probabilities or a single one), and whether they are included in the final dataset. \Cref{appendix:rdh-config-file} for a concrete configuration example.}
+		\caption{Available \RDMs along with their execution type (on AST or Code), their configuration type (an array of probabilities or a single one), and whether they are included in the final dataset. See \Cref{appendix:rdh-config-file} for a concrete configuration example.}
 		\label{tab:rdh-characteristics}
 		\begin{tabular}{llllc}
 			\toprule
@@ -1464,23 +1466,23 @@ cleveref=false,%
     The matrix contains the similarity between all calculated vector pairs based on the cosine of the angle between the vectors. The distance between multiple vectors is called the cosine distance.
     Finally, we cluster the methods into an arbitrary amount of strata using the fastcluster implementation~\cite{mullner2013fastcluster} of Ward's hierarchical clustering.
 	
-	In each clustering step $x$, the two strata with the smallest cosine distance between their feature vectors are merged into one. This distance is the merged distance of the step, $MD_x$.
-    For further investigation, we also calculate the difference between the merge distance and the merged distance of the previous step $x-1$:
+	In each clustering step $x$, the two strata with the smallest cosine distance between their feature vectors are merged into one. This distance is the merge distance of the step, $MD_x$.
+    For further investigation, we also calculate the difference between the merge distance and the merge distance of the previous step $x-1$:
     \begin{center}
         $\text{Difference to previous} = MD_x - MD_{x-1}$
     \end{center}
     For each step, you can find the merge distance and the difference to the previous step in \autoref{fig:strata_merge_distances}.
 	
-	The graph shows that a strata size of four makes the most sense: the merge distance of five to four is small, so we should still perform this merge, but the merge distance of four to three is large, so it is better not to perform this merge.
-    In general, other layer sizes are also suitable where the merge distance to the respective step is small and to the next step is large. The \textit{difference to previous} graph (\autoref{fig:strata_merge_distances}) depicts those points as minima. Therefore, for example, six or eight are also suitable.
-    Of these suitable sizes, a strata size of four is the last option with a small merge distance before the number of strata becomes too small.
-    We, therefore, opted for four strata.
+	The graph shows that a strata size of four makes the most sense: the merge distance of 5 to 4 is small, so we should still perform this merge, but the merge distance of 4 to 3 is large, so it is better not to perform this merge.
+    In general, other layer sizes are also suitable where the merge distance to the respective step is small and to the next step is large. The \textit{difference to previous} graph (\autoref{fig:strata_merge_distances}) depicts those points as minima. Therefore, for example, 6 or 8 are also suitable.
+    Of these suitable sizes, a strata size of 4 is the last option with a small merge distance before the number of strata becomes too small.
+    We opted for 4 strata.
 	
-	We identify the type of methods within each of the four strata as described in \autoref{tab:strata_info}. We also add the number of methods within each stratum. 
-    Stratum 0 contains simple methods, such as Getters and Setters. Stratum 1 consists of the most complex methods across all strata. 
-    Stratum 2 comprises methods containing numeric values with unexplained meanings, commonly called magic numbers. Compared to the other strata, Stratum 2 has a smaller scope of 78 methods. 
-    Stratum 3 contains methods of medium complexity that exceed the simplicity of the Getters and Setters in Stratum 0 but do not come close to the complexity of the methods in Stratum 1. 
-    Overall, we split the methods according to their complexity, ranging from simple (Stratum 0) to medium (Stratum 3) to complex (Stratum 1), while Stratum 2 is a by-product.
+	We identify the type of methods within each of the 4 strata as described in \autoref{tab:strata_info}. We also add the number of methods within each stratum. 
+    Stratum~0 contains simple methods, such as Getters and Setters. Stratum~1 consists of the most complex methods across all strata. 
+    Stratum~2 comprises methods containing numeric values with unexplained meanings, commonly called magic numbers. Compared to the other strata, Stratum~2 has a smaller scope of 78 methods. 
+    Stratum~3 contains methods of medium complexity that exceed the simplicity of the Getters and Setters in Stratum~0 but do not come close to the complexity of the methods in Stratum 1. 
+    Overall, we split the methods according to their complexity, ranging from simple (Stratum~0) to medium (Stratum~3) to complex (Stratum~1), while Stratum~2 is a by-product.
 	
 	\begin{figure}[tb]
 		\centering
@@ -1490,7 +1492,7 @@ cleveref=false,%
 	\end{figure}
 	
 	\textbf{Configuration selection:} The next step is to find realistic configurations for the \rdh tool. We select the first configurations by manually checking individual outputs of \rdh. Then, we conduct a pilot study and adjust the configurations based on the feedback.
-    \autoref{tab:rdh_configurations} shows the final nine configurations. Together with the original methods, this results in 10 groups.
+    \autoref{tab:rdh_configurations} shows the final 9 configurations. Together with the original methods, this results in 10 groups.
 	
 	\begin{table}[tb]
 		\centering
@@ -1511,10 +1513,10 @@ cleveref=false,%
 		\end{tabular}
 	\end{table}
 	
-	\textbf{Survey crafting:} Finally, we craft the questionnaires from the strata. We decided to provide all ten configurations for each original method to compare the original methods with their \rdh variants. We have a survey capacity of 400 code snippets (\Cref{Prolific Survey}). Therefore, the capacity for each \rdh variant is $400/10 = 40$ code snippets. We select 40 original code snippets and add all their \rdh variants.
+	\textbf{Survey crafting:} Finally, we craft the questionnaires from the strata. We decided to provide all 10 configurations for each original method to compare the original methods with their \rdh variants. We have a survey capacity of 400 code snippets (\Cref{Prolific Survey}). Therefore, the capacity for each \rdh variant is $400/10 = 40$ code snippets. We select 40 original code snippets and add all their \rdh variants.
     We opt for a random sample within the strata. However, we distribute the 40 snippets across the strata as shown in \Cref{tab:strata_info}:
     We sample 4 methods each from Stratum~0 and Stratum~2 and 16 from Stratum~1 and Stratum~3.
-    We chose this approach because of the relatively high frequency of methods that do not differ from their original methods in Stratum 0 and Stratum 2 (\autoref{fig:sampling_not_different_overall}). Additionally, simple methods are rather uninteresting for the classification of readability, as they can be generated (e.g., by IDEs) and usually follow a straightforward pattern.
+    We chose this approach because of the relatively high frequency of methods that do not differ from their original methods in Stratum~0 and Stratum~2 (\autoref{fig:sampling_not_different_overall}). Additionally, simple methods are rather uninteresting for the classification of readability, as they can be generated (e.g., by IDEs) and usually follow a straightforward pattern.
 	
 	\begin{figure}[tb]
 		\centering
@@ -1527,15 +1529,15 @@ cleveref=false,%
 		
     Once we collected all 400 methods, we distributed them across the 20 questionnaires, each with 20 methods. To avoid manipulating the raters, we decided that a variant of each method must appear only once in each questionnaire. For example, if the original method is in one questionnaire, the \texttt{removeComment} variant (or another variant of the same method) must not be included in the same questionnaire.
 		
-	For this purpose, we create four permutation matrices with ten snippets each. We chose the number ten because it is possible to distribute ten snippets, each with ten variants, across at least ten survey questionnaires without violating our condition. Combining two ten-permutation matrices, we create ten survey questionnaires with 20 code snippets each. This approach implies that each questionnaire contains each kind of variant exactly twice. We obtain the desired distribution of 20 questionnaires with 20 methods each by doing this twice. Our condition applies: Each questionnaire has only one variant of the same method.
+	For this purpose, we create four permutation matrices with 10 snippets each. We chose the number 10 because it is possible to distribute ten snippets, each with 10 variants, across at least ten survey questionnaires without violating our condition. Combining two 10-permutation matrices, we create 10 survey questionnaires with 20 code snippets each. This approach implies that each questionnaire contains each kind of variant exactly twice. We obtain the desired distribution of 20 questionnaires with 20 methods each by doing this twice. Our condition applies: Each questionnaire has only one variant of the same method.
 		
-	Finally, we randomly shuffle the methods of each questionnaire within itself. We do this to minimize the impact of the position of a snippet or variant within a survey on the rating.
+	Finally, we randomly shuffle the methods of each questionnaire within itself. We do this to minimize the impact of the position of a snippet or variant within a questionnaire on the rating.
 	
 \section{Readability Classification Model} \label{Readability Classification Model}
 
 	In this section, we describe our approach for investigating whether it is possible to score a higher accuracy as the Towards model of \citeauthor{mi2022towards}~\cite{mi2022towards} in classifying code readability with the mined-and-modified dataset.
     
-	We implemented the model using Keras\curl{https://keras.io/about/}{2024-02-20}. The model uses three encodings: a code representation encoding, a feature extraction encoding, and a code readability classification encoding. You can find an overview of the model architecture in \autoref{fig:model_pipeline}.
+	We implemented the model using Keras\curl{https://keras.io/about/}{2024-02-20}. It uses three encodings: a code representation encoding, a feature extraction encoding, and a code readability classification encoding. \autoref{fig:model_pipeline} shows the model architecture.
 	
 	\begin{figure}[tb]
 		\centering
@@ -1548,7 +1550,9 @@ cleveref=false,%
 	The input for the model is a labeled dataset consisting of code snippets and their readability classes (poorly or well readable). In the code representation layer, the model generates three different code representations from each code snippet: A visual, a semantic, and a structural representation. 
 	
 	% Architecture: Visual embedding
-	For the visual representation, we highlight the syntax of the code. Therefore, \citeauthor{mi2022towards} assigned each type of syntactic element a color (\autoref{tab:model-colors}). Instead of highlighting the words in the respective color, as done by an IDE, the words are replaced with color blocks (\autoref{fig:visual_encoding}). \citeauthor{mi2022towards} used Eclipse\curl{https://www.eclipse.org/}{2024-03-02} to highlight the code snippets and then took screenshots to obtain a RGB Matrix~\cite{mi2022towards}.
+	For the visual representation, we highlight the syntax of the code. Therefore, \citeauthor{mi2022towards} assigned each type of syntactic element a color (\autoref{tab:model-colors}). 
+	
+	Instead of highlighting the words in the respective color, as done by an IDE, the words are replaced with color blocks (\autoref{fig:visual_encoding}). \citeauthor{mi2022towards} used Eclipse\curl{https://www.eclipse.org/}{2024-03-02} to highlight the code snippets and then they took screenshots of the code~\cite{mi2022towards}.
 		
 	\begin{table}[tb]
 		\centering
@@ -1595,7 +1599,9 @@ cleveref=false,%
 	For the structural representation, we split the code into characters and convert each into its ASCII value to obtain an ASCII matrix~\cite{mi2022towards}.
 	
 	% Architecture: Feature extraction (CNNs)
-	The model takes the three representations as input. We perform feature extraction on the RGB matrix and the ASCII matrix using a CNN for each. Each of the CNNs consists of multiple convolution and max pooling layers and a single flatten layer~\cite{mi2022towards}. 
+	The model takes the three representations as input. We perform feature extraction on the RGB matrix and the ASCII matrix using a CNN for each.
+	
+	Each of the CNNs consists of multiple convolution and max pooling layers and a single flatten layer~\cite{mi2022towards}. 
 	
 	% Architecture: Feature extraction Bidirectional LSTM
 	On the token embedding, the model performs feature extraction using a BERT embedding layer, convolution layers, a max pooling layer, and a Bidirectional LSTM (BiLSTM)~\cite{mi2022towards}.
@@ -1608,7 +1614,7 @@ cleveref=false,%
 	In contrast to the publicly available code of \citeauthor{mi2022towards}\curl{https://github.com/swy0601/Readability-Features}{2024-02-20}, our model includes (batch) encoders required for the model to be trained on new data and to perform the prediction task for new code snippets. In addition, our model supports fine-tuning by freezing certain layers and storing intermediate results, such as the encoded dataset. During the evaluation, the model returns the evaluation statistics as a JSON file.
 	
 	% Different: Image encoding
-	We made further adjustments to the image encoding. To automate the generation of visual encodings, we propose a different approach that leads to a similar result. You can find an overview of our approach in \autoref{fig:visual_encoding_pipline}.
+	We made adjustments to the image encoding. To automate the generation of visual encodings, we propose a different approach that leads to a similar result. You can find an overview of our approach in \autoref{fig:visual_encoding_pipline}.
 	
 	\begin{figure}
 		\centering
@@ -1623,7 +1629,7 @@ cleveref=false,%
 	% Problems
 	During implementation, we encountered the following potential problems with the model:
     The token length for the BERT encoding (BERT-base-cased\curl{https://huggingface.co/google-bert/bert-base-cased}{2024-02-20}) used in the model is 100. We investigate the implications of this, and therefore, we first need to examine what a token comprises. In addition to special tokens that mark the beginning \textit{[CLS]} and the end \textit{[SEP]} of the input, each word represents a token. Furthermore, each special character is also represented as a token. 
-    Special characters are slashes~(\textbf{/}), parentheses~(\textbf{(},~\textbf{)},~\textbf{\{},~\textbf{\}}), commas~(\textbf{,}), semicolons~(\textbf{;}), arithmetic signs~(\textbf{=},~\textbf{<},~\textbf{>}) and many more.
+    Special characters are slashes~(/), parentheses~((,~),~\{,~\}), commas~(,), semicolons~(;), arithmetic signs~(=,~<,~>) and many more.
     Java identifiers are split into several tokens according to the upper and lower case conventions. If an identifier is not present in the model's vocabulary, the tokenizer splits it further into sub-identifiers or characters in the vocabulary. 
     For example, in \autoref{lst:print-greeting}, Line 6, the word \textquote{int} is split into the tokens \textquote{in} and \textquote{t} as \textquote{int} is not part of the vocabulary of BERT-base-cased.
 
@@ -1675,7 +1681,7 @@ cleveref=false,%
 	
 	The visual and structural encoders have similar limitations but to a smaller extent. The structural encoder encodes the first 50 lines of each code snippet, and the visual encoder encodes the first 43 lines. While the constraints for these two encoders are long enough to capture most code snippets fully, the semantic encoder is too limited in many cases.
 
-    Although we want to point out these limitations, we retain them to make our results comparable with those of \citeauthor{mi2022towards} and thus enable a fair comparison of the datasets.
+    Although we want to point out these limitations, we retain them to make our results comparable with those of \citeauthor{mi2022towards}.
 
 \chapter{Evaluation} \label{Evaluation}
 
@@ -1713,7 +1719,7 @@ cleveref=false,%
 	In the following section, we describe our setup, possible threats to validity, and the pilot survey results.
 	
 \subsection{Experimental setup}
-	We manually sampled 20 code snippets across all strata but mainly from Stratum 1 and Stratum 3 due to reasons mentioned in \Cref{Construction of Questionnaires}. Ten people participated in the survey from January 6 to 14, 2024. Eight of them were students, and two of them worked in the industry. All of them have computer science knowledge. They were not paid to participate in the survey. Additionally to rating 20 code snippets, the participants were also asked to answer further questions to provide feedback about the survey:
+	We manually sampled 20 code snippets across all strata but mainly from Stratum~1 and Stratum~3 due to reasons mentioned in \Cref{Construction of Questionnaires}. Ten people participated in the survey from January 6 to 14, 2024. Eight of them were students, and two of them worked in the industry. All of them have computer science knowledge. They were not paid to participate in the survey. Additionally to rating 20 code snippets, the participants were also asked to answer further questions to provide feedback about the survey:
 	
 	% Questions
 	\begin{enumerate}
@@ -2193,7 +2199,7 @@ cleveref=false,%
 	\end{itemize}
 	
 
-\chapter{\RDMs Configuration File}\label{appendix:rdh-config-file}
+\chapter{REDEC Configuration File}\label{appendix:rdh-config-file}
 	\begin{listing}[h!]
 		\begin{minted}[linenos, frame=lines, framesep=2mm]{YAML}
 			newline:
