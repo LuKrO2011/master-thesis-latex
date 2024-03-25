@@ -615,6 +615,14 @@ cleveref=false,%
 	year = {2016}
 }
 
+@book{tabachnick2013using,
+	title={Using multivariate statistics},
+	author={Tabachnick, Barbara G and Fidell, Linda S and Ullman, Jodie B},
+	volume={6},
+	year={2013},
+	publisher={pearson Boston, MA}
+}
+
 \end{filecontents}
 \addbibresource{\jobname.bib}
 
@@ -2593,7 +2601,7 @@ When talking about \textit{code readability classification} we need to clarify w
 	\end{itemize}
 	
 	% Questionnaire Attributes
-	The survey neither contained demographic questions nor filter questions. Besides the readability questions, we asked each participant the following dependent question: \textquote{How would you describe your familiarity with Java?}. The participant could answer within a five-point Likert scale: expert (5), advanced (4), intermediate (3), beginner (2), novice (1).
+	The survey neither contained demographic questions nor filter questions. Besides the readability questions, we asked each participant the following dependent question: \textquote{How would you describe your familiarity with Java?}. The participant could answer within a five-point Likert scale: Novice (1), Beginner (2), Intermediate (3), Advanced (4), Expert (5).
 	
 \subsection{Threats to Validity}
 	We identified the following threats:
@@ -2644,19 +2652,19 @@ When talking about \textit{code readability classification} we need to clarify w
 		\begin{subfigure}{\linewidth}
 			\centering
 			\includegraphics[width=\textwidth]{img/survey_java_familiarity_bar.pdf}
-			\caption{Distribution of participants among Java familiarity-groups.}
+			\caption{Distribution of participants among Java familiarity groups.}
 			\label{fig:survey_Java_familiarity_pie}
 		\end{subfigure}
 		\hfill
 		\begin{subfigure}{\textwidth}
 			\includegraphics[width=\textwidth]{img/java_knowledge_time.pdf}
-			\caption{Time required to complete a questionnaire per familiarity-group.}
+			\caption{Time required to complete a questionnaire per familiarity group.}
 			\label{fig:java_knowledge_time}
 		\end{subfigure}
 		\hfill
 		\begin{subfigure}{\textwidth}
 			\includegraphics[width=\textwidth]{img/java_knowledge_ratings.pdf}
-			\caption{Normalized and aggregated deviation of average ratings per familiarity-group.}
+			\caption{Normalized and aggregated deviation of average ratings per familiarity group.}
 			\label{fig:java_knowledge_ratings}
 		\end{subfigure}
 		\caption{Familiarity of Prolific survey participants with Java overall (\Cref{fig:survey_Java_familiarity_pie}), against time required (\Cref{fig:java_knowledge_time}) and against rating deviation (\Cref{fig:java_knowledge_time})}
@@ -2664,18 +2672,21 @@ When talking about \textit{code readability classification} we need to clarify w
 	\end{figure}
 
 	\textbf{Familiarity with Java:}
-	\autoref{fig:survey_Java_familiarity_pie} shows the participants' familiarity with Java according to their estimation. The participants are therefore grouped into five familiarity-groups according to their answer options: \texttt{Novice}, \texttt{Beginner}, \texttt{Intermediate}, \texttt{Advanced} and \texttt{Expert}.
+	In \autoref{fig:java_familiarity} participants are divided into five Java familiarity groups according to their answer options: Novice (1), Beginner (2), Intermediate (3), Advanced (4) and Expert (5).
+	\autoref{fig:survey_Java_familiarity_pie} shows the participants' familiarity with Java according to their estimation.
 	According to their estimation, most participants (43.3~\%) have intermediate Java knowledge.
 	29.0~\% of the participants stated that they are either advanced or experts in Java. This high level of familiarity with Java suggests that the quality of the evaluations received is high.
 	
-	\autoref{fig:java_knowledge_time} shows the participants' time required of each Java familiarity-group to complete a questionnaire. While the median is similar for all groups, the distribution varies. In the \textit{Novice} group the completion times are most dense, followed by the \textit{Beginner} and the \textit{Expert} group. \textit{Novice} and \textit{Beginner} raters might not fully grasp what the presented code does and therefore be faster in completing the task as they don't go that much into detail. Some of the \textit{Experts} on the other hand might read the given code snippets faster than others and therefore require less time.
-	While there are no outliers for \textit{Novice} and \textit{Beginner} there are outliers for \textit{Intermediate}, \textit{Advanced} and \textit{Expert}. The reasoning is the same.
+	\autoref{fig:java_knowledge_time} shows the time it took the participants in each Java knowledge group to complete a questionnaire. While the median is similar for all groups, the distribution varies. The Novices have the shortest completion times, followed by the Beginners and the Experts. While there are no outliers for Novices and Beginners, there are outliers for Intermediates, Advanced and Experts. We assume that some of the Novices and Beginners do not go into as much detail when reading and are therefore faster. Some of the Experts may read the given code snippets faster than others due to their level of knowledge and therefore need less time.
 	
-	\autoref{fig:java_knowledge_ratings} shows the participants' rating deviations from the mean values of code snippets per Java familiarity-group. The rating deviation is normalized by summarizing the deviations for each rater for each group and then divided by the number of participants within each group. We can see that the deviations of all groups are very similar.
-	We performed a statistical test, one-way ANOVA, and obtained a p-value of $0.40$. This is not smaller than $5\%=0.05$. The deviations are not significant.
-	The similarity indicates that the quality of ratings of all familiarity-groups can be considered as equal. This is the case even though the time requirement distribution is not that equal (\autoref{fig:java_knowledge_time}).
+	\autoref{fig:java_knowledge_ratings} shows the rating deviations of the participants from the mean values of the code snippets per Java familiarity group. The rating deviation is grouped by adding up the deviations for each rater for each group and normalized by dividing by the number of participants within each group. We see that the variances of all groups are very similar.
+%	We performed a statistical test, a one-way ANOVA, and obtained a p-value of $0.40$. This is not less than $5~\%=0.05$. The deviations are not significant.
+	We performed an equivalence test using one-way ANOVA~\cite{tabachnick2013using} with an equivalence margin of $0.05$. A difference of $0.05$ is 5~\% of a one-star rating. We obtain a p-value of $0.02$. This is smaller than $5~\%=0.05$. The ratings for the familiarity groups are equivalent to this equivalence margin.
+	We conclude that the quality of the ratings for all familiarity groups is equivalent.
+
+	Even though there are differences regarding outliers and completion time variation (\autoref{fig:java_knowledge_time}) the rating quality of gorups does not differ between the groups (\autoref{fig:java_knowledge_ratings}). Overall, the analysis of the Java familiarity groups in \autoref{fig:java_familiarity} suggests that the overall quality of the ratings received is high. 
 	
-	By analyzing various aspects of the Java familiarity-groups in \autoref{fig:java_familiarity} we suggest that the overall quality of the evaluations received is high.
+	Although there are differences in terms of outliers and difference variance in completion time (\autoref{fig:java_knowledge_time}), the quality of ratings does not differ between the groups (\autoref{fig:java_knowledge_ratings}). Overall, the high degree of familiarity \autoref{fig:survey_Java_familiarity_pie} and the analysis of the groups indicate that the overall quality of the ratings received is high. 
 		
 	\textbf{Ratings:}
 	You can find the ratings for each \rdh configuration for all strata in \autoref{fig:survey_time_all}. We added the ratings of the merged dataset for comparison. \autoref{fig:survey_ratings_violin_all} visualizes the distribution of ratings for each score from 1 to 5. It also shows the mean value and mode of the ratings for each variant. To facilitate comparison with the original methods, the mean value of the ratings of the original methods across all variants is marked with a red dashed line. The original method and the \texttt{just-pretty-print} method are the most frequently rated with a score of 4 and their mean values of 3.69 and 3.67 are comparatively the highest.
