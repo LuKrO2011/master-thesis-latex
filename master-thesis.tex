@@ -2643,12 +2643,29 @@ When talking about \textit{code readability classification} we need to clarify w
 %	The participants' familiarity with Java is shown in \autoref{fig:survey_Java_familiarity_pie}. According to their own estimation, 44.8~\% of the participants are experts with Java. Another 44.8~\% of the participants are either advanced or intermediate. This high level of familiarity with Java suggests that the quality of the evaluations received is also high.
 	\autoref{fig:survey_Java_familiarity_pie} shows the participants' familiarity with Java. According to their estimation, most participants (43.3~\%) have intermediate Java knowledge. 
 	29.0~\% of the participants stated that they are either advanced or experts in Java. This high level of familiarity with Java suggests that the quality of the evaluations received is high.
-	
-	\begin{figure}[tb]
+		
+	\begin{figure}[p]
 		\centering
-		\includegraphics[width=\textwidth]{img/survey_java_familiarity_bar.pdf}
-		\caption{Familiarity of Prolific survey participants with Java.}
-		\label{fig:survey_Java_familiarity_pie}
+		\begin{subfigure}{\linewidth}
+			\centering
+			\includegraphics[width=\textwidth]{img/survey_java_familiarity_bar.pdf}
+			\caption{Familiarity of Prolific survey participants with Java.}
+			\label{fig:survey_Java_familiarity_pie}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}{\textwidth}
+			\includegraphics[width=\textwidth]{img/java_knowledge_time.pdf}
+			\caption{Normalized and aggregated deviation from average rating per snippet.}
+			\label{fig:java_knowledge_time}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}{\textwidth}
+			\includegraphics[width=\textwidth]{img/java_knowledge_ratings.pdf}
+			\caption{Relative survey ratings for each \rdh configuration and all strata compared to all original methods.}
+			\label{fig:java_knowledge_ratings}
+		\end{subfigure}
+		\caption{Familiarity with Java overall (\Cref{fig:survey_Java_familiarity_pie}), against time required (\Cref{fig:java_knowledge_time}) and against rating deviations (\Cref{fig:java_knowledge_time})}
+		\label{fig:java_familiarity}
 	\end{figure}
 		
 	\textbf{Ratings:}
