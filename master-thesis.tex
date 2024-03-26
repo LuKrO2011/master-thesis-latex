@@ -561,7 +561,6 @@ cleveref=false,%
 
 @book{miller2010abstract,
 	author = {Miller, F.P. and Vandome, A.F. and John, M.B.},
-	isbn = {978-613-3-77312-7},
 	publisher = {VDM Publishing},
 	title = {Abstract {Syntax} {Tree}},
 	year = {2010}
@@ -1705,7 +1704,7 @@ cleveref=false,%
 	Therefore, we come up with the following research questions:
     
     \begin{resq} \label[rq]{mined-well} \textbf{(mined-well)} Can automatically mined code be assumed to be well readable?\end{resq} 
-    In our new approach for generating training data, we assume that the code from repositories is well readable under certain conditions (\Cref{well-readable-assumption}). We want to check whether that holds. To answer this question, we use the results of the user study.
+	In our new approach for generating training data, we assume that the code from repositories is well readable under certain conditions (\Cref{well-readable-assumption}). To check whether that holds, we use the user study results.
     
     \begin{resq} \label[rq]{modified-poor} \textbf{(modified-poor)} Can poorly readable code be generated from well readable code?\end{resq} 
     It is not sufficient to have only well readable code to train a classifier. We also need poorly readable code. Therefore, we generate such code from the well readable code. We investigate whether this is possible in principle and whether \rdh (\Cref{REDEC}) can achieve this.
@@ -1716,7 +1715,7 @@ cleveref=false,%
     Previous research shows that Deep Learning models get better the more training data is available~\cite{hestness2017deep}. This applies under the assumption that the quality of the data is the same or at least similar. We want to check if the quality of our new data is sufficient for improving the deep learning-based readability classifier of \citeauthor{mi2022towards}~\cite{mi2022towards}. We train their proposed model with combinations of the merged and the mined-and-modified datasets and compare the results.
 	
 \section{Pilot Survey} \label{Pilot Survey}
-	In the following section, we describe our setup, possible threats to validity, and the pilot survey results.
+	In the following section, we describe our pilot survey setup, possible threats to validity, and results.
 	
 \subsection{Experimental setup}
 	We manually sampled 20 code snippets across all strata but mainly from Stratum~1 and Stratum~3 due to reasons mentioned in \Cref{Construction of Questionnaires}. Ten people participated in the survey from January 6 to 14, 2024. Eight of them were students, and two of them worked in the industry. All of them have computer science knowledge. They were not paid to participate in the survey. Additionally to rating 20 code snippets, the participants were also asked to answer further questions to provide feedback about the survey:
@@ -1735,17 +1734,17 @@ cleveref=false,%
 	The threats regarding the pilot survey are as follows:
 		
 	\textbf{External Validity:}
-	We did not sample the Java snippets for rating in a specific or automated way, so there is a selection bias. Participants coming from a private environment further exacerbate this bias. Due to both, the results do not generalize.
+	We did not sample the Java snippets for rating in a specific or automated way, so there is a selection bias. Participants coming from a private environment further exacerbate this bias. The results do not generalize.
 
 	\textbf{Internal Validity:} 
 	Ten people took part in the pilot survey. Due to the small number of participants, it is impossible to draw reliable conclusions about the strata or \rdh configurations.     
-	However, the results are sufficient to provide an indication.
+	The results are sufficient to provide indications.
 
 	\textbf{Construct Validity:}
 	The accuracy of the participants' ratings for the code snippets is uncertain. We see no incentive for participants to provide incorrect ratings intentionally. We conclude to measure readability.
 
 	None of the mentioned threats have any impact, as we do not use the results of this survey to evaluate our dataset generation approach.
-	The intention of the pilot survey was instead to prepare for the Prolific survey.
+	The intention of the pilot survey was instead to prepare for the Prolific survey (\Cref{Prolific Survey}).
 	
 \subsection{Results}
 	We analyze the pilot survey results regarding three aspects: the time it took to complete the survey, the feedback from the participants, and the ratings of the selected code snippets.
@@ -1753,7 +1752,7 @@ cleveref=false,%
 	\textbf{Completion Time:} 
     \autoref{fig:survey_times} shows the time it took the participants to complete the pilot survey and thus to rate 20 code snippets according to their readability.
     The fastest participant completed the survey in 7 minutes and 35 seconds, while the slowest participant took 18 minutes. 
-    Both the average value and the mean value are around 12 minutes. The boxplot (\autoref{fig:survey_times}) shows that the times are close together and there are no outliers in the time taken.
+    Both the average value and the mean value are around 12 minutes. \autoref{fig:survey_times} shows that the completion times are close together and there are no outliers.
     We suspect that the participants in the pilot survey put more effort into completing the survey as we know them personally. 
     Other participants may not make as much effort, so we set the time estimation for a questionnaire below average at 10 minutes.
 		
@@ -1812,7 +1811,7 @@ cleveref=false,%
 		
 \subsection{Experimental setup}
 	We conducted the survey using Tien Duc Nguyen's Code Annotation Tool (\autoref{fig:survey_tool}) along with the platform Prolific for recruiting and paying participants between January 31 and February 7, 2024. A total of 221 participants took part. Eleven participants answered each of the 20 questionnaires (similar to the survey of \citeauthor{scalabrino2018comprehensive}~\cite{scalabrino2018comprehensive}). In one survey, we assigned one more participant by mistake. We include his results in the evaluation. We estimated the time to complete one questionnaire at 10 minutes (\Cref{Pilot Survey}). Prolific set the maximum time allowed at 44 minutes. Participants who took longer received a time-out.
-	A margin of error of 29.55\% means that the actual readability value of a code snippet varies by up to 29.55\% in both directions from the evaluation result.
+	The resulting margin of error of 29.6~\% means that the actual readability value of a code snippet varies by up to 29.6~\% in both directions from the evaluation result.
 	However, we aggregate over strata and multiple snippets later to reduce the margin of error.
 	Each questionnaire consists of 20 code snippets. Consequently, 400 different code snippets are rated in total. We configured the questionnaires in a way that each participant could only take part in one of the questionnaires. You can find the texts for the survey in \Cref{appendix:prolific-survey-texts}. We crafted the questionnaires as described in \Cref{Construction of Questionnaires}.
 		
@@ -1847,14 +1846,14 @@ cleveref=false,%
 	We identified the following threats:
 	
 	\textbf{External Validity:}
-	Due to our questionnaire construction approach (\Cref{Construction of Questionnaires}), we have a larger proportion of code snippets from Stratum 1 and Stratum 3 (\Cref{Construction of Questionnaires}). While we argue that we avoided spending resources on labeling data that is likely not different from the original methods or rather uninteresting, this might also introduce statistical errors to our survey results.
+	Due to our questionnaire construction approach (\Cref{Construction of Questionnaires}), we have a larger proportion of code snippets from Stratum~1 and Stratum~3 (\Cref{Construction of Questionnaires}). While we argue that we avoided spending resources on labeling data that is likely not different from the original methods or rather uninteresting, this might also introduce statistical errors to our survey results.
 	However, stratified sampling is well-defined and proven in practice. The approach ensures that our sample represents all parts of the population under investigation.
 	Ensuring a well-defined target population is critical to the survey's quality.
 	To mitigate the threat of an inadequately defined target population, we define it explicitly.
 	
 	\textbf{Internal Validity:} 
     To ensure a conclusion is drawn from sufficient responses, we scaled our survey to an appropriate size. This guarantees we collect a substantial volume of responses, allowing for robust statistical analysis.
-    Survey participants are paid to take part and complete a questionnaire. However, they receive the same amount of money regardless of their speed. Therefore, they receive more pay per minute if they hurry. This could impact the accuracy with which they scored the code snippets. A comparison between the time required by a participant for a pilot questionnaire and a Prolific questionnaire (\autoref{fig:survey_times}) supports this argument. Especially the ratings of participants requiring less than 3 minutes (\autoref{fig:survey_time_less_than_180}) to complete a questionnaire could have a negative impact on validity. 
+    Survey participants are paid to take part and complete a questionnaire. However, they receive the same amount of money regardless of their speed. Therefore, they receive more pay per minute if they hurry. This could impact the accuracy with which they rated the code snippets. A comparison between the time required by a participant for a pilot questionnaire and a Prolific questionnaire (\autoref{fig:survey_times}) supports this argument. Especially the ratings of participants requiring less than 3 minutes (\autoref{fig:survey_time_less_than_180}) to complete a questionnaire could have a negative impact on validity. 
     
     \textbf{Construct Validity:}
     The accuracy of the participants' ratings for the code snippets is uncertain. Apart from the already mentioned aspect that participants might hurry, we see no incentive for participants to give false ratings deliberately. We conclude to measure readability.
@@ -1865,7 +1864,7 @@ cleveref=false,%
 	\textbf{Completion time:}
     You can find an overview of the time the participants required in \autoref{fig:survey_times} and \autoref{fig:survey_time_histogramm}.
     The fastest participant completed the survey in 1 minute and 39 seconds, while the slowest participant needed about 38 minutes. 
-    The average time is 9 minutes and 45 seconds. The median time is 8 minutes and 30 seconds. The boxplot (\autoref{fig:survey_times}) shows that the completion times are not as close together as in the pilot survey. There are a couple of outliers.
+    The average time is 9 minutes and 45 seconds. The median time is 8 minutes and 30 seconds. \autoref{fig:survey_times} shows that the completion times are not as close together as in the pilot survey. There are a couple of outliers.
 	
 	We pay attention to the number of participants who took less than three minutes to complete a questionnaire (\autoref{fig:survey_time_less_than_180}), assuming this is impossible without randomly selecting answers. In almost all questionnaires, the number of participants who took less than three minutes is either zero or one, while there is only one questionnaire where two participants took less than three minutes.
     Overall, only a few participants took less than three minutes. We assume that most participants completed the survey with reasonable effort.
@@ -1917,7 +1916,9 @@ cleveref=false,%
     According to their estimation, most participants (43.3~\%) have intermediate Java knowledge.
     29.0~\% of the participants stated that they are either advanced or experts in Java. This high familiarity with Java suggests that the evaluation quality is high.
 	
-	\autoref{fig:java_knowledge_time} shows the time it took each Java knowledge group participant to complete a questionnaire. While the median is similar for all groups, the distribution varies. The Novices have the shortest completion times, followed by the Beginners and the Experts. While there are no outliers for Novices and Beginners, there are outliers for Intermediates, Advanced, and Experts. We assume that some Novices and Beginners do not go into as much detail when reading and are, therefore, faster. Some Experts may read the given code snippets faster than others due to their level of knowledge and thus need less time.
+	\autoref{fig:java_knowledge_time} shows the time it took each Java knowledge group participant to complete a questionnaire. While the median is similar for all groups, the distribution varies. The Novices have the shortest completion times, followed by the Beginners and the Experts. While there are no outliers for Novices and Beginners, there are outliers for Intermediates, Advanced, and Experts. 
+	
+	We assume that some Novices and Beginners do not go into as much detail when reading and are faster. Some Experts may read the given code snippets faster than others due to their level of knowledge and thus need less time.
 	
 	\autoref{fig:java_knowledge_ratings} shows the rating deviations of the participants from the mean values of the code snippets per Java familiarity group. The rating deviation is grouped by adding up the deviations for each rater for each group and normalized by dividing by the number of participants within each group. We see that the variances of all groups are very similar.
 	We performed an equivalence test using one-way ANOVA with an equivalence margin of $0.05$~\cite{tabachnick2013using}.
@@ -1926,26 +1927,6 @@ cleveref=false,%
 	We conclude that the quality of the ratings for all familiarity groups is equivalent.
 
 	Even though there are differences regarding outliers and completion time variation (\autoref{fig:java_knowledge_time}), the rating quality of groups does not differ between the groups (\autoref{fig:java_knowledge_ratings}). Overall, the analysis of the Java familiarity groups in \autoref{fig:java_familiarity} suggests that the overall quality of the ratings received is high. 
-	
-	Although there are differences in terms of outliers and difference variance in completion time (\autoref{fig:java_knowledge_time}), the quality of ratings does not differ between the groups (\autoref{fig:java_knowledge_ratings}). Overall, the high degree of familiarity \autoref{fig:survey_Java_familiarity_pie} and the analysis of the groups indicate that the overall quality of the ratings received is high. 
-		
-	\textbf{Ratings:}
-	You can find the ratings for each \rdh configuration for all strata in \autoref{fig:survey_time_all}. We added the ratings of the merged dataset for comparison. \autoref{fig:survey_ratings_violin_all} visualizes the rating distribution for each score from one to five. It also shows the mean value and mode of the ratings for each variant. To facilitate comparison with the original methods, the mean value of the ratings of the original methods across all variants is marked with a red dashed line. The original method and the \texttt{just-pretty-print} method are the most frequently rated with a score of four, and their mean values of 3.69 and 3.67 are comparatively the highest.
-		
-	In line with our expectation, we see that the ratings for \nonet and \texttt{original} only differ by a negligible amount of 0.02. 
-    Using two one-sided t tests we showed that \nonet and \texttt{original} are equivalent~\cite{schuirmann1987comparison}. The obtained p-value of $0.03$ is smaller than $0.05$ when we use an equivalence margin of $0.15$. The margin signifies that we consider two ratings equivalent if they do not differ by more than 15~\% of a single-star rating.
-    Therefore, we are sure that it was not the Pretty Printer but the modifications that caused the differences in readability.
-	
-	\begin{sloppypar}
-	The violins of \autoref{fig:survey_ratings_violin_all} illustrate the distribution of the ratings in detail. The evaluators could only rate the discrete values from 1 to 5. The deflections of the violins in between are for better visualization. The figure shows that for \texttt{original} and \texttt{just-pretty-print}, most of the ratings are 3, 4, or 5. In addition, the violins of \texttt{merged} and \texttt{all7} look similar, with the latter having more 2-ratings. The violins of \texttt{newlines-many}, \texttt{rename} and \texttt{spaces-many} show more better (3, 4 and 5) and less worse (1 and 2) ratings than the ones of \texttt{comments-remove}, \texttt{newlines-instead-of-space}, \texttt{newlines-few} and \texttt{tabs}.
-	\end{sloppypar}
-		
-	\autoref{fig:survey_ratings_violin_all} also shows that the mean value of the original methods is 3.69, and the mean value of the merged dataset is 3.34. The difference of 0.35 has statistical significance:
-    We perform a Mann-Whitney-U-Test for the rating values of the 40 original code snippets of the mined-and-modified dataset against all rating values of the merged dataset. The resulting $p$ value is \num{1.11e-09}, far below the $5~\%=\num{5e-2}$ threshold, confirms statistical significance.
-	
-	\begin{summary}{\hyperref[mined-well]{RQ 1 - mined-well}}
-		The mean score for the \texttt{original} methods of the mined-and-modified dataset (3.69) is significantly larger than the mean score for all ratings in the merged dataset (3.34). Therefore, we reject the null hypothesis and conclude that the well readable assumption (\Cref{well-readable-assumption}) holds.
-	\end{summary}
 	
 	\begin{figure}[p]
 		\centering
@@ -1963,24 +1944,46 @@ cleveref=false,%
 		\caption{Survey ratings for each \rdh configuration and all strata. Additionally, merged is added.}
 		\label{fig:survey_time_all}
 	\end{figure}
+		
+	\textbf{Ratings:}
+	You can find the ratings for each \rdh configuration for all strata in \autoref{fig:survey_time_all}. We added the ratings of the merged dataset for comparison. \autoref{fig:survey_ratings_violin_all} visualizes the rating distribution for each score from 1 to 5. It also shows the mean value and mode of the ratings for each variant. To facilitate comparison with the \texttt{original} methods, the mean value of the ratings of the \texttt{original} methods is marked with a red dashed line. The \texttt{original} methods and the \texttt{just-pretty-print} methods are the most frequently rated with a score of 4, and their mean values of 3.69 and 3.67 are comparatively the highest.
+		
+	In line with our expectation, we see that the ratings for \nonet and \texttt{original} only differ by a negligible amount of 0.02. 
+    Using two one-sided t~tests we showed that \nonet and \texttt{original} are equivalent~\cite{schuirmann1987comparison}. The obtained p-value of $0.03$ is smaller than $0.05$ when we use an equivalence margin of $0.15$. The margin signifies that we consider two ratings equivalent if they do not differ by more than 15~\% of a single-star rating.
+    Therefore, we are sure that it was not the Pretty Printer but the modifications that caused the differences in readability.
 	
 	\begin{sloppypar}
-	\autoref{fig:survey_ratings_bar_all} shows the differences in mean values more precisely. \rdh reduces the readability for the configurations \texttt{all7}, \texttt{comments-remove}, \texttt{newlines-instead-of-space}, \texttt{newlines-few} and \texttt{tabs} the most. The tool also reduces readability for \texttt{newlines-many}, \texttt{rename}, and \texttt{spaces-many}, but not as much. 
+	The violins of \autoref{fig:survey_ratings_violin_all} illustrate the distribution of the ratings in detail. The evaluators could only rate the discrete values from 1 to 5. The deflections of the violins in between are for better visualization. The figure shows that for \texttt{original} and \texttt{just-pretty-print}, most of the ratings are 3, 4, or 5. In addition, the violins of \texttt{merged} and \texttt{all7} look similar, with the latter having more 2-ratings. The violins of \texttt{newlines-many}, \texttt{rename} and \texttt{spaces-many} show more better (3, 4 and 5) and less worse (1 and 2) ratings than the ones of \texttt{comments-remove}, \texttt{newlines-instead-of-space}, \texttt{newlines-few} and \texttt{tabs}.
 	\end{sloppypar}
+		
+	\autoref{fig:survey_ratings_violin_all} also shows that the mean value of the original methods is 3.69, and the mean value of the merged dataset is 3.34. The difference of 0.35 has statistical significance:
+    We perform a Mann-Whitney-U-Test for the rating values of the 40 original code snippets of the mined-and-modified dataset against all rating values of the merged dataset. The resulting p-value is \num{1.11e-09}, far below the $5~\%=\num{5e-2}$ threshold, confirms statistical significance.
+	
+	\begin{summary}{\hyperref[mined-well]{RQ 1 - mined-well}}
+		The mean score for the \texttt{original} methods of the mined-and-modified dataset (3.69) is significantly larger than the mean score for all ratings in the merged dataset (3.34). Therefore, we reject the null hypothesis and conclude that the well readable assumption (\Cref{well-readable-assumption}) holds.
+	\end{summary}
+		
+	\begin{sloppypar}
+	\autoref{fig:survey_ratings_bar_all} shows the differences in mean values compared to the \texttt{original} methods. \rdh reduces the readability for the configurations \texttt{all7}, \texttt{comments-remove}, \texttt{newlines-instead-of-space}, \texttt{newlines-few} and \texttt{tabs} the most. The tool also reduces readability for \texttt{newlines-many}, \texttt{rename}, and \texttt{spaces-many}, but not as much.
+%	\end{sloppypar}
+%
+%	\begin{sloppypar}
 	To determine whether the deviations are statistically significant, we utilized the Mann-Whitney-U-Test. We compare the ratings for all snippets for a \rdh configuration with the corresponding \nonet snippets. \autoref{tab:survey_statistical_evidence} shows the results.
     We can be sure that the scores of all methods except \texttt{newlines-many} and \texttt{rename} are indeed statistically different from the scores of \nonet. 
+    \end{sloppypar}
 	
-	If we consider binary readability classification and split the data into two classes (poorly readable: 1,2; well readable: 3-5), all but \texttt{rename} are statistically different from \nonet. This includes \texttt{newlines-many} ($p=0.035=3.5~\% < 5~\%$) for which we could not confirm statistical difference without binary classification.
-
+	If we consider binary readability classification and split the data into two classes (poorly readable: 1,2; well readable: 3-5), all but \texttt{rename} are statistically different from \nonet. This includes \texttt{newlines-many} ($\text{p-value}=0.035=3.5~\% < 5~\%$) for which we could not confirm statistical difference without binary classification.
+%
     Besides \nonet, this leaves \texttt{rename} where we can not confirm statistical significance. Overall, we showed that \rdh reduces the readability of source code.
 
 	\begin{table}[tb]
 		\centering
-		\caption{Mann-Whitney-U-Test results of each \rdh configuration against \nonet. When \textbf{$p$} is smaller than $5~\%=\num{5e-2}$ (\textbf{bold}) we conclude that the difference is significant.}
+		\caption{Mann-Whitney-U-Test results of each \rdh configuration against \nonet. When the p-value is smaller than $5~\%=\num{5e-2}$ (\textbf{bold}) we conclude that the difference is significant.}
 		\label{tab:survey_statistical_evidence}
-		\begin{tabular}{lS[table-format=1.2e-2]}
+%		\begin{tabular}{lS[table-format=1.2e-2]}
+		\begin{tabular}{lc}
 			\toprule
-			Comparison against & \textbf{$p$} \\
+			Comparison against & p-value \\
 			\midrule
 			methods & \num{9.22e-1} \\
 			\textbf{newlines-few} & \num{5.23e-6} \\
@@ -2012,10 +2015,10 @@ cleveref=false,%
 	To confirm that our implementation of the model scores similar accuracy as the original one of \citeauthor{mi2022towards}~\cite{mi2022towards}, we train and evaluate the model on the merged dataset (\texttt{merged-merged}).
 	
 	\textbf{2. Internal evaluation:} 
-    To investigate how the model captures the readability aspects of the mined-and-modified (short: \texttt{mam}) dataset, we train and evaluate it on this dataset (\texttt{mam-mam}). We examine how effectively the model captures the differences between the \texttt{original} and \texttt{all7} methods, which are modified with \rdh.
+    To investigate how the model captures the readability aspects of the mined-and-modified (short: \texttt{mam}) dataset, we train and evaluate it on this dataset (\texttt{mam-mam}). We examine how effectively the model captures the differences between \texttt{original} and \texttt{all7}, which are modified with \rdh.
     
     \textbf{3. Cross evaluation:} 
-    To assess how effective the mined-and-modified dataset is for predicting readability, we train the model on the mined-and-modified dataset and then evaluate its performance on the merged dataset (\texttt{mam-merged}). We train the model on the merged dataset and evaluate it on the merged dataset (merged-merged) and the mined-and-modified dataset (\texttt{merged-mam}).
+    To assess how effective the mined-and-modified dataset is for predicting readability, we train the model on the mined-and-modified dataset and then evaluate its performance on the merged dataset (\texttt{mam-merged}). We train the model on the merged dataset and evaluate it on the merged dataset (\texttt{merged-merged}) and the mined-and-modified dataset (\texttt{merged-mam}).
     
     \textbf{4. Fine-tuning:} 
     To assess the accuracy we can score in predicting readability, we investigate training on the mined-and-modified dataset and fine-tuning and evaluating on the merged dataset (\texttt{finetune-merged}).
@@ -2052,17 +2055,17 @@ cleveref=false,%
 	
 	\textbf{2. Internal evaluation:}
 	We train and evaluate the model on the mined-and-modified dataset (\texttt{mam-mam}) and obtain an average accuracy of 92.2~\%.
-	The Towards model architecture is well suited for learning the structure of the mined-and-modified dataset. It learns the differences between \texttt{original} and \texttt{all7} methods and learns how to predict whether \rdh modified a code snippet. 
+	The Towards model architecture is well suited for learning the structure of the mined-and-modified dataset. It learns the differences between the \texttt{original} and \texttt{all7} methods and how to predict whether \rdh modified a code snippet. 
 
 	\textbf{3. Cross evaluation:}
-    We train the model on the mined-and-modified dataset and evaluate it on the merged dataset (\texttt{mam-merged}) and obtain an accuracy of 61.9~\%. This is 22.8~\% worse than the accuracy we get when we train and evaluate the model on the merged dataset (\texttt{merged-merged}). When we train the model on the merged dataset and evaluate it on the mined-and-modified one (\texttt{merged-mam}), we get an accuracy of 56.8~\%, close to the approximate accuracy of 50.0~\% of a random classifier.
-    If the scores for \texttt{mam-merged}, \texttt{merged-merged}, and\texttt{merged-mam} would be similar, we would conclude that both datasets, the merged and the mined-and-modified one, address readability in general. Since this is not the case and we know that both datasets address different aspects of readability, we conclude that we address different aspects of readability.
+    We train the model on the mined-and-modified dataset and evaluate it on the merged dataset (\texttt{mam-merged}). We obtain an accuracy of 61.9~\%. This is 22.8~\% worse than the accuracy we get when we train and evaluate the model on the merged dataset (\texttt{merged-merged}). When we train the model on the merged dataset and evaluate it on the mined-and-modified one (\texttt{merged-mam}), we get an accuracy of 56.8~\%, close to the approximate accuracy of 50.0~\% of a random classifier.
+    If the scores for \texttt{mam-merged}, \texttt{merged-merged}, and \texttt{merged-mam} would be similar, we would conclude that both datasets, the merged and the mined-and-modified one, address readability in general. Since this is not the case, we address different aspects of readability.
 	
 	\begin{sloppypar}
 	\textbf{4. Fine-tuning:}
-    We tried to fine-tune the merged dataset by freezing different layers of the model trained with the mined-and-modified dataset (\texttt{finetune-merged}). We achieved the best results during the evaluation when freezing the input layers and the first convolution and pooling layer of all encoders. 
-    However, when evaluated on the merged dataset, the performance is still worse than the merged-merged variant.
-	We assume the model is too small to be effective with the larger data. Introducing more or bigger layers so that the model can store more features internally could lead to an improvement. However, this is not part of this work, in which we mainly focus on a new dataset.
+	We tried to fine-tune the merged dataset by freezing different layers of the model trained with the mined-and-modified dataset (\texttt{finetune-merged}). We achieved the best results during the evaluation by freezing the input layers and the first convolution and pooling layers of all encoders. 
+	However, when evaluated on the merged dataset, the performance is still worse than the \texttt{merged-merged} variant.
+	We assume the model is too small to be effective with the larger dataset. Introducing more or bigger layers so that the model can store more features internally could lead to an improvement. This is not part of this work, in which we mainly focus on a new dataset.
 	\end{sloppypar}
 	
 	\begin{summary}{\hyperref[new-data]{RQ3 - new-data}}
@@ -2075,7 +2078,7 @@ cleveref=false,%
 	% Zusammenhang: Studie und Model Eval
     Our survey (\Cref{Pilot Survey}) shows that the mined-and-modified dataset captures readability. The model training results (\Cref{Model training results}) show that the mined-and-modified dataset captures different aspects of readability compared to the merged dataset.  
     % Different aspects of readability
-    The question arises as to what the different aspects are and whether it is possible to extend \rdh (\Cref{REDEC}) to capture the same aspects. We assume we could achieve better evaluation results on the merged dataset than previous models.
+    The question arises as to what the different aspects are and whether it is possible to extend \rdh (\Cref{REDEC}) to capture the same aspects. By doing so, we assume we could achieve better evaluation results on the merged dataset than previous models.
 	
 	% Model Restrictions
 	After training with the mined-and-modified dataset, we fine-tune the model with the merged dataset and evaluate it on the merged dataset (\Cref{Model training results}). We expect the classification accuracy of the resulting model to exceed that of the model trained on the merged dataset only.
@@ -2099,7 +2102,7 @@ cleveref=false,%
 	We hardly rely on the survey results to train the model. Thus, this is a minor threat.
 	
 	% Other heuristic shortcuts
-	By modifying code, REDEC introduces patterns for poor readability (\Cref{REDEC}). For example, \texttt{comments-remove} removes a comment. This allows the classifier to decide that a method without a comment is poorly readable. Patterns from changes that alter line breaks, spaces, and tabs are more complex to infer, but we suggest they are present. One could argue that the individual patterns are shortcuts the classifier can learn to determine readability. However, combining these patterns with a certain probability requires the model to learn all patterns. We suggest that the model overcomes shortcuts and learns code features instead. These features determine the readability of code, as our survey results showed (\Cref{Prolific Survey}).
+	By modifying code, REDEC introduces patterns for poor readability (\Cref{REDEC}). For example, \texttt{comments-remove} removes a comment. This allows the classifier to decide that a method without a comment is poorly readable. Patterns from changes that alter line breaks, spaces, and tabs are more complex to infer, but we suggest they are present. One could argue that the individual patterns are shortcuts the classifier can learn to determine readability. However, combining these patterns requires the model to learn all of them. We suggest that the model overcomes shortcuts and learns code features instead. These features determine the readability of code, as our survey results showed (\Cref{Prolific Survey}).
 	
     % Small merged dataset
     When comparing the model performance trained on the mined-and-modified and merged dataset, note that the merged dataset is small~(\Cref{Work on Existing Datasets}). Consequently, comparisons to classifiers trained on the merged dataset may be unreliable.
@@ -2109,7 +2112,7 @@ cleveref=false,%
 		
 \chapter{Conclusions and Future Work} \label{Conclusions}
 	% Summary with Implications: So what?  
-	Recent research in code readability classification focused on various deep learning model architectures to further improve accuracy. Researchers paid little attention to the fact that only 421 labeled code snippets are available to train these models. We introduced a novel approach to generate data with which we created a dataset of \numSamples code snippets (\Cref{Mined and Modified Code for Dataset Generation}). Although our results show that the mined-and-modified dataset does not capture the same aspects of readability as the merged one (\Cref{Evaluation}), it still captures readability and could help improve the readability classification of code in future research.
+	Recent research in code readability classification focused on various deep learning model architectures to further improve accuracy. Researchers paid little attention to the fact that only 421 labeled code snippets are available to train these models. We introduced a novel approach to generate data with which we created a dataset of \numSamples code snippets (\Cref{Mined and Modified Code for Dataset Generation}). Although our results show that the mined-and-modified dataset does not capture the same aspects of readability as the merged dataset (\Cref{Evaluation}), it still captures readability and could help improve the readability classification of code in future research.
 	
 	% New dataset style
 	The new approach for generating data has an advantage not yet used in this work: For the first time, it is possible to generate a dataset with one well readable and a second, less readable, and functionally equivalent code snippet. This could be used to train various models, including Transformers. Such a Transformer could take the code as input and improve its readability. We suspect that such a tool could be of great benefit to programmers.  
